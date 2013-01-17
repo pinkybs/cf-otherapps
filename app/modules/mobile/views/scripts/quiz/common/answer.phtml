@@ -1,0 +1,50 @@
+{% if not $result %}
+	<div id="title" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/quiz/mobile/img/title.gif" width="228" height="60" style="margin:3px 0;" />
+	</div><!--/#title-->
+	<div style="text-align:center;" class="ad">
+		<ad xmlns="http://m.mixi.jp/2009/AdProgram/" type="header" id="b1fa6fc117c4650bbf7adce5bfba4a89cb2aa35f" />
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	</div><!--/.ad-->
+{%/if%}
+{% if $result %}
+	{% if $result != '2' %}
+		<div id="answer">
+			<div class="headline" style="background:#fbc251;text-align:center;">
+				<img src="{%$staticUrl%}/apps/quiz/mobile/img/light.gif" width="228" height="10" /><br />
+				<div class="inner" style="background:#993333;">
+					<img src="{%$staticUrl%}/apps/quiz/mobile/img/headline/a{% $quizSize %}.gif" width="228" height="24" />
+					<div class="line" style="background:#631616;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+				</div><!--/.inner-->
+				<img src="{%$staticUrl%}/apps/quiz/mobile/img/light2.gif" width="228" height="10" /><br />
+			</div><!--/.headline-->
+			<div class="judge" style="text-align:center;">
+				{% if $result == '3' %}
+					<img src="{%$staticUrl%}/apps/quiz/mobile/img/false.gif" width="228" height="46" />
+				{% else %}
+					<img src="{%$staticUrl%}/apps/quiz/mobile/img/true.gif" width="228" height="46" />
+				{%/if%}
+			</div><!--/.judge-->
+			<div class="comment">
+				<table width="228" cellpadding="0" cellspacing="0" border="0" align="center" style="text-align:center;">
+					<tr>
+					    {% if $result == 3 && $miniRightImg %}
+					       <td width="44" style="width:44px;text-align:center;"><img src="{%$miniRightImg%}" /></td>
+					    {%/if%}
+						<td width="140" style="width:184px;{% if $ua==1 %}font-size:x-small;{% /if %}text-align:left;">
+							{% if $result == 3 %}
+							     {% if $miniRightImg %}
+							         ←正解はｺﾁﾗ!
+							     {% else %}
+							         [正解]{%$nickname%}さんは{%$oldRightAnswer%}でした｡本当に友達ですか?
+							     {%/if%}
+							{% else %}
+							          ま､友達なら知っていて当たり前の話なんですけどﾈ…
+							{%/if%}</td>
+						<td width="44" style="width:44px;text-align:center;"><img src="{%$staticUrl%}/apps/quiz/mobile/img/host3.gif" width="40" height="40" /></td>
+					</tr>
+				</table>
+			</div><!--/.comment-->
+		</div><!--/#answer-->
+	{%/if%}
+{%/if%}

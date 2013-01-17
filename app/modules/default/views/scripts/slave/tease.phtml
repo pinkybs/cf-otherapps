@@ -1,0 +1,176 @@
+{%include file="slave/common/header.phtml"%}
+<script type="text/javascript" src="{%$staticUrl%}/cmn/js/jquery.form.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/cmn/js/jquery.validate.js?{%$version.js%}"></script>
+<body id="twoColumn" class="teaseS1">
+
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+		<div id="teaseBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_tease.png" width="101" height="23" alt="からかう" /></h2>
+			</div><!--/.hdr-->
+
+			<!-- hidden info -->
+					<input type="hidden" id="hidSlaveId" name="hidSlaveId" value=""/>
+					<input type="hidden" id="hidFriendId" name="hidFriendId" value="{%$friendId%}"/>
+					<input type="hidden" id="hidTeaseId" name="hidTeaseId" value=""/>
+					<input type="hidden" id="hidMsName" name="hidMsName" value="{%$msName%}"/>
+					<input type="hidden" id="hidPic_small" name="hidPic_small" value=""/>
+					<input type="hidden" id="hidSlavePriceRank" name="hidSlavePriceRank" value=""/>
+					<input type="hidden" id="hidState" name="hidState" value=""/>
+			<!-- /hidden info -->
+
+			<!-- #TeaseStepOne -->
+			<div id="TeaseStepOne">
+				<p class="intro" id="pIntroOne">{%$msName%}をからかうよ！ からかわせるドレイちゃんを選択してね。</p>
+				<div class="section" id="teaseInfo">
+					<p class="pic"><a style="cursor:default;background-image:url({%$msPic%})">{%$msName%}</a></p>
+					<p class="name"><span>{%$msName%} 改め </span>{%$friendInfo.nickname%}</p>
+					<p class="comment">{%$friendInfo.balloon%}<span></span></p>
+				</div><!--/.section-->
+				<div id="teaseFeed"><!--
+					--><ul id="ulFeedOne"><!--
+                        {% foreach name=slaveInfo from=$slaveInfo item=sdata %}
+                           --><li id="{% $sdata.price_rank %}">
+	                            <input type="hidden" value="{% $sdata.uid %}">
+	                            <p class="pic"><a style="cursor:default;background-image:url({%$sdata.thumbnailUrl%})">{%$sdata.displayName%}</a></p>
+	                            <p class="name"><span>{%$sdata.displayName%} 改め </span>{%if $sdata.nickname %}{% $sdata.nickname %}{% else %}{% $sdata.displayName %}ちゃん{% /if %}</p>
+	                            <p class="comment">{% if $sdata.balloon %}{%$sdata.balloon|escape%}{% else %}誰か私を買ってください{% /if %}　<span></span></p>
+                           </li><!--
+                        {% /foreach %}
+					--></ul>
+				</div><!--/#teaseFeed-->
+
+				<ul class="actionList" id="stepOneBtn"><!--
+					--><li class="actionAbolish disable"><a href="javascript:cm_goBack();" >キャンセル</a></li><!--
+					--><li class="actionNext"><a id="teaseStepOneNext" href="javascript:void(0);">つぎへ</a></li><!--
+				--></ul><!--/.actionList-->
+
+			</div><!-- /#TeaseStepOne -->
+
+			<!-- #TeaseStepTwo -->
+			<div id="TeaseStepTwo" style="display: none;">
+
+				<p class="intro" id="pIntroTwo">どんな内容でからかう？ クスッと笑えるくらいがちょうどいいと思うよ！</p>
+					<div id="teaseFeed2">
+						<ul id="ulFeedTwo"><!--
+							--><li class="special" id="first">
+									<input type="hidden" value="38">
+									<p class="pic"><a id="showUploadBox" href="javascript:void(0);" style="background-image:url({%$staticUrl%}/apps/slave/img/dummy/pic_s_5.png)">カスタム</a></p>
+									<p class="name">自分で作成する！：わるのり度 ★★☆</p>
+										<form id="customTeasefrm" method="post">
+											<p><label><input maxlength="10" id="txtCustomTease" name="txtCustomTease" type="text" /><span>をする</span></label></p>
+										</form>
+									<p class="addAlbum"><a id="addImage" href="javascript:void(0);">写真を追加</a></p>
+							   </li><!--
+                               {% foreach name=lstNbTease from=$lstNbTease item=nbdata %}
+                                  --><li id="{%$nbdata.tid%}">
+                                        <input type="hidden" value="{% $nbdata.tid %}">
+                                        <p class="pic"><a style="cursor:default;background-image:url({%$staticUrl%}{%$nbdata.pic_small%})">{% $nbdata.action %}</a></p>
+                                        <p class="name">{%$nbdata.action%}</p>
+                                        <p class="comment">わるのり度 {% if $nbdata.level == 1 %} ★☆☆{% elseif $nbdata.level == 2 %}★★☆ {% else %}★★★{% /if %}</p>
+                                    </li><!--
+                                {% /foreach %}
+						--></ul>
+						<input type="hidden" value="{%$isForbidCustomTease%}" id="hidForbid">
+					</div><!--/#teaseFeed-->
+
+				<ul class="actionList" id="setpTwoBtn"><!--
+					--><li class="actionBack disable"><a id="teaseStepTwoReset" href="javascript:void(0);">もどる</a></li><!--
+					--><li class="actionNext" id="liNext2"><a id="teaseStepTwoNext" href="javascript:void(0);">つぎへ</a></li><!--
+				--></ul><!--/.actionList-->
+
+			</div><!-- /#TeaseStepTwo -->
+
+			<!-- #TeaseStepConfrim -->
+			<div id="TeaseStepConfrim" style="display: none;">
+				<p class="intro" id="pIntroConfrim"></p>
+				<ul class="sectionList" id="ulConfirm"><!--
+					--><li>
+						<p class="pic" id="cfmSlavePic"></p>
+						<p class="name" id="cfmSlaveName"></p>
+					</li><!--
+					--><li>
+						<p class="pic"><a style="cursor:default;background-image:url({%$msPic%})">{%$msName%}</a></p>
+						<p class="name"><span>{%$msName%} 改め </span>{%$friendInfo.nickname%} を </p>
+					</li><!--
+					--><li>
+						<p class="pic" id="cfmTeasePic"></p>
+						<p class="name" id="cfmTeaseName"></p>
+						<p class="comment" id="cfmTeaseComment"></p>
+					</li><!--
+				--></ul><!--/.sectionList-->
+
+				<ul class="actionList" id="setpConfirmBtn"><!--
+					--><li class="actionBack disable"><a id="teaseConfirmReset" href="javascript:void(0);">もどる</a></li><!--
+					--><li class="actionCarryOut"><a id="teaseConfirmNext" href="javascript:void(0);">実行</a></li><!--
+				--></ul><!--/.actionList-->
+
+			</div><!-- /#TeaseStepConfrim -->
+
+			<!-- #TeaseStepFinish -->
+            <!-- roolback -->
+			<div id="setpBack" style="display: none;"><p class="intro">からかう失敗しました。</p></div>
+
+			<div id="TeaseStepFinish" style="display: none;">
+				<p class="intro" id="pIntroFinish"></p>
+					<div id="TeaseFinish" class="section">
+					</div>
+				<p class="actionBackHome" id="teaseGoHome"><a href="{%$baseUrl%}/slave/home">ホームにもどる</a></p>
+			</div><!-- /#TeaseStepFinish -->
+
+		</div><!--/#teaseBox.box-->
+
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+	{%include file="slave/common/adbox.phtml"%}
+	{%include file="slave/common/logbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	<div id="uploadBox" class="box" style="display: none;">
+		<div id="uploadWrapper">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_addAlbum.png" width="228" height="23" alt="写真を追加" /></h2>
+			</div><!--/.hdr-->
+			<form method="post" enctype="multipart/form-data" id="upLoadFrm" name="upLoadFrm" target="iframePrev">
+				<div id="uploadBody">
+					<p class="intro" id="text1">以下のフォームより写真をアップロードするか、画像のURLを指定してね。</p>
+					<p class="tips" id="text2">※著作権に問題がある画像を投稿した場合、今後、こちらの機能が利用できなくなります。あらかじめご了承ください。</p>
+					<p class="alert" id="errorUrl" style="display: none;">このURLは存在しません。または100KBまでのファイルをアップロードできます。</p>
+					<p class="alert" id="errortips" style="display: none;">アップロードできるファイル形式はjpgのみです。</p>
+
+					<div id="loading" style="display:none">アップロード中です、お待ちください。<img src="{%$staticUrl%}/cmn/img/loading/ajax_loader.gif" /></div>
+
+					<div id="uploadDiv"><!-- #uploadDiv -->
+					 	<div id="selfSelect">
+							<p class="intro" >★ 自分のパソコンにある画像ファイルから選択（jpg）</p>
+							<p><input name="upPhoto" id="upPhoto" type="file" value=""/></p>
+						</div><!--/#selfSelect-->
+
+						<div id="urlSelect">
+							<p class="intro">★ 画像をURLで指定（jpg）</p>
+							<p><input id="upUrl" name="upUrl" type="text" value="http://" /></p>
+						</div><!--/#urlSelect-->
+					</div><!-- /#uploadDiv -->
+
+				</div><!--/#uploadBody-->
+				<ul><!--
+					--><li class="disable"><input style="cursor:pointer;" id="uploadReset" class="inputReset" name="" type="reset" value="" /></li><!--
+					--><li><input class="inputSubmit" style="cursor:pointer;" id="uploadSubmit" name="uploadSubmit" type="button" value="" /></li><!--
+				--></ul>
+			</form>
+		<iframe id="iframePrev" name="iframePrev" width="0" height="0" scrolling="no" style="display: none;"></iframe>
+		</div><!--/.uploadWrapper-->
+	</div><!--/.uploadBox-->
+	<div id="overlay" style="display:none;width:970px;height:1190px;background-color:#fff;position:absolute;left:0;top:0;opacity:0.75;filter:alpha(opacity=75);z-index:1000;"></div>
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/tease.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

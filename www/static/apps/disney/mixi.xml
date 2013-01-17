@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="Disney">
+        <Link rel="event.addapp" href="http://mxtravel-m.disney.co.jp/lifecycle/addapp" method="GET" />
+        <Link rel="event.removeapp" href="http://mxtravel-m.disney.co.jp/lifecycle/removeapp" method="GET" />
+    </ModulePrefs>
+    
+    <Content type="url" view="mobile" href="http://mxtravel-m.disney.co.jp/mobile/index" />
+</Module>

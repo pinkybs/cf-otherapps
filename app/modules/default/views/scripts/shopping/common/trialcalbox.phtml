@@ -1,0 +1,60 @@
+		<div id="trialCalBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_trialCal.png" alt="ゲーム中残高試算表" /></h2>
+			</div><!--/.hdr-->
+			<p class="pic"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="163" height="131" style="background-image: url({%$staticUrl%}/apps/shopping/img/content/ban_play_{%$challengeInfo.target_price/10000%}man.png);" alt="{%$challengeInfo.target_price%}" /></p>
+			<dl class="statusList">
+				<dt>残り時間</dt>
+					<dd><span id="remainTime">{%$challengeInfo.remain_time%}</span></dd>
+				<dt>目標金額</dt>
+					<dd>&yen;<span id="ChallengeMoery">{%$challengeInfo.format_target_price%}</span></dd>
+				<dt>予想金額</dt>
+					<dd>&yen;<span id="SpTolGuessPrice">{%$challengeInfo.format_cart_price%}</span></dd>
+				<dt>残高</dt>
+					<dd><span id="SpDiff">{% if $challengeInfo.diff>0 %}+{% elseif $challengeInfo.diff<0 %}-{% /if %}&yen;{%$challengeInfo.format_diff%}</span></dd>
+			</dl>
+
+			{% if $challengeInfo.cart_count>=10 %}
+			<p class="moreLink"><a href="{%$baseUrl%}/shopping/gameend">精算してゲームの結果を見る</a></p>
+			{% /if %}
+			<p class="moreLink"><a href="{%$baseUrl%}/shopping/restart">プレイ中のゲーム内容をリセット</a></p>
+			<input type="hidden" id="hidRemainTime" value="{%$challengeInfo.remain_time%}" />
+			<input type="hidden" id="hidEndTime" value="" />
+		</div><!--/#trialCalBox.box-->
+
+<script type="text/javascript">
+	var cDate = new Date();
+	$j('#hidEndTime').val(cDate.getTime() + 1000*($j('#hidRemainTime').val()));
+	walkclock();
+
+	//WALK CLOCK
+    function walkclock1() {
+        var rmTime = parseInt($j('#hidRemainTime').val());
+        if (0 == rmTime) {
+        	//game end
+        	window.location.href = UrlConfig.HostUrl + '/shopping/gameend';
+          	return;
+        }
+		setTimeout('walkclock()', 1000);
+    	var min = Math.floor(rmTime/60);
+    	var sec = rmTime%60;
+      	$j('#remainTime').html((min.toString().length<2?('0' + min) : min) + ':' + (sec.toString().length<2?('0' + sec) : sec));
+      	$j('#hidRemainTime').val(rmTime - 1);
+    }
+
+    //WALK CLOCK
+    function walkclock() {
+        var dateNow = new Date();
+        var rmTime = Math.floor(($j('#hidEndTime').val() - dateNow.getTime())/1000);
+        if (0 >= rmTime) {
+        	//game end
+        	window.location.href = UrlConfig.HostUrl + '/shopping/gameend';
+          	return;
+        }
+		setTimeout(walkclock, 1000);
+    	var min = Math.floor(rmTime/60);
+    	var sec = rmTime%60;
+      	$j('#remainTime').html((min.toString().length<2?('0' + min) : min) + ':' + (sec.toString().length<2?('0' + sec) : sec));
+      	$j('#hidRemainTime').val(rmTime - 1);
+    }
+</script>

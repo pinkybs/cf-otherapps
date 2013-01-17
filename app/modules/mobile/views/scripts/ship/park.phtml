@@ -1,0 +1,143 @@
+{% include file="ship/common/header.phtml" headerAd=1 %}
+
+{% if $action == 'choiceship' %}
+	<div id="choiceship">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			金貨を運び出す<br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		</div><!--/.headline-->
+		<div class="description">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			{%$parkingUserName%}の海賊島の金貨を運び出します｡動かす海賊船を選択してください｡<br />
+		</div><!--/.description-->
+		<div style="text-align:center;"><img src="{%$staticUrl%}/apps/ship/img/twoline.gif" width="230" height="27" /></div>
+		{% foreach from=$ships item=data key=key %}
+			<div class="section">
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td width="78"  align="center" style="width:78px;text-align:center;"><img src="{%$staticUrl%}/apps/ship/img/ship/{%$data.cav_name%}_s.gif" width="74" height="58" /></td>
+						<td><div style="{%if $ua==1%}font-size:x-small;{%/if%}">
+							{% emoji code="F947"%}<span style="color:#7c4825;">{%$data.shipName|escape%}号</span><br />
+							{% if $data.temp != 0 %}
+								<img src="{%$staticUrl%}/apps/ship/img/meter/meter_{%$data.temp%}.gif" width="89" height="3" style="margin:3px 0;" /><br />
+								{%$data.status%}<br />
+							{% else %}
+								{%$data.status%}<br />
+							{% /if %}
+							<div style="text-align:right;">収入:{%$data.money%}&nbsp;</div>
+							{% if $data.shipStatus == 1 %}
+								<div style="text-align:right;"><a href='{% "$baseUrl/mobile/ship/park/CF_step/parking/CF_loca/`$loca`/CF_usid/`$data.id`/CF_parkingUid/`$parkingUid`"|mixiurl %}'>この海賊船を選択</a>&nbsp;<br /></div>
+							{% /if %}</div></td>
+					</tr>
+				</table>
+				<div style="text-align:center;" class="lineDash"><img src="{%$staticUrl%}/apps/ship/img/newLine.gif" width="230" height="27" /></div>
+			</div><!--/.section-->
+		{% /foreach %}
+	</div><!--/#choiceship-->
+{% else %}
+	<div id="parking">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		{% if $result.status == 1 %}
+			<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+				<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+				金貨を運び出す<br />
+				<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			</div><!--/.headline-->
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<span style="color:#7c4825;">海賊船 {%$result.shipName|escape%}号</span>が<span style="color:#7c4825;">{%$result.parkingUsername%}の海賊島</span>の金貨を運び始めました｡<br />
+			</div><!--/.description-->
+			{% if $result.updateAsset == 1 %}
+				<div class="ship" style="color:#c00;text-align:center;">
+					<img src="{%$staticUrl%}/apps/ship/img/ship/{%$result.shipCavName%}_s.gif" width="74" height="58" /><br />
+					<div style="color:#cd424a;text-decoration:blink;">金貨 ${%$result.money|outputdollars%} 獲得</div>
+				</div><!--/.ship-->
+				<div class="ranking">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					金　貨  ${%$result.allAsset|outputdollars%}<br />
+					ﾏｲﾐｸ内 {% emoji code="F9BF" %}{%$result.rankNmFriend%}位<br />
+					ﾐｸｼｨ内 {% emoji code="F9BF" %}{%$result.rankNmAll%}位<br />
+				</div><!--/.ranking-->
+			{% /if %}
+			<div class="alert" style="color:#cd424a;">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				{% emoji code="F9DC" %}ﾊﾞﾚないうちに他の島に逃げないと､運び込んだ金貨がすべて奪い返されてしまいますので注意しましょう!<br />
+			</div><!--/.alert-->
+			<div class="link">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/index/CF_uid/`$result.parkingUid`"|mixiurl %}'>{%$result.parkingUsername%}の海賊島へ</a><br />
+			</div><!--/.link-->
+		{% elseif $result.status == -5 %}
+			<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+				<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+				大砲からの一斉攻撃!<br />
+				<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			</div><!--/.headline-->
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<span style="color:#7c4825;">{%$result.parkingUsername%}の海賊島</span>への潜入を試みたところ、待ち伏せをしていた大砲に一斉攻撃を受けてしまいました{% emoji code="F9D2" %}<br />
+			</div><!--/.description-->
+			<div class="fire" style="text-align:center;">
+				<img src="{%$staticUrl%}/apps/ship/img/fire.gif" width="123" height="87" style="margin:3px 0;" /><br />
+				<div style="color:#cd424a;text-decoration:blink;">海賊船 {%$result.shipName|escape%}号 廃船</div>
+			</div><!--/.fire-->
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				{% emoji code="F9DC" %}廃船した海賊船は船大工に修理してもらわないと操作できません｡<br />
+			</div><!--/.description-->
+			<div class="link">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/repair/CF_userShipId/`$result.userShipId`"|mixiurl %}'>海賊船を修理する</a><br />
+				<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/index/CF_uid/`$result.parkingUid`"|mixiurl %}'>{%$result.parkingUsername%}の海賊島へ</a><br />
+			</div><!--/.link-->
+		{% elseif $result.status == -13 %}
+			<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+				<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+				大砲からの一斉攻撃!<br />
+				<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			</div><!--/.headline-->
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="2" /><br />
+				<span style="color:#7c4825;">{%$result.parkingUsername%}の海賊島</span>への潜入を試みたところ、待ち伏せをしていた大砲に一斉攻撃を受けましたが、<span style="color:#7c4825;">自動防衛ｶｰﾄﾞ</span>を使って、何とか助かりました｡<br />
+			</div><!--/.description-->
+			<div class="item" style="text-align:center;">
+				<img src="{%$staticUrl%}/apps/ship/img/gun.gif" width="156" height="100" style="margin:3px 0;" /><br />
+				<div style="color:#cd424a;text-decoration:blink;">自動防衛ｶｰﾄﾞを使用しました!</div>
+			</div><!--/.item-->
+			<div class="link">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/index/CF_uid/`$result.parkingUid`"|mixiurl %}'>{%$result.parkingUsername%}の海賊島へ</a><br />
+			</div><!--/.link-->
+		{% else %}
+			<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+				<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+				潜入失敗!<br />
+				<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			</div><!--/.headline-->
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				{% if $result.status == -2 %}
+					ほかの海賊団が侵攻中のため、<span style="color:#7c4825;">{%$result.parkingUsername%}の海賊島</span>へ潜入することができませんでした｡<br />
+				{% elseif $result.status == -3 %}
+					同じ海賊島に連続で潜入することはできません｡<br />
+				{% elseif $result.status == -4 %}
+					まだ他の海賊島に潜入したばかりのため､選択した海賊船を移動できませんでした｡<br />
+					潜入後1時間経過しないと、海賊船は移動できません｡<br />
+				{% elseif $result.status == -11 %}
+					海賊島に多くの大砲が待ち伏せしていました｡この海賊島への潜入は止めた方が懸命なようです｡<br />
+				{% else %}
+					すでに<span style="color:#7c4825;">{%$result.parkingUsername%}の海賊島</span>へ潜入しています｡<br />
+				{% /if %}
+			</div><!--/.description-->
+			<div class="link">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/index/CF_uid/`$result.parkingUid`"|mixiurl %}'>{%$result.parkingUsername%}の海賊島へ</a><br />
+			</div><!--/.link-->
+		{% /if %}
+	</div><!--/#parking-->
+{% /if %}
+
+{%include file="ship/common/menu.phtml"%}
+{% include file="ship/common/footer.phtml" footerAd=1 %}

@@ -1,0 +1,205 @@
+{%include file="parking/common/header.phtml"%}
+
+<body id="help">
+	<script src="{%$staticUrl%}/apps/parking/js/AC_RunActiveContent.js" language="javascript"></script>
+
+	<script type="text/javascript">
+	    Event.observe(window, 'load', function() {  
+	       adjustHeight(2380);
+        });
+    </script>
+    
+{%include file="parking/common/nav.phtml"%}
+
+<div id="help">
+
+<div id="helpFlash">
+<script language="javascript">
+	if (AC_FL_RunContent == 0) {
+		alert("このページでは \"AC_RunActiveContent.js\" が必要です。");
+	} else {
+		AC_FL_RunContent(
+			'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+			'width', '736',
+			'height', '425',
+			'src', '{%$staticUrl%}/apps/parking/swf/help?{%$version.js%}',
+			'quality', 'high',
+			'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+			'align', 'middle',
+			'play', 'true',
+			'loop', 'true',
+			'scale', 'showall',
+			'wmode', 'window',
+			'devicefont', 'false',
+			'id', 'flash',
+			'bgcolor', '#ffffff',
+			'name', 'flash',
+			'menu', 'true',
+			'allowFullScreen', 'false',
+			'allowScriptAccess','sameDomain',
+			'movie', '{%$staticUrl%}/apps/parking/swf/help?{%$version.js%}',
+			'salign', ''
+			); //end AC code
+	}
+</script>
+<noscript>
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="736" height="425" id="flash" align="middle">
+<param name="allowScriptAccess" value="sameDomain" />
+<param name="allowFullScreen" value="false" />
+<param name="movie" value="{%$staticUrl%}/apps/parking/swf/help.swf?{%$version.js%}" />
+<param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />	
+
+<embed src="{%$staticUrl%}/apps/parking/swf/help.swf?{%$version.js%}" quality="high" bgcolor="#ffffff" width="736" height="425" name="flash" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object>
+</noscript>
+</div>
+
+<h3><span>駐車戦争の遊び方（ゲーム説明）</span></h3>
+<div class="helpBox">
+<p>駐車戦争は、自分の車を動かして友達のパーキング（駐車場）を回りつつ、ばれないように友達のパーキングに勝手に駐車してお金を稼ぐゲームです。</p>
+<p>どこのパーキングにも停めていない車には、2円/分のガソリン代がかかり続けてしまいます。<br />
+最大で24時間(2,880円)のガソリン代が発生してしまうから、空きパーキングを見つけたら、どんどん駐車していこう！！</p>
+</div>
+
+<h3><span>お金を稼ぐ方法</span></h3>
+<div class="helpBox">
+<!--
+<img src="_dummy.jpg" />
+　-->
+<ul>
+<li>自分の車を有料パーキングに駐車すると、1,500円／15分のペースでパーキングメーターが上昇していきます。<br />
+ただし、パーキングメーターは8時間でmaxとなるので、それ以上駐車し続けたとしても駐車料金は増えません。</li>
+<li class="attention">駐車料金は、不動産のランク、車のグレードによって上昇していきます。</li>
+<li>駐車していた車を友達に気付かれる前に、他のパーキングに移動させると、パーキングメーターに貯まっている駐車料金を手に入れる事が出来ます。</li>
+<li>自分のパーキングに、違法駐車している友達の車には「駐車違反キップ」を貼って取り締まることができます。<br />
+そうすると、パーキングメーターの駐車料金の1.2倍の金額を奪い取ることできます。</li>
+<li>友達の車の違法駐車を発見したら、警察に「通報」することが出来ます。<br />
+もし警察があなたの「通報」で、その友達から罰金を徴収できた場合、<br />
+その罰金の金額の50%がボーナスとしてあなたに支払われます。</li>
+</ul>
+</div>
+
+<h3><span>駐車のルール</span></h3>
+<div class="helpBox">
+<!--
+<img src="_dummy.jpg" />
+　-->
+<ul>
+<li>自分の車は、友達のパーキングにしか駐車する事ができません。</li>
+<li>パーキングのオーナーは、あなたの車に「駐車違反キップ」を貼って取り締まることができます。ご注意ください。</li>
+<li>無料パーキングに駐車すると、お金を稼ぐ事が出来ません。<br />
+その代り、駐車違反として取り締まられる心配がなくなります。<br />
+ただし、12時間を過ぎるとパーキングから追い出されてしまいます。</li>
+<li>一度、パーキングに駐車すると、1時間以内はその場所から車を移動する事ができません。</li>
+<li>有料パーキングの場合も、駐車時間が72時間を過ぎるとパーキングから追い出されてしまいます。<br />
+その場合、パーキングメーターに貯まっていた駐車料金も手に入れる事が出来ません。</li>
+<li>自分の車を、同じパーキング内に連続して駐車することはできません。</li>
+</ul>
+</div>
+
+<h3><span>取り締まる</span></h3>
+<div class="helpBox">
+<!--
+<img src="_dummy.jpg" />
+　-->
+<ul>
+<li>パーキングのオーナーは、違法駐車している車に「駐車違反キップ」を貼って取り締まることができます。<br />
+取り締まった車からは、正規の駐車料金の1.2倍の罰金をもらうことができます。</li>
+</ul>
+</div>
+
+<h3><span>警察</span></h3>
+<div class="helpBox">
+<!--
+<img src="_dummy.jpg" />
+　-->
+<ul>
+<li>パーキングのオーナーが、あまりゲームにログインしていないからといって安心は禁物です。<br />
+警察が、直接取り締まりを行う場合があるので気をつけて下さい。</li>
+<li>ただし、夜間は警察の巡回も半分になるので、取り締まられる心配も少なくなります。</li>
+</ul>
+</div>
+
+<h3><span>通報</span></h3>
+<div class="helpBox">
+<!--
+<img src="_dummy.jpg" />
+　-->
+<ul>
+<li>友達の車が違法駐車しているの所を発見したら、警察に「通報」することが出来ます。</li>
+<li>もし警察があなたの「通報」のおかげで罰金を徴収できた場合、<br />
+その罰金の金額の50%がボーナスとしてあなたに支払われます。</li>
+</ul>
+</div>
+
+<h3><span>カーショップ</span></h3>
+<div class="helpBox">
+<!--
+<img src="_dummy.jpg" />
+　-->
+<ul>
+<li>カーショップでは、様々な種類の車を購入する事が出来ます。</li>
+<li>車を購入すると、車のグレードに応じて、駐車料金が上昇していきます。</li>
+<li>所有車を下取りに出して、新しい車を購入する事も出来ます。（原価90％の差額で下取りとなります）</li>
+<li>最大で8台の車を所有することができます。</li>
+<li>同じ車種は、それぞれ1台しか持てません。<br />
+（カードを使用して、色違いの車を購入可能にすることも出来ます）</li>
+<li>所有車の数が増えると、警察から直接取り締まりを受ける可能性も増えます。<br />
+注意してください。</li>
+</ul>
+</div>
+
+
+<h3><span>不動産</span></h3>
+<div class="helpBox">
+<!--
+<img src="_dummy.jpg" />
+　-->
+<ul>
+<li>不動産屋では、不動産（パーキング）を購入することができます。</li>
+<li>不動産を購入すると、不動産のランクに応じて、駐車可能台数、駐車料金が増えていきます。</li>
+</ul>
+</div>
+
+<h3><span>アイテム</span></h3>
+<div class="helpBox">
+<!--
+<img src="_dummy.jpg" />
+　-->
+<ul>
+<li>アイテムを使って、友達の邪魔をしたり、それを防いだりする事ができます。</li>
+<li class="attention">カードの詳細は、アイテムショップの説明文を参照</li>
+<li>アイテムショップでは、アイテムを購入する事ができます。</li>
+<li>ログイン時のビジターギフトで、カードがプレゼントされる場合もあります。</li>
+</ul>
+</div>
+
+<h3><span>廃車</span></h3>
+<div class="helpBox">
+<!--
+<img src="_dummy.jpg" />
+　-->
+<ul>
+<li>友達の設置した廃車カードによって、自分の車が廃車になってしまうことがあります。</li>
+<li>一度廃車になってしまった車は、整備カードを使うまで、動かす事ができません。</li>
+<li class="attention">廃車中は、ガソリン代はかかりません。</li>
+<li>廃車カードのトラップは、自動車保険カード使用中に一度だけ防ぐことができます。</li>
+<li>設置された廃車カードは、トラップ回避カードで見破ることができます。</li>
+</ul>
+</div>
+
+<h3><span>プレゼント</span></h3>
+<div class="helpBox">
+<!--
+<img src="_dummy.jpg" />
+　-->
+<ul>
+<li>自分の車は友達にプレゼントする事が出来ます。ただし、1ヶ月に1台ずつしか贈れません。</li>
+<li>友達から車を貰う場合も同様に、1ヶ月に1台ずつしか受け取る事ができません。</li>
+</ul>
+</div>
+
+</div><!--/#help-->
+
+{%include file="parking/common/footer.phtml"%}

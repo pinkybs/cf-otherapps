@@ -1,0 +1,20 @@
+{% if $pager.maxPager > 1 %}
+
+    {% if $pager.pageIndex == 1 %}
+		
+	{% else %}
+		<span style="text-align:center;">
+        {% emoji code="F98A"%}<a href='{% "$baseUrl/`$pager.requestUrl`?CF_page=`$pager.pageIndex-1`"|mixiurl %}' accesskey="4">前へ</a>
+        </span>
+	{% /if %}
+
+
+	{% if $pager.maxPager == $pager.pageIndex%}
+		
+	{% else %}
+		&nbsp;&nbsp;&nbsp;&nbsp;<span style="text-align:center;">
+        {% emoji code="F98C"%}<a href='{% "$baseUrl/`$pager.requestUrl`?CF_page=`$pager.pageIndex+1`"|mixiurl %}' accesskey="6">次へ</a>
+        </span>
+	{% /if %}
+
+{% /if %}

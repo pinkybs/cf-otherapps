@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="Parking War Test" scrolling="false"> 
+        <Require feature="opensocial-0.8"/>
+        <Require feature="dynamic-height"/>
+        <Require feature="flash"/>
+        <Require feature="views" />
+		<Optional feature="content-rewrite">
+			<Param name="expires">86400</Param>
+			<Param name="include-urls"></Param>
+			<Param name="exclude-urls">.*</Param>
+		</Optional>
+    </ModulePrefs>
+
+    <Content type="html" view="canvas">
+    <![CDATA[
+       <script type="text/javascript" src="http://mixi.linno.jp/static/cmn/js/mixios.canvas.js"></script>
+     
+       <script type="text/javascript">
+           var canvas = mixios.application.newCanvas('http://mixi.linno.jp', 'parking');
+           
+           //default debug is disabled
+           canvas.enableDebug(true);
+           
+           //default height is 1325
+           canvas.setHeight(1325);
+          
+           //let's go
+           canvas.start();
+       </script>
+    ]]>
+    </Content>
+    
+    <Content type="html" view="home,profile">
+    <![CDATA[   
+    <style type="text/css">
+	* {
+		margin:0;
+		padding:0;
+		border:none;
+	}
+	</style>
+	<script type="text/javascript" src="http://mixi.linno.jp/static/cmn/js/mixios.gadget-1.0-min.js"></script>
+	
+	<script type="text/javascript">
+	    var gadget = mixios.application.newGadget('http://mixi.linno.jp', 'parking');
+	    
+	    gadget.setLoadingImgSrc(gadget.getHost() + '/static/cmn/img/loading/ajax_loader.gif');
+	    
+        gadget.enableDebug(true);
+        
+        gadget.registerOnLoadHandler(embedFlash);
+        
+        function getUserID() {
+            return gadget.getOwnerId() + '*' + gadget.getViewerId();
+        }
+
+        function embedFlash() {
+            var opt = {
+            	id : 'parking',
+                flashvars : 'gadgetloadURL=' + gadget.getHost() + '/ajax/openparking/gadetload',
+                allowScriptAccess: 'always',
+                height: 210,
+                width: 210,
+                allowFullScreen : false
+            };
+        
+            gadgets.flash.embedFlash(gadget.getHost() + '/static/apps/parking/swf/gadget.swf?verson=4', gadget.getContainerId(), 8.0, opt); 
+        }
+
+        //start
+        gadget.start();       
+	</script>
+    ]]></Content>
+    <Content type="url" view="mobile" href="http://mixi.linno.jp/mobile/index/runparking" />
+</Module>

@@ -1,0 +1,25 @@
+﻿    <address id="copyright">&copy; 2009 Community Factory Inc. All Rights Reserved.{% if $isSuperUser %}{% if $isForbided %}- <a href="{%$baseUrl%}/slave/allowtease?uid={%$profileUid%}">カスタムポークを許可する</a>{% else %}- <a href="{%$baseUrl%}/slave/forbidtease?uid={%$profileUid%}">カスタムポークを禁止する</a>{% /if %}{% /if %}
+<!-- Rakuten Web Services Attribution Snippet FROM HERE -->
+<a href="javascript:void(0);" onclick="to_outer_site('http://webservice.rakuten.co.jp/');">Supported by 楽天ウェブサービス</a>
+<!-- Rakuten Web Services Attribution Snippet TO HERE -->
+</address>
+</div><!--/#continer-->
+
+{% if $IE6 %}
+<script type="text/javascript" language="javascript" src="{%$staticUrl%}/cmn/js/alphafilter.js?{%$version.js%}"></script>
+{%/if%}
+
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-1572579-46");
+        pageTracker._trackPageview();
+    } 
+    catch(err) {}
+</script>
+
+</body>
+</html>

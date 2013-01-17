@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="Johnson Test" description="Johnson Test" author="Community Factory Inc." author_link="http://communityfactory.com"> 
+        <Require feature="opensocial-0.8" />
+        <Require feature="dynamic-height" />
+        <Require feature="flash" />
+        <Require feature="views" />
+        <Optional feature="content-rewrite">
+            <Param name="expires">86400</Param>
+            <Param name="include-urls"></Param>
+            <Param name="exclude-urls">.*</Param>
+        </Optional>
+    </ModulePrefs>
+
+    <Content type="html" view="canvas">
+    <![CDATA[
+       <script type="text/javascript" src="http://mixitest.communityfactory.net/static/cmn/js/mixios.canvas-1.0-min.js"></script>
+     
+       <script type="text/javascript">
+           var canvas = mixios.application.newCanvas('http://mixitest.communityfactory.net', 'johnson');
+           //default debug is disabled
+           canvas.enableDebug(true);
+           //default height is 680
+           canvas.setHeight(680);
+          
+           //let's go
+           canvas.start();
+       </script>
+    ]]>
+    </Content>
+    
+    <Content type="html" view="home,profile">
+    <![CDATA[
+		<style type="text/css">
+			* {
+			    margin: 0;
+			    padding: 0;
+			}
+			a {
+			    display: block;
+			    width: 212px;
+			    height: 212px;
+			    background-image: url(http://static.mixitest.communityfactory.net/apps/johnson/img/gadget.jpg);
+			    background-position: 0 0;
+			    background-repeat: no-repeat;
+			    text-indent: -9999px;
+			}
+			a:hover {
+			    background-position: 0 100%;
+			}
+		</style>
+        <script type="text/javascript">
+	        gadgets.window.adjustHeight(230);
+	        
+	        function nav()
+	        {
+	            var canvas = gadgets.views.getSupportedViews();
+	            gadgets.views.requestNavigateTo(canvas["canvas"]);
+	        }
+        </script>
+        <a href="javascript:void(0);" onclick="nav();" onfocus="this.blur()">ゲームを始める</a>
+        ]]>
+    </Content> 
+</Module>

@@ -1,0 +1,150 @@
+{%include file="disney/common/header.phtml"%}
+
+<div style="font-size:x-small; background-color:#ffd990; text-align:center;">
+
+    {% if $from == 'map' %}
+    
+        {% disneyimg name="sub_ti_gotochiget" %}<br />
+        <br />
+        <div style="color:#ff0000; text-align:center;">
+       	 {%$placeInfo.award_name%}ｽﾃｨｯﾁ<br />
+        </div>
+        <br />
+        <img copyright="yes" src="{%$staticUrl%}/apps/disney/img/chara_get_place/{%$placeInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" align="top" /><br /><br />
+        <div style="color:#663300;text-align:left;">
+			GETしたご当地ｷｬﾗｸﾀｰはﾃﾞｺﾒや待受にしたり､ﾏｲﾐｸに贈って遊ぼう!<br/>
+		</div>	
+        <br/>
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/downloadaward?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="send_2" style='height="30" width="165" copyright="yes"' %}</a><br/>
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/choicemymixi?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="send" style='copyright="yes"' %}</a><br/>
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/desktopaward?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="back_img" style='height="30" width="165" copyright="yes"' %}</a><br/>
+            <br/>
+		
+    {% elseif $from == 'trade' %}
+        {% disneyimg name="sub_ti_gotochiget" %}<br />
+        <br />
+        <div style="color:#ff0000; text-align:center;">
+        	{%$friendInfo->getDisplayName()%}さんの取得ｷｬﾗｸﾀｰ<br />
+        </div>
+        <br />
+        <div style="color:#ff0000; text-align:center;">
+        	{%$placeInfo.award_name%}ｽﾃｨｯﾁ<br />
+        </div>
+        <br />
+        <img src="{%$staticUrl%}/apps/disney/img/chara_trade/{%$placeInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" align="top" copyright="yes" /><br /><br />
+        {% if $isFriend == 1 %}
+        <a href='{% "$baseUrl/mobile/disney/map?CF_tradePid=`$placeInfo.pid`&CF_fid=`$fid`&CF_from=trade"|mixiurl %}'>
+        {% disneyimg name="trade2" %}<br />
+        </a>
+        {% /if %}<br />
+        
+    {% elseif $from == 'tradeaward' %}
+    
+        {% disneyimg name="sub_ti_trade" %}<br />
+        <br />
+        <div style="color:#ff0000; text-align:center;">
+        	{%$placeInfo.award_name%}ｽﾃｨｯﾁ<br />
+        </div>
+        <br />
+        <div style="text-align:center;">        
+			<img src="{%$staticUrl%}/apps/disney/img/chara_trade/{%$placeInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" copyright="yes" /> <img src="{%$staticUrl%}/apps/disney/img/chara_trade/{%$tradePlaceInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" copyright="yes" />
+        </div>
+        <div style="text-align:left;color:#9f3d44;">
+			あなたの｢<span style="color:#FF0000;">{%$placeInfo.award_name%}ｽﾃｨｯﾁ</span>｣と{%$friendInfo->getDisplayName()%}さんの｢<span style="color:#FF0000;">{%$tradePlaceInfo.award_name%}ｽﾃｨｯﾁ</span>｣のﾄﾚｰﾄﾞを申請しますか?{% emoji code="F8F6"%}<br />
+        </div>
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+			<span style="color:#ff0000;">※｢はい｣ﾎﾞﾀﾝを押下した時点でﾄﾚｰﾄﾞ申請完了となります。</span>
+			<br />	
+		<br />
+        <div style="text-align:center;"> 
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+			<a href='{% "$baseUrl/mobile/disney/tradeaward?CF_pid=`$placeInfo.pid`&CF_tradePid=`$tradePlaceInfo.pid`&CF_fid=`$fid`"|mixiurl %}'>{% disneyimg name="yes" style='align="top"' %}</a><br />
+			{% disneyimg name="dot0" style='height="4"' %}<br/>
+            <a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$fid`"|mixiurl %}'>{% disneyimg name="no" style='align="top"' %}</a><br />
+       		{% disneyimg name="dot0" style='height="4"' %}<br/>
+	    </div>
+		
+		
+		{% elseif $from == 'acceptsend' %}
+    
+        {% disneyimg name="sub_ti_gotochiget1" %}<br />
+        <br />
+        <span style="color:#ff0000;">{%$placeInfo.award_name%}ｽﾃｨｯﾁ</span><br />
+        <br />
+        
+        <div style="background-color:#ff0000; padding-left:2px; padding-right:2px; padding-top:2px; padding-bottom:2px; margin:5px;">
+	        <div style="background-color:#ffffff;padding:5px;color:#5B2806;">
+	        	{%$friendInfo->getDisplayName()%}さんから{%$placeInfo.award_name%}ｽﾃｯﾁのﾌﾟﾚｾﾞﾝﾄ{% emoji code="F8EE"%}が届いたよ。
+	        </div>
+        </div>
+        <img src="{%$staticUrl%}/apps/disney/img/chara_get/{%$placeInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" align="top" copyright="yes" /><br /><br />
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/downloadaward?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="send_2" style='height="30" width="165" copyright="yes"' %}</a><br/>
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/choicemymixi?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="send" style='copyright="yes"' %}</a><br/>
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/desktopaward?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="back_img" style='height="30" width="165" copyright="yes"' %}</a><br/>
+			<br />
+			
+		
+		<div style="text-align:left; color:#9f3d44;">
+            1県につき同一ｷｬﾗｸﾀｰは3体まで所持できるよ{% emoji code="F8E3"%}<br />
+			<br/>
+			{% disneyimg style='height="5"' name="dot0" %}<br />
+			
+			<div style="text-align:right;">
+				⇒<a href='{% "$baseUrl/mobile/disney/map"|mixiurl %}'>ご当地ﾏｯﾌﾟに追加されたよ</a>{% emoji code="F8F5"%}<br />
+				{% disneyimg style='height="3"' name="dot0" %}<br />
+        </div></div>
+    {% elseif $from == 'accepttrade' %}
+    
+        {% disneyimg name="sub_ti_gotochiget" %}<br />
+        <br />
+        <span style="color:#FF0000;">{%$placeInfo.award_name%}ｽﾃｨｯﾁ</span><br />
+        <br />
+        <img src="{%$staticUrl%}/apps/disney/img/chara_trade/{%$placeInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" align="top" copyright="yes" /><br /><br />
+        {% if $friendInfo %}
+        {%$friendInfo->getDisplayName()%}さんとのﾄﾚｰﾄﾞでGETしたよ<br />
+        {%/if%}
+        <a href='{% "$baseUrl/mobile/disney/index"|mixiurl %}'>ご当地ｺﾚｸｼｮﾝTOPへ</a>
+		<br />
+            
+    {% else %}
+    	<img src="{%$staticUrl%}/apps/disney/img/chara_get/{%$placeInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" align="top" title="{%$placeInfo.award_name%}" copyright="yes" /><br />
+		
+		<div style="color:#ff0000; text-align:center;">
+        	{%$placeInfo.award_name%}ｽﾃｨｯﾁ<br />  
+	
+			{% disneyimg style='height="5"' name="dot0" %}<br />
+		
+         	<div style="color:#9f3d44;text-align:left;">
+				GETしたご当地ｷｬﾗｸﾀｰはﾃﾞｺﾒや待受にしたり､ﾏｲﾐｸに贈って遊ぼう!<br/>
+        	</div>
+			{% disneyimg style='height="5"' name="dot0" %}<br />
+			
+        
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/downloadaward?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="send_2" style='height="30" width="165" copyright="yes"' %}</a><br/>
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/choicemymixi?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="send" style='copyright="yes"' %}</a><br/>
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/desktopaward?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="back_img" style='height="30" width="165" copyright="yes"' %}</a><br/>
+		</div>	
+		
+		<div style="text-align:left; color:#9f3d44;">
+            1県につき同一ｷｬﾗｸﾀｰは3体まで所持できるよ{% emoji code="F8E3"%}<br />
+			<br/>
+			{% disneyimg style='height="5"' name="dot0" %}<br />
+			
+			<div style="text-align:right;">
+				⇒<a href='{% "$baseUrl/mobile/disney/map"|mixiurl %}'>ご当地ﾏｯﾌﾟに追加されたよ</a>{% emoji code="F8F5"%}<br />
+				{% disneyimg style='height="3"' name="dot0" %}<br />
+				
+				<a href='{% "$baseUrl/mobile/disney/help?CF_help=location"|mixiurl %}'>位置情報の差異について</a><br />
+			</div>
+		</div>
+    {% /if %}
+{%include file="disney/common/footer.phtml"%}

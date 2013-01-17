@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+Parking Wars debug CSS
+
+Created Date: 2009/01/01
+Author: Yu Uno
+Last Up Date : 2009/01/28
+Author: Yu Uno
+----------------------------------------------
+*/
+
+
+/*clearfix
+----------------------------------------------*/
+.clearfix,
+#members ul li,
+.section {
+    zoom:1;/*for IE 5.5-7*/
+}
+.clearfix:after,
+#members ul li:after,
+.section:after {/*for modern browser*/
+    content:".";
+    display: block;
+    height:0px;
+    clear:both;
+    visibility:hidden;
+}
+

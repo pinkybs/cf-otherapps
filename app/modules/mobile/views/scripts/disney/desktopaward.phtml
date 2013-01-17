@@ -1,0 +1,68 @@
+{% if $step == 'start' %}
+{%include file="disney/common/header.phtml"%}
+	<div style="font-size:x-small; background-color:#ffd990; text-align:center;">
+		{% disneyimg name="sub_ti_gotochiget1" %}<br />
+		<br />
+		<img copyright="yes" src="{%$staticUrl%}/apps/disney/img/wallpaper_preview/{%$placeInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" align="top" /><br />
+		<br />
+		
+		<div style="color:#1f7f09; text-align:left;">
+			このご当地ｷｬﾗｸﾀｰを待受けにするよ<br />
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+				
+			<span style="color:#ff0000;">※待受け画像ｻｲｽﾞは240X320ﾋﾟｸｾﾙのみ<br />
+			&nbsp;&nbsp;mixiﾎﾟｲﾝﾄが80ﾎﾟｲﾝﾄ必要です。</span>
+		</div>
+		
+		{% disneyimg style='height="3"' name="dot0" %}<br />
+		<br/>
+		
+		<div style="text-align:center;">
+			<a href='{% "$baseUrl/mobile/disney/pay?CF_yd=6&CF_param=`$payParam`"|mixiurl %}'>{% disneyimg style='height="29" width="165" align="top"' name="ticket_yes" %}</a><br/>
+			<br/>
+			<span style="text-align:left;"><a href='{% "$baseUrl/mobile/disney/award?CF_pid=`$placeInfo.pid`&CF_from=map"|mixiurl %}'>戻る</a></span><br/>
+			<br/>
+		</div><!--/#center-->
+
+{% else %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr">
+<head>
+{% if $ua==1 %}
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=Shift_JIS" />
+{% else %}
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+{% /if %}
+<title>ご当地ｺﾚｸｼｮﾝTOPへ</title>
+<style type="text/css">
+<![CDATA[
+a:link{color:#0000ff;}
+a:visited{color:#7c027c;}
+]]>
+</style>
+
+</head>
+<body>
+
+<div style="background-color:#e5fcd0; font-size:x-small;">
+	{% disneyimg name="sub_ti_gotochiget1" %}<br />
+	<br />
+	<img src="{%$baseUrl%}/mobile/disneyflash/downloadawardimg/type/2/pid/{%$placeInfo.pid%}/uid/{%$uid%}" align="top" /><br />
+	<br />
+	<div style="color:#5e250f; text-align:left;">
+		※携帯{% emoji code="F972"%}の画面保存機能に沿って待受け画像を保存してね!<br />
+		auのｹｰﾀｲで保存できない場合は､<a href='{% "$baseUrl/mobile/disney/help/CF_help/faq005"|mixiurl %}'>こちらへ</a><br />
+	</div>
+	<br />
+	
+	{% if $isDownload == 1 %}
+	<div style="text-align:center;">  
+		<span style="color:#F06;">{% emoji code="F99F"%}20点獲得{% emoji code="F99F"%}</span>
+	</div>
+	{%/if%}
+	<a href='{% "$baseUrl/mobile/disney/country"|mixiurl %}'>その他のご当地ｷｬﾗｸﾀｰを待受にしたり、友達に贈ったり、してみよう♪</a><br />
+	<br />
+
+{% /if %}
+    
+{%include file="disney/common/footer.phtml"%}

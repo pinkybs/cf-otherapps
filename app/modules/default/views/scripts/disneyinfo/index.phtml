@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"> 
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	<title>ユーザー情報検索フォーム｜Disneyご当地コレクション</title> 
+	<meta name="keywords" content="" /> 
+	<meta name="description" content="" /> 
+	<meta http-equiv="imagetoolbar" content="no" /> 
+	<meta http-equiv="Content-Style-Type" content="text/css" /> 
+	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+	<link rel="stylesheet" href="" type="text/css" media="print,screen" />
+	<style type="text/css">
+		* {
+			font-size:12px;
+		}
+		body {
+			margin:0;
+			padding:20px;
+		}
+		h1 {
+			font-family:"メイリオ", "ヒラギノ角ゴ Pro W3";
+			font-size: 16px;
+		}
+		form#userSearch {
+			margin:0 0 20px;
+			padding:10px;
+			width:740px;
+			background:#666666;
+		}
+		form#userSearch #inputUserID {
+			width:200px;
+		}
+		ul {
+			margin:0;
+			padding:0 0 0 1em;
+		}
+		table {
+			margin-bottom:20px;
+			border-collapse:collapse;
+			border-spacing:0;
+			border:1px solid #999999;
+			text-align:left;
+		}
+		th,td {
+			padding:5px 10px;
+			border:1px solid #999999;
+		}
+		th {
+			width:180px;
+			background-color:#CCCCCC;
+		}
+		table.wrapTable {
+			width:760px;
+		}
+			table.wrapTable table {
+				width:100%;
+				margin:5px 0;
+			}
+				table.wrapTable table th {
+					width:auto;
+				}
+	</style>
+</head> 
+<body>
+	<form method="POST" action="{%$baseUrl%}/default/disneyinfo/login">
+		ログインID：<input type="input" name="txtId"><br>
+		パスワード：<input type="password" name="txtPassword"><br>
+		<input type="submit" value="submit">
+	</form>
+
+</body> 
+</html>

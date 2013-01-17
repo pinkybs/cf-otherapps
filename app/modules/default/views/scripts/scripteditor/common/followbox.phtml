@@ -1,0 +1,20 @@
+<div id="subColumn">
+    
+    {%include file="scripteditor/common/bannerbox.phtml"%}
+    
+    {% if $followList %}
+    <div id="followBox">
+        
+        <h2><img src="{%$staticUrl%}/apps/scripteditor/img/tit_follow.png" width="82" height="15" alt="Follow" /></h2>
+        
+        <div class="inner">
+            
+                <ul>{% foreach from=$followList item=data %}<!--
+                --><li><a href="{%$baseUrl%}/scripteditor/profile/uid/{%$data.uid%}"><img src="{%if $data.pic_s%}{%$data.pic_s%}{%else%}{%$data.thumbnailUrl%}{%/if%}" width="28" height="28" alt="{%if $data.nickname%}{%$data.nickname%}{%else%}{%$data.displayName%}{%/if%}" /></a></li><!--
+                -->{% /foreach %}</ul>
+        </div><!--/.inner-->
+        
+    </div><!--/#followBox-->
+    {% /if %}
+    
+</div><!--/#subColumn-->

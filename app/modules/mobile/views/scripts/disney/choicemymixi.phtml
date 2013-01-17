@@ -1,0 +1,27 @@
+{%include file="disney/common/header.phtml"%}
+
+
+    <div style="font-size:x-small; background-color:#e5fcd0;">
+	<div style="background-color:#50b83a; text-align:center;">
+    {% disneyimg name="sub_ti_send" %}
+        {%include file="disney/common/topmenu.phtml"%}
+<br />
+
+	<span style="color:#3ea124;">ご当地ｷｬﾗｸﾀｰを贈るﾏｲﾐｸを選んでね。</span>{% emoji code="F8F6"%}<br />
+    <span style="color:#ff0000;">※ﾏｲﾐｸに贈るには、mixiﾎﾟｲﾝﾄが200ﾎﾟｲﾝﾄ必要です。<br /></span>
+    {% foreach from=$appFids item=data %}
+        {% disneyimg style='align="top"' name="line1" %}<br />
+        <div style="text-align:left;">
+        <img src="{%$data.miniThumbnailUrl%}" align="left" style="float:left; margin-top:0; margin-right:10; margin-left:0; margin-bottom:2" copyright="yes" /><br />
+        &nbsp;&nbsp;<a href='{% "$baseUrl/mobile/disney/sendaward?CF_pid=`$pid`&CF_fid=`$data.uid`"|mixiurl %}'><span>{%$data.displayName%}さん</span></a><br/>
+        </div>
+        <div style="clear:both;"></div>
+    {% foreachelse %}
+        {% emoji code="F9CE"%}<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/disney/mymixilist" %}'>ﾏｲﾐｸ招待</a><br />
+    {% /foreach %}
+    
+    {% disneyimg style='align="top"' name="line1" %}<br />
+    
+    {%include file="disney/common/pager.phtml"%}
+    
+{%include file="disney/common/firstfooter.phtml"%}

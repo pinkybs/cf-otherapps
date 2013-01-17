@@ -1,0 +1,99 @@
+{%include file="shopping/common/header.phtml"%}
+
+<body id="wish">
+<div id="continer">
+	{%include file="shopping/common/hdr.phtml"%}
+	<script type="text/javascript">
+		$j('#gNavWish').addClass('active');
+		$j('#gNavStore > a').removeAttr('href');
+		$j('#gNavMyCart > a').removeAttr('href');
+	</script>
+
+	<div id="mainColumn">
+		<div id="wishBoxFriend" class="box">
+
+            <!-- hidden info -->
+            <input type="hidden" name="hidIsMine" id="hidIsMine" value="{% $isMine %}">
+            <input type="hidden" name="hidProfileUid" id="hidProfileUid" value="{% $profileUid %}">
+             <!-- hidden info end-->
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_wish_friend.png" alt="おとなりの欲しいものリスト" /></h2>
+			</div><!--/.hdr-->
+
+			<div id="friendFrameWrap">
+				<ul class="frameNav"><!--
+					--><li class="frameNavLeft"><a id="navLeft" href="javascript:void(0);" class="next"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_left_next_l.png" width="40" height="76" alt="左" /></a></li><!--
+					--><li class="frameNavRight"><a id="navRight" href="javascript:void(0);" class="next"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_right_next_l.png" width="40" height="76" alt="右" /></a></li><!--
+				--></ul>
+				<div id="memberFrame" class="friendFrame">
+    				<div id="innaerFrame" class="innerFrame" style="position:absolute;top:0;width:990000px;">
+    				<ul id="ulFriend" style="width:auto;"><!--
+    					{% foreach name=neighberlist from=$lstNeighber item=ndata key=idx %}
+    						{% if $ndata.uid=="0" %}
+    						--><li><a href="javascript:void(0);" onclick="mixi_invite();return false;" style="background-image:url({%$staticUrl%}/apps/shopping/img/content/thum_invite.png)"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76" height="76" alt="招待する" /></a></li><!--
+    						{% else %}
+    						--><li {% if $ndata.uid==$profileUid %}class="active select"{% /if %}><a href="javascript:void(0);" onclick="lnkProfile(this,{%$ndata.uid%});return false;" style="background-image: url({%$ndata.thumbnailUrl%});"><img height="76px" width="76px" src="{%$staticUrl%}/apps/shopping/img/spacer.gif" alt="{%$ndata.displayName%}" /></a></li><!--
+    						{% /if %}
+    					{% /foreach %}
+    				--></ul>
+    				</div>
+    			</div>
+			</div>
+			<input type="hidden" id="hidCntPos" value="{%$neiCount%}" />
+			<input type="hidden" id="hidPosprev" value="{%$neiStart%}" />
+			<input type="hidden" id="hidPosnext" value="{%$neiEnd%}" />
+		</div><!--/#wishBoxFriend.box-->
+
+		<div id="wishBox" class="box">
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_wish.png" alt="欲しいものリスト" /></h2>
+			</div><!--/.hdr-->
+
+            <div id="message1" class="message" style="display: {% if $itemCount > 0 %}none{% else %}block{% /if %};">まだ、欲しいものリストが登録されていません。</div>
+            {% if $lstWishItem %}
+				<div class="resultSummary" style="display: {% if $itemCount == 0 %}none{% else %}block{% /if %};" ><em id="message2" >{% $itemCount %}</em>件中&nbsp;<em><label id="lblNumS">1</label>-<label id="lblNumB">{% if $itemCount > "10" %}10{% else %}{% $lstWishItem|@count %}{% /if %}</label>件</em>を表示</div>
+				<div class="itemList" id="lstItem"><!--
+	                {% foreach name=lstWishItem from=$lstWishItem item=data %}
+						--><div class="section">
+							<dl class="itemBlock clearfix"><!--
+								--><dt class="pic"><a style="cursor:default;background-image:url({%$data.pic_small%})"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="" /></a></dt><!--
+								--><dd class="name">{%$data.name%}</dd><!--
+								--><dd class="price">価格：￥{%$data.format_price%}</dd><!--
+							--></dl>
+							<ul class="btnBlock clearfix"><!--
+								--><li class="remove">{% if $isMine %}<a href="{%$baseUrl%}/shopping/removeitem?iid={%$data.iid%}"><span>欲しいものリストからはずす</span></a>{% else %}{% if $data.model == "remove" %}<a href="{%$baseUrl%}/shopping/removeitem?iid={%$data.iid%}"><span>欲しいものリストからはずす</span></a>{% else %}<a href="{%$baseUrl%}/shopping/additem?iid={%$data.iid%}"><span>欲しいものリストに追加する</span></a>{% /if %}{% /if %}</li><!--
+								--><li class="rakuten"><a href="{%$baseUrl%}/shopping/torakuten?iid={%$data.iid%}"><span>楽天市場で購入する</span></a></li><!--
+							--></ul>
+						</div><!--
+					{% /foreach %}
+				--></div>
+                {% /if %}
+				{% if $itemCount > 10 %}
+                   <ul class="resultNav" id="pageLeader"><!--
+                       {% foreach name=page from=$page item=data %}
+                            {% if $data == "1" %}
+                            --><li class="stay">{%$data%}</li><!--
+                            {% else %}
+                            --><li><a href="javascript:changePageAction({%$data%})">{%$data%}</a></li><!--
+                            {% /if %}
+                       {% /foreach %}
+                       --><li class="next"><a href="javascript:changePageAction(2)">Next&gt;</a></li><!--
+                    --></ul>
+	            {% /if %}
+
+            <input type="hidden" id="pageIndex" value="1" />
+
+		</div><!--/#wishBox.box-->
+	</div><!--/#mainColumn-->
+
+<hr />
+
+	<div id="subColumn">
+		{%include file="shopping/common/adbox.phtml"%}
+		{%include file="shopping/common/profbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript" src="{%$staticUrl%}/apps/shopping/js/wish.js?{%$version.js%}"></script>
+{%include file="shopping/common/footer.phtml"%}

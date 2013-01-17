@@ -1,0 +1,24 @@
+<div id="error" style="background:#5ac5ff;color:#003366;">
+	<div id="bgImage" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/school/mobile/img/sky.gif" width="240" height="25" /><br />
+	</div><!--/#bgImage-->
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div class="headline" style="background:#3c88e5;color:#ffffff;">学校情報が変更されました</div>
+	<div class="description">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		お客様の学校登録情報の変更が確認されました｡<br />
+		<br />
+		学校情報を変更すると､これまで利用していた時間割ﾃﾞｰﾀを継続して利用することができなくなり､再度､はじめから時間割を作成することとなります｡<br />
+		<br />
+		もしも､以前の時間割を続けてご利用になる場合は､以前と同じ登録を､ﾐｸｼｨの設定画面にて再度､ご登録した後､当ｱﾌﾟﾘをご利用ください｡<br />
+		<br />
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<span style="color:#f58320;">⇒</span><a href='{% "select:school?callback=$baseUrl/mobile/school/callbackschool?forward=$baseUrl/mobile/school/error?CF_error=signupconfirm" %}' style="color:#003366;"><span style="color:#003366;">学校情報を変更する</span></a><br />
+		<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/schedulereset"|mixiurl %}' style="color:#003366;"><span style="color:#003366;">そのまま続ける(時間割全削除)</span></a><br />
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	</div><!--/.description-->
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div id="keyvisual" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/school/mobile/img/school.gif" width="240" height="62" /><br />
+	</div><!--/#keyvisual-->
+</div><!--/#error-->

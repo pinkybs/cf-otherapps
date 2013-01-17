@@ -1,0 +1,144 @@
+﻿{%include file="chat/common/header.phtml"%}
+
+<body id="static" class="invite">
+<div id="container">
+	{%include file="chat/common/nav.phtml"%}
+
+	<div id="mainColumn">
+		<div id="individualBox" class="innerBox">
+
+				<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_individual.png" width="120" height="21" alt="チャット詳細" /></h1>
+				<div class="inner">
+
+					{% if $isOwner and $isReady %}
+					<form id="frmStart" name="frmStart" action="{%$baseUrl%}/chat/view" method="post">
+					<ul class="btnList"><!--
+						--><li><a href="javascript:void(0);" id="btnStart"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_chat_start.png" width="228" height="34" alt="チャットを開始する" /></a></li><!--
+					--></ul>
+					<input type="hidden" id="cid" name="cid" value="{%$cid%}" />
+					<input type="hidden" id="hidMode" name="hidMode" value="1" />
+					<p class="note">※チャット開始予定時刻15分前より、チャットを開始することができます。
+					</form>
+					<input type="hidden" id="activity" value="{%$activity%}" />
+					<input type="hidden" id="activityUser" value="{%$activityUser%}" />
+					{% /if %}
+
+					<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_chat_info.png" width="128" height="20" alt="チャット情報" />{% if $isOwner %}<span class="edit"><a href="{%$baseUrl%}/chat/edit?cid={%$cid%}">編集</a></span>{% /if %}</h2>
+					<table class="rowTable">
+						<tr>
+							<th scope="row">チャット名</th>
+							<td>{%$chatName|escape%}</td>
+						</tr>
+						<tr>
+							<th scope="row">開催日時</th>
+							<td>{%$chatDate%}&#12316;</td>
+						</tr>
+						<tr>
+							<th scope="row">メッセージ</th>
+							<td>{%$chatMessage|escape|nl2br%}</td>
+						</tr>
+						<tr>
+							<th scope="row">招待メンバー</th>
+							<td>
+								<ul class="commentList"><!--
+								{% foreach name=memList from=$lstMem item=mem %}
+									--><li>
+										<p class="pic" style="background-image: url({%$mem.thumbnailUrl%})"><span style="cursor:default;">{%$mem.displayName%}</span></p>
+										<p style="float: left; clear:left;">出席</p>
+										<div class="comment">
+											<div class="inner">
+												<h2>{%$mem.displayName%}</h2>
+												<span class="time"></span>
+												<p class="last">{%$mem.message|escape%}　</p>
+												<div class="lt"></div>
+												<div class="rt"></div>
+												<div class="lb"></div>
+												<div class="rb"></div>
+											</div>
+										</div>
+									</li><!--
+								{% /foreach %}
+								{% foreach name=attList from=$lstAttendC item=att %}
+									--><li>
+										<p class="pic" style="background-image: url({%$att.thumbnailUrl%});"><span style="cursor:default;">{%$att.displayName%}</span></p>
+										<p style="float: left; clear:left;">{%if 1==$att.isdenied%}欠席{%else%}未承認{%/if%}</p>
+										<div class="comment">
+											<div class="inner">
+												<h2>{%$att.displayName%}</h2>
+												<span class="time"></span>
+												<p class="last">{%$att.message|escape%}　</p>
+												<div class="lt"></div>
+												<div class="rt"></div>
+												<div class="lb"></div>
+												<div class="rb"></div>
+											</div>
+										</div>
+									</li><!--
+								{% /foreach %}
+								--></ul>
+							</td>
+						</tr>
+					</table>
+
+					{% if not $isOwner %}
+					<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_cancel.png" width="146" height="20" alt="参加の取り消し" /></h2>
+					<form id="frmRefuse" name="frmRefuse" action="{%$baseUrl%}/chat/view" method="post">
+					<p><textarea id="txtMessage" name="txtMessage"></textarea></p>
+					<ul class="btnList"><!--
+						--><li><a href="javascript:void(0);" id="btnRefuse"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_cancel.png" width="228" height="34" alt="参加を取り消す" /></a></li><!--
+					--></ul>
+					<input type="hidden" id="cid" name="cid" value="{%$cid%}" />
+					<input type="hidden" id="hidMode" name="hidMode" value="2" />
+					</form>
+					{% /if %}
+				<input type="hidden" id="hidisowner"  value="{%$isOwner%}" />
+				<input type="hidden" id="hidisready" value="{%$isReady%}" />
+				<input type="hidden" id="hidcntmem" value="{%$cntMem%}" />
+				<input type="hidden" id="hidcntatt" value="{%$cntAttendC%}" />
+			</div><!--/.inner-->
+		</div><!--/.innerBox-->
+
+	</div><!--/#mainColumn-->
+
+
+	<div id="subColumn">
+		{%include file="chat/common/subcolumn.phtml"%}
+	</div><!--/#subColumn-->
+
+	<div id="dialog" title="メッセージ"><p style="text-align:center;padding-top:20px" id="pMessage"></p></div>
+
+	<script type="text/javascript">
+		$j(document).ready(function() {
+			if (null != cm_getCookie('app_top_url')) {
+        		top.location.href = cm_getCookie('app_top_url') +  '#bodyArea';
+        	}
+
+		    //activity
+        	if (null != $j('#activity') && '' != $j('#activity').val()) {
+        		postActivity($j('#activity').val(), $j('#activityUser').val());
+        	}
+
+			$j('#btnStart').click(function() {
+				$j('#frmStart').submit();
+				return false;
+			});
+
+			$j('#btnRefuse').click(function() {
+				if ( $j.trim($j("#txtMessage").val()).length > 200 ) {
+            		msg = 'メッセージは全角200文字以内で入力して下さい。';
+            		$j("#pMessage").html(msg);
+            		$j("#dialog").dialog({
+            			autoOpen: true,
+            			bgiframe: true,
+            			modal: true,
+            			resizable: false
+            		}).dialog( 'open' );
+            		return;
+            	}
+				$j('#frmRefuse').submit();
+				return false;
+			});
+			adjustHeight();
+		});
+	</script>
+{%include file="chat/common/footer.phtml"%}

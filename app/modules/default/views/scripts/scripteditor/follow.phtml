@@ -1,0 +1,135 @@
+{%include file="scripteditor/common/header.phtml"%}
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/jquery.hotkeys.js?{%$version.js%}"></script>
+
+<body id="editor">
+{%include file="topad.phtml"%}
+<div id="continer">
+
+	{%include file="scripteditor/common/topbox.phtml"%}
+	
+	<div id="mainColumn">
+	
+		{%include file="scripteditor/common/searchbox.phtml"%}
+		
+		<div id="wrap">
+			
+			<h1><img src="{%$staticUrl%}/apps/scripteditor/img/tit_editor.png" width="124" height="21" alt="エディター" /></h1>
+			
+			<div class="inner">
+				
+				<div id="entryInfo" class="box">
+					<h3>エントリーの基本情報</h3>
+					<table class="confTable">
+						<tr id="editTitle">
+							<th scope="row">タイトル</th>
+							<td>
+							    <input type="text" id="txtTitle" name="txtTitle" onblur="jQuery.editor.checkValue('input#txtTitle', 'p#errTitle')" maxlength="30" title="タイトルを記入して下さい。" value="Re:{%$entryInfo.title|escape|truncatejp:27%}" />
+							    <p class="note">※<strong>必須入力</strong>。全角30文字以内。Followしない場合は<a href="{%$baseUrl%}/scripteditor/editor">コチラ</a>をクリック</p>
+                                <p class="note" id="errTitle" style="text-align:left;display:none;"><strong style="">※タイトルを記入して下さい。</strong></p>
+							</td>
+						</tr>
+						<tr id="editName">
+							<th scope="row">著作者</th>
+							<td><a href="{%$baseUrl%}/scripteditor/profile/uid/{%$userInfo.uid%}" id="nickname">{%$userInfo.nickname%}</a></td>
+						</tr>
+						<tr id="editTags">
+							<th scope="row">タグ</th>
+							<td>
+							    <input type="text" id="txtTag" name="txtTag" class="long required" maxlength="30" title="タグを記入して下さい。" value="{%$entryInfo.tag|escape%}" />
+							    <p class="note">※任意入力。カンマor半角スペース区切りで、全角30文字以内</p>
+							</td>
+						</tr>
+					</table>
+				</div><!--/#entryCode-->
+				
+				<div id="entryBody" class="box">
+					<h3>エントリーの本文（ソースコード）</h3>
+					<table class="confTable">
+						<tr id="editLang">
+							<th scope="row">言語選択</th>
+							<td id="editTitle">
+								<ul><!--
+									--><li><label><input type="radio" name="lang" checked="checked" id="dllLanguage" value="1" />PHP</label></li><!--
+								--></ul>
+								<p class="note">※各言語のバージョン・禁止されている記述に関しては、<a href="{%$baseUrl%}/scripteditor/help">ヘルプ</a>をご覧ください。</p>
+							</td>
+						</tr>
+					</table>
+                    
+                    <p id="errCode" style="color:#FF0000;font-weight:normal;font-size:12px;display:none;">※本文を記入して下さい。</p>
+					<pre><textarea name="code" id="textCode" class="html" rows="30" onblur="jQuery.editor.checkValue('textarea#textCode', 'p#errCode')">{%$entryInfo.content|escape%}</textarea></pre>
+					<ul class="btnList"><!--
+						--><li id="btnPreview" class="disable"><a href="javascript:void(0);" onclick="runCode();">プログラムを実行</a></li><!--
+						--><li id="btnDruft"><a href="javascript:void(0);" onclick="jQuery.editor.saveEntry();">エントリーを下書き保存</a></li><!--
+					--></ul>
+				</div><!--/#entryCode-->
+				
+				<div id="entryPost" class="box">
+					<h3>上記の内容を投稿する</h3>
+					<p>注意事項をご確認の上、【上記の内容でエントリーを公開する】をクリックしてください。</p>
+					
+					{%include file="scripteditor/common/rulebox.phtml"%}
+					
+					<div id="confirmList">
+						<ul><!--
+							--><li><label><input type="radio" name="agreement" id="agreement" value="1" onclick="jQuery.editor.checkCanSubmit()"/>同意する</label></li><!--
+							--><li><label><input type="radio" checked="checked" name="agreement" id="agreement" value="0" onclick="jQuery.editor.checkCanSubmit()" />同意しない</label></li><!--
+						--></ul>
+						<p class="btnEntry">
+						   <a href="javascript:void(0);" onclick="jQuery.editor.newEntry();" id="btnSubmit" style="display:none;">上記の内容でエントリーを公開する）</a>
+						   <a href="javascript:void(0);" id="btnSubmit2" style="">上記の内容でエントリーを公開する）</a>
+						</p>
+					</div><!--/#confirmList-->
+				</div>
+				
+				<input type="hidden" id="txtFollowId" value="{%$followId%}">
+				
+			</div><!--/.inner-->
+			
+		</div><!--/#wrap-->
+				
+	</div><!--/#mainColumn-->
+	
+	{%include file="scripteditor/common/subauthorbox.phtml"%}
+	<script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/editor.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/coderun.js?{%$version.js%}"></script>
+    <script type="text/javascript">
+    
+       var initCode = jQuery('#textCode').val();
+       function formatDate(d) {
+           var year = d.getFullYear() % 100;
+           var month = d.getMonth();
+           var date = d.getDate();
+           var hour = d.getHours();
+           var min = d.getMinutes();
+       
+           return '' + (year < 10 ? ('0' + year) : year) 
+                     + '/' + (month < 10 ? ('0' + month) : month)
+                     + '/' + (date < 10 ? ('0' + date) : date)
+                     + ' ' + (hour < 10 ? ('0' + hour) : hour)
+                     + ':' + (min < 10 ? ('0' + min) : min);
+       }
+       
+       function runCode() {
+           var content = jQuery('#textCode').val();
+           if (content == '' || content == initCode) {
+               return;
+           }
+           jQuery.editor.checkValue('#textCode', '#errCode');
+           
+           var nickname = jQuery('#nickname').html();
+           var title = jQuery('#txtTitle').val();
+           var language = jQuery('#dllLanguage').val();
+           var time = formatDate(new Date());
+           var keys = ['nickname', 'title', 'language', 'content', 'time'];
+           var values = [nickname, title, language, content, time]; 
+           jQuery.coderun.showDialog(keys, values);
+       }
+    </script>
+    <script type="text/javascript">
+       jQuery(function($){
+           adjustHeight();
+       });
+    </script>
+{%include file="scripteditor/common/footer.phtml"%}

@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"> 
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	<title>ユーザー情報検索フォーム｜Disneyご当地コレクション</title> 
+	<meta name="keywords" content="" /> 
+	<meta name="description" content="" /> 
+	<meta http-equiv="imagetoolbar" content="no" /> 
+	<meta http-equiv="Content-Style-Type" content="text/css" /> 
+	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+	<link rel="stylesheet" href="" type="text/css" media="print,screen" />
+	<link rel="stylesheet" href="http://static.mixi.communityfactory.net/cmn/datepick/flora.datepick.css" type="text/css" media="print,screen" />
+	<script src="http://static.mixi.communityfactory.net/cmn/js/jquery.min.js"></script>
+	<script src="http://static.mixi.communityfactory.net/cmn/datepick/jquery.datepick.js"></script>
+	<script src="http://static.mixi.communityfactory.net/cmn/datepick/jquery.datepick-ja.js"></script>
+	<style type="text/css">
+		* {
+			font-size:12px;
+		}
+		body {
+			margin:0;
+			padding:20px;
+		}
+		h1 {
+			font-family:"メイリオ", "ヒラギノ角ゴ Pro W3";
+			font-size: 16px;
+		}
+		form#userSearch {
+			margin:0 0 20px;
+			padding:10px;
+			width:740px;
+			background:#666666;
+		}
+		form#userSearch #inputUserID {
+			width:200px;
+		}
+		ul {
+			margin:0;
+			padding:0 0 0 1em;
+		}
+		table {
+			margin-bottom:20px;
+			border-collapse:collapse;
+			border-spacing:0;
+			border:1px solid #999999;
+			text-align:left;
+		}
+		th,td {
+			padding:5px 10px;
+			border:1px solid #999999;
+		}
+		th {
+			width:180px;
+			background-color:#CCCCCC;
+		}
+		table.wrapTable {
+			width:760px;
+		}
+			table.wrapTable table {
+				width:100%;
+				margin:5px 0;
+			}
+				table.wrapTable table th {
+					width:auto;
+				}
+	</style>
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$('#txtDateStart').datepick({dateFormat: 'yy-mm-dd'});
+		$('#txtDateEnd').datepick({dateFormat: 'yy-mm-dd'});
+	});
+	
+	</script>
+</head> 
+<body id="company" class="index company"> 
+ 
+<div id="wrap">
+	<h1>Disneyご当地コレクション ユーザー情報検索フォーム</h1>
+	<br>
+	
+	<form action="{%$baseUrl%}/default/disneyinfo/info" method="GET">
+	<table class="wrapTable">
+		<tr>
+			<td><input type="text" id="userID" name="userID" value="{%$uid%}" style="width:60px"/>UID</td>
+			<td><input type="text" id="txtDateStart" name="txtDateStart" value="{%$startDate%}">から</td>
+			<td><input type="text" id="txtDateEnd" name="txtDateEnd" value="{%$endDate%}">まで</td>
+			<td>
+				<select name="ddlSearch" id="ddlSearch">
+					<option value="0">基本情報</option>
+				    <option value="1">ご当地GET</option>
+				    <option value="2">チェック</option>
+				    <option value="3">招待</option>
+				    <option value="4">トレード</option>
+				    <option value="5">チケット購入|消費</option>
+				    <option value="6">デコメ購入</option>
+				    <option value="7">プレゼント購入</option>
+				    <option value="8">壁紙購入</option>
+				 </select>履歴
+			</td>
+			<td><input type="submit" id="btnSubmit1" value="検索" /></td>
+		</tr>
+	</table>
+	</form>
+	
+	<script>
+	var ddlType = {%$type%};
+	var otypo = document.getElementById("ddlSearch");
+	otypo.options[ddlType].selected = 'selected';
+	</script>
+	
+	{% if $errorId == 1%}
+	<span class="color:red;">正しいユーザーＩｄを入力してください。</span><br><br>
+	{% elseif $errorId == 2%}
+	<span class="color:red;">{%$error%}</span><br><br>
+	{% else %}	
+	
+	{% if $logGetCurrent%}
+	<table class="wrapTable">
+		<tr>
+			<th nowrap="nowrap" scope="row">
+				ご当地GET履歴
+			</th>
+			<td>			
+				<table>
+					<tr>
+						<th scope="col">日時</th>
+						<th scope="col">GETした県</th>
+						<th scope="col">座標</th>
+					</tr>
+					{%foreach from=$logGetCurrent item=data%}
+					<tr>
+						<td scope="row">{%$data.create_time%}</td>
+						<td>{%$data.award_name%}</td>
+						<td>{%$data.coordinate%}</td>
+					</tr>
+					{%/foreach%}
+				</table>				
+			</td>
+		</tr>
+	</table>
+	{% /if %}
+	
+	{% if $logCheck%}
+	<table class="wrapTable">
+		<tr>
+			<th nowrap="nowrap" scope="row">
+				チェック履歴
+			</th>
+			<td>
+			
+				<table>
+					<tr>
+						<th scope="col">日時</th>
+						<th scope="col">座標</th>
+						<th scope="col">移動距離</th>
+					</tr>
+					{%foreach from=$logCheck item=data%}
+					<tr>
+						<td scope="row">{%$data.create_time%}</td>
+						<td>{%$data.coordinate%}</td>
+						<td>{%$data.distance%}km</td>
+					</tr>
+					{%/foreach%}
+				</table>
+				
+			</td>
+		</tr>
+	</table>
+	{% /if %}
+	
+	{% if $logInvite%}
+	<table class="wrapTable">
+		<tr>
+			<th nowrap="nowrap" scope="row">
+				招待履歴
+			</th>
+			<td>			
+				<table>
+					<tr>
+						<th scope="col">相手ID</th>
+						<th scope="col">ステータス</th>
+					</tr>
+					{%foreach from=$logInvite item=data%}
+					<tr>
+						<td scope="row">{%$data.uid%}</td>
+						<td>{%$data.status%}</td>
+					</tr>
+					{%/foreach%}
+				</table>				
+			</td>
+		</tr>
+	</table>
+	{% /if %}
+	
+	{% if $logTrade%}
+	<table class="wrapTable">
+		<tr>
+			<th nowrap="nowrap" scope="row">
+				トレード履歴
+			</th>
+			<td>
+			
+				<table>
+					<tr>
+						<th scope="col">相手ID</th>
+						<th scope="col">日時</th>
+						<th scope="col">トレード項目（自分／相手）</th>
+						<th scope="col">ステータス</th>
+					</tr>
+					{%foreach from=$logTrade item=data%}
+					<tr>
+						<td scope="row">{%$data.fid%}</td>
+						<td>{%$data.create_time%}</td>
+						<td>{%$data.content%}</td>
+						<td>{%$data.status%}</td>
+					</tr>
+					{%/foreach%}
+				</table>
+				
+			</td>
+		</tr>
+	</table>
+	{% /if %}
+	
+	{% if $payment.useticket || $payment.ticket%}
+	<table class="wrapTable">
+		<tr>
+			<th nowrap="nowrap" scope="row">チケット購入履歴</th>
+			<td>
+			
+				<table>
+					<tr>
+						<th scope="col">日時</th>
+						<th scope="col">購入枚数</th>
+					</tr>
+					{% foreach from=$payment.ticket item=data%}
+					<tr>
+						<td nowrap="nowrap" scope="row">{%$data.create_time%}</td>
+						<td>{%$data.content%}</td>
+					</tr>
+					{%/foreach%}
+				</table>
+			
+			</td>
+		</tr>
+		<tr>
+			<th nowrap="nowrap" scope="row">チケット消費履歴</th>
+			<td>
+			
+				<table>
+					<tr>
+						<th scope="col">日時</th>
+						<th scope="col">稼いだ距離</th>
+					</tr>
+					{% foreach from=$payment.useticket item=data%}
+					<tr>
+						<td nowrap="nowrap" scope="row">{%$data.create_time%}</td>
+						<td>{%$data.distance%}</td>
+					</tr>
+					{%/foreach%}
+				</table>
+			
+			</td>
+		</tr>
+	</table>
+	{% /if %}
+	
+	{% if $payment.download%}
+	<table class="wrapTable">
+		<tr>
+			<th nowrap="nowrap" scope="row">デコメ購入履歴</th>
+			<td>
+			
+				<table>
+					<tr>
+						<th scope="col">日時</th>
+						<th scope="col">購入県</th>
+					</tr>
+					{% foreach from=$payment.download item=data%}
+					<tr>
+						<td nowrap="nowrap" scope="row">{%$data.create_time%}</td>
+						<td>{%$data.award_name%}スティッチ</td>
+					</tr>
+					{%/foreach%}
+				</table>
+				
+			</td>
+		</tr>
+	</table>
+	{% /if %}
+	
+	{% if $payment.send%}
+	<table class="wrapTable">
+		<tr>
+			<th nowrap="nowrap" scope="row">プレゼント購入履歴</th>
+			<td>
+			
+				<table>
+					<tr>
+						<th scope="col">日時</th>
+						<th scope="col">購入県</th>
+					</tr>
+					{% foreach from=$payment.send item=data%}
+					<tr>
+						<td nowrap="nowrap" scope="row">{%$data.create_time%}</td>
+						<td>{%$data.award_name%}スティッチ</td>
+					</tr>
+					{%/foreach%}
+				</table>
+				
+			</td>
+		</tr>
+	</table>
+	{% /if %}
+	
+	{% if $payment.desk%}
+	<table class="wrapTable">
+		<tr>
+			<th nowrap="nowrap" scope="row">壁紙購入履歴</th>
+			<td>
+			
+				<table>
+					<tr>
+						<th scope="col">日時</th>
+						<th scope="col">購入県</th>
+					</tr>
+					{% foreach from=$payment.desk item=data%}
+					<tr>
+						<td nowrap="nowrap" scope="row">{%$data.create_time%}</td>
+						<td>{%$data.award_name%}スティッチ</td>
+					</tr>
+					{%/foreach%}
+				</table>
+				
+			</td>
+		</tr>
+	</table>
+	{% /if %}
+	
+	{% if $userInfo %}
+	<table class="wrapTable">
+		<tr>
+			<th nowrap="nowrap" scope="row">ニックネーム</th>
+			<td>{%$userInfo.displayName%}</td>
+		</tr>
+		<tr>
+			<th nowrap="nowrap" scope="row">アプリ登録日時</th>
+			<td>{%$userInfo.join_date%}</td>
+		</tr>
+		<tr>
+			<th nowrap="nowrap" scope="row">マイミク人数</th>
+			<td>{%$userInfo.friend_count%}{%if $userInfo%}人{%/if%}</td>
+		</tr>
+		<tr>
+			<th nowrap="nowrap" scope="row">マイミクID一覧</th>
+			<td>				
+				<ul>
+					{%foreach from=$userInfo.friends item=data%}
+					<li>{%$data.uid%}</li>
+					{%/foreach%}
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<th nowrap="nowrap" scope="row">所有キャラクター都道府県</th>
+			<td>
+				<ul>
+					{%foreach from=$userInfo.award item=data%}
+					<li>{%$data.mixi_name%}</li>
+					{%/foreach%}
+				</ul>	
+			</td>
+		</tr>
+		<tr>
+			<th nowrap="nowrap" scope="row">所有アワード一覧</th>
+			<td>
+				<ul>
+					{%foreach from=$userInfo.cup item=data%}
+					<li>{%$data.name%}</li>
+					{%/foreach%}
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<th nowrap="nowrap" scope="row">保有ポイント（ランキング）</th>
+			<td>{%$userInfo.game_point%}{%if $userInfo%}ポイント{%/if%}</td>
+		</tr>
+	</table>	
+	{% /if %}
+	
+	{% /if %}
+	
+</div><!--/#wrap--> 
+ 
+</body> 
+</html>

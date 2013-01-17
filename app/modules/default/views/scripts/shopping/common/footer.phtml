@@ -1,0 +1,22 @@
+<hr />
+	<address id="copyright">&copy; 2009 Community Factory Inc. All Rights Reserved.</address>
+</div><!--/#continer-->
+
+{% if $IE6 %}
+<script type="text/javascript" language="javascript" src="{%$staticUrl%}/cmn/js/alphafilter.js?{%$version.js%}"></script>
+{%/if%}
+
+<script type="text/javascript">
+document.write(unescape("%3Cscript src='http://www.google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var _ga = _gat._getTracker("{%$smarty.const.GOOGLE_ANALYTICS_CODE_1%}");
+_ga._trackPageview();
+{%if $_user%}
+_ga._setVar("{%$_user->getId()%}");
+{%/if%}
+} catch(err) {}
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{%include file="scripteditor/common/header.phtml"%}
+
+{%include file="scripteditor/common/codejsbox.phtml"%}
+
+<body id="editor">
+{%include file="topad.phtml"%}
+<div id="continer">
+
+	<pre><textarea name="code" class="css" disabled="disabled">{%$entry.content%}</textarea></pre>
+	
+	<input type="hidden" id="txtHeight" value="{%$height%}">
+	<input type="hidden" id="txtWidth" value="{%$width%}">
+</div><!--/#continer-->
+
+
+<script type="text/javascript">
+   var height = $j('#txtHeight').val();
+   var width = $j('#txtWidth').val();
+   
+   jQuery(function($){
+       dp.SyntaxHighlighter.HighlightAll('code');
+   });
+   
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+﻿/* @override http://communityfactory.com/test/cmn/css/main.css */
+
+@charset "utf-8";
+
+/*
+----------------------------------------------
+Afrac main CSS
+
+Created Date: 2009/08/04
+Author: Yu Uno
+Last Up Date : 2009/08/11
+Author: Taiki Toyosawa
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+
+* {
+	outline: none;
+}
+
+body,html {
+}
+
+body {
+	color: #666666;
+	font-size: 10px;
+	font-family:'Hiragino Kaku Gothic Pro','ＭＳ Ｐゴシック','ヒラギノ角ゴ Pro W3',sans-serif;
+}
+
+a:link,a:hover {
+	color: #258FB8;
+}
+a:link,a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+img {
+	display: block;
+}
+
+textarea {
+	margin: 0;
+	padding: 3px;
+}
+
+pre {
+	margin: 0;
+	padding: 0;
+}
+
+#wrap {
+	margin: 0 auto;
+	width: 980px;
+}
+
+
+
+/*layout
+----------------------------------------------*/
+#container {
+	width: 945px;
+}
+#mainColumn {
+	display: inline;
+	float: left;
+	width: 690px;
+}
+	#playArea {
+		display: inline;
+		float: left;
+		width: 522px;
+		border: 5px solid #99CC99;
+		border-right: 3px solid #99CC99;
+		border-bottom: none;
+	}
+	#rankingArea {
+		display: inline;
+		float: right;
+		width: 155px;
+		height: 490px;
+		border: 5px solid #99CC99;
+		border-left: none;
+		border-bottom: none;
+	}
+#subColumn {
+	display: inline;
+	float: right;
+	width: 250px;
+}
+
+
+/*playArea
+----------------------------------------------*/
+#playArea {
+	width: 522px;
+	height: 490px;
+}
+
+/*rankingArea
+----------------------------------------------*/
+#rankingArea {
+	position: relative;
+}
+	#rankingArea #loading {
+		margin: 174px auto;
+		width: 35px;
+		height: 35px;
+	}
+	#rankingArea ol {
+		position: absolute;
+		top: 68px;
+	}
+		#rankingArea ol li {
+			position: relative;
+			margin-bottom: 3px;
+			/margin-bottom: 1px;
+			padding: 7px;
+			width: 138px;
+			height: 40px;
+			overflow: hidden;
+			background: url(../img/bg_ranking.png) no-repeat right 0;
+		}
+			#rankingArea ol li p.pic {
+				display: inline;
+				float: left;
+				width: 38px;
+				height: 38px;
+				background: #fff no-repeat center center;
+				border: 1px solid #D9C17A;
+				text-indent: -9999px;
+			}
+			#rankingArea ol li p.rank,
+			#rankingArea ol li p.score {
+				margin-left: 46px;
+				margin-bottom: 0px;
+				font-size: 12px;
+				line-height: 1;
+			}
+			#rankingArea ol li p.name {
+				margin-left: 46px;
+				margin-bottom: 0px;
+				font-size: 10px;
+				white-space: nowrap;
+				line-height: 1.4;
+			}
+			#rankingArea ol li p.rank {
+				_margin-top: -2px;/*IE6*/
+				color: #D9C17A;
+			}
+				#rankingArea ol li p.rank span {
+					color: #333333;
+				}
+			#rankingArea ol li p.name {
+				line-height: 1.2;
+			}
+			#rankingArea ol li p.score {
+				font-weight: bold;
+				font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+				text-align: right;
+			}
+		
+		#rankingArea ul#scoreController {
+		}
+			#rankingArea ul#scoreController li {
+				width: 63px;
+				text-indent: -9999px;
+			}
+				#rankingArea ul#scoreController li a {
+					display: block;
+					height: 17px;
+					background: url(../img/arrow.png);
+				}
+			#rankingArea ul#scoreController li#scoreUp,
+			#rankingArea ul#scoreController li#scoreDown {
+				position: absolute;
+				left: 44px;
+			}
+			#rankingArea ul#scoreController li#scoreUp {
+				top: 48px;
+			}
+			#rankingArea ul#scoreController li#scoreDown {
+				top: 410px;
+			}
+				#rankingArea ul#scoreController li#scoreUp a {
+					background-position: left top;
+				}
+				#rankingArea ul#scoreController li#scoreUp a:hover {
+					background-position: left bottom;
+				}
+				#rankingArea ul#scoreController li#scoreDown a {
+					background-position: right top;
+				}
+				#rankingArea ul#scoreController li#scoreDown a:hover {
+					background-position: right bottom;
+				}
+	#rankingArea p.btn {
+		position: absolute;
+		left: 3px;
+		width: 148px;
+		text-indent: -9999px;
+	}
+		#rankingArea p.btn a {
+			display: block;
+			height: 25px;
+			background: url(../img/btn_ranking.png) no-repeat;
+		}
+	#rankingArea p#allRanking.btn {
+		top: 430px;
+	}
+		#rankingArea p#allRanking.btn a {
+			background-position: left bottom;
+		}
+		#rankingArea p#allRanking.btn a:hover,
+		#rankingArea p#allRanking.btn.active a {
+			background-position: left top;
+		}
+	#rankingArea p#myMixiRanking.btn {
+		top: 458px;
+	}
+		#rankingArea p#myMixiRanking.btn a {
+			background-position: right bottom;
+		}
+		#rankingArea p#myMixiRanking.btn a:hover,
+		#rankingArea p#myMixiRanking.btn.active a {
+			background-position: right top;
+		}
+
+
+/*mainColumn
+----------------------------------------------*/
+address {
+	clear: both;
+	display: block;
+	background: #99CC99;
+	margin-bottom: 5px;
+}
+
+/*#subColumn
+----------------------------------------------*/
+#subColumn {
+}
+	#subColumn p.btn,
+	#subColumn .banner {
+		padding-bottom: 5px;
+	}
+
+/*#bigBanner
+----------------------------------------------*/
+#bigBanner {
+	position: relative;
+	clear: both;
+	z-index: 10000;
+}
+#bigBanner,
+#bigBanner a,
+#bigBanner img {
+	display: block;} 
+
+
+

@@ -1,0 +1,146 @@
+{%include file="scripteditor/common/header.phtml"%}
+
+<body id="toppage">
+{%include file="topad.phtml"%}
+<div id="continer">
+
+	{%include file="scripteditor/common/topbox.phtml"%}
+	
+	<div id="mainImage"><img src="{%$staticUrl%}/apps/scripteditor/img/tit_main.png" width="944" height="200" title="" alt="サーバーサイドなスクリプトで会話する、エンジニアのための変態的コミュニティ" /></div>
+	
+	<div id="mainColumn">
+	
+		{%include file="scripteditor/common/searchbox.phtml"%}
+		
+		<div id="wrap">
+			
+			<h1><img src="{%$staticUrl%}/apps/scripteditor/img/tit_newEntry.png" width="404" height="22" alt="新着エントリー" /></h1>
+			
+			<div class="inner">
+				
+				<div id="entries" class="box">
+				
+					<div class="section">
+						<h3>PHP</h3>
+						
+					    {% if $newEntry.phpEntry %}
+						<div class="entry">
+						    {% foreach from=$newEntry.phpEntry item=data %}
+							<div class="hdr" id="{%$data.eid%}">
+								<h4><a href="{%$baseUrl%}/scripteditor/entry/eid/{%$data.eid%}">{%$data.title|escape|truncatejp:20:"…"%}（{%if $data.follow_count%}{%$data.follow_count%}{%else%}0{%/if%}）</a></h4>
+								<ul class="status"><!--
+									--><li class="name">{%if $data.nickname%}{%$data.nickname%}{%else%}{%$data.displayName%}{%/if%}</li><!--
+									--><li class="date">{%$data.create_time|date_format:"%y/%m/%d %H:%M"%}</li><!--
+								--></ul>
+							</div><!--/.hdr-->
+							{% /foreach %}
+		                    
+		                    {% if $newEntry.phpCount > 30 %}
+							<p class="more"><a href="{%$baseUrl%}/scripteditor/archives?lang=1&type=1">PHPのエントリーをもっと見る</a></p>
+							{% /if %}
+						</div><!--/.entry-->
+						{% else %}
+						    <p class="null"><img src="{%$staticUrl%}/apps/scripteditor/img/btn_null.png" width="310" height="50" alt="まだPHPみたいです。" /></p>
+						{% /if %}
+						
+					</div><!--/.section-->
+					
+					{% if $newEntry.perlEntry %}
+					<div class="section">
+						<h3>Perl</h3>
+					
+					    {% if $newEntry.perlEntry %}
+						<div class="entry">
+						    {% foreach from=$newEntry.perlEntry item=data %}
+                            <div class="hdr">
+                                <h4><a href="">{%$data.title|escape|truncatejp:20:"…"%}（{%if $data.follow_count%}{%$data.follow_count%}{%else%}0{%/if%}）</a></h4>
+                                <ul class="status"><!--
+                                    --><li class="name">{%if $data.nickname%}{%$data.nickname%}{%else%}{%$data.displayName%}{%/if%}</li><!--
+                                    --><li class="date">{%$data.create_time|date_format:"%y/%m/%d %H:%M"%}</li><!--
+                                --></ul>
+                            </div><!--/.hdr-->
+                            {% /foreach %}
+                            
+                            {% if $newEntry.perlCount > 5 %}
+                            <p class="more"><a href="{%$baseUrl%}/scripteditor/archives?lang=2&type=1">Perlのエントリーをもっと見る</a></p>
+                            {% /if %}
+						</div><!--/.entry-->
+						{% else %}
+                            <p class="null"><img src="{%$staticUrl%}/apps/scripteditor/img/btn_null.png" width="310" height="50" alt="まだPerlみたいです。" /></p>
+                        {% /if %}
+						
+					</div><!--/.section-->
+				    {% /if %}
+				    
+				    {% if $newEntry.rubyEntry %}
+					<div class="section">
+						<h3>Ruby</h3>
+					   
+					    {% if $newEntry.rubyEntry %}
+						<div class="entry">
+							{% foreach from=$newEntry.rubyEntry item=data %}
+                            <div class="hdr">
+                                <h4><a href="">{%$data.title|escape|truncatejp:20:"…"%}（{%if $data.follow_count%}{%$data.follow_count%}{%else%}0{%/if%}）</a></h4>
+                                <ul class="status"><!--
+                                    --><li class="name">{%if $data.nickname%}{%$data.nickname%}{%else%}{%$data.displayName%}{%/if%}</li><!--
+                                    --><li class="date">{%$data.create_time|date_format:"%y/%m/%d %H:%M"%}</li><!--
+                                --></ul>
+                            </div><!--/.hdr-->
+                            {% /foreach %}
+                            
+                            {% if $newEntry.rubyCount > 5 %}
+                            <p class="more"><a href="{%$baseUrl%}/scripteditor/archives?lang=3&type=1">Rubyのエントリーをもっと見る</a></p>
+                            {% /if %}
+						</div><!--/.entry-->
+						{% else %}
+                            <p class="null"><img src="{%$staticUrl%}/apps/scripteditor/img/btn_null.png" width="310" height="50" alt="まだRubyみたいです。" /></p>
+                        {% /if %}
+                        
+					</div><!--/.section-->
+				    {% /if %}
+				    
+				    {% if $newEntry.pythonEntry %}
+					<div class="section">
+						<h3>Python</h3>
+						
+						{% if $newEntry.pythonEntry %}
+						<div class="entry">
+                            {% foreach from=$newEntry.pythonEntry item=data %}
+                            <div class="hdr">
+                                <h4><a href="">{%$data.title|escape|truncatejp:20:"…"%}（{%if $data.follow_count%}{%$data.follow_count%}{%else%}0{%/if%}）</a></h4>
+                                <ul class="status"><!--
+                                    --><li class="name">{%if $data.nickname%}{%$data.nickname%}{%else%}{%$data.displayName%}{%/if%}</li><!--
+                                    --><li class="date">{%$data.create_time|date_format:"%y/%m/%d %H:%M"%}</li><!--
+                                --></ul>
+                            </div><!--/.hdr-->
+                            {% /foreach %}
+                            
+                            {% if $newEntry.pythonCount > 5 %}
+                            <p class="more"><a href="{%$baseUrl%}/scripteditor/archives?lang=4&type=1">Pythonのエントリーをもっと見る</a></p>
+                            {% /if %}
+                        </div><!--/.entry-->
+						{% else %}
+                            <p class="null"><img src="{%$staticUrl%}/apps/scripteditor/img/btn_null.png" width="310" height="50" alt="まだPythonみたいです。" /></p>
+                        {% /if %}
+                        
+					</div><!--/.section-->
+				    {% /if %}
+				    
+				</div><!--/.box-->
+				<input type="hidden" id="txtFeaturesCount" value="{%$userFeature.count%}" >
+				<input type="hidden" id="txtPhpEntryCount" value="{%$newEntry.phpCount%}" >
+			</div><!--/.inner-->
+			
+		</div><!--/#wrap-->
+		
+	</div><!--/#mainColumn-->
+	
+	{%include file="scripteditor/common/subbox.phtml"%}
+	
+    <script type="text/javascript">
+       jQuery(function($){
+           adjustHeight();
+       });
+    </script>
+	
+{%include file="scripteditor/common/footer.phtml"%}

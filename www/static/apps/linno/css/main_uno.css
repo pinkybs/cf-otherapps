@@ -1,0 +1,831 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+main CSS
+
+Created Date : 2009/06/12
+Author: Yu Uno
+Last Up Date : 2009/06/15
+Author: Yu Uno
+----------------------------------------------
+*/
+
+
+/*2カラム表示
+----------------------------------------------*/
+body.column2 #primaryColumn {
+	width: 685px;
+	background: url(../img/contents/column2/mainBox.png) no-repeat center bottom;
+}
+	body.column2 #primaryColumn .box {
+		position: relative;
+		padding: 0 20px 10px;
+		width: 645px;
+		background: url(../img/contents/column2/mainBox.png) no-repeat center bottom;
+	}
+		body.column2 #primaryColumn .box h1 {
+			margin: 0 -20px 0;
+			padding: 0 10px 12px;
+			height: 28px;
+			background: url(../img/contents/column2/mainBox.png) no-repeat center top;
+			line-height: 28px;
+			color: #FFFFFF;
+			font-size: 14px;
+		}
+		
+		
+		/*タブ共通*/
+		body.column2 #primaryColumn .box ul.tabReport,
+		body.column2 #primaryColumn .box ul.tabEnquete {
+			margin-bottom: 10px;
+			border-bottom: 1px solid #D0D0D0;
+		}
+			body.column2 #primaryColumn .box ul.tabReport li,
+			body.column2 #primaryColumn .box ul.tabEnquete li {
+				display: inline;
+				float: left;
+				margin-bottom: -1px;
+				text-indent: -9999px;
+			}
+				body.column2 #primaryColumn .box ul.tabReport li a,
+				body.column2 #primaryColumn .box ul.tabEnquete li a {
+					display: block;
+					height: 29px;
+				}
+			
+			
+			/*評価タブ*/
+				body.column2 #primaryColumn .box ul.tabReport li a {
+					background: url(../img/contents/column2/tab_report.png);
+				}
+			body.column2 #primaryColumn .box ul.tabReport li.tabReportAll {
+				margin-left: 5px;
+			}
+				body.column2 #primaryColumn .box ul.tabReport li.tabReportAll a {
+					width: 116px;
+					background-position: -5px -29px;
+				}
+				body.column2 #primaryColumn .box ul.tabReport li.tabReportAll a.active {
+					cursor: default;
+				}
+				body.column2 #primaryColumn .box ul.tabReport li.tabReportAll a:hover {
+					background-position: -5px -58px;
+				}
+				body.column2 #primaryColumn .box ul.tabReport li.tabReportAll a.active {
+					background-position: -5px 0;
+				}
+			body.column2 #primaryColumn .box ul.tabReport li.tabReportRankAll {
+				margin-left: 5px;
+			}
+				body.column2 #primaryColumn .box ul.tabReport li.tabReportRankAll a {
+					width: 146px;
+					background-position: -126px -29px;
+				}
+				body.column2 #primaryColumn .box ul.tabReport li.tabReportRankAll a:hover {
+					background-position: -126px -58px;
+				}
+				body.column2 #primaryColumn .box ul.tabReport li.tabReportRankAll a.active {
+					background-position: -126px 0;
+				}
+				body.column2 #primaryColumn .box ul.tabReport li.tabReportRankUniv a {
+					margin-left: -1px;
+					width: 160px;
+					background-position: -271px -29px;
+				}
+				body.column2 #primaryColumn .box ul.tabReport li.tabReportRankUniv a:hover {
+					background-position: -271px -58px;
+				}
+				body.column2 #primaryColumn .box ul.tabReport li.tabReportRankUniv a.active {
+					background-position: -271px 0;
+				}
+			
+			/*アンケートタブ*/
+				body.column2 #primaryColumn .box ul.tabEnquete li a {
+					background: url(../img/contents/column2/tab_enquete.png);
+				}
+			
+			body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteAll {
+				margin-left: 5px;
+			}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteAll a {
+					width: 116px;
+					background-position: -5px -29px;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteAll a:hover {
+					background-position: -5px -58px;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteAll a.active {
+					background-position: -5px 0;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteUniv a {
+					width: 130px;
+					background-position: -121px -29px;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteUniv a:hover {
+					background-position: -121px -58px;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteUniv a.active {
+					background-position: -121px 0;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteMen a {
+					width: 102px;
+					background-position: -251px -29px;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteMen a:hover {
+					background-position: -251px -58px;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteMen a.active {
+					background-position: -251px -0;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteWomen a {
+					width: 102px;
+					background-position: -353px -29px;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteWomen a:hover {
+					background-position: -353px -58px;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteWomen a.active {
+					background-position: -353px 0;
+				}
+			body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteRanking {
+				margin-left: 5px;
+			}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteRanking a {
+					width: 160px;
+					background-position: -460px -29px;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteRanking a:hover {
+					background-position: -460px -58px;
+				}
+				body.column2 #primaryColumn .box ul.tabEnquete li.tabEnqueteRanking a.active {
+					background-position: -460px 0;
+				}
+
+
+
+
+
+		
+		/*質問ボックス*/
+		body.column2 #primaryColumn .box .questionBox {
+			margin-bottom: 10px;
+			padding-bottom: 10px;
+			background: url(../img/contents/column2/bg_questionBox.png) no-repeat center bottom;
+		}
+			body.column2 #primaryColumn .box .questionBox .questionBoxInner {
+				padding: 10px 10px 0;
+				background: url(../img/contents/column2/bg_questionBox.png) no-repeat center top;
+			}
+				body.column2 #primaryColumn .box .questionBox .questionBoxInner h2.question {
+					padding-bottom: 5px;
+					background: url(../img/contents/column2/bg_tit_question.png) no-repeat center bottom;
+				}
+					body.column2 #primaryColumn .box .questionBox .questionBoxInner h2.question span {
+						display: block;
+						padding: 5px 5px 0;
+						background: url(../img/contents/column2/bg_tit_question.png) no-repeat center top;												}
+					body.column2 #primaryColumn .box .questionBox .questionBoxInner h2.question a,
+					body.column2 #primaryColumn .box .questionBox .questionBoxInner h2.question span span {
+						display: block;
+						padding: 2px 10px 2px 16px;
+						background: url(../img/icn/icn_q.png) no-repeat scroll left center !important;
+						font-size: 16px;
+					}
+						body.column2 #primaryColumn .box .questionBox .questionBoxInner h2.question span span a {
+							display: inline;
+							padding: 0;
+							background: none !important;							
+						}
+				
+				body.column2 #primaryColumn .box .questionBox .questionBoxInner ul.answerList {
+					margin: 10px -7px 10px -10px;
+				}
+					body.column2 #primaryColumn .box .questionBox .questionBoxInner ul.answerList li {
+						display: inline;
+						float: left;
+						margin-left: 8px;
+					}
+						body.column2 #primaryColumn .box .questionBox .questionBoxInner ul.answerList li a {
+							display: block;
+							padding: 1px 2px 3px 35px;
+							width: 274px;
+							height: 29px;
+							background: url(../img/contents/column2/btn_select_1.png) no-repeat left top;
+							line-height: 29px;
+							color: #FFFFFF;
+							font-weight: bold;
+							text-decoration: none;
+						}
+						body.column2 #primaryColumn .box .questionBox .questionBoxInner ul.answerList li a:hover {
+							filter:alpha(opacity=75);/*IE*/
+							-moz-opacity:0.75;/*FF2*/
+							opacity: 0.75;/*FF,Safari,Opera*/
+						}
+						body.column2 #primaryColumn .box .questionBox .questionBoxInner ul.answerList li.asw1 a {
+							background-position: left 0;
+						}
+						body.column2 #primaryColumn .box .questionBox .questionBoxInner ul.answerList li.asw2 a {
+							background-position: right 0;
+						}
+						body.column2 #primaryColumn .box .questionBox .questionBoxInner ul.answerList li.asw3 a {
+							background-position: left -39px;
+						}
+						body.column2 #primaryColumn .box .questionBox .questionBoxInner ul.answerList li.asw4 a {
+							background-position: right -39px;
+						}
+						body.column2 #primaryColumn .box .questionBox .questionBoxInner ul.answerList li.asw5 a {
+							background-position: left -78px;
+						}
+						body.column2 #primaryColumn .box .questionBox .questionBoxInner ul.answerList li.asw6 a {
+							background-position: right -78px;
+						}
+					
+				body.column2 #primaryColumn .box .questionBox .questionBoxInner p.note {
+					font-size: 10px;
+					line-height: 1.2em;
+				}
+				body.column2 #primaryColumn .box .questionBox .questionBoxInner p.graph {
+					margin-top: 10px;
+					text-align: center;
+				}
+				
+		/*質問ボックス（プロフィールが含む場合）*/		
+		body.column2 #primaryColumn .box .questionBox.addProfile {
+		}	
+			body.column2 #primaryColumn .box .questionBox.addProfile p.pic_thum {
+				display: inline;
+				float: left;
+				width: 54px;
+				height: 54px;
+			}
+				body.column2 #primaryColumn .box .questionBox.addProfile p.pic_thum a {
+					display: block;
+					padding: 2px;
+					width: 50px;
+					height: 50px;
+					background: url(../img/bg_pic_friend.png) no-repeat left top;
+				}
+				body.column2 #primaryColumn .box .questionBox.addProfile p.pic_thum a:hover {
+					background: url(../img/bg_pic_friend_over.png) no-repeat left top;
+				}
+				
+				body.column2 #primaryColumn .box .questionBox.addProfile .questionBoxInner h2.question,
+				body.column2 #primaryColumn .box .questionBox.addProfile .questionBoxInner p.name,
+				body.column2 #primaryColumn .box .questionBox.addProfile .questionBoxInner p.univInfo {
+					margin-left: 64px;
+					font-size: 10px;
+					line-height: 1.4;
+				}
+				
+				body.column2 #primaryColumn .box .questionBox.addProfile .questionBoxInner h2.question {
+					margin-bottom: 3px;
+					background: url(../img/contents/column2/bg_tit_question_2.png) no-repeat center bottom;
+				}
+					body.column2 #primaryColumn .box .questionBox.addProfile .questionBoxInner h2.question span {
+						background: url(../img/contents/column2/bg_tit_question_2.png) no-repeat center top;												}
+				
+				body.column2 #primaryColumn .box .questionBox.addProfile .questionBoxInner ul.answerList {
+					margin-bottom: 0;
+				}
+				body.column2 #primaryColumn .box .questionBox.addProfile .questionBoxInner p.mostAsw {
+					margin-top: 10px;
+					padding-top: 10px;
+					border-top: 1px dotted #8AD84D;
+					text-align: center;
+					font-size: 16px;
+					font-weight: bold;
+					color: #E94526;
+				}
+				body.column2 #primaryColumn .box .questionBox.addProfile .questionBoxInner p.rankMessage {
+					text-align: center;
+					font-size: 14px;
+					line-height: 1.4;
+				}
+					body.column2 #primaryColumn .box .questionBox.addProfile .questionBoxInner p.rankMessage strong {
+						font-weight: bold;
+						color: #E94526;
+						line-height: 1.4;
+						font-size: 1.5;
+					}
+				body.column2 #primaryColumn .box .questionBox.addProfile .questionBoxInner ul.btnList {
+					margin-top: 10px;
+					padding-top: 10px;
+					border-top: 1px dotted #8AD84D;
+				}
+
+
+		
+		/*.box内のブロック*/
+		body.column2 #primaryColumn .box .section {
+			position: relative;
+			margin-bottom: 10px;
+		}
+			body.column2 #primaryColumn .box .section h3 {
+				margin-bottom: 7px;
+				padding: 8px 10px 5px;
+				background: url(../img/contents/column2/bg_tit_1.png) center top;
+				border-bottom: 1px solid #D0D3C1;
+				font-size: 14px;
+			}
+				body.column2 #primaryColumn .box .section h3 strong {
+					color: #E94526;
+				}
+			body.column2 #primaryColumn .box .section p.moreList {
+				position: absolute;
+				float: right;
+				top: 10px;
+				right: 12px;
+				font-size: 10px;
+			}
+				body.column2 #primaryColumn .box .section p.moreList a {
+					padding-left: 10px;
+					background: url(../img/contents/icn_arrow.png) no-repeat left center;
+				}
+			
+			/*質問リスト*/
+			body.column2 #primaryColumn .box .section ul.questionList {
+			}
+					body.column2 #primaryColumn .box .section ul.questionList li {
+						border-bottom: 1px dotted #8AD84D;
+						font-size: 12px;
+						line-height: 1.4;
+					}
+						body.column2 #primaryColumn .box .section ul.questionList li a {
+							display: block;
+							padding: 5px 0 5px 16px ;
+							background: url(../img/icn/icn_q.png) no-repeat scroll left center;
+						}
+			
+			/*メンバーリスト*/
+			body.column2 #primaryColumn .box .section ul.memberList,
+			body.column2 #primaryColumn .box .section ul.memberList {
+				margin-left: -5px;
+				width: 645px;
+			}
+				body.column2 #primaryColumn .box .section ul.memberList li,
+				#mainBox #memberList .layout1 .section ul.memberList li {
+					display: inline;
+					float: left;
+					margin-left: 5px;
+					margin-bottom: 5px;
+					padding-right: 5px;
+					width: 206px;
+					overflow: hidden;
+					border-right: 1px dotted #CFD2BF;
+					border-bottom: 1px dotted #CFD2BF;
+					font-size: 10px;
+				}
+					body.column2 #primaryColumn .box .section ul.memberList li ul.studentAsw,
+					#mainBox #memberList .layout1 .section .section ul.memberList li ul.studentAsw {
+						margin-left: 54px;
+					}
+						body.column2 #primaryColumn .box .section ul.memberList li ul.studentAsw li,
+						#mainBox #memberList .layout1 .section .section ul.memberList li ul.studentAsw li {
+							display: inline;
+							float: left;
+							width: auto !important;
+							margin: 0 0 0 5px;
+							_margin: 0 0 0 3px;
+							padding: 0;
+							border: medium none;
+							border: none;
+						}
+							body.column2 #primaryColumn .box .section ul.memberList li ul.studentAsw li a:hover,
+							#mainBox #memberList .layout1 .section .section ul.memberList li ul.studentAsw li a:hover {
+								filter:alpha(opacity=75);/*IE*/
+								-moz-opacity:0.75;/*FF2*/
+								opacity: 0.75;/*FF,Safari,Opera*/
+							}
+							body.column2 #primaryColumn .box .section ul.memberList li ul.studentAsw li.passive,
+							#mainBox #memberList .layout1 .section .section ul.memberList li ul.studentAsw li.passive {
+								filter:alpha(opacity=50);/*IE*/
+								-moz-opacity:0.50;/*FF2*/
+								opacity: 0.50;/*FF,Safari,Opera*/
+							}
+							body.column2 #primaryColumn .box .section ul.memberList li ul.studentAsw li.passive a:hover,
+							#mainBox #memberList .layout1 .section .section ul.memberList li ul.studentAsw li.passive a:hover {
+								filter:alpha(opacity=100);/*IE*/
+								-moz-opacity:1;/*FF2*/
+								opacity: 1;/*FF,Safari,Opera*/
+							}
+							#mainBox #memberList .layout1 .section .section ul.memberList li ul.studentAsw li p {
+								width: auto;
+								border: none;
+								margin: 0;
+								padding: 0;
+							}
+					body.column2 #primaryColumn .box .section ul.memberList li.right {
+						padding-right: 0;
+						border-right: medium none;
+					}
+					body.column2 #primaryColumn .box .section ul.memberList li p.pic_thum {
+						display: inline;
+						float: left;
+						width: 54px;
+						height: 54px;
+						padding-bottom: 5px;
+					}
+						body.column2 #primaryColumn .box .section ul.memberList li p.pic_thum a {
+							display: block;
+							padding: 2px;
+							width: 50px;
+							height: 50px;
+							background: url(../img/bg_pic_friend.png) no-repeat left top;
+						}
+						body.column2 #primaryColumn .box .section ul.memberList li p.pic_thum a:hover {
+							background: url(../img/bg_pic_friend_over.png) no-repeat left top;
+						}
+					
+					body.column2 #primaryColumn .box .section ul.memberList li p.name,
+					body.column2 #primaryColumn .box .section ul.memberList li p.univInfo,
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation {
+						margin-left: 59px;
+						line-height: 1.4;
+					}
+					
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation {
+					}
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw01,
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw02,
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw03,
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw04,
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw05,
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw06 {
+						margin-bottom: 2px;
+						padding: 2px 3px;
+						border-radius: 3px;/*CSS3*/
+						-webkit-border-radius: 3px;/*safari*/
+						-moz-border-radius: 3px;/*Firerox*/
+						color: #333333;
+						font-weight: bold;
+					}
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw01 {
+						background-color: #E66767;
+					}
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw02 {
+						background-color: #F3C884;
+					}
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw03 {
+						background-color: #ACE079;
+					}
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw04 {
+						background-color: #689ADF;
+						color: #000;
+					}
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw05 {
+						background-color: #92D9B3;
+					}
+					body.column2 #primaryColumn .box .section ul.memberList li p.valuation.asw06 {
+						background-color: #AF65DA;
+						color: #000
+					}
+			
+			/*ランキング*/
+			body.column2 #primaryColumn .box .section ol.rankingList {
+			}
+				body.column2 #primaryColumn .box .section ol.rankingList li {
+					position: relative;
+					padding: 3px 0 3px 26px;
+					background: url(../img/contents/icn_rankOthers.png) no-repeat left top;
+					line-height: 1.4em;
+					font-size: 10px;
+				}
+					body.column2 #primaryColumn .box .section ol.rankingList li strong {
+						font-size: 12px;
+					}
+						body.column2 #primaryColumn .box .section ol.rankingList li strong span.rankNumber {
+							padding-right: 5px;
+							font-size: 10px;
+						}
+						
+					body.column2 #primaryColumn .box .section ol.rankingList li span.peopleNumber {
+						position: absolute;
+						top: 0.3em;
+						right: 0;
+						display: block;
+						text-align: right;
+						font-weight: bold;
+					}
+					
+				body.column2 #primaryColumn .box .section ol.rankingList li.rank1 {
+					background-image: url(../img/contents/icn_rank1.png);
+					font-size: 14px;
+				}
+					body.column2 #primaryColumn .box .section ol.rankingList li.rank1 strong {
+						font-size: 14px;
+					}
+					body.column2 #primaryColumn .box .section ol.rankingList li.rank1 span.rankNumber {
+						color: #E94526;
+						font-size: 14px;
+					}
+				body.column2 #primaryColumn .box .section ol.rankingList li.rank2 {
+					background-image: url(../img/contents/icn_rank2.png);
+				}
+				body.column2 #primaryColumn .box .section ol.rankingList li.rank3 {
+					background-image: url(../img/contents/icn_rank3.png);
+				}
+			body.column2 #primaryColumn .box .section ol.rankingList.others {
+				margin-top: 2px;
+				padding-top: 5px;
+				border-top: 1px dotted #8AD84D;
+			}
+		
+		/*ページング*/
+		body.column2 #primaryColumn .box ol.numberList {
+			margin-bottom: 20px;
+		}
+			body.column2 #primaryColumn .box ol.numberList li {
+				display: -moz-inline-box;/*Firefox2*/
+				display: inline-block;/*CSS3*/
+				/display: inline;/*IE6,IE7*/
+				/zoom: 1;/*IE6,IE7*/
+				margin-right:5px
+			}
+				body.column2 #primaryColumn .box ol.numberList li a {
+					display: -moz-inline-box;/*Firefox2*/
+					display: inline-block;/*CSS3*/
+					/display: inline;/*IE6,IE7*/
+					/zoom: 1;/*IE6,IE7*/
+					padding: 3px 6px;
+					background-color: #FFFFFF;
+					border: 1px solid #8CD950;
+					font-size: 12px;
+					text-decoration: none;
+					color: #666666;
+				}
+				body.column2 #primaryColumn .box ol.numberList li a:hover,
+				body.column2 #primaryColumn .box ol.numberList li a.active {
+					border: 1px solid #8CD950;
+					background-color: #8CD950;
+					color: #FFFFFF;
+				}
+		
+		/*ボタンリスト*/
+		body.column2 #primaryColumn .box ul.btnList {
+			margin-bottom: 10px;
+			text-align: center;
+		} 
+			body.column2 #primaryColumn .box ul.btnList li {
+				display: -moz-inline-box;/*Firefox2*/
+				display: inline-block;/*CSS3*/
+				/display: inline;/*IE6,IE7*/
+				/zoom: 1;/*IE6,IE7*/
+				margin: 0 5px;	
+			}
+				body.column2 #primaryColumn .box ul.btnList li a {
+					display: block;
+					height: 24px;
+					background: url(../img/contents/home/btn_enauete.png) no-repeat;
+					text-indent: -9999px;
+				}
+				body.column2 #primaryColumn .box ul.btnList li a:hover {
+					filter:alpha(opacity=75);/*IE*/
+					-moz-opacity:0.75;/*FF2*/
+					opacity: 0.75;/*FF,Safari,Opera*/
+				}
+				body.column2 #primaryColumn .box ul.btnList li.profileComfirm a {
+					width: 235px;
+					background-position: left top;
+				}
+				body.column2 #primaryColumn .box ul.btnList li.profileFull a {
+					width: 235px;
+					background-position: -235px top;
+				}
+				body.column2 #primaryColumn .box ul.btnList li.diary a {
+					width: 275px;
+					background-position: right top;
+				}
+				body.column2 #primaryColumn .box ul.btnList li.evaluate a {
+					width: 235px;
+					background-position: -470px top;
+				}
+		
+		/*テキストリンクリスト*/
+		body.column2 #primaryColumn .box ul.textList {
+			margin-bottom: 10px;
+			font-size: 12px;
+		}
+			body.column2 #primaryColumn .box ul.textList li {
+			}
+				body.column2 #primaryColumn .box ul.textList li a {
+					padding: 1px 0 1px 8px;
+					background: url(../img/contents/icn_arrow.png) no-repeat left center;
+				}
+	
+
+
+
+		/*回答結果*/
+		body.column2 #primaryColumn .box p.thanksMessage {
+			text-align: center;
+			line-height: 1.4;
+			font-size: 14px;
+			color: #E94526;
+			font-weight: bold;
+		}
+		body.column2 #primaryColumn .box .ownAws {
+			overflow: hidden;
+		}
+			body.column2 #primaryColumn .box .ownAws p.pic_thum {
+				display: inline;
+				float: left;
+				width: 54px;
+				height: 54px;
+			}
+				body.column2 #primaryColumn .box .ownAws p.pic_thum a {
+					display: block;
+					padding: 2px;
+					width: 50px;
+					height: 50px;
+					background: url(../img/bg_pic_friend.png) no-repeat left top;
+				}
+				body.column2 #primaryColumn .box .ownAws p.pic_thum a:hover {
+					background: url(../img/bg_pic_friend_over.png) no-repeat left top;
+				}
+			
+			body.column2 #primaryColumn .box .ownAws p.awsBox {
+				margin-left: 64px;
+				padding-bottom: 12px;
+				background: url(../img/contents/column2/answerBox.png) left bottom;
+			}
+				body.column2 #primaryColumn .box .ownAws p.awsBox span {
+					display: block;
+					padding: 10px 10px 0 20px;
+					background: url(../img/contents/column2/answerBox.png) left top;
+					font-size: 18px;
+				}
+
+
+/*3秒プロフィール*/
+#enquete3seconds {
+	background: url(../img/contents/home/subBox_bottom_2.png) no-repeat scroll left bottom;
+	clear:both;
+	margin-bottom:10px;
+	padding:0 0 10px;
+	position:relative;
+	width:250px;
+}
+	#enquete3seconds h2 {
+		background:transparent url(../img/contents/home/subBox_heading_2.png) no-repeat scroll left top;
+		font-size:12px;
+		font-weight:bold;
+		margin:0 0 5px;
+		overflow:hidden;
+		padding:7px 10px 5px;
+	}
+	#enquete3seconds ul.valuationList {
+		background:transparent url(../img/contents/home/border_dotted.gif) no-repeat scroll center 5px;
+		margin:0 auto 7px;
+		padding:10px 0 0;
+		width:234px;
+	}
+		#enquete3seconds ul.valuationList li {
+			display:inline;
+			float:left;
+			margin:0;
+			padding:0;
+			width:117px;
+		}
+			#enquete3seconds ul.valuationList li a {
+				background-image:url(../img/btn/btnSelect3.png);
+				background-repeat:no-repeat;
+				color:#FFFFFF;
+				display:block;
+				font-size:11px;
+				font-weight:bold;
+				padding:7px 5px 7px 25px;
+				text-decoration:none;
+			}
+			#enquete3seconds ul.valuationList li.val1 a {
+				background-position: left top;
+			}
+			#enquete3seconds ul.valuationList li.val1 a:hover {
+				background-position: left -80px;
+			}
+			#enquete3seconds ul.valuationList li.val2 a {
+				background-position: -117px top;
+			}
+			#enquete3seconds ul.valuationList li.val2 a:hover {
+				background-position: -117px -80px;
+			}
+			#enquete3seconds ul.valuationList li.val3 a {
+				background-position: left -27px;
+			}
+			#enquete3seconds ul.valuationList li.val3 a:hover {
+				background-position: left -107px;
+			}
+			#enquete3seconds ul.valuationList li.val4 a {
+				background-position: -117px -27px;
+			}
+			#enquete3seconds ul.valuationList li.val4 a:hover {
+				background-position: -117px -107px;
+			}
+			#enquete3seconds ul.valuationList li.val5 a {
+				background-position: left -54px;
+			}
+			#enquete3seconds ul.valuationList li.val5 a:hover {
+				background-position: left -134px;
+			}
+			#enquete3seconds ul.valuationList li.val6 a {
+				background-position: -117px -54px;
+			}
+			#enquete3seconds ul.valuationList li.val6 a:hover {
+				background-position: -117px -134px;
+			}
+	#enquete3seconds p {
+		margin: 0 10px;
+		font-size: 11px;
+		line-height: 1.4;
+	}
+		#enquete3seconds p.question,
+		#memberReportBox p.question {
+			padding: 1px 0 1px 17px;
+			background: url(../img/icn/icn_q.png) no-repeat scroll left center !important;
+			font-size: 13px;
+			font-weight: bold;
+		}
+
+
+
+body#register {
+}
+	body#register #primaryColumn .box {
+		width: 905px;
+		background-image: url(../img/contents/register/mainBox_bottom.png);
+	}
+		body#register #primaryColumn .box h1 {
+			background-image: url(../img/contents/register/mainBox_heading.png);
+		}
+			body#register #primaryColumn .box .section,
+			body#register #primaryColumn .box ol.numberList {
+				margin: 0 auto;
+				width: 645px;
+				font-size: 12px;
+				line-height: 1.4;
+			}
+			body#register #primaryColumn .box p {
+				margin-bottom: 10px;
+			}
+			body#register #primaryColumn .box ul.textList {
+				margin: 20px;
+				text-align: center;
+			}
+
+body#log {
+}
+	body#log #logBox {
+		font-size: 12px;
+		line-height: 1.4;
+	}		
+		body#log #logBox p {
+			margin-bottom: 5px;
+		}
+		body#log #logBox ul.iconList {
+			margin-bottom: 5px;
+			font-size: 12px;
+		}
+			body#log #logBox ul.iconList li {
+				display: -moz-inline-box;/*Firefox2*/
+				display: inline-block;/*CSS3*/
+				/display: inline;/*IE6,IE7*/
+				/zoom: 1;/*IE6,IE7*/
+				margin-right: 10px;
+				vertical-align: middle;			
+			}
+				body#log #logBox ul.iconList li img {
+					vertical-align: middle;	
+				}
+		
+		body#log #logBox ul#logList {
+			/padding-top: 5px;/*IE6,IE7*/
+			border-top: 1px dotted #CFD2BF;
+			background: url(../img/contents/home/bg_log.png) repeat-y 370px 3px;
+		}
+			body#log #logBox ul#logList li {
+				/margin-top: -5px;/*IE6,IE7*/
+				padding: 5px 10px 0;
+				border-bottom: 1px dotted #CFD2BF;
+			}
+			body#log #logBox ul#logList li.odd {
+				background: url(../img/contents/home/bg_log_color.png) repeat;
+			}
+				body#log #logBox ul#logList li p.picThum {
+					display: inline;
+					float: left;
+					width: 59px;
+				}
+				body#log #logBox ul#logList li p.date,
+				body#log #logBox ul#logList li p.name,
+				body#log #logBox ul#logList li p.status {
+					margin-left: 59px;
+				}
+				body#log #logBox ul#logList li p.date {
+					margin-bottom: 3px;
+				}
+				body#log #logBox ul#logList li p.name {
+					margin-bottom: 0;
+				}
+						
+						
+						

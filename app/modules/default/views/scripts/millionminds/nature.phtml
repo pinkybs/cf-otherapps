@@ -1,0 +1,60 @@
+{%include file="millionminds/common/header.phtml"%}
+
+<body>
+    {%include file="topad.phtml"%}
+	<div id="container">
+
+		{%include file="millionminds/common/hdr.phtml"%}
+
+		<ul id="gnav">
+            <li class="top"><a href="{%$baseUrl%}/millionminds">MillionMindsトップ</a></li>
+            <li class="profile"><a href="{%$baseUrl%}/millionminds/profile">プロフィール</a></li>
+            <li class="log"><a href="{%$baseUrl%}/millionminds/log">あしあと</a></li>
+            <li class="archive"><a href="{%$baseUrl%}/millionminds/archive">アーカイブ</a></li>
+            <li class="add"><a href="{%$baseUrl%}/millionminds/newquestion">クエスチョン作成</a></li>
+            <li class="help"><a href="{%$baseUrl%}/millionminds/help">ヘルプ</a></li>
+            <li class="invite"><a href="javascript:void(0)" onclick="invite();">友達を招待</a></li>
+        </ul><!--/#grav-->
+
+		<div id="content">
+		
+			<div id="mainColumn">
+                
+				<div id="q">
+					<h3 class="chara50">マイミクのマイミクまで限定クエスチョン</h3>
+					<table width="100%" cellpadding="0" cellspacing="0" border="0" class="q">
+						<tr>
+						  {% if $userType==1 %}
+							 <td class="author"><span class="chara">性格診断</span></td>
+							 <td class="content"><h2>{%$question.question%}</h2></td>
+						  {% else %}
+						     <td class="author"><span class="truth"><a href="{%$baseUrl%}/millionminds/profile/uid/{%$mindsUser.uid%}" style="background-image:url({%$mindsUser.thumbnailUrl%});">{%$mindsUser.displayName%}</a></span></td>
+							 <td class="content"><h2>{%$mindsUser.displayName%}さんは…<br />{%$question.question%}</h2></td>
+						  {% /if %}
+						</tr>
+					</table><!--/.q-->
+					<p class="timer"><img src="{%$staticUrl%}/apps/millionminds/img/timer.gif" width="580" height="25" alt="" /></p>
+					<ul class="select">
+						<li><a href="{%$baseUrl%}/millionminds/nature/uid/{%$mindsUser.uid%}?qid={%$question.qid%}&aid=1"><strong>はい</strong></a></li>
+						<li><a href="{%$baseUrl%}/millionminds/nature/uid/{%$mindsUser.uid%}?qid={%$question.qid%}&aid=2"><strong>いいえ</strong></a></li>
+						<li><a href="{%$baseUrl%}/millionminds/nature/uid/{%$mindsUser.uid%}?qid={%$question.qid%}&aid=3"><strong>どちらでもない</strong></a></li>
+					</ul><!--/.select-->
+				</div><!--/#q-->
+                <input type="hidden" id="activityTitle" value="{%$activityTitle%}">
+			</div><!--/#mainColumn-->
+
+			<div id="subColumn">
+				{%include file="millionminds/common/ad.phtml"%}
+			</div><!--/#subColumn-->
+
+		</div><!--/#content-->
+		
+		<script type="text/javascript" language="javascript">
+		$().ready(function() {
+            if ( $('#activityTitle').val() ) {
+                postActivity($('#activityTitle').val());
+            }
+        });
+		</script>
+    
+{%include file="millionminds/common/footer.phtml"%}

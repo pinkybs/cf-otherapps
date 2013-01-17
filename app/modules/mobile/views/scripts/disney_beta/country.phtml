@@ -1,0 +1,51 @@
+{%include file="disney/common/header.phtml"%}
+
+	<div id="bgcolor1" style="font-size:x-small;background-color:#edd9ae;">
+    	<div align="center" style="background-color:#f8f1df;">
+			<div style="background-color:#50b83a; text-align:center; color:#f8f1df;" >
+				{% disneyimg name="sub_ti_47ken" style='align="top" width="100%"' %}<br />
+			</div><!--#sitein_link-->
+		</div><!--/#center-->
+		<a name="top"></a>
+		<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+		<span style="color:#630;">県別の<span style="color:#609;">ﾃﾞｺﾒ</span>･<span style="color:#090;">待受け</span>の購入状況だよ♪</span><br />
+		<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+		&nbsp;{% emoji code="F981"%}<a href="#k8">北海道／東北</a>&nbsp;&nbsp;{% emoji code="F981"%}<a href="#k7">北陸</a><br />
+		&nbsp;&nbsp;{% emoji code="F981"%}<a href="#k6">関東</a>&nbsp;&nbsp;{% emoji code="F981"%}<a href="#k5">東海</a>&nbsp;&nbsp;{% emoji code="F981"%}<a href="#k4">近畿</a><br />
+		&nbsp;&nbsp;{% emoji code="F981"%}<a href="#k3">中国</a>&nbsp;&nbsp;{% emoji code="F981"%}<a href="#k2">四国</a>&nbsp;&nbsp;{% emoji code="F981"%}<a href="#k1">九州／沖縄</a><br />
+		<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+		<span style="color:#ff0000;">※ご当地ｷｬﾗｸﾀｰを取得していない県､または､現在､持っていない県は､選択することができません｡</span><br />
+				
+		{% foreach from=$award item=area %}
+		<div style="color:#630;">
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			<a name="k{%$area.aid%}" id="k{%$area.aid%}"></a>
+			≪{%$area.name%}≫<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+		
+			{% foreach from=$area.area item=place name=foreachPlace%}
+				{% if $smarty.foreach.foreachPlace.first %}
+					┌
+				{% elseif $smarty.foreach.foreachPlace.last %}
+					└
+				{% else %}
+					├
+				{% /if %}
+				
+				{% if $place.has == 0 %}
+					<span style="color:#C60;">{%$place.name%}</span>{% if $place.name|@strlen == 6%}&nbsp;&nbsp;{%/if%}: 
+					<span style="color:#609;">ﾃﾞｺﾒ</span>:{%if $place.download==0%}×{%else%}○{%/if%}　<span style="color:#090;">待受け</span>:{%if $place.desktop==0%}×{%else%}○{%/if%}<br />
+				{% else %}
+					<span style="color:#C60;"><a href='{% "$baseUrl/mobile/disney/award/CF_from/map?CF_pid=`$place.pid`"|mixiurl %}'>{%$place.name%}</a></span>{% if $place.name|@strlen == 6%}&nbsp;&nbsp;{%/if%}: 
+					<span style="color:#609;">ﾃﾞｺﾒ</span>:<a href='{% "$baseUrl/mobile/disney/downloadaward?CF_pid=`$place.pid`"|mixiurl %}'>{%if $place.download==0%}×{%else%}○{%/if%}</a>&nbsp;
+					<span style="color:#090;">待受け</span>:<a href='{% "$baseUrl/mobile/disney/desktopaward?CF_pid=`$place.pid`"|mixiurl %}'>{%if $place.desktop==0%}×{%else%}○{%/if%}</a><br />
+				{% /if %}
+			{% /foreach %}
+		
+			<div style="text-align:right;">
+				<span style="color:#03C;">▲</span><a href="#top">このﾍﾟｰｼﾞのTOPへ</a>
+			</div>
+		</div>
+		{% /foreach %}
+
+{%include file="disney/common/footer.phtml"%}

@@ -1,0 +1,48 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="carShop">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">カーショップ</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		最大8台まで駐車可能{% emoji code="F9A9"%}新車を買って、効率よくｵｶﾈを稼ごう{% emoji code="F99F"%}<br />
+		<div style="text-align:right;">所持金：¥{%$userAsset|outputdollars%}&nbsp;</div>
+	</div><!--/.description-->
+
+	<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+
+	{%foreach from=$carList item=rowdata key=index%}
+		<div class="section" {%if ($index%2)==0 %}style="background:#fee;"{%else%}style="background:#ffe;"{%/if%}>
+			<span style="color:#cd424a;">{% emoji code="F8BF"%}{%$rowdata.name%}</span><br />
+			駐車料金×{%$rowdata.times%}/¥{%$rowdata.price|outputdollars%}<br />
+			<div style="color:#09f;text-align:right;">
+				{%if $rowdata.price > $userAsset || $rowdata.count >= 6 || ($rowdata.isown == 1 && $haveCard == 0)%}
+					<span style="color:#999;">購入する</span>
+				{%elseif ($rowdata.isown == 1 && $haveCard == 1)%}
+					<a href='{% "$baseUrl/mobile/parking/buysamecar?parking_cid=`$rowdata.cid`"|mixiurl %}'>購入する</a>
+				{%else%}
+					<a href='{% "$baseUrl/mobile/parking/buycar?parking_cid=`$rowdata.cid`"|mixiurl %}'>購入する</a>
+				{%/if%}
+
+				{%if ($rowdata.price-$maxPrice*0.9) > $userAsset || $rowdata.count >= 6 || ($rowdata.isown == 1 && $haveCard == 0)%}
+					<span style="color:#999;">所有車と交換</span>&nbsp;
+				{%else%}
+					<a href='{% "$baseUrl/mobile/parking/changecarselect?parking_cid=`$rowdata.cid`"|mixiurl %}'>所有車と交換</a>&nbsp;
+				{%/if%}
+			</div>
+			<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+		</div><!--/.section-->
+	{%/foreach%}
+
+	<div class="pager" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%include file="parking/common/pager.phtml"%}
+	</div><!--/.pager-->
+
+</div><!--/#carShop-->
+
+{%include file="parking/common/footer.phtml"%}

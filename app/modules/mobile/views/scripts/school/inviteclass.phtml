@@ -1,0 +1,63 @@
+{%if $step == 'start' %}
+
+	{%include file="school/common/header.phtml" headAd=1 %}
+		<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+			<div id="inviteClass">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<div class="headline" style="background:#b7cb6d;">同級生から招待された授業一覧</div>
+				{%if $pager.count %}
+					<div class="description">
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+						授業への招待が{%$pager.count%}件あります｡<br />
+						<div class="line" style="background:#b7cb6d;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+					</div><!--/.description-->
+					<div class="count">
+						{%$pager.count%}件中 {%$startNm%}-{%$endNm%}件<br />
+					</div><!--/.count-->
+					<div class="list">
+						{% foreach from=$lstMessage item=data key=key %}
+							<div class="section" style="background:#{% if ($key%2) == 0 %}e5efbd{%else%}fcf5cc{%/if%};">
+								{%$data.cname|escape%}({%$data.tname|escape%})<br />
+								<div style="text-align:right;">{%$data.day%}･{%$data.part%}限 <a href='{% "$baseUrl/mobile/school/scheduleaddconfirm?CF_cid=`$data.object_id`&CF_wday=`$data.wday`&CF_part=`$data.part`&CF_id=`$data.id`&CF_action=inviteclass"|mixiurl %}'>追加</a> <a href='{% "$baseUrl/mobile/school/inviteclass?CF_step=finish&CF_cid=`$data.object_id`&CF_wday=`$data.wday`&CF_part=`$data.part`&CF_id=`$data.id`"|mixiurl %}'>無視</a></div>
+							</div><!--/.section-->
+						{% /foreach %}
+					</div><!--/.list-->
+					{%include file="school/common/pager.phtml"%}
+				{% else %}
+					<div class="null" style="text-align:center;">
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+						まだ同級生からの招待がありません｡<br />
+					</div><!--/.null-->
+				{%/if%}
+			</div><!--/#inviteClass-->
+			{%include file="school/common/menu.phtml"%}
+		</div><!--/#container-->
+	{%include file="school/common/footer.phtml" footAd=1 %}
+
+{% else %}
+
+	{%include file="school/common/header.phtml"%}
+		<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+			<div id="inviteClass">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<div class="headline" style="background:#b7cb6d;">招待拒否完了</div>
+				<div class="description">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					{%$day%}曜日{%$part%}限の｢{%$classInfo.name|escape%}({%$classInfo.teacher|escape%})｣の招待を断りました｡
+				</div><!--/.description-->
+				{%include file="school/common/ad_complete.phtml"%}
+				<div class="description">
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					招待を断ったことは､招待をした人には伝えられませんのでご安心ください｡<br />
+				</div><!--/.description-->
+				<div class="footlink">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/inviteclass"|mixiurl %}'>同級生から招待された授業一覧</a><br />
+					<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/schedule"|mixiurl %}'>時間割を作成する</a><br />
+				</div><!--/.footlink-->
+			</div><!--/#inviteClass-->
+			{%include file="school/common/menu.phtml"%}
+		</div><!--/#container-->
+	{%include file="school/common/footer.phtml"%}
+
+{% /if %}

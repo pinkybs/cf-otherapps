@@ -1,0 +1,49 @@
+{%include file="scripteditor/common/header.phtml"%}
+
+<body id="tag">
+{%include file="topad.phtml"%}
+<div id="continer">
+
+	{%include file="scripteditor/common/topbox.phtml"%}
+	
+	<div id="mainColumn">
+	
+		{%include file="scripteditor/common/searchbox.phtml"%}
+		
+		<div id="wrap">
+			
+			<h1><img src="{%$staticUrl%}/apps/scripteditor/img/tit_tag.png" width="63" height="21" alt="タグ" /></h1>
+			
+			<div class="inner">
+				
+				<div id="follows" class="box">
+					
+					<div id="tagCloud" class="section">
+						<h3>タグクラウド</h3>
+						<ul>
+						    {% foreach from=$tagList item=tag %}
+							     <li class="tagCloudSize{%$tag.tagClass%}"><a href="{%$baseUrl%}/scripteditor/search?search={%$tag.tag|escape%}">{%$tag.tag|escape%}</a></li>
+							{% foreachelse %}
+							     まだタグがありません。
+							{% /foreach %}
+							
+						</ul>
+					</div>
+				
+				</div><!--/.box-->
+				
+			</div><!--/.inner-->
+			
+		</div><!--/#wrap-->
+		
+	</div><!--/#mainColumn-->
+	
+	
+    {%include file="scripteditor/common/subbox.phtml"%}
+    <script type="text/javascript">
+       jQuery(function($){
+           adjustHeight();
+       });
+    </script>
+{%include file="scripteditor/common/footer.phtml"%}
+

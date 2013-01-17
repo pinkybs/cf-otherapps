@@ -1,0 +1,20 @@
+		<div id="logBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_log.png" width="77" height="19" alt="あしあと" /></h2>
+			</div>
+
+			{% if $lstVisitFoot %}
+			<ul><!--
+			{% foreach name=visitList from=$lstVisitFoot item=vdata %}
+			--><li>
+					<p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$vdata.uid%}" style="background-image:url({%$vdata.thumbnailUrl%})">{%$vdata.displayName%}</a></p>
+					<p class="name">{%if $vdata.nickname %}{%$vdata.nickname|escape%}{% else %}{%$vdata.displayName%}ちゃん{% /if %}<span>（<a href="{%$baseUrl%}/slave/profile?uid={%$vdata.uid%}">{%$vdata.displayName%}</a>）</span></p>
+					<p class="price">価格：¥{%$vdata.price%}</p>
+				</li><!--
+			{% /foreach %}
+			--></ul>
+			{% else %}
+			<p class="pic homeNull"><a href="" style="background-image:url({%$staticUrl%}/apps/slave/img/dummy/pic_null2.png)"></a></p>
+			{% /if %}
+
+		</div><!--/#logBox.box-->

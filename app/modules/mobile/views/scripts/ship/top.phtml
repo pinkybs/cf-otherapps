@@ -1,0 +1,71 @@
+{% include file="ship/common/header.phtml" headerAd=1 %}
+
+<div id="top">
+	<div id="title" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/ship/img/title.gif" width="240" height="100" style="margin-top:3px;" /><br />
+		<span style="color:#7c4825;">金貨を奪って海賊王を目指せ!</span><br />
+		<div class="info">
+		    {% if $shipUser.send_gift > 0 %}
+			     {% emoji code="F8E6" %}<a href='{% "$baseUrl/mobile/ship/gift/CF_step/complete"|mixiurl %}' style="color:#cd424a;"><span style="color:#cd424a;">ﾃﾞｲﾘｰｷﾞﾌﾄが届きました!</span></a><br />
+			{% /if %}
+
+			{% if $showParking == 1 %}
+			     {% emoji code="F9D2" %}<a href='{% "$baseUrl/mobile/ship/index"|mixiurl %}' style="color:#cd424a;"><span style="color:#cd424a;">金貨が強奪されています!</span></a><br />
+		    {% /if %}
+		</div><!--/.info-->
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		{% emoji code="F8C4" %}<a href='{% "$baseUrl/mobile/ship/index"|mixiurl %}' accesskey="3">海賊マイページへ</a><br />
+
+		{% emoji code="F9BF" %}ﾏｲﾐｸ内ﾗﾝｷﾝｸﾞ <a href='{% "$baseUrl/mobile/ship/rankingfriend"|mixiurl %}' style="color:#333;"><span style="color:#333;">{%$userRankNm%}位</span></a>{% emoji code="F9BF" %}<br />
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		{% emoji code="F9BC" %}<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/ship/invite" %}'>ﾏｲﾐｸ招待でﾀﾞｲﾔGET</a><br />
+		<div class="about" style="text-align:right;">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/help?CF_help=intro"|mixiurl %}'>このｱﾌﾟﾘについて</a>&nbsp;<br />
+		</div><!--/.about-->
+	</div><!--/#title-->
+
+	<div style="text-align:center;"><img src="{%$staticUrl%}/apps/ship/img/twoline.gif" width="230" height="27" /></div>
+	<div class="info" style="text-align:center;">
+		攻略情報&海ﾐｸ募集!<br />
+		<a href="http://m.mixi.jp/view_community.pl?id=4776186&guid=ON">公式ｺﾐｭﾆﾃｨへGO</a>{% emoji code="F9D8" %}<br />
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="5" /><br />
+
+	</div><!--/.info-->
+    <div style="text-align:center;">
+        ○<span style="color:#cc0000;">重要なお知らせ</span>○ <br />
+    </div>
+    <div style="text-align:left;">
+                        よこどりﾊﾟｲﾚｰﾂは、2010年7月9日（金）にてｻｰﾋﾞｽ終了予定となっております。今まで愛用いただき本当にありがとうございました。
+    </div>
+	<div id="myShip">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			海賊船一覧<br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		</div><!--/.headline-->
+		<div class="inner">
+			{% foreach from=$ships item=data key=key %}
+                <div class="section" style="background:#{% cycle values="ffeedd,ffffff" %}">
+					{%*{% emoji code="F947"%}<a href='{% "$baseUrl/mobile/ship/setship/CF_userShipId/`$data.id`"|mixiurl %}' style="color:#7c4825;"><span style="color:#7c4825;">{%$data.shipName|escape%}号</span></a><br />*%}
+					{% emoji code="F947"%}<span style="color:#7c4825;">{%$data.shipName|escape%}号[</span><a href='{% "$baseUrl/mobile/ship/renameship/CF_userShipId/`$data.id`"|mixiurl %}'>{% emoji code="F9BE" %}</a><span style="color:#7c4825;">]</span><br />
+					{% if $data.temp != 0 %}
+                        <img src="{%$staticUrl%}/apps/ship/img/meter/meter_{%$data.temp%}.gif" width="89" height="3" style="margin:3px 0;" /><br />
+                        {%$data.status%}<br />
+                        <div style="text-align:right;">{%if $data.shipStatus==1%}収入:金貨{%/if%}{%$data.money%}<span style="color:#999;">&nbsp;</div>
+					{% else %}
+						{% if $data.status == "修理が必要です" %}
+	                        {%$data.status%}[<a href='{% "$baseUrl/mobile/ship/repair/CF_userShipId/`$data.id`"|mixiurl %}'>修理</a>]<br />
+						{% else %}
+	                        {%$data.status%}<br />
+						{% /if %}
+					{% /if %}
+                </div><!--/.section-->
+            {% /foreach %}
+		</div><!--/.inner-->
+	</div><!--/#myShip-->
+</div><!--/#top-->
+
+{%include file="ship/common/menu.phtml"%}
+{% include file="ship/common/footer.phtml" footerAd=1 %}

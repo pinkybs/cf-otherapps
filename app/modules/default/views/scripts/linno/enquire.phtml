@@ -1,0 +1,73 @@
+{%include file="header.phtml"%}
+
+<body id="enquire" class="column2">
+
+{%include file="linno/common/header.phtml"%}
+
+<div id="container">
+
+	<div id="primaryColumn">
+	
+		<div id="profEnqueteBox">
+				
+		<h1>プロフアンケート</h1>
+		<div class="headingHelp"><a title="この項目のヘルプ" href="#">この項目のヘルプ</a></div>
+		
+			<div class="section question">
+				<h4>Question.{%$enquireInfo.qqid%}</h4>
+				<p class="description">{%$enquireInfo.content|insertsep:60:1%}</p>
+			</div>
+			<div class="section answer">
+				<ul><!--
+				    {% foreach from=$enquireInfo.answer item=answer %}
+					--><li class="ans{%$answer.qaid%}"><a href="{%$answer.qaid%}">{%$answer.content%}</a></li><!--
+					{% /foreach %}
+				--></ul>
+			</div>
+			
+		</div><!--/.box-->
+
+	</div><!--/#primaryColumn-->
+
+	<div id="tertiaryColumn">
+
+		<div id="rectangleAdBox">
+			<div class="ad">
+				<img src="{%$staticUrl%}/apps/linno/img/dummy_ad.png" width="250" height="250" alt="ダミー" />
+			</div>
+		</div><!--/#rectangleAdBox-->
+
+		<div id="hotSurveyBox">
+				<h2><span>人気のアンケート</span></h2>
+				<div class="headingHelp">
+					<a href="#" title="この項目のヘルプ">この項目のヘルプ</a>
+				</div>
+				<ul>
+					{% foreach from=$popularEnquire item=enquire %}
+                        <li><a href="{%$baseUrl%}/linno/enquire/qid/{%$enquire.qqid%}">{%$enquire.content|escape%} (回答:{%$enquire.count%})</a></li>
+                    {% /foreach %}
+				</ul> 
+				<div class="more"><a href="#">もっとこの人を評価</a></div>
+		</div><!--/#hotSurveyBox-->
+		
+		
+		<div id="hotReportBox">
+				<h2><span>人気のキャラクター通信簿</span></h2>
+				<div class="headingHelp">
+					<a href="#" title="この項目のヘルプ">この項目のヘルプ</a>
+				</div>
+				<ul>
+					<li><a href="#">通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿</a></li>
+					<li><a href="#">通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿</a></li>
+					<li><a href="#">通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿</a></li>
+					<li><a href="#">通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿</a></li>
+				</ul>
+				<div class="more"><a href="#">もっとこの人を評価</a></div>
+		</div><!--/#hotReportBox-->
+
+	</div><!--/#tertiaryColumn-->
+
+
+</div><!--/#container-->
+
+{%include file="linno/common/footer.phtml"%}

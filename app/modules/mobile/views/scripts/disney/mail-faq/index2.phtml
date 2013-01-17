@@ -1,0 +1,40 @@
+{%include file="faq/common/header.phtml"%}
+	
+	<hr />
+
+	
+	<hr />
+
+	<div id="contet">
+	
+	【問い合わせが多い内容】<br />
+	<br />	
+		◆<a href='/faq/faq013?query_id={%$qid%}#001'><span style="color:#5b2806;">マイスコアが表示されません。</span></a><br />
+		◆<a href='/faq/faq011?query_id={%$qid%}#003'><span style="color:#5b2806;">ゲームチケットGETがお知らせに表示されません。</span></a><br />
+		◆<a href='/faq/faq008?query_id={%$qid%}#003'><span style="color:#5b2806;">アワードが1日後になっても付与されません</span></a><br />
+		◆<a href='/faq/faq010?query_id={%$qid%}#004'><span style="color:#5b2806;">ターゲットツアーで移動したのに０Kmと表示されます</span></a><br />
+		◆<a href='/faq/faq007?query_id={%$qid%}#002'><span style="color:#5b2806;">マイミク情報にマイミクが表示されません</span></a><br />
+		◆<a href='/faq/faq010?query_id={%$qid%}#005'><span style="color:#5b2806;">ターゲットツアーにおいて、達成と表示されているのにマップをみるとキャラクターが表示されていません。</span></a><br />		
+		
+	</div><!--/#contet-->
+	
+	<hr />
+	
+	<div id="comment">
+		解決しなかった場合は、お手数ですが下記より再度内容をご確認のうえ、お問い合わせください。
+	</div><!--/#comment-->
+	
+	<hr />
+	
+	<div align="center">
+		<form action="http://xiad.disney.co.jp/mxcs/detail.pl" method="GET">
+		    <input type="hidden" name="query_id" id="query_id" value="{%$qid%}" />
+			<input type="submit" value="詳細を問い合わせる" />
+		</form>
+	</div>
+	
+	<br />
+</div><!--/#continer-->
+
+</body>
+</html>

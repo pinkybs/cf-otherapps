@@ -1,0 +1,77 @@
+{%include file="dynamite/common/header.phtml" headAd=0 %}
+
+    <div id="itemFinish">
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="headline" style="background:#777777;color:#ffffff;">ｱｲﾃﾑ使用完了</div>
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="description">
+        {% if $useCardResult == 1 %}
+            {% if $cardInfo.cid == 1 %}
+                ヒットマン1人の体力が少し回復しました。
+            {% elseif $cardInfo.cid == 2 %}
+                ヒットマン1人の体力が完全回復しました。
+            {% elseif $cardInfo.cid == 3 %}
+                ヒットマン全員の体力が完全回復しました。
+            {% elseif $cardInfo.cid == 4 %}
+                あなたの率いるヒットマン全員が完全回復しました。
+            {% elseif $cardInfo.cid == 5 %}
+                使用後3時間、設置されたダイナマイトを自動的に没収。
+            {% elseif $cardInfo.cid == 6 %}
+                殉職ヒットマン1人が完全復活しました。
+            {% elseif $cardInfo.cid == 7 %}
+                ダイナマイトの数が26個になりました。
+            {% elseif $cardInfo.cid == 8 %}
+                マイミク限定でのバトルロワイアルに変更されました。
+            {% elseif $cardInfo.cid == 9 %}
+                ミクシィ全体のバトルロワイアルに変更されました。
+            {% elseif $cardInfo.cid == 10 %}
+                「神々の怒り」を使用しました。どこからともなく、最強のヒットマンが怒りの制裁を加えるために現れました。
+            {% /if %}
+
+            {% if $cardInfo.cid != 10 && $cardInfo.count == 1%}
+
+                <br><font style="color:#ff0000;text-align:center;">◎{%$cardInfo.name%}が無くなりました。</font><br>
+
+                <div style="text-align:center;">
+                    <a href='{% "$baseUrl/mobile/dynamite/itemshop"|mixiurl %}'>≫ｱｲﾃﾑｽﾄｱで購入する≪</a>
+                </div>
+
+            {% /if %}
+        {% else %}
+            {% if $cardInfo.cid == 3 %}
+                負傷しているヒットマンがいないので、ミラクルドリンクは使えません。
+            {% elseif $cardInfo.cid == 4 %}
+                殉職/負傷しているヒットマンがいないので、復活のシャワーは使えません。
+            {% elseif $cardInfo.cid == 5 %}
+                ダイナマイトが設置されていないため、ダイナマイトほいほいは使えません。
+            {% elseif $cardInfo.cid == 6 %}
+                殉職ヒットマンがいないので、復活の儀式は使えません。
+            {% elseif $cardInfo.cid == 7 %}
+                ダイナマイトは26個以上増やせないので、最終兵器は使えません。
+            {% elseif $cardInfo.cid == 8 %}
+
+                {% if $useCardResult == -2 %}
+                    マイミクが5人以上いないと、マイミクシェルターを使う事ができません。マイミクをアプリに招待して、マイミクバトルを楽しもう！！
+                {% else %}
+                    マイミクシェルターは、全体モードでプレイ中の時のみ使用できます。全体モードへの切り替えには「宣戦布告」を使おう
+                {% /if %}
+
+            {% elseif $cardInfo.cid == 9 %}
+                宣戦布告は、マイミクモードでプレイ中の時のみ使用できます。マイミクモードへの切り替えには「マイミクシェルター」を使おう！
+            {% else %}
+                {%$cardInfo.name%}は使えません。
+            {% /if %}
+        {% /if %}
+        </div><!--/.description-->
+
+		<div class="ad" style="text-align:center;">
+            <ad xmlns="http://m.mixi.jp/2009/AdProgram/" type="center" id="e13e01e7665fd609fcbaefd8c14529db05f65184" />
+        </div><!--/.ad-->
+
+    </div><!--/#itemFinish-->
+
+{%include file="dynamite/common/menu.phtml"%}
+{%include file="dynamite/common/footer.phtml" footAd=0 %}

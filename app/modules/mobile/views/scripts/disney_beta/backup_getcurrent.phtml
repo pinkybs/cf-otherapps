@@ -1,0 +1,29 @@
+{%include file="disney/common/header.phtml"%}
+
+<style type="text/css">
+    #bgcolor1{
+        background-color:#ffd990;
+    }
+</style>
+
+    <div id="bgcolor1" style="font-size:x-small;" align="center">
+        <img src="{%$staticUrl%}/apps/disney/img/sub_ti_get.gif" copyright="yes" /> <br />
+        <br />
+        <font color="#ff0000">{%$placeInfo.name%}ｽﾃｨｯﾁ</font><br />
+        <img src="{%$baseUrl%}/mobile/disneyflash/showaward?img={%$placeInfo.award_icon%}" align="top" title="{%$placeInfo.award_name%}" copyright="yes" /><br />
+        <br />
+        <div align="left">
+        	GETしたご当地ｷｬﾗｸﾀｰはﾃﾞｺﾒや待受にしたり、ﾏｲﾐｸに贈って遊ぼう!<br />
+		</div>
+        <br />
+        <a href="deco_004.xhtml"><img src="{%$staticUrl%}/apps/disney/img/send_2.gif" copyright="yes" /></a><br />
+            <!-- <a href="#"><img src="{%$staticUrl%}/apps/disney/img/back_img.gif" /></a><br /> -->
+            <a href="mymic_list.xhtml"><img src="{%$staticUrl%}/apps/disney/img/send.gif" copyright="yes" /></a><br />
+        	<br />
+        <div align="left">
+        	<font color="#ff0000">※1県につき同一のｷｬﾗｸﾀｰは、3体までGETすることができます。</font><br />
+        	ﾏｲﾐｸをｱﾌﾟﾘに招待して、ｹﾞｰﾑﾁｹｯﾄもGETしよう!<br />
+        </div>
+        <a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/disney/index" %}'>>ﾏｲﾐｸ招待へ</a><br />         
+    </div>
+{%include file="disney/common/footer.phtml"%}

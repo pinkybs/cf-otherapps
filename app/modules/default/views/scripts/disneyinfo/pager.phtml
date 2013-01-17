@@ -1,0 +1,17 @@
+{% if $pager.maxPager > 1 %}
+    <div class="pager" style="color:#006699;text-align:center;">
+		<img src="{%$staticUrl%}/apps/kitchen/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+	    {% if $pager.pageIndex == 1 %}
+		{% else %}
+			←[*]<a href='{% "$baseUrl/`$pager.requestUrl`?CF_page=`$pager.pageIndex-1``$pager.pageParam`"|mixiurl %}' accesskey="*">前へ</a>
+		{% /if %}
+	
+		{% if $pager.maxPager == $pager.pageIndex%}
+		{% else %}
+		    &nbsp;&nbsp;&nbsp;&nbsp;<a href='{% "$baseUrl/`$pager.requestUrl`?CF_page=`$pager.pageIndex+1``$pager.pageParam`"|mixiurl %}' accesskey="#">次へ</a>[#]→
+		{% /if %}
+
+	   	<br />
+	</div><!--/.pager-->
+{% /if %}

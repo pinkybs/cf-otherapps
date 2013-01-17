@@ -1,0 +1,1819 @@
+@charset "utf-8";
+/*
+----------------------------------------------
+Parking Wars main CSS
+
+Created Date: 2009/01/01
+Author: Yu Uno
+Last Up Date : 2009/04/8
+Author: Yu Uno
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+
+* {
+	outline: none;
+}
+
+body,html {
+	overflow-y:hidden;
+	/*height: 95%;*/
+}
+
+a:link,a:hover {
+	color: #429EC1;
+}
+a:link,a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+ul,
+ul li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#continer {
+	width: 945px;
+	padding-bottom: 20px;
+}
+
+img#loadingImg {
+	display: block;
+	margin: 100px auto;
+	width: 240px;
+	height: 100px;
+}
+
+/* @group #gNav */
+
+ul#gNav {
+	margin-bottom: 10px;
+	width: 945px;
+	height: 30px;
+	background: url(../img/gnav.png) no-repeat;
+}
+	ul#gNav li {
+		display: inline;
+		float: left;
+	}
+		ul#gNav li a {
+			display: block;
+			height: 30px;
+			text-indent: -9999px;
+			overflow: hidden;
+			background: #FFFFFF url(../img/gnav.png) no-repeat;
+		}
+	ul#gNav li#gNav01 {
+		width: 160px;
+	}
+		ul#gNav li#gNav01 a {
+			width: 160px;
+			background-position: 0 0;
+		}
+		body#parking ul#gNav li#gNav01 a,
+		ul#gNav li#gNav01 a:hover,
+		ul#gNav li#gNav01 a.active {
+			background-position: 0 -30px;
+		}
+	ul#gNav li#gNav02 {
+		width: 156px;
+	}
+		ul#gNav li#gNav02 a {
+			width: 156px;
+			background-position: -160px 0;
+		}
+		body#carShop ul#gNav li#gNav02 a,
+		ul#gNav li#gNav02 a:hover,
+		ul#gNav li#gNav02 a.active {
+			background-position: -160px -30px;
+		}
+	ul#gNav li#gNav03 {
+		width: 156px;
+	}
+		ul#gNav li#gNav03 a {
+			width: 156px;
+			background-position: -316px 0;
+		}
+		body#house ul#gNav li#gNav03 a,
+		ul#gNav li#gNav03 a:hover,
+		ul#gNav li#gNav03 a.active {
+			background-position: -316px -30px;
+		}
+	ul#gNav li#gNav04 {
+		width: 156px;
+	}
+		ul#gNav li#gNav04 a {
+			width: 156px;
+			background-position: -472px 0;
+		}
+		body#itemshop ul#gNav li#gNav04 a,
+		ul#gNav li#gNav04 a:hover,
+		ul#gNav li#gNav04 a.active {
+			background-position: -472px -30px;
+		}
+	ul#gNav li#gNav05 {
+		width: 157px;
+	}
+		ul#gNav li#gNav05 a {
+			width: 157px;
+			background-position: -628px 0;
+		}
+		body#help ul#gNav li#gNav05 a,
+		ul#gNav li#gNav05 a:hover,
+		ul#gNav li#gNav05 a.active {
+			background-position: -628px -30px;
+		}
+
+/* @end */
+
+/* @group #mainArea */
+
+#mainArea {
+	display: inline;
+	float: left;
+	margin: 0 0 20px;
+	width: 690px;
+}
+	#mainArea #divCar,
+	#mainArea #divItem,
+	#mainArea #divHouse {
+		overflow: hidden;
+		min-height: 300px;
+		_height: 300px;/*IE*/
+	}
+		#mainArea #divCar p.loadingBar,
+		#mainArea #divItem p.loadingBar,
+		#mainArea #divHouse p.loadingBar {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			padding: 168px 0;
+			/*height: 300px;*/
+			background: #000000;
+			text-align: center;
+			filter:alpha(opacity=60);/*IE*/
+			-moz-opacity:0.6;/*FF2*/
+			opacity: 0.6;/*FF,Safari,Opera*/
+		}
+			#mainArea #divCar p.loadingBar img,
+			#mainArea #divItem p.loadingBar img,
+			#mainArea #divHouse p.loadingBar img {
+				display: inline !important;
+				width: 64px;
+			}
+
+/* @group #parkingArea */
+
+#mainArea #parkingHead {
+	position: relative;
+	margin: 0;
+	width: 690px;
+	height: 42px;
+	background: url(../img/parking/bg_titName.png);
+}
+	#mainArea #parkingHead p.pic {
+		position: absolute;
+		top: 10px;
+		left: 12px;
+		width: 25px;
+		height: 25px;
+	}
+	#mainArea #parkingHead h1 {
+		position: absolute;
+		top: 15px;
+		left: 46px;
+	}
+	#mainArea #parkingHead a#btnCarList,
+	#mainArea #parkingHead a#btnProfile {
+		position: absolute;
+		top: 11px;
+		display: block;
+		width: 127px;
+		height: 24px;
+	}
+	#mainArea #parkingHead a#btnProfile {
+		right: 10px;
+	}
+	#mainArea #parkingHead a#btnCarList {
+		right: 147px;
+	}
+		#mainArea #parkingHead a img {
+			display: block;
+		}
+
+#mainArea #hdrAd {
+	width: 690px;
+	height: 35px;
+	background: #A2A2A2 no-repeat 2px center;
+}
+	#mainArea #hdrAd #hdrAdFrame {
+		width: 690px;
+		height: 35px;
+	}
+
+#mainArea #parkingArea {
+	position: relative;
+	margin: 0;
+	width: 690px;
+	height: 300px;
+	overflow: hidden;
+}	
+	#mainArea #parkingArea #parkingAlert {
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		z-index: 10;
+		width: 716px;
+		display: -moz-inline-box;/*Firefox2*/
+		display: inline-block;/*CSS3*/
+		/display: inline;/*IE6,IE7*/
+		/zoom: 1;/*IE6,IE7*/
+		text-align: left;
+		font-size: 14px;
+		color: #FFFFFF;
+	}
+		#mainArea #parkingArea #parkingAlert span {
+			display: -moz-inline-box;/*Firefox2*/
+			display: inline-block;/*CSS3*/
+			/display: inline;/*IE6,IE7*/
+			/zoom: 1;/*IE6,IE7*/
+			padding: 8px;
+			text-align: center;
+			background: #CC0000;
+			font-size: 12px;
+		}
+			#mainArea #parkingArea #parkingAlert span a {
+				color: #FFFFFF;
+				line-height: 1.2;
+			}
+			#mainArea #parkingArea #parkingAlert span a:link,
+			#mainArea #parkingArea #parkingAlert span a:visited {
+				text-decoration: underline;
+			}
+			#mainArea #parkingArea #parkingAlert span a:hover {
+				text-decoration: none;
+			}
+
+/* @group #dynamicArea .parking */
+#mainArea #parkingArea #dynamicArea {
+	position: absolute;
+	width: 30000px;
+	background: #FFFFFF repeat-x left top;
+}
+#mainArea #parkingArea #dynamicArea .parking {
+	float: left;
+}
+	#mainArea #parkingArea #dynamicArea .parking .inner {
+		position: relative;
+		width: 690px;
+		height: 300px;
+	}
+		
+		#mainArea #parkingArea #dynamicArea .parking ul#trafficSigns {
+		}
+			#mainArea #parkingArea #dynamicArea .parking ul#trafficSigns li {
+				position: absolute;
+				top:  61px;
+				width: 260px;
+				text-align: left;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#trafficSigns li#trafficSign0,
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar0 {
+				left: 20px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#trafficSigns li#trafficSign1,
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar1 {
+				left: 280px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#trafficSigns li#trafficSign2,
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar2 {
+				left: 540px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#trafficSigns li#trafficSign3,
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar3 {
+				left: 800px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#trafficSigns li#trafficSign4,
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar4 {
+				left: 1060px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#trafficSigns li#trafficSign5,
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar5 {
+				left: 1320px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#trafficSigns li#trafficSign6,
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar6 {
+				left: 1580px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#trafficSigns li#trafficSign7,
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar7 {
+				left: 1840px;
+			}
+		#mainArea #parkingArea #dynamicArea .parking ul#parkingCars {
+			position: absolute;
+			top: 49px;
+		}
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li {
+				position: absolute;
+				width: 260px;
+				height: 180px;
+				background: url(../img/parking/line.gif) no-repeat center 103px;
+				text-align: center;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar0 {
+				left: 0;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar1 {
+				left: 280px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar2 {
+				left: 540px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar3 {
+				left: 800px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar4 {
+				left: 1060px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar5 {
+				left: 1320px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar6 {
+				left: 1580px;
+			}
+			#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li#parkingCar7 {
+				left: 1840px;
+			}
+				#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.carPic {
+					margin: 0 auto;
+					width: 240px;
+				}
+					#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.carPic img {
+						display: block;
+					}
+					#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.btnCommands {
+						position: absolute;
+						top: 135px;
+						left: 43px;
+						width: 174px;
+						height: 27px;
+						text-indent: -9999px;
+					}
+						#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.btnCommands a {
+							display: block;
+							width: 174px;
+							height: 27px;
+							background: url(../img/parking/btn_action.gif) no-repeat;
+						}
+						#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.btnCommands.command a {
+							background-position: 0 0;
+						}
+						#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.btnCommands.command.disable a {
+							background-position: 0 -27px;
+							cursor: default;
+						}
+						#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.btnCommands.report a {
+							background-position: -174px 0;
+						}
+						#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.btnCommands.report.disable a {
+							background-position: -174px -27px;
+							cursor: default;
+						}
+						#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.btnCommands.parking a {
+							background-position: -348px 0;
+						}
+						#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.btnCommands.parking.disable a {
+							background-position: -348px -27px;
+							cursor: default;
+						}
+						#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.btnCommands.tipOff a {
+							background-position: -522px 0;
+						}
+						#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li p.btnCommands.tipOff.disable a {
+							background-position: -522px -27px;
+							cursor: default;
+						}
+				#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li .parkingStatus {
+					margin: 3px auto 5px;
+					width: 174px;
+					color: #FFFFFF;
+				}
+					#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li .parkingStatus p.parkingMeter {
+						position: absolute;
+						top: 164px;
+						left: 72px;
+						width: 145px;
+					}
+						#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li .parkingStatus p.parkingMeter img {
+							display: block;
+						}
+				#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li .parkingStatus p.userPic,
+				#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li .parkingStatus p.carInfo,
+				#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li .parkingStatus p.userName {
+					position: absolute;
+					vertical-align: bottom;
+					font-size: 12px;
+				}
+					#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li .parkingStatus p.userPic {
+						top: 164px;
+						left: 43px;
+					}
+						#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li .parkingStatus p.userPic img {
+							vertical-align: bottom;
+						}
+					#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li .parkingStatus p.carInfo {
+						top: 170px;
+						left: 72px;
+						padding: 2px;
+						width: 141px;
+						height: 17px;
+						overflow: hidden;
+						background: #000000;
+						text-align: right;
+						line-height: 1em;
+						font: bold 14px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+					}
+				#mainArea #parkingArea #dynamicArea .parking ul#parkingCars li .parkingStatus p.userName {
+					top: 193px;
+					left: 43px;
+					padding: 2px 0;
+					width: 174px;
+					height: 14px;
+					background: #555555;
+				}
+
+/* @end */
+
+/* @group #staticArea */
+
+#mainArea #parkingArea #staticArea {
+	position: absolute;
+	bottom: 0px;
+	
+}
+	#mainArea #parkingArea #staticArea #moveNav {
+		position: absolute;
+		left: 215px;
+		bottom: 0;
+		z-index: 1;
+		width: 260px;
+		height: 34px;
+		background: url(../img/parking/ctrl.gif);
+	}
+		#mainArea #parkingArea #staticArea #moveNav #parkingLeft,
+		#mainArea #parkingArea #staticArea #moveNav #parkingRight {
+			position: absolute;
+			top: 5px;
+			filter:alpha(opacity=0);/*IE*/
+			-moz-opacity:0;/*FF2*/
+			opacity: 0;/*FF,Safari,Opera*/
+		}
+		#mainArea #parkingArea #staticArea #moveNav #parkingLeft.hover,
+		#mainArea #parkingArea #staticArea #moveNav #parkingRight.hover {
+			filter:alpha(opacity=30);/*IE*/
+			-moz-opacity:0.3;/*FF2*/
+			opacity: 0.3;/*FF,Safari,Opera*/
+		}
+		#mainArea #parkingArea #staticArea #moveNav #parkingLeft {
+			left: 0px;
+		}
+		#mainArea #parkingArea #staticArea #moveNav #parkingRight {
+			left: 192px;
+		}
+		#mainArea #parkingArea #staticArea #moveNav a {
+			position: absolute;
+			display: block;
+			top: 5px;
+			width: 40px;
+			height: 28px;
+			z-index: 1000;
+			text-indent: -9999px;
+			cursor: pointer;
+		}
+		#mainArea #parkingArea #staticArea #moveNav a#prevFriend {
+			left: 69px;
+		}
+		#mainArea #parkingArea #staticArea #moveNav a#nextFriend {
+			left: 151px;
+		}
+		#mainArea #parkingArea #staticArea #moveNav a#home {
+			left: 110px;
+		}
+	#mainArea #parkingArea #staticArea #totalMoneyBox {
+		position: absolute;
+		bottom: 0;
+		left: 475px;
+		z-index: 10;
+		padding: 5px;
+		width: 218px;
+		height: 24px;
+		background: url(../img/parking/money.gif) no-repeat left top;
+		color: #FFFFFF;
+		text-align: center;
+	}
+		#mainArea #parkingArea #staticArea #totalMoneyBox h2,
+		#mainArea #parkingArea #staticArea #parkingMoney h2,
+		#mainArea #parkingArea #staticArea #totalMoneyBox p,
+		#mainArea #parkingArea #staticArea #parkingMoney p {
+			display: inline;
+			vertical-align: baseline;
+			line-height: 16px;
+			font-size: 14px;
+		}
+		#mainArea #parkingArea #staticArea #totalMoneyBox p {			
+			font: bold 18px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		}
+			#mainArea #parkingArea #staticArea #totalMoneyBox p img {
+				margin-right: 5px;
+				vertical-align: baseline;
+			}
+	#mainArea #parkingArea #staticArea #parkingMoney {
+		padding: 10px 0;
+		width: 215px;
+		height: 14px;
+		text-align: center;
+		background: url(../img/parking/price.gif) no-repeat left top;
+		_background: url(../img/parking/price.gif) no-repeat left 2px;/*IE6*/
+	}
+
+/* @end */
+
+/* @end */
+
+/* @group #rankingArea */
+#mainArea #rankingArea {
+	position: relative;
+	margin: 0 0 5px;
+	padding: 4px 5px 5px;
+	min-height: 140px;
+	_height: 140px;/*IE6*/
+	background-color: #9B9B9B;
+}
+	#mainArea #rankingArea .loading {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 150px;
+	}
+		#mainArea #rankingArea .loading img {
+			margin: 40px auto 0;
+		}
+
+/* @group #wrap */
+
+#mainArea #rankingArea #wrap {
+	position: relative;
+	padding: 11px 4px 10px;
+	*padding: 0 10px;
+	min-height: 98px;
+	_height: 98px;/*IE6*/
+	_padding-bottom:20px;/*IE6*/
+	overflow: hidden;
+	background-color: #FFFFFF;	
+}
+	#mainArea #rankingArea #wrap .ui-tabs-hide {
+		display: none;
+	}
+	#mainArea #rankingArea #wrap #topRanking {
+		position: absolute;
+		right: 6px;
+		width: 116px;
+		overflow: hidden;
+		*margin-top:-5px;
+	}
+	#mainArea #rankingArea #wrap #otherRanking {
+		position: relative;
+		left: 46px;
+		width: 468px;
+		overflow: hidden;
+		*top:-5px;
+		*left: 41px;
+	}
+	#mainArea #rankingArea #wrap ul#rankingLeftNav,
+	#mainArea #rankingArea #wrap ul#rankingRightNav {
+		width: 40px;
+		top: 43px;
+		height: 65px;
+	}
+		#mainArea #rankingArea #wrap ul#rankingLeftNav li,
+		#mainArea #rankingArea #wrap ul#rankingRightNav li {
+			cursor: pointer;
+		}
+			#mainArea #rankingArea #wrap ul#rankingLeftNav li,
+			#mainArea #rankingArea #wrap ul#rankingRightNav li {
+				display: block;
+				width: 40px;
+				height: 31px;
+				background-image: url(../img/parking/btn_ranknav.gif);
+				background-repeat: no-repeat;
+			}
+			#mainArea #rankingArea #wrap ul#rankingLeftNav li#toUnder,
+			#mainArea #rankingArea #wrap ul#rankingRightNav li#toTop {
+				margin: 0 0 3px;
+			}
+			#mainArea #rankingArea #wrap ul#rankingLeftNav li#toUnder {
+				background-position: 0 0;
+			}
+			#mainArea #rankingArea #wrap ul#rankingLeftNav li#toUnderMore {
+				background-position: 0 -31px;
+			}
+			#mainArea #rankingArea #wrap ul#rankingRightNav li#toTop {
+				background-position: -40px 0;
+			}
+			#mainArea #rankingArea #wrap ul#rankingRightNav li#toTopMore {
+				background-position: -40px -31px;
+			}
+	#mainArea #rankingArea #wrap ul#rankingLeftNav {
+		position: absolute;
+		left: 8px;
+	}
+	#mainArea #rankingArea #wrap ul#rankingRightNav {
+		position: absolute;
+		right: 124px;
+	}
+		#mainArea #rankingArea #wrap ul#rankingRightNav #navi {
+			
+		}
+		#mainArea #rankingArea #wrap #otherRanking ol {
+			position: relative;
+			width: 10000px;
+		}
+			#mainArea #rankingArea #wrap ol li {
+				position: relative;
+				display: inline;
+				float: left;
+				margin: 0 4px;
+				width: 50px;
+				overflow: hidden;
+			}
+				#mainArea #rankingArea #wrap ol li p.ranking {
+					margin: 0 0 2px;
+					text-align: center;
+					font: bold 16px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+					line-height: 1em;
+				}
+				#mainArea #rankingArea #wrap ol li p.name {
+					margin: 0 0 4px;
+					width: 50px;
+					overflow: hidden;
+					font-size: 10px;
+					line-height: 1em;
+					text-overflow: ellipsis;/*IE,Safari*/
+					white-space: nowrap;
+				}
+				#mainArea #rankingArea #wrap ol li p.pic {
+				}
+					#mainArea #rankingArea #wrap ol li p.pic img {
+						vertical-align: bottom;
+					}
+				#mainArea #rankingArea #wrap ol li p.plice {
+					padding: 2px 0 3px;
+					background-color: #000000;
+					text-align: center;
+					font: bold 10px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+					line-height: 1em;
+					color: #FFFFFF;
+				}
+				#mainArea #rankingArea #wrap ol li p.icon {
+					position: absolute;
+					top: 64px;
+					left: 30px;
+					width: 16px;
+					height: 16px;
+				}
+
+/* @end */
+
+/* @group #rankingTabs */
+
+#mainArea #rankingArea ul#rankingTabs {
+	position: absolute;
+	left: 0;
+}
+	#mainArea #rankingArea ul#rankingTabs li {
+		text-indent: -9999px;
+		top: 0;
+	}
+		#mainArea #rankingArea ul#rankingTabs li#totalRankingTab a,
+		#mainArea #rankingArea ul#rankingTabs li#carsRankingTab a {
+			display: block;
+			width: 143px;
+			height: 20px;
+			background: url(../img/parking/btn_ranktype.gif) no-repeat;
+		}
+	#mainArea #rankingArea ul#rankingTabs li#totalRankingTab {
+		position: absolute;
+		left: 2px;
+	}
+		#mainArea #rankingArea ul#rankingTabs li#totalRankingTab a {
+			background-position: 0 bottom;
+		}
+		#mainArea #rankingArea ul#rankingTabs li#totalRankingTab a:hover,
+		#mainArea #rankingArea ul#rankingTabs li#totalRankingTab.active a {
+			background-position: 0 0;
+		}
+	#mainArea #rankingArea ul#rankingTabs li#carsRankingTab {
+		position: absolute;
+		left: 145px;
+	}
+		#mainArea #rankingArea ul#rankingTabs li#carsRankingTab a {
+			background-position: -150px bottom;
+		}
+		#mainArea #rankingArea ul#rankingTabs li#carsRankingTab a:hover,
+		#mainArea #rankingArea ul#rankingTabs li#carsRankingTab.active a {
+			background-position: -150px 0;
+		}
+		
+	#mainArea #rankingArea ul#rankingTabs li#allSphereTabs,
+	#mainArea #rankingArea ul#rankingTabs li#friendSphereTabs {
+		position: absolute;
+		top: 3px;
+	}
+		#mainArea #rankingArea ul#rankingTabs li#allSphereTabs {
+			left: 480px;
+		}
+		#mainArea #rankingArea ul#rankingTabs li#friendSphereTabs {
+			left: 585px;
+		}
+		#mainArea #rankingArea ul#rankingTabs li#allSphereTabs a,
+		#mainArea #rankingArea ul#rankingTabs li#friendSphereTabs a {
+			display: block;
+			width: 100px;
+			height: 17px;
+			background: url(../img/parking/btn_rankgroup.gif) no-repeat;
+		}
+			#mainArea #rankingArea ul#rankingTabs li#allSphereTabs a {
+				background-position: 0 bottom;
+			}
+			#mainArea #rankingArea ul#rankingTabs li#allSphereTabs a:hover,
+			#mainArea #rankingArea ul#rankingTabs li#allSphereTabs.active a {
+				background-position: 0 0;
+			}
+			#mainArea #rankingArea ul#rankingTabs li#friendSphereTabs a {
+				background-position: -100px bottom;
+			}
+			#mainArea #rankingArea ul#rankingTabs li#friendSphereTabs a:hover,
+			#mainArea #rankingArea ul#rankingTabs li#friendSphereTabs.active a {
+				background-position: -100px 0;
+			}
+
+/* @end */
+
+
+/* @end */
+
+/* @group #ownCarsArea */
+
+#mainArea #ownCarsArea {
+	margin: 0 0 5px;
+	border: 1px solid #DDDDDD;
+}
+	#mainArea #ownCarsArea .header {
+		position: relative;
+		margin: -1px 0 10px -1px;
+		width: 690px;
+		height: 31px;
+		overflow: hidden;
+		background: url(../img/carlist/hdl.gif) no-repeat left top;	
+	}
+		#mainArea #ownCarsArea .header h2 {
+			text-indent: -9999px;
+		}
+	#mainArea #ownCarsArea .inner {
+		padding: 0 10px 10px;
+	}
+		#mainArea #ownCarsArea .inner #ownCarsList {
+			-webkit-border-top-right-radius: 4px;/*safari*/
+			-webkit-border-top-left-radius: 4px;/*safari*/
+			-moz-border-radius-topright: 4px;/*Firerox*/
+			-moz-border-radius-topleft: 4px;/*Firerox*/
+			background: #3A3A3A url(../img/carlist/bgCarsList.png) repeat-x left top;
+		}
+		#mainArea #ownCarsArea .inner #ownCarsList.disable {
+		}
+			#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery {
+			    overflow: hidden;
+			    position: relative;
+			    margin: 0 10px;
+			    width: 648px;
+			    height: 188px;
+				*width: 648px;
+				_width: 648px;
+			}
+		
+			#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul {
+			    position: absolute;
+			    list-style: none;
+				overflow: hidden;
+			    white-space: nowrap;
+			    padding: 0;
+			    margin: 0 0 0 -8px;
+			}
+			
+			.sliderGallery ul.items {
+				height: 150px;
+				width:2000px;
+			}
+			
+			.sliderGallery ul li {
+				display: inline-box;/*Firefox2*/
+				display: inline-block;/*CSS3*/
+				/display: inline;/*IE6,IE7*/
+				/zoom: 1;/*IE6,IE7*/
+				float:left;
+				/* margin: 10px 0 0 10px; */
+				margin: 10px 0 0 8px;
+				padding: 0 0 9px;
+				/* width: 161px; */
+				width: 156px;
+				height: 141px;
+				background: #FFFFFF url(../img/carlist/bg_carlist.png) no-repeat left top;
+				cursor: pointer;	
+			}
+			#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li.hover,
+			#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li.active {
+				background-image: url(../img/carlist/bg_carlist_on.png);
+			}
+				#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li > p.carPic,
+				#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li > div.parkingStatus {
+					display:block;
+					/* width: 161px; */
+				}
+				#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li p.carPic,
+				#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li div.parkingStatus {
+				}
+				#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li p.carPic{
+					margin: 10px 0 3px;
+					text-align: center;
+				}
+				#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li .parkingStatus {
+				}
+					#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li .parkingStatus p.parkingMeter {
+						margin: 0 0 2px;
+					}
+						#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li .parkingStatus p.parkingMeter img {
+							display: block;
+							margin: 0 auto;
+							width: 145px;
+						}
+					#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li .parkingStatus p.carInfo {
+						margin: 0 auto 3px;
+						padding: 0 4px 1px;
+						width: 137px;
+						background: #000000;
+						text-align: right;
+						color: #FFFFFF;
+						font: bold 16px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+					}
+					#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery ul li .parkingStatus p.name {
+						margin: 0 auto;
+						width: 145px;
+						font-size: 12px;
+					}
+					#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery .slider {
+						padding: 162px 0 0;
+						width: 648px;
+						height: 20px;
+						background: url(../img/carlist/slider_bg.gif) no-repeat left bottom;
+					}
+					#mainArea #ownCarsArea .inner #ownCarsList .sliderGallery .handle {
+					    position: absolute;
+					    top: 164px;
+					    _top: 162px;
+					    z-index: 150;
+					    width: 153px;
+					    height: 16px;
+					    cursor: move;
+						background: url(../img/carlist/slider_ctrl.gif) no-repeat center center;
+					}
+		
+		#mainArea #ownCarsArea .inner #carIndividual {
+			position: relative;
+			padding: 10px 10px 10px 30px;
+			min-height: 134px;
+			_height: 134px;/*IE6*/
+			border-bottom-right-radius: 4px;/*CSS3*/
+			border-bottom-left-radius: 4px;/*CSS3*/
+			-webkit-border-bottom-right-radius: 4px;/*safari*/
+			-webkit-border-bottom-left-radius: 4px;/*safari*/
+			-moz-border-radius-bottomright: 4px;/*Firerox*/
+			-moz-border-radius-bottomleft: 4px;/*Firerox*/
+			background: #DBCECB url(../img/carlist/label.gif) no-repeat left top;
+		}
+			#mainArea #carIndividual .loading {
+				width: 674px;
+				height: 155px;
+				border-bottom-right-radius: 4px;/*CSS3*/
+				-webkit-border-bottom-right-radius: 4px;/*safari*/
+				-moz-border-radius-bottomright: 4px;/*Firerox*/
+				*margin:-10px;
+				
+			}
+				#mainArea #ownCarsArea .inner #carIndividual .loading img {
+					margin: 30px auto;
+				}
+			#mainArea #ownCarsArea .inner #carIndividual p.carPic {
+				display: inline;
+				float: left;
+				margin-right: 10px;
+				width: 254px;
+				height: 136px;
+				background: #FFFFFF;
+				text-align: center;
+			}
+				#mainArea #ownCarsArea .inner #carIndividual p.carPic img {
+					display: block;
+					margin: 0 auto;
+				}
+			#mainArea #ownCarsArea .inner #carIndividual h3 {
+				margin: 0 0 5px 264px;
+				padding: 8px 10px 8px 25px;
+				background: #ED6E8F url(../img/carlist/arrow.gif) no-repeat 10px center;
+				font-size: 14px;
+				color: #FFFFFF;
+			}
+			#mainArea #ownCarsArea .inner #carIndividual p.alert {
+				margin: 0 0 5px 264px;
+				padding: 10px 10px 10px 30px;
+				background: #FFFFFF url(../img/icon/parking.gif) no-repeat 10px 8px;
+				font-size: 12px;
+				line-height: 1.4;
+			}
+			#mainArea #ownCarsArea .inner #carIndividual p.icon {
+				margin: 0 0 5px 264px;
+				padding: 10px 10px 10px 30px;
+				background: #FFFFFF no-repeat 10px 8px;
+				font-size: 12px;
+				line-height: 1.4;
+			}
+			#mainArea #ownCarsArea .inner #carIndividual p.icon.alert {
+				background-image: url(../img/icon/parking.gif);
+			}
+			#mainArea #ownCarsArea .inner #carIndividual p.icon.money {
+				background-image: url(../img/icon/money.gif);
+			}
+			#mainArea #ownCarsArea .inner #carIndividual p.icon.gas {
+				background-image: url(../img/icon/gas.gif);
+			}
+			#mainArea #ownCarsArea .inner #carIndividual p.icon.free {
+				background-image: url(../img/icon/free.gif);
+			}
+			#mainArea #ownCarsArea .inner #carIndividual p.icon.loss {
+				background-image: url(../img/icon/loss.gif);
+			}
+			#mainArea #ownCarsArea .inner #carIndividual ul.btnList {
+				margin: 0 0 0 264px;
+				padding: 8px 0;
+				background-color: #EADFDC;
+				text-align: center;
+			}
+				#mainArea #ownCarsArea .inner #carIndividual ul.btnList li {
+					margin: 0;
+					display: -moz-inline-box;/*Firefox2*/
+					display: inline-block;/*CSS3*/
+					/display: inline;/*IE6,IE7*/
+					/zoom: 1;/*IE6,IE7*/
+				}
+					#mainArea #ownCarsArea .inner #carIndividual ul.btnList li a {
+						display: block;
+						/margin: 2px;/*IE6,IE7*/
+						height: 28px;
+						background: url(../img/carlist/btn.gif);
+						background-repeat: no-repeat;
+						text-indent: -9999px;
+					}
+					#mainArea #ownCarsArea .inner #carIndividual ul.btnList li#btnPresent a {
+						width: 139px;
+						background-position: left top;
+					}
+					#mainArea #ownCarsArea .inner #carIndividual ul.btnList li#btnPresent.disable a {
+						background-position: left bottom;
+						cursor: default;
+					}
+					#mainArea #ownCarsArea .inner #carIndividual ul.btnList li#btnChange a {
+						width: 206px;
+						background-position: right top;
+					}
+					#mainArea #ownCarsArea .inner #carIndividual ul.btnList li#btnChange.disable a {
+						background-position: right bottom;
+						cursor: default;
+					}
+
+
+
+/* @end */
+
+/* @group #newsArea */
+#mainArea #newsArea {
+	margin: 0 0 5px;
+	border: 1px solid #DDDDDD;
+}
+	#mainArea #newsArea .header {
+		position: relative;
+		margin: -1px 0 10px -1px;
+		width: 690px;
+		height: 31px;
+		background: url(../img/status/hdl.gif);
+	}
+		#mainArea #newsArea .header h2 {
+			text-indent: -9999px;
+		}
+	#mainArea #newsArea .header ul#newsTabs {
+	}
+		#mainArea #newsArea .header ul#newsTabs li {
+			position: absolute;
+			top: 6px;
+			width: 110px;
+		}
+			#mainArea #newsArea .header ul#newsTabs li a {
+				display: block;
+				width: 110px;
+				height: 23px;
+				overflow: hidden;
+				background: url(../img/status/switch.gif);
+			}
+		#mainArea #newsArea .header ul#newsTabs li#newsMyList {
+			right: 124px;
+		}
+			#mainArea #newsArea .header ul#newsTabs li#newsMyList a {
+				background-position: 0 -23px;
+			}
+			#mainArea #newsArea .header ul#newsTabs li#newsMyList a:hover,
+			#mainArea #newsArea .header ul#newsTabs li#newsMyList.ui-tabs-selected a {
+				background-position: 0 0;
+			}
+			#mainArea #newsArea .header ul#newsTabs li#newsMyList.ui-tabs-selected a {
+				cursor: default;
+			}
+		#mainArea #newsArea .header ul#newsTabs li#newsFriendList {
+			right: 10px;
+		}
+			#mainArea #newsArea .header ul#newsTabs li#newsFriendList a {
+				background-position: -110px -23px;
+			}
+			#mainArea #newsArea .header ul#newsTabs li#newsFriendList a:hover,
+			#mainArea #newsArea .header ul#newsTabs li#newsFriendList.ui-tabs-selected a {
+				background-position: -110px 0;
+			}
+			#mainArea #newsArea .header ul#newsTabs li#newsFriendList.active a {
+				cursor: default;
+			}
+	#mainArea #newsArea #newsBody {
+	}
+	#mainArea #newsArea #newsBody ul {
+		margin: 0 11px 7px 11px;
+	}
+	#mainArea #newsArea #newsBody ul.ui-tabs-hide {
+		display: none !important;
+	}
+		#mainArea #newsArea #newsBody ul li {
+			padding: 2px 0 5px 23px;
+			font-size: 12px;
+			line-height: 1.2;
+			background-position: 0 0;
+			background-repeat: no-repeat;
+		}
+		#mainArea #newsArea #newsBody ul li.gift {
+			background-image: url(../img/icon/gift.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.money {
+			background-image: url(../img/icon/money.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.ad {
+			background-image: url(../img/icon/ad.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.beginner {
+			background-image: url(../img/icon/beginner.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.car {
+			background-image: url(../img/icon/car.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.estate {
+			background-image: url(../img/icon/estate.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.free {
+			background-image: url(../img/icon/free.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.full {
+			background-image: url(../img/icon/full.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.gas {
+			background-image: url(../img/icon/gas.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.loss {
+			background-image: url(../img/icon/loss.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.money {
+			background-image: url(../img/icon/money.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.parking {
+			background-image: url(../img/icon/parking.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.police {
+			background-image: url(../img/icon/police.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.warning {
+			background-image: url(../img/icon/warning.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.item {
+			background-image: url(../img/icon/item.gif);
+		}
+		#mainArea #newsArea #newsBody ul li.card {
+			background-image: url(../img/icon/card.gif);
+		}
+			#mainArea #newsArea #newsBody ul li span {
+				color: #999999;
+			}
+
+
+
+
+
+/* @end */
+
+/* @group #carListArea */
+#carShopArea {
+}
+	#carShopArea .header {
+		background: url(../img/shop/hdl.png) no-repeat left top;
+	}
+	#carShopArea ul.listNav {
+		position: relative;
+		width: 668px;
+		height: 33px;
+		overflow: hidden;
+	}
+	#carShopArea ul.listNav.top {
+		margin: 10px 10px 0;
+		background: url(../img/shop/nav_top.gif) no-repeat;
+	}
+	#carShopArea ul.listNav.bottom {
+		margin: 0 10px 10px;
+		background: url(../img/shop/nav_bottom.gif) no-repeat;
+	}
+		#carShopArea ul.listNav li {
+			position: absolute;
+		}
+		#carShopArea ul.listNav.top li {
+			top: 4px;
+		}
+		#carShopArea ul.listNav.bottom li {
+			position: absolute;
+			top: 0;
+		}
+		#carShopArea ul.listNav li.next,
+		#carShopArea ul.listNav li.prev {
+			width: 79px;
+			height: 29px;
+			cursor: pointer;
+		}
+		#carShopArea ul.listNav.top li.next {
+			left: 317px;
+		}
+		#carShopArea ul.listNav.top li.prev {
+			left: 22px;
+		}
+		#carShopArea ul.listNav.bottom li.prev {
+			right: 317px;
+		}
+		#carShopArea ul.listNav.bottom li.next {
+			right: 22px;
+		}
+		#carShopArea ul.listNav li.showing {
+			width: 212px;
+			line-height: 29px;
+			text-align: center;
+		}
+		#carShopArea ul.listNav.top li.showing {
+			left: 103px;
+		}
+		#carShopArea ul.listNav.bottom li.showing {
+			right: 103px;
+		}
+		#carShopArea ul.listNav li.money {
+			font: bold 16px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+			color: #FFFFFF;
+			line-height: 25px;
+		}
+		#carShopArea ul.listNav.top li.money {
+			right: 20px;
+		}
+		#carShopArea ul.listNav.bottom li.money {
+			left: 20px;
+		}
+	#carShopArea .inner {
+		position: relative;
+		margin: 0 10px;
+		border: 10px solid #9B9B9B;
+		border-radius: 4px;/*CSS3*/
+		-webkit-border-radius: 4px;/*Safari*/
+		-moz-border-radius: 4px;/*Firefox*/
+		background-color: #D6D6D6;
+	}
+		#carShopArea .inner .loading {
+			padding: 40px 0;
+			width: 100%;
+			text-align: center;
+		}
+			#carShopArea .inner .loading img {
+			}
+		#carShopArea .inner .section {
+			margin: 10px 0 ;
+			padding: 0 10px 10px;
+			background: url(../img/shop/border.png) repeat-x left bottom;
+		}
+			#carShopArea .inner .section p.carPic {
+				display: inline;
+				float: left;
+				width: 254px;
+				height: 135px;
+				background: #FFFFFF;
+				text-align: center;
+			}
+				#carShopArea .inner .section p.carPic img {
+					margin: 7px 0 ;
+				}
+			#carShopArea .inner .section h3 {
+				margin: 0 0 5px 264px;
+				padding: 8px 10px 8px 24px;
+				background: #333333 url(../img/carlist/arrow.gif) no-repeat 10px center;
+				text-align: 15px;
+				color: #FFFFFF;
+				font-size: 12px;
+			}
+			#carShopArea .inner .section p.alert,
+			#carShopArea .inner .section ul.status {
+				margin: 0 0 5px 264px;
+				padding: 8px 10px;
+				line-height: 1.3;
+				font-size: 12px;
+				background: #FFFFFF;
+				font-size: 14px;
+			}
+				#carShopArea .inner .section ul.status li {
+					padding: 0 0 0 20px;
+					background-repeat: no-repeat;
+					background-position: left top;
+				}
+				#carShopArea .inner .section ul.status li.price {
+					background-image: url(../img/icon/money.gif);
+				}
+				#carShopArea .inner .section ul.status li.car {
+					background-image: url(../img/icon/car.gif);
+				}
+				#carShopArea .inner .section ul.status li.estate {
+					background-image: url(../img/icon/estate.gif);
+				}
+				#carShopArea .inner .section ul.status li.item {
+					background-image: url(../img/icon/item.gif);
+				}
+			#carShopArea .inner .section ul.btnList {
+			}
+				#carShopArea .inner .section ul.btnList li a {
+					background: url(../img/shop/btn_carshop.png) no-repeat;
+				}
+			#carShopArea .inner .section ul.btnList li.btnTrade {
+				right: 7px;
+			}
+				#carShopArea .inner .section ul.btnList li.btnTrade a {
+					width: 206px;
+					background-position: right top;
+				}
+				#carShopArea .inner .section ul.btnList li.btnTrade a.disable{
+                    background-position: right bottom;
+                }
+			#carShopArea .inner .section ul.btnList li.btnBuy {
+				left: 7px;
+			}
+				#carShopArea .inner .section ul.btnList li.btnBuy a {
+					width: 139px;
+				}
+				#carShopArea .inner .section ul.btnList li.btnBuy.disable a {
+					background-position: left bottom;
+				}
+
+
+/* @end */
+
+/* @group .box */
+.box {
+	border: 1px solid #DDDDDD;
+}
+	.box .header {
+		margin: -1px 0 0 -1px;
+		width: 690px;
+		height: 31px;
+		text-indent: -9999px;
+		overflow: hidden;
+	}
+		.box .inner .section ul.btnList {
+			position: relative;
+			margin: 0 0 0 264px;
+			height: 44px;
+			background: #E5E5E5;
+		}
+			.box .inner .section ul.btnList li {
+				position: absolute;
+				top: 8px;
+				height: 28px;
+				text-indent: -9999px;
+			}
+				.box .inner .section ul.btnList li a {
+					display: block;
+					height: 28px;
+				}
+
+
+/* @end */
+
+
+
+
+/* @end */
+
+/* @group #subArea */
+
+#subArea {
+	display: inline;
+	float: right;
+	margin: 0 0 20px;
+	width: 250px;
+}
+	#subArea #subAreaAd {
+		margin: 0;
+		padding: 0 0 5px;
+		width: 250px;
+		height: 250px;
+		overflow: hidden;
+	}
+		#subArea #subAreaAd iframe {
+			margin: 0;
+			padding: 0;
+			width: 250px;
+			height: 250px;
+			overflow: hidden;
+		}
+	#subArea #itemBox {
+		padding-bottom: 4px;
+		background: #FFFFFF url(../img/module/item/bg.gif) no-repeat left bottom;
+	}
+		#subArea #itemBox .header {
+			height: 30px;
+			background: #FFFFFF url(../img/module/item/bg.gif) no-repeat left top;
+			text-indent: -9999px;
+		}
+		#subArea #itemBox ul {
+			margin: 0 4px;
+			padding: 4px 4px 0;
+			background-color: #FFFFFF;
+			border: 1px solid #F09595;
+		}
+			#subArea #itemBox ul li {
+				position: relative;
+				margin: 0 0 4px;
+				padding: 0 0 4px;
+				border-bottom: 1px solid #FFE3E3;
+				font-size: 12px;
+			}
+				#subArea #itemBox ul li p.img {
+					display: inline;
+					float: left;
+					width: 63px;
+					height: 40px;
+				}
+				#subArea #itemBox ul li p.name {
+					margin: 0 0 5px 68px;
+					padding-top: 4px;
+				}
+				#subArea #itemBox ul li p.count {
+					margin: 0 0 0 68px;
+					padding: 2px 0 2px 36px;
+					line-height: 1em;
+					background: url(../img/module/item/cnt.gif) no-repeat left top;
+				}
+				#subArea #itemBox ul li p.status {
+					position: absolute;
+					right: 0;
+					bottom: 7px;
+				}
+					#subArea #itemBox ul li p.status a {
+						display: block;
+						width: 48px;
+						height: 16px;
+						background: url(../img/module/item/btn.gif) no-repeat;
+						text-indent: -9999px;
+					}
+					#subArea #itemBox ul li p.status.use a {
+						background-position: -48px 0;
+					}
+					#subArea #itemBox ul li p.status.used a {
+						background-position: 0 0;
+					}
+					#subArea #itemBox ul li p.status.able a {
+						background-position:-96px 0;
+					}
+
+
+/* @end */
+
+/* @group parts */
+
+
+.loading {
+	display: none;
+	/display: inline;
+	/zoom: 1;
+	z-index: 100;
+	background-color: #000000;
+	filter:alpha(opacity=80);/*IE*/
+	-moz-opacity:0.8;/*FF2*/
+	opacity: 0.8;/*FF,Safari,Opera*/
+	text-align: center;
+	vertical-align: middle;
+}
+	.loading img {
+		display: block;
+		margin: 20px auto;
+	}
+
+address#copyright {
+	display: block;
+	clear: both;
+	text-align: center;
+	font-size: 12px;
+}
+
+
+
+/* @end */
+
+/* @group overlay */
+#fullOverlay {
+	display: none;
+}
+#fullOverlay,
+#fullOverlay #overlay,
+#fullOverlay #overlay frame {
+	position: fixed;
+	_position: absolute;/*IE6*/
+	_top: expression(eval(document.documentElement.scrollTop+0));/*IE6*/
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	/*display: table;*/
+	width: 100%;
+	height: 100%;
+}
+	#fullOverlay #overlay {
+		margin-left:5px;
+		background: #ffffff;
+		_background: #ffffff;
+		*background: #ffffff;
+		opacity: 0.1;/*FF,Safari,Opera*/
+		filter:alpha(opacity=10);/*IE*/
+		_width: 980px;
+		_height: expression(eval(document.documentElement.clientHeight));
+		-moz-opacity:0.1;/*FF2*/
+	}
+	#fullOverlay #overWindow {
+		position: relative;
+		z-index: 10000;
+		display: block;
+		width: 500px;
+		margin: auto;
+		padding: 10px;
+		background: #AAAAAA;
+		border: 5px solid #FFFFFF;
+		border-radius: 3px;/*CSS3*/
+		-webkit-border-radius: 3px;/*Safari*/
+		-moz-border-radius: 3px;/*Firefox*/
+	}
+		#fullOverlay #overWindow .head {
+			position: relative;
+			padding-bottom: 5px;
+			height: 26px;
+		}
+			#fullOverlay #overWindow .head h2 {
+				min-height: 25px;
+				_height: 25px;/*IE6*/
+				line-height: 25px;
+				background: no-repeat left top;
+				font-size: 14px;
+				color: #FFFFFF;
+				vertical-align: center;
+				overflow: hidden;
+			}
+				#fullOverlay #overWindow .head h2 img,
+				#fullOverlay #overWindow .head h2 span {
+					line-height: 25px;
+					vertical-align: middle;
+				}
+				#fullOverlay #overWindow .head h2 img {
+					padding-right: 5px;
+				}
+			#fullOverlay #overWindow .head p.btnClose {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 18px;
+				height: 18px;
+				cursor: pointer;
+			}
+		#fullOverlay #overWindow .body {
+			clear: both;
+			padding: 10px;
+			background: #FFFFFF;
+		}
+			#fullOverlay #overWindow .body p {
+				line-height: 1.4;
+			}
+			#fullOverlay #overWindow .body p.car {
+				display: inline;
+				float: left;
+				margin: 0 0 5px;
+				width: 178px;
+				height: 133px;
+				text-align: center;
+				background: #FFFFFF;
+				/*border: 1px solid #A89692;*/
+			}
+			#fullOverlay #overWindow #friendPresent.body p.car {
+				height: auto;
+			}
+				#fullOverlay #overWindow .body p.car img {
+					display: block;
+					margin: 30px auto;
+				}
+				#fullOverlay #overWindow #friendPresent.body p.car img {
+					display: block !important;
+					margin: 10px auto !important;
+				}
+			#fullOverlay #overWindow .body p.message,
+			#fullOverlay #overWindow .body p.name,
+			#fullOverlay #overWindow .body p.price,
+			#fullOverlay #overWindow .body p.color,
+			#fullOverlay #overWindow .body p.description {
+				margin: 0 0 5px 190px;
+				line-height: 1.4;
+				font-size: 14px;
+			}
+				#fullOverlay #overWindow .body p.message strong {
+					color: #FF0000;
+					font-size: 1.1;
+				}
+			#fullOverlay #overWindow .body ul.btnList,
+			#fullOverlay #overWindow .body ul.btnList_report {
+				position: relative;
+				clear: both;
+				height: 44px;
+				background: #EEEEEE;
+			}
+				#fullOverlay #overWindow .body ul.btnList li,
+				#fullOverlay #overWindow .body ul.btnList_report li {
+					position: absolute;
+					top: 8px;
+					width: 119px;
+					height: 28px;
+					text-indent: -9999px;
+				}
+					#fullOverlay #overWindow .body ul.btnList li a {
+						display: block;
+						width: 119px;
+						height: 28px;
+						background: url(../img/overlay/btn_submit_cancel.png) no-repeat;
+					}
+					#fullOverlay #overWindow .body ul.btnList_report li a {
+						display: block;
+						width: 119px;
+						height: 28px;
+						background: url(../img/overlay/btn_itemuse_nouse.png) no-repeat;
+					}
+				#fullOverlay #overWindow .body ul.btnList li.submit,
+				#fullOverlay #overWindow .body ul.btnList_report li.submit {
+					right: 10px;
+				}
+					#fullOverlay #overWindow .body ul.btnList li.submit a,
+					#fullOverlay #overWindow .body ul.btnList_report li.submit a {
+						background-position: left top;
+					}
+				#fullOverlay #overWindow .body ul.btnList li.cancel,
+				#fullOverlay #overWindow .body ul.btnList_report li.cancel {
+					left: 10px;
+				}
+					#fullOverlay #overWindow .body ul.btnList li.cancel a,
+					#fullOverlay #overWindow .body ul.btnList_report li.cancel a {
+						background-position: right top;
+					}
+				#fullOverlay #overWindow #useitem.body ul.btnList {
+				}
+					#fullOverlay #overWindow #useitem.body ul.btnList li a {
+						background: url(../img/items/btn_itemuse_nouse.png) no-repeat;
+					}
+					#fullOverlay #overWindow #useitem.body ul.btnList li.submit a {
+						background-position: left top;
+					}
+					#fullOverlay #overWindow #useitem.body ul.btnList li.cancel a {
+						background-position: right top;
+					}
+
+
+/* @end */
+
+/* @group Card */
+#overWindow {
+}
+	#overWindow h3 {
+		margin-bottom: 5px;
+		padding-bottom: 2px;
+		border-bottom: 1px solid #AAAAAA;
+	}
+	#overWindow p.alert {
+		margin: 20px 0 20px;
+		text-align: center;
+		font-size: 16px;
+		line-height: 1.4;
+	}
+	
+	#overWindow #cardMaintenance,
+	#overWindow #trade,
+	#overWindow #userCar {
+	}
+		#overWindow #cardMaintenance .innerBody,
+		#overWindow #trade .innerBody,
+		#overWindow #userCar .innerBody {
+			max-height: 400px;
+			_height: 400px;/*IE6*/
+			overflow: auto;
+		}
+		#overWindow #cardMaintenance li,
+		#overWindow #trade li,
+		#overWindow #userCar li {
+			margin-bottom: 5px;
+		}
+			#overWindow #cardMaintenance li label,
+			#overWindow #trade li label,
+			#overWindow #userCar li label {
+				border: 3px solid #FFFFFF;
+				display: block;
+				padding: 5px 10px 10px;
+				cursor: pointer;
+			}
+			#overWindow #cardMaintenance li label:hover,
+			#overWindow #trade li label:hover,
+			#overWindow #userCar li label:hover {
+				border: 3px solid #CCCCCC;
+				background: #CCCCCC;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/
+			}
+			#overWindow #cardMaintenance li label.active,
+			#overWindow #trade li label.active,
+			#overWindow #userCar li label.active {
+				border: 3px solid #F2A1A1;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/
+			}
+			#overWindow #cardMaintenance li label.active,
+			#overWindow #trade li label.active,
+			#overWindow #userCar li label.active {
+				border: 3px solid #F2A1A1;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/
+			}
+			#overWindow #cardMaintenance li label.active:hover,
+			#overWindow #trade li label.active:hover,
+			#overWindow #userCar li label.active:hover {
+				border: 3px solid #F2A1A1;
+				background: #FFFFFF;
+				cursor: default;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/
+			}
+			#overWindow #cardMaintenance li input,
+			#overWindow #trade li input,
+			#overWindow #userCar li input,
+			#overWindow #cardMaintenance li img,
+			#overWindow #trade li img,
+			#overWindow #userCar li img {
+				display: -moz-inline-box;/*Firefox2*/
+				display: inline-block;/*CSS3*/
+				/display: inline !important;/*IE6,IE7*/
+				/zoom: 1 !important;/*IE6,IE7*/
+				float: left;
+				vertical-align: middle;
+			}
+	
+	#overWindow #friendPresent {
+	}
+		#overWindow #friendPresent .toFriend,
+		#overWindow #friendPresent .toFriend select {
+			font-size: 14px;
+			vertical-align: baseline;
+		}
+		#overWindow #friendPresent .toFriend {
+			margin-bottom: 5px;
+		}
+		#overWindow #friendPresent p.car {
+			display: inline;
+			width: 100% !important;
+			border: none;	
+			text-align: center;
+		}
+			#overWindow #friendPresent img {
+				display: inline !important;
+				margin: 0 !important;
+				padding: 0;
+			}
+
+	#overWindow #userCar {
+	}
+		#overWindow .userStatus {
+			margin-bottom: 10px;
+		}
+		#overWindow #userCar p.userPic,
+		#overWindow #userCar p.userName {
+			display: -moz-inline-box;/*Firefox2*/
+			display: inline-block;/*CSS3*/
+			/display: inline;/*IE6,IE7*/
+			/zoom: 1;/*IE6,IE7*/
+			font-size:18px;
+		}
+		#overWindow #userCar p.userPic {
+			margin-right: 5px;
+			width: 50px;
+			height: 50px;
+		}
+			#overWindow #userCar p.userPic img {
+				display: block;
+			}
+		#overWindow #userCar p.userMoney {
+			display: -moz-inline-box;/*Firefox2*/
+			display: inline-block;/*CSS3*/
+			/display: inline;/*IE6,IE7*/
+			/zoom: 1;/*IE6,IE7*/
+			font-size: 12px;
+		}
+			#overWindow #userCar p.userMoney span {
+				font-size: 22px;
+				font: bold 16px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+			}
+		#overWindow #userCar ul.userCarList,
+		#overWindow #trade ul.userCarList {
+		}
+			#overWindow #userCar ul.userCarList label,
+			#overWindow #trade ul.userCarList label {
+				overflow: hidden;
+			}
+			#overWindow #userCar ul.userCarList li,
+			#overWindow #trade ul.userCarList li {
+				overflow: hidden;
+				margin-bottom: 5px;
+			}
+				#overWindow #userCar ul.userCarList li img,
+				#overWindow #trade ul.userCarList li img {
+				}
+			#overWindow #userCar ul.userCarList li p,
+			#overWindow #trade ul.userCarList li p,
+			#overWindow #userCar ul.userCarList li span.description,
+			#overWindow #trade ul.userCarList li span.description {
+				display: inline-block;/*CSS3*/
+				/display: inline;/*IE6,IE7*/
+				/zoom: 1;/*IE6,IE7*/
+				margin: 10px 0 0 10px;
+				font-size: 14px;
+				line-height: 1.4;
+				vertical-align: middle;
+			}
+			#overWindow ul.userCarList li span.description {
+				width: 250px;
+			}
+/* @end */
+
+/* @group parking */
+
+
+/* @end */
+
+/* @group help */
+
+body#help {
+}
+	body#help address#copyright {
+		padding-top: 10px;
+	}
+
+
+/* @end */

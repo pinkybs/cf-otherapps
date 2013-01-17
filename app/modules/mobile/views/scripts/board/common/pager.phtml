@@ -1,0 +1,7 @@
+{% if $pager.maxPager > 1 %}
+<div class="nav" style="color:#{% $designSetting.linkText %};text-align:center;">
+	{% if $pager.pageIndex != 1 %}{% emoji code="F98A"%}<a href='{% "$baseUrl/`$pager.requestUrl`&CF_page_index=`$pager.pageIndex-1`"|mixiurl %}' accesskey="4">前を表示</a>{% /if %}
+	{% if $pager.maxPager != $pager.pageIndex%}{% emoji code="F98C"%}<a href='{% "$baseUrl/`$pager.requestUrl`&CF_page_index=`$pager.pageIndex+1`"|mixiurl %}' accesskey="6">次を表示</a>{% /if %}
+	<div class="line" style="background:#{% $designSetting.tplColor_i %};"><img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="1" /></div>
+</div>
+{% /if %}

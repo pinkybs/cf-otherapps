@@ -1,0 +1,34 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+	<ul id="nav">
+		<li><a href="{%$baseUrl%}/manager/listapp">アプリケーション一覧</a></li>
+		<li><a href="{%$baseUrl%}/manager/manageuser">ユーザーID管理</a></li>
+		<li><a href="{%$baseUrl%}/manager/changepass">パスワード変更</a></li>
+		<li><a href="{%$baseUrl%}/auth/logout">ログアウト</a></li>
+	</ul>
+	<div id="container">
+		<h2>role&resource relative</h2>
+		<h3>Roles</h3>
+		<div id="divRoleList">
+			<ul style="list-style-type:circle">
+			{% foreach from=$roles item=data %}
+				<li>{%$data.rid%}.<a href="javascript:void(0);" onclick="showRelRes({%$data.rid%},'{%$data.role_name%}');return false;">{%$data.role_name%}</a>{%$data.role_description|escape%}</li>
+			{% /foreach %}
+			</ul>
+		</div>
+		<br />
+		<h3>Resource<span id="lblSelRole"></span></h3>
+		<form method="post" id="frmSet" name="frmSet">
+		<div id="divResource"></div>
+		<input type="button" id="btnOk" name="btnOk" value="　OK　" />
+		<input type="hidden" id="rid" name="rid" value="" />
+		</form>
+
+		<div id="loading"></div>
+		<input type="hidden" id="pageIndex" name="pageIndex" value="1" />
+		<script src="{%$staticUrl%}/admin/js/manager/manageroleandresource.js?{%$version.js%}"></script>
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

@@ -1,0 +1,59 @@
+﻿@charset "utf-8";
+
+/*
+----------------------------------------------
+debug CSS
+
+Created Date: 2009/10/23
+Author: Taiki Toyosawa
+Last Up Date : 2009/10/23
+Author: Taiki Toyosawa
+----------------------------------------------
+*/
+
+
+/*clearfix
+----------------------------------------------*/
+.clearfix,
+ul,
+ol,
+li,
+#hdr,
+#ftr,
+#container,
+#wrap,
+.section,
+.inner,
+.box,
+#statusArea,
+#playAreaWrap,
+#overlayBox,
+#leftBox,
+#rightBox,
+#middleBox {
+    zoom:1;/*for IE 5.5-7*/
+}
+.clearfix:after,
+ul:after,
+ol:after,
+li:after,
+#hdr:after,
+#ftr:after,
+#container:after,
+#wrap:after,
+.section:after,
+.inner:after,
+.box:after,
+#statusArea:after,
+#playAreaWrap:after,
+#overlayBox:after,
+#leftBox:after,
+#rightBox:after,
+#middleBox:after {/*for modern browser*/
+    content:".";
+    display: block;
+    height:0px;
+    clear:both;
+    visibility:hidden;
+}
+

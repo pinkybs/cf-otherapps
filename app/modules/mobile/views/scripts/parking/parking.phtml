@@ -1,0 +1,42 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="parking">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">駐車する</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		駐車する車を選択してください｡<br />
+	</div><!--/.description-->
+
+	<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+
+	{% foreach from=$cars item=car %}
+		{%if $car.carStatus==1%}
+		<div class="section" style="background:#fee;">
+			<span style="color:#cd424a;">{% emoji code="F8BF"%}{%$carColor[$car.car_color]%}{%$car.name%}</span><br />
+			{%$car.status%}<br />
+			<div style="text-align:right;">
+				{%if $car.carStatus==1%}
+					{%if $car.parking_uid==null%}
+						ガソリン代：
+					{%else%}
+						収入:
+					{%/if%}
+					{%$car.money%}&nbsp;<br />
+					<a href='{% "$baseUrl/mobile/parking/parkingsubmit?parking_pid=$pid&parking_location=$location&parking_car_id=`$car.car_id`&parking_car_color=`$car.car_color`"|mixiurl %}'>この車を選択</a>&nbsp;
+				{%else%}
+					<span style="color:#999;">この車を選択</span>&nbsp;
+				{%/if%}
+			</div>
+			<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+		</div><!--/.section-->
+		{%/if%}
+	{% /foreach %}
+	
+</div><!--/#parking-->
+
+{%include file="parking/common/footer.phtml"%}

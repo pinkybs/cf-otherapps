@@ -1,0 +1,1804 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+main CSS
+
+Created Date : 2009/06/10
+Author: Taiki Toyosawa
+Last Up Date : 2009/06/10
+Author: Taiki Toyosawa
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+
+		/*共通のスタイル・・・ここは仮置きです*/
+body {
+	_background: url(null) fixed;/*IE6*/
+	font-family: 'Hiragino Kaku Gothic Pro';/*Safari*/
+	/font-family: 'メイリオ';/*IE6,IE7*/
+	color: #333333;
+}
+a {
+	color: #2f59ff;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+a:visited {
+	color: #941D55;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    visibility: hidden;
+    height: 0.1px;
+    font-size: 0.1em;
+    line-height: 0;
+    clear: both;
+}  
+a:hover img,
+input[type="image"]:hover {
+	filter: alpha(opacity=80);/*IE*/
+	-moz-opacity:0.80;/*Firefox*/
+	opacity:0.80;/*CSS3*/
+}
+
+div.headingHelp {
+	position: absolute;
+	top: 4px;
+	right: 5px;
+	width: 16px;
+	height: 16px;
+	z-index: 20;
+}
+	div.headingHelp a {
+		display: block;
+		overflow: hidden;
+		text-indent: -10000px;
+		width: 16px;
+		height: 16px;
+		background-image: url(../img/icn/help.png);
+		outline: none;
+	}
+
+/*p.picThum
+サムネールのセット*/
+p.picThum {
+	
+}
+	p.picThum a {
+		display: block;
+		padding: 2px;
+		width: 50px;
+		height: 50px;
+		background: url(../img/bg_pic_friend.png) no-repeat left top;
+	}
+	p.picThum a:hover {
+		background: url(../img/bg_pic_friend_over.png) no-repeat left top;
+	}
+	/*ここのpic.pngはダミー画像*/
+	p.picThum a img {
+		display: block;
+		background: url(../img/pic.png) no-repeat center center;
+	}
+
+/*hdr
+----------------------------------------------*/
+#hdr {
+	width: 945px;
+	margin: 0 auto 2px auto;
+	overflow: hidden;
+}
+	#logo {
+		float: left;
+		width: 179px;
+	}
+		#logo a {
+			outline: none;
+		}
+	
+	#gNav {
+		display: inline;
+		float: left;
+		margin: 40px 0 0 0;
+		width: 766px;
+		height: 30px;
+		overflow: hidden;
+		background: url(../img/hdr/bg.png) no-repeat left top;
+	}
+		ul#homeNav {
+			display: inline;
+			float: left;
+			padding-left: 0;
+			width: 500px;
+			font-size: 14px;
+			line-height: 1;
+		}
+			ul#homeNav li {
+				display: inline;
+				float: left;
+				padding: 0 6px 0 3px;
+				margin: 0;
+				background: url(../img/hdr/border.gif) no-repeat right center;
+			}
+				ul#homeNav li a {
+					display: block;
+					_display: inline;
+					color: #FFFFFF;
+				}
+				ul#homeNav li a:hover {
+					color: #8AD84D;
+					background: url(../img/hdr/staybg_bottom.png) no-repeat right 4px;
+				}
+				ul#homeNav li a span {
+					padding: 0 6px;
+					display: block;
+					_display: inline;
+				}
+				ul#homeNav li a:hover span {
+					background: url(../img/hdr/staybg_top.png) no-repeat left 4px;
+				}
+				ul#homeNav li.stay a {
+					color: #8AD84D;
+					background: url(../img/hdr/staybg_bottom.png) no-repeat right 4px;
+				}
+				
+				ul#homeNav li.stay a span {
+					background: url(../img/hdr/staybg_top.png) no-repeat left 4px;
+				}
+
+				
+		ul#subNav {
+			display: inline;
+			float: right;
+			margin-right: 10px;
+			width: 256px;
+			text-align: right;
+			font-size: 12px;
+		}
+			ul#subNav li {
+				display: inline;
+				margin-left: 10px;
+			}
+				ul#subNav li a {
+					padding: 0 0 0 18px;
+					background-repeat: no-repeat;
+					background-position: left center;
+				}
+					ul#subNav li#navHelp a {
+						background-image: url(../img/icn/help.png);
+					}
+					ul#subNav li#navInvite a {
+						background-image: url(../img/icn/invite.png);
+					}
+					
+			ul#homeNav li,
+			ul#subNav li {
+				line-height: 30px;
+				vertical-align: bottom;
+			}
+				ul#homeNav li a {
+					height: 30px;
+					font-weight: bold;
+					text-decoration: none;
+				}
+				ul#homeNav li a:hover {
+					text-decoration: none;
+				}
+				ul#subNav li a {
+					height: 30px;
+					color: #FFFFFF;
+					font-weight: bold;
+					text-decoration: none;
+				}
+				ul#subNav li a:hover {
+					text-decoration: underline;
+				}
+
+
+
+/*container
+----------------------------------------------*/
+#container {
+	margin: 0 auto;
+	width: 945px;
+}
+
+
+/*primaryColumn
+----------------------------------------------*/
+#primaryColumn {
+	dispaly: inline;
+	float: left;
+	width: 220px;
+}
+
+	/*profBox
+	----------------------------------------------*/
+#profBox {
+	clear: both;
+	padding: 0 0 10px 0;
+	margin-bottom: 10px;
+	font-size: 10px;
+	width: 220px;
+	background: url(../img/contents/home/profBox_bottom.png) no-repeat left bottom;
+}
+body#friendHome #profBox {
+	background: url(../img/contents/friend/profBox.png) no-repeat left bottom;
+}
+	#profBox h2 {
+		padding: 18px 14px 10px 14px;
+		overflow: hidden;
+		font-size: 16px;
+		font-weight: bold;
+		background: url(../img/contents/home/profBox_heading.png) no-repeat left top;
+	}
+	body#friendHome #profBox h2 {
+		background: url(../img/contents/friend/profBox.png) no-repeat left top;
+	}
+	#profBox p.picThum {
+		display: inline;
+		float: left;
+		padding: 0;
+		margin: 0 5px 2px 10px;
+	}
+	#profBox p.univ,
+	#profBox p.department,
+	#profBox p.subject,
+	#profBox p.campus {
+		padding: 0;
+		margin: 0 10px 0 69px;
+		line-height: 1.1;
+	}
+		/*  ↓#profGraphNull  */
+	#profBox #profGraphNull {
+		padding: 10px 0 0 0;
+		margin: 0 auto 0 auto;
+		width: 200px;
+		background: url(../img/contents/home/border_dotted.gif) repeat-x left 5px;
+	}
+	#profBox #profGraphNull p.picNull {
+		padding: 0 0 5px 0;
+		margin: 0;
+	}
+	#profBox #profGraphNull p.btn{
+		padding: 0;
+		margin: 0;
+	}
+		/*  ↓#profBox #profGraph には現在画像のダミーを表示しています   */
+	#profBox #profGraph {
+		padding: 10px 0 0 0;
+		margin: 0 auto 0 auto;
+		width: 200px;
+		height: 216px;
+		background: url(../img/contents/home/border_dotted.gif) repeat-x left 5px;
+	}
+
+	/*memberBox
+	----------------------------------------------*/
+#memberBox {
+	clear: both;
+	position: relative;
+	padding: 0 0 10px 0;
+	margin-bottom: 10px;
+	font-size: 10px;
+	width: 220px;
+	background: url(../img/contents/home/subBox_bottom.png) no-repeat left bottom;
+}
+	#memberBox h2 {
+		overflow: hidden;
+		padding: 0;
+		margin: 0;
+		font-size: 12px;
+		font-weight: bold;
+		background: url(../img/contents/home/subBox_heading.png) no-repeat left top;
+	}
+	body#friendHome #memberBox h2 {
+		background: url(../img/contents/friend/subBox_heading.png) no-repeat left top;
+	}
+		#memberBox h2 span {
+			display: block;
+			padding: 7px 10px 5px 26px;
+			background: url(../img/icn/icn_member.png) no-repeat 8px center;
+		}
+	#memberBox li {
+		dispaly: block;
+		padding: 5px 0;
+		margin: 0 10px;
+		border-bottom: 1px dotted #888;
+		}
+		#memberBox p.picThum {
+			display: inline;
+			float: left;
+			padding: 0;
+			margin: 0;
+		}
+		#memberBox p.name,
+		#memberBox p.univInfo,
+		#memberBox p.valuation {
+			padding: 1px 0;
+			margin: 0 0 0 62px;
+			line-height: 1.1em;
+		}
+		/*null*/
+	#memberBox div.null {
+		padding: 10px 0 0 0;
+		margin: 0 auto;
+		width: 200px;
+	}
+		#memberBox div.null p {
+			padding: 0;
+			margin: 0;
+		}
+	
+	#memberBox .more {
+		clear: both;
+		padding-top: 10px !important;
+	}
+
+/*secondaryColumn
+----------------------------------------------*/
+#secondaryColumn {
+	dispaly: inline;
+	float: left;
+	margin: 0 0 0 10px;
+	width: 455px;
+}
+
+	/*infoBox
+	----------------------------------------------*/
+#infoBox {
+	clear: both;
+	position: relative;
+	padding: 0 0 0 0;
+	margin-bottom: 10px;
+	font-size: 10px;
+	width: 455px;
+	background: url(../img/contents/home/infoBox_bottom.png) no-repeat left bottom;
+}
+	#infoBox ul {
+		padding: 6px 7px 5px 7px;
+		margin: 0;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 1.2em;
+		background: url(../img/contents/home/infoBox_heading.png) no-repeat left top;
+	}
+		#infoBox ul li {
+			display: block;
+			padding: 2px 0 2px 18px;
+			margin: 0;
+			background: transparent url(../img/icn/info.png) no-repeat left top;
+		}
+		#infoBox ul li.info {
+			background: transparent url(../img/icn/info.png) no-repeat left top;
+		}
+		#infoBox ul li.alert {
+			background: transparent url(../img/icn/alert.png) no-repeat left top;
+		}
+			#infoBox ul li.alert a {
+				color: #ff5600;
+			}
+		
+	/*tabBox
+	----------------------------------------------*/
+		/*タブ共通
+		----------------------------------------------*/
+#tabBox {
+	position: relative;
+	clear: both;
+	padding: 0 0 1px 0;
+	margin-bottom: 10px;
+	font-size: 12px;
+	width: 455px;
+	background: url(../img/contents/home/mainBox_bottom.png) no-repeat left bottom;
+}
+body#friendHome #tabBox {
+	background: url(../img/contents/friend/mainBox_bottom.png) no-repeat left bottom;
+}
+	#tabBox .tabSection {
+		padding: 0;
+		margin: 0;
+		width: 455px;
+		background: url(../img/contents/home/mainBox_tabTop.png) no-repeat left top;
+	}
+	body#friendHome #tabBox .tabSection {
+		background: url(../img/contents/friend/mainBox_tabTop.png) no-repeat left top;
+	}
+	#tabBox .tabSection.absence {
+		
+	}
+	#tabBox .tabSection h2.tab {
+		position: absolute;
+		height: 31px;
+	}
+		#tabBox .tabSection h2.tab a {
+			display: block;
+			overflow: hidden;
+			width: 100%;
+			height: 31px;
+			text-indent: -10000px;
+			outline: none;
+		}
+		#tabBox .tabSection.stay .tab a {
+			background-position: left -62px;
+		}
+		#tabBox .tabSection .tab a:hover {
+			background-position: left -31px;
+		}
+		#tabBox .tabSection.stay h2.tab a:hover {
+			background-position: left -62px;
+		}
+	#tabBox .tabSection .block {
+		padding: 41px 10px 0 10px;
+		margin: 0;
+	}
+		#tabBox .tabSection .block h2.blockHead {
+			margin: 0 0 5px 0;
+			padding: 7px 8px 3px 8px;
+			font-size: 13px;
+			font-weight: bold;
+			background: url(../img/contents/home/bg_blockHead.png) no-repeat left top;
+			border-bottom: 1px solid #d0d3c1;
+		}
+	#tabBox .tabSection .innerBlock {
+		padding: 0 0 8px 0;
+		margin: 0 0 10px 0;
+		background: url(../img/contents/home/mb_innerBlock_bottom.png) no-repeat left bottom;
+	}
+	body#friendHome #tabBox .tabSection .innerBlock {
+		background: url(../img/contents/friend/mb_innerBlock_bottom.png) no-repeat left bottom;
+	}
+	#tabBox .tabSection dl.answerList,
+	#tabBox .tabSection p {
+			padding: 0;
+			margin: 0 0 10px 0;
+		}
+			#tabBox .tabSection dl.answerList dt {
+				padding: 0;
+				margin: 0;
+			}
+			#tabBox .tabSection dl.answerList dt a {
+				padding: 2px 10px 2px 19px;
+				margin: 0;
+				font-size: 12px;
+				font-weight: bold;
+				background: url(../img/icn/icn_q.png) no-repeat left top;
+			}
+			#tabBox .tabSection dl.answerList dd {
+				padding: 0 0 12px 0;
+				margin: 0 0 5px 0;
+				font-size: 12px;
+				font-weight: bold;
+				background: url(../img/contents/home/answerBox.png) no-repeat left bottom;
+				border-bottom: 1px dotted #8AD84D;
+			}
+			body#friendHome #tabBox .tabSection dl.answerList dd {
+				border-bottom: 1px dotted #2db2c8;
+			}
+			#tabBox .tabSection dl.answerList dd span{
+				display: block;
+				padding: 18px 10px 0 10px;
+				margin: 0;
+				font-size: 12px;
+				font-weight: bold;
+				background: url(../img/contents/home/answerBox.png) no-repeat left top;
+			}
+	/*クラス：stayで表示,absenceで非表示*/
+	#tabBox .tabSection.absence .block {
+		display: none;
+	}
+	#tabBox .tabSection.stay .block {
+		display: block;
+	}
+		/*タブセクション：アンケート
+		----------------------------------------------*/
+	#tabBox #tabSectionSurvey h2.tab {
+		top: 0;
+		left: 8px;
+		width: 107px;
+	}
+		#tabBox #tabSectionSurvey h2.tab a {
+			background-image: url(../img/contents/home/tabSurvey.png);
+		}
+		body#friendHome #tabBox #tabSectionSurvey h2.tab a {
+			background-image: url(../img/contents/friend/tabSurvey.png);
+		}
+		body#friendHome #tabBox #tabSectionSurvey .block h2.blockHead {
+			margin: 0 0 10px 0;
+		}
+		#tabBox #tabSectionSurvey .innerBlock h3.innerBlockHead {
+			margin: 0 0 5px 0;
+			padding: 0 0 8px 0;
+			font-size: 12px;
+			font-weight: bold;
+			background: url(../img/contents/home/bg_leadQustion_bottom.png) no-repeat 10px bottom;
+		}
+			#tabBox #tabSectionSurvey .innerBlock h3.innerBlockHead span {
+				display: block;
+				padding: 19px 15px 0 15px;
+				margin: 0;
+				font-size: 12px;
+				font-weight: bold;
+				background: url(../img/contents/home/mb_innerBlock_h3_top.png) no-repeat left top;
+			}
+			body#friendHome #tabBox #tabSectionSurvey .innerBlock h3.innerBlockHead span {
+				background: url(../img/contents/friend/mb_innerBlock_h3_top.png) no-repeat left top;
+			}
+			#tabBox #tabSectionSurvey .innerBlock h3.innerBlockHead span a,
+			#tabBox #tabSectionSurvey .innerBlock h3.innerBlockHead span span {
+				padding: 1px 10px 3px 19px;
+				margin: 0;
+				font-size: 16px;
+				color: red;
+				font-weight: bold;
+				background: url(../img/icn/icn_q.png) no-repeat left top;
+			}
+			#tabBox #tabSectionSurvey .innerBlock h3.innerBlockHead span span {
+				color: #333333;
+			}
+		#tabBox #tabSectionSurvey .innerBlock ul.selectList {
+			margin: 0;
+			padding: 0 8px 5px 8px;
+			width: 420px;
+		}
+			#tabBox #tabSectionSurvey .innerBlock ul.selectList li {
+				float: left;
+				margin: 0;
+				padding: 0;
+				width: 210px;
+				height: 27px;
+			}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li a {
+					display: block;
+					margin: 0;
+					padding: 7px 5px 7px 25px;
+					width: 180px;
+					color: #fff;
+					font-size: 12px;
+					font-weight: bold;
+					text-decoration: none;
+					background-image: url(../img/btn/btnSelect.png);
+					background-repeat: no-repeat;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw1 a {
+					background-position: left top;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw2 a {
+					background-position: left -32px;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw3 a {
+					background-position: left -62px;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw4 a {
+					background-position: left -94px;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw5 a {
+					background-position: left -126px;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw6 a {
+					background-position: left -158px;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw1 a:hover {
+					background-position: -212px top;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw2 a:hover {
+					background-position: -212px -32px;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw3 a:hover {
+					background-position: -212px -62px;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw4 a:hover {
+					background-position: -212px -94px;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw5 a:hover {
+					background-position: -212px -126px;
+				}
+				#tabBox #tabSectionSurvey .innerBlock ul.selectList li.asw6 a:hover {
+					background-position: -212px -158px;
+				}
+				
+		
+		#tabBox #tabSectionSurvey p.btn30sec {
+			padding: 0;
+			margin: 0 0 10px 0;
+			text-align: center;
+		}
+		#tabBox #tabSectionSurvey .innerBlock p.alert {
+			margin: 0;
+			padding: 0 10px 0 10px;
+			color: #666;
+			font-size: 10px;
+		}
+		
+		/*タブセクション：キャラクター通信簿
+		----------------------------------------------*/
+	#tabBox #tabSectionReport h2.tab {
+		top: 0;
+		left: 115px;
+		width: 159px;
+	}
+		#tabBox #tabSectionReport h2.tab a {
+			background-image: url(../img/contents/home/tabReport.png);
+		}
+		body#friendHome #tabBox #tabSectionReport h2.tab a {
+			background-image: url(../img/contents/friend/tabReport.png);
+		}
+		#tabBox #tabSectionReport .block h2.blockHead {
+			margin: 0 0 10px 0;
+		}
+		#tabBox #tabSectionReport .innerBlock h3.innerBlockHead {
+			margin: 0 0 5px 0;
+			padding: 0 0 8px 0;
+			font-size: 12px;s
+			font-weight: bold;
+			background: url(../img/contents/home/bg_leadQustion_bottom.png) no-repeat 10px bottom;
+		}
+			#tabBox #tabSectionReport .innerBlock h3.innerBlockHead span {
+				display: block;
+				padding: 19px 15px 0 15px;
+				margin: 0;
+				font-size: 12px;
+				font-weight: bold;
+				background: url(../img/contents/home/mb_innerBlock_h3_top.png) no-repeat left top;
+			}
+			body#friendHome #tabBox #tabSectionReport .innerBlock h3.innerBlockHead span {
+				background: url(../img/contents/friend/mb_innerBlock_h3_top.png) no-repeat left top;
+			}
+			#tabBox #tabSectionReport .innerBlock h3.innerBlockHead span a,
+			#tabBox #tabSectionReport .innerBlock h3.innerBlockHead span span {
+				padding: 2px 10px 2px 19px;
+				margin: 0;
+				color: #ff3300;
+				font-size: 16px;
+				font-weight: bold;
+				background: url(../img/icn/icn_q.png) no-repeat left 2px !important;
+			}
+			#tabBox #tabSectionReport .innerBlock h3.innerBlockHead span span {
+				color: #333333;
+			}
+				#tabBox #tabSectionReport .innerBlock h3.innerBlockHead span span a {
+					padding: 0;
+					margin: 0;
+					background: none !important;
+				}
+		#tabBox #tabSectionReport .innerBlock p.picThum {
+			display: inline;
+			float: left;
+			padding: 5px 0 0 10px;
+			margin: 0;
+		}
+		#tabBox .tabSection .innerBlock h4.name {
+			display: inline;
+			float: right;
+			margin: 0;
+			padding: 5px 8px 2spx 0;
+			width: 355px;
+			font-size: 11px;
+		}
+		#tabBox .tabSection .innerBlock p.prof {
+			display: inline;
+			float: right;
+			margin: 0 0 5px 0;
+			padding: 0 8px 1px 0;
+			width: 355px;
+			font-size: 11px;
+		}
+		#tabBox #tabSectionReport .innerBlock ul.selectList {
+			display: inline;
+			float: right;
+			margin: 0;
+			padding: 0 8px 5px 0;
+			width: 355px;
+		}
+			#tabBox #tabSectionReport .innerBlock ul.selectList li {
+				float: left;
+				margin: 0;
+				padding: 0;
+				width: 177px;
+				height: 27px;
+			}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li a {
+					display: block;
+					margin: 0;
+					padding: 7px 5px 7px 25px;
+					width: 147px;
+					color: #fff;
+					font-size: 12px;
+					font-weight: bold;
+					text-decoration: none;
+					background-image: url(../img/btn/btnSelect2.png);
+					background-repeat: no-repeat;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw1 a {
+					background-position: left top;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw2 a {
+					background-position: -177px top;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw3 a {
+					background-position: left -32px;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw4 a {
+					background-position: -177px -32px;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw5 a {
+					background-position: left -64px;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw6 a {
+					background-position: -177px -64px;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw1 a:hover {
+					background-position: left -90px;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw2 a:hover {
+					background-position: -177px -90px;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw3 a:hover {
+					background-position: left -122px;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw4 a:hover {
+					background-position: -177px -122px;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw5 a:hover {
+					background-position: left -154px;
+				}
+				#tabBox #tabSectionReport .innerBlock ul.selectList li.asw6 a:hover {
+					background-position: -177px -154px;
+				}
+		#tabBox #tabSectionReport .innerBlock p.alert {
+			clear: both;
+			margin: 0;
+			padding: 0 10px 0 10px;
+			color: #666;
+			font-size: 10px;
+		}
+	/*newsFeedBox
+	----------------------------------------------*/
+#newsFeedBox {
+	clear: both;
+	position: relative;
+	padding: 0 0 10px 0;
+	margin-bottom: 10px;
+	font-size: 12px;
+	width: 455px;
+	background: url(../img/contents/home/mainBox_bottom.png) no-repeat left bottom;
+}
+	#newsFeedBox h2 {
+		overflow: hidden;
+		padding: 8px 10px 9px 10px;
+		margin: 0;
+		font-size: 12px;
+		font-weight: bold;
+		color: #333;
+		background: url(../img/contents/home/mainBox_heading.png) no-repeat left top;
+	}
+	#newsFeedBox li {
+		dispaly: block;
+		padding: 5px 0;
+		margin: 0 10px;
+		line-height: 1.3em;
+		border-bottom: 1px dotted #888;
+	}
+	#newsFeedBox li.odd {
+		background-color: #eefee5;
+	}
+		#newsFeedBox p {
+			padding: 1px 0 1px 18px;
+			margin: 0;
+		}
+		#newsFeedBox p.pic {
+			background: url(../img/icn/icn_pic.png) no-repeat left top;
+		}
+		#newsFeedBox p.community {
+			background: url(../img/icn/icn_community.png) no-repeat left top;
+		}
+		#newsFeedBox p.note {
+			margin: 0 0 5px;
+			padding: 0 10px;
+			line-height: 1.4;
+			font-size: 10px;
+		}
+		
+/*tertiaryColumn
+----------------------------------------------*/
+#tertiaryColumn {
+	dispaly: inline;
+	float: right;
+	margin: 0;
+	width: 250px;
+}
+
+	/*rectangleAdBox
+	----------------------------------------------*/
+#rectangleAdBox {
+	padding: 0;
+	margin: 0 0 10px 0;
+	height: 250px;
+}
+		/*  ↓#rectangleAdBox .ad には現在画像のダミーを表示しています   */
+	#rectangleAdBox .ad {
+		padding: 0;
+		margin: 0;
+	}
+
+	/*hotSurveyBox
+	----------------------------------------------*/
+#hotSurveyBox {
+	clear: both;
+	position: relative;
+	padding: 0 0 10px 0;
+	margin-bottom: 10px;
+	width: 250px;
+	background: url(../img/contents/home/subBox_bottom_2.png) no-repeat left bottom;
+}
+	#hotSurveyBox h2 {
+		overflow: hidden;
+		padding: 7px 10px 5px 10px;
+		margin: 0 0 5px 0;
+		font-size: 12px;
+		font-weight: bold;
+		background: url(../img/contents/home/subBox_heading_2.png) no-repeat left top;
+	}
+		#hotSurveyBox h2 span {
+		
+		}
+	#hotSurveyBox ul {
+		padding: 0 10px;
+		margin: 0 0 10px 0;
+		font-size: 12px;
+	}
+	#hotSurveyBox ul li {
+		dispaly: block;
+		padding: 5px 0 5px 17px;
+		margin: 0;
+		line-height: 1.3em;
+		border-bottom: 1px dotted #888;
+		background: url(../img/icn/icn_q.png) no-repeat left 5px;
+	}
+
+	#hotSurveyBox .more,
+	#memberBox .more {
+		margin: 0 10px 0 0;
+		padding: 0;
+		font-size: 12px;
+		text-align: right;
+	}
+		#hotSurveyBox .more a,
+		#memberBox .more a {
+		padding: 1px 0 1px 8px;
+		background: url(../img/icn/icn_arrow2.png) no-repeat left center;
+	}
+	/*hotReportBox
+	----------------------------------------------*/
+#hotReportBox {
+	clear: both;
+	position: relative;
+	padding: 0 0 10px 0;
+	margin-bottom: 10px;
+	width: 250px;
+	background: url(../img/contents/home/subBox_bottom_2.png) no-repeat left bottom;
+}
+	#hotReportBox h2 {
+		overflow: hidden;
+		padding: 0;
+		padding: 7px 10px 5px 10px;
+		margin: 0 0 5px 0;
+		font-size: 12px;
+		font-weight: bold;
+		background: url(../img/contents/home/subBox_heading_2.png) no-repeat left top;
+	}
+		#hotReportBox h2 span {
+		
+		}
+
+	#hotReportBox ul {
+		padding: 0 10px;
+		margin: 0 0 10px 0;
+		font-size: 12px;
+	}
+	#hotReportBox ul li {
+		dispaly: block;
+		padding: 5px 0 5px 17px;
+		margin: 0;
+		line-height: 1.3em;
+		border-bottom: 1px dotted #888;
+		background: url(../img/icn/icn_graph.png) no-repeat left 5px;
+	}
+
+	#hotReportBox .more {
+		margin: 0 10px 0 0;
+		padding: 0;
+		font-size: 12px;
+		text-align: right;
+	}
+		#hotReportBox .more a {
+		padding: 1px 0 1px 8px;
+		background: url(../img/icn/icn_arrow2.png) no-repeat left center;
+	}
+	/*memberReportBox
+	----------------------------------------------*/
+#memberReportBox {
+	clear: both;
+	position: relative;
+	padding: 0 0 10px 0;
+	margin-bottom: 10px;
+	font-size: 10px;
+	width: 250px;
+	background: url(../img/contents/home/subBox_bottom_2.png) no-repeat left bottom;
+}
+	#memberReportBox h2 {
+		overflow: hidden;
+		padding: 0;
+		margin: 0 0 10px 0;
+		font-size: 12px;
+		font-weight: bold;
+		background: url(../img/contents/home/subBox_heading_2.png) no-repeat left top;
+	}
+	body#friendHome #memberReportBox h2 {
+		background: url(../img/contents/friend/subBox_heading_2.png) no-repeat left top;
+	}
+		#memberReportBox h2 span {
+			display: block;
+			padding: 7px 10px 5px 26px;
+			background: url(../img/icn/icn_graph.png) no-repeat 8px center;
+		}
+	#memberReportBox .lead {
+		margin: 0 10px 4px 10px;
+	}
+		#memberReportBox .lead p {
+			padding: 0;
+			margin: 0 0 8px 0;
+			font-size: 13px;
+		}
+		#memberReportBox .lead h3 {
+			padding: 0;
+			margin: 0;
+			font-size: 12px;
+		}
+		#memberReportBox .lead h3 a {
+			padding: 2px 0;
+		}
+	#memberReportBox p.picThum {
+		display: inline;
+		float: left;
+		padding: 0;
+		margin: 0 5px 2px 10px;
+	}
+	#memberReportBox p.univ,
+	#memberReportBox p.department,
+	#memberReportBox p.subject,
+	#memberReportBox p.campus {
+		padding: 0;
+		margin: 0 10px 0 69px;
+		line-height: 1.1em;
+	}
+	#memberReportBox ul.valuationList {
+		padding: 10px 0 0 0;
+		margin: 0 auto 7px auto;
+		width: 234px;
+		background: url(../img/contents/home/border_dotted.gif) no-repeat center 5px;
+	}
+			#memberReportBox ul.valuationList li {
+				display: inline;
+				float: left;
+				padding: 0;
+				margin: 0;
+				width: 117px;
+			}
+				#memberReportBox ul.valuationList li a {
+					display: block;
+					padding: 7px 5px 7px 25px;
+					width: 117px;
+					color: #fff;
+					font-size: 11px;
+					font-weight: bold;
+					text-decoration: none;
+					background-image: url(../img/btn/btnSelect3.png);
+					background-repeat: no-repeat;
+				}
+				#memberReportBox ul.valuationList li.val1 a {
+					background-position: left top;
+				}
+				#memberReportBox ul.valuationList li.val2 a {
+					background-position: -117px top;
+				}
+				#memberReportBox ul.valuationList li.val3 a {
+					background-position: left -27px;
+				}
+				#memberReportBox ul.valuationList li.val4 a {
+					background-position: -117px -27px;
+				}
+				#memberReportBox ul.valuationList li.val5 a {
+					background-position: left -54px;
+				}
+				#memberReportBox ul.valuationList li.val6 a {
+					background-position: -117px -54px;
+				}
+				#memberReportBox ul.valuationList li.val1 a:hover {
+					background-position: left -80px;
+				}
+				#memberReportBox ul.valuationList li.val2 a:hover {
+					background-position: -117px -80px;
+				}
+				#memberReportBox ul.valuationList li.val3 a:hover {
+					background-position: left -107px;
+				}
+				#memberReportBox ul.valuationList li.val4 a:hover {
+					background-position: -117px -107px;
+				}
+				#memberReportBox ul.valuationList li.val5 a:hover {
+					background-position: left -134px;
+				}
+				#memberReportBox ul.valuationList li.val6 a:hover {
+					background-position: -117px -134px;
+				}
+	#memberReportBox .more {
+		margin: 0 10px 0 0;
+		padding: 0;
+		font-size: 12px;
+		text-align: right;
+	}
+		#memberReportBox .more a {
+		padding: 1px 0 1px 8px;
+		background: url(../img/icn/icn_arrow2.png) no-repeat left center;
+	}
+	
+	
+	
+	
+	
+	
+	
+/*2カラム表示
+----------------------------------------------*/
+body.column2 #primaryColumn {
+	width: 685px;
+	background: url(../img/contents/column2/mainBox.png) no-repeat center bottom;
+}
+	body.column2 #primaryColumn .box {
+		position: relative;
+		padding: 0 20px 10px;
+		width: 645px;
+		background: url(../img/contents/column2/mainBox.png) no-repeat center bottom;
+	}
+
+		body.column2 #primaryColumn .box h1 {
+			margin: 0 -20px 0;
+			padding: 0 10px 12px;
+			height: 28px;
+			background: url(../img/contents/column2/mainBox.png) no-repeat center top;
+			line-height: 28px;
+			color: #FFFFFF;
+			font-size: 14px;
+		}
+
+	/*  プロフアンケート  */
+#profEnqueteBox {
+	width: 685px;
+	background: url(../img/contents/column2/mainBox.png) no-repeat center bottom;
+}
+	#profEnqueteBox {
+		position: relative;
+		padding: 0;
+		background: url(../img/contents/column2/mainBox.png) no-repeat center bottom;
+	}
+		#profEnqueteBox h1 {
+			padding: 7px 10px 4px 10px;
+			background: url(../img/contents/column2/mainBox.png) no-repeat center top;
+			color: #FFFFFF;
+			font-size: 14px;
+		}
+	#profEnqueteBox h3 {
+		margin: 0;
+	}
+	#profEnqueteBox .section.question {
+		margin: 0 auto;
+		width: 640px;
+		height: 145px;
+		background: url(../img/contents/column2/prof_bgQ.png) no-repeat left top;
+		border-bottom: 1px solid #ccc;
+	}
+	#profEnqueteBox .section h4 {
+		float: left;
+		padding: 20px 0 0 0;
+		margin: 0 0 10px 0;
+		width: 640px;
+		color: #f94526;
+		font-family: "Impact","Ariel Black";
+		font-size: 17px;
+		font-weight: normal;
+		text-align: center;
+	}
+	#profEnqueteBox .section p.description {
+		padding: 0;
+		margin: 0;
+		width: 640px;
+		color: #f94526;
+		font-size: 23px;
+		line-height: 1.2em;
+		text-align: center;
+		border-bottom: none;
+	}
+	#profEnqueteBox .section.answer {
+		padding: 50px 0 50px 0;
+		margin: 0 auto;
+		width: 640px;
+		background: url(../img/contents/column2/prof_bgA.png) no-repeat left top;
+	}
+		#profEnqueteBox .section.answer ul {
+			padding: 0;
+			margin: 0 auto;
+			width: 610px;
+		}
+			#profEnqueteBox .section.answer ul li {
+				display: inline;
+				float: left;
+				padding: 0;
+				margin: 0;
+				padding: 0;
+				margin: 2px auto;
+				width: 305px;
+			}
+				#profEnqueteBox .section.answer ul li a {
+					overflow: hidden;
+					display: block;
+					padding: 16px 18px 18px 48px;
+					width: 243px;
+					color: #fff;
+					font-size: 18px;
+					font-weight: bold;
+					text-decoration: none;
+					background-image: url(../img/contents/column2/btn_select_2.png);
+					background-repeat: no-repeat;
+				}
+				#profEnqueteBox .section.answer ul li.ans1 a {
+					background-position: left top;
+				}
+				#profEnqueteBox .section.answer ul li.ans2 a {
+					background-position: -305px top;
+				}
+				#profEnqueteBox .section.answer ul li.ans3 a {
+					background-position: left -54px;
+				}
+				#profEnqueteBox .section.answer ul li.ans4 a {
+					background-position: -305px -54px;
+				}
+				#profEnqueteBox .section.answer ul li.ans5 a {
+					background-position: left -108px;
+				}
+				#profEnqueteBox .section.answer ul li.ans6 a {
+					background-position: -305px -108px;
+				}
+				/*
+				#profEnqueteBox .section.answer ul li.ans1 a:hover {
+					background-position: left -158px;
+				}
+				#profEnqueteBox .section.answer ul li.ans2 a:hover {
+					background-position: -305px -158px;
+				}
+				#profEnqueteBox .section.answer ul li.ans3 a:hover {
+					background-position: left -212px;
+				}
+				#profEnqueteBox .section.answer ul li.ans4 a:hover {
+					background-position: -305px -212px;
+				}
+				#profEnqueteBox .section.answer ul li.ans5 a:hover {
+					background-position: left -266px;
+				}
+				#profEnqueteBox .section.answer ul li.ans6 a:hover {
+					background-position: -305px -266px;
+				}
+				*/
+
+
+
+/*
+----------------------------------------------
+main CSS
+
+Created Date : 2009/06/09
+Author: Taiki Toyosawa
+Last Up Date : 2009/06/09
+Author: Taiki Toyosawa
+----------------------------------------------
+*/
+
+/*登録フロー*/
+
+	/*mainBox
+	----------------------------------------------*/
+			/*共通
+			----------------------------------------------*/
+#mainBox {
+	clear: both;
+	position: relative;
+	padding: 0 0 10px 0;
+	margin-bottom: 10px;
+	font-size: 12px;
+	width: 945px;
+	background: url(../img/contents/register/mainBox_bottom.png) no-repeat left bottom;
+}
+	#mainBox h2 {
+		overflow: hidden;
+		padding: 8px 10px 9px 10px;
+		margin: 0;
+		font-size: 12px;
+		font-weight: bold;
+		color: #ffffff;
+		background: url(../img/contents/register/mainBox_heading.png) no-repeat left top;
+	}
+	#mainBox .inner {
+		padding: 20px 40px;
+	}
+	#mainBox .inner h3 {
+		padding: 9px 18px;
+		margin: 0 0 20px 0;
+		font-size: 14px;
+		background: url(../img/contents/register/mb_subHeading.png) no-repeat left top;
+	}
+	#mainBox .inner .pic {
+		dispaly: inline;
+		float: right;
+		text-align: center;
+	}
+	#mainBox .inner p {
+		float: left;
+		padding: 0 0 40px 0;
+		margin: 0 0 20px 0;
+		font-size: 14px;
+		border-bottom: 1px solid #ccc;
+	}
+		#mainBox .inner p em {
+			font-style: normal;
+			font-weight: normal;
+			font-size: 10px;
+		}
+		#mainBox .inner .text {
+			clear: left;
+			float: left;
+			position: relative;
+			padding: 0 0 20px 0;
+			margin: 0 0 20px 0;
+			font-size: 15px;
+			border-bottom: 1px solid #ccc;
+		}
+		/* 重なりの不具合解消 for IE */
+		#mainBox .inner .text.pdWrap1 {z-index: 20;}
+		#mainBox .inner .text.pdWrap2 {z-index: 19;}
+		#mainBox .inner .text.pdWrap3 {z-index: 18;}
+		#mainBox .inner .text.pdWrap4 {z-index: 17;}
+
+		#mainBox .inner .text label {
+			display: inline;
+			float: left;
+			padding: 12px 0 0 0;
+			margin: 0;
+			font-size: 16px;
+		}
+		
+		#mainBox .inner .text input#regUnivText,
+		#mainBox .inner .text a#regDpmtText,
+		#mainBox .inner .text a#regSbjtText,
+		#mainBox .inner .text a#regCampText,
+		#mainBox .inner .text a#regYearText {
+			display: inline;
+			float: right;
+			padding: 8px 10px 6px 10px;
+			margin: 0;
+			color: #666;
+			font-weight: bold;
+			font-size: 16px;
+			border: 0px;
+		}
+		#mainBox .inner .text input#regUnivText.selected,
+		#mainBox .inner .text a#regDpmtText.selected,
+		#mainBox .inner .text a#regSbjtText.selected,
+		#mainBox .inner .text a#regCampText.selected,
+		#mainBox .inner .text a#regYearText.selected {
+			color: #888;
+		}
+		
+			/*.layout1
+			----------------------------------------------*/
+	#mainBox.layout1 .inner .pic {
+		width: 200px;
+		padding: 0;
+		margin: 0;
+	}
+	#mainBox.layout1 .inner p {
+		width: 660px;
+		line-height: 1.4;
+	}
+	#mainBox.layout1 .inner p.text {
+		width: auto;
+		border-bottom: none;
+	}
+	#mainBox.layout1 .inner .text {
+		width: 660px;
+	}
+		#mainBox.layout1 .inner .text input#regUnivText {
+			width: 562px;
+			font-weight: bold;
+			background: url(../img/contents/register/regText_bg.png) no-repeat left top;
+		}
+		#mainBox.layout1 .inner .text ul.prospect {
+			z-index: 5;
+			position: absolute;
+			top: 34px;
+			right: 0;
+			display: inline;
+			float: right;
+			padding: 0 0 3px 0;
+			margin: 0;
+			width: 582px;
+			background: url(../img/contents/register/regProspect_bg.png) no-repeat center bottom;
+			border-top: 2px solid #8ad84d;
+		}
+			#mainBox.layout1 .inner .text ul.prospect li {
+				clear: both;
+				float: right;
+				padding: 0;
+				margin: 0;
+				font-size: 16px;
+				background: transparent url(../img/contents/register/border_dotted.gif) repeat-x center bottom;
+			}
+				#mainBox.layout1 .inner .text ul.prospect li a {
+					display: block;
+					padding: 8px 10px;
+					width: 562px;
+					background-color: transparent;
+					color: #666;
+					text-decoration: none;
+				}
+				#mainBox.layout1 .inner .text ul.prospect li a:hover {
+					background-color: #8ad84d;
+					color: #fff;
+					text-decoration: none;
+				}
+		
+	#mainBox.layout1 .inner .submit {
+		float: left;
+		width: 660px;
+	}
+		#mainBox.layout1 .inner .submit input#regSubmit {
+			float: right;
+			padding: 0;
+			margin: 0;
+		}
+			/*.layout2
+			----------------------------------------------*/
+	#mainBox.layout2 .inner .pic {
+		width: 220px;
+		padding: 150px 0 0 0;
+		margin: 0;
+	}
+	#mainBox.layout2 .inner p {
+		width: 640px;
+	}
+	#mainBox.layout2 .inner .text {
+		width: 640px;
+	}
+	#mainBox.layout2 .inner #regYear.text {
+		margin: 0;
+		width: 208px;
+		border-bottom: none;
+	}
+		#mainBox.layout2 .inner .text a#regDpmtText,
+		#mainBox.layout2 .inner .text a#regSbjtText,
+		#mainBox.layout2 .inner .text a#regCampText {
+			display: inline;
+			float: right;
+			padding: 12px 10px 10px 10px;
+			margin: 0;
+			width: 522px;
+			font-size: 16px;
+			text-decoration: none;
+			background: url(../img/contents/register/regText_bg2.png) no-repeat left top;
+			border: 0px;
+		}
+		#mainBox.layout2 .inner .text a:hover#regDpmtText,
+		#mainBox.layout2 .inner .text a:hover#regSbjtText,
+		#mainBox.layout2 .inner .text a:hover#regCampText {
+			color: #fff;
+			background: url(../img/contents/register/regText_bg2_over.png) no-repeat left top;
+		}
+		#mainBox.layout2 .inner .text a#regYearText {
+			padding: 12px 10px 10px 10px;
+			width: 90px;
+			text-decoration: none;
+			background: url(../img/contents/register/regText_bg3.png) no-repeat left top;
+		}
+		#mainBox.layout2 .inner .text a:hover#regYearText {
+			color: #fff;
+			background: url(../img/contents/register/regText_bg3_over.png) no-repeat left top;
+		}
+		
+		
+		#mainBox.layout2 .inner .text .btnPulldown {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 37px;
+			height: 38px;
+		}
+			#mainBox.layout2 .inner .text .btnPulldown a {
+				display: block;
+				overflow: hidden;
+				text-indent: -10000px;
+				width: 37px;
+				height: 38px;
+				background-image: url(../img/contents/register/btn_select_f3.png);
+				outline: none;
+			}
+		#mainBox.layout2 .inner .text ul.pulldown {
+			position: absolute;
+			top: 34px;
+			right: 0;
+			padding: 0 0 3px 0;
+			margin: 0;
+			width: 542px;
+			background: url(../img/contents/register/regPulldown_bg.png) no-repeat center bottom;
+			border-top: 2px solid #8ad84d;
+			z-index: 100;
+		}
+		
+		/* for IE7 
+		*+html #mainBox.layout2 .inner .text ul.pulldown {
+			overflow-x: hidden;
+			overflow-y: auto;
+			scrollbar-base-color: #8ad84d;
+			position: relative;
+			top: -4px;
+			right: 0;
+			float: right;
+			height: 180px;
+			z-index: 100;
+		}
+		*/
+		/* for IE6 
+		* html #mainBox.layout2 .inner .text ul.pulldown {
+			overflow-x: hidden;
+			overflow-y: auto;
+			scrollbar-base-color: #8ad84d;
+			position: relative;
+			top: -4px;
+			right: 0;
+			float: right;
+			height: 180px;
+			z-index: 100;
+		}
+		*/
+		
+		#mainBox.layout2 .inner #regYear.text ul.pulldown {
+			width: 110px;
+			background: url(../img/contents/register/regPulldown_bg2.png) no-repeat center bottom;
+		}
+			#mainBox.layout2 .inner .text ul.pulldown li {
+				clear: both;
+				float: right;
+				padding: 0;
+				margin: 0;
+				font-size: 16px;
+				background: url(../img/contents/register/border_dotted.gif) repeat-x center bottom;
+			}
+				#mainBox.layout2 .inner .text ul.pulldown li a {
+					display: block;
+					padding: 8px 10px;
+					width: 522px;
+					background-color: transparent;
+					color: #666;
+					font-weight: bold;
+					text-decoration: none;
+				}
+				#mainBox.layout2 .inner #regYear.text ul.pulldown li a {
+					width: 90px;
+				}
+				#mainBox.layout2 .inner .text ul.pulldown li a:hover {
+					background-color: #8ad84d;
+					color: #fff;
+					text-decoration: none;
+				}
+		#mainBox.layout2 .inner .text span.label {
+			display: inline;
+			float: left;
+			padding: 12px 0 0 0;
+			margin: 0;
+			font-size: 16px;
+		}
+		#mainBox.layout2 .inner .text em.filled {
+			display: inline;
+			float: right;
+			padding: 12px 10px 10px 10px;
+			margin: 0;
+			width: 522px;
+			color: #888;
+			font-size: 16px;
+			background: url(../img/contents/register/regText_bg2_filled.png) no-repeat left top;
+			border: 0px;
+		}
+	#mainBox.layout2 .inner .submit {
+		float: left;
+		width: 640px;
+		padding: 20px 0 0 0;
+		margin: 0 220px 0 0;
+		border-top: 1px solid #ccc;
+	}
+		#mainBox.layout2 .inner .submit input#regSubmit {
+			float: right;
+			padding: 0;
+			margin: 0;
+		}
+			/*.layout3
+			----------------------------------------------*/
+	#mainBox.layout3 .inner .pic {
+		width: 200px;
+		padding: 0;
+		margin: 0;
+	}
+	#mainBox.layout3 .inner h4 {
+		float: left;
+		padding: 20px 0 0 0;
+		margin: 0 0 20px 0;
+		width: 660px;
+		text-align: center;
+	}
+	#mainBox.layout3 .inner p.description {
+		margin: 0 0 40px 0;
+		width: 660px;
+		font-size: 23px;
+		line-height: 1.2em;
+		text-align: center;
+	}
+	#mainBox.layout3 .inner .btnStart {
+		float: left;
+		padding: 0;
+		margin: 0;
+		width: 660px;
+		text-align: center;
+	}
+			/*.layout4
+			----------------------------------------------*/
+	#mainBox.layout4 .inner h3 {
+		margin: 0;
+	}
+	#mainBox.layout4 .inner .pic {
+		width: 200px;
+		padding: 100px 0 0 0;
+		margin: 0;
+	}
+	#mainBox.layout4 .inner .section.question {
+		margin: 0;
+		width: 660px;
+		height: 145px;
+		background: url(../img/contents/register/prof_bgQ.png) no-repeat left top;
+		border-bottom: 1px solid #ccc;
+	}
+	#mainBox.layout4 .inner .section h4 {
+		float: left;
+		padding: 20px 0 0 0;
+		margin: 0 0 10px 0;
+		width: 660px;
+		color: #f94526;
+		font-family: "Impact","Ariel Black";
+		font-size: 17px;
+		font-weight: normal;
+		text-align: center;
+	}
+	#mainBox.layout4 .inner .section p.description {
+		padding: 0;
+		margin: 0;
+		width: 660px;
+		color: #f94526;
+		font-size: 23px;
+		line-height: 1.2em;
+		text-align: center;
+		border-bottom: none;
+	}
+	#mainBox.layout4 .inner .section.answer {
+		padding: 40px 0 0 0;
+		margin: 0;
+		width: 660px;
+		background: url(../img/contents/register/prof_bgA.png) no-repeat left top;
+	}
+		#mainBox.layout4 .inner .section.answer ul {
+			padding: 0;
+			margin: 0 auto;
+			width: 407px;
+		}
+			#mainBox.layout4 .inner .section.answer ul li {
+				padding: 0;
+				margin: 2px auto;
+				width: 407px;
+			}
+				#mainBox.layout4 .inner .section.answer ul li a {
+					overflow: hidden;
+					display: block;
+					padding: 14px 18px 19px 48px;
+					height: 18px;
+					color: #fff;
+					font-weight: bold;
+					font-size: 18px;
+					text-decoration: none;
+					background-image: url(../img/contents/register/btnSelect.png);
+					background-repeat: no-repeat;
+				}
+				#mainBox.layout4 .inner .section.answer ul li.ans1 a {
+					background-position: left top;
+				}
+				#mainBox.layout4 .inner .section.answer ul li.ans2 a {
+					background-position: left -50px;
+				}
+				#mainBox.layout4 .inner .section.answer ul li.ans3 a {
+					background-position: left -100px;
+				}
+				#mainBox.layout4 .inner .section.answer ul li.ans4 a {
+					background-position: left -150px;
+				}
+				#mainBox.layout4 .inner .section.answer ul li.ans5 a {
+					background-position: left bottom;
+				}
+				#mainBox.layout4 .inner .section.answer ul li.ans1 a:hover {
+					background-position: -407px top;
+				}
+				#mainBox.layout4 .inner .section.answer ul li.ans2 a:hover {
+					background-position: -407px -50px;
+				}
+				#mainBox.layout4 .inner .section.answer ul li.ans3 a:hover {
+					background-position: -407px -100px;
+				}
+				#mainBox.layout4 .inner .section.answer ul li.ans4 a:hover {
+					background-position: -407px -150px;
+				}
+				#mainBox.layout4 .inner .section.answer ul li.ans5 a:hover {
+					background-position: -407px bottom;
+				}
+			/*.layout5
+			----------------------------------------------*/
+	#mainBox.layout5 .inner .pic {
+		width: 200px;
+		padding: 0;
+		margin: 0;
+	}
+	#mainBox.layout5 .inner h4 {
+		float: left;
+		padding: 20px 0 0 0;
+		margin: 0 0 20px 0;
+		width: 660px;
+		text-align: center;
+	}
+	#mainBox.layout5 .inner p.description {
+		margin: 0 0 40px 0;
+		width: 660px;
+		font-size: 23px;
+		line-height: 1.2em;
+		text-align: center;
+	}
+	#mainBox.layout5 .inner ul.linkList {
+		padding: 0;
+		margin: 0;
+		width: 660px;
+		text-align: center;
+	}
+		#mainBox.layout5 .inner ul.linkList li {
+			display: inline;
+			padding: 0;
+			margin: 0 10px 0 0;
+			font-size: 13px;
+		}
+			#mainBox.layout5 .inner ul.linkList li a {
+				padding: 2px 0 2px 8px;
+				margin: 0;
+				background: url(../img/icn/icn_arrow2.png) no-repeat left center;
+			}
+
+
+
+
+
+/*ftr
+----------------------------------------------*/
+#ftr {
+	clear: both;
+	margin: 0 auto;
+	padding-bottom: 10px;
+	width: 945px;
+	background: url(../img/ftr/bg.png) repeat-x left top;
+	border-bottom: 1px solid #8AD84D;
+}
+	#ftr .inner {
+		margin: 0 auto;
+		padding: 0 10px;
+		width: 925px;
+		height: 120px;
+		background: url(../img/ftr/logo.png) no-repeat 10px bottom;
+		
+	}
+		#pageTop {
+			text-align: right;
+		}
+			#pageTop a {
+				margin-right: -5px;
+				width: 130px;
+			}
+				#pageTop a img {
+					
+				}
+			
+		ul#ftrPageLink {
+			margin: 10px 0 0 210px;
+		}
+			ul#ftrPageLink li {
+				display: inline;
+				margin-right: 1em;
+				font-size: 11px;
+				_line-height: 1.4;/*IE6*/
+			}
+				ul#ftrPageLink li a {
+					color: #333333;
+					text-decoration: none;
+				}
+				ul#ftrPageLink li a:hover {
+					text-decoration: underline;
+				}
+				
+		ul#ftrCorpLink {
+			float: right;
+			padding: 30px 0 0;
+			width: 261px;
+			text-align: right;
+		}
+			ul#ftrCorpLink li {
+				display: inline;
+			}
+			ul#ftrCorpLink li#logoCF {
+				margin-left: 8px;
+			}
+				ul#ftrCorpLink li img {
+					
+				}
+			
+		address#copyright {
+			display: block;
+			width: 420px;
+			margin: 42px 0 3px 210px;
+			font-size: 12px;
+		}
+		
+		ul#ftrPolicyLink {
+			width: 435px;
+			margin-left:210px;
+		}
+			ul#ftrPolicyLink li {
+				display: inline;
+				float: left;
+			}
+				ul#ftrPolicyLink li a {
+					margin-right: 5px;
+					_margin-right: 3px;/*IE6*/
+					padding: 1px 0 1px 9px;
+					background: url(../img/ftr/icn_arrow.png) no-repeat left center;
+					
+					font-size: 11px;
+					color: #333333;
+					text-decoration: none;
+				}
+				ul#ftrPolicyLink li a:hover {
+					text-decoration: underline;
+				}
+
+
+
+
+
+
+

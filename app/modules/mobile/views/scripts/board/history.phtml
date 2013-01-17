@@ -1,0 +1,137 @@
+{%include file="board/common/header.phtml"%}
+<body style="background-color:#{%$designSetting.bgColor%};background-image:url({% $designSetting.bgImage %});">
+	<a id="pagetop" name="pagetop"></a>
+	<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+
+        {%include file="board/common/ad_header.phtml"%}
+
+		<div id="templateHead" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/board/mobile/{% $designSetting.tplHeadPath%}" width="{% $designSetting.tplHeadWidth%}" height="{% $designSetting.tplHeadHeight%}" style="margin:2px;" />
+		</div><!--/#templateHead-->
+
+		<div id="header">
+			<img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="2" /><br />
+			<table width="228" cellpadding="0" cellspacing="0" border="0" align="center" style="text-align:center;">
+				<tr>
+					<td style="width:44px;text-align:center;">
+                        {%if !$ownerInfo.miniThumbnailUrl%}
+                                <img src="http://img.mixi.jp/img/basic/common/noimage_member40.gif" />
+                        {%else%}
+                                <img src="{%$ownerInfo.miniThumbnailUrl%}" />
+                        {%/if%}
+                    </td>
+					<td style="text-align:left;"><span style="color:#{%$designSetting.normalText%};{% if $ua==1 %}font-size:x-small;{% /if %}">{%if !$ownerInfo.displayName%}NONAME{%/if%}{% $title %}{% if $commentedCount %} ({%$commentedCount%}) {% /if %}</span></td>
+				</tr>
+			</table>
+		</div><!--/#header-->
+
+		{% if $intrDispFlag == 0 && $introduce  %}
+        <div id="description">
+            <img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="2" /><br />
+            <table width="228" cellpadding="2" cellspacing="0" border="0" align="center" style="text-align:center;">
+                <tr>
+                    <td style="background:#ffffff;text-align:left;">{% $introduce|escape|nl2br|unescape_emoji %}</td>
+                </tr>
+            </table>
+        </div><!--/#description-->
+        {% /if %}
+
+        <div id="tabMenu">
+            <img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="2" /><br />
+            <div class="inner" style="background:#{% $designSetting.tplColor_i %};">
+                <table width="100%" cellpadding="2" cellspacing="0" border="0">
+                    <tr>
+                        <td style="width:50%;background:#{% $designSetting.tplColor_ii %};text-align:center;">
+                            <span style="color:#{% $designSetting.tplColor_i %};{% if $ua==1 %}font-size:x-small;{% /if %}">{% emoji code="F987"%}掲示板</span>
+                        </td>
+                        <td style="width:50%;background:#{% $designSetting.tplColor_i %};text-align:center;">
+                            <span style="color:#{% $designSetting.reverseText %};{% if $ua==1 %}font-size:x-small;{% /if %}">{% emoji code="F989"%}投稿履歴</span>
+                        </td>
+                    </tr>
+
+                </table>
+                <img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="1" /><br />
+            </div><!--/.inner-->
+        </div><!--/#tabMenu-->
+
+        {% if $boardHistoryList %}
+        <div id="contentCount">
+            {% $count %}件中 {% $listCount.startCount %}-{% $listCount.endCount %}件<br />
+            <div class="line" style="background:#{% $designSetting.tplColor_i %};"><img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="1" /></div>
+        </div><!--/#contentCount-->
+
+        <div id="comment">
+            {% foreach from=$boardHistoryList item=board %}
+            <div class="section" style="background:#{% $designSetting.listColorA %};">
+                <a href="#comment{%$board.no - 1%}" style="color:#{% $designSetting.tplColor_i %};"><span style="color:#{% $designSetting.tplColor_i %};">▼</span></a><span style="color:#{% $designSetting.tplColor_i %};">[{%$board.no%}]</span>{% $board.create_time|date_format:"%Y/%m/%d %H:%M" %}<br />
+                <table width="228" cellpadding="0" cellspacing="0" border="0" align="center" style="text-align:center;">
+                    <tr>
+                        <td style="width:44px;text-align:center;"><img src="{%$board.miniThumbnailUrl%}" /></td>
+                        <td style="text-align:left;">
+                            <span style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+                                {% if $board.comment_uid != $board.uid %}
+                                    <a style="color:#{%$designSetting.linkText%};" href='{% "$baseUrl/mobile/board/list?CF_uid=`$board.comment_uid`"|mixiurl %}'>{%$board.displayName%}</a>
+                                    ≫
+                                    <a style="color:#{%$designSetting.linkText%};" href='{% "$baseUrl/mobile/board/list?CF_uid=`$board.uid`"|mixiurl %}'>{%$board.uidName%}</a>
+                                {% else %}
+                                    <a style="color:#{%$designSetting.linkText%};" href='{% "$baseUrl/mobile/board/list?CF_uid=`$board.comment_uid`"|mixiurl %}'>{%$board.displayName%}</a>
+                                {% /if %}
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <div class="comment">
+                {% if $board.type == 1 %}
+                    <div class="paint" style="text-align:center;"><img src="{%$photoUrl%}/apps/board/flash{% $board.mobile_pic_url %}" width="228" height="54" style="margin:2px 0;" /></div>
+                {% else if $board.type == 0 %}
+                    {% $board.content|escape|nl2br|unescape_emoji %}<br />
+                {% /if %}
+                {% if $ownerId == $viewerId %}
+                    <div class="delete" style="text-align:right;">[<a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/delete?CF_uid=`$ownerId`&CF_bid=`$board.bid`"|mixiurl %}'>削除</a>]&nbsp;</div>
+                {% /if%}
+                </div><!--/.comment-->
+                <div class="line" style="background:#{% $designSetting.tplColor_i %};"><img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="2" /></div>
+            </div><!--/.section-->
+            <a id="comment{%$board.no - 1%}" name="comment{%$board.no - 1%}"></a>
+            {% /foreach %}
+
+        {%include file="board/common/pager.phtml"%}
+
+        </div><!--/#comment-->
+
+        <div id="footLink" style="color:#{% $designSetting.linkText %};">
+              {% emoji code="F9BE"%}<a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/add?CF_uid=`$ownerId`"|mixiurl %}'>ｺﾒﾝﾄを書き込む</a><br />
+              {% emoji code="F99A"%}<a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/history?CF_uid=`$ownerId`&CF_sort=$sort"|mixiurl %}'>{%if $sort == 'desc'%}最新順に読む{%else%}最初から読む{%/if%}</a><br />
+              {% emoji code="F987"%}<a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/list?CF_uid=`$ownerId`"|mixiurl %}' accesskey="1">掲示板を見る</a><br />
+        </div><!--/#footLink-->
+
+        <!-- end boardHistoryList -->
+
+
+        {% else %}
+
+        <div id="null" style="text-align:center;">
+                        まだ書き込みがありません<br />
+            <span style="color:#258fb8;text-decoration:blink;">≫</span><a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/friendlist?CF_uid=`$ownerId`"|mixiurl %}'>ﾏｲﾐｸのあしあと帳を探す</a><span style="color:#258fb8;text-decoration:blink;">≪</span>
+            <div class="line" style="background:#{% $designSetting.tplColor_i %};"><img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="1" /></div>
+        </div><!--/#null-->
+
+        <div id="footLink" style="color:#258fb8;">
+            {% emoji code="F987"%}<a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/list?CF_uid=`$ownerId`"|mixiurl %}' accesskey="1">掲示板を見る</a><br />
+        </div><!--/#footLink-->
+
+        {% /if %}
+
+        <div id="templateFoot" style="text-align:center;">
+            <img src="{%$staticUrl%}/apps/board/mobile/{% $designSetting.tplFootPath %}" width="{% $designSetting.tplFootWidth %}" height="{% $designSetting.tplFootHeight %}" style="margin:2px 0;" />
+            {%if $ownerId != $viewerId%}
+            <div class="getDesign">
+                <span style="color:#{% $designSetting.linkText %};text-decoration:blink;">≫</span><a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/designconfirm?CF_skin=$skinId"|mixiurl %}'>このﾃﾞｻﾞｲﾝをもらう</a><span style="color:#{% $designSetting.linkText %};text-decoration:blink;">≪</span>
+            </div><!--/.getDesign-->
+            {%/if%}
+        </div><!--/#templateFoot-->
+
+        {%include file="board/common/menu.phtml"%}
+		{%include file="board/common/recommend.phtml"%}
+		{%include file="board/common/ad_footer.phtml"%}
+		{%include file="board/common/footer.phtml"%}

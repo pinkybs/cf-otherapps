@@ -1,0 +1,94 @@
+{%include file="brain/common/header.phtml" headerAd=0 %}
+
+<div id="score" style="text-align:center;">
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<span style="color:#cc3366;">┏━━━━ｹﾞｰﾑ成績━━━━┓</span><br />
+	今回:{%$newScore%}点<br />
+	{% if $gameInfo.bestScore!=0 %}BEST:{%$gameInfo.bestScore%}点<br />{% /if %}
+	{% if ($newScore>$gameInfo.bestScore) %}<span style="color:#ff0000;text-decoration:blink;">自己ベスト更新!</span><br />{% /if %}
+	<span style="color:#cc3366;">┗━━━━━━━━━━━━┛</span><br />
+</div><!--/#score-->
+
+<div class="ad" style="text-align:center;">
+	<ad xmlns="http://m.mixi.jp/2009/AdProgram/" type="center" id="ec963db98d470730e72e03e89e852fbe431dc922" />
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+</div><!--/.ad-->
+
+<div id="replay" style="text-align:center;">
+	<br />
+	{% if $ua!=2 %}{% emoji code="F8EC"%}{% else %}{% emoji code="F8E9"%}{% /if %}<a href="{%$baseUrl%}/mobile/brain/start?gid={%$gameInfo.gid%}&opensocial_app_id={%$APP_ID%}&opensocial_owner_id={%$uid%}&rand={%$rand%}">もう一度挑戦する</a>{% if $ua!=2 %}{% emoji code="F8EC"%}{% else %}{% emoji code="F8E9"%}{% /if %}<br />
+	<br />
+	{%$gameInfo.gname%}の<br />
+	ﾏｲﾐｸ内での順位は <a href='{% "$baseUrl/mobile/brain/rankingthree?pos=1&gid=`$gameInfo.gid`"|mixiurl %}'>{%$gameInfo.rank%}位</a><br />
+	(ﾏｲﾐｸ内での平均点:{%$avgScore%}点)<br />
+	<br />
+	{% if $newScore > $gameInfo.bestScore%}
+		<div style="display:-wap-marquee;-wap-marquee-style:scroll;-wap-marquee-dir:rtl;-wap-marquee-loop:infinite;color:#009999;">ｱﾅﾀの得点は平均点以上!この調子で他の教科も頑張ってください!!</div>
+	{% else %}
+		<div style="display:-wap-marquee;-wap-marquee-style:scroll;-wap-marquee-dir:rtl;-wap-marquee-loop:infinite;color:#009999;">ｱﾅﾀの得点は平均点以下です｡もう少し頑張りましょう!!</div>
+	{%/if%}
+	{% if $ua!=1 %}<br />{% /if %}
+	<br />
+</div><!--/#replay-->
+
+
+
+		<div id="toDiary" style="text-align:center;">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			{%if $ua == 3%}
+				{% emoji code="F9BE"%}<a href="{%$diaryUrl%}" style="color:#ffffff;"><span style="color:#ffffff;">この結果を日記に書く</span></a><br />
+			{% else %}
+				<form method="post" action="http://m.mixi.jp/add_diary.pl" accept-charset="Shift_JIS,utf-8">
+					<input type="hidden" name="diary_title" value="{%$diary_title%}" />
+					<input type="hidden" name="diary_body" value="{%$diary_body%}" />
+					<input type="submit" value=" この結果を日記に書く " />
+				</form>
+			{% /if %}
+	  </div><!--/#toDiary-->
+<div>
+<br>
+</br>
+</div>
+<div id="totalScore">
+	<table width="228" cellpadding="2" cellspacing="2" border="0" align="center" style="background:#ff9933;text-align:center;">
+		<tr>
+			<td style="background:#fff8e9;text-align:left;"><div style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+				<div class="head" style="text-align:center;">
+					{% emoji code="F99F"%}あなたの成績表{% emoji code="F99F"%}<br />
+					<div class="line" style="background:#ff9933;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="2" /></div>
+				</div><!--/.head-->
+				{% if $totalScore %}
+					<div class="section">
+					{% emoji code="F99F"%}総合成績<br />
+					BEST:{%$totalScore%}点<br />
+					{% emoji code="F9BF"%}ﾏｲﾐｸ内:<a href='{% "$baseUrl/mobile/brain/rankingtwo?pos=1&gid=`$gameInfo.gid`"|mixiurl %}'>{%$friendTotalRank%}位</a><br />
+					{% emoji code="F9BF"%}ﾐｸｼｨ内:<a href='{% "$baseUrl/mobile/brain/rankingtwo?pos=2&gid=`$gameInfo.gid`"|mixiurl %}'>{%$allTotalRank%}位</a><br />
+					<div class="line" style="background:#ff9933;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="2" /></div>
+				</div><!--/.section-->
+				{% /if %}
+				{% foreach from=$classInfo item=data key=key %}
+				<div class="section">
+					<a href='{% "$baseUrl/mobile/brain/game?gid=`$data.gid`"|mixiurl %}'>{%$data.gname%}</a><br />
+					{% if $data.score %}
+						BEST:{%$data.score%}点<br />
+						{% emoji code="F9BF"%}ﾏｲﾐｸ内:<a href='{% "$baseUrl/mobile/brain/rankingthree?pos=1&gid=`$data.gid`"|mixiurl %}'>{%$data.friendRank%}位</a><br />
+						{% emoji code="F9BF"%}ﾐｸｼｨ内:<a href='{% "$baseUrl/mobile/brain/rankingthree?pos=2&gid=`$data.gid`"|mixiurl %}'>{%$data.allRank%}位</a><br />
+						<div class="line" style="background:#ff9933;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="2" /></div>
+					{%else%}
+						<span style="color:#cc0000;">まだ履修していません!</span><br />
+						<div class="line" style="background:#ff9933;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="2" /></div>
+					{%/if%}
+				</div><!--/.section-->
+				{% /foreach %}
+				<!--
+				<div class="caution" style="color:#cc0000;">
+					※社会科 戦国武将は総合成績には含まれません｡あらかじめご了承ください｡
+				</div>-->
+			</div></td>
+		</tr>
+	</table>
+</div><!--/#totalScore-->
+
+{%include file="brain/common/menu.phtml"%}
+{%include file="brain/common/recommend.phtml"%}
+{%include file="brain/common/footer.phtml" footerAd=0 %}

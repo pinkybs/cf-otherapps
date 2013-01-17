@@ -1,0 +1,39 @@
+{%include file="topad.phtml"%}
+	<div id="hdr">
+		<h1><img src="{%$staticUrl%}/apps/shopping/img/hdr/image_main.png" width="944" height="100" alt="ピタリと当てまSHOW" /></h1>
+		<ul id="hdrLink"><!--
+			--><li id="hdrLinkHelp"><a href="{%$baseUrl%}/shopping/help">ヘルプ</a></li><!--
+			--><li id="hdrLinkInvite"><a href="javascript:void(0);" onclick="mixi_invite();return false;">友達を招待</a></li><!--
+		--></ul>
+		<ul id="gNav"><!--
+			--><li id="gNavHome"><a href="{%$baseUrl%}/shopping/home">ホーム</a></li><!--
+			--><li id="gNavStore"><a href="{%$baseUrl%}/shopping/depart">妄想デパート</a></li><!--
+			--><li id="gNavMyCart"><a href="{%$baseUrl%}/shopping/mycart">マイカート</a></li><!--
+			--><li id="gNavWish"><a href="{%$baseUrl%}/shopping/wish">欲しいものリスト</a></li><!--
+		--></ul>
+		<div id="counterBox">
+    		{% if $isInGame %}
+            <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="281" height="37" id="timer" align="middle">
+            <param name="allowScriptAccess" value="sameDomain" />
+            <param name="allowFullScreen" value="false" />
+            <param name="movie" value="{%$staticUrl%}/apps/shopping/swf/timer.swf?timerLoadURL={%$flashTimer%}" />
+            <param name="quality" value="high" />
+            <param name="bgcolor" value="#ffffff" />
+            <param name="wmode" value="transparent" />
+            <embed src="{%$staticUrl%}/apps/shopping/swf/timer.swf?timerLoadURL={%$flashTimer%}" quality="high" bgcolor="#ffffff" width="281" height="37" name="timer" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" wmode="transparent" />
+            </object>
+            {% else %}
+    		<img src="{%$staticUrl%}/apps/shopping/img/dummy/counterFlash.png" alt="ダミー" />
+    		{% /if %}
+		</div>
+	</div><!--/#hdr-->
+
+<script type="text/javascript">/*<!--[*/
+(function(){
+    var src    = "{%$mixiHostUrl%}/ad_application_program_invoker.pl";
+    var query  = "appli_id={%$appId%}&amp;ad_id=DUMMY_AD_ID";
+    //document.writeln(['<scri','pt src="',src,'?',query,'&ts=',(new Date).getTime(),'">','</scri','pt>'].join(''));
+})();
+--></script>
+
+<hr />

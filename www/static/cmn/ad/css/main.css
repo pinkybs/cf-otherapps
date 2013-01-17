@@ -1,0 +1,176 @@
+﻿@charset "utf-8";
+
+/*
+----------------------------------------------
+main CSS
+
+Created Date : 2009/08/26
+Author: Taiki Toyosawa
+Last Up Date : 2009/09/01
+Author: Taiki Toyosawa
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+body,html {
+	overflow-y:hidden;
+}
+
+body {
+	_background: url(null) fixed;/*IE6*/
+	font-family: 'Hiragino Kaku Gothic Pro';/*Safari*/
+	/font-family: 'メイリオ';/*IE6,IE7*/
+	color: #333333;
+}
+a {
+	color: #2f59ff;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+a:visited {
+	color: #941D55;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    visibility: hidden;
+    height: 0.1px;
+    font-size: 0.1em;
+    line-height: 0;
+    clear: both;
+}  
+
+
+
+
+
+	/*banListApps
+	----------------------------------------------*/
+#banListApps {
+	position: relative;
+	width: 945px;
+	height: 68px;
+	background: #ff9900 url(../img/bg_list_s.png) no-repeat 0 0;
+}
+	#banListApps h3 {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	#banListApps .btnClose {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	#banListApps .banListInner {
+		overflow: hidden;
+		width: 941px;
+		padding-top: 16px;
+		margin: 0 0 2px 2px;
+		height: 50px;
+		background: #ff9900 url(../img/bg_list_inner_s.png) no-repeat 0 16px;
+	}
+		#banListApps .banListInner p.ban1,
+		#banListApps .banListInner p.ban2,
+		#banListApps .banListInner p.ban3,
+		#banListApps .banListInner p.ban4 {
+			float: left;
+			display: inline;
+			padding: 0 3px 0 0;
+			background: url(../img/border_s.png) no-repeat right top;
+		}
+			#banListApps .banListInner p a {
+				position: relative;
+				display: block;
+				width: 233px;
+				height: 50px;
+				text-decoration: underline;
+			}
+			#banListApps .banListInner p a:hover {
+				text-decoration: none;
+			}
+			#banListApps .banListInner p a {
+				position: relative;
+				display: block;
+				width: 233px;
+				height: 50px;
+				text-decoration: underline;
+				background-position: 0 0;
+				background-repeat: no-repeat;
+			}
+				#banListApps .banListInner p a span {
+					position: absolute;
+					display: block;
+					line-height: 1.3;
+				}
+				#banListApps .banListInner p a span.des {
+					top: 2px;
+					left: 54px;
+					font-size: 9px;
+				}
+				#banListApps .banListInner p a span.tit {
+					top: 15px;
+					left: 54px;
+					font-size: 12px;
+				}
+		#banListApps .banListInner p.ban4 {
+			float: left;
+			display: inline;
+			padding: 0 0 0 0;
+			background: none;
+		}
+
+
+
+
+
+
+
+
+
+
+
+/*
+	#banListApps .banListInner1 {
+		position: relative;
+		width: 945px;
+		height: 116px;
+	}
+	#banListApps .banListInner1 h3 {
+		position: absolute;
+		top: 5px;
+		left: 5px;
+	}
+	#banListApps .banListInner1 .btn_close {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+		#banListApps .banListInner2 {
+			width: 935px;
+			margin: 21px 0 5px 5px;
+			height: 90px;
+			background-color: #fff;
+		}
+			#banListApps .banListInner3 {
+				width: 935px;
+			}
+			#banListApps .banListInner3 p.ban {
+				float: left;
+				display: inline;
+				padding: 0 1px 0 1px;
+				background: url(../img/border_s.png) no-repeat 0 center;
+			}
+*/
+
+
+
+

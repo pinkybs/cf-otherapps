@@ -1,0 +1,178 @@
+{%include file="disney/common/header.phtml"%}
+
+{% if $isArrive == 1 %}
+    {%if !$hasShoes%}
+	<div id="target" style="font-size:x-small; background-color:#d4f1f9; text-align:center;">
+		{% disneyimg name="sub_ti_target" %}<br />
+		<img copyright="yes" src="{%$staticUrl%}/apps/disney/img/chara_get/{%$disneyUser.t_award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" align="top" /><br /><br />
+		{%if $ua == 3%}
+			{% emoji code="F9BE"%}<a href="{%$diaryUrl%}" style="color:#ffffff;"><span style="color:#ffffff;">日記に書く</span></a><br />
+		{% else %}
+			<form method="post" action="http://m.mixi.jp/add_diary.pl" accept-charset="Shift_JIS,utf-8">
+				<input type="hidden" name="diary_title" value="{%$diary_title%}" />
+				<input type="hidden" name="diary_body" value="{%$diary_body%}" /></br>
+				<input type="submit" value="日記に書く" />
+			</form>
+		{% /if %}
+
+		<a href='{% "$baseUrl/mobile/disney/settarget"|mixiurl %}'>次のﾀｰｹﾞｯﾄ設定へ</a>
+		<br /><br />
+	{% else %}
+	<div id="target" style="font-size:x-small; background-color:#d4f1f9; text-align:center;">
+		{% disneyimg name="sub_ti_targetset2" %}<br />
+		<br />
+		移動距離 
+		{% foreach from=$arrayMove item=data %}
+			{% disneyimg style='higth="12px" width="12px"' name="km_$data" %}
+		{% /foreach %}
+		{% disneyimg style='higth="20px" width="20px"' name="km" %}<br />
+		<br />
+		<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+		<span style="color:#F09;">▼</span><br />
+		<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+		
+		<div class="magic" style="background:#fff273;color:#C0F;">
+			<div class="sub_title" style="background:#F69;">
+				<img src="http://mm.mixi.net/img/dot0.gif" height="2"/><br />
+				<span style="color:#FF9;">.｡:*･<span style="color:#fff;">魔法のｱｲﾃﾑをつかう</span>･.｡:*･</span><br />
+				<img src="http://mm.mixi.net/img/dot0.gif" height="2"/><br />
+			</div><!--/.sub_title-->
+			
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			<span style="color:#F09;">『<blink>{%$userShoes.shoes_name%}</blink>』</span>{% emoji code="F8D5"%}が<br />
+			{% emoji code="F99F"%}まぶしく輝いた{% emoji code="F99F"%}<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+			<img src="{%$staticUrl%}/apps/disney/img/shoes/shoes{%$imgid%}_120x120.gif" width="100" height="100"><br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+			
+			靴:<span style="color:#F09;">{%$userShoes.shoes_name%}</span>{% emoji code="F8D5"%}(残り:{%$userShoes.times%}回)<br />
+			
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			<span style="color:#F09;">▼</span><br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+			
+			{% emoji code="F99F"%}魔法ﾊﾟﾜｰ:<blink><span style="color:#F00;font-size:small;">×{%$magni%}倍</span></blink><br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+			<blink><span style="color:#F06;">▼</span></blink><br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			<span style="color:#DD0B49;font-size:medium;">合計{%$moveDistance%}Km</span><br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			
+			<div class="sub_title" style="background:#F69;">
+				<span style="color:#FF9;">.｡:*･<span style="color:#fff;">ﾀｰｹﾞｯﾄﾂｱｰ達成!</span>･.｡:*･</span>
+			</div><!--/.sub_title-->
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			<span style="color:#F36">おめでとう!</span><br />
+			{%$target_name%}に到着!<br />
+			早速ご当地をGETしよう!<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			<a href='{% "$baseUrl/mobile/disney/award?CF_pid=`$disneyUser.target_place`&CF_from=map"|mixiurl %}'>{% disneyimg name="itemshop_get_btn" style='width="165" height="30"'%}</a><br />	
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			
+		</div><!--/.migic-->
+	
+	{% /if %}	
+{% else %}
+    {%if !$hasShoes%}
+    <div style="font-size:x-small; background-color:#d4f1f9; text-align:center;">
+		{% disneyimg name="sub_ti_targetset2" %}
+		<br /><br />
+		移動距離 
+		{% foreach from=$arrayMove item=data %}
+			{% disneyimg style='higth="12px" width="12px"' name="km_$data" %}
+		{% /foreach %}
+		{% disneyimg style='higth="20px" width="20px"' name="km" %}<br />
+		<br />
+		{%$disneyUser.target_name%}まであと<br />
+		{% foreach from=$arrayRemain item=data %}
+			{% disneyimg name="km_$data" %}
+		{% /foreach %}
+		{% disneyimg name="km" %}<br />
+
+		{% if $moveDistance > 0 %}
+		魔法の靴を買うと今稼いだ距離が倍増!<br />
+		<a href='{% "$baseUrl/mobile/disney/shop/CF_from/check"|mixiurl %}'>{% disneyimg name="banner_lucky2" %}</a><br />
+		<br />
+		{% /if %}
+		
+		<div style="text-align:right;">
+			<a href='{% "$baseUrl/mobile/disney/help?CF_help=location"|mixiurl %}'>位置情報の差異について</a><br />
+		</div>
+		
+		<div style="text-align:left;color:#F00;">
+			※移動距離は前回の｢ﾁｪｯｸ!｣から今回の｢ﾁｪｯｸ!｣までの距離です
+		</div>
+		<br />
+
+	{% else %}
+	<div style="font-size:x-small; background-color:#d4f1f9; text-align:center;">
+		{% disneyimg name="sub_ti_targetset2" %}<br />
+		<br />
+		移動距離 
+		{% foreach from=$arrayMove item=data %}
+			{% disneyimg style='higth="12px" width="12px"' name="km_$data" %}
+		{% /foreach %}
+		{% disneyimg style='higth="20px" width="20px"' name="km" %}<br />
+		<br />
+		
+		{% if $moveDistance > 0 %}
+		<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+		<span style="color:#F09;">▼</span><br />
+		<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+		
+		<div class="magic" style="background:#fff273;color:#C0F;">
+			<div class="sub_title" style="background:#F69;">
+				<img src="http://mm.mixi.net/img/dot0.gif" height="2"/><br />
+				<span style="color:#FF9;">.｡:*･<span style="color:#fff;">魔法のｱｲﾃﾑをつかう</span>･.｡:*･</span><br />
+				<img src="http://mm.mixi.net/img/dot0.gif" height="2"/><br />
+			</div><!--/.sub_title-->
+			
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			<span style="color:#F09;">『<blink>{%$userShoes.shoes_name%}</blink>』</span>{% emoji code="F8D5"%}が<br />
+			{% emoji code="F99F"%}まぶしく輝いた{% emoji code="F99F"%}<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+			<img src="{%$staticUrl%}/apps/disney/img/shoes/shoes{%$imgid%}_120x120.gif" width="100" height="100"><br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+			
+			靴:<span style="color:#F09;">{%$userShoes.shoes_name%}</span>{% emoji code="F8D5"%}(残り:{%$userShoes.times%}回)<br />
+			
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			<span style="color:#F09;">▼</span><br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+			
+			{% emoji code="F99F"%}魔法ﾊﾟﾜｰ:<blink><span style="color:#F00;font-size:small;">×{%$magni%}倍</span></blink><br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+			<blink><span style="color:#F06;">▼</span></blink><br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			<span style="color:#DD0B49;font-size:medium;">合計{%$moveDistance%}Km</span><br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			
+			{% if $userShoes.times == 1 %}
+			<span style="color:#DD0B49;">
+			※ｱｲﾃﾑは、次回の｢ﾁｪｯｸ!｣時にも効果が発生します。<br />
+            但し、移動距離が0kmの場合は、効果は発生しません。
+            </span>
+            {% /if %}
+            
+			<div class="sub_title" style="background:#F69;">
+				<span style="color:#FF9;">.｡:*･.｡:*･<span style="color:#fff;">結　果</span>･.｡:*･.｡:*･</span>
+			</div><!--/.sub_title-->
+            
+		</div><!--/.migic-->
+		{%/if%}
+		
+		<img src="http://mm.mixi.net/img/dot0.gif" height="10"/><br />
+		{%$disneyUser.target_name%}まであと<br />
+		{% foreach from=$arrayRemain item=data %}
+			{% disneyimg name="km_$data" %}
+		{% /foreach %}
+		{% disneyimg name="km" %}<br />
+		<br />
+		<div style="text-align:right;">
+			<a href='{% "$baseUrl/mobile/disney/help?CF_help=location"|mixiurl %}'>位置情報の差異について</a><br />
+		</div>
+		<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+		
+	{% /if %}
+{% /if %}
+{%include file="disney/common/footer.phtml"%}

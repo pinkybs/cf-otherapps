@@ -1,0 +1,23 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="carShop">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">&nbsp;{%$carInfo.name%}購入</span><br />
+	</div><!--/.headline-->
+
+	<div class="inner">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		所有車種のため、所有許可カードを使用して購入します。<br />
+		<div class="commodity" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/parking/mimg/items/4_m.gif" /><br />
+			<a href='{% "$baseUrl/mobile/parking/carshop"|mixiurl %}'>使用しない</a>
+			<a href='{% "$baseUrl/mobile/parking/changecarconfirm?parking_ocid=$oldCarId&parking_oldcolor=$oldCarColor&parking_ncid=$newCarId"|mixiurl %}'>使用する</a>
+		</div><!--/.commodity-->
+	</div><!--/.inner-->
+
+</div><!--/#carShop-->
+
+{%include file="parking/common/footer.phtml"%}

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="noindex,nofollow" />
+<title>駐車戦争</title>
+<style type="text/css">
+* {
+	margin:0;
+	padding:0;
+	border:none;
+}
+a {
+	color:#258FB8;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+body {
+	height: 35px;
+	background: url(./cmn/img/next/bg.gif) repeat-x 0 0 #a0a0a0;
+}
+#wrapper {
+	padding: 5px;
+}
+#container {
+	height: 25px;
+	background: #e2e3d7;
+	border-top: 1px solid #a5a698;
+	border-left: 1px solid #a5a698;
+	overflow: hidden;
+	white-space: nowrap;
+}
+#container p {
+	padding: 5px 10px 5px 30px;
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+	background-color: transparent;
+	font-size: 12px;
+}
+#container p.car {background-image: url(http://mixitest.linno.jp/static/apps/parking/img/icon/car.gif);}
+#container p.estate {background-image: url(http://mixitest.linno.jp/static/apps/parking/img/icon/estate.gif);}
+#container p.ad {background-image: url(http://mixitest.linno.jp/static/apps/parking/img/icon/ad.gif);}
+#container p.beginner {background-image: url(http://mixitest.linno.jp/static/apps/parking/img/icon/beginner.gif);}
+#container p.gift {background-image: url(http://mixitest.linno.jp/static/apps/parking/img/icon/gift.gif);}
+#container p.money {background-image: url(http://mixitest.linno.jp/static/apps/parking/img/icon/money.gif);}
+#container p.item {background-image: url(http://mixitest.linno.jp/static/apps/parking/img/icon/item.gif);}
+</style>
+
+</head>
+<body>
+	<div id="wrapper">
+		<div id="container"></div><!--/#container-->
+	</div><!--/#wrapper-->
+	
+	<script type="text/javascript" language="javascript">
+		var ad = ['<p class="ad">駐車戦争に広告を掲載してみませんか？ 詳しくは<a href="http://linno.co.jp/contact/" target="_blank">こちら</a>よりお問い合わせください。</p>',
+				  '<p class="car">車の台数を増やすと、効果的に総資産を稼げます。</p>',
+				  '<p class="estate">不動産を変更すると、パーキングの駐車料金が増えます。購入した不動産は総資産にも含まるので、ご安心を。</p>',
+				  '<p class="gift">1日1回、駐車戦争に訪問するごとにビジターギフトがもらえます。毎日訪問して、お金やアイテムをゲットしよう。</p>',
+				  '<p class="beginner">駐車戦争は、友達のパーキングに違法駐車をして、お金を稼いでいくゲームです。<a href="/parking/help" target="_parent">もっと詳しく</a></p>',
+				  '<p class="beginner">駐車戦争α版オープン、バグの報告やご意見・ご感想は<a href="http://platform001.mixi.jp/view_bbs.pl?id=41744190&comm_id=4172244" target="_top">こちら</a>へお寄せください</p>'];
+							
+		document.getElementById('container').innerHTML = ad[Math.floor(Math.random() * ad.length)];
+	</script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+{%include file="millionminds/common/header.phtml"%}
+
+<body>
+    {%include file="topad.phtml"%}
+    <script type="text/javascript" src="{%$staticUrl%}/apps/millionminds/js/approve.js?{%$version.js%}"></script>
+	<div id="container">
+
+    {%include file="millionminds/common/hdr.phtml"%}
+    
+		<ul id="gnav">
+			<li class="top"><a href="/millionminds/index">MillionMindsトップ</a></li>
+			<li class="profile"><a href="{%$baseUrl%}/millionminds/profile">プロフィール</a></li>
+			<li class="log"><a href="{%$baseUrl%}/millionminds/log">あしあと</a></li>
+			<li class="archive"><a href="{%$baseUrl%}/millionminds/archive">アーカイブ</a></li>
+			<li class="add"><a href="{%$baseUrl%}/millionminds/newquestion"">クエスチョン作成</a></li>
+			<li class="help"><a href="{%$baseUrl%}/millionminds/help">ヘルプ</a></li>
+			<li class="invite"><a href="javascript:void(0)" onclick="invite();">友達を招待</a></li>
+		</ul><!--/#grav-->
+		
+		
+		<div id="div01">
+		<div id="content">
+
+			<div id="mainColumn">
+
+				<div id="add">
+					<div class="content">
+
+						<div class="form">
+							<h3 class="approve">クエスチョン承認フォーム</h3>
+							<p><strong>※</strong>は必須入力となります</p>
+                       
+							<div id="alertInfo">
+								<ul>
+								</ul>
+							</div><!--/.alert-->
+                      
+							<form method="post" action="#" id="formquestion">
+								<h5 class="q">クエスチョン</h5>
+								<div class="wrapper">
+									<div class="section">
+										<label for="inputTitle" class="inputTitle">設問（※）:</label>
+										<textarea id="inputTitle">{% $dataQst.question|escape %}</textarea>
+									</div><!--/.section-->
+									<div class="section">
+										<label class="inputCat">カテゴリ（※）:</label>
+										<ul id="ulCat">
+											<li id="cat2" class="active"><label for="politics" class="radio politics"><input type="radio" id="politics" name="cat" value="politics" checked="true" title="政治・経済"/>政治・経済</label></li>
+											<li id="cat3"><label for="life" class="radio life"><input type="radio" id="life" name="cat" value="life" title="社会生活"/>社会生活</label></li>
+											<li id="cat4"><label for="entertainment" class="radio entertainment"><input type="radio" id="entertainment" name="cat" value="entertainment" title="芸能・スポーツ"/>芸能・スポーツ</label></li>
+											<li id="cat5"><label for="hobby" class="radio hobby"><input type="radio" id="hobby" name="cat" value="hobby" title="趣味・その他"/>趣味・その他</label></li>
+										</ul>
+									</div><!--/.section-->
+									{% foreach from=$dataAsw item=asw %}
+                						<div class="section">
+                							<label for="inputQ{% $asw.aid %}" class="inputQ{% $asw.aid %}">選択肢{% $asw.aid %}{% if $admin eq 1 or 2 %}（※）{% /if %}:</label>
+                							<input type="text" id="inputQ{% $asw.aid %}" value="{% $asw.answer|escape %}" class="txt" maxlength="30" />
+                						</div>
+            						{% /foreach %}
+            						
+                                    {% assign var="loop" value=$dataRubbCnt %}
+                                    {% assign var="nums" value=$dataAswCnt+1 %}
+                                    {% section name="loop" loop=$loop %}
+                                    <div class="section">
+                                        <label for="inputQ{% $smarty.section.loop.index+$nums %}" class="inputQ{% $smarty.section.loop.index+$nums %}">選択肢{% $smarty.section.loop.index+$nums %}:</label>
+            							<input type="text" id="inputQ{% $smarty.section.loop.index+$nums %}" value="" class="txt" maxlength="20" />
+            						</div>  
+                                    {% /section %}
+
+								</div><!--/.wrapper-->
+                                <input type="hidden" id="hidUid" value="{% $dataQst.uid %}">
+                                <input type="hidden" id="hidId" value="{% $dataQst.id %}">
+								<input type="hidden" id="hidCat" value="{% $dataQst.type %}">
+								<input type="hidden" id="hidNickname" value="{% $dataQst.nickname_auth %}">
+								<input type="hidden" id="hidRegion" value="{% $dataQst.public_type %}">
+								<h5 class="c">公開設定</h5>
+								<div class="wrapper">
+									<div class="section">
+										<label class="inputNickname">ニックネーム（※）:</label>
+										<ul id="ulNickname">
+											<li class="active" id="nickname1"><label for="open" class="radio open"><input type="radio" id="open" name="nickname" value="open" checked="true"/>公開する</label></li>
+											<li id="nickname0"><label for="close" class="radio close"><input type="radio" id="close" name="nickname" value="close"/>非公開（匿名）</label></li>
+										</ul>
+									</div><!--/.section-->
+									<div class="section">
+										<label class="inputRegion">カテゴリ（※）:</label>
+										<ul id="ulRegion">
+											<li class="active" id="region1"><label for="all" class="radio all"><input type="radio" id="all" name="region" value="all" checked="true"/>全体公開</label></li>
+											<li id="region2"><label for="friend" class="radio friend"><input type="radio" id="friend" name="region" value="friend"/>マイミクまで</label></li>
+											<li id="region3"><label for="fof" class="radio fof"><input type="radio" id="fof" name="region" value="fof"/>マイミクのマイミクまで</label></li>
+										</ul>
+									</div><!--/.section-->
+								</div><!--/.wrapper-->
+
+                                <label for="toApprove" class="btn approve"><a href="javascript:void(0);" onclick="toApprove()"></a></label>
+								<label for="toDeny" class="btn deny"><a href="javascript:void(0);" onclick="toDeny()"></a></label>
+
+							</form>
+
+						</div><!--/.form-->
+
+					</div><!--/.content-->
+				</div><!--/#add-->
+
+			</div><!--/#mainColumn-->
+	<div id="subColumn">		
+{%include file="millionminds/common/ad.phtml"%}
+    </div><!--/#subColumn-->
+
+		</div><!--/#content-->
+		</div><!--div01-->
+		
+		
+		
+		<div id="div02">
+		<div id="content">
+
+			<div id="mainColumn">
+
+				<div id="add">
+					<div class="content">
+
+						<div class="form">
+							<h3 class="approve">クエスチョン承認フォーム</h3>
+							<p>承認内容を確認してください。</p>
+
+							<form method="post" action="#">
+								<h5 class="q">クエスチョン</h5>
+								<div class="wrapper" id="divwarpper2">
+									
+								</div><!--/.wrapper-->
+
+								<h5 class="c">公開設定</h5>
+								<div class="wrapper">
+									<div class="section">
+										<label class="inputNickname">ニックネーム（※）:</label>
+										<div id="nicknameshow02"></div>
+									</div><!--/.section-->
+									<div class="section">
+										<label class="inputRegion">閲覧権限（※）:</label>
+										<div id="regionshow02"></div>
+									</div><!--/.section-->
+								</div><!--/.wrapper-->
+
+								<label for="toSubmit" class="btn approve"><a href="javascript:void(0);" onclick="submitApprove()"/></span></a></label>
+								<label for="toCancel" class="btn cancel"><a href="javascript:void(0);" onclick="cancelApprove()"/></span></a></label>
+
+							</form>
+
+						</div><!--/.form-->
+
+					</div><!--/.content-->
+				</div><!--/#add-->
+
+			</div><!--/#mainColumn-->
+	<div id="subColumn">		
+{%include file="millionminds/common/ad.phtml"%}
+    </div><!--/#subColumn-->
+		</div><!--/#content-->
+        </div><!--div02-->
+        
+        <div id="div03">
+        <div id="content">
+
+			<div id="mainColumn">
+
+				<div id="add">
+					<div class="content">
+
+						<div class="form">
+							<h3 class="approve_complete">クエスチョン承認完了</h3>
+							<p>クエスチョンの承認が完了しました。引き続き作業をする場合は、<a href="/millionminds/approvelist">未承認クエスチョン一覧</a>までお戻りください。</p>
+						</div><!--/.form-->
+
+					</div><!--/.content-->
+				</div><!--/#add-->
+
+			</div><!--/#mainColumn-->
+
+			<div id="subColumn">
+{%include file="millionminds/common/ad.phtml"%}
+			</div><!--/#subColumn-->
+
+		</div><!--/#content-->
+        </div><!--div03-->
+        
+        <div id="div04">
+		<div id="content">
+
+			<div id="mainColumn">
+
+				<div id="add">
+					<div class="content">
+
+						<div class="form">
+							<h3 class="approve">クエスチョン却下フォーム</h3>
+							<p>以下の内容を却下してもよろしいですか？</p>
+
+							<form method="post" action="#">
+								<h5 class="q">クエスチョン</h5>
+								<div class="wrapper" id="divwarpper4">
+									
+								</div><!--/.wrapper-->
+
+								<h5 class="c">公開設定</h5>
+								<div class="wrapper">
+									<div class="section">
+										<label class="inputNickname">ニックネーム（※）:</label>
+										<div id="nicknameshow04"></div>
+									</div><!--/.section-->
+									<div class="section">
+										<label class="inputRegion">閲覧権限（※）:</label>
+										<div id="regionshow04"></div>
+									</div><!--/.section-->
+								</div><!--/.wrapper-->
+
+								<label for="toDeny" class="btn deny"><a href="javascript:void(0);" onclick="submitDeny()"/></span></a></label>
+								<label for="toCancel" class="btn cancel"><a href="javascript:void(0);" onclick="cancelDeny()"/></span></a></label>
+
+							</form>
+
+						</div><!--/.form-->
+
+					</div><!--/.content-->
+				</div><!--/#add-->
+
+			</div><!--/#mainColumn-->
+	<div id="subColumn">		
+{%include file="millionminds/common/ad.phtml"%}
+    </div><!--/#subColumn-->
+		</div><!--/#content-->
+        </div><!--div04-->
+        
+        
+        <div id="div05">
+        <div id="content">
+
+			<div id="mainColumn">
+
+				<div id="add">
+					<div class="content">
+
+						<div class="form">
+							<h3 class="deny_complete">クエスチョン却下完了</h3>
+							<p>クエスチョンの却下が完了しました。引き続き作業をする場合は、<a href="/millionminds/approvelist">未承認クエスチョン一覧</a>までお戻りください。</p>
+						</div><!--/.form-->
+
+					</div><!--/.content-->
+				</div><!--/#add-->
+
+			</div><!--/#mainColumn-->
+
+			<div id="subColumn">
+{%include file="millionminds/common/ad.phtml"%}
+			</div><!--/#subColumn-->
+
+		</div><!--/#content-->
+        </div><!--div05-->
+        
+{%include file="millionminds/common/footer.phtml"%}

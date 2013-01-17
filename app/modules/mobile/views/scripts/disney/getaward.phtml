@@ -1,0 +1,25 @@
+{%include file="disney/common/header.phtml"%}
+    
+    <div style="font-size:x-small; background-color:#ffe1b6; text-align:center;">
+        {% disneyimg name="sub_ti_award" %}
+        <br /><br />
+        {% if $user %}
+            <div style="color:#ff0000;">
+            	{% emoji code="F99F"%}{%$user->getDisplayName()%}さんの取得ｱﾜｰﾄﾞ{% emoji code="F99F"%}
+            </div>
+        {% /if %}
+        <br />
+		<div style="text-align:center;color:#663300;">
+		{% emoji code="F99F"%}おめでとうございます{% emoji code="F99F"%}<br />
+		新しいｱﾜｰﾄﾞを受賞しました!<br />
+		<br />
+		
+        <img copyright="yes" src="{%$staticUrl%}/apps/disney/img/award/{%$cup.icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" align="top" /><br /><br />
+        {%$cup.name%}<br />
+		<span style="color:#663300;">{%$cup.point%}点</span><br />
+		<br />
+        </div>        
+        <a href='{% "$baseUrl/mobile/disney/getaward?CF_step=complete&CF_id=`$cup.id`&CF_cid=`$cup.cid`"|mixiurl %}'>>>次へ</a><br />
+        <br />
+
+{%include file="disney/common/firstfooter.phtml"%}

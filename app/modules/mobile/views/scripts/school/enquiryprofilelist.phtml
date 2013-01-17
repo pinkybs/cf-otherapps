@@ -1,0 +1,73 @@
+{%include file="school/common/header.phtml" headAd=1 %}
+	<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+		<div id="enquete">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="3" height="3" /><br />
+			<div class="headline" style="background:#7ecef4;">ﾕｰｻﾞｰ別回答一覧</div>
+			<img src="http://mm.mixi.net/img/dot0.gif" width="3" height="3" /><br />
+			<div class="profile" style="text-align:center;">
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td style="width:80px;text-align:center;vertical-align:top;"><img src="{%$miniInfo.thumbnailUrl%}" /></td>
+						<td style="vertical-align:top;"><div style="color:#003366;{% if $ua==1 %}font-size:x-small;{% /if %}">
+							{%$miniInfo.displayName%}<br />
+							<span style="color:#cccc00;">★</span><span style="color:#a35625;">{%$miniInfo.star_count%}</span><span style="color:#cccc00;">★</span><br />
+							{%emoji code="F8D7"%}ﾌﾟﾛﾌ回答数({%$pager.count%})<br />
+							{%emoji code="F9E3"%}<a href='{% "$baseUrl/mobile/school/profile?CF_uid=`$miniInfo.uid`"|mixiurl %}'>時間割</a><br />
+							{% if $isAshiatoUser %}
+								{%emoji code="F8F9"%}<a href='{% "$baseUrl/mobile/school/ashiatoadd?CF_uid=`$profileUid1`"|mixiurl %}'>ｺﾒﾝﾄする</a><br />
+							{% /if %}
+							{%if $uid != $miniInfo.uid %}
+								{%emoji code="F8E4"%}<a href='{%$miniInfo.profileUrl|replace:"//mixi":"//m.mixi"%}'>mixiﾌﾟﾛﾌ</a><br />
+							{%/if%}
+							</div></td>
+					</tr>
+				</table>
+			</div><!--/.profile-->
+			<img src="http://mm.mixi.net/img/dot0.gif" width="3" height="3" /><br />
+			<div class="toAdd" style="text-align:center;">
+				<table width="228" cellpadding="3" cellspacing="1" border="0" align="center" style="background:#f19149;text-align:center;">
+					<tr>
+						<td style="background:#fff799;"><div style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+							{% if $uid != $miniInfo.uid %}
+								{% emoji code="F9BE"%}<a href='{% "$baseUrl/mobile/school/enquiryquestionadd"|mixiurl %}'>質問を作ってみよう!</a><br />
+							{% else %}
+								{% emoji code="F977"%}<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/school/invitefinish" %}'>ﾏｲﾐｸにﾌﾟﾛﾌを見てもらおう</a><br />
+							{% /if %}
+							</div></td>
+					</tr>
+				</table>
+			</div><!--/.toAdd-->
+			{%if $pager.count %}
+				<div class="count">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					{%$pager.count%}件中 {%$startNm%}-{%$endNm%}件<br />
+					<input type="hidden" value='{%emoji code="F8B3"%}'>
+				</div>
+				<div class="listgroup">
+					{% foreach from=$enquiryLst item=data key=key %}
+						<div class="section" style="background:#{% cycle values="fffddb,fcf5cc" %};">
+							<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+							<a href='{% "$baseUrl/mobile/school/enquiryanswerlist?CF_qid=`$data.qid`"|mixiurl %}' style="color:#a35625;"><span style="color:#a35625;">Q.{%$data.question|escape%}</span></a><br />
+							{%$data.comment|escape|unescape_emoji%}<br />
+							<div style="color:#777777;text-align:right;">[{%emoji code="F9CC"%}{% if $data.uid == $uid || $data.isAssess %}<span style="color:#777777;">ｲｲﾈ!({%$data.good_count%})</span>{%else%}<a href='{% "$baseUrl/mobile/school/enquirycommentgood?CF_commentid=`$data.comment_id`"|mixiurl %}' style="color:#777777;"><span style="color:#777777;">ｲｲﾈ!({%$data.good_count%})</span></a>{%/if%}]</div>
+						</div><!--/.section-->
+					{% /foreach %}
+				</div><!--/.listgroup-->
+				{%include file="school/common/pager.phtml"%}
+			{%else%}
+				<div class="description" style="text-align:center;">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					まだ回答がありません<br />
+				</div><!--/.description-->
+			{%/if%}
+			<div class="footlink">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<div class="line" style="background:#7ecef4;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/enquiry"|mixiurl %}'>教えて!ﾌﾟﾛﾌ ﾄｯﾌﾟ</a><br />
+			</div><!--/.footlink-->
+		</div><!--/#enquete-->
+		{%include file="school/common/menu.phtml"%}
+	</div><!--/#container-->
+
+{%include file="school/common/footer.phtml" footAd=1 %}

@@ -1,0 +1,32 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="miniFeed">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">更新情報</span><br />
+	</div><!--/.headline-->
+
+	<div class="switch" style="text-align:right;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%if $type==null || $type==''%}
+			自分の一覧<span style="color:#999;">|</span><a href='{% "$baseUrl/mobile/parking/newsfeed?parking_tp=1"|mixiurl %}'>みんなの一覧</a><br />
+		{%else%}
+			<a href='{% "$baseUrl/mobile/parking/newsfeed"|mixiurl %}'>自分の一覧</a><span style="color:#999;">|</span>みんなの一覧<br />
+		{%/if%}
+	</div><!--/.switch-->
+
+	<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+
+	{%foreach from=$feed item=rowdata key=index%}
+		<div class="section" {%if ($index%2)==0 %}style="background:#fee;"{%else%}style="background:#ffe;"{%/if%}>
+			{% emoji code=$rowdata.icon%}{%$rowdata.title%}<br />
+			<div style="color:#09f;text-align:right;"><span style="color:#cd424a;">{%$rowdata.create_time|date_format:"%Y年%m月%d日 %H:%M"%}</span>&nbsp;</div>
+			<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+		</div><!--/.section-->
+	{%/foreach%}
+
+</div><!--/#miniFeed-->
+
+{%include file="parking/common/footer.phtml"%}

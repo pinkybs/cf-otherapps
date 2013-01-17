@@ -1,0 +1,86 @@
+{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn">
+<div id="continer">
+
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+		$j('#gNavDoreiShop').addClass('active');
+	</script>
+
+	<div id="mainColumn">
+	<!-- hidden info -->
+		<input type="hidden" value="{%$uid%}" id="hidUid" name="hidUid" />
+		<input type="hidden" value="{%$slaveCount%}" id="hidSlaveCount" name="hidSlaveCount" />
+		<input type="hidden" value="{%$cash%}" id="hidCash" name="hidCash" />
+		<input type="hidden" value="{%$masterId%}" id="hidMasterId" name="hidMasterId" />
+		<input type="hidden" value="{%$giftCount%}" id="hidGiftCount" name="hidGiftCount" />
+		<input type="hidden" value="{%$Count%}" id="hidCount" name="hidCount" />
+		<!-- hidSlaveUidStr value slave id list -->
+		<input type="hidden" value="{%$slaveUidStr%}" id="hidSlaveUidStr" name="hidSlaveUidStr">
+
+		<input type="hidden" value="0" id="hidSort" name="hidSort"/>
+		<input type="hidden" value="0" id="hidKeyWord" name="hidKeyWord"/>
+
+	<!-- /hidden info -->
+		<div id="sellBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_sell.png" width="190" height="19" alt="販売中のドレイちゃん" /></h2>
+				<ul class="tabNews"><!--
+					--><li id="tabOwn" class="active"><a id="firendsKey" href="javascript:void(0);">アナタ関連</a></li><!--
+					--><li id="tabMyMixi"><a id="mixiKey" href="javascript:void(0);">ミクシィ全体</a></li><!--
+				--></ul><!--/.tabNews-->
+			</div><!--/.hdr-->
+
+			<div id="setpNull" {% if $lstShopLeader %}style="display: none;"{% /if %}><p class="intro">まだ何もありません。</p></div>
+			<p class="order" id="pInfo" {% if not $lstShopLeader %}style="display: none;"{% /if %}><span id="maxCount">{%$Count%}</span>件中<label id="lblNumS">1</label>-<label id="lblNumB">{% if $Count > "10" %}10{% else %}{%$Count%}{% /if %}</label>件を表示 <span class="ascend"> [ <a id="sortDesc" href="javascript:void(0);">▲価格が安い順</a></span> | <span class="descend"><a id="sort" href="javascript:void(0);">▼価格が高い順</a></span> ]</p>
+			<div id="slaveShop" {% if not $lstShopLeader %}style="display: none;"{% /if %}><!--
+				--><ul><!--
+					{% foreach name=shopLeaderList from=$lstShopLeader item=sdata %}
+						--><li>
+						 	<p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$sdata.uid%}" style="background-image:url({%$sdata.thumbnailUrl%})">{%$sdata.displayName%}</a>{% if 1==$sdata.is_in_revolution %}<img src="{%$staticUrl%}/apps/slave/img/content/icn_warning.gif" width="16" height="16" alt="" />{% /if %}</p>
+							<p class="name"><span><a href="{%$baseUrl%}/slave/profile?uid={%$sdata.uid%}">{%$sdata.displayName%}</a> 改め </span>{%if $sdata.nickname %}{%$sdata.nickname|escape%}{% else %}{%$sdata.displayName%}ちゃん{% /if %}</p>
+							<p class="comment">{% if $sdata.balloon %}{%$sdata.balloon|escape%}{% else %}誰か私を買ってください{% /if %}　<span></span></p>
+							<ul><!--
+								--><li class="price">市場価値：￥{%$sdata.format_price%}</li><!--
+								--><li class="job">職業：{%$sdata.work_category|escape%}</li><!--
+							--></ul>
+							<ul class="actionList">
+								{% if not $sdata.buy %}<li class="actionName"><a class="disable">購入する</a></li>
+								{% else %}<li class="actionName"><a href="{%$baseUrl%}/slave/buyslave?uid={%$sdata.uid%}">購入する</a></li>
+								{% /if %}
+								{% if not $sdata.tease %}<li class="actionPoke"><a class="disable">からかう</a></li>
+								{% else %}<li class="actionPoke"><a href="{%$baseUrl%}/slave/tease?uid={%$sdata.uid%}">からかう</a></li>
+								{% /if %}
+								{% if not $sdata.gift %}<li class="actionGift"><a class="disable">ギフトを贈る</a></li>
+								{% else %}<li class="actionGift"><a href="{%$baseUrl%}/slave/presentgift?uid={%$sdata.uid%}">ギフトを贈る</a></li>
+								{% /if %}
+							</ul><!--/.atctionList-->
+						</li><!--
+					{% /foreach %}
+				--></ul>
+
+				{% if count($page) != 1 %}
+				<div id="pager">
+						<ul><!--
+							{% foreach name=page from=$page item=data %}
+							--><li><a href="javascript:changePageAction({%$data%})" {% if $data == "1" %}class="disable" {% /if%}>{%$data%}</a></li><!--
+							{% /foreach %}
+						--></ul>
+
+						<p class="nextButton"><a href="javascript:changePageAction(2)">Next &gt;</a></p>
+				</div><!--/#pager-->
+				{% /if %}
+			</div><!--/#slaveShop-->
+		</div><!--/#sellBox.box-->
+		<input type="hidden" id="pageIndex" value="1" />
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+	{%include file="slave/common/adbox.phtml"%}
+	{%include file="slave/common/logbox.phtml"%}
+	{%include file="slave/common/popularbox.phtml"%}
+	</div><!--/#subColumn-->
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/shop.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

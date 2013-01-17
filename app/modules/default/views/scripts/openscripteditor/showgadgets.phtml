@@ -1,0 +1,13 @@
+	
+<div onclick="navigateToCanvas('{%$entry.eid%}');" id="container" style="display: block;width: 212px;height: 212px;overflow: hidden;cursor: pointer;">
+	<h1><img src="{%$staticUrl%}/apps/scripteditor/img/gadget/ttl.png" style="display: block;" width="212" height="25" alt="" /></h1>
+    <div class="head" style="height: 24px;margin: 3px 0;border: 1px solid #ccc;">
+        <h2 style="padding: 4px 5px 4px 25px;font-size: 14px;background: url({%$staticUrl%}/apps/scripteditor/img/gadget/control_play.png) no-repeat 5px 50%;">{%$entry.title|escape|truncatejp:20:"…"%}</h2>
+    </div><!--/.head-->
+    <div class="body" style="height: 116px;background: #000;">
+        <div class="inner" style="padding: 5px;">
+            <textarea readonly style="cursor: pointer;width: 202px;height: 106px;background: #000;color: #fff;font-size: 12px;">{%$entry.content%}</textarea>
+        </div><!--/.inner-->
+    </div><!--/.body-->
+    <p class="btn"><img src="{%$staticUrl%}/apps/scripteditor/img/gadget/btn.png" style="display: block;" width="212" height="40" alt="" /></p>
+</div><!--/#container-->

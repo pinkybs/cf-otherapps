@@ -1,0 +1,27 @@
+﻿{%include file="chat/common/header.phtml"%}
+
+<body id="static" class="invite list">
+<div id="container">
+	{%include file="chat/common/nav.phtml"%}
+	<script type="text/javascript">
+		$j('#liFeed').addClass('stay');
+	</script>
+
+	<div id="mainColumn"><div id="invitedBox" class="innerBox">
+
+		<div id="newsBox">
+			<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_news.png" width="77" height="24" alt="お知らせ" /></h1>
+			<div id="newslist" class="inner"></div><!--/.inner-->
+			<input type="hidden" id="pageIndex" value="1" />
+			<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/feedlist.js?{%$version.js%}"></script>
+		</div><!--/.innerBox-->
+
+	</div></div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="chat/common/subcolumn.phtml"%}
+	</div><!--/#subColumn-->
+
+	<input type="hidden" id="hidFrameHeight" value="300" />
+
+{%include file="chat/common/footer.phtml"%}

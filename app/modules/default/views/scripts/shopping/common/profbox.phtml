@@ -1,0 +1,35 @@
+		<div id="profBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_prof.png" alt="ゲーム成績表" /></h2>
+			</div><!--/.hdr-->
+
+			<p class="pic"><a ><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="180" height="180" style="background-image: url({%$myProfInfo.largeThumbnailUrl%});" alt="{%$myProfInfo.displayName%}" /></a></p>
+			<h2 class="name">{%$myProfInfo.displayName%}</h2>
+
+			<dl class="statusList">
+				<dt>10万円部門</dt>
+				{% if $myProfInfo.price_depart10 %}
+					<dd>{%$myProfInfo.fomat_price_depart10|replace:"-":"-&yen;"|replace:"+":"+&yen;"%}<span>（{%$myProfInfo.rank10%}位）</span></dd>
+				{% else %}
+					<dd>未プレイ<span>（順位なし）</span></dd>
+				{% /if %}
+				<dt>50万円部門</dt>
+				{% if $myProfInfo.price_depart50 %}
+					<dd>{%$myProfInfo.fomat_price_depart50|replace:"-":"-&yen;"|replace:"+":"+&yen;"%}<span>（{%$myProfInfo.rank50%}位）</span></dd>
+				{% else %}
+					<dd>未プレイ<span>（順位なし）</span></dd>
+				{% /if %}
+				<dt>100万円部門</dt>
+				{% if $myProfInfo.price_depart100 %}
+					<dd>{%$myProfInfo.fomat_price_depart100|replace:"-":"-&yen;"|replace:"+":"+&yen;"%}<span>（{%$myProfInfo.rank100%}位）</span></dd>
+				{% else %}
+					<dd>未プレイ<span>（順位なし）</span></dd>
+				{% /if %}
+				<dt>500万円部門</dt>
+				{% if $myProfInfo.price_depart500 %}
+					<dd>{%$myProfInfo.fomat_price_depart500|replace:"-":"-&yen;"|replace:"+":"+&yen;"%}<span>（{%$myProfInfo.rank500%}位）</span></dd>
+				{% else %}
+					<dd>未プレイ<span>（順位なし）</span></dd>
+				{% /if %}
+			</dl>
+		</div><!--/#profBox.box-->

@@ -1,0 +1,59 @@
+{%include file="dynamite/common/header.phtml" headAd=1 %}
+
+    <div id="ranking">
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="headline" style="background:#777777;color:#ffffff;">ｱｼﾞﾄ壊滅数ランキング</div>
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		ｱｼﾞﾄが壊滅させられた順に表示されています<br />
+
+        <hr style="color:#666666;background-color:#666666;height:1px;border:0px solid #666666;margin:0.3em 0;" size="1" />
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="switch" style="text-align:center;">
+            {% if $type == 2 %}
+                <a href='{% "$baseUrl/mobile/dynamite/rankingdamage?CF_type=1"|mixiurl %}'>ﾏｲﾐｸ内</a>&nbsp;ﾐｸｼｨ全体
+            {% else %}
+                            ﾏｲﾐｸ内&nbsp;<a href='{% "$baseUrl/mobile/dynamite/rankingdamage?CF_type=2"|mixiurl %}'>ﾐｸｼｨ全体</a>
+            {% /if %}
+        </div><!--/.switch-->
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <hr style="color:#666666;background-color:#666666;height:1px;border:0px solid #666666;margin:0.3em 0;" size="1" />
+
+        <div class="description">{%$rankCount%}件中 {%if $startNm==$endNm%}{%$startNm%}{%else%}{%$startNm%}-{%$endNm%}{%/if%}件</div>
+
+        {% foreach from=$rankUser item=data key=key %}
+            <div class="section" style="background:{%if $key%2==0 %}#000000{%else%}#333333{%/if%};">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="44" valign="top" align="center" style="width:44px;text-align:center;vertical-align:top;"><img src="{%$data.miniThumbnailUrl%}" style="margin:2px 0;" /></td>
+                        <td style="color:#ffffff;font-size:x-small;">
+                            {% if $data.uid == $myDynamiteInfo.uid %}
+                                <span style="color:#ffcc00;">〓{%$data.rank%}位〓</span><br />
+                            {% else %}
+                                <span style="color:#777777;">〓</span>{%$data.rank%}位<span style="color:#777777;">〓</span><br />
+                            {% /if %}
+                            
+                            <a href='{% "$baseUrl/mobile/dynamite/profile?CF_uid=`$data.uid`"|mixiurl %}'>{%$data.displayName%}</a><span style="color:#ff9933;">組</span><br />
+                            {%$data.dead_number%}回</td>
+                    </tr>
+                </table>
+            </div><!--/.section-->
+        {% /foreach %}
+
+        {% if $pager.maxPager > 1 %}
+            <div class="nav" style="color:#ff9933;text-align:center;">
+                <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+                {%include file="dynamite/common/pager.phtml"%}
+            </div><!--/.nav-->
+        {% /if %}
+
+    </div><!--/#ranking-->
+
+{%include file="dynamite/common/menu.phtml"%}
+{%include file="dynamite/common/footer.phtml" footAd=1 %}

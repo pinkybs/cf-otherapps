@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" id="mixi">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<!--[if lt IE 7]><![endif]-->
+	<script type="text/javascript" language="javascript" src="{%$staticUrl%}/cmn/js/prototype-1.6.0.2.js?{%$version.js%}"></script>
+	<script type="text/javascript" language="javascript" src="{%$staticUrl%}/cmn/js/effects.js?{%$version.js%}"></script>
+	<script type="text/javascript" language="javascript">
+		var UrlConfig =  {
+		    HostUrl: '{%$hostUrl%}',
+		    BaseUrl : '{%$baseUrl%}',
+		    StaticUrl : '{%$staticUrl%}',
+		    PhotoUrl : '{%$photoUrl%}'
+		};
+		
+		var CurrentHeight = 0;
+	</script>
+	<script type="text/javascript" language="javascript" src="{%$staticUrl%}/cmn/js/mixi.js?{%$version.js%}"></script>
+	<script type="text/javascript" language="javascript" src="{%$smarty.const.MIXI_HOST%}/static/js/platform/json.js?1228977457"></script>
+	<script type="text/javascript" language="javascript" src="{%$smarty.const.MIXI_HOST%}/static/js/platform/rpc.js?1228977457"></script>
+    <script type="text/javascript" language="javascript">
+        gadgets.rpc.setRelayUrl('..', "{%$mixi_platform_api_url%}", false);
+    
+        function adjustHeight(height) {
+        	 if (!height) {
+                height = 830;
+            }
+            
+            CurrentHeight = height;
+            
+            if (Prototype.Browser.WebKit) {
+                new PeriodicalExecuter(function(pe) {
+                    gadgets.rpc.call(null, 'remote_adjustHeight', null, CurrentHeight);
+                    pe.stop();
+                }, 0.1);
+            }
+            else {
+                gadgets.rpc.call(null, 'remote_adjustHeight', null, height);
+            }
+        }
+
+        function postActivity(title, reciptents) {
+            gadgets.rpc.call(null, 'remote_postActivity', null, title, reciptents);
+        }
+
+        function postActivityWithPic(title, picurl, mimeType, reciptents) {
+            gadgets.rpc.call(null, 'remote_postActivityWithPic', null, title, picurl, mimeType, reciptents);
+        }
+    </script>    
+	
+    <link rel="stylesheet" type="text/css" media="all" href="{%$staticUrl%}/apps/chomeboard/css/jScrollPane.css?{%$version.css%}" />
+    <link rel="stylesheet" href="{%$staticUrl%}/apps/chomeboard/css/base.css?{%$version.css%}" type="text/css" media="print,screen" />
+    <link rel="stylesheet" href="{%$staticUrl%}/apps/chomeboard/css/main.css?{%$version.css%}" type="text/css" media="print,screen" />
+    <link rel="stylesheet" href="{%$staticUrl%}/apps/chomeboard/css/debug.css?{%$version.css%}" type="text/css" media="print,screen" />
+	
+	<style>
+	
+    a:hover {
+        color:#996600;
+    }
+    a:link {
+        color:#258FB8;
+    }
+
+	table {
+	   font-size:12px;
+	}
+	
+	.caption {
+	   color:white;
+	   font-size: 16px;
+	   font-weight:bold;
+	}
+	
+	img {
+	   border:none;
+	}
+	
+	</style>
+
+</head>

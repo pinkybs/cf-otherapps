@@ -1,0 +1,60 @@
+{%include file="dynamite/common/header.phtml" headAd=0 %}
+
+<div id="itemConfirm">
+    <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+    <div class="headline" style="background:#777777;color:#ffffff;">ｱｲﾃﾑ購入確認</div>
+    <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+    購入するｱｲﾃﾑと購入数を確認して下さい<br />
+
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td width="60" valign="top" align="center" style="width:60px;text-align:center;vertical-align:top;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/item/{%$selectedItem.cid%}.gif" width="56" height="56" style="margin:2px 0;" /></td>
+            <td style="color:#ffffff;{% if $ua==1 %}font-size:x-small;{% /if %}">{%$selectedItem.name%}</td>
+        </tr>
+    </table>
+
+    <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+    <table width="228" cellpadding="2" cellspacing="1" border="0" align="center" style="background:#eeaa55;text-align:center;">
+        <tr>
+            <td style="background:#fffdde;text-align:left;"><div style="color:#000000;{% if $ua==1 %}font-size:x-small;{% /if %}">【アイテム効果】<br />{%$selectedItem.introduce%}</div></td>
+        </tr>
+    </table>
+
+    <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+    <div class="status">
+    {% if $buyBomb %}
+                ﾀﾞｲﾅﾏｲﾄ所持数:{%$myDynamiteInfo.bomb_count%}個<br />
+    {% else %}
+                購入数:{%$selectNum%}個<br />
+                所持数:{%$oldSelectedItemCount%}個<span style="color:#ff9933;">→{%$newSelectedItemCount%}個</span><br />
+    {% /if %}
+        mixiポイント:{%$payPoint%}ポイント
+    </div><!--/.status-->
+
+    <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+    <form name="buyconfirm" action='{% "$baseUrl/mobile/dynamite/buyitembymixipoint"|mixiurl %}' method="post">
+        <input type="hidden" name="CF_cid" value="{%$selectedItem.cid%}" />
+        <div class="btn" style="text-align:center;">
+            <input type="submit" style="color:#333333;" value=" 購入する " />
+        </div><!--/.btn-->
+    </form><!--/.buyconfirm-->
+
+    <form name="cancelConfirm" action='{% "$baseUrl/mobile/dynamite/itemshop"|mixiurl %}' method="post">
+        <div class="btn" style="text-align:center;">
+            <input type="submit" style="color:#333333;" value="キャンセル">
+        </div><!--/.btn-->
+    </form><!--/.cancelConfirm-->
+
+    <div class="nomenuAlert">
+        <br />
+        直前のﾍﾟｰｼﾞは{% emoji code="F8E9" %}の<span style="color:#cd424a;">[戻るﾎﾞﾀﾝ]</span>でお戻りください<br />
+        <img src="{%$staticUrl%}/apps/ship/img/dot0.gif" width="1" height="3" /><br />
+    </div><!--/.nomenuAlert-->
+
+</div><!--/#itemConfirm-->
+
+{%include file="dynamite/common/footer.phtml" footAd=0 %}

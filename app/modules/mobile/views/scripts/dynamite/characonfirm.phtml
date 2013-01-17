@@ -1,0 +1,83 @@
+{%include file="dynamite/common/header.phtml" headAd=0 %}
+
+{% if $step == "confirm" %}
+    <div id="hitmanConfirm">
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="headline" style="background:#777777;color:#ffffff;">ヒットマンと契約する</div>
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="description">
+            {%$hitmanInfo.hitman_name|escape%}をﾋｯﾄﾏﾝとして雇います｡もしも現時点で設置中のダイナマイトがある場合、破壊力が「0」に戻ってしまいますが本当によろしいですか？よろしければ[契約する]を押してください｡<br />
+        </div><!--/.description-->
+
+        <div class="section">
+            <hr style="color:#666666;background-color:#666666;height:1px;border:0px solid #666666;margin:0.3em 0;" size="1" />
+            <div class="headline"><span style="color:#666666;">〓</span>{%$hitmanInfo.hitman_name|escape%}<span style="color:#666666;">〓</span></div>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="64" align="center" style="width:64px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/hitman/{%if $hitmanInfo.pic_id < 10%}0{%$hitmanInfo.pic_id%}{%else%}{%$hitmanInfo.pic_id%}{%/if%}_a.gif" width="60" height="60" style="margin:2px 0;" /></td>
+                    <td style="background:#333333;color:#ffffff;font-size:x-small;">ｽﾋﾟｰﾄﾞ：{%$hitmanInfo.trigger_speed%}<br />体　力：{%$hitmanInfo.health%}<br />回復力：{%$hitmanInfo.recover_speed%}</td>
+                </tr>
+            </table>
+            <div class="description">
+                所持金${%$hitmanInfo.price|outputdollars%}以上で契約可能<div class="submit" style="text-align:right;">
+                <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/characonfirm?CF_hid=`$hitmanInfo.id`&CF_step=complete"|mixiurl %}'>契約する</a>&nbsp;</div>
+            </div><!--/.description-->
+        </div><!--/.section-->
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="toTop">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/charashop"|mixiurl %}'>ヒットマン紹介所に戻る</a>&nbsp;
+        </div><!--/.toTop-->
+    </div><!--/#hitmanConform-->
+    
+{% else %}
+
+    <div id="hitmanComplete">
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="headline" style="background:#777777;color:#ffffff;">ヒットマン紹介所</div>
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        
+        {% if $result == 1 %}
+            <div class="description">
+                {%$hitmanInfo.hitman_name|escape%}をﾋｯﾄﾏﾝとして雇いました。
+            </div><!--/.description-->
+    
+            <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+    
+            <div class="fukidashi" style="background:#ffffff;color:#000000;">
+                <hr style="color:#ffffff;background-color:#ffffff;height:1px;border:0px solid #ffffff;margin:0.3em 0;" size="1" />
+                             ｱｲﾂ､爆破しちゃいましょうよ
+                <hr style="color:#ffffff;background-color:#ffffff;height:1px;border:0px solid #ffffff;margin:0.3em 0;" size="1" />
+                <div style="background:#000;text-align: center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/fukidashi.gif" width="228" height="7" /></div>
+            </div><!--/.fukidashi-->
+    
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="64" align="center" style="width:64px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/hitman/{%if $hitmanInfo.pic_id < 10%}0{%$hitmanInfo.pic_id%}{%else%}{%$hitmanInfo.pic_id%}{%/if%}_a.gif" width="60" height="60" style="margin:2px 0;" /></td>
+                    <td style="color:#ffffff;font-size:x-small;">{%$hitmanInfo.hitman_name|escape%}<br />
+                        <div style="background:#333333;">ｽﾋﾟｰﾄﾞ：{%$hitmanInfo.trigger_speed%}<br />体　力：{%$hitmanInfo.health%}<br />回復力：{%$hitmanInfo.recover_speed%}</div></td>
+                </tr>
+            </table>
+        {% else %}
+            <div class="description">
+                {%$hitmanInfo.hitman_name|escape%}をﾋｯﾄﾏﾝとして雇い失敗しました。
+            </div><!--/.description-->
+        {% /if %}
+        
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+        
+        <div class="toHitman" style="text-align:right;">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/home"|mixiurl %}'>{%$myDynamiteInfo.displayName%}組へ</a>&nbsp;
+        </div><!--/.toHitman-->
+    </div><!--/#hitmanComplete-->
+{% /if %}
+
+{%include file="dynamite/common/menu.phtml"%}
+{%include file="dynamite/common/footer.phtml" footAd=0 %}

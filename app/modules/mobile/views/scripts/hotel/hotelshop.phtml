@@ -1,0 +1,112 @@
+{%include file="hotel/common/header.phtml"%}
+<style type="text/css">
+	a:link{color:#a77809;}
+	a:visited{color:#a77809;}
+	*{color:#000000;font-size:x-small;font-size:5;}
+	.icon{vertical-align: middle;}
+	a img {border: none;}
+
+	body {
+		background: #ffffff;
+	}
+
+	.hrYellow {
+		color:#fbf8c9;
+		border: 0;
+		background-color:#fbf8c9;
+		height:1px;
+		margin:0.3em 0;
+	}
+
+	.hrWhite {
+		color:#ffffff;
+		border: 0;
+		background-color:#ffffff;
+		height:1px;
+		margin:0.3em 0;
+	}
+
+	.hrSp {
+		background-color:#fdd89e;
+		color:#fdd89e;
+		height:1px;
+		border:0px solid #fdd89e;
+		margin:0.3em 0;
+	}
+
+	#mixiHeader {
+		background:#fbb03b;
+	}
+
+	.headlineFun {
+		background:#cf1226;
+		color:#ffffff;
+	}
+
+	.headlineBack {
+		background:#f6ddbc;
+	}
+
+	.headlineTip {
+		background:#fdd89e;
+		color:#000000;
+	}
+
+	.toTop {
+		background-color:#ffffff;
+	}
+
+	#copyright {
+		background:#fbb03b;
+	}
+
+	#shopList {
+		background-color:#fbf8c9;
+	}
+
+	.tdBg {
+		background-color:#d2d0bc;
+	}
+</style>
+
+<div id="shopList">
+        <hr class="hrWhite" size="1" />
+        <div class="headlineTip">商店</div>
+        <hr class="hrWhite" size="1" />
+
+        <!-- <div class="description">
+            <hr class="hrYellow" size="1" />
+            <div class="money" style="text-align:right;">現在の所持金:${%$info.format_money%}</div>
+         </div>-->
+        {% foreach from=$shoplist item=data key=key %}
+	        <div class="section">
+	            <hr class="hrSp" size="1" />
+	            <div class="headline"><span style="color:#666666;">〓</span>{%$data.name%}<span style="color:#666666;">〓</span></div>
+	            <table class="tdBg" width="100%" cellpadding="0" cellspacing="0" border="0">
+	                <tr>
+	                    <td width="64" align="center" style="width:64px;text-align:center;"><img src="{%$staticUrl%}/{%$data.image_url%}" width="60" height="60" style="margin:2px 0;" /></td>
+	                    <td>{%$data.introduce%}<br /></td>
+	                </tr>
+	            </table>
+	            <div class="description">
+                                        価格：{%$data.format_price%}
+                    <div class="submit" style="text-align:left;">
+                        {% if $data.price <= $info.money %}<!-- '{% "$baseUrl/mobile/hotel/buystoreconfirm?CF_uid=`$uid`&CF_storeId=`$data.sid`"|mixiurl %}' -->
+                            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/buystoreconfirm?CF_storeId=`$data.sid`"|mixiurl %}'>購入する</a>&nbsp;
+                        {%else%}
+                            <span style="color:#ff9933;">⇒</span>購入する&nbsp;
+                        {%/if%}
+                        <br/><span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/`$hotelUrl`"|mixiurl %}'>戻る</a>
+                    </div>
+	            </div><!--/.description-->
+	        </div><!--/.section-->
+        {% /foreach %}
+        <hr class="hrYellow" size="1" />
+        {%include file="hotel/common/pager.phtml"%}
+        <hr class="hrYellow" size="1" />
+         <!--<div class="toTop">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/profile"|mixiurl %}'>トップへ戻る</a>&nbsp;
+        </div>/.toTop-->
+    </div><!--/#hitmanlist-->
+{%include file="hotel/common/menu.phtml"%}
+{%include file="hotel/common/footer.phtml"%}

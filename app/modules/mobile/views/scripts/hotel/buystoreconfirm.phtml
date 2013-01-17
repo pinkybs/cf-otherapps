@@ -1,0 +1,99 @@
+{%include file="hotel/common/header.phtml"%}
+    <style type="text/css">
+    a:link{color:#a77809;}
+    a:visited{color:#a77809;}
+    *{color:#000000;font-size:x-small;font-size:5;}
+    .icon{vertical-align: middle;}
+    a img {border: none;}
+
+    body {
+        background: #ffffff;
+    }
+
+    .hrYellow {
+        color:#fbf8c9;
+        border: 0;
+        background-color:#fbf8c9;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrWhite {
+        color:#ffffff;
+        border: 0;
+        background-color:#ffffff;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrSp {
+        background-color:#fdd89e;
+        color:#fdd89e;
+        height:1px;
+        border:0px solid #fdd89e;
+        margin:0.3em 0;
+    }
+
+    #mixiHeader {
+        background:#fbb03b;
+    }
+
+    .headlineFun {
+        background:#cf1226;
+        color:#ffffff;
+    }
+
+    .headlineBack {
+        background:#f6ddbc;
+    }
+
+    .headlineTip {
+        background:#fdd89e;
+        color:#000000;
+    }
+
+    .toTop {
+        background-color:#ffffff;
+    }
+
+    #copyright {
+        background:#fbb03b;
+    }
+
+    #shopConfirm {
+        background-color:#fbf8c9;
+    }
+    </style>
+    <div id="shopConfirm">
+        <hr class="hrWhite" size="1" />
+        <div style="background:red;">{%$message%}</div>
+        <div class="headlineTip">買います</div>
+        <hr class="hrWhite" size="1" />
+        <div class="section">
+            <hr class="hrSp" size="1" />
+            <div class="headline"><span style="color:#666666;">〓</span>{%$store.name%}<span style="color:#666666;">〓</span></div>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="64" align="center" style="width:64px;text-align:center;"><img src="{%$staticUrl%}/{%$store.image_url%}" width="60" height="60" style="margin:2px 0;" /></td>
+                    <td style="color:#000000;">{%$store.introduce%}</td>
+                </tr>
+            </table>
+            <div class="description">
+                            所持金${%$store.format_price%}以上で買います可能
+	            <div class="submit" style="text-align:left;">
+	                <span style="color:#ff9933;">⇒</span>
+	                {% if $store.price <= $info.money %}
+                       <a href='{% "$baseUrl/mobile/hotel/buystoreconfirm?CF_storeId=`$store.sid`&CF_model=1"|mixiurl %}'>買います</a>&nbsp;
+                    {%else%}
+                                              買います&nbsp;
+                    {%/if%}
+	            </div>
+            </div><!--/.description-->
+        </div><!--/.section-->
+        <hr class="hrYellow" size="1" />
+         <!--<div class="toTop">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/profile"|mixiurl %}'>トップへ戻る</a>&nbsp;
+        </div>/.toTop-->
+    </div><!--/#hitmanConform-->
+{%include file="hotel/common/menu.phtml"%}
+{%include file="hotel/common/footer.phtml"%}

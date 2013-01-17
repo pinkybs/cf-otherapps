@@ -1,0 +1,112 @@
+{%include file="hotel/common/header.phtml"%}
+<style type="text/css">
+    a:link{color:#a77809;}
+    a:visited{color:#a77809;}
+    *{color:#000000;font-size:x-small;font-size:5;}
+    .icon{vertical-align: middle;}
+    a img {border: none;}
+
+    body {
+        background: #ffffff;
+    }
+
+    .hrYellow {
+        color:#fbf8c9;
+        border: 0;
+        background-color:#fbf8c9;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrWhite {
+        color:#ffffff;
+        border: 0;
+        background-color:#ffffff;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrSp {
+        background-color:#fdd89e;
+        color:#fdd89e;
+        height:1px;
+        border:0px solid #fdd89e;
+        margin:0.3em 0;
+    }
+
+    #mixiHeader {
+        background:#fbb03b;
+    }
+
+    .headlineFun {
+        background:#cf1226;
+        color:#ffffff;
+    }
+
+    .headlineBack {
+        background:#f6ddbc;
+    }
+
+    .headlineTip {
+        background:#fdd89e;
+        color:#000000;
+    }
+
+    .toTop {
+        background-color:#ffffff;
+    }
+
+    #copyright {
+        background:#fbb03b;
+    }
+
+    #help{
+        background-color:#fbf8c9;
+    }
+    </style>
+<div id="help">
+
+        <hr class="hrWhite" size="1" />
+        <div class="headlineTip">
+            ヘルプ<br />
+            <hr class="hrSp" size="1" />
+            このｹﾞｰﾑの遊び方<br />
+        </div><!--/.headline-->
+        <hr class="hrYellow" size="1" />
+        <div class="description">
+            ホテルトップ：本ページ<br />
+            ランキング：12_Ranking<br />
+            履歴：13_Log<br />
+            友達招待：MIXIページ<br />
+            商店：02_Shop<br />
+
+            表示情報<br />
+            １、○○さんのホテル<br />
+            （これは今後お金で修正できます）<br />
+            ２、店長：○○さん<br />
+            ３、Level<br />
+            ４、経験（貯まってLevelアップ）<br />
+            ５、★数<br />
+            ６、お金<br />
+            ７、清潔度<br />
+            ８、チェックイン率<br />
+        </div><!--/.description-->
+        <hr class="hrYellow" size="1" />
+         <!--<div class="toTop">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/profile"|mixiurl %}'>トップへ戻る</a>&nbsp;
+        </div>/.toTop-->
+    </div><!--/#help-->
+    <div id="helpmenu">
+        <hr class="hrWhite" size="1" />
+        <div class="headlineFun" style="color:#ffffff;">ヘルプメニュー</div>
+        <hr class="hrWhite" size="1" />
+        <div class="inner" style="color:#ff9933;">
+            <a href='{% "$baseUrl/mobile/hotel/help"|mixiurl %}'>ホテルトップ</a><br />
+            <a href='{% "$baseUrl/mobile/hotel/help"|mixiurl %}'>ランキング</a><br />
+            <a href='{% "$baseUrl/mobile/hotel/help"|mixiurl %}'>履歴</a><br />
+            <a href='{% "$baseUrl/mobile/hotel/help"|mixiurl %}'>友達招待</a><br />
+            <a href='{% "$baseUrl/mobile/hotel/help"|mixiurl %}'>商店</a><br />
+        </div><!--/.inner-->
+    </div><!--/#helpmenu-->
+{%include file="hotel/common/menu.phtml"%}
+{%include file="hotel/common/footer.phtml"%}

@@ -1,0 +1,27 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="present">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">{%$title%}</span><br />
+	</div><!--/.headline-->
+
+	<div class="inner">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%$message%}{% emoji code="F8E6"%}<br />
+		<div class="car" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/parking/mimg/car/{%$cavName%}/m/normal/{%$carColor%}.gif" width="200" height="100" /><br />
+		</div><!--/.car-->
+	</div><!--/.inner-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/car"|mixiurl %}'>所有車一覧にもどる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#present-->
+
+
+{%include file="parking/common/footer.phtml"%}

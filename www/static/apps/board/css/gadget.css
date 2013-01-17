@@ -1,0 +1,192 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+HarachokuWall gadget CSS
+
+Created Date: 2009/02/23
+Author: Yu Uno
+Last Up Date : 2009/02/27
+Author: Yu Uno
+----------------------------------------------
+*/
+
+@import "base.css";
+
+/*tags
+----------------------------------------------*/
+
+* {
+	outline: none;
+}
+
+body,html {
+	height: 100%;
+}
+
+body {
+}
+
+
+a:link,a:hover {
+	color: #429EC1;
+}
+a:link,a:visited {
+	text-decoration: underline;
+}
+a:hover {
+	color: #996600;
+	text-decoration: underline;
+}
+
+
+
+/*#postArea
+----------------------------------------------*/
+#postArea {
+	position: relative;
+	width: 441px;
+	height: 48px;
+	background: url(http://mixitest.linno.jp/static/apps/board/img/gadget/bg_post.png) no-repeat;
+}
+	#postArea ul#nav {
+		position: absolute;
+		top: 8px;
+		left: 4px;
+	}
+		#postArea ul#nav li {
+			width: 57px;
+			height: 15px;
+			background: url(http://mixitest.linno.jp/static/apps/board/img/gadget/nav.png) no-repeat;
+			text-indent: -9999px;
+		}
+			#postArea ul#nav li a {
+				display: block;
+				width: 57px;
+				height: 15px;
+			}
+			#postArea ul#nav li#paint a {
+				background: url(http://mixitest.linno.jp/static/apps/board/img/gadget/nav.png) no-repeat right top;
+			}
+			#postArea ul#nav li#paint a:hover {
+				background: url(http://mixitest.linno.jp/static/apps/board/img/gadget/nav.png) no-repeat left top;				
+			}
+			#postArea ul#nav li#text.active a {
+				background: url(http://mixitest.linno.jp/static/apps/board/img/gadget/nav.png) no-repeat left bottom;
+				cursor: default;
+			}
+	#postArea input#post {
+		position: absolute;
+		top: 4px;
+		right: 7px;
+		margin: 0;
+		padding: 0;
+	}
+	#postArea input#txtCotent {
+		position: absolute;
+		top: 11px;
+		left: 63px;
+		margin: 0;
+		padding: 0;
+		width: 335px;
+		height: 24px;
+		border: none medium;
+		font-size: 14px;
+		line-height: 24px;
+	}
+
+#newest,
+#newest .inner {
+	background: url(http://mixitest.linno.jp/static/apps/board/img/gadget/bg_main.png) no-repeat;
+}
+#newest {	
+	padding: 10px 0 0;
+	width: 441px;
+	overflow: hidden;
+	background-position: left top;
+	font-size: 12px;
+	line-height: 1.4;
+}
+	#newest .inner {
+		padding: 0 10px 10px;
+		background-position: left bottom;	
+	}
+	#newest p.pic,
+	#newest p.name,
+	#newest p.date {
+		display: -moz-inline-box;/*Firefox2*/
+		display: inline-block;/*CSS3*/
+		/display: inline;/*IE6,IE7*/
+		/zoom: 1;/*IE6,IE7*/
+		margin-right: 5px;
+		vertical-align: middle;
+	}
+	#newest p.pic {
+	}
+		#newest p.pic img {
+			display: block;
+			padding: 1px;
+			border: 1px solid #EEEEEE;
+		}
+	#newest p.name {
+	}
+	#newest p.date {
+		font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	}
+	#newest ul {
+	}
+		#newest ul li {
+			padding-bottom: 5px;
+		}
+			#newest ul li p.comment,
+			#newest ul li p.comment .inner {
+				background: url(http://mixitest.linno.jp/static/apps/board/img/gadget/bg_comment_pink.png) no-repeat;
+			}
+			#newest ul li.even p.comment,
+			#newest ul li.even p.comment .inner {
+				background: url(http://mixitest.linno.jp/static/apps/board/img/gadget/bg_comment_green.png) no-repeat;
+			}
+			#newest ul li p.comment,
+			#newest ul li.even p.comment {
+				padding: 8px 0 0;
+				width: 419px;
+				overflow: hidden;
+				text-overflow: ellipsis;/*IE,Safari*/ 
+				background-position: left top;
+			}
+				#newest ul li p.comment .inner,
+				#newest ul li.even p.comment .inner {
+					display: block;
+					padding: 0 5px 3px;
+					background-position: left bottom;
+				}
+					#newest ul li p.comment .inner img,
+					#newest ul li.even p.comment .inner img {
+						display: block;
+						margin: 5px auto;
+					}
+	#newest #more {
+		text-align: right;
+	}
+		#newest #more a {
+			padding: 0 0 0 12px;
+			background: url(http://mixitest.linno.jp/static/apps/board/img/gadget/icn_more.png) no-repeat left center;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

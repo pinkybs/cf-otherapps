@@ -1,0 +1,102 @@
+{%include file="disney/common/header.phtml"%}
+<style type="text/css">
+    #deco{
+        background-color:#ffd990;
+    }
+    #menu2{
+        background-color:#faefc5;
+        text-align:left;
+    }
+    #ib{background-color:#ff0000;
+        padding-left:2px;
+        padding-right:2px;
+        padding-top:2px;
+        padding-bottom:2px;
+        margin:5px;
+    }
+</style>
+
+<div id="deco" style="font-size:x-small;" align="center">
+
+    {% if $from == 'map' %}
+    
+        <img src="{%$staticUrl%}/apps/disney/img/sub_ti_gotochiget_d.gif" copyright="yes" /><br />
+        <br />
+        <font color="#ff0000">{%$placeInfo.award_name%}ｽﾃｨｯﾁ</font><br />
+        <br />
+        <img src="{%$baseUrl%}/mobile/disneyflash/showaward?img={%$placeInfo.award_icon%}" align="top" copyright="yes" /><br /><br />
+        <div align="left">
+        GETしたご当地ｷｬﾗｸﾀｰはﾃﾞｺﾒや待受にしたり、ﾏｲﾐｸに贈って遊ぼう!<br />
+		</div>
+        <br />
+        <a href='{% "$baseUrl/mobile/disney/downloadaward?CF_pid=`$placeInfo.pid`"|mixiurl %}'><img src="{%$staticUrl%}/apps/disney/img/send_2.gif" align="top" copyright="yes" /></a><br />
+        <!--<a href="#"><img src="{%$staticUrl%}/apps/disney/img/back_img.gif" align="top" /></a><br />-->
+        <a href='{% "$baseUrl/mobile/disney/choicemymixi?CF_pid=`$placeInfo.pid`"|mixiurl %}'><img src="{%$staticUrl%}/apps/disney/img/send.gif" align="top" copyright="yes" /></a><br />
+		<br />
+		<div align="left">
+		ﾏｲﾐｸをｱﾌﾟﾘに招待して、ｹﾞｰﾑﾁｹｯﾄもGETしよう!<br />
+		</div>
+		<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/disney/index" %}'>ﾏｲﾐｸ招待へ</a><br />
+		<br />
+    {% elseif $from == 'trade' %}
+        <img src="{%$staticUrl%}/apps/disney/img/sub_ti_gotochiget_1.gif" copyright="yes" /><br />
+        <br />
+        <font color="#ff0000">{%$friendInfo->getDisplayName()%}さんの取得ｷｬﾗｸﾀｰ</font><br />
+        <br />
+        <font color="#ff0000">{%$placeInfo.award_name%}ｽﾃｨｯﾁ</font><br />
+        <br />
+        <img src="{%$baseUrl%}/mobile/disneyflash/showaward?img={%$placeInfo.award_icon%}" align="top" copyright="yes" /><br /><br />
+        {% if $isFriend == 1 %}
+        <a href='{% "$baseUrl/mobile/disney/map?CF_tradePid=`$placeInfo.pid`&CF_fid=`$fid`&CF_from=trade"|mixiurl %}'>
+        <img src="{%$staticUrl%}/apps/disney/img/trade2.gif" align="top" copyright="yes"/><br />
+        </a>
+        {% /if %}
+        
+    {% elseif $from == 'tradeaward' %}
+    
+        <img src="{%$staticUrl%}/apps/disney/img/sub_ti_trade_d.gif" copyright="yes" /><br />
+        <br />
+        <font color="#ff0000">{%$placeInfo.award_name%}ｽﾃｨｯﾁ</font><br />
+        <br />
+        <div align="center">        
+        <img src="{%$baseUrl%}/mobile/disneyflash/showaward?img={%$placeInfo.award_icon%}" copyright="yes" /> <img src="{%$baseUrl%}/mobile/disneyflash/showaward?img={%$tradePlaceInfo.award_icon%}" copyright="yes" />
+        </div>
+        <div align="left">あなたの｢<font color="#FF0000">{%$placeInfo.award_name%}ｽﾃｨｯﾁ</font>｣と{%$friendInfo->getDisplayName()%}さんの｢<font color="#FF0000">{%$tradePlaceInfo.award_name%}ｽﾃｨｯﾁ</font>｣をﾄﾚｰﾄﾞするよ。<br />
+        </div>
+        <div align="center">
+            <a href='{% "$baseUrl/mobile/disney/tradeaward?CF_pid=`$placeInfo.pid`&CF_tradePid=`$tradePlaceInfo.pid`&CF_fid=`$fid`"|mixiurl %}'><img src="{%$staticUrl%}/apps/disney/img/yes.gif" align="top" copyright="yes" /></a>&nbsp;&nbsp;
+            <a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$fid`"|mixiurl %}'><img src="{%$staticUrl%}/apps/disney/img/no.gif" align="top" copyright="yes" /></a><br /><br />
+        </div>
+        
+    {% elseif $from == 'acceptsend' %}
+    
+        <img src="{%$staticUrl%}/apps/disney/img/sub_ti_gotochiget.gif" copyright="yes" /><br />
+        <br />
+        <font color="#ff0000">{%$placeInfo.award_name%}ｽﾃｨｯﾁ</font><br />
+        <br />
+        <div id="ib"><div style="background-color:#ffffff;padding:5px">{%$friendInfo->getDisplayName()%}さんから{%$placeInfo.award_name%}がﾌﾟﾚｾﾞﾝﾄが届いたよ。</div></div>
+        <img src="{%$baseUrl%}/mobile/disneyflash/showaward?img={%$placeInfo.award_icon%}" align="top" copyright="yes" /><br /><br />
+        <a href='{% "$baseUrl/mobile/disney/index"|mixiurl %}'>ｱﾌﾟﾘﾄｯﾌﾟへ</a><br />
+        
+    {% elseif $from == 'accepttrade' %}
+    
+        <img src="{%$staticUrl%}/apps/disney/img/sub_ti_chiget.gif" copyright="yes" /><br />
+        <br />
+        <font color="#ff0000">{%$placeInfo.award_name%}ｽﾃｨｯﾁ</font><br />
+        <br />
+        <img src="{%$baseUrl%}/mobile/disneyflash/showaward?img={%$placeInfo.award_icon%}" align="top" copyright="yes" /><br /><br />
+        <a href='{% "$baseUrl/mobile/disney/index"|mixiurl %}'>ｱﾌﾟﾘﾄｯﾌﾟへ</a><br />
+            
+    {% else %}
+    
+        <img src="{%$staticUrl%}/apps/disney/img/sub_ti_gotochiget.gif" copyright="yes" /><br />
+        <br />
+        <font color="#ff0000">{%$placeInfo.award_name%}ｽﾃｨｯﾁ</font><br />
+        <br />
+        <img src="{%$baseUrl%}/mobile/disneyflash/showaward?img={%$placeInfo.award_icon%}" align="top" copyright="yes" /><br /><br />
+        <a href='{% "$baseUrl/mobile/disney/index"|mixiurl %}'>ｱﾌﾟﾘﾄｯﾌﾟへ</a><br />
+        
+    {% /if %}
+    <br />
+
+{%include file="disney/common/footer.phtml"%}

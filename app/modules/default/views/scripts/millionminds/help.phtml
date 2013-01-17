@@ -1,0 +1,51 @@
+{%include file="millionminds/common/header.phtml"%}
+
+<body>
+    {%include file="topad.phtml"%}
+	<div id="container">
+		{%include file="millionminds/common/hdr.phtml"%}
+		
+		<ul id="gnav">
+			<li class="top"><a href="{%$baseUrl%}/millionminds">MillionMindsトップ</a></li>
+			<li class="profile"><a href="{%$baseUrl%}/millionminds/profile">プロフィール</a></li>
+			<li class="log"><a href="{%$baseUrl%}/millionminds/log">あしあと</a></li>
+			<li class="archive"><a href="{%$baseUrl%}/millionminds/archive">アーカイブ</a></li>
+			<li class="add"><a href="{%$baseUrl%}/millionminds/newquestion">クエスチョン作成</a></li>
+			<li class="help"><a class="active">ヘルプ</a></li>
+			<li class="invite"><a href="javascript:void(0)" onclick="invite();">友達を招待</a></li>
+		</ul><!--/#grav-->
+        
+		<div id="content">
+		
+			<div id="mainColumn">
+			
+				<div id="help">
+					<div class="content">
+
+						<h3 class="about">MillionMindsとは？</h3>
+						<p class="about">MillionMindsの5つの特長</p>
+						<p>MillionMindsは、自分や友達のホンネと相性を知り、楽しむアプリです。50問の性格診断は、自分で行った結果とマイミクが行った結果を照合して、独自のロジックで結果を表示しています。相性診断は、性格診断の結果と、性格診断以外のクエスチョン（相性診断クエスチョン）を通して、合致する価値観が多ければ多いほど、良い結果となります。</p>
+
+						<h3 class="rule">クエスチョンの新規作成について</h3>
+						<p class="point">MillionMindsの5つの特長</p>
+						<p>MillionMindsでのクエスチョン作成は、運営者への申請形式となります。申請後、問題がなかった場合、1～2週間以内にサービス上にクエスチョンが反映されます。なお、当サービスの主旨と異なる内容につきましては、採用を見送りさせていただく場合がございます。あらかじめご了承のうえ、申請してください。</p>
+
+						<h3 class="caution">クエスチョン作成に関する注意事項</h3>
+						<p>以下に該当するクエスチョンは、運営者による承認時に却下となりますのでご注意ください。</p>
+						<ul>
+							<li><span>&raquo;</span> 公序良俗に反する内容</li>
+							<li><span>&raquo;</span> 第三者を誹謗・中傷・差別する、あるいはその可能性を含む内容</li>
+							<li><span>&raquo;</span> 性的、あるいはグロテスクな内容</li>
+							<li><span>&raquo;</span> その他、第三者から見て、不快に感じる内容</li>
+						</ul>
+						<p>なお、クエスチョン承認の理由につきましては、一切のお問い合わせを受け付けておりませんので、あらかじめご了承ください。それ以外のお問い合わせに関しては、<a href="http://platform001.mixi.jp/view_community.pl?id=4172244" target="_top">サポートコミュニティ</a>までお問い合わせください。</p>
+					</div><!--/.content-->
+				</div><!--/#help-->
+
+			</div><!--/#mainColumn-->
+
+{%include file="millionminds/common/subColumn.phtml"%}
+
+		</div><!--/#content-->
+
+{%include file="millionminds/common/footer.phtml"%}

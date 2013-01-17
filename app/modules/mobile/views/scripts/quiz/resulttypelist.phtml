@@ -1,0 +1,54 @@
+{%include file="quiz/common/header.phtml" headAd=1 %}
+
+<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+
+<div class="description">
+	<table width="228" cellpadding="0" cellspacing="0" border="0" align="center" style="text-align:center;">
+		<tr>
+			<td align="left" style="background:#fff;{% if $ua==1 %}font-size:x-small;{% /if %}text-align:left;">
+				{% if $result %}
+					ｸｲｽﾞに正解したﾏｲﾐｸを項目別に表示しています｡
+				{% else %}
+					ｸｲｽﾞに誤答したﾏｲﾐｸを項目別に表示しています｡
+				{%/if%}</td>
+			<td width="50" style="width:50px;"><img src="{%$staticUrl%}/apps/quiz/mobile/img/host4.gif" width="50" height="40" /></td>
+		</tr>
+	</table>
+</div><!--/.description-->
+
+{% foreach from=$resultList item=data key=index %}
+	{% if $data.quizlist %}
+	<div class="group">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#993333;color:#ffffff;">
+			{% if $result %}
+			ｱﾅﾀの{%$data.quiz_name%}を知っているﾏｲﾐｸ
+			{% else %}
+			ｱﾅﾀの{%$data.quiz_name%}を知らないﾏｲﾐｸ
+			{% /if %}
+		</div><!--/.headline-->
+		{% foreach from=$data.quizlist item=item key=key %}
+		<div class="section" {% if ($key%2) == 0 %}style="background:#a8dada;"{%/if%}>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="44" align="center" style="width:44px;text-align:center;"><img src="{%$item.miniThumbnailUrl%}" style="margin:1px 0;" /></td>
+					<td style="{% if $ua==1 %}font-size:x-small;{% /if %}"><a href='{% "$baseUrl/mobile/quiz/profile?CF_fid=`$item.answer_uid`"|mixiurl %}'>{%$item.displayName%}</a><br />
+					<div style="text-align:right;">正解率:{%$item.right_rate%}%&nbsp;</div></td>
+				</tr>
+			</table>
+		</div><!--/.section-->
+		{% /foreach %}
+		<div class="moreLink" style="text-align:right;">
+			<img src="img/spacer.gif" width="1" height="3" /><br />
+			<span style="color:#ff0000;">⇒</span><a href='{% "$baseUrl/mobile/quiz/resulttype?CF_quizId=`$data.quiz_id`&CF_result=`$result`"|mixiurl %}'>もっと見る</a>&nbsp;
+		</div><!--/.moreLink-->
+	</div><!--/.group-->
+	{%/if%}
+{% /foreach %}
+
+<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+<div class="line" style="background:#669999;"><img src="http://mm.mixi.net/img/dot0.gif" width="2" height="2" /></div>
+
+{%include file="quiz/common/menu.phtml"%}
+{%include file="quiz/common/recommend.phtml"%}
+{%include file="quiz/common/footer.phtml" footAd=1 %}

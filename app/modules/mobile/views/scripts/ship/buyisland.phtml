@@ -1,0 +1,99 @@
+{% if $action == 'start' %}
+	{% include file="ship/common/header.phtml" headerAd=0 %}
+	<div id="estate">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			購入確認<br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		</div><!--/.headline-->
+		<div class="commodity" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/ship/img/background/bg_{%$islandInfo.cav_name%}.gif" width="210" height="200" style="margin:3px 0;" /><br />
+		</div><!--/.commodity-->
+		<div class="inner">
+			{%$islandInfo.introduce%}<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#9e623a;">開拓する島</span><br />
+			<div style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			{% emoji code="F8F9" %}<span style="color:#7c4825;">{%$islandInfo.name%}</span><br />
+			開拓費用:{%if $islandInfo.price%}${%$islandInfo.price|outputdollars%}{%/if%}{%if $islandInfo.diamond%}ﾀﾞｲﾔ{%$islandInfo.diamond%}ｺ{%/if%}<br />
+			宝箱の数:{%$islandInfo.ship%}個<br />
+			埋蔵金貨:${%$islandInfo.fee*32%}<br />
+			使用期限:{%$islandInfo.usable_time/86400%}日<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#9e623a;">開拓後のｽﾃｰﾀｽ</span><br />
+			<div style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			宝箱の数:{%$userIslandInfo.ship%}個→{%$islandInfo.ship%}個<br />
+			埋蔵金貨:${%$userIslandInfo.fee*32%}→${%$islandInfo.fee*32%}<br />
+			{% if $islandInfo.price > 0 %}
+				金　　貨:${%$shipUser.asset|outputdollars%}→<span style="color:#cd424a;">{%if $remainAssetPrice < 0%}金貨不足{%else%}${%$remainAssetPrice|outputdollars%}{%/if%}</span><br />
+			{% /if %}
+			{% if $islandInfo.diamond > 0 %}
+				ﾀﾞｲﾔﾓﾝﾄﾞ:{%$shipUser.asset_diamond%}→<span style="color:#cd424a;">{%if $remainAssetDiamond < 0%}ﾀﾞｲﾔ不足{%else%}{%$remainAssetDiamond%}{%/if%}</span><br />
+			{% /if %}
+		</div><!--/.inner-->
+		<div class="submit" style="text-align:center;">
+			{% if $remainAssetPrice < 0 %}
+				<br />
+                <span style="color:#cd424a;">金貨が足りません!</span><br />
+            {% /if %}
+            {% if $remainAssetDiamond < 0 %}
+				<br />
+                <span style="color:#cd424a;">ﾀﾞｲﾔが足りません!</span><br />
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				{% emoji code="F9BC" %}<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/ship/invite" %}'>ﾏｲﾐｸ招待でﾀﾞｲﾔGET</a><br />
+            {% /if %}
+            {% if $remainAssetPrice >= 0 || $remainAssetDiamond >= 0 %}
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<form method="post" action='{% "$baseUrl/mobile/ship/buyisland/CF_id/`$islandInfo.id`/CF_step/complete/CF_payType/2"|mixiurl %}'>
+				<!--{% if $remainAssetPrice >= 0 && $islandInfo.price > 0 %}
+				    <input name="CF_payType" type="radio" value="1" checked="checked" />金貨
+				{% /if %}
+				{% if $remainAssetDiamond >= 0 && $islandInfo.diamond > 0 %}
+                    <input name="CF_payType" type="radio" value="2" {%if $remainAssetPrice < 0 %}checked="checked"{%/if%} />ﾀﾞｲﾔ
+                {% /if %}
+                    <br />  -->
+                    <input type="submit" value=" 購入する " /><br />
+				</form>
+			{% /if %}
+		</div><!--/.submit-->
+		<div class="nomenuAlert">
+			<br />
+			直前のﾍﾟｰｼﾞは{% emoji code="F8E9" %}の<span style="color:#cd424a;">[戻るﾎﾞﾀﾝ]</span>でお戻りください<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		</div><!--/.nomenuAlert-->
+	</div><!--/#estate-->
+	{% include file="ship/common/footer.phtml" footerAd=0 %}
+{% elseif $action == 'complete' %}
+	{% include file="ship/common/header.phtml" %}
+	<div id="estate">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			開拓完了<br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		</div><!--/.headline-->
+		<div class="description">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			{% if $result.status == 1 %}
+				{%$result.islandName%}を開拓しました<br />
+				{%if $result.assetType==1%}
+					金貨が<span style="color:#cd424a;">${%$result.remainAsset|outputdollars%}</span>になりました｡<br />
+				{%else%}
+					ﾀﾞｲﾔが<span style="color:#cd424a;">{%$result.remainAsset%}ｺ</span>になりました｡<br />
+				{%/if%}
+			{% elseif $result.status == -2 %}
+				すでに開拓しています<br />
+			{% elseif $result.status == -4 %}
+				金貨/ﾀﾞｲﾔが不足しています<br />
+		    {% elseif $result.status == -5 %}
+		        すでに開拓済みです！<br />
+			{% else %}
+				すでに開拓が完了しています<br />
+			{% /if %}
+		</div><!--/.description-->
+	</div><!--/#estate-->
+	{%include file="ship/common/ad_complete.phtml"%}
+	{%include file="ship/common/menu.phtml"%}
+	{%include file="ship/common/footer.phtml"%}
+{% /if %}

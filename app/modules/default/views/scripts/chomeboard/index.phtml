@@ -1,0 +1,95 @@
+{%include file="chomeboard/header.phtml"%}
+<body>
+    <script type="text/javascript" src="{%$staticUrl%}/cmn/js/controls.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/cmn/js/slider.js?{%$version.js%}"></script>
+
+    {%include file="topad.phtml"%}
+    {% if $showTopAd %}
+        <script type="text/javascript">
+            Event.observe(window, 'load', function() {
+               adjustHeight(950);
+            });
+        </script>
+    {% else %}
+        <script type="text/javascript">
+            Event.observe(window, 'load', function() {
+               adjustHeight(880);
+            });
+        </script>
+    {% /if %}
+    <div id="continer">
+
+        <div id="header">
+            <img src="{%$staticUrl%}/apps/chomeboard/img/hdr.png" width="945" height="103" alt="" usemap="#hdrNav" />
+        </div><!--/.header-->
+        <div style="font-weight:bold"><br>2010年5月24日（月）をもちましてサービスを終了いたします。<br>今までご利用ありがとうございました。</div>
+        <div id="chomeHead">
+        </div><!--/#chomeHead-->
+
+        <div id="friendsColumn">
+        </div><!--/#friendsColumn-->
+
+        <div id="boardColumn">
+        </div><!--/#boardColumn-->
+        <div id="rankingArea">
+            <div id="wrap">
+
+                <div id="totalRanking"  style="*height:85px;">
+
+                    <div id="topRanking">
+                        <ol id="topRank">
+                        </ol>
+                    </div><!--/#topRanking-->
+
+                    <ul id="rankingLeftNav">
+                        <li id="toUnder" onclick="moveRanking(2);"></li>
+                        <li id="toUnderMore" onclick="moveLast(2);"></li>
+                    </ul>
+
+                    <div id="otherRanking">
+                        <ol id="ranking" class="items">
+                        </ol>
+                    </div><!--/#otherRanking-->
+
+                    <ul id="rankingRightNav">
+                        <li id="toTop" onclick="moveRanking(1);"></li>
+                        <li id="toTopMore" onclick="moveLast(1);"></li>
+                    </ul>
+
+                </div><!--/#totalRanking-->
+
+            </div><!--/#wrap-->
+
+            <ul id="rankingTabs"><!--
+            --><li id="totalRankingTab"><a href="javascript:void(0);" onclick="doFilter(3,1);return false;" class="active" id="totalRankingTabHref">チョメられランキング</a></li><!--
+            --><li id="carsRankingTab"><a href="javascript:void(0);" onclick="doFilter(3,2);return false;" id="carsRankingTabHref">チョメりランキング</a></li><!--
+            --><li id="allSphereTabs"><a href="javascript:void(0);" onclick="doFilter(2,3);return false;" id="allSphereTabsHref">ミクシィ全体</a></li><!--
+            --><li id="friendSphereTabs"><a href="javascript:void(0);" onclick="doFilter(1,3);return false;" class="active" id="friendSphereTabsHref">マイミクシィ内</a></li><!--
+            --></ul>
+            </div><!--/#rankingArea-->
+            <div id="loading"></div>
+            <input type="hidden" id="viewerId" name="viewerId" value="{%$viewerId%}">
+            <input type="hidden" id="bownerId" name="bownerId" value="{%$bownerId%}">
+            <input type="hidden" id="boardCount" name="boardCount" value="">
+            <input type="hidden" id="lastChomeBoardId" name="lastChomeBoardId" value="">
+            <input type="hidden" id="chomeringFlag" name="chomeringFlag" value="">
+            <input type="hidden" id="curSortId" name="curSortId" value="">
+
+            <input type="hidden" id="txtLeftCount" value="0">
+            <input type="hidden" id="txtRightCount" value="{%$rightCount%}">
+            <input type="hidden" id="txtRankCount" value="{%$rankCount%}">
+            <input type="hidden" id="txtAllCount" value="{%$allCount%}">
+            <input type="hidden" id="txtAllInvite" value="{%$allInvite%}">
+            <input type="hidden" id="friendsFeed" value="{%$friendsFeed%}">
+
+            <input type="hidden" id="txtCanMove" value="1">
+            <input type="hidden" id="txtMoveRight" value="1">
+            <input type="hidden" id="txtMoveLeft" value="1">
+            <input type="hidden" id="pageIndex" value="1">
+            <input type="hidden" id="txtType1" value="{%$type1%}">
+            <input type="hidden" id="txtType2" value="{%$type2%}">
+
+            <script type="text/javascript" src="{%$staticUrl%}/apps/chomeboard/js/index.js?{%$version.js%}"></script>
+            <script type="text/javascript" src="{%$staticUrl%}/apps/chomeboard/js/rank.js?{%$version.js%}"></script>
+
+{%include file="chomeboard/footer.phtml"%}

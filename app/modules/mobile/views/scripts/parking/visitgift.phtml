@@ -1,0 +1,65 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="visitGift">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">ビジターギフト</span><br />
+	</div><!--/.headline-->
+
+	{%if $cardInfo!=null%}
+		<div class="description">
+			<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+			{%$cardInfo.name%}を手に入れました{% emoji code="F99F"%}<br />
+		</div><!--/.description-->
+
+		<div class="gift" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/parking/mimg/items/{%$cardInfo.sid%}_m.gif" width="156" height="100" style="margin:2px 0;" /><br />
+		</div><!--/.gift-->
+
+		<div class="aboutGift">
+			<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+			【ｶｰﾄﾞ効果】<br />
+			{%$cardInfo.introduce%}<br />
+		</div><!--/.aboutGift-->
+	{%/if%}
+
+	{%if $money!=null%}
+		<div class="description">
+			<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+			¥{%$money|outputdollars%}を手に入れました<br />
+		</div><!--/.description-->
+		<div class="gift" style="text-align:center;">
+			{%if $money==5000%}
+				<img src="{%$staticUrl%}/apps/parking/mimg/bonus_s.gif" width="156" height="100" style="margin:2px 0;" /><br />
+			{%/if%}
+			{%if $money==50000%}
+				<img src="{%$staticUrl%}/apps/parking/mimg/bonus_m.gif" width="156" height="100" style="margin:2px 0;" /><br />
+			{%/if%}
+			{%if $money==1000000%}
+				<img src="{%$staticUrl%}/apps/parking/mimg/bonus_l.gif" width="156" height="100" style="margin:2px 0;" /><br />
+			{%/if%}
+		</div><!--/.gift-->
+	{%/if%}
+	
+	{%if $adCar%}
+		<div class="description">
+			<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+			{%$adCar.name%}を手に入れました{% emoji code="F99F"%}<br />
+		</div><!--/.description-->
+
+		<div class="gift" style="text-align:center;">
+		    <img src="{%$staticUrl%}/apps/parking/mimg/car/{%$adCar.cav_name%}/m/normal/{%$adCar.color%}.gif" width="200" height="100" style="margin:2px 0;"/><br />
+		</div><!--/.gift-->
+	{%/if%}
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/start?opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&parking_rand=$rand" | mobile_flashurl %}'>駐車場をﾁｪｯｸ</a>{% emoji code="F8F2"%}<br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/car"|mixiurl %}'>所有車一覧</a>{% emoji code="F8BF"%}<br />
+	</div><!--/.link-->
+
+</div><!--/#visitGift-->
+
+{%include file="parking/common/footer.phtml"%}

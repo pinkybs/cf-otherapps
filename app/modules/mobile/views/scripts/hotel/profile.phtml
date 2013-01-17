@@ -1,0 +1,143 @@
+{%include file="hotel/common/header.phtml"%}
+<style type="text/css">
+    a:link{color:#a77809;}
+    a:visited{color:#a77809;}
+    *{color:#000000;font-size:x-small;font-size:5;}
+    .icon{vertical-align: middle;}
+    a img {border: none;}
+
+    body {
+        background: #ffffff;
+    }
+
+    .hrYellow {
+        color:#fbf8c9;
+        border: 0;
+        background-color:#fbf8c9;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrWhite {
+        color:#ffffff;
+        border: 0;
+        background-color:#ffffff;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrSp {
+        background-color:#fdd89e;
+        color:#fdd89e;
+        height:1px;
+        border:0px solid #fdd89e;
+        margin:0.3em 0;
+    }
+
+    #mixiHeader {
+        background:#fbb03b;
+    }
+
+    .headlineFun {
+        background:#cf1226;
+        color:#ffffff;
+    }
+
+    .headlineBack {
+        background:#f6ddbc;
+    }
+
+    .headlineTip {
+        background:#fdd89e;
+        color:#000000;
+    }
+
+    .toTop {
+        background-color:#ffffff;
+    }
+
+    #copyright {
+        background:#fbb03b;
+    }
+
+    .owner {
+        background:#fbf8c9;
+    }
+
+    .sectionImg {
+        background:#dedcc6;
+    }
+
+    .gallery {
+        background:#fbf8c9;
+    }
+    </style>
+    <div id="profile">
+        <hr class="hrWhite" size="1" />
+        <div class="owner">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td valign="top" width="44" align="center" style="width:44px;text-align:center;"><img src="{%$info.miniThumbnailUrl%}" style="margin:2px 0;" /></td>
+                    <td valign="top" style="padding-top:5px;">
+                        <span>{%$info.displayName%}ホテル</span><br />
+                        <span>レベル：{%$info.level%}({%$info.experience%}/{%$info.next_experience%})</span><br />
+                        <span>所持金：${%$info.format_money%}円</span><br />
+                    </td>
+                </tr>
+            </table>
+        </div><!--/.owner-->
+        <div class="sectionImg">
+            <div>チェックイン率 : {%$info.occupancy_up%}%  清潔度 : {%$info.clean%}%</div>
+            <div><img src="{%$staticUrl%}/apps/hotel/mobile/img/smallBg.gif" /></div>
+        </div><!--/.section-->
+        <span style="background:red;">{%$message%}</span>
+	{%include file="hotel/common/nav.phtml"%}
+		<div class="section">
+		    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+		        <tr>
+		            <td colspan="2" align="left" style="text-align:left;">
+		                {% if $info.clean < 100 %}
+                           <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/clear?CF_friendId=`$uid`"|mixiurl %}'>掃除する</a><br/>
+                        {%/if%}
+                        {%if $emenylist %}
+                             <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/enemylist"|mixiurl %}'>○○さんの使者を追払う</a><br />
+                        {%else%}
+                            {%if $result != null %}<!-- '{% "$baseUrl/mobile/hotel/sendlearnerfinish?CF_friendId=`$uid`"|mixiurl %}' -->
+                                <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/sendlearnerfinish?CF_friendId=`$uid`"|mixiurl %}'>使者を派遣</a><br />
+                            {%/if%}
+                        {%/if%}
+		            </td>
+		        </tr>
+		    </table>
+	    </div><!--/.section-->
+    {%if $isShow %}
+        <div class="gallery">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="120" align="center" style="padding-top:5px;width:120px;text-align:center;">
+                        <img src="{%$staticUrl%}/apps/hotel/mobile/img/boss3.gif" width="60" height="60" /><br />
+                        <a style="text-decoration:none;" href='{% "$baseUrl/mobile/hotel/bossprofile?CF_uid=`$uid`"|mixiurl %}'><span>店長</span></a>
+                    </td>
+                    <td width="120" align="center" style="padding-top:5px;width:120px;text-align:center;">
+                        <img src="{%$staticUrl%}/apps/hotel/mobile/img/frontGirl.gif" width="60" height="60" /><br />
+                        <a style="text-decoration:none;" href='{% "$baseUrl/mobile/hotel/frontprofile?CF_uid=`$uid`"|mixiurl %}'><span>受付</span></a>
+                    </td>
+                    <td style="padding-top:5px;color:#ffffff;"></td>
+                </tr>
+                <tr>
+                    <td valign="top" width="120" align="center" style="padding-top:5px;width:120px;text-align:center;">
+                        <img src="{%$staticUrl%}/apps/hotel/mobile/img/waiter4.gif" width="60" height="60" /><br />
+                        <a style="text-decoration:none;" href='{% "$baseUrl/mobile/hotel/restaurantprofile?CF_uid=`$uid`"|mixiurl %}'><span>レストラン担当</span></a>
+                    </td>
+                    <td valign="top" width="120" align="center" style="width:120px;padding-top:5px;text-align:center;">
+                        <img src="{%$staticUrl%}/apps/hotel/mobile/img/girl2.gif" width="60" height="60" /><br />
+                        <a style="text-decoration:none;" href='{% "$baseUrl/mobile/hotel/managerprofile?CF_uid=`$uid`"|mixiurl %}'><span>客室担当</span></a>
+                    </td>
+                    <td style="padding-top:5px;color:#ffffff;"></td>
+                </tr>
+            </table>
+        </div><!--/.section-->
+    {%/if%}
+    </div><!--/#profile-->
+{%include file="hotel/common/menu.phtml"%}
+{%include file="hotel/common/footer.phtml"%}

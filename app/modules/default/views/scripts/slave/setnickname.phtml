@@ -1,0 +1,69 @@
+{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn">
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+		<div id="changeNicknameBox" class="box">
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_changeNickname.png" width="197" height="23" alt="ニックネームを編集" /></h2>
+			</div><!--/.hdr-->
+
+			<div id="step1">
+			<p class="intro"><span>{%$tarName%}のニックネームを変更するよ。</span>
+			<span>次の入力フォームに新しいニックネームを入力してね。</span></p>
+			<div class="section">
+				<p class="pic"><a class="noLink" style="background-image:url({%$tarPic%})">{%$tarName%}</a></p>
+				<p class="name">{%$tarName%} 改め…  </p>
+				<p class="commentForm"><input id="txtNickname" name="txtNickname" type="text" value="{%$tarSlaveInfo.nickname%}" title="{%$tarSlaveInfo.nickname%}" maxlength="10" /></p>
+				<p class="alert" style="display:none">ジョークの範囲を超えると、社会的信頼を失う恐れがあります</p>
+			</div><!--/.section-->
+			<ul class="actionList"><!--
+				--><li class="actionAbolish disable"><a href="javascript:cm_goBack();">キャンセル</a></li><!--
+				--><li class="actionNext"><a id="btnConfirm" href="javascript:void(0);">つぎへ</a></li><!--
+			--></ul><!--/.actionList-->
+			</div>
+
+			<div id="step2" style="display:none">
+			<p class="intro"><span>{%$tarName%}のニックネームを変更するよ。</span>
+			<span>入力した内容を確認してね。</span></p>
+			<div class="section">
+				<p class="pic"><a class="noLink" style="background-image:url({%$tarPic%})">{%$tarName%}</a></p>
+				<p class="name">{%$tarName%} 改め…  </p>
+				<p id="lblNickname" class="comment"> </p>
+			</div><!--/.section-->
+			<ul class="actionList"><!--
+				--><li class="actionBack disable"><a id="btnBack" href="javascript:void(0);">もどる</a></li><!--
+				--><li class="actionDecision"><a id="btnSet" href="javascript:void(0);">決定</a></li><!--
+			--></ul><!--/.actionList-->
+			</div>
+
+			<div id="step3" style="display:none">
+			<p class="intro"><span>{%$tarName%}のニックネームを変更したよ。</span>
+			<span>ドレイちゃんのニックネームは定期的に変更して、可愛がってあげてね。</span></p>
+			<div class="section">
+				<p class="pic"><a class="noLink" style="background-image:url({%$tarPic%})">{%$tarName%}</a></p>
+				<p class="name">{%$tarName%} 改め…  </p>
+				<p id="lblNickname1" class="comment"> </p>
+			</div><!--/.section-->
+			<p class="actionLookatSlave btn"><a href="{%$baseUrl%}/slave/profile?uid={%$tarSlaveInfo.uid%}">このドレイちゃんのプロフィールを見る</a></p>
+			</div>
+
+			<input type="hidden" id="hidTarUid" value="{%$tarSlaveInfo.uid%}" />
+		</div><!--/#changeNicknameBox.box-->
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="slave/common/adbox.phtml"%}
+		{%include file="slave/common/logbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/setnickname.js?{%$version.js%}34"></script>
+{%include file="slave/common/footer.phtml"%}

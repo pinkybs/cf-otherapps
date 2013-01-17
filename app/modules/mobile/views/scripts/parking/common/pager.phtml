@@ -1,0 +1,17 @@
+{% if $pager.maxPager > 1 %}
+
+    {% if $pager.pageIndex == 1 %}
+		<span style="color:#777;">&lt;&lt;[*]前へ</span>
+	{% else %}
+		&lt;&lt;[*]<a href='{% "$baseUrl/`$pager.requestUrl`?parking_page=`$pager.pageIndex-1`"|mixiurl %}' accesskey="*">前へ</a>
+	{% /if %}
+
+	({% $pager.pageIndex %})
+
+	{% if $pager.maxPager == $pager.pageIndex%}
+		次へ[#]&gt;&gt;<br />
+	{% else %}
+		<a href='{% "$baseUrl/`$pager.requestUrl`?parking_page=`$pager.pageIndex+1`"|mixiurl %}' accesskey="#">次へ</a>[#]&gt;&gt;<br />
+	{% /if %}
+
+{% /if %}

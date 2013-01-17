@@ -1,0 +1,57 @@
+            <div id="itemArea">
+                <h2>アイテム一覧</h2>
+                <ul>
+                    {%foreach from=$itemList item=rowdata key=index%}
+                    <li id="li{%$rowdata.cid%}">
+                        <p class="pic"><img src="{%$staticUrl%}/apps/dynamite/img/item/s/{%$rowdata.cid%}.gif" alt="" /></p>
+                        <p class="name">{%$rowdata.name%}</p>
+                        <p class="rest"><img src="{%$staticUrl%}/apps/dynamite/img/num.png" width="33" height="24" alt="残り" />{%$rowdata.count%}</p>
+                        <div class="btnUseDiv">
+                        {%if $rowdata.cid==5%}
+                            {%if $rowdata.useTime <= 3 %}
+                                <p class="btnUse using"><a>使用中</a>
+                            {%else%}
+                                {%if $rowdata.count > 0 %}
+                                    <p class="btnUse"><a href="javascript:void(0)" onclick="jQuery.item.useItem({%$rowdata.cid%})">使用する</a>
+                                {%else%}
+                                    <p class="btnUse disabled"><a>使用する</a>
+                                {%/if%}
+                            {%/if%}
+                        {%else%}
+                            {%if $rowdata.cid==10%}
+                                {%if $rowdata.canUse==1 && $rowdata.count>0%}
+                                    <p class="btnUse"><a href="javascript:void(0)" onclick="jQuery.item.useItem({%$rowdata.cid%})">使用する</a>
+                                {%else%}
+                                    <p class="btnUse disabled"><a>使用する</a>
+                                {%/if%}
+                            {%else%}
+                                {%if $rowdata.count > 0 %}
+                                    <p class="btnUse"><a href="javascript:void(0)" onclick="jQuery.item.useItem({%$rowdata.cid%})">使用する</a>
+                                {%else%}
+                                    <p class="btnUse disabled"><a>使用する</a>
+                                {%/if%}
+                            {%/if%}
+                        {%/if%}
+                        </p>
+                        </div>
+
+                        <div class="itemHelp"><p>{%$rowdata.introduce%}</p></div><!--/.itemHelp-->
+                    </li>
+                    {%/foreach%}
+                </ul>
+            </div><!--/#itemArea-->
+            <input type="hidden" id="useCard" value="">
+            <input type="hidden" id="useCardResult" value="">
+            <input type="hidden" id="hitmanPicType" value="">
+            <script type="text/javascript">
+                $j(function(){
+                    $j('#itemArea ul li').hover(
+                        function(){
+                            $j(this).find('.itemHelp').fadeIn(200);
+                        },
+                        function(){
+                            $j(this).find('.itemHelp').fadeOut(200);
+                        }
+                    )
+                });//
+            </script>

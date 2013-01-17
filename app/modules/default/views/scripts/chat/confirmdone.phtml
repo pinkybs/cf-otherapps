@@ -1,0 +1,52 @@
+﻿{%include file="chat/common/header.phtml"%}
+
+<body id="static" class="invite">
+<div id="container">
+	{%include file="chat/common/nav.phtml"%}
+
+	<div id="mainColumn">
+
+		<ul style="" id="alertBox"><!--
+			--><li><a id="alertClose" href="javascript:void(0);"><img width="16" height="16" alt="閉じる" src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/alert/btn_close.png"/></a><span>{%$chatName|escape%}への招待を完了しました。<br />{%$chatDate%}&#12316;です。忘れないように気をつけてくださいね。</span></li><!--
+		--></ul>
+
+		<div id="diaryBox" class="innerBox">
+
+			<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_diary.png" width="244" height="24" alt="このアプリの日記を書く" /></h1>
+			<div class="inner">
+				<form id="frmToDiary" method="post" action="{%$mixiHostUrl%}/add_diary.pl?id={%$uid%}" target="_blank" accept-charset="euc-jp">
+					<p><input type="text" class="inputText" id="diary_body" name="diary_body" value="「{%$mixiAppName%}」{%$mixiHostUrl%}/run_appli.pl?id={%$mixiAppId%}" maxlength="200" /></p>
+					<p class="note">↑コピーして日記に貼付けよう</p>
+					<input type="hidden" value="{%$mixiHostUrl%}/run_appli.pl?id={%$mixiAppId%}" />
+					<ul class="btnList"><!--
+						--><li><a href="javascript:void(0);" onclick="$j('#frmToDiary').submit();return false;"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_diary.png" width="228" height="34" alt="日記を書く" /></a></li><!--
+					--></ul>
+				</form>
+			</div><!--/.inner-->
+		</div><!--/.innerBox-->
+
+		<input type="hidden" id="activity" value="{%$activity%}" />
+		<input type="hidden" id="activityUser" value="{%$activityUser%}" />
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="chat/common/subcolumn.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript">
+        $j(document).ready(function() {
+        	if (null != cm_getCookie('app_top_url')) {
+        		top.location.href = cm_getCookie('app_top_url') +  '#bodyArea';
+        	}
+        	//activity
+        	if (null != $j('#activity') && '' != $j('#activity').val()) {
+        		postActivity($j('#activity').val(), $j('#activityUser').val());
+        	}
+
+			$j("#alertClose").click(function() {
+            	$j("#alertBox").fadeOut("normal");
+            });
+            adjustHeight();
+        });
+	</script>
+{%include file="chat/common/footer.phtml"%}

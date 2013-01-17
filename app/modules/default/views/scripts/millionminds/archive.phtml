@@ -1,0 +1,88 @@
+{%include file="millionminds/common/header.phtml"%}
+
+<body>
+    {%include file="topad.phtml"%}
+    <script type="text/javascript" src="{%$staticUrl%}/apps/millionminds/js/archive.js?{%$version.js%}"></script>
+    
+	<div id="container">
+		{%include file="millionminds/common/hdr.phtml"%}
+
+		<input type="hidden" id="archiveCount" value="{%$questionCount%}">
+		
+		<ul id="gnav">
+			<li class="top"><a href="{%$baseUrl%}/millionminds">MillionMindsトップ</a></li>
+			<li class="profile"><a href="{%$baseUrl%}/millionminds/profile">プロフィール</a></li>
+			<li class="log"><a href="{%$baseUrl%}/millionminds/log">あしあと</a></li>
+			<li class="archive"><a class="active">アーカイブ</a></li>
+			<li class="add"><a href="{%$baseUrl%}/millionminds/newquestion">クエスチョン作成</a></li>
+			<li class="help"><a href="{%$baseUrl%}/millionminds/help">ヘルプ</a></li>
+			<li class="invite"><a href="javascript:void(0)" onclick="invite();">友達を招待</a></li>
+		</ul><!--/#grav-->
+        
+		<div id="content">
+		
+			<div id="mainColumn">
+			
+			    {% if $error==1 %}
+			    <div id="error">
+					<p>アクセスエラー：権限がないため、閲覧できません。</p>
+				</div><!--/#error-->
+				{% /if %}
+				{% if $error==2 %}
+				<div id="error">
+					<p>システムエラー：エラーが発生しました。申し訳ありませんが、トップにお戻りください。</p>
+				</div><!--/#error-->
+				{% /if %}
+				
+				<div class="article" id="divArticle">
+					<h2 class="archive">アーカイブ</h2>
+					<ul class="cat">
+						<li class="all"><a href="javascript:void(0)" onclick="jQuery.archive.changeTab(0);" class="active">すべて</a></li>
+						<li class="character"><a href="javascript:void(0)" onclick="jQuery.archive.changeTab(1);">性格診断</a></li>
+						<li class="politics"><a href="javascript:void(0)" onclick="jQuery.archive.changeTab(2);">政治・経済</a></li>
+						<li class="life"><a href="javascript:void(0)" onclick="jQuery.archive.changeTab(3);">社会生活</a></li>
+						<li class="entertainment"><a href="javascript:void(0)" onclick="jQuery.archive.changeTab(4);">芸能・スポーツ</a></li>
+						<li class="hobby"><a href="javascript:void(0)" onclick="jQuery.archive.changeTab(5);">趣味・その他</a></li>
+					</ul><!--/.cat-->
+					{% if $question %}
+					<table width="100%" cellpadding="0" cellspacing="0" border="0" class="list">
+						<tr>
+							<th class="title"></th>
+							<th class="count descend"><a href="javascript:void(0)" onclick="jQuery.archive.changeOrder(1,2);">回答数▼</a></th>
+							<th class="date descend"><a href="javascript:void(0)" onclick="jQuery.archive.changeOrder(2,2);">作成日▼</a></th>
+						</tr>
+						{% foreach from=$question item=data%}
+						<tr class="section">
+							<td class="title stringCut"><a href="{%$baseUrl%}/millionminds/question?qid={%$data.qid%}" class="ico ">{%$data.question|escape%}{%if $data.hasAnswered==0%}<img src="{%$staticUrl%}/apps/millionminds/img/noreply.gif" width="31" height="11" alt="" style="display: inline;" />{%/if%}</a></td>
+							<td class="count">{%$data.answer|escape%}</td>
+							<td class="date">{%$data.create_time%}</td>
+						</tr><!--/.section-->
+						{% /foreach %}					
+					</table>					
+					{% else %}
+					<p class="null"><a href="{%$baseUrl%}/millionminds/newquestion">クエスチョンを作成する</a></p>
+					{% /if %}
+				</div><!--/.article-->
+
+				{%include file="millionminds/common/nature.phtml"%}
+
+			</div><!--/#mainColumn-->
+
+			<div id="subColumn">
+				{%include file="millionminds/common/ad.phtml"%}
+				<div class="article">
+					<h3 class="popular">人気のクエスチョン</h3>
+					<div class="inner">
+						<ul>
+						    {% foreach from=$popularQuestion item=data%}
+							<li style="width:230px"><a href="{%$baseUrl%}/millionminds/question?qid={%$data.qid%}" class="ico stringCut">{%$data.question|escape%}</a></li>
+							{% /foreach %}
+						</ul>
+						<p class="more">⇒<a href="javascript:void(0)" onclick="jQuery.archive.showMoreArchive();">もっと見る</a></p>
+					</div><!--/.inner-->
+				</div><!--/.article-->
+			</div><!--/#subColumn-->
+
+		</div><!--/#content-->
+
+{%include file="millionminds/common/footer.phtml"%}

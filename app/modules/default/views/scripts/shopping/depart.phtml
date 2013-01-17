@@ -1,0 +1,153 @@
+{%include file="shopping/common/header.phtml"%}
+
+<body id="store">
+
+<input type="hidden" id="hidIid" name="hidIid" value=""/>
+
+<div id="overlay" style="display: none;">
+    <div id="overBox">
+    <a id="sBlankTop" href="#"></a>
+	    <!-- removeCart info -->
+	        <div id="removeCart" style="display: none;">
+		        <div class="inner">
+		            <h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_myCart_remove_b.png" alt="" /></h2>
+		            <div class="section">
+		                <div class="lead" id="removeMessage1">以下の商品をショッピングカートからはずしますか？</div>
+		                <div class="lead" id="removeMessage2" style="display: none;">以下の商品をショッピングカートから削除しました。<br />引き続き商品を選択するか、精算を行ってください。</div>
+		                <div class="lead" id="removeMessage3" style="display: none;">失敗しました。</div>
+		                <dl class="itemBlock clearfix"><!--
+		                    --><dt class="pic"><a id="itemPic" href="javascript:void(0);" style="cursor:default;background-image:url({%$staticUrl%}/apps/shopping/img/dummy/pic_item.png)"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="" /></a></dt><!--
+		                    --><dd class="name" id="itemName">私のFXバイブル</dd><!--
+		                    --><dd class="price">予想価格：￥<label id="lblPrice1">??????</label></dd><!--
+		                    --><dd class="buy"><a href="#" id="goRakuten">楽天市場でこの商品を購入</a></dd><!--
+		                --></dl>
+		            </div>
+		            <ul class="btnSection clearfix" id="btnList"><!--
+		                --><li><a href="javascript:void(0);" id="removeBack"><img src="{%$staticUrl%}/apps/shopping/img/content/btn_cancel_s.png" alt="" /></a></li><!--
+		                --><li><a href="javascript:void(0);" id="removeFinish"><img src="{%$staticUrl%}/apps/shopping/img/content/btn_remove_s.png" alt="" /></a></li><!--
+		            --></ul>
+		        </div>
+	        </div>
+        <!-- /removeCart info -->
+
+
+        <!-- addCart info -->
+	        <div id="addCart" style="display: none;">
+		        <div class="inner">
+		            <h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_myCart_add.png" alt="" /></h2>
+		            <div class="section">
+
+		                <div class="lead" id="addCartMessage1">以下の商品をショッピングカートに追加しますか？<br />予想価格は未入力でも大丈夫です。</div>
+                        <div class="lead" id="addCartMessage2" style="display: none;">以下の商品をショッピングカートに追加しました。<br />引き続き商品を選択するか、精算を行ってください。</div>
+                        <div class="lead" id="addCartMessage3" style="display: none;">失敗しました。</div>
+		                <dl class="itemBlock clearfix"><!--
+		                    --><dt class="pic"><a id="itemPic2" href="javascript:void(0);" style="cursor:default;background-image:url({%$staticUrl%}/apps/shopping/img/dummy/pic_item.png)"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="" /></a></dt><!--
+		                    --><dd class="name" id="itemName2">私のFXバイブル</dd><!--
+		                    --><dd class="priceForm" id="itemPrice2">予想価格：<input type="text" id="price" /></dd><!--
+		                    --><dd class="buy"><a href="#" id="goRakuten2">楽天市場でこの商品を購入</a></dd><!--
+		                --></dl>
+		            </div>
+		            <ul class="btnSection clearfix" id="btnList2"><!--
+		                --><li><a href="javascript:void(0);" id="addBack"><img src="{%$staticUrl%}/apps/shopping/img/content/btn_cancel_s.png" alt="" /></a></li><!--
+		                --><li><a href="javascript:void(0);" id="addFinish"><img id="addImg" src="{%$staticUrl%}/apps/shopping/img/content/btn_add_s.png" alt="" /></a></li><!--
+		            --></ul>
+		        </div>
+	        </div>
+        <!-- /addCart info -->
+
+        <!-- /game end info -->
+	        <div id="gameEndConfim" style="display: none">
+	            <div class="inner">
+	            <h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_adjust_b.png" alt="" /></h2>
+	            <div class="section">
+	                <div class="lead">精算画面に移動するとゲーム終了になります。よろしいですか？</div>
+	            </div>
+	            <ul class="btnSection clearfix"><!--
+	                --><li><a href="javascript:void(0);" id="gameBack"><img src="{%$staticUrl%}/apps/shopping/img/content/btn_cancel_s.png" alt="" /></a></li><!--
+	                --><li><a href="{%$baseUrl%}/shopping/gameend"><img src="{%$staticUrl%}/apps/shopping/img/content/btn_adjust_s.png" alt="" /></a></li><!--
+	            --></ul>
+	            </div>
+	        </div>
+        <!-- /game end info -->
+    </div>
+</div>
+
+
+<div id="continer">
+	{%include file="shopping/common/hdr.phtml"%}
+	<script type="text/javascript">
+		$j('#gNavStore').addClass('active');
+		$j('#gNavHome > a').removeAttr('href');
+		$j('#gNavWish > a').removeAttr('href');
+	</script>
+
+	<div id="mainColumn">
+
+		{%include file="shopping/common/adjustbox.phtml"%}
+
+		<div id="categoryListBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_categoryList.png" alt="ジャンル別、商品売り場" /></h2>
+			</div><!--/.hdr-->
+
+			<div class="list">{% foreach name=parentlist from=$lstGParent item=pdata %}<a href="{%$baseUrl%}/shopping/departsub?gid={%$pdata.gid%}">{%$pdata.name|escape%}</a>{% /foreach %}</div>
+		</div>
+
+		<div id="storeBox" class="box">
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_popular.png" alt="よく売れている商品" /></h2>
+			</div><!--/.hdr-->
+
+			{% if $lstPopItem %}
+			<div class="resultSummary"><em id="maxCount">{%$cntPopItem%}</em>件中&nbsp;<em><span id="lblStart">1</span>-<span id="lblEnd">{% if $cntPopItem<10 %}{%$cntPopItem%}{% else %}10{% /if %}</span></em>件を表示</div>
+			<div id="lstPopItem" class="itemList">
+				{% foreach name=poplist from=$lstPopItem item=idata key=key %}
+				<div class="section">
+					<dl class="itemBlock clearfix"><!--
+						--><dt class="pic" id="pic{% $key %}"><a style="background-image:url({%$idata.pic_small%})"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="" /></a></dt><!--
+						--><dd class="name" id="name{% $key %}">{%$idata.name|escape%}</dd><!--
+						--><dd class="price">価格：￥?????</dd><!--
+					--></dl>
+					<ul class="btnBlock clearfix"><!--
+					{% if "1" == $idata.is_in_cart %}
+						--><input type="hidden" id="hidGuessPrice{% $key %}" value="{%$idata.guess_price%}" />
+						<li class="remove"><a href="javascript:void(0);" onclick="removeNext({% $key %});"><span>ショッピングカートからはずす</span></a></li><!--
+					{% else %}
+						--><li class="remove"><a href="javascript:void(0);" onclick="addNext({% $key %});"><span>ショッピングカートに追加する</span></a></li><!--
+					{% /if %}
+						--><li class="rakuten"><a href="{%$baseUrl%}/shopping/torakuten?iid={%$idata.iid%}"><span>楽天市場で購入する</span></a></li><!--
+					--></ul>
+					<input type="hidden" id="hidIid{% $key %}" value="{%$idata.iid%}" />
+				</div>
+				{% /foreach %}
+			</div>
+
+			{% if $cntPopItem>10 %}
+	 		<div id="navPopItem"><ul class="resultNav"><!--
+				{% foreach name=page from=$page item=data %}
+				--><li {% if $data == "1" %}class="stay"{% /if %}>{% if $data == "1" %}{%$data%}{% else %}<a href="javascript:changePageAction({%$data%});">{%$data%}</a>{% /if %}</li><!--
+				{% /foreach %}
+				--><li class="next"><a href="javascript:changePageAction(2);">Next&gt;</a></li><!--
+			--></ul></div>
+			{% /if %}
+
+			{% else %}
+			<p>まだ何もありません。</p>
+			{% /if %}
+			<input type="hidden" id="pageIndex" value="1" />
+			<input type="hidden" id="cntPop" value="{%$cntPopItem%}" />
+			<input type="hidden" id="cid" value="{%$challengeInfo.cid%}" />
+			<input type="hidden" id="hidCid" value="{%$cid%}" />
+		</div><!--/#storeBox.box-->
+	</div><!--/#mainColumn-->
+
+<hr />
+
+	<div id="subColumn">
+		{%include file="shopping/common/adbox.phtml"%}
+		{%include file="shopping/common/trialcalbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript" src="{%$staticUrl%}/apps/shopping/js/depart.js?{%$version.js%}"></script>
+{%include file="shopping/common/footer.phtml"%}

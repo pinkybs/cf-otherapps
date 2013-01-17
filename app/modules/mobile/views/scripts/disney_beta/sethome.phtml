@@ -1,0 +1,46 @@
+{%include file="disney/common/header.phtml"%}
+	<div style="font-size:x-small;">      
+	<div style="background-color:#bffab8; color:#3ea124;">
+        {% disneyimg name="sub_ti_homeset" style='align="top" width="100%"' %}
+    {% if $step == 'start' %}
+            <br />
+			あなたの"ﾏｲﾀｳﾝ"を現在地の都道府県で決定するよ。<br />
+            <span style="color:#ff0000;">
+            ※設定した"ﾏｲﾀｳﾝ"がﾀｰｹﾞｯﾄﾂｱｰのkm起算の起点となります。<br />
+            </span>
+            <br />
+            {% if $canSetHome == 1 %}
+            <!-- <a href='{% "$baseUrl/mobile/disney/sethome?CF_step=auto"|mixiurl %}'>{% disneyimg name="tar_set" %}</a><br /> -->
+            <div style="text-align:center;">
+				<a href='{% "location:cell?url=$baseUrl/mobile/disney/sethome/CF_step/auto/rand/$rand" %}'>{% disneyimg name="tar_set" style='width="69%"' %}</a><br />
+            </div>
+			{% else %}
+                <span style="color:#ff0000;">※ﾏｲﾀｳﾝ設定は、1ヶ月に1回のみ変更が可能です。</span><br />
+            {% /if %}
+            <br />
+    {% elseif $step == 'auto' %}	
+			<br /><br />
+	        あなたの"ﾏｲﾀｳﾝ"を「<font color="#ff0000">{%$placeInfo.name%}</font>」に設定するよ。<br />
+	        <span style="color:#ff0000;">
+	        	※ﾏｲﾀｳﾝ設定は、1ヶ月に1回のみ変更が可能です。<br />
+	        </span>
+			<div style="text-align:center;">
+			{% disneyimg style='height="4"' name="dot0" %}<br />
+            <a href='{% "$baseUrl/mobile/disney/sethome?CF_step=complete&CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="yes" style='width="39%"' %}</a><br />
+			{% disneyimg style='height="4"' name="dot0" %}<br />
+            <a href='{% "$baseUrl/mobile/disney/sethome"|mixiurl %}'>{% disneyimg name="no" style='width="39%"' %}</a><br />
+			{% disneyimg style='height="4"' name="dot0" %}<br />
+			</div>
+
+    {% elseif $step == 'complete' %}
+            
+            <br />
+            <div style="text-align:center;">
+			<br />
+                ﾏｲﾀｳﾝ設定が完了したよ。<br />
+            </div>
+            <br />
+    {% /if %}
+            <br />
+        </div>       
+{%include file="disney/common/footer.phtml"%}

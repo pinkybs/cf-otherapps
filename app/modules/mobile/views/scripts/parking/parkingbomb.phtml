@@ -1,0 +1,33 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="parking">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">廃車トラップ</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		駐車ｽﾍﾟｰｽに､廃車ｶｰﾄﾞが使われていたため､{%$car.name%}が廃車になってしまいました…{% emoji code="F997"%}<br />
+	</div><!--/.description-->
+
+	<div class="car" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/car/{%$car.cav_name%}/m/trap/{%$car_color%}.gif" width="200" height="100" /><br />
+	</div><!--/.car-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		整備ｶｰﾄﾞを使うまで､{%$car.name%}は操作できません｡<br />
+	</div><!--/.description-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=10"|mixiurl %}'>整備ｶｰﾄﾞを購入</a><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/item"|mixiurl %}'>ｱｲﾃﾑ一覧</a><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/start?opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&parking_pid=$pid&parking_rand=$rand"|mobile_flashurl %}'>{%$parking_user%}の駐車場にもどる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#parking-->
+
+{%include file="parking/common/footer.phtml"%}

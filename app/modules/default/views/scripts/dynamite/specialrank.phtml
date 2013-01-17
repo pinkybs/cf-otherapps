@@ -1,0 +1,134 @@
+{%include file="dynamite/common/header.phtml"%}
+<script type="text/javascript" src="{%$staticUrl%}/apps/dynamite/js/specialrank.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/dynamite/js/help.js?{%$version.js%}"></script>
+
+<script type="text/javascript">
+    if ( null != getCookie('app_top_url_dynamite') ) {
+        top.location.href = getCookie('app_top_url_dynamite') +  '#pagetop';
+    }
+</script>
+
+<body id="ranking"><div style="left: -100em; position: absolute; width: 100em;"></div>
+    {%include file="topad.phtml"%}
+    {% if $showTopAd %}
+        <script type="text/javascript">
+            $j().ready(function() {
+               adjustHeight(1168);
+            });
+        </script>
+    {% else %}
+        <script type="text/javascript">
+            $j().ready(function() {
+               adjustHeight(1052);
+            });
+        </script>
+    {% /if %}
+    </script>
+
+<div id="container"><div id="containerInner1"><div id="containerInner2">
+
+   <div id="hdr">
+        <ul id="gNav"><!--
+            --><li id="gNavTop"><a href="{%$baseUrl%}/dynamite">トップ</a></li><!--
+            --><li id="gNavHitman"><a href="{%$baseUrl%}/dynamite/charashop">ヒットマン紹介所</a></li><!--
+            --><li id="gNavRanking"><a href="{%$hostUrl%}/dynamite/specialrank">ランキング</a></li><!--
+            --><li id="gNavInvite"><a href="javascript:void(0)" onclick="invite()">友達招待</a></li><!--
+            --><li id="gNavHowTo"><a href="javascript:void(0)" onclick="jQuery.help.showHelpFlash()">このゲームの遊び方</a></li><!--
+            --><li id="gNavHelp"><a href="{%$baseUrl%}/dynamite/help">ヘルプ</a></li><!--
+        -->
+
+    </div>
+
+    <div id="wrap">
+
+        <div id="mainColumn">
+
+            <div id="mainHdr">
+                <h1 id="titPriceRank">懸賞金ランキング</h1>
+                <h1 id="titDeadRank">壊滅ランキング</h1>
+            </div><!--/#mainHdr-->
+
+            <div id="priceRankColumn" class="column"><div class="inner">
+                <ul class="nav">
+                   <li id="priceNavMyMixi" class="navMyMixi active"><a href="javascript:void(0)" onclick="jQuery.specialrank.otherTypeRank(1,1)">マイミクシィ</a></li>
+                   <li id="priceNavAll" class="navAll"><a href="javascript:void(0)" onclick="jQuery.specialrank.otherTypeRank(1,2)">すべて</a></li>
+                </ul>
+                {%foreach from=$rewardRankUser item=rowdata key=index%}
+                {%if $index==0%}
+                <div class="first" id="priceRankFirst">
+                    <p class="rank">No.01</p>
+                    <p class="pic"><a href="{%$baseUrl%}/dynamite/index?uid={%$rowdata.uid%}" style="background-image: url({%$rowdata.largeThumbnailUrl%})">{%$rowdata.displayName%}</a></p>
+                    <p class="name"><a href="{%$baseUrl%}/dynamite/index?uid={%$rowdata.uid%}">{%$rowdata.displayName%}</a></p>
+                    <p class="price">{%$rowdata.bonus%}</p>
+                </div>
+                {%/if%}
+                {%/foreach%}
+
+
+                <ul class="rankList" id="priceRankList">
+                {%foreach from=$rewardRankUser item=rowdata key=index%}
+                {%if $index!=0%}
+                    <li>
+                        {%if ($index+1)>=10%}
+                        <p class="rank">No.{%$index+1%}</p>
+                        {%else%}<p class="rank">No.0{%$index+1%}</p>
+                        {%/if%}
+                        <p class="pic"><a href="{%$baseUrl%}/dynamite/index?uid={%$rowdata.uid%}" style="background-image: url({%$rowdata.thumbnailUrl%});">{%$rowdata.displayName%}</a></p>
+                        <p class="name"><a href="{%$baseUrl%}/dynamite/index?uid={%$rowdata.uid%}">{%$rowdata.displayName%}</a></p>
+                        <p class="price">{%$rowdata.bonus%}</p>
+                    </li>
+                {%/if%}
+                {%/foreach%}
+                </ul>
+
+            </div></div><!--/#priceColumn-->
+
+            <div id="deadRankColumn" class="column"><div class="inner">
+                <ul class="nav"><!--
+                    --><li id="deadNavMyMixi" class="navMyMixi active"><a href="javascript:void(0)" onclick="jQuery.specialrank.otherTypeRank(2,1)">マイミクシィ</a></li><!--
+
+                    --><li id="deadNavAll" class="navAll"><a href="javascript:void(0)" onclick="jQuery.specialrank.otherTypeRank(2,2)">すべて</a></li><!--
+                --></ul>
+                {%foreach from=$gameOverRankUser item=rowdata key=index%}
+                {%if $index==0%}
+                <div class="first" id="deadRankFirst">
+                    <p class="rank">No.01</p>
+                    <p class="pic"><a href="{%$baseUrl%}/dynamite/index?uid={%$rowdata.uid%}" style="background-image: url({%$rowdata.largeThumbnailUrl%})">{%$rowdata.displayName%}</a></p>
+                    <p class="name"><a href="{%$baseUrl%}/dynamite/index?uid={%$rowdata.uid%}">{%$rowdata.displayName%}</a></p>
+                    <p class="price">{%$rowdata.dead_number%}回</p>
+                </div>
+                {%/if%}
+                {%/foreach%}
+
+                <ul class="rankList" id="deadRankList">
+
+                {%foreach from=$gameOverRankUser item=rowdata key=index%}
+                {%if $index!=0%}
+                    <li>
+                        {%if ($index+1)>=10%}
+                        <p class="rank">No.{%$index+1%}</p>
+                        {%else%}<p class="rank">No.0{%$index+1%}</p>
+                        {%/if%}
+                        <p class="pic"><a href="{%$baseUrl%}/dynamite/index?uid={%$rowdata.uid%}" style="background-image: url({%$rowdata.thumbnailUrl%});">{%$rowdata.displayName%}</a></p>
+                        <p class="name"><a href="{%$baseUrl%}/dynamite/index?uid={%$rowdata.uid%}">{%$rowdata.displayName%}</a></p>
+                        <p class="price">{%$rowdata.dead_number%}回</p>
+                    </li>
+                {%/if%}
+                {%/foreach%}
+                </ul>
+
+            </div></div><!--/#deadRankColumn-->
+
+
+
+        </div><!--/#mainColumn-->
+        <div id="subColumn">
+
+        {%include file="dynamite/common/adbox.phtml"%}
+        </div><!--/#subColumn-->
+
+
+
+    </div><!--/#wrap-->
+
+{%include file="dynamite/common/footer.phtml"%}

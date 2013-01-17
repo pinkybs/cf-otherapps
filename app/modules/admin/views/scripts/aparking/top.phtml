@@ -1,0 +1,33 @@
+{%include file="header.phtml"%}
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+    {%include file="nav.phtml"%}
+	<div id="container">
+		<h2>駐車戦争 - アプリケーション管理</h2>
+		<div id="appsAdmin">
+			<ul class="nav">
+				<li><span>トップページ</span></li>
+				<li><a href="{%$baseUrl%}/aparking/addcar">自動車 追加・編集</a></li>
+				<li><a href="{%$baseUrl%}/aparking/addbackground">不動産 追加・編集</a></li>
+			</ul><!--/.nav-->
+		<table id="dataGrid" border="0" cellpadding="0" cellspacing="0" width="100%">
+			<thead>
+				<tr class="head">
+					<th>管理メニュー</th>
+					<th>概要</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="a">
+					<td><a href="{%$baseUrl%}/aparking/addcar">自動車 追加・編集</a></td>
+					<td>自動車の追加、自動車の値段などに関する情報を変更できます。</td>
+				</tr>
+				<tr class="b">
+					<td><a href="{%$baseUrl%}/aparking/addbackground">不動産 追加・編集</a></td>
+					<td>不動産の追加、不動産の値段などに関する情報を変更できます。</td>
+				</tr>
+			</tbody>
+		</table>
+		</div><!--/#appsAdmin-->
+	</div><!--/#container-->
+{%include file="footer.phtml"%}

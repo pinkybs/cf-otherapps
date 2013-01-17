@@ -1,0 +1,147 @@
+{%include file="hotel/common/header.phtml"%}
+<style type="text/css">
+    a:link{color:#a77809;}
+    a:visited{color:#a77809;}
+    *{color:#000000;font-size:x-small;font-size:5;}
+    .icon{vertical-align: middle;}
+    a img {border: none;}
+
+    body {
+        background: #ffffff;
+    }
+
+    .hrYellow {
+        color:#fbf8c9;
+        border: 0;
+        background-color:#fbf8c9;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrWhite {
+        color:#ffffff;
+        border: 0;
+        background-color:#ffffff;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrSp {
+        background-color:#fdd89e;
+        color:#fdd89e;
+        height:1px;
+        border:0px solid #fdd89e;
+        margin:0.3em 0;
+    }
+
+    #mixiHeader {
+        background:#fbb03b;
+    }
+
+    .headlineFun {
+        background:#cf1226;
+        color:#ffffff;
+    }
+
+    .headlineBack {
+        background:#f6ddbc;
+    }
+
+    .headlineTip {
+        background:#fdd89e;
+        color:#000000;
+    }
+
+    .toTop {
+        background-color:#ffffff;
+    }
+
+    #copyright {
+        background:#fbb03b;
+    }
+
+    .sectionOne {
+        background:#fbf8c9;
+    }
+
+    #techList {
+        background:#fbf8c9;
+    }
+
+    .tdBg {
+        background-color:#d2d0bc;
+    }
+    </style>
+<div id="techList">
+        <hr class="hrWhite" size="1" />
+        <div class="headlineTip" style="color:#000000;">技能研究一覧</div>
+        <hr class="hrWhite" size="1" />
+        <div class="section">
+            <table class="tdBg" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="60" valign="top" align="center" style="width:60px;text-align:center;vertical-align:top;">
+                        <img src="{%$staticUrl%}/apps/hotel/mobile/img/roomTech2.gif" width="60" height="60" />
+                    </td>
+                    <td style="color:#000000;">受付技能（Lv{%$techInfo.desk_level%}）{%$techInfo.desk_effect%}%UP<br />→レベルUPしてチェックイン率がUPする
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        (Lv{%$techInfo.desk_next_level%}){%$techInfo.desk_next_effect%}%UP<br/>
+                                                昇格料金：{%$techInfo.desk_next_update_money%}円
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/techupconfirm?CF_tech=desk"|mixiurl %}'> 昇格する</a>&nbsp;
+                       <br/><span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/roomlist"|mixiurl %}'> 戻る</a>&nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div><!--/.section-->
+        <div class="section">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="60" valign="top" align="center" style="width:60px;text-align:center;vertical-align:top;"><img src="{%$staticUrl%}/apps/hotel/mobile/img/foodTech2.gif" width="60" height="60" /></td>
+                    <td style="color:#000000;">レストランサービス技能（Lｖ{%$techInfo.cook_level%}）{%$techInfo.cook_effect%}%UP<br />レベルUPしてレストランの使用率がUPする
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        (Lv{%$techInfo.cook_next_level%}){%$techInfo.cook_next_effect%}%UP<br/>
+                                                昇格料金：{%$techInfo.cook_next_update_money%}円
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/techupconfirm?CF_tech=cook"|mixiurl %}'> 昇格する</a>&nbsp;
+                       <br/><span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/roomlist"|mixiurl %}'> 戻る</a>&nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div><!--/.section-->
+        <div class="section">
+            <table class="tdBg" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="60" valign="top" align="center" style="width:60px;text-align:center;vertical-align:top;"><img src="{%$staticUrl%}/apps/hotel/mobile/img/servTech.gif" width="60" height="60" /></td>
+                    <td style="color:#000000;">客室サービス技能（Lv{%$techInfo.service_level%}）{%$techInfo.service_effect%}%UP<br />レベルUPして客室のチップ確率がUPする
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        (Lv{%$techInfo.service_next_level%}){%$techInfo.service_next_effect%}%UP<br/>
+                                                昇格料金：{%$techInfo.service_next_update_money%}円
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/techupconfirm?CF_tech=service"|mixiurl %}'> 昇格する</a>&nbsp;
+                       <br/><span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/roomlist"|mixiurl %}'> 戻る</a>&nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div><!--/.section-->
+        <hr class="hrYellow" size="1" />
+        <!--<div class="toTop">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/profile"|mixiurl %}'>トップへ戻る</a>&nbsp;
+        </div>/.toTop-->
+    </div><!--/#mymixilist-->
+{%include file="hotel/common/menu.phtml"%}
+{%include file="hotel/common/footer.phtml"%}

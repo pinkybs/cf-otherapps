@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<app>	
+	<database>
+		<db_basic>
+			<adapter>PDO_MYSQL</adapter>
+			<config>
+				<host>192.168.0.13</host>
+				<username>mysql</username>
+				<password>mysql</password>
+				<dbname>mixi</dbname>
+			</config>
+		</db_basic>
+	</database>
+</app>

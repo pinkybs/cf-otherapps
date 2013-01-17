@@ -1,0 +1,252 @@
+{%include file="scripteditor/common/header.phtml"%}
+<script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/jquery.validate.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/jquery.form.js?{%$version.js%}"></script>
+<body id="config">
+{%include file="topad.phtml"%}
+<div id="continer">
+
+	{%include file="scripteditor/common/topbox.phtml"%}
+	
+	<div id="mainColumn">
+	
+		{%include file="scripteditor/common/searchbox.phtml"%}
+		
+		<div id="wrap">
+			
+			<h1><img src="{%$staticUrl%}/apps/scripteditor/img/tit_config.png" width="108" height="22" alt="環境設定" /></h1>
+			
+			<div id="configStep1">
+			
+    			<div class="inner">
+    				
+    				<div id="statusConf" class="box">
+    					<h3>ステータスの変更</h3>
+    					
+    					<form action="{%$baseUrl%}/ajax/scripteditor/config" method="post" enctype="multipart/form-data" target="iframeConfig" id="frmConfig">
+    					
+    					<table class="confTable">
+    						<tr id="confName">
+    							<th>なまえ</th>
+    							<td>
+    							     <input type="text" maxlength="10" id="txtNickname" name="txtNickname" onblur="if (this.value == '') this.value = $j('#txtUserNickname').val();jQuery.config.checkValue('input#txtNickname', 'p#errNickname');" value="{%$userInfo.nickname%}" onfocus="if (this.value == $j('#txtUserNickname').val()) this.value = '';" /><p class="note">※全角10文字以内</p>
+    							     <p class="note" id="errNickname" style="text-align:left;display:none;"><strong style="">※全角10文字以内</strong>
+    							</td>
+    						</tr>
+    						<tr id="confImage">
+    							<th scope="row">ユーザー画像</th>
+    							<td>
+    							     {% if $userInfo.mixiPic == '1' %}
+        							     <input type="file" id="upPhoto" name="upPhoto" value="" />
+        							     <p class="note">※jpg, gif, pngのみ。50kb以内</p>
+    							     {% else %}
+        							     <div><img src="{%$userInfo.pic_s%}" width="76" height="76" alt="サムネイル" /></div>
+        							     <p id="deletePic" class="delete"><a href="{%$baseUrl%}/scripteditor/deletepic">削除</a></p>
+    							     {% /if %}
+    							</td>
+    						</tr>
+    						<tr id="confJob">
+    							<th scope="row">しょくぎょう</th>
+    							<td>
+    								<select size="10" multiple id="dllJob" name="dllJob" > 
+    								    {% foreach from=$jobList item=job %}
+    								        {% if $job.id == $userInfo.job %}
+    									       <option value="{%$job.id%}" selected="ture">{%$job.content|escape%}</option> 
+    									    {% else %}
+    									       <option value="{%$job.id%}">{%$job.content|escape%}</option> 
+    									    {% /if %}
+    									{% /foreach %}
+    								</select> 
+    								<input type="hidden" id="txtJob" name="txtJob" value="">
+    							</td>
+    						</tr>
+    						<tr id="confLevel">
+    							<th scope="row">レベル</th>
+    							<td>
+    							    <input type="text" style="width:140px;" maxlength="4" id="txtLevel" name="txtLevel" onblur="if (this.value == '') this.value = $j('#txtUserLevel').val();jQuery.config.checkIsNumber('input#txtLevel', 'p#errLevel');" value="{%if $userInfo.level%}{%$userInfo.level%}{%else%}1{%/if%}" onfocus="if (this.value == $j('#txtUserLevel').val()) this.value = '';" /><p class="note">※半角数字 0〜9999（自己申告制）</p>
+    							    <p class="note" id="errLevel" style="text-align:left;display:none;"><strong style="">※半角数字を入力してください</strong>
+    							 </td>
+    						</tr>
+    						<tr id="confSkill">
+    							<th scope="row">スキル</th>
+    							<td>
+    								<table class="innerTable">
+    									<tr>
+    										<th scope="col" colspan="6">プログラミング</th>
+    									</tr>
+    									<tr class="years">
+    										<td>&nbsp;</td>
+    										<td>なし</td>
+    										<td>独学</td>
+    										<td>実務 〜 1年</td>
+    										<td>実務 1〜2年</td>
+    										<td>実務 2年〜</td>
+    									</tr>
+    									{% foreach from=$featureList1 item=feature %}
+    									<tr>
+                                            <td>{%$feature.content%}</td>
+                                            <td><label><input type="radio" name="{%$feature.content%}" id="{%$feature.content%}" checked="checked" value="0" /></label></td>
+                                            <td><label><input type="radio" name="{%$feature.content%}" id="{%$feature.content%}" value="1" /></label></td>
+                                            <td><label><input type="radio" name="{%$feature.content%}" id="{%$feature.content%}" value="2" /></label></td>
+                                            <td><label><input type="radio" name="{%$feature.content%}" id="{%$feature.content%}" value="3" /></label></td>
+                                            <td><label><input type="radio" name="{%$feature.content%}" id="{%$feature.content%}" value="4" /></label></td>
+                                        </tr>
+    									{% /foreach %}
+    									
+    									<tr>
+    										<th scope="col" colspan="6">データーベース</th>
+    									</tr>
+    									<tr class="years">
+    										<td>&nbsp;</td>
+    										<td>なし</td>
+    										<td>独学</td>
+    										<td>実務 〜 1年</td>
+    										<td>実務 1〜2年</td>
+    										<td>実務 2年〜</td>
+    									</tr>
+    									{% foreach from=$featureList2 item=feature %}
+    									<tr>
+    										<td>{%$feature.content%}</td>
+    										<td><label><input type="radio" name="{%$feature.content%}" id="{%$feature.content%}" checked="checked" value="0" /></label></td>
+    										<td><label><input type="radio" name="{%$feature.content%}" id="{%$feature.content%}" value="1" /></label></td>
+    										<td><label><input type="radio" name="{%$feature.content%}" id="{%$feature.content%}" value="2" /></label></td>
+    										<td><label><input type="radio" name="{%$feature.content%}" id="{%$feature.content%}" value="3" /></label></td>
+    										<td><label><input type="radio" name="{%$feature.content%}" id="{%$feature.content%}" value="4" /></label></td>
+    									</tr>
+    									{% /foreach %}
+    									<input type="hidden" id="txtFeature" name="txtFeature" value="">
+    								</table>
+    								
+    							</td>
+    						</tr>
+    						<tr id="confAbility">
+    							<th scope="row">とくぎ</th>
+    							<td><input type="text" id="txtIntroduce" name="txtIntroduce" maxlength="50" value="{%$userInfo.introduce%}" /><p class="note">※全角50文字以内</p></td>
+    						</tr>
+    						<tr id="confBlog">
+    							<th scope="row">ブログURL</th>
+    							<td>
+    							     <input type="text" id="blogUrl" class="url valid" name="blogUrl" value="{%if $userInfo.blogUrl%}{%$userInfo.blogUrl%}{%else%}http://{%/if%}" />
+    							</td>
+    						</tr>                                
+    						<tr id="confLang">
+    							<th scope="row">デフォルト言語</th>
+    							<td>
+    								<ul><!--
+    									--><li><label><input type="radio" id="defaultLang" name="defaultLang" checked="checked" value="1" />PHP</label></li><!--
+    								--></ul>
+    							</td>
+    						</tr>
+    						<tr id="confMixiProf">
+    							<th scope="row">mixiプロフィール</th>
+    							<td>
+    								<ul><!--
+    									--><li><label><input type="radio" name="mixiProf" id="mixiProf1" value="1" checked="checked" />公開する</label></li><!--
+    									{% if $userInfo.public_type == '0'%}
+    									   --><li><label><input type="radio" name="mixiProf" id="mixiProf2" value="0" checked="checked" />公開しない</label></li><!--
+    									{% else %}
+    									   --><li><label><input type="radio" name="mixiProf" id="mixiProf2" value="0" />公開しない</label></li><!--
+    									{% /if %}
+    								--></ul>
+    							</td>
+    						</tr>
+    					</table>
+                        </form><!--/#frmConfig-->
+                        
+                        <input type="hidden" id="txtUserNickname"  value="{%$userInfo.nickname%}">
+                        <input type="hidden" id="txtUserLevel"  value="{%if $userInfo.level%}{%$userInfo.level%}{%else%}1{%/if%}">
+                        <input type="hidden" id="userFeature" value="{%$userInfo.features%}" />
+    					<input type="hidden" id="arrFeature1" value='{%$jsonFeature1%}' />
+    					<input type="hidden" id="arrFeature2" value='{%$jsonFeature2%}' />
+    					
+    					<p class="btnConfirm">
+    					   <a href="javascript:void(0);" onclick="jQuery.config.confirmValue()" id="btnConfirm1" style="display:none;" >確認画面へ</a>
+    					   <a href="javascript:void(0);" onclick="" id="btnConfirm2" >確認画面へ</a>
+    					</p>
+    					
+    				</div><!--/#entryCode-->
+    				
+    			</div><!--/.inner-->
+			
+            </div><!--/#configStep1-->
+            
+            <iframe id="iframeConfig" name="iframeConfig" width="0" height="0" scrolling="no" style="display: none;"></iframe>
+
+            <div id="configStep2" style="display:none;">
+
+    			<div class="inner">
+                    
+                    <div id="statusConf" class="box">
+                        <h3>ステータスの変更</h3>
+                        <table class="confTable">
+                            <tr id="confName">
+                                <th>なまえ</th>
+                                <td id="lblNickname"></td>
+                            </tr>
+                            <tr id="confImage">
+                                <th scope="row">ユーザー画像</th>
+                                <td><div id="divThumbPreview"></div><input type="hidden" id="picValue" /></td>
+                            </tr>
+                            <tr id="confJob">
+                                <th scope="row">しょくぎょう</th>
+                                <td id="lblJob"></td>
+                            </tr>
+                            <tr id="confLevel">
+                                <th scope="row">レベル</th>
+                                <td id="lblLevel"></td>
+                            </tr>
+                            <tr id="confSkill">
+                                <th scope="row">スキル</th>
+                                <td id="lblFeature"></td>
+                            </tr>
+                            <tr id="confAbility">
+                                <th scope="row">とくぎ</th>
+                                <td id="lblIntroduce"></td>
+                            </tr>
+                            <tr id="confBlog">
+                                <th scope="row">ブログURL</th>
+                                <td id="lblBlogUrl"><a href="#" tabindex="_blank" rel="nofollow" target="_blank"></td>
+                            </tr>
+                            <tr id="confLang">
+                                <th scope="row">デフォルト言語</th>
+                                <td id="lblLanguage"></td>
+                            </tr>
+                            <tr id="confMixiProf">
+                                <th scope="row">mixiプロフィール</th>
+                                <td id="lblMixiProf"></td>
+                            </tr>
+                        </table>
+                        
+                        <div id="configStatus" class="box">
+                            <p>注意事項をご確認の上、【ステータスを変更する】をクリックしてください。</p>
+                            
+                            {%include file="scripteditor/common/rulebox.phtml"%}
+                            
+                            <div id="confirmList">
+                                <ul><!--
+                                    --><li><label><input type="radio" name="agreement" id="agreement" value="1" />同意する</label></li><!--
+                                    --><li><label><input type="radio" checked="checked" name="agreement" id="agreement" value="0" />同意しない</label></li><!--
+                                --></ul>
+        
+                                <p class="btnConfigStatus"><a href="javascript:void(0);" onclick="jQuery.config.submit()">上記の内容でエントリーを公開する）</a></p>
+                            </div><!--/#confirmList-->
+                        </div>
+                        
+                    </div><!--/#entryCode-->
+                    
+                </div><!--/.inner-->
+			</div><!--/#configStep2-->
+			
+		</div><!--/#wrap-->
+		
+	</div><!--/#mainColumn-->
+	
+	{%include file="scripteditor/common/subbox.phtml"%}
+    <script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/config.js?{%$version.js%}"></script>
+    
+    <script type="text/javascript">
+       jQuery(function($){
+           adjustHeight();
+       });
+    </script>
+{%include file="scripteditor/common/footer.phtml"%}
+

@@ -1,0 +1,88 @@
+            <div id="userListArea">
+                <div class="inner">
+
+                    <ul id="userListNav"><!--
+                        --><li id="userListNavLeft"><a id="navLeft" href="javascript:void(0)" onclick="jQuery.rank.leftOne()">一人分左へ</a></li><!--
+                        --><li id="userListNavMaxLeft"><a id="navMaxLeft" href="javascript:void(0)" onclick="jQuery.rank.getNextTenUser('left')">一番左へ</a></li><!--
+                        --><li id="userListNavRight"><a id="navRight" href="javascript:void(0)" onclick="jQuery.rank.rightOne()">一人分右へ</a></li><!--
+                        --><li id="userListNavMaxRight"><a id="navMaxRight" href="javascript:void(0)" onclick="jQuery.rank.getNextTenUser('right')"
+                        {%if $rankPrev==2%}disabled="disabled"{%/if%}>一番右へ</a></li><!--
+                    --></ul>
+
+                    <div id="userListWrap">
+                        <div id="memberFrame2" style="height:132px;width:472px;overflow:hidden;position:relative;">
+                            <div id="innaerFrame2" style="position:absolute;top:0;width:990000px;">
+                                <ul id="userList">
+                                    {%foreach from=$inviteUser item=rowdata key=index%}
+
+                                    <li>
+                                        <p class="number">{%$constValue-$index%}</p>
+                                        <p class="name"><nobr><a href="javascript:void(0)" onclick="invite()">{%$rowdata.displayName%}</a></nobr></p>
+                                        <p class="pic"><a href="javascript:void(0)" onclick="invite()" style="background-image: url({%$rowdata.thumbnailUrl%})"></a></p>
+                                        <p class="price">{%$rowdata.bonus%}</p>
+                                    </li>
+
+                                    {%/foreach%}
+                                    {%foreach from=$rankUser item=rowdata key=index%}
+
+                                    <li id="{%$lastUserRankNum-$index%}">
+                                        <p class="number">{%$lastUserRankNum-$index%}</p>
+                                        <p class="name"><nobr><a href="javascript:void(0)" onclick="jQuery.dynamite.goUserDynamite({%$rowdata.uid%})">{%$rowdata.displayName%}</a></nobr></p>
+                                        <p class="pic"><a href="javascript:void(0)" onclick="jQuery.dynamite.goUserDynamite({%$rowdata.uid%})" style="background-image: url({%$rowdata.thumbnailUrl%})"></a></p>
+                                        <p class="price">{%$rowdata.bonus%}</p>
+                                        {%if $rowdata.online == 1%}
+                                            <img src="{%$staticUrl%}/apps/dynamite/img/icon/warning.gif" width="16" height="16" id="loginPlayer" alt="" />
+                                        {% /if %}
+                                    </li>
+
+                                    {%/foreach%}
+
+                                </ul>
+                            </div><!--/#innaerFrame2-->
+                        </div><!--/#memberFrame2-->
+                    </div><!--/#userListWrap-->
+
+                    <ul id="firstUser">
+                        {%foreach from=$topRankUser item=rowdata key=index%}
+                        <li>
+                            <p class="number">1</p>
+                            <p class="name"><a href="javascript:void(0)" onclick="jQuery.dynamite.goUserDynamite({%$rowdata.uid%})">{%$rowdata.displayName%}</a></p>
+                            <p class="pic"><a href="javascript:void(0)" onclick="jQuery.dynamite.goUserDynamite({%$rowdata.uid%})" style="background-image: url({%$rowdata.thumbnailUrl%})"></a></p>
+                            <p class="price">{%$rowdata.bonus%}</p>
+                            {%if $rowdata.online == 1%}
+                                <img src="{%$staticUrl%}/apps/dynamite/img/icon/warning.gif" width="16" height="16" id="loginPlayer" alt="" />
+                            {% /if %}
+
+                        </li>
+                        {%/foreach%}
+                        {%if $topRankUser == null%}
+                        <li>
+                            <p class="number">1</p>
+                            <p class="name"><a href="javascript:void(0)" onclick="invite()">?????</a></p>
+                                <p class="pic"><a href="javascript:void(0)" onclick="invite()" style="background-image: url({%$staticUrl%}/apps/dynamite/img/default.png)"></a></p>
+                            <p class="price">?????</p>
+                        </li>
+                        {%/if%}
+                    </ul>
+
+                </div><!--/.inner-->
+
+                <ul id="rankingTab"><!--
+                    --><li id="tabTotalRanking"><a href="javascript:void(0)" onClick="jQuery.rank.otherTypeRank('',2)">所持金ランキング</a></li><!--
+                    --><!--<li id="tabPriceRanking" class="disable"><a href="javascript:void(0)" onClick="jQuery.rank.otherTypeRank('',1)">懸賞金ランキング</a></li>--><!--
+                --></ul>
+
+                <ul class="btnList"><!--
+                    --><li id="btnListMyMixi" class="disable"><a href="javascript:void(0)" onClick="jQuery.rank.otherTypeRank(1,'')">マイミクシィ</a></li><!--
+                    --><li id="btnListAll"><a href="javascript:void(0)" onClick="jQuery.rank.otherTypeRank(2,'')">すべて</a></li><!--
+                --></ul>
+
+                <input type="hidden" name="rankPrev" id="rankPrev" value="{%$rankPrev%}">
+                <input type="hidden" name="lastUserRankNum" id="lastUserRankNum" value="{%$lastUserRankNum%}">
+                <input type="hidden" name="rankCount" id="rankCount" value="{%$rankCount%}">
+                <input type="hidden" name="rankType" id="rankType" value="{%$rankType%}">
+                <input type="hidden" name="rankRange" id="rankRange" value="{%$rankRange%}">
+
+                <input type="hidden" name="currentRight" id="currentRight" value="{%$rankPrev%}">
+
+            </div><!--/#userListArea-->

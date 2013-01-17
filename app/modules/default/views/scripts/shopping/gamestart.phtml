@@ -1,0 +1,84 @@
+{%include file="shopping/common/header.phtml"%}
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/shopping/js/swfobject.js"></script>
+<body id="home">
+<div id="continer">
+	{%include file="shopping/common/hdr.phtml"%}
+	<script type="text/javascript">
+		$j('#gNavHome').addClass('active');
+		$j('#gNavStore > a').removeAttr('href');
+		$j('#gNavMyCart > a').removeAttr('href');
+		if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+
+		<div id="playBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_play.png" alt="ゲームスタート" /></h2>
+			</div><!--/.hdr-->
+
+			<div id="start1">
+			<p class="des1">
+				次の部門でゲームをスタートします。以下の「ピタリと当てまSHOW、ゲームスタート」をクッリクすると、ゲーム開始となり、制限時間のカウントが始まります。<br />
+				{% if $lastDiff %}
+				前回の記録<span>{%$lastDiff%}</span>を超えられるよう、がんばってくださいね。
+				{% /if %}
+			</p>
+			<div class="btnSection"><a id="btnStart" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/shopping/img/content/ban_play.png" alt="" /></a></div>
+			</div>
+
+			<div id="start2" style="display:none">
+			<div id="flashSection" >
+			<!-- <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="665" height="400" id="flash" align="middle">
+				<param name="allowScriptAccess" value="always" />
+				<param name="allowFullScreen" value="false" />
+				<param name="movie" value="{%$staticUrl%}/apps/shopping/swf/opening.swf?openingLoadURL={%$flashUrl%}" />
+				<param name="quality" value="high" />
+				<param name="bgcolor" value="#ffffff" />
+				<param name="wmode" value="transparent" />
+				<embed src="{%$staticUrl%}/apps/shopping/swf/opening.swf?openingLoadURL={%$flashUrl%}" quality="high" bgcolor="#ffffff" width="665" height="400" name="flash" align="middle" allowScriptAccess="always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+				</object> -->
+			</div>
+
+			</div>
+		</div><!--/#playBox.box-->
+
+		<div id="rank" style="display:none">
+		  {%include file="shopping/common/rank.phtml"%}
+		</div>
+
+	</div><!--/#mainColumn-->
+
+<hr />
+
+	<div id="subColumn">
+		{%include file="shopping/common/adbox.phtml"%}
+		{%include file="shopping/common/profbox.phtml"%}
+		{%include file="shopping/common/wishbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript">
+        $j(document).ready(function() {
+        	$j('#btnStart').click(function() {
+        		var opt = {
+        			quality: 'high',
+        			bgcolor: '#ffffff',
+                    allowScriptAccess: 'always',
+                    allowFullScreen : false
+                };
+                $j('#start1').hide();
+        		$j('#start2').show();
+        		$j('#rank').show();
+				swfobject.embedSWF(UrlConfig.StaticUrl + '/apps/shopping/swf/opening.swf?openingLoadURL=' + encodeURIComponent(UrlConfig.HostUrl + '/ajax/shopping/randdepart'), "flashSection", "665", "400", "9.0.0", null, null, opt);
+				adjustHeight();
+				return false;
+        	});
+
+        	adjustHeight();
+        });
+	</script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/shopping/js/home.js?{%$version.js%}"></script>
+{%include file="shopping/common/footer.phtml"%}

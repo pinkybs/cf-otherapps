@@ -1,0 +1,58 @@
+﻿{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn">
+
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+
+		<div id="sellGiftBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_sellGift.png" width="140" height="23" alt="ギフトを売る" /></h2>
+			</div><!--/.hdr-->
+
+			<!-- hidden info -->
+				<input type="hidden" value="{%$keyId%}" id="hidKeyId" name="hidKeyId"/>
+				<input type="hidden" value="{%$myTotalRank%}" id="hidMyTotalRank" name="hidMyTotalRank"/>
+			<!-- /hidden info -->
+
+			<div id="sellStep1"><!-- #sellStep1 -->
+				<p class="intro" id="pIntro">このギフトを売りますか？</p>
+				<div class="section" id="sellGiftInfo">
+						<p class="pic"><a style="cursor:default;background-image:url({%$giftInfo.gift_small_pic%})">{%$giftInfo.gift_name%}</a></p>
+						<p class="name">{%$giftInfo.gift_name%}</p>
+						<p class="price">価格：&yen;{%$giftInfo.gift_format_price%}<!-- （下取り価格：&yen;{%$giftInfo.gift_format_price%}） --></p>
+				</div><!--/.section-->
+
+				<ul class="actionList" id="sellGiftSetp"><!--
+				--><li class="actionAbolish disable"><a href="{%$baseUrl%}/slave/home">キャンセル</a></li><!--
+				--><li class="actionSellGift"><a id="sellGiftNext" href="javascript:void(0);">売却する</a></li><!--
+				--></ul><!--/.actionList-->
+
+			</div><!-- /#sellStep1 -->
+
+			<div style="display: none;" id="sellStep2"><!-- #sellStep2 -->
+				<p id="pNone" class="intro">ギフトを売りました。&yen;{%$sellPrice%}ゲット！</p>
+				<div class="section" id="sellFinishInfo">
+
+				</div>
+				<p id="pGoHome" class="actionBackHome"><a href="{%$baseUrl%}/slave/home">ホームにもどる</a></p>
+
+			</div><!-- /#sellStep2 -->
+		</div><!--/#sellGiftBox.box-->
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+	{%include file="slave/common/adbox.phtml"%}
+	{%include file="slave/common/logbox.phtml"%}
+	{%include file="slave/common/popularbox.phtml"%}
+	</div><!--/#subColumn-->
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/sellgift.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

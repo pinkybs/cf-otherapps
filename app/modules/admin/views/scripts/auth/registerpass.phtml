@@ -1,0 +1,48 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+	<div id="container">
+		<div id="auth">
+		{% if 2==$step %}
+			<p>パスワードの設定が完了しました。<br />
+				忘れた場合もリマインダーがあるから、どうぞご安心ください。<br /><br />
+				<a href="{%$baseUrl%}/">&laquo; ログイン画面へ</a></p>
+		{% else %}
+			<p>以下にパスワードを入力し、パスワードを設定してください。<br />
+				※すぐに特定できるような“わかりやすいパスワード”は避けましょう…。</p>
+
+			{% if $errmsg %}
+			<div class="error">
+				<p>{%$errmsg|escape%}</p>
+			</div><!--/.error-->
+			{% /if %}
+			<form id="frmSet" method="post" action="{%$baseUrl%}/auth/registerpass">
+				<ul>
+					<li><label for="">パスワード：</label><br />
+						<input type="password" id="txtNewPw" name="txtNewPw" class="required-password validate-alphanum validate-length-range-6-12" maxlength="15" value="" /></li>
+					<li><label for="">パスワード（確認用）：</label><br />
+						<input type="password" id="txtConfirmPw" name="txtConfirmPw" class="required-password validate-equals-txtNewPw" maxlength="15" /></li>
+					<li><input type="button" value="　パスワードを設定　" onclick="setPass();" /></li>
+				</ul>
+				<input type="hidden" id="uuid" name="uuid" value="{%$uuid%}" />
+			</form>
+        	<script type="text/javascript" language="">
+                var _valid = new Validation('frmSet', {immediate:true,useTitles:true});
+                /**
+                 * submit to login action
+                 * @param  null
+                 * @return void
+                 */
+                function setPass() {
+                    if (!_valid.validate()) {
+                        return ;
+                    }
+                    $('frmSet').submit();
+                }
+        	</script>
+		{% /if %}
+		</div><!--/#auth-->
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

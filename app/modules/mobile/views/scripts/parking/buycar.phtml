@@ -1,0 +1,46 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="carShop">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">{%$carInfo.name%}購入</span><br />
+	</div><!--/.headline-->
+
+	<div class="carInfo">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">{% emoji code="F8BF"%}{%$carInfo.name%}</span><br />
+		駐車料金×{%$carInfo.times%}/¥{%$carInfo.price|outputdollars%}<br />
+		<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+		<span style="color:#c00;">購入後の所持金:¥{%$remainAsset|outputdollars%}</span><br />
+	</div><!--/.carInfo-->
+
+	<div class="inner">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		購入を実行する場合は､ｶﾗｰを選択し､購入をｸﾘｯｸ{% emoji code="F9A2"%}<br />
+		<div class="commodity" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/parking/mimg/car/{%$carInfo.cav_name%}/m/normal/{%$carInfo.color%}.gif" width="200" height="100" /><br />
+			<form method="post" action="{%$baseUrl%}/mobile/parking/buycarsubmit?app_id={%$APP_ID%}">
+				<input type="hidden" name="carId" value="{%$carInfo.cid%}" />
+				<input type="hidden" name="carName" value="{%$carInfo.name%}" />
+				<input type="hidden" name="cavName" value="{%$carInfo.cav_name%}" />
+				<select name="color">
+					<option value="black" {%if $carInfo.color == 'black'%}selected="selected"{%/if%}>黒</option>
+					<option value="white" {%if $carInfo.color == 'white'%}selected="selected"{%/if%}>白</option>
+					<option value="silver" {%if $carInfo.color == 'silver'%}selected="selected"{%/if%}>銀</option>
+					<option value="yellow" {%if $carInfo.color == 'yellow'%}selected="selected"{%/if%}>黄</option>
+					<option value="red" {%if $carInfo.color == 'red'%}selected="selected"{%/if%}>赤</option>
+					<option value="blue" {%if $carInfo.color == 'blue'%}selected="selected"{%/if%}>青</option>
+				</select><input type="submit" value="購入" /><br />
+			</form>
+		</div><!--/.commodity-->
+	</div><!--/.inner-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/carshop"|mixiurl %}'>ｶｰｼｮｯﾌﾟにもどる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#carShop-->
+
+{%include file="parking/common/footer.phtml"%}

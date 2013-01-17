@@ -1,0 +1,23 @@
+{%include file="parking/common/header.phtml"%}
+
+	<div id="visitGift">
+
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+		<div class="headline" style="background:#cd424a;">
+			<span style="color:#fff;">ビジターギフト</span><br />
+		</div><!--/.headline-->
+
+		<div class="inner">
+			<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+			次の3枚から､1枚を選んでください{% emoji code="F99F"%}1日1回､ｵｶﾈかｱｲﾃﾑがもらえるよ{% emoji code="F8E6"%}<br />
+			<div class="gift" style="text-align:center;">
+				<a href='{% "$baseUrl/mobile/parking/visitgift?parking_cardId=$cardId&parking_money=$money"|mixiurl %}'><img src="{%$staticUrl%}/apps/parking/mimg/gift.gif" width="122" height="79" style="margin:2px 0;" /></a><br />
+				<a href='{% "$baseUrl/mobile/parking/visitgift?parking_cardId=$cardId&parking_money=$money"|mixiurl %}'><img src="{%$staticUrl%}/apps/parking/mimg/gift.gif" width="122" height="79" style="margin:2px 0;" /></a><br />
+				<a href='{% "$baseUrl/mobile/parking/visitgift?parking_cardId=$cardId&parking_money=$money"|mixiurl %}'><img src="{%$staticUrl%}/apps/parking/mimg/gift.gif" width="122" height="79" style="margin:2px 0;" /></a><br />
+			</div><!--/.gift-->
+		</div><!--/.inner-->
+
+	</div><!--/#visitGift-->
+
+{%include file="parking/common/footer.phtml"%}

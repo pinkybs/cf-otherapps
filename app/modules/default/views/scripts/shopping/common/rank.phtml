@@ -1,0 +1,237 @@
+        <!-- hidden info -->
+            <input type="hidden" id="hidRank1" name="hidRank1" value="friend">
+            <input type="hidden" id="hidRank2" name="hidRank2" value="friend">
+            <input type="hidden" id="hidRank3" name="hidRank3" value="friend">
+            <input type="hidden" id="hidRank4" name="hidRank4" value="friend">
+        <!-- /hidden info -->
+
+        <div id="rankBox5man" class="box rankBox">
+            <div class="hdr">
+                <h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_rank_10.png" alt="ピタリランキング10万円部門" /></h2>
+                <ul class="tabNav"><!--
+                    --><li id="tabMyMixi" class="active"><a href="javascript:void(0);" id="friend1">マイミクのみ</a></li><!--
+                    --><li id="tabAllMixi"><a href="javascript:void(0);" id="all1">ミクシィ全体</a></li><!--
+                --></ul>
+            </div><!--/.hdr-->
+
+            <div class="rankWrap">
+            <div class="leftFrame">
+                <ul class="frameNav"><!--
+                    --><li class="frameNavLeft"><a id="btnLeft1" href="javascript:void(0);" class="next"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_left_next.png" width="40" height="47" alt="左" /></a><a id="btnLeftMore1" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_left_end.png" width="40" height="47" alt="左端" /></a></li><!--
+                    --><li class="frameNavRight"><a id="btnRight1"  href="javascript:void(0);" class="next"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_right_next.png" width="40" height="47" alt="右" /></a><a id="btnRightMore1" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_right_end.png" width="40" height="47" alt="右端" /></a></li><!--
+                --></ul>
+                <div class="rankFrame">
+                    <div id="memberFrame1" style="height:148px;width:408px;overflow:hidden;position:relative;">
+                        <div id="innaerFrame1" class="innerFrame" style="position:absolute;top:0;width:990000px;">
+                            <ul id="ulRank1" style="width:auto;"><!--
+                                  {% foreach name=lst10FriendRank from=$lst10FriendRank item=pdata %}
+                                        {% if null == $pdata.uid %}
+                                       --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">??????</span><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image:url({%$staticUrl%}/apps/shopping/img/dummy/thum_invite.png)"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="招待する" /></a><span class="money">??万円</span></li><!--
+                                        {% else %}
+                                       --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">{%$pdata.name%}</span><a href="{%$baseUrl%}/shopping/wish?uid={%$pdata.uid%}" style="background-image:url({%$pdata.pic%})"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="{%$pdata.name%}" /></a><span class="money">{%$pdata.format_diff%}</span></li><!--
+                                        {% /if %}
+                                {% /foreach %}
+                             --></ul>
+                        </div><!--/innaerFrame1-->
+                    </div><!--/memberFrame1-->
+                </div>
+            </div>
+
+            <div class="rightFrame">
+                <div class="rankFrame">
+                    <ul id="ulRankLeader1"><!--
+                          {% foreach name=lst10FriendRankLeader from=$lst10FriendRankLeader item=pdata %}
+                                {% if null == $pdata.uid %}
+                               --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">??????</span><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image:url({%$staticUrl%}/apps/shopping/img/dummy/thum_invite.png)"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="招待する" /></a><span class="money">??万円</span></li><!--
+                                {% else %}
+                               --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">{%$pdata.name%}</span><a href="{%$baseUrl%}/shopping/wish?uid={%$pdata.uid%}" style="background-image:url({%$pdata.pic%})"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="{%$pdata.name%}" /></a><span class="money">{%$pdata.format_diff%}</span></li><!--
+                                {% /if %}
+                        {% /foreach %}
+                     --></ul>
+                </div>
+            </div>
+            </div>
+                <input type="hidden" id="hidCntRank1" value="{% $countOne %}" />
+                <input type="hidden" id="hidRankprev1" value="{% $rankStartOne %}" />
+                <input type="hidden" id="hidRanknext1" value="{% $rankEndOne %}" />
+        </div><!--/#rankBox5man.box.rankBox-->
+
+
+
+        <div id="rankBox10man" class="box rankBox">
+
+            <div class="hdr">
+                <h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_rank_50.png" alt="ピタリランキング50万円部門" /></h2>
+                <ul class="tabNav"><!--
+                    --><li id="tabMyMixi" class="active"><a href=javascript:void(0); id="friend2">マイミクのみ</a></li><!--
+                    --><li id="tabAllMixi"><a href=javascript:void(0); id="all2">ミクシィ全体</a></li><!--
+                --></ul>
+            </div><!--/.hdr-->
+
+            <div class="rankWrap">
+            <div class="leftFrame">
+                <ul class="frameNav"><!--
+                    --><li class="frameNavLeft">
+                        <a id="btnLeft2" href="javascript:void(0);" class="next"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_left_next.png" width="40" height="47" alt="左" /></a>
+                        <a id="btnLeftMore2" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_left_end.png" width="40" height="47" alt="左端" /></a>
+                    </li><!--
+                    --><li class="frameNavRight">
+                        <a id="btnRight2"  href="javascript:void(0);" class="next"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_right_next.png" width="40" height="47" alt="右" /></a>
+                        <a id="btnRightMore2" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_right_end.png" width="40" height="47" alt="右端" /></a>
+                    </li><!--
+                --></ul>
+                <div class="rankFrame">
+                    <div id="memberFrame2" style="height:148px;width:408px;overflow:hidden;position:relative;">
+                        <div id="innaerFrame2" class="innerFrame" style="position:absolute;top:0;width:990000px;">
+                            <ul id="ulRank2" style="width:auto;"><!--
+                              {% foreach name=lst50FriendRank from=$lst50FriendRank item=pdata %}
+                                    {% if null == $pdata.uid %}
+                                   --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">??????</span><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image:url({%$staticUrl%}/apps/shopping/img/dummy/thum_invite.png)"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="招待する" /></a><span class="money">??万円</span></li><!--
+                                    {% else %}
+                                   --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">{%$pdata.name%}</span><a href="{%$baseUrl%}/shopping/wish?uid={%$pdata.uid%}" style="background-image:url({%$pdata.pic%})"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="{%$pdata.name%}" /></a><span class="money">{%$pdata.format_diff%}</span></li><!--
+                                    {% /if %}
+                            {% /foreach %}
+                         --></ul>
+                        </div><!--/innaerFrame1-->
+                    </div><!--/memberFrame1-->
+                </div>
+            </div>
+
+            <div class="rightFrame">
+                <div class="rankFrame">
+                    <ul id="ulRankLeader2"><!--
+                          {% foreach name=lst50FriendRankLeader from=$lst50FriendRankLeader item=pdata %}
+                                {% if null == $pdata.uid %}
+                               --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">??????</span><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image:url({%$staticUrl%}/apps/shopping/img/dummy/thum_invite.png)"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="招待する" /></a><span class="money">??万円</span></li><!--
+                                {% else %}
+                               --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">{%$pdata.name%}</span><a href="{%$baseUrl%}/shopping/wish?uid={%$pdata.uid%}" style="background-image:url({%$pdata.pic%})"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="{%$pdata.name%}" /></a><span class="money">{%$pdata.format_diff%}</span></li><!--
+                                {% /if %}
+                        {% /foreach %}
+                     --></ul>
+                </div>
+            </div>
+            </div>
+                <input type="hidden" id="hidCntRank2" value="{% $countTwo %}" />
+                <input type="hidden" id="hidRankprev2" value="{% $rankStartTwo %}" />
+                <input type="hidden" id="hidRanknext2" value="{% $rankEndTwo %}" />
+        </div><!--/#rankBox10man.box.rankBox-->
+
+
+
+        <div id="rankBox50man" class="box rankBox">
+
+            <div class="hdr">
+                <h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_rank_100.png" alt="ピタリランキング100万円部門" /></h2>
+                <ul class="tabNav"><!--
+                    --><li id="tabMyMixi" class="active"><a href=javascript:void(0); id="friend3">マイミクのみ</a></li><!--
+                    --><li id="tabAllMixi"><a href=javascript:void(0); id="all3">ミクシィ全体</a></li><!--
+                --></ul>
+            </div><!--/.hdr-->
+
+            <div class="rankWrap">
+            <div class="leftFrame">
+                <ul class="frameNav"><!--
+                    --><li class="frameNavLeft">
+                        <a id="btnLeft3" href="javascript:void(0);" class="next"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_left_next.png" width="40" height="47" alt="左" /></a>
+                        <a id="btnLeftMore3" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_left_end.png" width="40" height="47" alt="左端" /></a>
+                    </li><!--
+                    --><li class="frameNavRight">
+                        <a id="btnRight3"  href="javascript:void(0);" class="next"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_right_next.png" width="40" height="47" alt="右" /></a>
+                        <a id="btnRightMore3" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_right_end.png" width="40" height="47" alt="右端" /></a>
+                    </li><!--
+                --></ul>
+                <div class="rankFrame">
+                    <div id="memberFrame3" style="height:148px;width:408px;overflow:hidden;position:relative;">
+                        <div id="innaerFrame3" class="innerFrame" style="position:absolute;top:0;width:990000px;">
+                            <ul id="ulRank3" style="width:auto;"><!--
+                              {% foreach name=lst100FriendRank from=$lst100FriendRank item=pdata %}
+                                    {% if null == $pdata.uid %}
+                                   --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">??????</span><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image:url({%$staticUrl%}/apps/shopping/img/dummy/thum_invite.png)"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="招待する" /></a><span class="money">??万円</span></li><!--
+                                    {% else %}
+                                   --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">{%$pdata.name%}</span><a href="{%$baseUrl%}/shopping/wish?uid={%$pdata.uid%}" style="background-image:url({%$pdata.pic%})"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="{%$pdata.name%}" /></a><span class="money">{%$pdata.format_diff%}</span></li><!--
+                                    {% /if %}
+                            {% /foreach %}
+                            --></ul>
+                        </div><!--/innaerFrame1-->
+                    </div><!--/memberFrame1-->
+                </div>
+            </div>
+
+            <div class="rightFrame">
+                <div class="rankFrame">
+                    <ul id="ulRankLeader3"><!--
+                          {% foreach name=lst100FriendRankLeader from=$lst100FriendRankLeader item=pdata %}
+                                {% if null == $pdata.uid %}
+                               --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">??????</span><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image:url({%$staticUrl%}/apps/shopping/img/dummy/thum_invite.png)"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="招待する" /></a><span class="money">??万円</span></li><!--
+                                {% else %}
+                               --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">{%$pdata.name%}</span><a href="{%$baseUrl%}/shopping/wish?uid={%$pdata.uid%}" style="background-image:url({%$pdata.pic%})"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="{%$pdata.name%}" /></a><span class="money">{%$pdata.format_diff%}</span></li><!--
+                                {% /if %}
+                        {% /foreach %}
+                     --></ul>
+                </div>
+            </div>
+            </div>
+                <input type="hidden" id="hidCntRank3" value="{% $countThree %}" />
+                <input type="hidden" id="hidRankprev3" value="{% $rankStartThree %}" />
+                <input type="hidden" id="hidRanknext3" value="{% $rankEndThree %}" />
+        </div><!--/#rankBox50man.box.rankBox-->
+
+
+
+        <div id="rankBox100man" class="box rankBox">
+
+            <div class="hdr">
+                <h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_rank_500.png" alt="ピタリランキング500万円部門" /></h2>
+                <ul class="tabNav"><!--
+                    --><li id="tabMyMixi" class="active"><a href=javascript:void(0); id="friend4">マイミクのみ</a></li><!--
+                    --><li id="tabAllMixi"><a href=javascript:void(0); id="all4">ミクシィ全体</a></li><!--
+                --></ul>
+            </div><!--/.hdr-->
+
+            <div class="rankWrap">
+            <div class="leftFrame">
+                <ul class="frameNav"><!--
+                    --><li class="frameNavLeft">
+                        <a id="btnLeft4" href="javascript:void(0);" class="next"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_left_next.png" width="40" height="47" alt="左" /></a>
+                        <a id="btnLeftMore4" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_left_end.png" width="40" height="47" alt="左端" /></a>
+                    </li><!--
+                    --><li class="frameNavRight">
+                        <a id="btnRight4" href="javascript:void(0);" class="next"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_right_next.png" width="40" height="47" alt="右" /></a>
+                        <a id="btnRightMore4" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/shopping/img/content/frameNav_right_end.png" width="40" height="47" alt="右端" /></a>
+                    </li><!--
+                --></ul>
+            <div class="rankFrame">
+                    <div id="memberFrame4" style="height:148px;width:408px;overflow:hidden;position:relative;">
+                        <div id="innaerFrame4" style="position:absolute;top:0;width:990000px;" class="innerFrame">
+                            <ul id="ulRank4" style="width:auto;"><!--
+                              {% foreach name=lst500FriendRank from=$lst500FriendRank item=pdata %}
+                                    {% if null == $pdata.uid %}
+                                   --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">??????</span><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image:url({%$staticUrl%}/apps/shopping/img/dummy/thum_invite.png)"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="招待する" /></a><span class="money">??万円</span></li><!--
+                                    {% else %}
+                                   --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">{%$pdata.name%}</span><a href="{%$baseUrl%}/shopping/wish?uid={%$pdata.uid%}" style="background-image:url({%$pdata.pic%})"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="{%$pdata.name%}" /></a><span class="money">{%$pdata.format_diff%}</span></li><!--
+                                    {% /if %}
+                            {% /foreach %}
+                           --></ul>
+                        </div><!--/innaerFrame1-->
+                    </div><!--/memberFrame1-->
+                </div>
+            </div>
+
+            <div class="rightFrame">
+                <div class="rankFrame">
+                    <ul id="ulRankLeader4"><!--
+                          {% foreach name=lst500FriendRankLeader from=$lst500FriendRankLeader item=pdata %}
+                                {% if null == $pdata.uid %}
+                               --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">??????</span><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image:url({%$staticUrl%}/apps/shopping/img/dummy/thum_invite.png)"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="招待する" /></a><span class="money">??万円</span></li><!--
+                                {% else %}
+                               --><li><span class="rank">{%$pdata.rankNo%}</span><span class="name">{%$pdata.name%}</span><a href="{%$baseUrl%}/shopping/wish?uid={%$pdata.uid%}" style="background-image:url({%$pdata.pic%})"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="{%$pdata.name%}" /></a><span class="money">{%$pdata.format_diff%}</span></li><!--
+                                {% /if %}
+                        {% /foreach %}
+                     --></ul>
+                </div>
+            </div>
+            </div>
+                <input type="hidden" id="hidCntRank4" value="{% $countFour %}" />
+                <input type="hidden" id="hidRankprev4" value="{% $rankStartFour %}" />
+                <input type="hidden" id="hidRanknext4" value="{% $rankEndFour %}" />
+        </div><!--/#rankBox100man.box.rankBox-->

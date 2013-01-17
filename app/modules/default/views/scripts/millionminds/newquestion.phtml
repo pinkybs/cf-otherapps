@@ -1,0 +1,253 @@
+{%include file="millionminds/common/header.phtml"%}
+
+<body>
+    {%include file="topad.phtml"%}
+    <script type="text/javascript" src="{%$staticUrl%}/apps/millionminds/js/newquestion.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{% $staticUrl %}/apps/millionminds/js/index.js?{%$version.js%}"></script>
+
+	<div id="container">
+
+    {%include file="millionminds/common/hdr.phtml"%}
+
+		<ul id="gnav">
+			<li class="top"><a href="/millionminds/index">MillionMindsトップ</a></li>
+			<li class="profile"><a href="{%$baseUrl%}/millionminds/profile">プロフィール</a></li>
+			<li class="log"><a href="{%$baseUrl%}/millionminds/log">あしあと</a></li>
+			<li class="archive"><a href="{%$baseUrl%}/millionminds/archive">アーカイブ</a></li>
+			<li class="add"><a class="active">クエスチョン作成</a></li>
+			<li class="help"><a href="{%$baseUrl%}/millionminds/help">ヘルプ</a></li>
+			<li class="invite"><a href="javascript:void(0)" onclick="invite();">友達を招待</a></li>
+		</ul><!--/#grav-->
+        
+		<div id="div01">        
+		<div id="content">
+		
+			<div id="mainColumn">
+                
+				<div id="add">
+					<div class="content">
+
+						<h3 class="rule">クエスチョンの新規作成について</h3>
+						<p class="point">MillionMindsの5つの特長</p>
+						<p>MillionMindsでのクエスチョン作成は、運営者への申請形式となります。申請後、問題がなかった場合、1～2週間以内にサービス上にクエスチョンが反映されます。なお、当サービスの主旨と異なる内容につきましては、採用を見送りさせていただく場合がございます。あらかじめご了承のうえ、申請してください。その他の注意事項に関しては、<a href="{%$baseUrl%}/millionminds/help">ヘルプ</a>をご覧ください。</p>
+
+						<div class="form">
+							<h3 class="form">クエスチョン作成フォーム</h3>
+							<p><strong>※</strong>は必須入力となります</p>
+							
+							<div class="alert" id="alertInfo">
+								<ul>
+									<li>設問が未入力です</li>
+									<li>選択肢1が未入力です</li>
+									<li>選択肢2が未入力です</li>
+								</ul>
+							</div><!--/.alert-->
+                      
+						      <form method="post" action="#" id="formquestion">
+								<h5 class="q">クエスチョン</h5>
+								<div class="wrapper">
+									<div class="section">
+										<label for="inputTitle" class="inputTitle">設問（※）:</label>
+										<textarea id="inputTitle" name="inputTitle"></textarea>
+									</div><!--/.section-->
+									<div class="section">
+										<label class="inputCat">カテゴリ（※）:</label>
+										<ul>
+											<li id="cat0" class="active"><label for="politics" class="radio politics"><input type="radio" id="politics" name="cat" value="politics" checked="true" onclick="changeCat('politics')" title="政治・経済"/>政治・経済</label></li>
+											<li id="cat1"><label for="life" class="radio life"><input type="radio" id="life" name="cat" value="life" onclick="changeCat('life')" title="社会生活"/>社会生活</label></li>
+											<li id="cat2"><label for="entertainment" class="radio entertainment"><input type="radio" id="entertainment" name="cat" value="entertainment" onclick="changeCat('entertainment')" title="芸能・スポーツ"/>芸能・スポーツ</label></li>
+											<li id="cat3"><label for="hobby" class="radio hobby"><input type="radio" id="hobby" name="cat" value="hobby" onclick="changeCat('hobby')" title="趣味・その他"/>趣味・その他</label></li>
+										</ul>
+									</div><!--/.section-->
+									<div class="section">
+										<label for="inputQ1" class="inputQ1">選択肢1（※）:</label>
+										<input type="text" id="inputQ1" name="inputQ1" value="" class="txt" maxlength="30" />
+									</div><!--/.section-->
+									<div class="section">
+										<label for="inputQ2" class="inputQ2">選択肢2（※）:</label>
+										<input type="text" id="inputQ2" name="inputQ2" value="" class="txt" maxlength="30" />
+									</div><!--/.section-->
+									<div class="section">
+										<label for="inputQ3" class="inputQ3">選択肢3:</label>
+										<input type="text" id="inputQ3" value="" class="txt" maxlength="30" />
+									</div><!--/.section-->
+									<div class="section">
+										<label for="inputQ4" class="inputQ4">選択肢4:</label>
+										<input type="text" id="inputQ4" value="" class="txt" maxlength="30" />
+									</div><!--/.section-->
+									<div class="section">
+										<label for="inputQ5" class="inputQ5">選択肢5:</label>
+										<input type="text" id="inputQ5" value="" class="txt" maxlength="30" />
+									</div><!--/.section-->
+									<div class="section">
+										<label for="inputQ6" class="inputQ6">選択肢6:</label>
+										<input type="text" id="inputQ6" value="" class="txt" maxlength="30" />
+									</div><!--/.section-->
+									<div class="section">
+										<label for="inputQ7" class="inputQ7">選択肢7:</label>
+										<input type="text" id="inputQ7" value="" class="txt" maxlength="30" />
+									</div><!--/.section-->
+									<div class="section">
+										<label for="inputQ8" class="inputQ8">選択肢8:</label>
+										<input type="text" id="inputQ8" value="" class="txt" maxlength="30" />
+									</div><!--/.section-->
+									<div class="section">
+										<label for="inputQ9" class="inputQ9">選択肢9:</label>
+										<input type="text" id="inputQ9" value="" class="txt" maxlength="30" />
+									</div><!--/.section-->
+									<div class="section">
+										<label for="inputQ10" class="inputQ10">選択肢10:</label>
+										<input type="text" id="inputQ10" value="" class="txt" maxlength="30" />
+									</div><!--/.section-->
+								</div><!--/.wrapper-->
+
+								<h5 class="c">公開設定</h5>
+								<div class="wrapper">
+									<div class="section">
+										<label class="inputNickname">ニックネーム（※）:</label>
+										<ul>
+											<li class="active" id="nickname0"><label for="open" class="radio open"><input type="radio" id="open" name="nickname" value="open" checked="true" onclick="changeNickname('open')"/>公開する</label></li>
+											<li id="nickname1"><label for="close" class="radio close"><input type="radio" id="close" name="nickname" value="close" onclick="changeNickname('close')"/>非公開（匿名）</label></li>
+										</ul>
+									</div><!--/.section-->
+									<div class="section">
+										<label class="inputRegion">カテゴリ（※）:</label>
+										<ul>
+											<li class="active" id="region0"><label for="all" class="radio all"><input type="radio" id="all" name="region" value="all" checked="true" onclick="changeRegion('all')"/>全体公開</label></li>
+											<li id="region1"><label for="friend" class="radio friend"><input type="radio" id="friend" name="region" value="friend" onclick="changeRegion('friend')"/>マイミクまで</label></li>
+											<li id="region2"><label for="fof" class="radio fof"><input type="radio" id="fof" name="region" value="fof" onclick="changeRegion('fof')"/>マイミクのマイミクまで</label></li>
+										</ul>
+									</div><!--/.section-->
+								</div><!--/.wrapper-->
+
+								<label for="toConfirm" class="btn confirm"><a href="javascript:void(0);" onclick="toConfirm()"></a></label>
+
+							</form>
+
+						</div><!--/.form-->
+
+					</div><!--/.content-->
+				</div><!--/#add-->
+
+			</div><!--/#mainColumn-->
+			
+
+			{%include file="millionminds/common/subColumn.phtml"%}
+
+		</div><!--/#content-->
+		</div><!--div01-->
+		
+		
+		
+		<div id="div02">
+		<div id="content">
+
+			<div id="mainColumn">
+
+				<div id="add">
+					<div class="content">
+
+						<div class="form">
+							<h3 class="form">クエスチョン作成フォーム</h3>
+							<p>入力内容を確認してください。入力内容に誤字・脱字や不適切な表現があった場合、運営者側で修正させていただくことがありますので、あらかじめご了承ください。</p>
+
+							<form method="post" action="#">
+								<h5 class="q">クエスチョン</h5>
+								<div class="wrapper" id="divwarpper2">
+									
+								</div><!--/.wrapper-->
+
+								<h5 class="c">公開設定</h5>
+								<div class="wrapper">
+									<div class="section">
+										<label class="inputNickname">ニックネーム（※）:</label>
+										<ul>
+											<li id="nicknameH0" class="active"><label for="openH" class="radio open active"><input type="radio" id="openH" name="nicknameH" value="open"/>公開する</label></li>
+											<li id="nicknameH1"><label for="closeH" class="radio close"><input type="radio" id="closeH" name="nicknameH" value="close" />非公開（匿名）</label></li>
+										</ul>
+									</div><!--/.section-->
+									<div class="section">
+										<label class="inputRegion">カテゴリ（※）:</label>
+										<ul>
+											<li class="active" id="regionH0"><label for="allH" class="radio all active"><input type="radio" id="allH" name="regionH" value="all"/>全体公開</label></li>
+											<li id="regionH1"><label for="friendH" class="radio friend"><input type="radio" id="friendH" name="regionH" value="friend" />マイミクまで</label></li>
+											<li id="regionH2"><label for="fofH" class="radio fof"><input type="radio" id="fofH" name="regionH" value="fof" />マイミクのマイミクまで</label></li>
+										</ul>
+									</div><!--/.section-->
+								</div><!--/.wrapper-->
+
+								<label for="toSubmit" class="btn submit"><a href="javascript:void(0);" onclick="submitConfirm()"/></span></a></label>
+								<label for="toCancel" class="btn cancel"><a href="javascript:void(0);" onclick="cancelConfirm()"/></span></a></label>
+
+							</form>
+
+						</div><!--/.form-->
+
+					</div><!--/.content-->
+				</div><!--/#add-->
+
+			</div><!--/#mainColumn-->
+	<div id="subColumn">		
+{%include file="millionminds/common/ad.phtml"%}
+    </div><!--/#subColumn-->
+		</div><!--/#content-->
+        </div><!--div02-->
+        
+        
+        
+		<div id="div03">
+		<div id="content">
+
+			<div id="mainColumn">
+
+				<div id="add">
+					<div class="content">
+
+						<div class="form">
+							<h3 class="complete">クエスチョン作成完了</h3>
+							<p>クエスチョンの新規作成が完了しました。運営者の承認まで1～2週間ほどお時間がかかります。なお、承認の是非に関しては、受け付けておりませんので、あらかじめご理解くださいますよう、お願いいたします。</p>
+						</div><!--/.form-->
+
+					</div><!--/.content-->
+				</div><!--/#add-->
+
+              {%include file="millionminds/common/nature.phtml"%}
+
+				<div class="article" id="divPopular">
+					<h2 class="popular">人気のクエスチョン</h2>
+					<ul class="cat" id="ulPopular">
+						<li class="all"><a href="javascript:void(0)" class="active" onclick="jQuery.top.getQuestion(0,1);">すべて</a></li>
+						<li class="character"><a href="javascript:void(0)" onclick="jQuery.top.getQuestion(1,1)">性格診断</a></li>
+						<li class="politics"><a href="javascript:void(0)" onclick="jQuery.top.getQuestion(2,1)">政治・経済</a></li>
+						<li class="life"><a href="javascript:void(0)" onclick="jQuery.top.getQuestion(3,1);">社会生活</a></li>
+						<li class="entertainment"><a href="javascript:void(0)" onclick="jQuery.top.getQuestion(4,1);">芸能・スポーツ</a></li>
+						<li class="hobby"><a href="javascript:void(0)" onclick="jQuery.top.getQuestion(5,1);">趣味・その他</a></li>
+					</ul><!--/.cat-->
+					{% if $popularQuestion %}
+					<table width="100%" cellpadding="0" cellspacing="0" border="0" class="list">
+						<tr>
+							<th class="title"></th>
+							<th class="count descend"><a href="{%$baseUrl%}/millionminds/archive?field=1">回答数▼</a></th>
+							<th class="date ascend"><a href="{%$baseUrl%}/millionminds/archive?field=2">作成日▼</a></th>
+						</tr>
+						{% foreach from=$popularQuestion item=data%}
+						<tr class="section">
+							<td class="title stringCut"><a href="{%$baseUrl%}/millionminds/question?qid={%$data.qid%}" class="ico">{%$data.question|escape%}</a></td>
+							<td class="count">{%$data.answer%}</td>
+							<td class="date">{%$data.create_time%}</td>
+						</tr><!--/.section-->
+						{% /foreach %}
+					</table>
+					<p class="more">⇒<a href="{%$baseUrl%}/millionminds/archive?field=1">人気のクエスチョンをもっと見る</a></p>
+					{% else %}
+					<p class="null"><a href="{%$baseUrl%}/millionminds/newquestion">クエスチョンを作成する</a></p>
+					{% /if %}
+				</div><!--/.article-->
+
+			</div><!--/#mainColumn-->
+			
+{%include file="millionminds/common/subColumn.phtml"%}
+
+		</div><!--/#content-->
+        </div><!--div03-->
+{%include file="millionminds/common/footer.phtml"%}

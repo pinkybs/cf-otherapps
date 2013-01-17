@@ -1,0 +1,127 @@
+﻿{%include file="chat/common/header.phtml"%}
+
+<body id="static" class="invite">
+<div id="container">
+	{%include file="chat/common/nav.phtml"%}
+
+	<div id="mainColumn">
+
+		<div id="welcomeBox" class="innerBox">
+			<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_welcome.png" width="259" height="22" alt="グループチャットへようこそ" /></h1>
+			<div class="inner">
+				<p>こちらからグループチャットのガイダンスを見ることができます。</p>
+				<ul class="btnList"><!--
+					--><li><a href="{%$baseUrl%}/chat/help"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_guidance.png" width="228" height="34" alt="ガイダンスを見る" /></a></li><!--
+				--></ul>
+			</div><!--/.inner-->
+		</div><!--/.innerBox-->
+
+		<div id="invitedBox" class="innerBox">
+
+				<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_visited_chat.png" width="221" height="21" alt="招待されているサイト" /></h1>
+				<div class="inner">
+				<p><a href="{%$ownerUrl%}">{%$ownerName%}</a>さんから、{%$chatName|escape%}チャットへの招待が来ています。</p>
+
+				<form id="frmConfirm" name="frmConfirm" action="{%$baseUrl%}/chat/confirm" method="post">
+					<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_chat_info.png" width="128" height="20" alt="チャット情報" /></h2>
+					<table class="rowTable">
+						<tr>
+							<th scope="row">チャット名</th>
+							<td>{%$chatName|escape%}</td>
+						</tr>
+						<tr>
+							<th scope="row">開催日時</th>
+							<td>{%$chatDate%}&#12316;</td>
+						</tr>
+						<tr>
+							<th scope="row">メッセージ</th>
+							<td><div style="width:580px;overflow: hidden;">{%$chatMessage|escape|nl2br%}</div></td>
+						</tr>
+						<tr>
+							<th scope="row">招待メンバー</th>
+							<td>
+								<div id="divinvite" class="memberSelect">
+									<ul><!--
+									{% foreach name=memList from=$lstMem item=mem %}
+										--><li style="background-image:url({%$mem.thumbnailUrl%});" class="active"><label><span style="cursor:default;" class="lightspan">{%$mem.displayName%}</span></label></li><!--
+									{% /foreach %}
+									{% foreach name=attList from=$lstAttendC item=att %}
+										--><li style="background-image:url({%$att.thumbnailUrl%});" class="active"><label><span style="cursor:default;" class="lightspan">{%$att.displayName%}</span></label></li><!--
+									{% /foreach %}
+									--></ul>
+								</div>
+							</td>
+						</tr>
+					</table>
+
+					<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_right_wrong.png" width="93" height="19" alt="参加可否" /></h2>
+					<p><textarea cols="3" id="txtMessage" name="txtMessage"></textarea></p>
+
+					<input type="hidden" id="cid" name="cid" value="{%$cid%}" />
+					<input type="hidden" id="hidMode" name="hidMode" value="1" />
+					<ul class="btnList"><!--
+						--><li><a href="javascript:void(0);" id="btnDeny"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_not_join.png" width="228" height="34" alt="参加しない" /></a></li><!--
+						--><li><a href="javascript:void(0);" id="btnJoin"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_join.png" width="228" height="34" alt="参加する" /></a></li><!--
+					--></ul>
+				</form>
+
+			</div><!--/.inner-->
+		</div><!--/.innerBox-->
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="chat/common/subcolumn.phtml"%}
+	</div><!--/#subColumn-->
+
+	<div id="dialog" title="メッセージ"><p style="text-align:center;padding-top:20px" id="pMessage"></p></div>
+
+	<script type="text/javascript">
+        $j(document).ready(function() {
+        	if (null != cm_getCookie('app_top_url')) {
+        		top.location.href = cm_getCookie('app_top_url') +  '#bodyArea';
+        	}
+			$j("#btnDeny").click(function() {
+				if ( $j.trim($j("#txtMessage").val()).length > 200 ) {
+            		msg = 'メッセージは全角200文字以内で入力して下さい。';
+            		$j("#pMessage").html(msg);
+            		$j("#dialog").dialog({
+            			autoOpen: true,
+            			bgiframe: true,
+            			modal: true,
+            			resizable: false
+            		}).dialog( 'open' );
+            		return;
+            	}
+				$j("#hidMode").val('0');
+            	$j("#frmConfirm").submit();
+            	return false;
+            });
+            $j("#btnJoin").click(function() {
+            	if ( $j.trim($j("#txtMessage").val()).length > 200 ) {
+            		msg = 'メッセージは全角200文字以内で入力して下さい。';
+            		$j("#pMessage").html(msg);
+            		$j("#dialog").dialog({
+            			autoOpen: true,
+            			bgiframe: true,
+            			modal: true,
+            			resizable: false
+            		}).dialog( 'open' );
+            		return;
+            	}
+				$j("#hidMode").val('1');
+            	$j("#frmConfirm").submit();
+            	return false;
+            });
+
+            $j('#divinvite').find('li').hover(
+        		function(){
+        			$j(this).find('span').show();
+        		},
+        		function(){
+        			$j(this).find('span').hide();
+        		}
+        	);
+        	adjustHeight();
+        });
+	</script>
+{%include file="chat/common/footer.phtml"%}

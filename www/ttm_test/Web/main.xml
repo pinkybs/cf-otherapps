@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="ttm Flash Game test" author_email="linkage8055@nate.com" description="ttmOpenSocial">
+    <Require feature="flash" />
+    <Require feature="opensocial-0.8" />
+    <Require feature="views"/>
+    <Require feature="dynamic-height"/>
+    <Optional feature="content-rewrite">
+        <Param name="expires">86400</Param>
+        <Param name="include-urls"></Param>
+        <Param name="exclude-urls">.*</Param>
+    </Optional>
+  </ModulePrefs>
+<Content type="html" view="canvas">
+  <![CDATA[
+    <style type="text/css">
+	#leftColumn,#rightColumn {
+		float:left;
+	}
+	#leftColumn {
+		width:716px;
+		display:inline;
+	}
+	#rightColumn {
+		width:224px;
+		display:inline;
+		margin-left:3px;
+		/*position:absolute;
+		left:719px;
+		top:0;
+		*/
+	}
+	
+	.otherImg {
+		margin-top:4px;
+	}
+	
+	a img {
+		border:none;
+		vertical-align:middle;
+	}
+	</style>
+    <script src="http://mixitest.communityfactory.net/ttm_test/Web/main.js?9" type="text/javascript"></script>
+    <!--<div id="alert" style="padding: 5px 10px;margin: 0 0 8px 0;color: #ee1313;font-size: 12px;font-weight: bold;line-height: 1.2;border: 2px solid #ff1e1e;background-color:#fcc5c5;">ランキング表示・連打操作の不具合修正に伴い、スコアランキングをリセットさせていただきました。</div>-->
+    <div id="alert" style="display:none;padding: 5px 10px;margin: 0 0 8px 0;color: #ee1313;font-size: 12px;font-weight: bold;line-height: 1.2;border: 2px solid #ff1e1e;background-color:#fcc5c5;">
+    古いバージョンの Flash Playerを使用しています。本アプリを利用するには、Adobe Flash Player ver10以上が必要です。<br />コチラから最新のFlash Playerを入手してください。<a target="_blank" href="http://get.adobe.com/jp/flashplayer/"><img src="http://www.adobe.com/macromedia/style_guide/images/160x41_Get_Flash_Player.jpg" /></a>
+    </div>
+    <div id="leftColumn">&nbsp;</div>
+    <div id="rightColumn"><img src="http://mixitest.communityfactory.net/ttm_test/img/kitchen.png" width="224" height="500" /></div>
+    <script>
+       function init() { 
+		    if (document.all) { //IE
+		        document.body.setAttribute('scroll', 'no');
+		    }
+		    else { //OTHERS
+		        document.body.style.overflow = 'hidden';
+		    }
+	        gadgets.window.adjustHeight(535);
+	        
+	        var opt = {
+            	id : 'ttmswf',
+                allowScriptAccess: 'always',
+                height: 500,
+                width: 716,
+                quality: "high",
+                bgcolor: "#ffffff",
+                align: "middle",
+                wmode: "opaque",
+                swliveconnect: true,
+                allowFullScreen : false
+            };
+            
+            var flashVersion = getFlashPlayerVersion();
+			if (flashVersion < 10) {
+				document.getElementById('alert').style.display='block';
+			}
+			else {
+				gadgets.flash.embedFlash('http://mixitest.communityfactory.net/ttm_test/Web/ttm.swf', 'leftColumn', 9.0, opt); 
+			}
+       }
+
+       gadgets.util.registerOnLoadHandler(init);
+       
+    </script>
+ ]]>
+</Content>
+
+<Content type="html" view="home,profile,preview">
+    <![CDATA[   
+    <style type="text/css">
+	* {
+		margin:0;
+		padding:0;
+		border:none;
+	}
+	</style>
+	
+	<script>
+		var mixiID;
+		function init() {
+	        gadgets.window.adjustHeight(1000);
+	        getOwner();
+	    }
+		
+		function getOwner() {
+            var req = opensocial.newDataRequest();
+            req.add(req.newFetchPersonRequest("OWNER"), 'owner');
+            req.add(req.newFetchPersonRequest("VIEWER"), 'viewer');
+            
+            req.send(onGetOwnerViewer);
+        }
+    
+        function onGetOwnerViewer(data) {
+            owner = data.get('owner').getData();
+            viewer = data.get('viewer').getData();
+            mixiID = owner.getId() + '*' + viewer.getId();
+            
+            requestRank(owner.getId());
+        }
+    
+        function getUserID(){
+			return mixiID;
+		}
+		
+		function requestRank(uid) {
+			var params = {};
+	        params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.TEXT;
+	        params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.POST;
+	        params[gadgets.io.RequestParameters.POST_DATA] = gadgets.io.encodeValues({ownerId : uid});
+	        gadgets.io.makeRequest('http://mixitest.communityfactory.net/ttm_test/Web/getrank.php', embedFlash, params);
+		}
+
+        function embedFlash(data) {
+            var opt = {
+            	id : 'ttm_test',
+                flashvars : 'score=' + data.text + '&url=' + encodeURI("http://mixi.jp/run_appli.pl?id=2521"),
+                allowScriptAccess: 'always',
+                height: 210,
+                width: 210,
+                allowFullScreen : false
+            };
+        
+            gadgets.flash.embedFlash('http://mixitest.communityfactory.net/ttm_test/Web/gadget.swf?verson=5', 'divFlash', 8.0, opt); 
+        }
+            
+        gadgets.util.registerOnLoadHandler(init);
+	</script>
+	
+<div id='divFlash'></div>
+]]>
+</Content>
+</Module>

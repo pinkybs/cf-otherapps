@@ -1,0 +1,11 @@
+<div class="article">
+	<h3 class="popular">人気のクエスチョン</h3>
+	<div class="inner">
+		<ul>
+		    {% foreach from=$popularQuestionSub item=data%}
+			<li style="width:230px"><a href="{%$baseUrl%}/millionminds/question?qid={%$data.qid%}" class="ico stringCut">{%$data.question|escape%}</a></li>
+		    {% /foreach %}
+		</ul>
+		<p class="more">⇒<a href="{%$baseUrl%}/millionminds/archive">もっと見る</a></p>
+	</div><!--/.inner-->
+</div><!--/.article-->

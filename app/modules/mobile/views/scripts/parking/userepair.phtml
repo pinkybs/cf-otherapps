@@ -1,0 +1,37 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="carShop">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">カーショップ</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+	</div><!--/.description-->
+
+	<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+	{%if $breakCars|@count==0%}
+		廃車状態の車がないので、使用できません
+	{%else%}
+		{%foreach from=$breakCars item=rowdata key=index%}
+			<div class="section" style="background:#fee;">
+				<span style="color:#cd424a;">{% emoji code="F8BF"%}{%$rowdata.name%}({%$carColor[$rowdata.car_color]%})</span><br />
+				<div style="color:#09f;text-align:right;">
+					<a href='{% "$baseUrl/mobile/parking/userepairsubmit?parking_id=`$rowdata.car_id`&parking_cl=`$rowdata.car_color`"|mixiurl %}'>使用する</a>&nbsp;
+				</div>
+				<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+			</div><!--/.section-->
+		{%/foreach%}
+	{%/if%}
+
+</div><!--/#carShop-->
+
+<div class="link">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+	<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/item"|mixiurl %}'>ｱｲﾃﾑ一覧にもどる</a><br />
+</div><!--/.link-->
+
+{%include file="parking/common/footer.phtml"%}

@@ -1,0 +1,259 @@
+{%include file="parking/common/header.phtml"%}
+
+<body id="parking">
+
+<script type="text/javascript" src="{%$staticUrl%}/cmn/js/swfobject.2.2.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/cmn/js/controls.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/cmn/js/slider.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/cmn/js/common.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/parking/js/useitem.js?{%$version.js%}"></script>
+	
+<script type="text/javascript">
+    Event.observe(window, 'load', function() {  
+       adjustHeight(1240);
+    });
+</script>
+    
+{%include file="parking/common/nav.phtml"%}
+
+<div id="continer">
+
+<!--<div id="forBiginer">
+	<h2>はじめての方へ</h2>
+	<div class="btnClose"><a href="">閉じる</a></div>
+	<div id="bigginerInfo"></div>
+</div>-->
+	<div id="mainArea">
+	    <div style="display:none">
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/01.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/02.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/03.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/04.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/05.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/06.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/07.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/08.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/09.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/10.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/11.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/12.gif" />
+	    	<img src="{%$staticUrl%}/apps/parking/img/background/13.gif" />
+	    </div>
+	
+		<input type="hidden" id="txtMinifeed" value='{%$minifeed%}'>
+        <input type="hidden" id="txtNewsfeed" value='{%$newsfeed%}'>
+        <input type="hidden" id="txtFirstLogin" value='{%$firstLogin%}'>
+        <input type="hidden" id="txtTodayFirstLogin" value='{%$todayFirstLogin%}'>
+        <input type="hidden" id="txtUid" value='{%$uid%}'>
+        <input type="hidden" id="txtUser" value='{%$host%}'>
+        <input type="hidden" id="txtPark" value='{%$park%}'>
+        <input type="hidden" id="txtUserFriend" value='{%$userFriendList%}'>
+        <input type="hidden" id="txtAllFriend" value='{%$allFriendList%}'>
+        <input type="hidden" id="txtReportCount" value='{%$reportCardCount%}'>
+        
+		<div id="parkingHead">
+			<p class="pic"><a href=""><img src="{%$userPark.thumbnailUrl%}" width="25" height="25" alt="" /></a></p>
+			<h1>{%$userPark.displayName%}さんのパーキング</h1>
+			<a href="javascript:void(0);" onclick="userPark.showCarList('{%$userPark.uid%}');" id="btnCarList"><img src="{%$staticUrl%}/apps/parking/img/parking/btn_carlist.gif" width="127" height="24" alt="" /></a>
+			<a target="_top" href="{%$userPark.profileUrl%}" id="btnProfile"><img src="{%$staticUrl%}/apps/parking/img/parking/btn_profile.gif" width="127" height="24" /></a>
+		</div>
+		
+		<div id="hdrAd">
+            <iframe id="hdrAdFrame" name="hdrAdFrame" width="716" height="35" src="{%$staticUrl%}/apps/parking/img/ad/next.html?2" scrolling="no" frameborder="0"></iframe>
+        </div><!--/#hdrAdd-->
+        
+		<div id="parkingArea">
+		
+			<!--<div id="parkingAlert"><span>ちょっぴさんの車を取り締まり、10,800円を獲得しました。</span></div>-->
+
+			<div id="park"></div><!--/#dynamicArea-->
+			
+			<div id="staticArea">
+				<div id="moveNav">
+					<img src="{%$staticUrl%}/apps/parking/img/parking/ctrl_hover_l.gif" alt="" width="68" height="29" usemap="#parkingLeftMap" id="parkingLeft" />
+					<map name="parkingLeftMap" id="parkingLeftMap">
+						<area shape="poly" coords="27,0,67,0,67,28,0,28" id="moveLeft" href="javascript:void(0);" alt="" />
+					</map>
+					<img src="{%$staticUrl%}/apps/parking/img/parking/ctrl_hover_r.gif" alt="" width="68" height="29" usemap="#parkingRightMap" id="parkingRight" />
+					<map name="parkingRightMap" id="parkingRightMap">
+						<area shape="poly" coords="0,0,40,0,67,28,0,28" id="moveRight" href="javascript:void(0);" alt="" />
+					</map>
+					
+					<a href="javascript:void(0);"  id="prevFriend">隣の友達</a>
+					<a id="home" href="javascript:void(0);" onclick="urchinTracker('/nav');userPark.goHome();">ホーム</a>
+					<a href="javascript:void(0);"  id="nextFriend">隣の友達</a>
+					
+				</div>
+				<div id="totalMoneyBox">
+					<h2>所持金</h2>
+					<p id="myAsset">¥{%$userAsset.asset|outputdollars%}</p>
+				</div><!--/#totalMoneyBox-->
+				<div id="parkingMoney">
+					<h2>駐車料金：</h2>
+					<p id="groundFee">15分 <span>¥{%$userPark.fee|outputdollars%}</span></p>
+				</div><!--/#parkingMoney-->
+			</div>
+			<!--/#staticArea-->
+			
+		</div><!--/#parkingArea-->
+		
+		<div id="rankingArea">
+			<div id="wrap">
+			    <div id="loading"></div>
+				<div id="totalRanking" style="*height:105px;">
+					<div id="topRanking">
+						<ol id="topRank" style="float:right;">
+						{%if $topArrInvite==1 %}
+                        <li id="2">
+                            <p class="ranking">2</p>
+                            <p class="name">&nbsp;</p>
+                            <p class="pic">
+                                <a target="_top" href="http://platform001.mixi.jp/send_message.pl"><img height="50" width="50" alt="" src="{%$staticUrl%}/apps/parking/img/invite.gif"/></a>
+                            </p>
+                            <p class="plice">&nbsp;</p>
+                        </li>
+                        {%/if%}
+						{%foreach from=$topRank item=rank key=key %}
+						<li id="{%$topCount-$key%}">
+                            <p class="ranking">{%$topCount-$key%}</p>
+                            <p class="name"><a href="javascript:void(0);" onclick="userPark.goUserPark('{%$rank.uid%}', 1, 1);" title="{%$rank.displayName%}">{%$rank.displayName|truncatejp:10%}</a></p>
+                            <p class="pic">
+                                <a href="javascript:void(0);" onclick="userPark.goUserPark('{%$rank.uid%}', 1, 1);" title="{%$rank.displayName%}"><img height="50" width="50" alt="" src="{%$rank.thumbnailUrl%}"/></a>
+                            </p>
+                            <p class="plice">{%$rank.ass|truncatemoney%}円</p>
+                            {% if $rank.online == 1 && $rank.uid != $uid %}
+                                <p class="icon">
+                                    <img height="16" width="16" alt="" src="{%$staticUrl%}/apps/parking/img/icon/warning.gif"/>
+                                </p>                      
+                            {% /if %}
+                        </li>
+						{%/foreach%}
+						</ol>
+					</div><!--/#topRanking-->
+					
+					<ul id="rankingLeftNav">
+						<li id="toUnder" onclick="moveRanking(2);"></li>
+						<li id="toUnderMore" onclick="moveLast(2);"></li>
+					</ul>
+					
+					<div id="otherRanking">
+					    <ol class="items" id="ranking" >
+					    {%foreach from=$arrInvite item=invite key=keyId %}
+					    <li id="{%$allInvite-$keyId%}">
+                            <p class="ranking">{%$allInvite-$keyId%}</p>
+                            <p class="name">&nbsp;</p>
+                            <p class="pic">
+                                <a target="_top" href="http://platform001.mixi.jp/send_message.pl"><img height="50" width="50" alt="" src="{%$staticUrl%}/apps/parking/img/invite.gif"/></a>
+                            </p>
+                            <p class="plice">&nbsp;</p>
+                        </li>
+                        {%/foreach%}
+						{%foreach from=$rankInfo item=rank key=key %}
+                        <li id="{%$userRankNm-$key%}">
+                            <p class="ranking">{%$userRankNm-$key%}</p>
+                            <p class="name"><a href="javascript:void(0);" onclick="userPark.goUserPark('{%$rank.uid%}', 1, 1);" title="{%$rank.displayName%}">{%$rank.displayName|truncatejp:10%}</a></p>
+                            <p class="pic">
+                                <a href="javascript:void(0);" onclick="userPark.goUserPark('{%$rank.uid%}', 1, 1);" title="{%$rank.displayName%}"><img height="50" width="50" alt="" src="{%$rank.thumbnailUrl%}"/></a>
+                            </p>
+                            <p class="plice">{%$rank.ass|truncatemoney%}円</p>
+                            {% if $rank.online == 1 && $rank.uid != $uid %}
+                                <p class="icon">
+                                    <img height="16" width="16" alt="" src="{%$staticUrl%}/apps/parking/img/icon/warning.gif"/>
+                                </p>                      
+                            {% /if %}
+                        </li>
+                        {%/foreach%}
+                        
+						</ol>
+					</div><!--/#otherRanking-->
+						
+					<ul id="rankingRightNav">
+						<li id="toTop" onclick="moveRanking(1);"></li>
+						<li id="toTopMore" onclick="moveLast(1);"></li>
+					</ul>
+						
+				</div><!--/#totalRanking-->
+				
+			</div><!--/#wrap-->
+			<ul id="rankingTabs"><!--
+				--><li id="totalRankingTab" class="active"><a href="javascript:void(0);" onclick="doFilter(3,1);return false;">総資産ランキング</a></li><!--
+				--><li id="carsRankingTab"><a href="javascript:void(0);" onclick="doFilter(3,2);return false;">車資産ランキング</a></li><!--
+				--><li id="allSphereTabs"><a href="javascript:void(0);" onclick="doFilter(2,3);return false;">ミクシィ全体</a></li><!--
+				--><li id="friendSphereTabs" class="active"><a href="javascript:void(0);" onclick="doFilter(1,3);return false;">マイミクシィ内</a></li><!--
+			--></ul>
+			
+			<input type="hidden" id="txtLeftCount" value="0">
+            <input type="hidden" id="txtRightCount" value="{%$rightCount%}">
+            <input type="hidden" id="txtRankCount" value="{%$rankCount%}">
+			<input type="hidden" id="txtAllCount" value="{%$allCount%}">
+			<input type="hidden" id="txtAllInvite" value="{%$allInvite%}">
+			
+			<input type="hidden" id="txtCanMove" value="1">
+            <input type="hidden" id="txtMoveRight" value="1">
+            <input type="hidden" id="txtMoveLeft" value="1">
+			<input type="hidden" id="pageIndex" value="1">
+            <input type="hidden" id="txtType1" value="{%$type1%}">
+            <input type="hidden" id="txtType2" value="{%$type2%}">
+		</div><!--/#rankingArea-->
+		
+		<div id="ownCarsArea">
+			<div class="header">
+				<h2>所有車一覧</h2>
+			</div>
+			<div class="inner">
+				<div id="ownCarsList" class="disable">
+				    {%if $carCount>4 %}
+					   <div class="sliderGallery">
+					{%else%}
+					   <div class="sliderGallery" style="height:160px;">
+					{%/if%}
+						<ul class="items" id="ulItems"><!--
+						{% foreach from=$cars item=car key=key %}
+							--><li id="listCar{%$key%}" {%if $key==0 %}class="active"{%/if%} onclick="getCarInfo(&quot;{%$car.id%}&quot;,&quot;{%$key%}&quot;);" onmouseover="changeClass(&quot;{%$key%}&quot;)" onmouseout="out(&quot;{%$key%}&quot;)">
+								<p class="carPic"><img class="alphafilter" src="{%$staticUrl%}/apps/parking/img/car/{%$car.cav_name%}/small/{%$car.car_color%}.png{%if $car.car_type!=1%}?{%$version.js%}{%/if%}" width="145" height="73" alt="" /></p>
+								<div class="parkingStatus">
+									<p class="parkingMeter"><img src="{%$staticUrl%}/apps/parking/img/carlist/meter_{%$car.temp%}.gif" width="145" height="4" alt="" /></p>
+									<p class="carInfo">{%$car.money%}</p>
+									<p class="name"><a href="javascript:void(0);" >{%$car.name%}</a></p>
+									
+								</div><!--/.parkingStatus-->
+								<input type="hidden" id="cid{%$key%}" value="{%$car.id%}">
+							</li><!--
+						{% /foreach %}
+						--></ul>
+						
+						{%if $carCount>4 %}
+						<div class="slider" id="divSlider">
+                            <div class="handle" id="divHandle" ></div>
+                        </div>
+                        {%/if%}
+					</div>
+				</div>
+				<div id="carIndividual" style="height:134px;"></div><!--/#carIndividual-->
+				
+				<input type="hidden" id="carId" name="carId" value="{%$car.id%}">
+				<input type="hidden" id="carCount" name="carCount" value="{%$carCount%}">
+			</div><!--/.inner-->
+		</div><!--/#ownCarsArea-->
+		
+		<div id="newsArea">
+			<div class="header">
+				<h2>更新情報</h2>
+				<ul id="newsTabs"><!--
+					--><li id="newsMyList" class="ui-tabs-selected"><a href="javascript:void(0);" onclick="showMinifeed();"></a></li><!--
+					--><li id="newsFriendList"><a href="javascript:void(0);" onclick="showNewsfeed();"></a></li><!--
+				--></ul>
+			</div><!--/.header-->
+			<div id="newsBody"></div>
+			
+		</div><!--/#newsArea-->
+		
+	</div><!--/#mainArea-->
+
+	{%include file="parking/common/useitem.phtml"%}
+	
+	<script type="text/javascript" src="{%$staticUrl%}/apps/parking/js/parkmove.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/apps/parking/js/index.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/apps/parking/js/indexinfo.js?{%$version.js%}"></script>
+    
+{%include file="parking/common/footer.phtml"%}

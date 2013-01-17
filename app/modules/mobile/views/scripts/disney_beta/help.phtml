@@ -1,0 +1,31 @@
+{%include file="disney/common/header.phtml"%}
+
+
+	<div style="background-color:#ffffcc;font-size:x-small;">
+	<div style="background-color:#50b83a;text-align:center;">
+		{% disneyimg name="sub_ti_faq" style='align="top" width="100%"' %}
+	
+		{%include file="disney/common/topmenu.phtml"%}
+		<br />
+	
+		{%include file="disney/faq/$parm.phtml"%}
+	
+		{% if $parm!='index' %}
+		<br />
+		{% disneyimg name="faq_line" style='align="top" width="100%"' %}
+		<div style="background-color:#ccff66;text-align:left;">
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+			<span style="color:#3ea124;">├</span>{% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/disney/help?CF_help=index"|mixiurl %}'>戻る</a><br />
+			<span style="color:#3ea124;">├</span>{% emoji code="F97A"%}<a href='{% "$baseUrl/mobile/disney/charge"|mixiurl %}'>有料ｻｰﾋﾞｽ利用規約</a><br />
+			<span style="color:#3ea124;">└</span>{% emoji code="F9B8"%}<a href='{% "$baseUrl/mobile/disney/tokus"|mixiurl %}'>特定商取引法に基づく表示</a><br />
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+		</div> 
+	</div><!--/#container-->
+
+</body>
+</html>
+	{% else %} 
+	</div><!--/#container--> 
+</body>
+</html>
+{% /if %}

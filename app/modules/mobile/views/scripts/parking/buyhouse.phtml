@@ -1,0 +1,36 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="estate">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">&nbsp;{%$newHouseInfo.name%}購入</span><br />
+	</div><!--/.headline-->
+
+	<div class="inner">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">{% emoji code="F8C5"%}{%$newHouseInfo.name%}</span><br />
+		<div style="text-align:right;">¥{%$newHouseInfo.price|outputdollars%}&nbsp;</div>
+		<div class="commodity" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/parking/mimg/background/{%$newHouseInfo.cav_name%}_m.gif" width="210" height="105" style="margin:2px 0;" /><br />
+		</div><!--/.commodity-->
+		<table width="220" cellpadding="2" cellspacing="1" border="0" align="center" style="background:#777;text-align:center;">
+			<tr>
+				<td style="background:#ffe;text-align:left;"><div style="font-size:x-small;">
+					駐車料金 ¥{%$newHouseInfo.fee|outputdollars%}/15分<br />
+					駐車区画 {%$allowCarCount%}台<br />
+					資産価値 ¥{%$newHouseInfo.price|outputdollars%}<br />
+					</div></td>
+			</tr>
+		</table>
+		<span style="color:#c00;">購入後の所持金:¥{%$remainAsset|outputdollars%}</span><br />
+		<div style="color:#999;text-align:right;"><a href='{% "$baseUrl/mobile/parking/buyhousesubmit?parking_nid=`$newHouseInfo.id`"|mixiurl %}'>購入する</a>&nbsp;</div>
+	</div><!--/.inner-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/house"|mixiurl %}'>不動産屋にもどる</a><br />
+	</div><!--/.link-->
+</div><!--/#estate-->
+
+{%include file="parking/common/footer.phtml"%}

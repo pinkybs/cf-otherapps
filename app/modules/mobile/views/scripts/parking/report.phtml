@@ -1,0 +1,28 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="check">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">ﾋﾐﾂ通報ｶｰﾄﾞを使う?</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		ﾋﾐﾂ通報ｶｰﾄﾞを使うと､匿名で通報できます{% emoji code="F9A3"%}<br />
+	</div><!--/.description-->
+
+	<div class="card" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/items/2_m.gif" width="156" height="100" /><br />
+	</div><!--/.card-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/report?parking_pid=$pid&parking_location=$location&parking_anonymous=1"|mixiurl %}'>ｶｰﾄﾞを使って､匿名で通報</a><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/report?parking_pid=$pid&parking_location=$location&parking_anonymous=0"|mixiurl %}'>いいえ､今回は使いません</a><br />
+	</div><!--/.link-->
+
+</div><!--/#check-->
+
+{%include file="parking/common/footer.phtml"%}

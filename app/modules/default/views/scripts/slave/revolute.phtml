@@ -1,0 +1,65 @@
+{%include file="slave/common/header.phtml"%}
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/jJson.js?{%$version.js%}"></script>
+<body id="twoColumn" class="revolutionFini">
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+		<div id="revolutionBox" class="box">
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_revolution.png" width="141" height="23" alt="革命を起こす" /></h2>
+			</div><!--/.hdr-->
+
+			<div id="step1">
+			<p class="intro">ご主人様である{%$msName%}に革命を起こしますか？革命を実行後、12時間以内に{%$msName%}に気付かれなければ、革命成功。見つかれば、革命は失敗。</p>
+			<p class="pic"><img src="{%$staticUrl%}/apps/slave/img/content/revolutionSuccess.png" alt="革命に成功" /></p>
+			<ul class="actionList"><!--
+				--><li class="actionAbolish disable"><a href="javascript:cm_goBack();">キャンセル</a></li><!--
+				--><li class="actionCarryOut"><a id="btnRev1" href="javascript:void(0);">実行</a></li><!--
+			--></ul><!--/.actionList-->
+			</div>
+
+			<div id="step2" style="display:none">
+			<p class="intro"><span>革命に成功した場合、ドレイちゃんを１人ポイ捨てする必要があるよ。</span>
+			<span>ポイ捨てするドレイちゃんを選択してね。</span></p>
+			<div id="revolutionFeed">
+				<ul id="ulSelSlave"><!--
+					--><li class="section" id="liFix">
+						<p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$masterInfo.uid%}" style="background-image:url({%$msPic%})">{%$msName%}</a></p>
+						<p class="name"><span><a href="{%$baseUrl%}/slave/profile?uid={%$masterInfo.uid%}">{%$msName%}</a> 改め </span>{%if $masterInfo.nickname %}{%$masterInfo.nickname|escape%}{% else %}{%$msName%}ちゃん{% /if %}</p>
+						<p class="comment">{%$masterInfo.balloon|escape%}　<span></span></p>
+					</li>
+				</ul>
+			</div><!--/#revolutionFeed-->
+			<ul class="actionList"><!--
+				--><li class="actionAbolish disable"><a id="btnBack" href="javascript:void(0);">キャンセル</a></li><!--
+				--><li class="actionDecision" id="liNext"><a id="btnRev2" href="javascript:void(0);">決定</a></li><!--
+			--></ul><!--/.actionList-->
+			</div>
+
+			<div id="step3" style="display:none">
+			<p class="intro"><span>ご主人様である{%$msName%}に革命を起こしたよ。</span>
+			<span>12時間後をお楽しみに！</span></p>
+			<p class="pic"><img src="{%$staticUrl%}/apps/slave/img/content/revolution.png" alt="革命" /></p>
+			<p class="actionBackHome"><a href="{%$baseUrl%}/slave/home">ホームにもどる</a></p>
+			</div>
+
+			<input type="hidden" id="hidSlaveList" value='{%$jsonSlaveList%}' />
+			<input type="hidden" id="hidSellUid" value="" />
+		</div><!--/#revolutionBox.box-->
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="slave/common/adbox.phtml"%}
+		{%include file="slave/common/logbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/revolute.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

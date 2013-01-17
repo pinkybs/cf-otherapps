@@ -1,0 +1,91 @@
+{%include file="millionminds/common/header.phtml"%}
+
+<body>
+    <script type="text/javascript" src="{%$staticUrl%}/apps/millionminds/js/approvelist.js?{%$version.js%}"></script>
+
+	<div id="container">
+
+    {%include file="millionminds/common/hdr.phtml"%}
+
+		<ul id="gnav">
+			<li class="top"><a href="/millionminds/index">MillionMindsトップ</a></li>
+			<li class="profile"><a href="{%$baseUrl%}/millionminds/profile">プロフィール</a></li>
+			<li class="log"><a href="{%$baseUrl%}/millionminds/log">あしあと</a></li>
+			<li class="archive"><a href="{%$baseUrl%}/millionminds/archive">アーカイブ</a></li>
+			<li class="add"><a href="{%$baseUrl%}/millionminds/newquestion"">クエスチョン作成</a></li>
+			<li class="help"><a href="{%$baseUrl%}/millionminds/help">ヘルプ</a></li>
+			<li class="invite"><a href="javascript:void(0)" onclick="invite();">友達を招待</a></li>
+		</ul><!--/#grav-->
+        
+		<div id="content">
+		
+			<div id="mainColumn">
+                
+				<div class="article">
+					<h2 class="approve">未承認のクエスチョン</h2>
+					<ul class="cat">
+						<li class="all"><a href="javascript:void(0)" class="active" id="typeall">すべて</a></li>
+						<!--<li class="character"><a href="javascript:void(0)" onclick="$.approve.changeArea('character')">性格診断</a></li>-->
+						<li class="politics"><a href="javascript:void(0)" id="typepolitics">政治・経済</a></li>
+						<li class="life"><a href="javascript:void(0)" id="typelife">社会生活</a></li>
+						<li class="entertainment"><a href="javascript:void(0)" id="typeentertainment">芸能・スポーツ</a></li>
+						<li class="hobby"><a href="javascript:void(0)" id="typehobby">趣味・その他</a></li>
+					</ul><!--/.cat-->
+					<input type="hidden" value="all" id="hidArea">
+					<input type="hidden" id="dayOrder" value='1'>
+                    <input type="hidden" id="pageIndex" value='1'>
+                    <input type="hidden" id="questionCnt" value={%$questionCnt%}>
+                    <input type="hidden" id="typecharacter">
+					
+                    <div id="questionList">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="list">
+						<tr>
+							<th class="title"></th>
+							<th class="count ascend"><a href="javascript:void(0)">回答数▼</a></th>
+							<th class="date ascend"><a href="javascript:void(0)" id="dayButton">作成日▼</a></th>
+						</tr>
+						{% if $questionCnt eq 0 %}
+						<tr class="section">
+    							<td class="title stringCut">このカテゴリに未承認クエスチョンがありません。</td>
+    							<td class="count">---</td>
+    							<td class="date">---</td>
+						</tr>
+						{% else %}
+						{% foreach from=$questionInfo item=data %}
+    						<tr class="section">
+    							<td class="title stringCut"><a href="/millionminds/approve/id/{% $data.id%}" class="ico">{% $data.question|escape %}</a></td>
+    							<td class="count">---</td>
+    							<td class="date">{% $data.create_time%}</td>
+    						</tr><!--/.section-->
+						{% /foreach %}
+						{% /if %}
+					</table>
+					</div><!--id="#questionList"-->
+					
+					<div id="pageList">
+					<ul class="pager">
+						<li><span>&laquo; 前へ</span></li>
+						<li><strong>1</strong></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">6</a></li>
+						<li><a href="#">7</a></li>
+						<li><a href="#">8</a></li>
+						<li><a href="#">9</a></li>
+						<li><a href="#">10</a></li>
+						<li><a href="#">次へ &raquo;</a></li>
+					</ul><!--/.pager-->
+					</div><!--#pageList-->
+				</div><!--/.article-->
+
+			</div><!--/#mainColumn-->
+
+			<div id="subColumn">
+{%include file="millionminds/common/ad.phtml"%}
+			</div><!--/#subColumn-->
+
+		</div><!--/#content-->
+
+{%include file="millionminds/common/footer.phtml"%}

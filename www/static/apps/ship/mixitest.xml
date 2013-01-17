@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    
+	<ModulePrefs title="Ship Test">
+    	<Link rel="event.addapp" href="http://mixitest.communityfactory.net/callback/addapp" method="GET" />
+    	<Link rel="event.removeapp" href="http://mixitest.communityfactory.net/callback/removeapp" method="POST" />
+    </ModulePrefs>
+
+    <Content type="url" view="mobile" href="http://mixitest.communityfactory.net/mobile/index/run" />
+</Module>

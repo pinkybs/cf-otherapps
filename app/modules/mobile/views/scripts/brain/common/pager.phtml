@@ -1,0 +1,13 @@
+{% if $listCount.startCount == 1 %}
+	<span style="color:#999999;">←[*]前へ</span>
+{% else %}
+   ←[*]<a href='{% "$baseUrl/mobile/brain/rankingthree?pos=`$pos`&left=`$maeleft`&right=`$maeright`&gid=`$gid`"|mixiurl %}' accesskey="*">前へ</a>
+{% /if %}
+
+
+{% if $listCount.endCount == $count%}
+	<span style="color:#999999;">次へ[#]→</span>
+{% else %}
+    <a href='{% "$baseUrl/mobile/brain/rankingthree?pos=`$pos`&left=`$tugileft`&right=`$tugiright`&gid=`$gid`"|mixiurl %}' accesskey="#">次へ</a>[#]→
+{% /if %}
+

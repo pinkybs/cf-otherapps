@@ -1,0 +1,106 @@
+{%include file="dynamite/common/header.phtml" headAd=1 %}
+
+	<div id="store">
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+		<div class="headline" style="background:#777777;color:#ffffff;">アイテムストア</div>
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="description">
+			ｱｲﾃﾑを購入して敵対組織とのﾊﾞﾄﾙに役立てよう!ｱｲﾃﾑは所持金とmixiﾎﾟｲﾝﾄで購入できるよ<br />
+		</div><!--/.description-->
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="owner" style="background:#666666;">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="44" align="center" style="width:44px;text-align:center;"><img src="{%$userPic%}" style="margin:2px 0;" /></td>
+					<td style="color:#ffffff;{% if $ua==1 %}font-size:x-small;{% /if %}">{%$userName%}組<br />所持金:${%$bonus%}</td>
+				</tr>
+			</table>
+		</div><!--/.owner-->
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		{% foreach from=$itemShopList item=rowdata key=index%}
+			<div class="section" {%if $index%2==0 %}style="background:#333333;"{%else%}style="background:#000000;"{%/if%}>
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td width="60" align="center" style="width:60px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/item/{%$rowdata.id%}.gif" width="56" height="56" style="margin:2px 0;" /></td>
+						<td style="color:#ffffff;{% if $ua==1 %}font-size:x-small;{% /if %}"><a href='{% "$baseUrl/mobile/dynamite/buyitem?CF_cid=`$rowdata.id`"|mixiurl %}' style="color:#FF9900;"><span style="color:#FF9900;">{%$rowdata.name%}</span></a><br />
+
+						<!-- can buy both bonus and mixi point -->
+						{%if $rowdata.id==1 || $rowdata.id==2 || $rowdata.id==3 || $rowdata.id==4 || $rowdata.id==6%}
+							所持数:{%$rowdata.itemCount%}個<br />
+							価　格:${%$rowdata.price%}<br />
+							{%if $rowdata.canBuy==1%}
+								<form name="buyitem{%$index+1%}" id="buyitem{%$index+1%}" method="post" action='{% "$baseUrl/mobile/dynamite/buyitemconfirm"|mixiurl %}'>
+									<input type="hidden" name="CF_cid" value="{%$rowdata.id%}" />
+									<div class="btn" style="text-align:center;">
+										{%$rowdata.canBuyNum|create_select%}
+										<input type="submit" style="color:#333333;" value=" 購 入 "  /><br />
+									</div><!--/.btn-->
+								</form><!--/.buyitem{%$index+1%}-->
+							{%else%}
+								<span style="color:#ff0000;">所持金不足です！</span><br />
+								<div style="color:#ff9900;text-align:center;">≫<a href='{% "$baseUrl/mobile/dynamite/buyitembymixipointconfirm?CF_cid=`$rowdata.id`"|mixiurl %}' style="color:#ff9900;"><span style="color:#ff9900;">mixiﾎﾟｲﾝﾄで購入</span></a>≪</div>
+							{%/if%}
+						{%/if%}
+
+						{%if $rowdata.id==9%}
+							所持数:{%$rowdata.itemCount%}個<br />
+							価　格:${%$rowdata.price%}<br />
+							{%if $rowdata.itemCount>=2%}
+								<span style="color:#ff0000;">所持数の最大値を越えるため購入出来ません</span><br />
+							{%else%}
+								{%if $rowdata.canBuy==1%}
+									<form name="buyitem{%$index+1%}" id="buyitem{%$index+1%}" method="post" action='{% "$baseUrl/mobile/dynamite/buyitemconfirm"|mixiurl %}'>
+										<input type="hidden" name="CF_cid" value="{%$rowdata.id%}" />
+										<div class="btn" style="text-align:center;">
+											{%$rowdata.canBuyNum|create_select%}
+											<input type="submit" style="color:#333333;" value=" 購 入 " />
+										</div><!--/.btn-->
+									</form><!--/.buyitem{%$index+1%}-->
+								{%else%}
+									<span style="color:#ff0000;">所持金不足です！</span><br />
+									<div style="color:#ff9900;text-align:center;">≫<a href='{% "$baseUrl/mobile/dynamite/buyitembymixipointconfirm?CF_cid=`$rowdata.id`"|mixiurl %}' style="color:#ff9900;"><span style="color:#ff9900;">mixiﾎﾟｲﾝﾄで購入</span></a>≪</div>
+								{%/if%}
+							{%/if%}
+						{%/if%}
+
+						<!-- can buy only mixi point -->
+						{%if $rowdata.id==5 || $rowdata.id==7%}
+							所持数:{%$rowdata.itemCount%}個<br />
+							mixiﾎﾟｲﾝﾄでのみ購入可<br />
+							<div style="color:#ff9900;text-align:center;">≫<a href='{% "$baseUrl/mobile/dynamite/buyitembymixipointconfirm?CF_cid=`$rowdata.id`"|mixiurl %}' style="color:#ff9900;"><span style="color:#ff9900;">mixiﾎﾟｲﾝﾄで購入</span></a>≪</div>
+						{%/if%}
+
+						{%if $rowdata.id==8%}
+							所持数:{%$rowdata.itemCount%}個<br />
+							{%if $rowdata.itemCount>=2%}
+								<span style="color:#ff0000;">所持数の最大値を越えるため購入出来ません</span><br />
+							{%else%}
+								mixiﾎﾟｲﾝﾄでのみ購入可<br />
+								<div style="color:#ff9900;text-align:center;">≫<a href='{% "$baseUrl/mobile/dynamite/buyitembymixipointconfirm?CF_cid=`$rowdata.id`"|mixiurl %}' style="color:#ff9900;"><span style="color:#ff9900;">mixiﾎﾟｲﾝﾄで購入</span></a>≪</div>
+							{%/if%}
+						{%/if%}
+
+						{%if $rowdata.id==60 || $rowdata.id==61 || $rowdata.id==62 %}
+							ﾀﾞｲﾅﾏｲﾄ所持数:{%$myDynamiteInfo.bomb_count%}個<br />
+							{%if $rowdata.passMaxCount==1%}
+								<span style="color:#ff0000;">所持数の最大値を越えるため購入出来ません</span><br />
+							{%else%}
+								mixiﾎﾟｲﾝﾄでのみ購入可<br />
+								<div style="color:#ff9900;text-align:center;">≫<a href='{% "$baseUrl/mobile/dynamite/buyitembymixipointconfirm?CF_cid=`$rowdata.id`"|mixiurl %}' style="color:#ff9900;"><span style="color:#ff9900;">mixiﾎﾟｲﾝﾄで購入</span></a>≪</div>
+							{%/if%}
+						{%/if%}</td>
+					</tr>
+				</table>
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+            </div><!--/.section-->
+        {%/foreach%}
+    </div><!--/#profile-->
+{%include file="dynamite/common/menu.phtml"%}
+{%include file="dynamite/common/footer.phtml" footAd=1 %}

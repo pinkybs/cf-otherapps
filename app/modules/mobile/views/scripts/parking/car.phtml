@@ -1,0 +1,40 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="mycar">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">所有車一覧</span><br />
+	</div><!--/.headline-->
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+	<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+
+	{%foreach from=$cars item=rowdata key=index%}
+		<div class="section" {%if ($index%2)==0 %}style="background:#fee;"{%else%}style="background:#ffe;"{%/if%}>
+			<span style="color:#cd424a;">{% emoji code="F8BF"%}{%$rowdata.name%}({%$carColor[$rowdata.car_color]%})</span><br />
+			{%$rowdata.status%}
+			<div style="text-align:right;">
+				{%if $rowdata.carStatus == 0%}
+					&nbsp;<br />
+				{%elseif $rowdata.parked_time == null%}
+					ガソリン代：{%$rowdata.money%}&nbsp;<br />
+				{%else%}
+					収入：{%$rowdata.money%}&nbsp;<br />
+				{%/if%}
+				{%if $canSendCar == 1 && $rowdata.carStatus == 1%}
+				    {%if $rowdata.car_type == 2%}
+				    <span style="color:#999;">友達にﾌﾟﾚｾﾞﾝﾄする</span>&nbsp;<br />
+				    {% else %}
+					<a href='{% "$baseUrl/mobile/parking/sendcartofriend?parking_id=`$rowdata.car_id`&parking_cl=`$rowdata.car_color`"|mixiurl %}'>友達にﾌﾟﾚｾﾞﾝﾄする</a>&nbsp;<br />
+					{%/if%}
+				{%else%}
+					<span style="color:#999;">友達にﾌﾟﾚｾﾞﾝﾄする</span>&nbsp;<br />
+				{%/if%}
+			</div>
+			<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+		</div><!--/.section-->
+	{%/foreach%}
+</div><!--/#mycar-->
+
+{%include file="parking/common/footer.phtml"%}

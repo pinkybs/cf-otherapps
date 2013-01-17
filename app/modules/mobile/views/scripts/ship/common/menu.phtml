@@ -1,0 +1,25 @@
+<div id="menu">
+	<a name="manuBlock" id="menuBlock"></a>
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div class="menu" style="background:#d7cfb3;text-align:center;">
+		<img src="{%$staticUrl%}/apps/ship/img/menu_head.gif" width="240" height="10" ><br />
+		<div class="content" style="text-align:left;">
+			<span style="color:#7c4825;">海賊メニュー</span><br />
+			<div style="background:#b8b097;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			{% emoji code="F9BE"%}<a href='{% "$baseUrl/mobile/ship/feed"|mixiurl %}'>更新情報</a>:島の安全を確認<br />
+			{% emoji code="F9BF"%}<a href='{% "$baseUrl/mobile/ship/rankingfriend"|mixiurl %}'>ラﾝキﾝグ</a>:海賊王を目指せ<br />
+			{% if $ua!=2 %}{% emoji code="F9BD"%}{% else %}{% emoji code="F8C2" %}{% /if %}<a href='{% "$baseUrl/mobile/ship/shipfactory"|mixiurl %}'>造 船 所</a>:海賊船を増やそう<br />
+			{% emoji code="F8F9"%}<a href='{% "$baseUrl/mobile/ship/island"|mixiurl %}'>島の開拓</a>:ﾘｯﾁな島で敵を誘引<br />
+			{% emoji code="F9BA"%}<a href='{% "$baseUrl/mobile/ship/itemshop"|mixiurl %}'>海賊市場</a>:強力ｱｲﾃﾑで効率UP<br />
+			{% emoji code="F947"%}<a href='{% "$baseUrl/mobile/ship/myship"|mixiurl %}'>海 賊 船</a>:所有船の状況ﾁｪｯｸ<br />
+			{% emoji code="F8F9"%}<a href='{% "$baseUrl/mobile/ship/myisland"|mixiurl %}'>海 賊 島</a>:開拓済みの海賊島<br />
+			{% emoji code="F9A3"%}<a href='{% "$baseUrl/mobile/ship/myitem"|mixiurl %}'>アイテム</a>:有利な状況を作ろう<br />
+			{% emoji code="F977"%}<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/ship/invite" %}'>ﾏｲﾐｸ招待</a>:招待でﾀﾞｲﾔﾓﾝﾄﾞGET<br />
+			{% emoji code="F8E4"%}<a href='{% "$baseUrl/mobile/ship/help"|mixiurl %}'>ヘ ル プ</a>:遊び方･ﾙｰﾙはｺﾁﾗ<br />
+		</div><!--/.content-->
+		<img src="{%$staticUrl%}/apps/ship/img/menu_foot.gif" width="240" height="10" ><br />
+	</div><!--/.menu-->
+	<div class="nav">
+		{% emoji code="F987" %}<a href='{% "$baseUrl/mobile/ship/top"|mixiurl %}' accesskey="1">海賊ﾄｯﾌﾟ</a> {% emoji code="F989" %}<a href='{% "$baseUrl/mobile/ship/index"|mixiurl %}' accesskey="3">海賊ﾏｲﾍﾟｰｼﾞ</a><br />
+	</div><!--/.nav-->
+</div><!--/#menu-->

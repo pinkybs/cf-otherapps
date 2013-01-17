@@ -1,0 +1,174 @@
+{%include file="brain/common/header.phtml" headerAd=1 %}
+
+        <div id="title" style="text-align:center;">
+            <span style="color:#cc0000;">ﾏｲﾐｸの中で一番頭がｲｲのは誰だ!?</span><br />
+            <img src="{%$staticUrl%}/apps/brain/img/title.gif?v=1" width="230" height="115" /><br />
+            <div class="description">小中学校で習った問題を解いて<br />
+                                 目指せﾏｲﾐｸ内順位ﾅﾝﾊﾞｰﾜﾝ{% emoji code="F8F4"%}<br />
+                <div style="color:#cc0000;text-align:right;">⇒<a href='{% "$baseUrl/mobile/brain/about"|mixiurl %}'>このｱﾌﾟﾘについて</a>&nbsp;</div>
+            </div><!--/.description-->
+        </div><!--/#title-->
+
+{% if $userInfo.bsyou_on == 0 %}
+ 
+<!--// 戦国武将が追加されていない場合、表示する-->
+
+        <div id="specialClass">
+            <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+            <div class="headline" style="background:#cc0000;color:#ffffff;text-align:center;">ﾏｲﾐｸ招待で特別授業を追加する!?</div>
+            <div class="inner">
+                <div class="section">
+                    <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td style="width:64px;text-align:center;vertical-align:top;"><img src="{%$staticUrl%}/apps/brain/img/list/05.gif" width="60" height="60" /></td>
+                            <td style="vertical-align:top;"><div style="font-size:x-small;"><a href='{% "$baseUrl/mobile/brain/campaign"|mixiurl %}'>ﾏｲﾐｸ招待で<br />新しい授業に挑戦！</a></div></td>
+                        </tr>
+                    </table>
+                    <div class="line" style="background:#ebebae;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="2" /></div>
+                </div><!--/.section-->
+            </div><!--/.inner-->
+        </div><!--/#specialClass-->
+
+{%/if%}
+
+
+{% if $userInfo.bsyou_on == 1 %}
+ 
+<!--// 招待成功する時、表示する　一回だけ表示します。-->
+
+      <div class="headline" style="text-align:center;">
+        <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		{% emoji code="F99F"%}<a href='{% "$baseUrl/mobile/brain/game?gid=5"|mixiurl %}' style="color:#cc0000;"><span style="color:#cc0000;">ﾏｲﾐｸ招待が成立しました!!</span></a><br />
+	</div>
+
+{%/if%}
+
+        {% if $myscore > 0 %}
+	       <div id="myscore">
+	            <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	            <div class="headline" style="background:#cc3366;color:#ffffff;text-align:center;">{% emoji code="F99F"%}あなたの総合成績{% emoji code="F99F"%}</div>
+	            <div class="inner">
+	                <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+	                    <tr>
+	                        <td style="width:44px;text-align:center;vertical-align:top;"><img src="{%$userInfo.miniThumbnailUrl%}" /></td>
+	                        <td style="vertical-align:top;"><div style="font-size:x-small;">{% $userInfo.displayName %}さん<br />
+	                            合計:{% $myscore %}点<br />
+	                            {% emoji code="F9BF"%}ﾏｲﾐｸ内:<a href='{% "$baseUrl/mobile/brain/rankingtwo?pos=1"|mixiurl %}'>{% $totalRank %}位</a>&nbsp;<br />
+
+	                            </div></td>
+	                    </tr>
+	                </table>
+	                
+	                <div id="toDiary" style="text-align:center;">
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+						{%if $ua == 3%}
+							{% emoji code="F9BE"%}<a href="{%$diaryUrl%}" style="color:#ffffff;"><span style="color:#ffffff;">この結果を日記に書く</span></a><br />
+						{% else %}
+							<form method="post" action="http://m.mixi.jp/add_diary.pl" accept-charset="Shift_JIS,utf-8">
+								<input type="hidden" name="diary_title" value="{%$diary_title%}" />
+								<input type="hidden" name="diary_body" value="{%$diary_body%}" /></br>
+								<input type="submit" value=" この結果を日記に書く " />
+							</form>
+						{% /if %}
+					</div><!--/#toDiary-->
+					
+	            </div><!--/.inner-->
+	        </div><!--/#myscore-->
+        {%/if%}
+
+        <div id="classList">
+            <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+            <div class="headline" style="background:#009999;color:#ffffff;text-align:center;">授業ﾗｲﾝﾅｯﾌﾟ!!</div>
+            <div class="inner">
+                {% foreach from=$gameInfo item=data key=key%}
+                    {% if $data.gid != 5 %}
+		                <div class="section">
+		                    <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+		                        <tr>
+		                            <td style="width:64px;text-align:center;vertical-align:top;"><img src="{%$staticUrl%}{%$data.pic_url%}" width="60" height="60" /></td>
+		                            <td style="vertical-align:top;"><div style="font-size:x-small;">{% emoji code="F9BE"%}<a href='{% "$baseUrl/mobile/brain/game?gid=`$data.gid`"|mixiurl %}'>{%$data.gname%}</a><br />
+		                               {%$data.info%}<br />
+		                                <div style="text-align:right;">{% emoji code="F9BF"%}ﾏｲﾐｸ内:{% if $data.mineRank > 0 %}<a href='{% "$baseUrl/mobile/brain/rankingthree?pos=1&gid=`$data.gid`"|mixiurl %}'>{%$data.mineRank%}位</a>{%else%}<span style="color:#cc0000;">未ﾌﾟﾚｲ</span>{%/if%}&nbsp;</div>
+		                                </div></td>
+		                        </tr>
+		                    </table>
+		                    <div class="line" style="background:#ebebae;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="2" /></div>
+		                </div><!--/.section-->
+	                {% /if %}
+                {% /foreach %}
+            </div><!--/.inner-->
+        </div><!--/#classList-->
+        
+        
+{% if $userInfo.bsyou_on > 0 %}
+
+<!--  // 招待成立後、表示する-->
+
+        <div id="specialClass">
+            <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+            <div class="headline" style="background:#cc0000;color:#ffffff;text-align:center;">特別授業!</div>
+            <div class="inner">
+                <div class="section">
+                    <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td style="width:64px;text-align:center;vertical-align:top;"><img src="{%$staticUrl%}/apps/brain/img/list/05.gif" width="60" height="60" /></td>
+                            <td style="vertical-align:top;"><div style="font-size:x-small;">{% emoji code="F9BE"%}<a href='{% "$baseUrl/mobile/brain/game?gid=5"|mixiurl %}'>社会科 戦国武将編</a><br />
+                                超ﾏﾆｱｯｸな武将ｸｲｽﾞ!<br />
+                                <div style="text-align:right;">{% emoji code="F9BF"%}ﾏｲﾐｸ内：{% if $specialRank > 0 %}<a href='{% "$baseUrl/mobile/brain/rankingthree?pos=1&gid=5"|mixiurl %}'>{%$specialRank%}位</a>{%else%}<span style="color:#cc0000;">未ﾌﾟﾚｲ</span>{%/if%}&nbsp;</div>
+                                </div></td>
+                        </tr>
+                    </table>
+                    <div class="line" style="background:#ebebae;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="2" /></div>
+                </div><!--/.section-->
+            </div><!--/.inner-->
+        </div><!--/#specialClass-->
+
+{% /if %}
+
+        {% if $totalInfo %}
+        <div id="ranking">
+            <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+            <div class="headline" style="background:#cc3366;color:#ffffff;text-align:center;">{% emoji code="F9BF"%}ﾏｲﾐｸ内総合成績ﾗﾝｷﾝｸﾞ{% emoji code="F9BF"%}</div>
+            <div class="inner">
+                {% foreach from=$totalInfo item=data key=key%}
+	                <div class="section">
+	                    <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+	                        <tr>
+	                            <td style="width:44px;text-align:center;vertical-align:top;"><img src="{%$data.miniThumbnailUrl%}" /></td>
+	                            {% if $data.uid == $uid%}
+                                    <td style="vertical-align:top;"><div style="font-size:x-small;"><span style="color:#cc0000;">〓{%$data.ranknm%}位〓</span><br />
+                                {% else %}
+                                    <td style="vertical-align:top;"><div style="font-size:x-small;"><span style="color:#666666;">〓</span>{%$data.ranknm%}位<span style="color:#666666;">〓</span><br />
+                                {% /if %}
+	                                {%$data.displayName%}<br />
+	                                <div class="score" style="text-align:right;">{% $data.totalScore %}点&nbsp;</div>
+	                                </div></td>
+	                        </tr>
+	                    </table>
+	                    <div class="line" style="background:#ebebae;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="2" /></div>
+	                </div><!--/.section-->
+                {% /foreach %}
+                <div class="footLink" style="color:#cc0000;text-align:right;">
+                <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		                 ⇒<a href='{% "$baseUrl/mobile/brain/rankingtwo?pos=1"|mixiurl %}'>もっと見る</a>&nbsp;<br />
+		                 ⇒<a href='{% "$baseUrl/mobile/brain/ranking?pos=1"|mixiurl %}'>ﾗﾝｷﾝｸﾞ一覧</a>&nbsp;<br />
+                </div><!--/.footLink-->
+            </div><!--/.inner-->
+        </div><!--/#ranking-->
+        {%/if%}
+
+        <div id="menu">
+            <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+            <div class="headline" style="background:#009999;color:#ffffff;text-align:center;">ｱﾌﾟﾘﾒﾆｭｰ</div>
+            <div class="inner">
+                {% emoji code="F973"%}<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/brain/top" %}'>ﾏｲﾐｸを招待する</a><br />
+                {% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/brain/help"|mixiurl %}'>ﾍﾙﾌﾟ･よくある質問</a><br />
+            </div><!--/.inner-->
+        </div><!--/#menu-->
+{%include file="brain/common/recommend.phtml"%}
+{%include file="brain/common/footer.phtml" footerAd=1 %}

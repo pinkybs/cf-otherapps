@@ -1,0 +1,74 @@
+{% if $questionAnswer %}
+<div id="a">
+	<h3 class="answer">クエスチョン回答結果</h3>
+	<table width="100%" cellpadding="0" cellspacing="0" border="0" class="q">
+		<tr>
+		  {% if $qType == 1 %}
+		    <td class="author"><span class="chara">性格診断</span></td>
+            <td class="content"><h2 class="stringCut" style="width:500px;">{%$questionAnswer.question.question|escape%}</h2>
+                <dl>
+                    <dt>カテゴリー：</dt>
+                    <dd><a>性格診断</a></dd>
+                    <dt>回答数：</dt>
+                    <dd>{%$questionAnswer.question.answer%}</dd>
+                </dl>
+            </td>
+		  {% else %}
+            <td class="author">
+                {%if $questionAnswer.question.nickname_auth==1%}
+                <span><a href="{%$baseUrl%}/millionminds/profile/uid/{%$questionAnswer.question.uid%}" style="background-image: url({%$questionAnswer.question.thumbnailUrl%});" title="{%$questionAnswer.question.displayName%}">{%$questionAnswer.question.displayName%}</a></span>
+                {%else%}
+                <span class="secret">匿名希望</span>
+                {%/if%}
+            </td>
+            <td class="content">
+                <h2 class="stringCut" style="width:500px;">{%$questionAnswer.question.question|escape%}</h2>
+                <dl>
+                    <dt>作成者：</dt>
+                    <dd>{%if $questionAnswer.question.nickname_auth==1%}<a href="{%$baseUrl%}/millionminds/profile/uid/{%$questionAnswer.question.uid%}">{%$questionAnswer.question.displayName%}</a>{%else%}匿名希望{%/if%}さん</dd>
+                    <dt>カテゴリー：</dt>
+                    <dd><a>{%$questionAnswer.question.name%}</a></dd>
+                    <dt>回答数：</dt>
+                    <dd>{%$questionAnswer.question.answer%}</dd>
+                </dl>
+            </td>
+          {% /if %}
+		</tr>
+	</table><!--/.q-->
+	<div id="ratio">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+		    {% foreach from=$questionAnswer.answer item=data %}
+			<tr class="section i">
+				<td class="select">{%$data.answer|escape%}</td>
+				<td class="rate"><ul>
+					<li class="graph" style="width: {%if $data.len%}{%$data.len%}{%else%}1{%/if%}px;"></li>
+					<li class="txt">{%$data.per%}%</li>
+					</ul></td>
+				<td class="count">{%$data.answer_sum%}票</td>
+			</tr><!--/.section .i-->
+			{% /foreach %}
+		</table>
+	</div><!--/#ratio-->
+	{% foreach name=answer from=$questionAnswer.answerOrder item=data %}
+        {% if $data.answer_sum > 0 %}
+        <h4>第{% $smarty.foreach.answer.iteration%}位 「{%$data.answer|escape%}」を支持した人 {%$data.answer_sum%}票（{%$data.per%}%）</h4>
+        <ul class="answers">
+            {% foreach from=$data.user[$data.aid] item=userData %}
+        	<li><span><a href="{%$baseUrl%}/millionminds/profile/uid/{%$userData.uid%}" style="background-image: url({%$userData.thumbnailUrl%});" title="{%$userData.displayName%}">{%$userData.displayName%}</a></span></li>
+        	{% /foreach %}
+        </ul><!--/.answers-->
+        {% /if %}
+	{% /foreach %}
+	
+	{% if $qType == 1 %}
+	    <p class="toDiary"><a href="{%$baseUrl%}/millionminds/nature">性格診断で本当のアナタお知る？</a></p>
+    {% elseif $qType == 2 %}
+        <a target="_bank" href="http://platform001.mixi.jp/add_diary.pl?id={%$userId%}">この回答結果をミクシィ日記に書く</a>
+        <p class="retry">⇒<a href="{%$baseUrl%}/millionminds/question?qid={%$questionAnswer.question.qid%}&edit=1">このクエスチョンの回答結果を修正する</a></p>
+    {% else %}
+        <p class="retry">⇒<a href="{%$baseUrl%}/millionminds/question?qid={%$questionAnswer.question.qid%}&edit=1">このクエスチョンの回答結果を修正する</a></p>
+    {% /if %}
+    
+                    
+</div><!--/#a-->
+{% /if %}

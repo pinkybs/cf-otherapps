@@ -1,0 +1,8 @@
+<ul id="nav">
+	<li><a href="{%$baseUrl%}/manager/listapp">アプリケーション一覧</a></li>
+	{% if $isSuperUser %}
+	<li><a href="{%$baseUrl%}/manager/manageuser">ユーザーID管理</a></li>
+	{% /if %}
+	<li><a href="{%$baseUrl%}/manager/changepass">パスワード変更</a></li>
+	<li><a href="{%$baseUrl%}/auth/logout">ログアウト</a></li>
+</ul>

@@ -1,0 +1,1922 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<swf version="4" compressed="0">
+  <Header framerate="12" frames="1">
+    <size>
+      <Rectangle left="0" right="3600" top="0" bottom="3600"/>
+    </size>
+    <tags>
+      <SetBackgroundColor>
+        <color>
+          <Color red="255" green="255" blue="255"/>
+        </color>
+      </SetBackgroundColor>
+      <DoAction>
+        <actions>
+          <Stop/>
+          <PushData>
+            <items>
+              <StackString value="rabbit"/>
+            </items>
+          </PushData>
+          <PushData>
+            <items>
+              <StackString value="1"/>
+            </items>
+          </PushData>
+          <SetVariable/>
+          <EndAction/>
+        </actions>
+      </DoAction>
+      <DefineShape objectID="1">
+        <bounds>
+          <Rectangle left="0" right="3600" top="0" bottom="3600"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="219" green="231" blue="244"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="3600" y="3600" fillStyle1="1"/>
+              <LineTo x="-3600" y="0"/>
+              <LineTo x="0" y="-3600"/>
+              <LineTo x="3600" y="0"/>
+              <LineTo x="0" y="3600"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape>
+      <PlaceObject2 replace="0" depth="1" objectID="1">
+        <transform>
+          <Transform transX="0" transY="0"/>
+        </transform>
+      </PlaceObject2>
+      <DefineShape objectID="2">
+        <bounds>
+          <Rectangle left="0" right="574" top="0" bottom="621"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="0" green="0" blue="0"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="561" y="463" fillStyle0="1"/>
+              <LineTo x="-388" y="-445"/>
+              <CurveTo x1="-14" y1="-16" x2="-22" y2="-2"/>
+              <CurveTo x1="-23" y1="-1" x2="-17" y2="14"/>
+              <LineTo x="-78" y="68"/>
+              <CurveTo x1="-17" y1="15" x2="-2" y2="22"/>
+              <CurveTo x1="-1" y1="22" x2="15" y2="17"/>
+              <LineTo x="387" y="445"/>
+              <CurveTo x1="15" y1="17" x2="22" y2="2"/>
+              <CurveTo x1="22" y1="1" x2="17" y2="-15"/>
+              <LineTo x="78" y="-68"/>
+              <CurveTo x1="17" y1="-14" x2="2" y2="-22"/>
+              <CurveTo x1="1" y1="-23" x2="-14" y2="-17"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape>
+      <DefineSprite objectID="3" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="1" objectID="2">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape objectID="4">
+        <bounds>
+          <Rectangle left="0" right="488" top="0" bottom="512"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="242" green="242" blue="242"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="294" y="512" fillStyle0="1"/>
+              <LineTo x="194" y="-170"/>
+              <LineTo x="-274" y="-316"/>
+              <CurveTo x1="-23" y1="-26" x2="-36" y2="0"/>
+              <CurveTo x1="-30" y1="0" x2="-20" y2="19"/>
+              <LineTo x="-78" y="68"/>
+              <CurveTo x1="-27" y1="23" x2="0" y2="35"/>
+              <CurveTo x1="0" y1="28" x2="19" y2="22"/>
+              <LineTo x="275" y="317"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape>
+      <DefineSprite objectID="5" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="1" objectID="3" name="armR">
+            <transform>
+              <Transform transX="23" transY="23"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256" offsetRed="102" offsetGreen="153" offsetBlue="0" offsetAlpha="0"/>
+            </colorTransform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="3" objectID="4">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape objectID="6">
+        <bounds>
+          <Rectangle left="0" right="573" top="0" bottom="621"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="0" green="0" blue="0"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="555" y="81" fillStyle1="1"/>
+              <CurveTo x1="17" y1="15" x2="1" y2="22"/>
+              <CurveTo x1="2" y1="23" x2="-15" y2="16"/>
+              <LineTo x="-387" y="445"/>
+              <CurveTo x1="-15" y1="17" x2="-22" y2="2"/>
+              <CurveTo x1="-22" y1="1" x2="-17" y2="-15"/>
+              <LineTo x="-78" y="-68"/>
+              <CurveTo x1="-17" y1="-14" x2="-2" y2="-22"/>
+              <CurveTo x1="-1" y1="-23" x2="14" y2="-17"/>
+              <LineTo x="388" y="-445"/>
+              <CurveTo x1="14" y1="-16" x2="23" y2="-2"/>
+              <CurveTo x1="22" y1="-1" x2="17" y2="14"/>
+              <LineTo x="78" y="68"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape>
+      <DefineSprite objectID="7" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="1" objectID="6">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape objectID="8">
+        <bounds>
+          <Rectangle left="108" right="596" top="0" bottom="512"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="242" green="242" blue="242"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="302" y="512" fillStyle0="1"/>
+              <LineTo x="276" y="-317"/>
+              <CurveTo x1="18" y1="-21" x2="0" y2="-29"/>
+              <CurveTo x1="2" y1="-34" x2="-28" y2="-24"/>
+              <LineTo x="-78" y="-68"/>
+              <CurveTo x1="-22" y1="-19" x2="-29" y2="0"/>
+              <CurveTo x1="-35" y1="0" x2="-23" y2="26"/>
+              <LineTo x="-275" y="316"/>
+              <LineTo x="194" y="170"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape>
+      <DefineSprite objectID="9" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="1" objectID="7" name="armL">
+            <transform>
+              <Transform transX="0" transY="23"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256" offsetRed="102" offsetGreen="153" offsetBlue="0" offsetAlpha="0"/>
+            </colorTransform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="3" objectID="8">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape2 objectID="10">
+        <bounds>
+          <Rectangle left="0" right="828" top="0" bottom="1234"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="0" green="0" blue="0"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="173" y="0" fillStyle1="1"/>
+              <LineTo x="482" y="0"/>
+              <CurveTo x1="48" y1="0" x2="37" y2="34"/>
+              <CurveTo x1="36" y1="34" x2="3" y2="47"/>
+              <LineTo x="49" y="641"/>
+              <CurveTo x1="3" y1="47" x2="-31" y2="34"/>
+              <CurveTo x1="-32" y1="34" x2="-47" y2="0"/>
+              <LineTo x="-614" y="0"/>
+              <CurveTo x1="-47" y1="0" x2="-32" y2="-34"/>
+              <CurveTo x1="-32" y1="-34" x2="4" y2="-47"/>
+              <LineTo x="49" y="-641"/>
+              <CurveTo x1="3" y1="-47" x2="37" y2="-34"/>
+              <CurveTo x1="36" y1="-34" x2="48" y2="0"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="0" green="0" blue="0"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="202" y="739" fillStyle1="1"/>
+              <CurveTo x1="19" y1="0" x2="14" y2="14"/>
+              <CurveTo x1="14" y1="13" x2="0" y2="19"/>
+              <LineTo x="0" y="403"/>
+              <CurveTo x1="0" y1="19" x2="-14" y2="13"/>
+              <CurveTo x1="-14" y1="14" x2="-19" y2="0"/>
+              <LineTo x="-156" y="0"/>
+              <CurveTo x1="-19" y1="0" x2="-13" y2="-14"/>
+              <CurveTo x1="-14" y1="-13" x2="0" y2="-19"/>
+              <LineTo x="0" y="-403"/>
+              <CurveTo x1="0" y1="-19" x2="14" y2="-13"/>
+              <CurveTo x1="13" y1="-14" x2="19" y2="0"/>
+              <LineTo x="156" y="0"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="0" green="0" blue="0"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="828" y="785" fillStyle1="1"/>
+              <LineTo x="0" y="403"/>
+              <CurveTo x1="0" y1="19" x2="-14" y2="13"/>
+              <CurveTo x1="-13" y1="14" x2="-19" y2="0"/>
+              <LineTo x="-157" y="0"/>
+              <CurveTo x1="-19" y1="0" x2="-13" y2="-14"/>
+              <CurveTo x1="-14" y1="-13" x2="0" y2="-19"/>
+              <LineTo x="0" y="-403"/>
+              <CurveTo x1="0" y1="-19" x2="14" y2="-13"/>
+              <CurveTo x1="13" y1="-14" x2="19" y2="0"/>
+              <LineTo x="157" y="0"/>
+              <CurveTo x1="19" y1="0" x2="13" y2="14"/>
+              <CurveTo x1="14" y1="13" x2="0" y2="19"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape2>
+      <DefineSprite objectID="11" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="3" objectID="10">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape2 objectID="12">
+        <bounds>
+          <Rectangle left="1344" right="2256" top="2414" bottom="3466"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="242" green="242" blue="242"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="1396" y="2468" fillStyle0="1"/>
+              <LineTo x="-52" y="974"/>
+              <LineTo x="456" y="24"/>
+              <LineTo x="22" y="0"/>
+              <CurveTo x1="58" y1="-390" x2="140" y2="-518"/>
+              <CurveTo x1="-140" y1="-25" x2="-119" y2="-80"/>
+              <CurveTo x1="-197" y1="-3" x2="-159" y2="-36"/>
+              <CurveTo x1="-7" y1="26" x2="-2" y2="28"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="176" green="176" blue="176"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="1747" y="2591" fillStyle1="1"/>
+              <CurveTo x1="0" y1="19" x2="-14" y2="14"/>
+              <CurveTo x1="-13" y1="13" x2="-19" y2="0"/>
+              <CurveTo x1="-20" y1="0" x2="-13" y2="-13"/>
+              <CurveTo x1="-14" y1="-14" x2="0" y2="-19"/>
+              <CurveTo x1="0" y1="-19" x2="14" y2="-14"/>
+              <CurveTo x1="13" y1="-13" x2="20" y2="0"/>
+              <CurveTo x1="19" y1="0" x2="13" y2="13"/>
+              <CurveTo x1="14" y1="14" x2="0" y2="19"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="176" green="176" blue="176"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="1932" y="2617" fillStyle1="1"/>
+              <CurveTo x1="0" y1="19" x2="-14" y2="14"/>
+              <CurveTo x1="-13" y1="13" x2="-19" y2="0"/>
+              <CurveTo x1="-20" y1="0" x2="-13" y2="-13"/>
+              <CurveTo x1="-14" y1="-14" x2="0" y2="-19"/>
+              <CurveTo x1="0" y1="-19" x2="14" y2="-14"/>
+              <CurveTo x1="13" y1="-13" x2="20" y2="0"/>
+              <CurveTo x1="19" y1="0" x2="13" y2="13"/>
+              <CurveTo x1="14" y1="14" x2="0" y2="19"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="176" green="176" blue="176"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="1711" y="2801" fillStyle1="1"/>
+              <CurveTo x1="0" y1="19" x2="-14" y2="13"/>
+              <CurveTo x1="-14" y1="14" x2="-19" y2="0"/>
+              <CurveTo x1="-19" y1="0" x2="-13" y2="-14"/>
+              <CurveTo x1="-14" y1="-13" x2="0" y2="-19"/>
+              <CurveTo x1="0" y1="-19" x2="14" y2="-14"/>
+              <CurveTo x1="13" y1="-14" x2="19" y2="0"/>
+              <CurveTo x1="20" y1="0" x2="13" y2="14"/>
+              <CurveTo x1="14" y1="14" x2="0" y2="19"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="176" green="176" blue="176"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="1896" y="2827" fillStyle1="1"/>
+              <CurveTo x1="0" y1="19" x2="-14" y2="13"/>
+              <CurveTo x1="-13" y1="14" x2="-19" y2="0"/>
+              <CurveTo x1="-19" y1="0" x2="-14" y2="-14"/>
+              <CurveTo x1="-14" y1="-13" x2="0" y2="-19"/>
+              <CurveTo x1="0" y1="-19" x2="14" y2="-14"/>
+              <CurveTo x1="14" y1="-14" x2="19" y2="0"/>
+              <CurveTo x1="19" y1="0" x2="13" y2="14"/>
+              <CurveTo x1="14" y1="14" x2="0" y2="19"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="176" green="176" blue="176"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="1596" y="2978" fillStyle1="1"/>
+              <CurveTo x1="13" y1="-14" x2="19" y2="0"/>
+              <CurveTo x1="19" y1="0" x2="14" y2="14"/>
+              <CurveTo x1="14" y1="13" x2="0" y2="19"/>
+              <CurveTo x1="0" y1="20" x2="-14" y2="13"/>
+              <CurveTo x1="-13" y1="14" x2="-20" y2="0"/>
+              <CurveTo x1="-19" y1="0" x2="-13" y2="-14"/>
+              <CurveTo x1="-14" y1="-14" x2="0" y2="-19"/>
+              <CurveTo x1="0" y1="-19" x2="14" y2="-13"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="176" green="176" blue="176"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="1860" y="3036" fillStyle1="1"/>
+              <CurveTo x1="0" y1="20" x2="-14" y2="13"/>
+              <CurveTo x1="-13" y1="14" x2="-20" y2="0"/>
+              <CurveTo x1="-19" y1="0" x2="-13" y2="-14"/>
+              <CurveTo x1="-14" y1="-14" x2="0" y2="-19"/>
+              <CurveTo x1="0" y1="-19" x2="14" y2="-13"/>
+              <CurveTo x1="13" y1="-14" x2="19" y2="0"/>
+              <CurveTo x1="19" y1="0" x2="14" y2="14"/>
+              <CurveTo x1="14" y1="13" x2="0" y2="19"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="176" green="176" blue="176"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="1592" y="3174" fillStyle1="1"/>
+              <CurveTo x1="19" y1="0" x2="14" y2="14"/>
+              <CurveTo x1="13" y1="13" x2="0" y2="19"/>
+              <CurveTo x1="0" y1="20" x2="-13" y2="13"/>
+              <CurveTo x1="-13" y1="13" x2="-20" y2="0"/>
+              <CurveTo x1="-19" y1="0" x2="-13" y2="-13"/>
+              <CurveTo x1="-14" y1="-14" x2="0" y2="-19"/>
+              <CurveTo x1="0" y1="-19" x2="14" y2="-13"/>
+              <CurveTo x1="13" y1="-14" x2="19" y2="0"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="176" green="176" blue="176"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="1824" y="3246" fillStyle1="1"/>
+              <CurveTo x1="0" y1="19" x2="-14" y2="14"/>
+              <CurveTo x1="-13" y1="13" x2="-20" y2="0"/>
+              <CurveTo x1="-19" y1="0" x2="-13" y2="-13"/>
+              <CurveTo x1="-14" y1="-14" x2="0" y2="-19"/>
+              <CurveTo x1="0" y1="-19" x2="14" y2="-13"/>
+              <CurveTo x1="13" y1="-14" x2="19" y2="0"/>
+              <CurveTo x1="19" y1="0" x2="14" y2="14"/>
+              <CurveTo x1="14" y1="13" x2="0" y2="19"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="242" green="242" blue="242"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="2050" y="2540" fillStyle0="1"/>
+              <LineTo x="-4" y="12"/>
+              <LineTo x="-32" y="120"/>
+              <LineTo x="-73" y="299"/>
+              <CurveTo x1="-63" y1="278" x2="-33" y2="217"/>
+              <LineTo x="411" y="-24"/>
+              <LineTo x="-52" y="-974"/>
+              <CurveTo x1="-1" y1="-28" x2="-8" y2="-26"/>
+              <CurveTo x1="-172" y1="38" x2="-218" y2="2"/>
+              <CurveTo x1="109" y1="64" x2="123" y2="20"/>
+              <LineTo x="13" y="2"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="176" green="176" blue="176"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="1761" y="2453" fillStyle0="1"/>
+              <CurveTo x1="119" y1="80" x2="140" y2="25"/>
+              <CurveTo x1="-140" y1="518" x2="-58" y2="390"/>
+              <LineTo x="23" y="0"/>
+              <CurveTo x1="33" y1="-217" x2="63" y2="-278"/>
+              <LineTo x="73" y="-299"/>
+              <LineTo x="32" y="-120"/>
+              <LineTo x="4" y="-12"/>
+              <LineTo x="-13" y="-2"/>
+              <CurveTo x1="-123" y1="-20" x2="-109" y2="-64"/>
+              <LineTo x="-44" y="-1"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape2>
+      <DefineShape2 objectID="13">
+        <bounds>
+          <Rectangle left="0" right="2314" top="0" bottom="846"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="0" green="0" blue="0"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="195" y="175" fillStyle0="1"/>
+              <CurveTo x1="-154" y1="145" x2="-33" y2="140"/>
+              <CurveTo x1="-37" y1="162" x2="129" y2="135"/>
+              <CurveTo x1="103" y1="107" x2="266" y2="-22"/>
+              <LineTo x="197" y="-20"/>
+              <LineTo x="145" y="8"/>
+              <CurveTo x1="-14" y1="-44" x2="14" y2="-102"/>
+              <LineTo x="32" y="-195"/>
+              <CurveTo x1="37" y1="-266" x2="-100" y2="-109"/>
+              <CurveTo x1="-128" y1="-138" x2="-162" y2="29"/>
+              <CurveTo x1="-142" y1="24" x2="-153" y2="146"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="0" green="0" blue="0"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="2119" y="175" fillStyle1="1"/>
+              <CurveTo x1="154" y1="145" x2="33" y2="140"/>
+              <CurveTo x1="37" y1="162" x2="-129" y2="135"/>
+              <CurveTo x1="-103" y1="107" x2="-266" y2="-22"/>
+              <LineTo x="-197" y="-20"/>
+              <LineTo x="-145" y="8"/>
+              <CurveTo x1="14" y1="-44" x2="-14" y2="-102"/>
+              <LineTo x="-32" y="-195"/>
+              <CurveTo x1="-37" y1="-266" x2="100" y2="-109"/>
+              <CurveTo x1="128" y1="-137" x2="162" y2="28"/>
+              <CurveTo x1="141" y1="24" x2="154" y2="146"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape2>
+      <DefineSprite objectID="14" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="2" objectID="13">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape2 objectID="15">
+        <bounds>
+          <Rectangle left="0" right="2284" top="0" bottom="1310"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="241" green="201" blue="205"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="156" y="15" fillStyle0="1"/>
+              <CurveTo x1="-122" y1="45" x2="-27" y2="140"/>
+              <CurveTo x1="-31" y1="161" x2="99" y2="269"/>
+              <CurveTo x1="79" y1="213" x2="210" y2="196"/>
+              <LineTo x="154" y="140"/>
+              <CurveTo x1="79" y1="75" x2="34" y2="56"/>
+              <CurveTo x1="-11" y1="-65" x2="13" y2="-109"/>
+              <LineTo x="27" y="-207"/>
+              <CurveTo x1="32" y1="-285" x2="-78" y2="-214"/>
+              <CurveTo x1="-98" y1="-270" x2="-127" y2="-102"/>
+              <CurveTo x1="-111" y1="-88" x2="-122" y2="45"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="241" green="201" blue="205"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="2209" y="630" fillStyle1="1"/>
+              <CurveTo x1="-79" y1="213" x2="-209" y2="196"/>
+              <LineTo x="-155" y="140"/>
+              <CurveTo x1="-79" y1="75" x2="-34" y2="56"/>
+              <CurveTo x1="11" y1="-65" x2="-13" y2="-109"/>
+              <LineTo x="-27" y="-207"/>
+              <CurveTo x1="-32" y1="-285" x2="78" y2="-214"/>
+              <CurveTo x1="98" y1="-270" x2="127" y2="-102"/>
+              <CurveTo x1="111" y1="-88" x2="122" y2="45"/>
+              <CurveTo x1="122" y1="45" x2="27" y2="140"/>
+              <CurveTo x1="31" y1="161" x2="-99" y2="269"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape2>
+      <DefineSprite objectID="16" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="2" objectID="15">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape2 objectID="17">
+        <bounds>
+          <Rectangle left="0" right="2004" top="0" bottom="1159"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="203" green="174" blue="174"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="68" y="6" fillStyle0="1"/>
+              <CurveTo x1="-67" y1="25" x2="-1" y2="115"/>
+              <CurveTo x1="-1" y1="133" x2="89" y2="240"/>
+              <CurveTo x1="70" y1="190" x2="145" y2="190"/>
+              <CurveTo x1="168" y1="220" x2="20" y2="40"/>
+              <CurveTo x1="-11" y1="-44" x2="-14" y2="-277"/>
+              <CurveTo x1="-12" y1="-239" x2="-70" y2="-190"/>
+              <CurveTo x1="-87" y1="-241" x2="-87" y2="-100"/>
+              <CurveTo x1="-75" y1="-87" x2="-67" y2="25"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="203" green="174" blue="174"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="1916" y="519" fillStyle1="1"/>
+              <CurveTo x1="-70" y1="190" x2="-145" y2="190"/>
+              <CurveTo x1="-168" y1="220" x2="-20" y2="40"/>
+              <CurveTo x1="11" y1="-44" x2="14" y2="-277"/>
+              <CurveTo x1="13" y1="-239" x2="69" y2="-190"/>
+              <CurveTo x1="87" y1="-240" x2="87" y2="-101"/>
+              <CurveTo x1="75" y1="-87" x2="67" y2="25"/>
+              <CurveTo x1="67" y1="25" x2="1" y2="115"/>
+              <CurveTo x1="1" y1="133" x2="-89" y2="240"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape2>
+      <DefineSprite objectID="18" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="2" objectID="17">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineSprite objectID="19" frames="2">
+        <tags>
+          <DoAction>
+            <actions>
+              <PushData>
+                <items>
+                  <StackString value="/:rabbit"/>
+                </items>
+              </PushData>
+              <GetVariable/>
+              <LogicalNOT/>
+              <BranchIfTrue byteOffset="10"/>
+              <GotoFrame frame="1"/>
+              <BranchAlways byteOffset="1"/>
+              <Stop/>
+              <EndAction/>
+            </actions>
+          </DoAction>
+          <PlaceObject2 replace="0" depth="1" objectID="14" name="earObj1">
+            <transform>
+              <Transform transX="0" transY="437"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256"/>
+            </colorTransform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <RemoveObject2 depth="1"/>
+          <PlaceObject2 replace="0" depth="1" objectID="16" morph="1" name="earObj2">
+            <transform>
+              <Transform transX="15" transY="0"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256" offsetRed="204" offsetGreen="102" offsetBlue="0" offsetAlpha="0"/>
+            </colorTransform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="4" objectID="18" morph="1" name="earObj3">
+            <transform>
+              <Transform transX="155" transY="151"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256" offsetRed="204" offsetGreen="255" offsetBlue="0" offsetAlpha="0"/>
+            </colorTransform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape objectID="20">
+        <bounds>
+          <Rectangle left="0" right="2040" top="0" bottom="1968"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="255" green="255" blue="255"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="1020" y="0" fillStyle0="1"/>
+              <CurveTo x1="-44" y1="92" x2="-174" y2="140"/>
+              <CurveTo x1="-224" y1="168" x2="-119" y2="95"/>
+              <CurveTo x1="-211" y1="170" x2="-106" y2="143"/>
+              <CurveTo x1="-140" y1="188" x2="-2" y2="190"/>
+              <CurveTo x1="-3" y1="409" x2="300" y2="200"/>
+              <CurveTo x1="261" y1="173" x2="462" y2="0"/>
+              <CurveTo x1="462" y1="0" x2="261" y2="-173"/>
+              <CurveTo x1="301" y1="-200" x2="-4" y2="-409"/>
+              <CurveTo x1="-2" y1="-190" x2="-140" y2="-188"/>
+              <CurveTo x1="-106" y1="-143" x2="-211" y2="-170"/>
+              <LineTo x="-343" y="-263"/>
+              <CurveTo x1="-174" y1="-140" x2="-44" y2="-92"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape>
+      <DefineSprite objectID="21" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="1" objectID="20">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape2 objectID="22">
+        <bounds>
+          <Rectangle left="0" right="462" top="0" bottom="278"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="0" green="0" blue="0"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="291" y="0" fillStyle1="1"/>
+              <CurveTo x1="34" y1="0" x2="13" y2="15"/>
+              <CurveTo x1="12" y1="14" x2="-17" y2="21"/>
+              <LineTo x="-61" y="73"/>
+              <CurveTo x1="-16" y1="20" x2="-25" y2="0"/>
+              <CurveTo x1="-24" y1="0" x2="-17" y2="-20"/>
+              <LineTo x="-61" y="-73"/>
+              <CurveTo x1="-17" y1="-21" x2="13" y2="-14"/>
+              <CurveTo x1="12" y1="-15" x2="34" y2="0"/>
+              <LineTo x="120" y="0"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="0" green="0" blue="0"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="36" y="240" fillStyle0="1"/>
+              <CurveTo x1="35" y1="37" x2="51" y2="1"/>
+              <CurveTo x1="35" y1="0" x2="29" y2="-19"/>
+              <CurveTo x1="29" y1="-18" x2="16" y2="-31"/>
+              <CurveTo x1="16" y1="31" x2="29" y2="18"/>
+              <CurveTo x1="29" y1="19" x2="34" y2="0"/>
+              <CurveTo x1="51" y1="-1" x2="36" y2="-37"/>
+              <CurveTo x1="36" y1="-37" x2="0" y2="-53"/>
+              <CurveTo x1="0" y1="-16" x2="-14" y2="0"/>
+              <CurveTo x1="-6" y1="0" x2="-4" y2="5"/>
+              <CurveTo x1="-5" y1="4" x2="0" y2="7"/>
+              <CurveTo x1="0" y1="39" x2="-27" y2="29"/>
+              <CurveTo x1="-28" y1="28" x2="-39" y2="0"/>
+              <CurveTo x1="-39" y1="0" x2="-27" y2="-28"/>
+              <CurveTo x1="-27" y1="-28" x2="-1" y2="-39"/>
+              <LineTo x="0" y="-1"/>
+              <CurveTo x1="0" y1="-11" x2="-8" y2="-3"/>
+              <LineTo x="-1" y="-1"/>
+              <LineTo x="-5" y="-1"/>
+              <CurveTo x1="-15" y1="0" x2="0" y2="16"/>
+              <CurveTo x1="0" y1="39" x2="-27" y2="29"/>
+              <CurveTo x1="-28" y1="28" x2="-39" y2="0"/>
+              <CurveTo x1="-39" y1="0" x2="-27" y2="-28"/>
+              <CurveTo x1="-27" y1="-29" x2="-1" y2="-39"/>
+              <CurveTo x1="0" y1="-16" x2="-14" y2="0"/>
+              <CurveTo x1="-14" y1="0" x2="0" y2="16"/>
+              <CurveTo x1="0" y1="53" x2="36" y2="37"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape2>
+      <DefineSprite objectID="23" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="2" objectID="22">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape2 objectID="24">
+        <bounds>
+          <Rectangle left="0" right="1524" top="0" bottom="448"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="0" green="0" blue="0"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="526" y="129" fillStyle1="1"/>
+              <CurveTo x1="31" y1="83" x2="-54" y2="87"/>
+              <CurveTo x1="-54" y1="88" x2="-107" y2="39"/>
+              <CurveTo x1="-106" y1="39" x2="-97" y2="-31"/>
+              <CurveTo x1="-97" y1="-32" x2="-31" y2="-84"/>
+              <CurveTo x1="-31" y1="-83" x2="54" y2="-87"/>
+              <CurveTo x1="54" y1="-87" x2="106" y2="-39"/>
+              <CurveTo x1="107" y1="-39" x2="97" y2="31"/>
+              <CurveTo x1="97" y1="32" x2="31" y2="83"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="0" green="0" blue="0"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="998" y="129" fillStyle0="1"/>
+              <CurveTo x1="-31" y1="83" x2="54" y2="87"/>
+              <CurveTo x1="54" y1="88" x2="107" y2="39"/>
+              <CurveTo x1="106" y1="39" x2="97" y2="-31"/>
+              <CurveTo x1="97" y1="-32" x2="31" y2="-84"/>
+              <CurveTo x1="31" y1="-83" x2="-54" y2="-87"/>
+              <CurveTo x1="-54" y1="-87" x2="-106" y2="-39"/>
+              <CurveTo x1="-107" y1="-39" x2="-97" y2="31"/>
+              <CurveTo x1="-97" y1="32" x2="-31" y2="83"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape2>
+      <DefineSprite objectID="25" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="2" objectID="24">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape2 objectID="26">
+        <bounds>
+          <Rectangle left="0" right="1080" top="0" bottom="162"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="0" green="0" blue="0"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="185" y="81" fillStyle1="1"/>
+              <CurveTo x1="0" y1="34" x2="-27" y2="23"/>
+              <CurveTo x1="-27" y1="24" x2="-38" y2="0"/>
+              <CurveTo x1="-39" y1="0" x2="-27" y2="-24"/>
+              <CurveTo x1="-27" y1="-23" x2="0" y2="-34"/>
+              <CurveTo x1="0" y1="-34" x2="27" y2="-23"/>
+              <CurveTo x1="27" y1="-24" x2="39" y2="0"/>
+              <CurveTo x1="38" y1="0" x2="27" y2="24"/>
+              <CurveTo x1="27" y1="23" x2="0" y2="34"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="0" green="0" blue="0"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="1080" y="81" fillStyle1="1"/>
+              <CurveTo x1="0" y1="34" x2="-27" y2="23"/>
+              <CurveTo x1="-28" y1="24" x2="-38" y2="0"/>
+              <CurveTo x1="-38" y1="0" x2="-27" y2="-24"/>
+              <CurveTo x1="-27" y1="-23" x2="0" y2="-34"/>
+              <CurveTo x1="0" y1="-34" x2="27" y2="-23"/>
+              <CurveTo x1="27" y1="-24" x2="38" y2="0"/>
+              <CurveTo x1="38" y1="0" x2="28" y2="24"/>
+              <CurveTo x1="27" y1="23" x2="0" y2="34"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape2>
+      <DefineSprite objectID="27" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="2" objectID="26">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape2 objectID="28">
+        <bounds>
+          <Rectangle left="0" right="1260" top="0" bottom="92"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="0" green="0" blue="0"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="404" y="43" fillStyle0="1"/>
+              <LineTo x="-63" y="-22"/>
+              <CurveTo x1="-74" y1="-21" x2="-71" y2="0"/>
+              <CurveTo x1="-120" y1="-2" x2="-71" y2="66"/>
+              <CurveTo x1="-13" y1="13" x2="18" y2="10"/>
+              <LineTo x="22" y="5"/>
+              <LineTo x="19" y="-3"/>
+              <LineTo x="12" y="-5"/>
+              <CurveTo x1="78" y1="-29" x2="95" y2="0"/>
+              <CurveTo x1="69" y1="0" x2="65" y2="19"/>
+              <CurveTo x1="26" y1="7" x2="16" y2="-14"/>
+              <CurveTo x1="6" y1="-6" x2="-2" y2="-7"/>
+              <CurveTo x1="-2" y1="-7" x2="-10" y2="-4"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="0" green="0" blue="0"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="919" y="21" fillStyle1="1"/>
+              <CurveTo x1="74" y1="-21" x2="71" y2="0"/>
+              <CurveTo x1="120" y1="-2" x2="71" y2="66"/>
+              <CurveTo x1="13" y1="13" x2="-18" y2="10"/>
+              <LineTo x="-22" y="5"/>
+              <LineTo x="-19" y="-3"/>
+              <LineTo x="-12" y="-5"/>
+              <CurveTo x1="-78" y1="-29" x2="-95" y2="0"/>
+              <CurveTo x1="-68" y1="0" x2="-67" y2="19"/>
+              <CurveTo x1="-25" y1="7" x2="-16" y2="-14"/>
+              <CurveTo x1="-6" y1="-6" x2="2" y2="-7"/>
+              <CurveTo x1="2" y1="-7" x2="10" y2="-4"/>
+              <LineTo x="63" y="-22"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape2>
+      <DefineSprite objectID="29" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="2" objectID="28">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape2 objectID="30">
+        <bounds>
+          <Rectangle left="0" right="440" top="0" bottom="462"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="129" green="98" blue="62"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="220" y="0" fillStyle0="1"/>
+              <CurveTo x1="-43" y1="86" x2="-11" y2="95"/>
+              <CurveTo x1="-18" y1="150" x2="72" y2="131"/>
+              <CurveTo x1="72" y1="-131" x2="-18" y2="-150"/>
+              <CurveTo x1="-11" y1="-95" x2="-43" y2="-86"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="129" green="98" blue="62"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="394" y="57" fillStyle0="1"/>
+              <CurveTo x1="-35" y1="65" x2="-9" y2="72"/>
+              <CurveTo x1="-14" y1="112" x2="58" y2="99"/>
+              <CurveTo x1="57" y1="-99" x2="-13" y2="-112"/>
+              <CurveTo x1="-9" y1="-71" x2="-35" y2="-66"/>
+              <ShapeSetup x="0" y="0" fillStyle0="0" fillStyle1="0" lineStyle="0">
+                <styles>
+                  <StyleList>
+                    <fillStyles>
+                      <Solid>
+                        <color>
+                          <Color red="129" green="98" blue="62"/>
+                        </color>
+                      </Solid>
+                    </fillStyles>
+                    <lineStyles/>
+                  </StyleList>
+                </styles>
+              </ShapeSetup>
+              <ShapeSetup x="46" y="57" fillStyle0="1"/>
+              <CurveTo x1="-35" y1="66" x2="-8" y2="71"/>
+              <CurveTo x1="-14" y1="112" x2="57" y2="99"/>
+              <CurveTo x1="58" y1="-99" x2="-14" y2="-112"/>
+              <CurveTo x1="-9" y1="-70" x2="-35" y2="-67"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape2>
+      <DefineSprite objectID="31" frames="1">
+        <tags>
+          <PlaceObject2 replace="0" depth="3" objectID="30">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineShape objectID="32">
+        <bounds>
+          <Rectangle left="576" right="1718" top="0" bottom="950"/>
+        </bounds>
+        <styles>
+          <StyleList>
+            <fillStyles>
+              <Solid>
+                <color>
+                  <Color red="236" green="236" blue="236"/>
+                </color>
+              </Solid>
+              <Solid>
+                <color>
+                  <Color red="247" green="247" blue="247"/>
+                </color>
+              </Solid>
+              <Solid>
+                <color>
+                  <Color red="242" green="242" blue="242"/>
+                </color>
+              </Solid>
+            </fillStyles>
+            <lineStyles/>
+          </StyleList>
+        </styles>
+        <shapes>
+          <Shape>
+            <edges>
+              <ShapeSetup x="1432" y="44" fillStyle1="3"/>
+              <LineTo x="69" y="7"/>
+              <CurveTo x1="57" y1="18" x2="55" y2="53"/>
+              <CurveTo x1="49" y1="49" x2="29" y2="59"/>
+              <CurveTo x1="63" y1="132" x2="-84" y2="145"/>
+              <LineTo x="-42" y="53"/>
+              <ShapeSetup fillStyle1="1"/>
+              <CurveTo x1="-25" y1="24" x2="-34" y2="17"/>
+              <LineTo x="0" y="310"/>
+              <CurveTo x1="0" y1="17" x2="-144" y2="13"/>
+              <ShapeSetup fillStyle1="3"/>
+              <LineTo x="-271" y="9"/>
+              <LineTo x="-292" y="-11"/>
+              <CurveTo x1="-122" y1="-12" x2="0" y2="-16"/>
+              <LineTo x="0" y="-303"/>
+              <ShapeSetup fillStyle1="1"/>
+              <CurveTo x1="-39" y1="-17" x2="-29" y2="-26"/>
+              <ShapeSetup fillStyle1="3"/>
+              <LineTo x="-48" y="-58"/>
+              <LineTo x="-31" y="-68"/>
+              <ShapeSetup fillStyle1="2"/>
+              <CurveTo x1="-13" y1="-42" x2="-3" y2="-33"/>
+              <CurveTo x1="-9" y1="-93" x2="64" y2="-88"/>
+              <CurveTo x1="52" y1="-73" x2="91" y2="-56"/>
+              <CurveTo x1="44" y1="-28" x2="53" y2="-16"/>
+              <CurveTo x1="89" y1="-28" x2="86" y2="48"/>
+              <LineTo x="42" y="24"/>
+              <ShapeSetup fillStyle1="3"/>
+              <CurveTo x1="50" y1="28" x2="36" y2="7"/>
+              <ShapeSetup fillStyle1="2"/>
+              <LineTo x="28" y="4"/>
+              <LineTo x="90" y="-15"/>
+              <LineTo x="87" y="-26"/>
+              <LineTo x="52" y="-8"/>
+              <ShapeSetup fillStyle0="3"/>
+              <CurveTo x1="122" y1="53" x2="31" y2="52"/>
+              <CurveTo x1="37" y1="62" x2="-109" y2="41"/>
+              <CurveTo x1="-144" y1="55" x2="-95" y2="-70"/>
+              <CurveTo x1="-65" y1="-49" x2="-34" y2="-99"/>
+              <ShapeSetup x="1628" y="560" fillStyle0="1" fillStyle1="3"/>
+              <LineTo x="-59" y="40"/>
+              <LineTo x="0" y="-113"/>
+              <CurveTo x1="0" y1="-31" x2="-122" y2="-23"/>
+              <CurveTo x1="-121" y1="-23" x2="-172" y2="0"/>
+              <CurveTo x1="-171" y1="0" x2="-121" y2="23"/>
+              <CurveTo x1="-122" y1="23" x2="0" y2="31"/>
+              <LineTo x="0" y="56"/>
+              <LineTo x="238" y="-12"/>
+              <CurveTo x1="186" y1="0" x2="130" y2="24"/>
+              <CurveTo x1="131" y1="25" x2="0" y2="35"/>
+              <LineTo x="0" y="326"/>
+              <ShapeSetup x="593" y="439" fillStyle0="2"/>
+              <CurveTo x1="150" y1="-58" x2="117" y2="-77"/>
+              <CurveTo x1="175" y1="-116" x2="54" y2="-134"/>
+              <ShapeSetup x="672" y="565" fillStyle0="3" fillStyle1="1"/>
+              <CurveTo x1="29" y1="24" x2="39" y2="18"/>
+              <LineTo x="0" y="1"/>
+              <ShapeSetup/>
+            </edges>
+          </Shape>
+        </shapes>
+      </DefineShape>
+      <DefineSprite objectID="33" frames="21">
+        <tags>
+          <PlaceObject2 replace="0" depth="1" objectID="19" name="ear">
+            <transform>
+              <Transform transX="0" transY="142"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="6" objectID="21" name="face">
+            <transform>
+              <Transform transX="136" transY="486"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256" offsetRed="102" offsetGreen="153" offsetBlue="0" offsetAlpha="0"/>
+            </colorTransform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="8" objectID="23" name="mouth">
+            <transform>
+              <Transform transX="926" transY="1942"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256"/>
+            </colorTransform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="11" objectID="25" name="eyemask">
+            <transform>
+              <Transform transX="396" transY="1686"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256" offsetRed="102" offsetGreen="153" offsetBlue="0" offsetAlpha="0"/>
+            </colorTransform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="14" objectID="27" name="eye">
+            <transform>
+              <Transform transX="618" transY="1824"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256"/>
+            </colorTransform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="17" objectID="29" name="blow">
+            <transform>
+              <Transform transX="528" transY="1326"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256"/>
+            </colorTransform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="20" objectID="31" name="head_m">
+            <transform>
+              <Transform transX="938" transY="1002"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256"/>
+            </colorTransform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="24" objectID="32">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1323"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1320"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1317"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1314"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1312"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1309"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1306"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1303"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1300"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1302"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1305"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1307"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1309"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1312"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1314"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1317"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1319"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1321"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1324"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="17">
+            <transform>
+              <Transform transX="528" transY="1326"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <DefineSprite objectID="34" frames="20">
+        <tags>
+          <PlaceObject2 replace="0" depth="1" objectID="5" name="arm2">
+            <transform>
+              <Transform transX="1943" transY="2330"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="5" objectID="9" name="arm1">
+            <transform>
+              <Transform transX="1060" transY="2330"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="9" objectID="11" name="body">
+            <transform>
+              <Transform transX="1386" transY="2366"/>
+            </transform>
+            <colorTransform>
+              <ColorTransform2 factorRed="0" factorGreen="0" factorBlue="0" factorAlpha="256" offsetRed="102" offsetGreen="153" offsetBlue="0" offsetAlpha="0"/>
+            </colorTransform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="23" objectID="12">
+            <transform>
+              <Transform transX="0" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="0" depth="24" objectID="33">
+            <transform>
+              <Transform transX="643" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.9941253662109375" scaleY="0.9941253662109375" skewX="-0.1050109863281250" skewY="0.1050109863281250" transX="1926" transY="2351"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.9941253662109375" scaleY="0.9941253662109375" skewX="0.1050109863281250" skewY="-0.1050109863281250" transX="1082" transY="2288"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="643" transY="8"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.9745788574218750" scaleY="0.9745788574218750" skewX="-0.2208251953125000" skewY="0.2208251953125000" transX="1910" transY="2378"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.9745788574218750" scaleY="0.9745788574218750" skewX="0.2208251953125000" skewY="-0.2208251953125000" transX="1111" transY="2246"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="643" transY="16"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.9396972656250000" scaleY="0.9396972656250000" skewX="-0.3389434814453125" skewY="0.3389434814453125" transX="1898" transY="2410"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.9396972656250000" scaleY="0.9396972656250000" skewX="0.3389434814453125" skewY="-0.3389434814453125" transX="1143" transY="2208"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="22"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.8833923339843750" scaleY="0.8833923339843750" skewX="-0.4657287597656250" skewY="0.4657287597656250" transX="1891" transY="2450"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.8833923339843750" scaleY="0.8833923339843750" skewX="0.4657287597656250" skewY="-0.4657287597656250" transX="1183" transY="2173"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="28"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.8068084716796875" scaleY="0.8068084716796875" skewX="-0.5881805419921875" skewY="0.5881805419921875" transX="1895" transY="2495"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.8068084716796875" scaleY="0.8068084716796875" skewX="0.5881805419921875" skewY="-0.5881805419921875" transX="1228" transY="2144"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="32"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.7047882080078125" scaleY="0.7047882080078125" skewX="-0.7071075439453125" skewY="0.7071075439453125" transX="1908" transY="2546"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.7047882080078125" scaleY="0.7047882080078125" skewX="0.7071075439453125" skewY="-0.7071075439453125" transX="1277" transY="2125"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="36"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.5809020996093750" scaleY="0.5809020996093750" skewX="-0.8120727539062500" skewY="0.8120727539062500" transX="1932" transY="2598"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.5809020996093750" scaleY="0.5809020996093750" skewX="0.8120727539062500" skewY="-0.8120727539062500" transX="1328" transY="2114"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="38"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.4307250976562500" scaleY="0.4307250976562500" skewX="-0.9010620117187500" skewY="0.9010620117187500" transX="1972" transY="2653"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.4307250976562500" scaleY="0.4307250976562500" skewX="0.9010620117187500" skewY="-0.9010620117187500" transX="1380" transY="2116"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="40"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.2588195800781250" scaleY="0.2588195800781250" skewX="-0.9659271240234375" skewY="0.9659271240234375" transX="2027" transY="2707"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.2588195800781250" scaleY="0.2588195800781250" skewX="0.9659271240234375" skewY="-0.9659271240234375" transX="1428" transY="2130"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.4349365234375000" scaleY="0.4349365234375000" skewX="-0.8990325927734375" skewY="0.8990325927734375" transX="1970" transY="2651"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.4349365234375000" scaleY="0.4349365234375000" skewX="0.8990325927734375" skewY="-0.8990325927734375" transX="1378" transY="2114"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.5877838134765625" scaleY="0.5877838134765625" skewX="-0.8070678710937500" skewY="0.8070678710937500" transX="1931" transY="2595"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.5877838134765625" scaleY="0.5877838134765625" skewX="0.8070678710937500" skewY="-0.8070678710937500" transX="1324" transY="2113"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="38"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.7105712890625000" scaleY="0.7105712890625000" skewX="-0.7012786865234375" skewY="0.7012786865234375" transX="1906" transY="2542"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.7105712890625000" scaleY="0.7105712890625000" skewX="0.7012786865234375" skewY="-0.7012786865234375" transX="1274" transY="2124"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="36"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.8090209960937500" scaleY="0.8090209960937500" skewX="-0.5851135253906250" skewY="0.5851135253906250" transX="1896" transY="2493"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.8090209960937500" scaleY="0.8090209960937500" skewX="0.5851135253906250" skewY="-0.5851135253906250" transX="1227" transY="2144"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="34"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.8811492919921875" scaleY="0.8811492919921875" skewX="-0.4699249267578125" skewY="0.4699249267578125" transX="1891" transY="2452"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.8811492919921875" scaleY="0.8811492919921875" skewX="0.4699249267578125" skewY="-0.4699249267578125" transX="1186" transY="2171"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="30"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.9335632324218750" scaleY="0.9335632324218750" skewX="-0.3552703857421875" skewY="0.3552703857421875" transX="1897" transY="2414"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.9335632324218750" scaleY="0.9335632324218750" skewX="0.3552703857421875" skewY="-0.3552703857421875" transX="1148" transY="2202"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="26"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.9671478271484375" scaleY="0.9671478271484375" skewX="-0.2508850097656250" skewY="0.2508850097656250" transX="1906" transY="2386"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.9671478271484375" scaleY="0.9671478271484375" skewX="0.2508850097656250" skewY="-0.2508850097656250" transX="1117" transY="2235"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="642" transY="20"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.9876861572265625" scaleY="0.9876861572265625" skewX="-0.1531829833984375" skewY="0.1531829833984375" transX="1918" transY="2361"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.9876861572265625" scaleY="0.9876861572265625" skewX="0.1531829833984375" skewY="-0.1531829833984375" transX="1093" transY="2269"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="643" transY="14"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform scaleX="0.9972839355468750" scaleY="0.9972839355468750" skewX="-0.07028198242187500" skewY="0.07028198242187500" transX="1931" transY="2343"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform scaleX="0.9972839355468750" scaleY="0.9972839355468750" skewX="0.07028198242187500" skewY="-0.07028198242187500" transX="1073" transY="2300"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="643" transY="8"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <PlaceObject2 replace="1" depth="1">
+            <transform>
+              <Transform transX="1943" transY="2330"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="5">
+            <transform>
+              <Transform transX="1060" transY="2330"/>
+            </transform>
+          </PlaceObject2>
+          <PlaceObject2 replace="1" depth="24">
+            <transform>
+              <Transform transX="643" transY="0"/>
+            </transform>
+          </PlaceObject2>
+          <ShowFrame/>
+          <End/>
+        </tags>
+      </DefineSprite>
+      <PlaceObject2 replace="0" depth="2" objectID="34">
+        <transform>
+          <Transform transX="0" transY="0"/>
+        </transform>
+      </PlaceObject2>
+      <ShowFrame/>
+      <End/>
+    </tags>
+  </Header>
+</swf>

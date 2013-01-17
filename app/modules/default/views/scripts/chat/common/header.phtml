@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" id="mixi">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<!--[if lt IE 7]><![endif]-->
+	<link rel="stylesheet" type="text/css" media="print,screen" href="{%$staticUrl%}/apps/chat/cmn/css/import.css?{%$version.css%}"  />
+	<link rel="stylesheet" type="text/css" media="all" href="{%$staticUrl%}/apps/chat/cmn/css/jScrollPane.css?{%$version.css%}" />
+	<link rel="stylesheet" type="text/css" media="all" href="{%$staticUrl%}/apps/chat/cmn/css/ui-lightness/jquery-ui-1.7.1.custom.css?{%$version.css%}" />
+	<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/jquery-1.3.2.js?{%$version.js%}"></script>
+	<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/jquery-ui-1.7.1.custom.min.js?{%$version.js%}"></script>
+	<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/static.js?{%$version.js%}"></script>
+
+	<script type="text/javascript" language="javascript">
+		var UrlConfig =  {
+		    BaseUrl : '{%$baseUrl%}',
+		    StaticUrl : '{%$staticUrl%}',
+		    PhotoUrl : '{%$photoUrl%}'
+		};
+
+		var CurrentHeight = 800;
+	</script>
+
+	<script type="text/javascript" language="javascript" src="{%$mixiHostUrl%}/static/js/platform/json.js?1228977457"></script>
+	<script type="text/javascript" language="javascript" src="{%$mixiHostUrl%}/static/js/platform/rpc.js?1228977457"></script>
+    <script type="text/javascript" language="javascript">
+		gadgets.rpc.setRelayUrl('..', "{%$mixi_platform_api_url%}", false);
+
+        function adjustHeight(height) {
+            if (!height) {
+                var B = document.getElementById('container');
+                //var B = document.documentElement;
+                var height =  B.scrollHeight;
+
+                if (jQuery.browser.mozilla) {
+                    var offsetHeight = B.offsetHeight;
+                    //var clientHeight = document.documentElement.clientHeight;
+                    //mozilla
+                    //content true height
+                    //scrollHeight, offsetHeight,
+                    //but scrollHeight >= clientHeight, offsetHeight can little than clientHeight
+                    if (offsetHeight < height) {
+                        height = offsetHeight;
+                    }
+                }
+            }
+            CurrentHeight = height;
+
+            if (jQuery.browser.safari) {
+               window.setTimeout(function() {
+                   gadgets.rpc.call(null, 'remote_adjustHeight', null, CurrentHeight);
+               }, 100);
+            }
+            else {
+                gadgets.rpc.call(null, 'remote_adjustHeight', null, height);
+            }
+        }
+
+        function postActivity(title, reciptents) {
+            gadgets.rpc.call(null, 'remote_postActivity', null, title, reciptents);
+        }
+
+        function postActivityWithPic(title, picurl, mimeType, reciptents) {
+            gadgets.rpc.call(null, 'remote_postActivityWithPic', null, title, picurl, mimeType, reciptents);
+        }
+
+        function mixi_invite(uids) {
+            uids = uids || null;
+            gadgets.rpc.call(null, 'remote_invite', null, uids);
+        }
+    </script>
+</head>

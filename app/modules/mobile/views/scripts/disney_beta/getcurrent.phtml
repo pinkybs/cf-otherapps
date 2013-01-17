@@ -1,0 +1,47 @@
+{%include file="disney/common/header.phtml"%}
+    <div style="background-color:#fbe1ff; font-size:x-small; text-algin:center;">
+        <img src="{%$staticUrl%}/apps/disney/img/chara_get/{%$placeInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" align="top" title="{%$placeInfo.award_name%}" copyright="yes" width="100%" /><br />
+		
+		<div style="color:#ff0000; text-align:center;">
+        	{%$placeInfo.award_name%}ｽﾃｨｯﾁ<br />  
+			
+				{% disneyimg style='height="3"' name="dot0" %}<br />
+				{%if $ua == 3%}
+					{% emoji code="F9BE"%}<a href="{%$diaryUrl%}" style="color:#ffffff;"><span style="color:#ffffff;">日記に書く</span></a><br />
+				{% else %}
+					<form method="post" action="http://m.mixi.jp/add_diary.pl" accept-charset="Shift_JIS,utf-8">
+						<input type="hidden" name="diary_title" value="{%$diary_title%}" />
+						<input type="hidden" name="diary_body" value="{%$diary_body%}" /></br>
+						<input type="submit" value="日記に書く" />
+					</form>
+				{% /if %}			
+	
+			{% disneyimg style='height="5"' name="dot0" %}<br />
+		
+         	<div style="color:#9f3d44;text-align:left;">
+				GETしたご当地ｷｬﾗｸﾀｰはﾃﾞｺﾒや待受にしたり､ﾏｲﾐｸに贈って遊ぼう!<br/>
+        	</div>
+			{% disneyimg style='height="5"' name="dot0" %}<br />
+			
+        
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/downloadaward?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="send_2" style='copyright="yes" width="69%"' %}</a><br/>
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/choicemymixi?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="send" style='copyright="yes" width="69%"' %}</a><br/>
+            {% disneyimg name="dot0" style='height="4"' %}<br/>
+                <a href='{% "$baseUrl/mobile/disney/desktopaward?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="back_img" style='copyright="yes" width="69%"' %}</a><br/>
+		</div>	
+		
+		<div style="text-align:left; color:#9f3d44;">
+            1県につき同一ｷｬﾗｸﾀｰは3体まで所持できるよ{% emoji code="F8E3"%}<br />
+			<br/>
+			{% disneyimg style='height="5"' name="dot0" %}<br />
+			
+			<div style="text-align:right;">
+				⇒<a href='{% "$baseUrl/mobile/disney/map"|mixiurl %}'>ご当地ﾏｯﾌﾟに追加されたよ</a>{% emoji code="F8F5"%}<br />
+				{% disneyimg style='height="3"' name="dot0" %}<br />
+				
+				<a href='{% "$baseUrl/mobile/disney/help?CF_help=location"|mixiurl %}'>位置情報の差異について</a><br />
+			</div>        
+		</div> 
+{%include file="disney/common/footer.phtml"%}

@@ -1,0 +1,227 @@
+{%include file="dynamite/common/header.phtml" headAd=1 %}
+
+	<div id="title" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/dynamite/mobile/img/title.gif" width="228" height="100" style="margin-bottom:3px;" />
+	</div><!--/#title-->
+
+	<div id="profile">
+
+		<div class="info" style="color:#ff0000;">
+			<a href='{% "$baseUrl/mobile/dynamite/itemshop"|mixiurl %}'>ｱｲﾃﾑｽﾄｱがOPENしました!</a><br />
+			<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=inquiry"|mixiurl %}' style="color:#ff0000;">お問い合わせﾒｰﾙの返信について</a><br />
+			<hr style="color:#666666;background-color:#666666;height:1px;border:0px solid #666666;margin:0.3em 0;" size="1" />
+		</div><!--/.info-->
+
+		<div class="toHelp" style="color:#ff9933;">
+			◎<a href='{% "$baseUrl/mobile/dynamite/help"|mixiurl %}'>このｹﾞｰﾑの遊び方</a><br />
+			◎<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/dynamite/invitefinish" %}'>ﾏｲﾐｸ招待で強力ｱｲﾃﾑをﾌﾟﾚｾﾞﾝﾄ!</a><br />
+		</div><!--/.toHelp-->
+
+		{% if $listMsg %}
+		<div class="alert" style="background:#ffcccc;">
+			<hr style="color:#ffcccc;background-color:#ffcccc;height:1px;border:0px solid #ffcccc;margin:0.3em 0;" size="1" />
+			{% foreach name=msglist from=$listMsg item=mdata %}
+			     {% if $mdata.link == 'agit' %}
+			         <a href='{% "$baseUrl/mobile/dynamite/agit?CF_uid=`$myDynamiteInfo.uid`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$myDynamiteInfo.uid`&rand=`$rand`"|mobile_flashurl %}' style="color:#ff0000;"><span style="color:#ff0000;">{%$mdata.title%}</span></a><br />
+			     {% else %}
+			         <a href='{% "$baseUrl/mobile/dynamite/`$mdata.link`"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;">{%$mdata.title%}</span></a><br />
+			     {% /if %}
+			{% /foreach %}
+			<hr style="color:#ffcccc;background-color:#ffcccc;height:1px;border:0px solid #ffcccc;margin:0.3em 0;" size="1" />
+		</div><!--/.alert-->
+		{% /if %}
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="owner" style="background:#666666;">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="44" align="center" style="width:44px;text-align:center;"><img src="{%$myDynamiteInfo.miniThumbnailUrl%}" style="margin:2px 0;" /></td>
+					<td style="color:#ffffff;font-size:x-small;">{%$myDynamiteInfo.displayName%}組<br />
+						所持金 ${%$myDynamiteInfo.format_bonus%}<br />
+						{% if $myDynamiteInfo.game_mode==1 %}ﾏｲﾐｸ限定ﾓｰﾄﾞ{% else %}ﾐｸｼｨ全体ﾓｰﾄﾞ{% /if %}</td>
+				</tr>
+			</table>
+		</div><!--/.owner-->
+
+        {%include file="dynamite/common/bombcount.phtml"%}
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="toAgit" style="text-align:center;"><a href='{% "$baseUrl/mobile/dynamite/agit?CF_uid=`$myDynamiteInfo.uid`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$myDynamiteInfo.uid`&rand=`$rand`"|mobile_flashurl %}'>≫ｱｼﾞﾄを巡回する!≪</a></div>
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="section" style="background:#333333;">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="64" align="center" style="width:64px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/hitman/{%$myDynamiteInfo.hitman_pic_1%}" width="60" height="60" style="margin:2px 0;" /></td>
+					<td style="color:#ffffff;font-size:x-small;">ﾋｯﾄﾏﾝA{% if 0==$myDynamiteInfo.hitman_life1 %}(殉職){% /if %}<br />
+						<img src="{%$staticUrl%}/apps/dynamite/mobile/img/heart/max{%$myDynamiteInfo.max_life%}/{%$myDynamiteInfo.hitman_life1%}.gif" width="135" height="14" style="margin-top:2px;" /><br />
+						<div style="text-align:right;">懸賞金 ${% if 0==$myDynamiteInfo.hitman_life1 %}0{% else %}{%$myDynamiteInfo.format_reward%}{% /if %}&nbsp;</div></td>
+				</tr>
+			</table>
+			{% if "1"==$myDynamiteInfo.hitman_underattack_1 %}
+			<div class="enemy" style="text-align:center;">
+				<a href='{% "$baseUrl/mobile/dynamite/attacklist?CF_uid=$uid&CF_hitmanid=1"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫敵対組織が襲ってきた!≪</span></a>
+			</div><!--/.enemy-->
+			{% /if %}
+			{% if 0==$myDynamiteInfo.hitman_life1 %}
+			<div class="hint" style="text-align:right;">
+				<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/itemlist"|mixiurl %}'>殉職ﾋｯﾄﾏﾝを復活</a>&nbsp;
+			</div><!--/.hint-->
+			{% elseif $myDynamiteInfo.hitman_life1<$myDynamiteInfo.max_life %}
+			<div class="hint" style="text-align:right;">
+				<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/itemlist"|mixiurl %}'>ﾋｯﾄﾏﾝの体力を回復</a>&nbsp;
+			</div><!--/.hint-->
+			{% /if %}
+		</div><!--/.section-->
+
+		<div class="section" style="background:#000000;">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="64" align="center" style="width:64px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/hitman/{%$myDynamiteInfo.hitman_pic_2%}" width="60" height="60" style="margin:2px 0;" /></td>
+					<td style="color:#ffffff;font-size:x-small;">ﾋｯﾄﾏﾝB{% if 0==$myDynamiteInfo.hitman_life2 %}(殉職){% /if %}<br />
+						<img src="{%$staticUrl%}/apps/dynamite/mobile/img/heart/max{%$myDynamiteInfo.max_life%}/{%$myDynamiteInfo.hitman_life2%}.gif" width="135" height="14" style="margin-top:2px;" /><br />
+						<div style="text-align:right;">懸賞金 ${% if 0==$myDynamiteInfo.hitman_life2 %}0{% else %}{%$myDynamiteInfo.format_reward%}{% /if %}&nbsp;</div></td>
+				</tr>
+			</table>
+			{% if "1"==$myDynamiteInfo.hitman_underattack_2 %}
+			<div class="enemy" style="text-align:center;">
+				<a href='{% "$baseUrl/mobile/dynamite/attacklist?CF_uid=$uid&CF_hitmanid=2"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫敵対組織が襲ってきた!≪</span></a>
+			</div><!--/.enemy-->
+			{% /if %}
+			{% if 0==$myDynamiteInfo.hitman_life2 %}
+			<div class="hint" style="text-align:right;">
+				<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/itemlist"|mixiurl %}'>殉職ﾋｯﾄﾏﾝを復活</a>&nbsp;
+			</div><!--/.hint-->
+			{% elseif $myDynamiteInfo.hitman_life2<$myDynamiteInfo.max_life %}
+			<div class="hint" style="text-align:right;">
+				<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/itemlist"|mixiurl %}'>ﾋｯﾄﾏﾝの体力を回復</a>&nbsp;
+			</div><!--/.hint-->
+			{% /if %}
+		</div><!--/.section-->
+
+		<div class="section" style="background:#333333;">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="64" align="center" style="width:64px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/hitman/{%$myDynamiteInfo.hitman_pic_3%}" width="60" height="60" style="margin:2px 0;" /></td>
+					<td style="color:#ffffff;font-size:x-small;">ﾋｯﾄﾏﾝC{% if 0==$myDynamiteInfo.hitman_life3 %}(殉職){% /if %}<br />
+						<img src="{%$staticUrl%}/apps/dynamite/mobile/img/heart/max{%$myDynamiteInfo.max_life%}/{%$myDynamiteInfo.hitman_life3%}.gif" width="135" height="14" style="margin-top:2px;" /><br />
+						<div style="text-align:right;">懸賞金 ${% if 0==$myDynamiteInfo.hitman_life3 %}0{% else %}{%$myDynamiteInfo.format_reward%}{% /if %}&nbsp;</div></td>
+				</tr>
+			</table>
+			{% if "1"==$myDynamiteInfo.hitman_underattack_3 %}
+			<div class="enemy" style="text-align:center;">
+				<a href='{% "$baseUrl/mobile/dynamite/attacklist?CF_uid=$uid&CF_hitmanid=3"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫敵対組織が襲ってきた!≪</span></a>
+			</div><!--/.enemy-->
+			{% /if %}
+			{% if 0==$myDynamiteInfo.hitman_life3 %}
+			<div class="hint" style="text-align:right;">
+				<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/itemlist"|mixiurl %}'>殉職ﾋｯﾄﾏﾝを復活</a>&nbsp;
+			</div><!--/.hint-->
+			{% elseif $myDynamiteInfo.hitman_life3<$myDynamiteInfo.max_life %}
+			<div class="hint" style="text-align:right;">
+				<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/itemlist"|mixiurl %}'>ﾋｯﾄﾏﾝの体力を回復</a>&nbsp;
+			</div><!--/.hint-->
+			{% /if %}
+		</div><!--/.section-->
+
+		<div class="section" style="background:#000000;">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="64" align="center" style="width:64px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/hitman/{%$myDynamiteInfo.hitman_pic_4%}" width="60" height="60" style="margin:2px 0;" /></td>
+					<td style="color:#ffffff;font-size:x-small;">ﾋｯﾄﾏﾝD{% if 0==$myDynamiteInfo.hitman_life4 %}(殉職){% /if %}<br />
+						<img src="{%$staticUrl%}/apps/dynamite/mobile/img/heart/max{%$myDynamiteInfo.max_life%}/{%$myDynamiteInfo.hitman_life4%}.gif" width="135" height="14" style="margin:2px 0;" /><br />
+						<div style="text-align:right;">懸賞金 ${% if 0==$myDynamiteInfo.hitman_life4 %}0{% else %}{%$myDynamiteInfo.format_reward%}{% /if %}&nbsp;</div></td>
+				</tr>
+			</table>
+			{% if "1"==$myDynamiteInfo.hitman_underattack_4 %}
+			<div class="enemy" style="text-align:center;">
+				<a href='{% "$baseUrl/mobile/dynamite/attacklist?CF_uid=$uid&CF_hitmanid=4"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫敵対組織が襲ってきた!≪</span></a>
+			</div><!--/.enemy-->
+			{% /if %}
+			{% if 0==$myDynamiteInfo.hitman_life4 %}
+			<div class="hint" style="text-align:right;">
+				<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/itemlist"|mixiurl %}'>殉職ﾋｯﾄﾏﾝを復活</a>&nbsp;
+			</div><!--/.hint-->
+			{% elseif $myDynamiteInfo.hitman_life4<$myDynamiteInfo.max_life %}
+			<div class="hint" style="text-align:right;">
+				<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/itemlist"|mixiurl %}'>ﾋｯﾄﾏﾝの体力を回復</a>&nbsp;
+			</div><!--/.hint-->
+			{% /if %}
+		</div><!--/.section-->
+
+		<div class="nav" style="color:#ff9933;text-align:center;">
+			<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+			←[*]<a href='{% "$baseUrl/mobile/dynamite/profile?CF_uid=`$myDynamiteInfo.prev_uid`"|mixiurl %}' accesskey="*">左の組織</a>　<a href='{% "$baseUrl/mobile/dynamite/profile?CF_uid=`$myDynamiteInfo.next_uid`"|mixiurl %}' accesskey="#">右の組織</a>[#]→
+		</div><!--/.nav-->
+
+	</div><!--/#profile-->
+
+	<div id="hitman">
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="headline" style="background:#777777;color:#ffffff;">契約中のヒットマン</div>
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="fukidashi" style="background:#ffffff;color:#000000;">
+			<hr style="color:#ffffff;background-color:#ffffff;height:1px;border:0px solid #ffffff;margin:0.3em 0;" size="1" />
+			{% if $myDynamiteInfo.balloon_last %}<a href='{% "$baseUrl/mobile/dynamite/profile?CF_uid=`$myDynamiteInfo.balloon_last_id`"|mixiurl %}' style="color:#0000ff;"><span style="color:#0000ff;">{%$myDynamiteInfo.balloon_last%}</span></a>{% /if %}{%$myDynamiteInfo.balloon%}
+			<hr style="color:#ffffff;background-color:#ffffff;height:1px;border:0px solid #ffffff;margin:0.3em 0;" size="1" />
+			<div style="background:#000;text-align: center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/fukidashi.gif" width="228" height="7" /></div>
+		</div><!--/.fukidashi-->
+
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr>
+				<td width="64" align="center" style="width:64px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/hitman/{%$myDynamiteInfo.hitman_pic_0%}" width="60" height="60" style="margin:2px 0;" /></td>
+				<td style="color:#ffffff;font-size:x-small;">{%$myDynamiteInfo.hitman_name%}<br />
+					<div style="background:#333333;">ｽﾋﾟｰﾄﾞ：{%$myDynamiteInfo.trigger_speed%}<br />体　力：{%$myDynamiteInfo.health%}<br />回復力：{%$myDynamiteInfo.recover_speed%}</div></td>
+			</tr>
+		</table>
+
+		<div class="toHitman" style="text-align:right;">
+			<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/charashop"|mixiurl %}'>別のﾋｯﾄﾏﾝを探す</a>&nbsp;
+		</div><!--/.toHitman-->
+	</div><!--/#hitman-->
+
+	<div id="ranking">
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="headline" style="background:#777777;color:#ffffff;">所持金ランキング</div>
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		{% foreach name=ranklist from=$listRank item=rdata key=key %}
+		{% if $uid==$rdata.uid %}
+		<div class="section" style="background:{% if $key%2==0 %}#333333{% else %}#000000{% /if %};">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="44" valign="top" align="center" style="width:44px;text-align:center;vertical-align:top;"><img src="{%$rdata.miniThumbnailUrl%}" style="margin:2px 0;" /></td>
+					<td style="color:#ffffff;font-size:x-small;"><span style="color:#ffcc00;">〓{%$rdata.rank%}位〓</span><br />
+						<a href='{% "$baseUrl/mobile/dynamite/profile?CF_uid=`$rdata.uid`"|mixiurl %}'>{%$rdata.displayName%}</a><span style="color:#ff9933;">組</span><br />
+						所持金 ${%$rdata.format_bonus%}</td>
+				</tr>
+			</table>
+		</div><!--/.section-->
+		{% else %}
+		<div class="section" style="background:{% if $key%2==0 %}#333333{% else %}#000000{% /if %};">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="44" valign="top" align="center" style="width:44px;text-align:center;vertical-align:top;"><img src="{%$rdata.miniThumbnailUrl%}" style="margin:2px 0;" /></td>
+					<td style="color:#ffffff;font-size:x-small;"><span style="color:#777777;">〓</span>{%$rdata.rank%}位<span style="color:#777777;">〓</span><br />
+						<a href='{% "$baseUrl/mobile/dynamite/profile?CF_uid=`$rdata.uid`"|mixiurl %}'>{%$rdata.displayName%}</a><span style="color:#ff9933;">組</span><br />
+						所持金 ${%$rdata.format_bonus%}</td>
+				</tr>
+			</table>
+		</div><!--/.section-->
+		{% /if %}
+		{% /foreach %}
+		<div class="more" style="text-align:right;">
+			<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/rankingmoney"|mixiurl %}'>もっと見る</a>&nbsp;
+		</div><!--/.more-->
+	</div><!--/#ranking-->
+
+{%include file="dynamite/common/menu.phtml"%}
+{%include file="dynamite/common/footer.phtml" footAd=1 %}

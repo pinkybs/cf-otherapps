@@ -1,0 +1,60 @@
+{%include file="disney/common/header.phtml"%}
+
+	<div style="font-size:x-small; background-color:#d4f1f9; text-align:center; color:#4b1b94;">
+	
+	{% if $step == 'start' %}
+	
+		{% disneyimg name="sub_ti_targetset3" %}
+		<br /><br />
+		あなたのﾏｲﾀｳﾝ<span style="color:#ff0000;">{%$disneyUser.current_name%}</span>から<br />
+		<form method="post" action='{% "$baseUrl/mobile/disney/firsttarget?CF_step=confirm"|mixiurl %}'>
+			<select name="CF_pid" style="font-size: 10px;">
+			{% html_options options=$placeList %}
+			</select>
+			 <br />
+			をｺﾞｰﾙに設定するよ。<br />
+			<br />
+			<input type="submit" name="btnConfirm" value="設定" /><br />
+			<br />
+		</form>
+		<div style="text-align:left;">
+			日々の移動距離{% emoji code="F8D5"%}を｢ﾁｪｯｸする!｣とご当地ｷｬﾗｸﾀｰをGETできるよ{% emoji code="F8F5"%}<br />
+			ﾀｰｹﾞｯﾄにしたいご当地ｷｬﾗｸﾀｰの都道府県を設定してね<br /><br />
+		</div><!--/left-->
+		
+	{% elseif $step == 'confirm' %}
+	
+		{% disneyimg name="sub_ti_targetset3" %}
+		<br /><br />
+		ﾀｰｹﾞｯﾄを{%$placeInfo.mixi_name%}の<br />
+		{%$placeInfo.name%}ｽﾃｨｯﾁに設定するよ{% emoji code="F8F6"%}<br />
+		<br />            
+			<div style="text-align:center;">
+			{% disneyimg style='height="4"' name="dot0" %}<br />
+			<a href='{% "$baseUrl/mobile/disney/firsttarget?CF_step=complete&CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg style='align="top"' name="yes" %}</a><br />
+				{% disneyimg style='height="4"' name="dot0" %}<br />
+			<a href='{% "$baseUrl/mobile/disney/firsttarget"|mixiurl %}'>{% disneyimg style='align="top"' name="no" %}</a><br />
+				{% disneyimg style='height="4"' name="dot0" %}<br />
+			<br />
+			</div>
+			
+	{% else %}
+
+		{% disneyimg name="sub_ti_targetset1" %}<br />
+		<br />
+		{%$placeInfo.name%}まであと<br />
+		{% foreach from=$arrayDistance item=data %}
+		{% disneyimg name="km_$data" %}
+		{% /foreach %}
+		{% disneyimg name="km" %}<br />
+		<span style="text-align:left;">
+			ﾀｰｹﾞｯﾄまでの距離を目指して{% emoji code="F8BA"%}、日々の移動距離をｺﾂｺﾂ稼ごう!移動したらｺﾏﾒに"ﾁｪｯｸ!"してね{% emoji code="F8E9"%}<br />
+		</span>
+		<a href='{% "$baseUrl/mobile/disney/index"|mixiurl %}'>{% disneyimg name="start_btn" %}</a><br />
+		<br />
+		
+ 	{% /if %}
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1484 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+main CSS
+
+Created Date : 2009/07/07
+Author: Taiki Toyosawa
+Last Up Date : 2009/07/07
+Author: Taiki Toyosawa
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+* {
+	outline: none;
+}
+body,html {
+	height: 100%;
+}
+body {
+	_background: url(null) fixed;/*IE6*/
+	font-family: 'Hiragino Kaku Gothic Pro';/*Safari*/
+	/font-family: 'メイリオ';/*IE6,IE7*/
+	color: #333333;
+	line-height: 1.3;
+}
+a:link {
+	color: #258fb8;
+	text-decoration: underline;
+}
+a:link,a:visited {
+	color: #258fb8;
+}
+a:hover {
+	text-decoration: none;
+}
+/*							under constlaction
+a:hover img,
+input[type="image"]:hover {
+	filter: alpha(opacity=80);/*IE*/
+	-moz-opacity:0.80;/*Firefox*/
+	opacity:0.80;/*CSS3*/
+}*/
+textarea {
+	margin: 0;
+	padding: 3px;
+}
+pre {
+	margin: 0;
+	padding: 0;
+}
+hr {
+	display: none;
+}
+/*common
+----------------------------------------------*/
+p.pic a img {
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+dl.statusList {
+	display:  block;
+	margin: 0 auto 10px auto;
+	width: 230px;
+}
+	dl.statusList dt {
+		display:  block;
+		padding: 5px 10px 3px 10px;
+		width: 210px;
+		color: #ffffff;
+		font-size: 15px;
+		font-weight: bold;
+		background-color: #909090;
+	}
+	dl.statusList dd {
+		display:  block;
+		padding: 5px 10px 3px 10px;
+		margin: 0 0 3px 0;
+		width: 210px;
+		color: #565656;
+		font-size: 15px;
+		font-weight: bold;
+		text-align: right;
+		background-color: #ffffff;
+	}
+p.moreLink {
+	text-align: right;
+}
+	p.moreLink a {
+		padding-left: 14px;
+		background: url(../img/icn/anchor.png) no-repeat left center;
+	}
+
+
+
+/*#hdr
+----------------------------------------------*/
+#hdr {
+	position: relative;
+	margin-bottom: 5px;
+	width: 944px;
+	height: 140px;
+	background-color: #81511c;
+}
+	#hdr ul#hdrLink {
+	}
+		#hdr ul#hdrLink li {
+			display: block;
+			position: absolute;
+			top: 3px;
+		}
+		#hdr ul#hdrLink li#hdrLinkHelp {
+			right: 106px;
+		}
+		#hdr ul#hdrLink li#hdrLinkInvite {
+			right: 3px;
+		}	
+			#hdr ul#hdrLink li a {
+				overflow: hidden;
+				display: block;
+				width: 100px;
+				height: 20px;
+				text-indent: -10000px;
+				background: url(../img/hdr/btn_hdrLink.png);
+			}
+			#hdr ul#hdrLink li#hdrLinkHelp a {
+				background-position: left top;
+			}
+			#hdr ul#hdrLink li#hdrLinkHelp a:hover,
+			#hdr ul#hdrLink li#hdrLinkHelp.acrive a {
+				background-position: left -20px;
+			}
+			#hdr ul#hdrLink li#hdrLinkInvite a {
+				background-position: right top;
+			}
+			#hdr ul#hdrLink li#hdrLinkInvite a:hover,
+			#hdr ul#hdrLink li#hdrLinkInvite.active a {
+				background-position: right -20px;
+			}
+	#hdr ul#gNav {
+		position: absolute;
+		top: 100px;
+		left: 0;
+		padding: 3px 0 3px 3px;
+		width: 660px;
+		background: #81511c url(../img/hdr/bg_gNav.png) no-repeat 0 0;
+	}
+		#hdr ul#gNav li {
+			display: inline;
+			float: left;
+			margin: 0 3px 0 0;
+			width: 162px;
+			text-indent: -9999px;
+		}
+			#hdr ul#gNav li a {
+				display: block;
+				height: 34px;
+				background: url(../img/hdr/btn_gNav.png) no-repeat;
+			}
+			#hdr ul#gNav li#gNavHome a {
+				background-position: 0 0;
+			}
+			#hdr ul#gNav li#gNavHome a:hover {
+				background-position: 0 bottom;
+			}
+			#hdr ul#gNav li#gNavHome.active a {
+				background-position: 0 -34px;
+			}
+			#hdr ul#gNav li#gNavStore a {
+				background-position: -162px 0;
+			}
+			#hdr ul#gNav li#gNavStore a:hover {
+				background-position: -162px bottom;
+			}
+			#hdr ul#gNav li#gNavStore.active a {
+				background-position: -162px -34px;
+			}
+			#hdr ul#gNav li#gNavMyCart a {
+				background-position: -324px 0;
+			}
+			#hdr ul#gNav li#gNavMyCart a:hover {
+				background-position: -324px bottom;
+			}
+			#hdr ul#gNav li#gNavMyCart.active a {
+				background-position: -324px -34px;
+			}
+			#hdr ul#gNav li#gNavWish a {
+				background-position: -486px 0;
+			}
+			#hdr ul#gNav li#gNavWish a:hover {
+				background-position: -486px bottom;
+			}
+			#hdr ul#gNav li#gNavWish.active a {
+				background-position: -486px -34px;
+			}
+	#hdr #counterBox {
+		position: absolute;
+		top: 103px;
+		right: 0;
+		background: transparent url(../img/hdr/bg_counter.png) repeat-y right top;
+	}	
+
+/*column
+----------------------------------------------*/
+#continer {
+	width: 944px;
+}
+/*689*//*5*//*250*/
+/*#81511c*//*#fde5cb*//*#258fb8*/
+#mainColumn,
+#subColumn {
+	display: inline;
+	overflow: hidden;
+}
+	#mainColumn .box,
+	#subColumn .box {
+		position: relative;
+		margin-bottom: 5px;
+		border: 3px solid #81511c;
+		overflow: hidden;
+	}
+		#mainColumn .box .hdr,
+		#subColumn .box .hdr {
+			position: relative;
+			margin-bottom: 10px;
+			height: 33px;
+			background-color: #81511c;
+		}
+			#mainColumn .box .hdr h2,
+			#subColumn .box .hdr h2 {
+				position: absolute;
+				top: 5px;
+				left: 5px;
+			}
+#mainColumn {
+	float: left;
+	width: 689px;
+}
+#subColumn {
+	float: right;
+	width: 250px;
+}
+
+
+/*-------------------------------------------------
+▼mainColumn common module
+---------------------------------------------------*/
+/*resultNav*/
+#mainColumn ul.resultNav {
+	margin: 0 10px 10px 10px;
+	font-size: 14px;
+	font-family: "Arial Black";
+}
+	#mainColumn ul.resultNav li {
+		display: inline;
+		float: left;
+		margin: 0 3px 0 0;
+	}
+	#mainColumn ul.resultNav li.stay {
+		display: inline;
+		float: left;
+		padding: 3px 8px;
+		margin: 0 3px 0 0;
+		color: #909090;
+		background-color: #eee;
+		border: 1px solid #bbb;
+	}
+		#mainColumn ul.resultNav li a {
+			display: block;
+			padding: 3px 8px;
+			color: #258fb8;
+			text-decoration: none;
+			background-color: #fff;
+			border: 1px solid #258fb8;
+		}
+		/*winIE6*/
+		* html #mainColumn ul.resultNav li a {
+			display: inline;
+		}
+
+		#mainColumn ul.resultNav li a:hover {
+			color: #fff;
+			background-color: #258fb8;
+			border: 1px solid #258fb8;
+		}
+
+
+
+
+/*-------------------------------------------------
+▼body#home
+---------------------------------------------------*/
+/*#mainColumn #playBox
+----------------------------------------------*/
+#mainColumn #playBox {
+	
+}
+	#mainColumn #playBox p {
+		margin: 0 10px 10px 10px;
+		font-size: 13px;
+		line-height: 1.3;
+	}
+	#mainColumn #playBox p.des1 {
+		margin: 0 10px 15px 10px;
+	}	
+	#mainColumn #playBox ul {
+		position: relative;
+		margin: 0 auto 10px auto;
+		width: 661px;
+	}
+		#mainColumn #playBox ul li {
+			display: inline;
+			float: left;
+			margin: 0 3px 0 0;
+			background-image: url(../img/content/ban_play_over.png);
+		}
+		#mainColumn #playBox ul li.game5 {
+			background-position: 0 0;
+		}
+		#mainColumn #playBox ul li.game10 {
+			background-position: -163px 0;
+		}
+		#mainColumn #playBox ul li.game50 {
+			background-position: -326px 0;
+		}
+		#mainColumn #playBox ul li.game100 {
+			position: absolute;
+			top: 0;
+			right: 0;
+			float: none;
+			margin: 0 0 0 0;
+			background-position: -489px 0;
+		}
+			#mainColumn #playBox ul li a:hover {
+				overflow: hidden;
+				height: 0px !important;
+				height /**/:131px;
+				padding: 131px 0 0 0;
+			}
+		/*start*/
+		#mainColumn #playBox .pic {
+			margin: 0 0 10px 0;
+			text-align: center;
+		}
+		#mainColumn #playBox .btnSection {
+			margin: 0 0 10px 10px;
+		}
+		
+		#mainColumn {
+		}
+			#mainColumn #flashSection {
+				margin: 0 0 10px 10px;
+				width: 663px;
+			}
+
+
+
+
+/*#mainColumn #rankBox
+----------------------------------------------*/
+#mainColumn .rankBox {
+	padding-bottom: 10px;
+}
+	#mainColumn .rankBox .hdr {
+		margin-bottom: 0;
+	}
+	#mainColumn .rankBox ul.tabNav {
+		
+	}
+		#mainColumn .rankBox ul.tabNav li {
+			position: absolute;
+			top: 0;
+		}
+		#mainColumn .rankBox ul.tabNav li#tabMyMixi {
+			right: 123px;
+		}
+		#mainColumn .rankBox ul.tabNav li#tabAllMixi {
+			right: 0;
+		}
+			#mainColumn .rankBox ul.tabNav li a {
+				display: block;
+				width: 120px;
+				height: 30px;
+				text-indent: -10000px;
+				background-image: url(../img/content/btn_tab_mixi.png);
+			}
+			#mainColumn .rankBox ul.tabNav li#tabMyMixi a {
+				background-position: left 0;
+			}
+			#mainColumn .rankBox ul.tabNav li#tabMyMixi a:hover,
+			#mainColumn .rankBox ul.tabNav li#tabMyMixi.active a {
+				background-position: left -30px;
+			}
+			#mainColumn .rankBox ul.tabNav li#tabAllMixi a {
+				background-position: right 0;
+			}
+			#mainColumn .rankBox ul.tabNav li#tabAllMixi a:hover,
+			#mainColumn .rankBox ul.tabNav li#tabAllMixi.active a {
+				background-position: right -30px;
+			}
+	/*▼rankFrame*/
+	#mainColumn .rankBox .rankWrap {
+		padding: 0 0 0 15px;
+	}
+	/*left common*/
+	#mainColumn .rankBox .leftFrame {
+		position: relative;
+		display: inline;
+		float: left;
+		width: 490px;
+		height: 143px;
+	}
+		/*btn*/
+		#mainColumn .rankBox .leftFrame ul.frameNav {
+			position: relative;
+			margin: 0;
+		}
+			#mainColumn .rankBox .leftFrame ul.frameNav li {
+				position: absolute;
+				width: 40px;
+				height: 96px;
+				padding-top: 47px;
+			}
+			#mainColumn .rankBox .leftFrame ul.frameNav li.frameNavLeft {
+				top: 0;
+				left: 0;
+			}
+			#mainColumn .rankBox .leftFrame ul.frameNav li.frameNavRight {
+				top: 0;
+				right: 0;
+			}
+				#mainColumn .rankBox .leftFrame ul.frameNav a.next {
+					display: block;
+				}
+					#mainColumn .rankBox .leftFrame ul.frameNav a img {
+						display: block;
+						margin-bottom: 2px;
+					}
+
+		/*List*/
+		#mainColumn .rankBox .leftFrame div.rankFrame {
+			position: relative;
+			margin: 0 45px 0 45px;
+			width: 400px;
+			height: 143px;
+			overflow: hidden;
+		}
+			#mainColumn .rankBox .leftFrame div.rankFrame .innerFrame {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 10000px;
+			}
+			#mainColumn .rankBox .leftFrame div.rankFrame ul {
+				display: inline;
+				float: left;
+				margin-right: 5px;
+				margin-left: -5px;
+				width: 405px;
+			}
+				#mainColumn .rankBox .leftFrame div.rankFrame ul li,
+				#mainColumn .rankBox .rightFrame div.rankFrame ul li {
+					position: relative;
+					display: inline;
+					float: left;
+					margin-left: 5px;
+					width: 76px;
+					height: 143px;
+				}
+					#mainColumn .rankBox .leftFrame div.rankFrame ul li span.rank,
+					#mainColumn .rankBox .rightFrame div.rankFrame ul li span.rank {
+						position: absolute;
+						top: 6px;
+						display: block;
+						width: 76px;
+						font-size: 17px;
+						font-family: "Arial Black",Impact,Charcoal;
+						text-align: center;
+					}
+					#mainColumn .rankBox .leftFrame div.rankFrame ul li span.name,
+					#mainColumn .rankBox .rightFrame div.rankFrame ul li span.name {
+						overflow: hidden;
+						position: absolute;
+						top: 30px;
+						display: block;
+						width: 76px;
+						height: 14px;
+						font-size: 11px;
+						text-align: center;
+					}
+					#mainColumn .rankBox .leftFrame div.rankFrame ul li a,
+					#mainColumn .rankBox .rightFrame div.rankFrame ul li a {
+						position: absolute;
+						top: 47px;
+						display: block;
+						width: 76px;
+						height: 76px;
+					}
+						#mainColumn .rankBox .leftFrame div.rankFrame ul li a img,
+						#mainColumn .rankBox .rightFrame div.rankFrame ul li a img {
+							background-image: url(../img/content/wak_pic.png);
+							background-repeat: no-repeat;
+							background-position: 0 0;
+						}
+						#mainColumn .rankBox .leftFrame div.rankFrame ul li a:hover img,
+						#mainColumn .rankBox .rightFrame div.rankFrame ul li a:hover img {
+							background-image: url(../img/content/wak_pic_over.png);
+						}
+
+					#mainColumn .rankBox .leftFrame div.rankFrame ul li span.money,
+					#mainColumn .rankBox .rightFrame div.rankFrame ul li span.money {
+						position: absolute;
+						top: 123px;
+						display: block;
+						padding-top: 3px;
+						width: 76px;
+						height: 17px;
+						color: #ffffff;
+						font-size: 12px;
+						text-align: center;
+						background-color: #222222;
+					}
+	/*right*/
+	#mainColumn .rankBox .rightFrame {
+		position: relative;
+		display: inline;
+		float: left;
+		margin: 0 0 0 6px;
+		width: 157px;
+		height: 143px;
+	}
+		#mainColumn .rankBox .rightFrame div.rankFrame {
+			position: relative;
+			margin: 0;
+			width: 157px;
+			height: 143px;
+			overflow: hidden;
+		}
+			#mainColumn .rankBox .rightFrame div.rankFrame ul {
+				display: inline;
+				float: left;
+				margin-right: 5px;
+				margin-left: -5px;
+				width: 162px;
+			}
+
+
+
+/*-------------------------------------------------
+▼body#wish
+---------------------------------------------------*/
+/*#mainColumn #wishBoxFriend
+----------------------------------------------*/
+#mainColumn #wishBoxFriend {
+	padding-bottom: 10px;
+}
+/*winIE6,7*/
+* + html #mainColumn #wishBoxFriend {
+	padding-bottom: 0px;
+}
+	/*▼FriendFrame*/
+	#mainColumn #wishBoxFriend #friendFrameWrap {
+		position: relative;
+		display: inline;
+		float: left;
+		margin-left: 15px;
+		width: 653px;
+		height: 76px;
+	}
+		/*btn*/
+		#mainColumn #wishBoxFriend #friendFrameWrap ul.frameNav {
+			position: relative;
+			margin: 0;
+		}
+			#mainColumn #wishBoxFriend #friendFrameWrap ul.frameNav li {
+				position: absolute;
+				width: 40px;
+				height: 76px;
+			}
+			#mainColumn #wishBoxFriend #friendFrameWrap ul.frameNav li.frameNavLeft {
+				top: 0;
+				left: 0;
+			}
+			#mainColumn #wishBoxFriend #friendFrameWrap ul.frameNav li.frameNavRight {
+				top: 0;
+				right: 0;
+			}
+				#mainColumn #wishBoxFriend #friendFrameWrap ul.frameNav a.next {
+					display: block;
+				}
+					#mainColumn #wishBoxFriend #friendFrameWrap ul.frameNav a img {
+						display: block;
+					}
+
+		/*List*/
+		#mainColumn #wishBoxFriend #friendFrameWrap div.friendFrame {
+			position: relative;
+			margin: 0 45px 0 45px;
+			width: 563px;
+			height: 76px;
+			overflow: hidden;
+		}
+			#mainColumn #wishBoxFriend #friendFrameWrap div.friendFrame .innerFrame {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 10000px;
+			}
+			#mainColumn #wishBoxFriend #friendFrameWrap div.friendFrame ul {
+				display: inline;
+				float: left;
+				margin-right: 5px;
+				margin-left: -5px;
+				width: 568px;
+			}
+				#mainColumn #wishBoxFriend #friendFrameWrap div.friendFrame ul li {
+					position: relative;
+					display: inline;
+					float: left;
+					margin-left: 5px;
+					width: 76px;
+					height: 76px;
+				}
+					#mainColumn #wishBoxFriend #friendFrameWrap div.friendFrame ul li a {
+						position: absolute;
+						top: 0;
+						display: block;
+						width: 76px;
+						height: 76px;
+					}
+						#mainColumn #wishBoxFriend #friendFrameWrap div.friendFrame ul li a img {
+							background-image: url(../img/content/wak_pic.png);
+							background-repeat: no-repeat;
+							background-position: 0 0;
+						}
+						#mainColumn #wishBoxFriend #friendFrameWrap div.friendFrame ul li a:hover img {
+							background-image: url(../img/content/wak_pic_over.png);
+						}
+
+
+
+/*#mainColumn #wishBox
+----------------------------------------------*/
+#mainColumn #wishBox {
+
+}
+	#mainColumn #wishBox .resultSummary {
+		margin: 0 10px 10px 10px;
+		font-size: 14px;
+	}
+		#mainColumn #wishBox .resultSummary em {
+			font-weight: bold;
+			font-style: normal;
+		}
+	#mainColumn #wishBox .itemList {
+		padding-bottom: 5px;
+		margin: 0 10px 0 10px;
+	}
+		#mainColumn #wishBox .itemList .section {
+			padding: 10px;
+			margin: 0 0 5px 0;
+			background-color: #fde5cb;
+			border-radius: 2px;/*CSS3*/
+			-webkit-border-radius: 2px;/*Safari*/
+			-moz-border-radius: 2px;/*Firefox*/
+		}
+		
+			/*item*/
+			#mainColumn #wishBox .itemList div dl.itemBlock {
+				margin-bottom: 5px;
+			}
+			#mainColumn #wishBox .itemList div.itemView dl.itemBlock {
+				margin-bottom: 0;
+			}
+				#mainColumn #wishBox .itemList div dl.itemBlock dt.pic {
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+				}
+					#mainColumn #wishBox .itemList div dl.itemBlock dt.pic a {
+						display: block;
+					}
+						#mainColumn #wishBox .itemList div dl.itemBlock dt.pic a img {
+							display: block;
+							background-image: url(../img/content/wak_pic.png);
+							background-repeat: no-repeat;
+							background-position: 0 0;
+						}
+						#mainColumn #wishBox .itemList div dl.itemBlock dt.pic a:hover img {
+							background-image: url(../img/content/wak_pic_over.png);
+						}
+				#mainColumn #wishBox .itemList div dl.itemBlock dd {
+					margin-left: 86px;
+					font-size: 13px;
+				}
+				#mainColumn #wishBox .itemList div dl.itemBlock dd.name {
+					font-weight: bold;
+				}
+				#mainColumn #wishBox .itemList div dl.itemBlock dd.buy {
+					display: block;
+					text-align: right;
+				}
+
+			/*btn*/	
+			#mainColumn #wishBox .itemList div ul.btnBlock {
+				padding: 5px 0 5px 5px;
+				_padding: 5px 0 5px 6px;
+				background-color: #fff;
+				border-radius: 2px;/*CSS3*/
+				-webkit-border-radius: 2px;/*Safari*/
+				-moz-border-radius: 2px;/*Firefox*/
+			}
+				#mainColumn #wishBox .itemList div ul.btnBlock li {
+					display: inline;
+					float: left;
+					margin-right: 5px;
+				}
+					#mainColumn #wishBox .itemList div ul.btnBlock li a {
+						overflow: hidden;
+						display: block;
+						padding: 0 2px 0 0;
+						width: 312px;
+						_width: 310px;
+						height: 30px;
+						color: #fff;
+						font-weight: bold;
+						text-decoration: none;
+						background-image: url(../img/content/bg_btn.png);
+					}
+					#mainColumn #wishBox .itemList div ul.btnBlock li.remove a {
+						background-position: right -60px;
+					}
+					#mainColumn #wishBox .itemList div ul.btnBlock li.remove a:hover {
+						background-position: right -90px;
+					}
+					#mainColumn #wishBox .itemList div ul.btnBlock li.rakuten a {
+						background-position: right 0;
+					}
+					#mainColumn #wishBox .itemList div ul.btnBlock li.rakuten a:hover {
+						background-position: right -30px;
+					}
+						#mainColumn #wishBox .itemList div ul.btnBlock li a span {
+							display: block;
+							padding: 8px 0;
+							width: 312px;
+							_width: 310px;
+							text-align: center;
+							font-size: 12px;
+							background-image: url(../img/content/bg_btn.png);
+							cursor: pointer;
+						}
+						#mainColumn #wishBox .itemList div ul.btnBlock li.remove a span {
+							background-position: left -60px;
+						}
+						#mainColumn #wishBox .itemList div ul.btnBlock li.remove a:hover span {
+							background-position: left -90px;
+						}
+						#mainColumn #wishBox .itemList div ul.btnBlock li.rakuten a span {
+							background-position: left 0;
+						}
+						#mainColumn #wishBox .itemList div ul.btnBlock li.rakuten a:hover span {
+							background-position: left -30px;
+						}
+	/*massage*/
+	#mainColumn #wishBox .message {
+		margin: 0 10px 10px 10px;
+		font-size: 14px;
+	}
+	/*btn*/
+	#mainColumn #wishBox ul.btnSection {
+		margin: 0 0 10px 10px;
+	}
+		#mainColumn #wishBox ul.btnSection li {
+			display: inline;
+			float: left;
+			margin-right: 5px;
+		}
+			#mainColumn #wishBox ul.btnSection li a {
+				overflow: hidden;
+				display: block;
+				padding: 0;
+				width: 329px;
+				height: 34px;
+			}
+			#mainColumn #wishBox ul.btnSection li.back a {
+				width: 663px;
+			}
+
+
+
+
+
+
+/*-------------------------------------------------
+▼body#store
+---------------------------------------------------*/
+
+/*#mainColumn #adjustBox
+----------------------------------------------*/
+
+#mainColumn #adjustBox {
+
+}
+	#mainColumn #adjustBox p {
+		font-size: 13px;
+		line-height: 1.3;
+	}
+	#mainColumn #adjustBox p.des1 {
+		margin: 0 10px 15px 10px;
+	}
+	#mainColumn #adjustBox p.des2 {
+		margin: 0 10px 10px 10px;
+		color: #d00367;
+		font-size: 12px;
+		font-weight: bold;
+	}
+	#mainColumn #adjustBox .btnSection {
+		margin: 0 0 10px 10px;
+	}
+
+
+
+/*#mainColumn #categoryListBox
+----------------------------------------------*/
+
+#mainColumn #categoryListBox {
+	font-size: 13px;
+}
+	#mainColumn #categoryListBox .list {
+		margin: 0 10px 5px 10px;
+		line-height: 1.7;
+	}
+		#mainColumn #categoryListBox .list a {
+			padding: 0 5px 0 10px;
+			background: url(../img/icn/anchor2.png) no-repeat 0 center;
+		}	
+
+	#mainColumn #categoryListBox p.moreLink {
+		margin: 0 10px 15px 10px;
+	}
+
+
+
+/*#mainColumn #storeBox
+----------------------------------------------*/
+#mainColumn #storeBox {
+
+}
+	#mainColumn #storeBox .resultSummary {
+		margin: 0 10px 10px 10px;
+		font-size: 14px;
+	}
+		#mainColumn #storeBox .resultSummary em {
+			font-weight: bold;
+			font-style: normal;
+		}
+	#mainColumn #storeBox .itemList {
+		padding-bottom: 5px;
+		margin: 0 10px 0 10px;
+	}
+		#mainColumn #storeBox .itemList .section {
+			padding: 10px;
+			margin: 0 0 5px 0;
+			background-color: #fde5cb;
+			border-radius: 2px;/*CSS3*/
+			-webkit-border-radius: 2px;/*Safari*/
+			-moz-border-radius: 2px;/*Firefox*/
+		}
+		
+			/*item*/
+			#mainColumn #storeBox .itemList div dl.itemBlock {
+				margin-bottom: 5px;
+			}
+			#mainColumn #storeBox .itemList div.itemView dl.itemBlock {
+				margin-bottom: 0;
+			}
+				#mainColumn #storeBox .itemList div dl.itemBlock dt.pic {
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+				}
+					#mainColumn #storeBox .itemList div dl.itemBlock dt.pic a {
+						display: block;
+					}
+						#mainColumn #storeBox .itemList div dl.itemBlock dt.pic a img {
+							display: block;
+							background-image: url(../img/content/wak_pic.png);
+							background-repeat: no-repeat;
+							background-position: 0 0;
+						}
+						#mainColumn #storeBox .itemList div dl.itemBlock dt.pic a:hover img {
+							background-image: url(../img/content/wak_pic_over.png);
+						}
+				#mainColumn #storeBox .itemList div dl.itemBlock dd {
+					margin-left: 86px;
+					font-size: 13px;
+				}
+				#mainColumn #storeBox .itemList div dl.itemBlock dd.name {
+					font-weight: bold;
+				}
+				#mainColumn #storeBox .itemList div dl.itemBlock dd.buy {
+					display: block;
+					text-align: right;
+				}
+
+			/*btn*/	
+			#mainColumn #storeBox .itemList div ul.btnBlock {
+				padding: 5px 0 5px 5px;
+				_padding: 5px 0 5px 6px;
+				background-color: #fff;
+				border-radius: 2px;/*CSS3*/
+				-webkit-border-radius: 2px;/*Safari*/
+				-moz-border-radius: 2px;/*Firefox*/
+			}
+				#mainColumn #storeBox .itemList div ul.btnBlock li {
+					display: inline;
+					float: left;
+					margin-right: 5px;
+				}
+					#mainColumn #storeBox .itemList div ul.btnBlock li a {
+						overflow: hidden;
+						display: block;
+						padding: 0 2px 0 0;
+						width: 312px;
+						_width: 310px;
+						height: 30px;
+						color: #fff;
+						font-weight: bold;
+						text-decoration: none;
+						background-image: url(../img/content/bg_btn.png);
+					}
+					#mainColumn #storeBox .itemList div ul.btnBlock li.remove a {
+						background-position: right -60px;
+					}
+					#mainColumn #storeBox .itemList div ul.btnBlock li.remove a:hover {
+						background-position: right -90px;
+					}
+					#mainColumn #storeBox .itemList div ul.btnBlock li.rakuten a {
+						background-position: right 0;
+					}
+					#mainColumn #storeBox .itemList div ul.btnBlock li.rakuten a:hover {
+						background-position: right -30px;
+					}
+						#mainColumn #storeBox .itemList div ul.btnBlock li a span {
+							display: block;
+							padding: 8px 0;
+							width: 312px;
+							_width: 310px;
+							text-align: center;
+							font-size: 12px;
+							background-image: url(../img/content/bg_btn.png);
+							cursor: pointer;
+						}
+						#mainColumn #storeBox .itemList div ul.btnBlock li.remove a span {
+							background-position: left -60px;
+						}
+						#mainColumn #storeBox .itemList div ul.btnBlock li.remove a:hover span {
+							background-position: left -90px;
+						}
+						#mainColumn #storeBox .itemList div ul.btnBlock li.rakuten a span {
+							background-position: left 0;
+						}
+						#mainColumn #storeBox .itemList div ul.btnBlock li.rakuten a:hover span {
+							background-position: left -30px;
+						}
+	/*massage*/
+	#mainColumn #storeBox .message {
+		margin: 0 10px 10px 10px;
+		font-size: 14px;
+	}
+
+
+
+
+
+
+/*-------------------------------------------------
+▼body#myCart
+---------------------------------------------------*/
+/*#mainColumn #myCartBox
+----------------------------------------------*/
+#mainColumn #myCartBox {
+
+}
+	#mainColumn #myCartBox .resultSummary {
+		margin: 0 10px 10px 10px;
+		font-size: 14px;
+	}
+		#mainColumn #myCartBox .resultSummary em {
+			font-weight: bold;
+			font-style: normal;
+		}
+	#mainColumn #myCartBox .itemList {
+		padding-bottom: 5px;
+		margin: 0 10px 0 10px;
+	}
+		#mainColumn #myCartBox .itemList .section {
+			padding: 10px;
+			margin: 0 0 5px 0;
+			background-color: #fde5cb;
+			border-radius: 2px;/*CSS3*/
+			-webkit-border-radius: 2px;/*Safari*/
+			-moz-border-radius: 2px;/*Firefox*/
+		}
+		
+			/*item*/
+			#mainColumn #myCartBox .itemList div dl.itemBlock {
+				margin-bottom: 5px;
+			}
+			#mainColumn #myCartBox .itemList div.itemView dl.itemBlock {
+				margin-bottom: 0;
+			}
+				#mainColumn #myCartBox .itemList div dl.itemBlock dt.pic {
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+				}
+					#mainColumn #myCartBox .itemList div dl.itemBlock dt.pic a {
+						display: block;
+					}
+						#mainColumn #myCartBox .itemList div dl.itemBlock dt.pic a img {
+							display: block;
+							background-image: url(../img/content/wak_pic.png);
+							background-repeat: no-repeat;
+							background-position: 0 0;
+						}
+						#mainColumn #myCartBox .itemList div dl.itemBlock dt.pic a:hover img {
+							background-image: url(../img/content/wak_pic_over.png);
+						}
+				#mainColumn #myCartBox .itemList div dl.itemBlock dd {
+					margin-left: 86px;
+					font-size: 13px;
+				}
+				#mainColumn #myCartBox .itemList div dl.itemBlock dd.name {
+					font-weight: bold;
+				}
+				#mainColumn #myCartBox .itemList div dl.itemBlock dd.price {
+					font-size: 14px;
+					line-height: 1.5;
+				}
+				#mainColumn #myCartBox .itemList div dl.itemBlock dd.buy {
+					display: block;
+					text-align: right;
+				}
+
+			/*btn*/	
+			#mainColumn #myCartBox .itemList div ul.btnBlock {
+				padding: 5px 0 5px 6px;
+				_padding: 5px 0 5px 7px;
+				background-color: #fff;
+				border-radius: 2px;/*CSS3*/
+				-webkit-border-radius: 2px;/*Safari*/
+				-moz-border-radius: 2px;/*Firefox*/
+			}
+				#mainColumn #myCartBox .itemList div ul.btnBlock li {
+					display: inline;
+					float: left;
+					margin-right: 5px;
+				}
+					#mainColumn #myCartBox .itemList div ul.btnBlock li a {
+						overflow: hidden;
+						display: block;
+						padding: 0 2px 0 0;
+						width: 205px;
+						_width: 204px;
+						height: 30px;
+						color: #fff;
+						font-weight: bold;
+						text-decoration: none;
+						background-image: url(../img/content/bg_btn.png);
+					}
+					#mainColumn #myCartBox .itemList div ul.btnBlock li.remove a,
+					#mainColumn #myCartBox .itemList div ul.btnBlock li.change a {
+						background-position: right -60px;
+					}
+					#mainColumn #myCartBox .itemList div ul.btnBlock li.remove a:hover,
+					#mainColumn #myCartBox .itemList div ul.btnBlock li.change a:hover {
+						background-position: right -90px;
+					}
+					#mainColumn #myCartBox .itemList div ul.btnBlock li.rakuten a {
+						background-position: right 0;
+					}
+					#mainColumn #myCartBox .itemList div ul.btnBlock li.rakuten a:hover {
+						background-position: right -30px;
+					}
+						#mainColumn #myCartBox .itemList div ul.btnBlock li a span {
+							display: block;
+							padding: 8px 0;
+							width: 205px;
+							_width: 204px;
+							text-align: center;
+							font-size: 12px;
+							background-image: url(../img/content/bg_btn.png);
+							cursor: pointer;
+						}
+						#mainColumn #myCartBox .itemList div ul.btnBlock li.remove a span,
+						#mainColumn #myCartBox .itemList div ul.btnBlock li.change a span {
+							background-position: left -60px;
+						}
+						#mainColumn #myCartBox .itemList div ul.btnBlock li.remove a:hover span,
+						#mainColumn #myCartBox .itemList div ul.btnBlock li.change a:hover span {
+							background-position: left -90px;
+						}
+						#mainColumn #myCartBox .itemList div ul.btnBlock li.rakuten a span {
+							background-position: left 0;
+						}
+						#mainColumn #myCartBox .itemList div ul.btnBlock li.rakuten a:hover span {
+							background-position: left -30px;
+						}
+	/*massage*/
+	#mainColumn #myCartBox .message {
+		margin: 0 10px 10px 10px;
+		font-size: 14px;
+	}
+
+
+
+
+/*-------------------------------------------------
+▼body#rakuten
+---------------------------------------------------*/
+/*#mainColumn #wishBox
+----------------------------------------------*/
+#rakuten #mainColumn #wishBox {
+
+}
+	#rakuten #mainColumn #wishBox .des2 {
+		margin: 0 10px 10px 10px;
+		color: #d00367;
+		font-size: 12px;
+		font-weight: bold;
+	}
+
+/*-------------------------------------------------
+▼body#game
+---------------------------------------------------*/
+/*#mainColumn #wishBox
+----------------------------------------------*/
+#game #mainColumn #wishBox {
+
+}
+	#game #mainColumn #wishBox #flashSection {
+		margin: 0 0 10px 10px;
+		width: 663px;
+	}
+	
+/*-------------------------------------------------
+▼body#help
+---------------------------------------------------*/
+/*#mainColumn #helpBox
+----------------------------------------------*/
+#mainColumn #helpBox {
+	
+}
+	#mainColumn #helpBox .section {
+		padding: 0 15px;
+		margin: 0 0 15px 0;
+	}
+
+		#mainColumn #helpBox .section h3 {
+			margin: 0 0 3px 0;
+		}
+		#mainColumn #helpBox .section p {
+			font-size: 13px;
+			line-height: 1.3;
+		}
+
+/*-------------------------------------------------
+▼body#error
+---------------------------------------------------*/
+/*#mainColumn #errorBox
+----------------------------------------------*/
+#mainColumn #errorBox {
+	
+}
+	#mainColumn #errorBox .message {
+		padding: 20px 15px 30px 15px;
+		font-size: 14px;
+		line-height: 1.3;
+		text-align: center;
+
+	}
+	#mainColumn #errorBox .pic {
+		margin-bottom: 30px;
+		text-align: center;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------
+▼subColumn
+---------------------------------------------------*/
+
+/*#subColumn #adBox
+----------------------------------------------*/
+#subColumn #adBox {
+	border: none;
+}
+
+
+
+/*#subColumn #profBox
+----------------------------------------------*/
+#subColumn #profBox {
+	background-color: #fde5cb;
+}
+	#subColumn #profBox p.pic {
+		margin: 0 auto 4px auto;
+		width: 180px;
+	}
+	#subColumn #profBox h2.name {
+		margin: 0 auto 8px auto;
+		width: 180px;
+		font-size: 14px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 1.3;
+	}
+
+
+
+/*#subColumn #wishBox
+----------------------------------------------*/
+#subColumn #wishBox {
+	background-color: #fde5cb;
+}
+	#subColumn #wishBox p.pic {
+		margin: 0 auto 5px auto;
+		width: 128px;
+		height: 128px;
+	}
+		#subColumn #wishBox p.pic a {
+			display: block;
+			width: 128px;
+			height: 128px;
+			text-indent: -10000px;
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+	#subColumn #wishBox p.des {
+		margin: 0 10px 5px 10px;
+		font-size: 14px;
+	}
+	#subColumn #wishBox #btnRakuten {
+		margin: 0 0 8px 0;
+		text-indent: -10000px;
+		text-align: center;
+	}
+		#subColumn #wishBox #btnRakuten a {
+			display: block;
+			margin: 0 auto;
+			width: 229px;
+			height: 40px;
+			background: url(../img/content/btn_rakuten.png) no-repeat left top;
+		}
+	#subColumn #wishBox p.moreLink {
+		margin: 0 10px 8px 10px;
+		font-size: 13px;
+	}
+
+/*#subColumn #trialCalBox
+----------------------------------------------*/
+#subColumn #trialCalBox {
+	padding-bottom: 10px;
+	background-color: #fde5cb;
+}
+	#subColumn #trialCalBox p.pic {
+		margin: 0 auto 5px auto;
+		width: 163px;
+	}
+	#subColumn #trialCalBox h2.name {
+		margin: 0 auto 8px auto;
+		width: 180px;
+		font-size: 14px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 1.3;
+	}
+	#subColumn #trialCalBox p.moreLink {
+		margin: 0 10px 5px 10px;
+		font-size: 13px;
+	}
+
+
+
+
+
+
+
+
+
+
+/*#overlay
+----------------------------------------------*/
+body #overlay {
+	position: fixed;
+	_position: absolute;/*IE6*/
+	_top: expression(eval(document.documentElement.scrollTop+0));/*IE6*/
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url(../img/bg_overlay.png);
+	_background-image: url(../img/bg_overlay_ie6.png);
+}
+	/*body #overlay #layer {
+		position: fixed;
+		_position: absolute;
+		_top: expression(eval(document.documentElement.scrollTop+0));
+		width: 100%;
+		height: 100%;
+		background-color: #FFFFFF;
+		filter:alpha(opacity=50);
+		-moz-opacity:0.5;
+		opacity: 0.5;
+	}*/
+	body #overlay #overBox {
+		z-index: 1001;
+		padding: 0 0 13px 0;
+		/* margin: 130px auto; */
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -280px;
+		margin-top: -120px;
+		width: 568px;
+		background: url(../img/content/bg_box_overlay_bottom.png) no-repeat 0 bottom;
+	}
+
+		body #overlay #overBox .inner {
+			position: relative;
+			padding-top: 43px;
+			width: 568px;
+			background: url(../img/content/bg_box_overlay.png) no-repeat 0 top;
+		}
+			body #overlay #overBox .inner h2 {
+				position: absolute;
+				top: 13px;
+				left: 13px;
+			}
+			body #overlay #overBox .inner .section {
+				margin: 0 13px 10px 13px;
+				background-color: #ffffff;
+			}
+				body #overlay #overBox .inner .section .lead {
+					font-size: 13px;
+					padding: 10px;
+				}
+			/*item*/
+			body #overlay #overBox .inner .section dl.itemBlock {
+				padding: 5px;
+				margin: 0 5px 5px 5px;
+				background-color: #fde5cb;
+				border-radius: 2px;/*CSS3*/
+				-webkit-border-radius: 2px;/*Safari*/
+				-moz-border-radius: 2px;/*Firefox*/
+
+				
+			}
+				body #overlay #overBox .inner .section dl.itemBlock dt.pic {
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+				}
+					body #overlay #overBox .inner .section dl.itemBlock dt.pic a {
+						display: block;
+					}
+						body #overlay #overBox .inner .section dl.itemBlock dt.pic a img {
+							display: block;
+							background-image: url(../img/content/wak_pic.png);
+							background-repeat: no-repeat;
+							background-position: 0 0;
+						}
+						body #overlay #overBox .inner .section dl.itemBlock dt.pic a:hover img {
+							background-image: url(../img/content/wak_pic_over.png);
+						}
+				body #overlay #overBox .inner .section dl.itemBlock dd {
+					margin-left: 86px;
+					font-size: 13px;
+				}
+				body #overlay #overBox .inner .section dl.itemBlock dd.name {
+					margin-bottom: 5px;
+					font-weight: bold;
+				}
+				body #overlay #overBox .inner .section dl.itemBlock dd.price {
+					font-size: 14px;
+					line-height: 1.5;
+				}
+				body #overlay #overBox .inner .section dl.itemBlock dd.priceForm {
+					margin-bottom: 5px;
+					font-size: 14px;
+					line-height: 1.5;
+				}
+					body #overlay #overBox .inner .section dl.itemBlock dd.priceForm input {
+						width: 342px;
+						padding: 3px 8px 2px 8px;
+						vertical-align: middle;
+						font-size: 16px;
+						font-weight: bold;
+						font-family: "Arial","verdana","MS　ゴシック",san-serif;
+						border: 1px solid #fb0;
+					}
+				body #overlay #overBox .inner .section dl.itemBlock dd.buy {
+					display: block;
+					padding-right: 5px;
+					text-align: right;
+				}
+
+			/*btn*/
+			body #overlay #overBox .inner ul.btnSection {
+				margin: 0 0 0 18px;
+			}
+				body #overlay #overBox .inner ul.btnSection li {
+					display: inline;
+					float: left;
+					margin-right: 10px;
+				}
+					body #overlay #overBox .inner ul.btnSection li a {
+						overflow: hidden;
+						display: block;
+						padding: 0;
+						width: 261px;
+						height: 34px;
+					}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*address#copyright
+----------------------------------------------*/
+address#copyright {
+	clear: both;
+	margin-bottom: 20px;
+	padding-top: 20px;
+	font-size: 12px;
+}
+
+
+
+
+
+
+
+
+

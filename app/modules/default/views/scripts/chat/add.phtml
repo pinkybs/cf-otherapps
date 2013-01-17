@@ -1,0 +1,168 @@
+{%include file="chat/common/header.phtml"%}
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/jJson.js?{%$version.js%}"></script>
+<body id="static" class="invite">
+<div id="container">
+    {%include file="chat/common/nav.phtml"%}
+	<script type="text/javascript">
+		$j('#liInvite').addClass('stay');
+	</script>
+
+	<div id="mainColumn">
+
+		{% if $infoMsg %}
+		<ul style="" id="alertBox"><!--
+			--><li><a id="alertClose" href="javascript:void(0);"><img width="16" height="16" alt="閉じる" src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/alert/btn_close.png"/></a><span>{%$infoMsg|nl2br%}</span></li><!--
+		--></ul>
+		{% /if %}
+
+		{% if $feedCount>0 %}
+		<div id="newsBox" class="innerBox">
+			<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_news.png" width="77" height="24" alt="お知らせ" /></h1>
+			<div id="newslist" class="inner">
+			</div><!--/.inner-->
+			<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/feedlist.js?{%$version.js%}"></script>
+		</div><!--/.innerBox-->
+		{% /if %}
+
+		<div id="inviteBox" class="innerBox">
+
+				<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_invite.png" width="266" height="24" alt="友達をチャットに招待する" /></h1>
+				<div class="inner">
+
+				<form id="frmInvite" name="frmInvite" action="{%$baseUrl%}/chat/add" method="post" onsubmit="return false;">
+					<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_invite_form.png" width="128" height="20" alt="招待フォーム" /></h2>
+					<table class="rowTable">
+						<tr>
+							<th scope="row">チャット名</th>
+							<td><input type="text" id="txtName" name="txtName" class="inputText" maxlength="20"/></td>
+						</tr>
+						<tr>
+							<th scope="row">開催日時</th>
+							<td>
+								日程：<input type="text" id="datepicker" name="txtDate" class="inputDate" maxlength="10" />　時刻：
+								<select id="selHour" name="selHour">
+									<option value="1">01</option>
+									<option value="2">02</option>
+									<option value="3">03</option>
+									<option value="4">04</option>
+									<option value="5">05</option>
+									<option value="6">06</option>
+									<option value="7">07</option>
+									<option value="8">08</option>
+									<option value="9">09</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+									<option value="13">13</option>
+									<option value="14">14</option>
+									<option value="15">15</option>
+									<option value="16">16</option>
+									<option value="17">17</option>
+									<option value="18">18</option>
+									<option value="19">19</option>
+									<option value="20">20</option>
+									<option value="21">21</option>
+									<option value="22">22</option>
+									<option value="23">23</option>
+									<option value="24">24</option>
+								</select> 時
+								<select id="selMinute" name="selMinute">
+									<option value="0">00</option>
+									<option value="15">15</option>
+									<option value="30">30</option>
+									<option value="45">45</option>
+								</select> 分
+								<p class="note">※終了時間は、開催日時より1時間後となります（延長可能）</p>
+
+
+								<div style="display: none;" class="demo-description">
+
+								<p>The datepicker is tied to a standard form input field.  Focus on the input (click, or use the tab key) to open an interactive calendar in a small overlay.  Choose a date, click elsewhere on the page (blur the input), or hit the Esc key to close. If a date is chosen, feedback is shown as the input's value.</p>
+
+								</div><!-- End demo-description -->
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">メッセージ</th>
+							<td><textarea rows="5" id="txtMessage" name="txtMessage"></textarea></td>
+						</tr>
+					</table>
+
+
+					<div id="memberWrap">
+
+						<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_invite_member_select.png" alt="招待メンバー選択" /></h2>
+						<div id="memberSearch" class="clearfix">
+							<div class="searchInner"><input type="text" id="memberSearchForm" value="" maxlength="20" /></div>
+							<div class="description">ここに「ニックネーム」を入力してください。</div>
+							<div id="divError" style="color: red; padding-left: 10px; display: none;">検索結果なし</div>
+						</div>
+
+						{% if 90004==$cancelcode %}
+						<p><input type="checkbox" id="chkLastMem" name="chkLastMem" value="1" />今回と同じメンバーを選択する</p>
+						<input type="hidden" id="hidLastMem" value="{%$lastMem%}" />
+						{% /if %}
+						<ul id="frameNav"><!--
+							--><li id="frameNavLeft"><a id="btnLeft" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/frameNav_left.png" width="18" height="143" alt="左" /></a></li><!--
+							--><li id="frameNavRight"><a id="btnRight" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/frameNav_right.png" width="18" height="143" alt="右" /></a></li><!--
+						--></ul>
+						<div id="memberFrame">
+							<div id="innaerFrame" style="width:990000px">
+							</div>
+						</div>
+						<input type="hidden" id="hidFriendCnt" value="{%$friendCount%}" />
+						<input type="hidden" id="activity" value="{%$activity%}" />
+						<input type="hidden" id="activityUser" value="{%$activityUser%}" />
+						<input type="hidden" id="curDate" value="{%$curDate%}" />
+						<input type="hidden" id="hidSearch" value=" " />
+						<div id="divMask" class="filterOff"></div>
+
+					</div><!--/#memberWrap-->
+
+					<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_invite_member_resalt.png" alt="招待メンバー一覧" /></h2>
+					<div id="memberList">
+						<ul id="ulSelected"><!--
+							--><li id="liSel01" class="null">選択されていません</li><!--
+							--><li id="liSel02" class="null">選択されていません</li><!--
+							--><li id="liSel03" class="null">選択されていません</li><!--
+							--><li id="liSel04" class="null">選択されていません</li><!--
+							--><li id="liSel05" class="null">選択されていません</li><!--
+						--></ul>
+					</div>
+
+					<ul class="btnList"><!--
+						--><li><a href="javascript:void(0);" id="btnInvite"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_invite.png" width="228" height="34" alt="友達を招待する" /></a></li><!--
+					--></ul>
+				</form>
+
+			</div><!--/.inner-->
+		</div><!--/.innerBox-->
+
+		{% if not $infoMsg %}
+		<div id="diaryBox" class="innerBox">
+			<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_diary.png" width="244" height="24" alt="このアプリの日記を書く" /></h1>
+
+			<div class="inner">
+				<form id="frmToDiary" method="post" action="{%$mixiHostUrl%}/add_diary.pl?id={%$uid%}" target="_blank" accept-charset="euc-jp">
+					<p><input type="text" class="inputText" id="diary_body" name="diary_body" value="「{%$mixiAppName%}」{%$mixiHostUrl%}/run_appli.pl?id={%$mixiAppId%}" maxlength="200" /></p>
+					<p class="note">↑コピーして日記に貼付けよう</p>
+					<input type="hidden" value="{%$mixiHostUrl%}/run_appli.pl?id={%$mixiAppId%}" />
+					<ul class="btnList"><!--
+						--><li><a href="javascript:void(0);" onclick="$j('#frmToDiary').submit();return false;"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_diary.png" width="228" height="34" alt="日記を書く" /></a></li><!--
+					--></ul>
+				</form>
+			</div><!--/.inner-->
+		</div><!--/.innerBox-->
+		{% /if %}
+
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="chat/common/subcolumn.phtml"%}
+	</div><!--/#subColumn-->
+
+	<div id="dialog" title="メッセージ"><p style="text-align:center;padding-top:20px" id="pMessage"></p></div>
+
+	<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/add.js?{%$version.js%}"></script>
+{%include file="chat/common/footer.phtml"%}

@@ -1,0 +1,38 @@
+{%include file="disney/common/header.phtml"%}
+    <div id="bgcolor1" style="color:#630;font-size:x-small;background-color:#edd9ae;">
+    	<div align="center" style="background-color:#f8f1df;">
+    	<div style="background-color:#50b83a; text-align:center; color:#f8f1df;" >
+		{% disneyimg name="sub_ti_buy" %}<br />
+        </div><!--#sitein_link-->
+		</div><!--/#center-->
+		
+		<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+		<div style="text-align:center;">
+		    <img src="{%$staticUrl%}/apps/disney/img/shoes/shoes_00_0{%$imgid%}.gif" width="120" height="120" />
+		</div>
+		<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+		{% disneyimg name="dotline_fff5f5_s" %}<br />
+		<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+		
+		<div style="text-align:center;">
+			{%$shoes.name%}(2回分)<br />
+			mixiﾎﾟｲﾝﾄで購入:<span style="color:#F00;">{%$shoes.point%}pt</span><br />
+			<span style="color:#F00;">2回</span>使うとなくなるよ<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+			
+			{% if $shoesErr %}
+			※一度購入すると、消費するまで同じ靴及び他の靴は購入できません。
+			{% else %}
+			<a href='{% "$baseUrl/mobile/disney/pay/CF_yd/`$shoes.id`/CF_param/$from"|mixiurl %}'>{% disneyimg name="buy_btn" style='width="165" height="29"'%}</a>
+			{% /if %}
+		</div>
+	
+		<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+		{% disneyimg name="dotline_fff5f5_s" %}<br />
+		<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+		
+		ﾀｰｹﾞｯﾄﾂｱｰの｢ﾁｪｯｸ!｣で稼いだ距離が{%$shoesInfo.distance%}倍以上に伸びます。購入後2回連続で効果が発生します。※移動距離が0kmの場合は、効果は、発生しません。<br />
+			
+		<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+		        
+{%include file="disney/common/footer.phtml"%}

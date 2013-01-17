@@ -1,0 +1,53 @@
+{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn">
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+		<div id="releaseSlaveBox" class="box">
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_releaseSlave.png" width="272" height="23" alt="ドレイちゃんをポイ捨てする" /></h2>
+			</div><!--/.hdr-->
+
+			<div id="step1">
+			<p class="intro">このドレイちゃんをポイ捨てしますか？</p>
+			<div class="section">
+				<p class="pic"><a style="cursor:default;background-image:url({%$sellPic%})">{%$sellName%}</a></p>
+				<p class="name"><span>{%$sellName%} 改め </span>{%if $sellSlaveInfo.nickname %}{%$sellSlaveInfo.nickname|escape%}{% else %}{%$sellName%}ちゃん{% /if %}</p>
+				<p class="comment">{% if $sellSlaveInfo.balloon %}{%$sellSlaveInfo.balloon|escape%}{% else %}誰か私を買って下さい{% /if %}　<span></span></p>
+			</div><!--/.section-->
+
+			<ul class="actionList"><!--
+				--><li class="actionAbolish disable"><a href="javascript:cm_goBack();">キャンセル</a></li><!--
+				--><li class="actioncarryOut"><a id="btnSell" href="javascript:void(0);">実行</a></li><!--
+			--></ul><!--/.actionList-->
+			</div>
+
+			<div id="step2" style="display:none">
+			<p class="intro">{%$sellName%}をポイ捨てしました。</p>
+			<div class="section">
+				<p class="pic"><a style="cursor:default;background-image:url({%$sellPic%})">{%$sellName%}</a></p>
+				<p class="name"><span>{%$sellName%} 改め </span>{%if $sellSlaveInfo.nickname %}{%$sellSlaveInfo.nickname|escape%}{% else %}{%$sellName%}ちゃん{% /if %}</p>
+				<p class="comment">{% if $sellSlaveInfo.balloon %}{%$sellSlaveInfo.balloon|escape%}{% else %}誰か私を買って下さい{% /if %}　<span></span></p>
+			</div><!--/.section-->
+
+			<p class="actionBackHome btn"><a href="{%$baseUrl%}/slave/home">ホームにもどる</a></p>
+			</div>
+			<input type="hidden" id="hidSellUid" value="{%$sellSlaveInfo.uid%}" />
+		</div><!--/#releaseSlaveBox.box-->
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="slave/common/adbox.phtml"%}
+		{%include file="slave/common/logbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/sellslave.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

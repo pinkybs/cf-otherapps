@@ -1,0 +1,62 @@
+{%include file="scripteditor/common/header.phtml"%}
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/archives.js?{%$version.js%}"></script>
+{%include file="scripteditor/common/codejsbox.phtml"%}
+<body id="archives">
+{%include file="topad.phtml"%}
+<div id="continer">
+
+	{%include file="scripteditor/common/topbox.phtml"%}
+	
+	<div id="mainColumn">
+	
+		{%include file="scripteditor/common/searchbox.phtml"%}
+		
+		<div id="wrap">
+			
+			<h1><img src="{%$staticUrl%}/apps/scripteditor/img/tit_archive.png" width="315" height="21" alt="アーカイブ" /></h1>
+			
+			<div class="inner">
+				
+				<div id="follows" class="box">
+				
+					<div id="entryList" class="section">
+					   
+					    {% foreach from=$archivesInfo item=data %}
+					        <div class="follow">
+                                <div class="hdr">
+                                    <h4><a href="{%$baseUrl%}/scripteditor/entry/eid/{%$data.eid%}">{%$data.title|escape|truncatejp:20:"…"%}（{%if $data.follow_count%}{%$data.follow_count%}{%else%}0{%/if%}）</a></h4>
+                                    <ul class="status"><!--
+                                        --><li class="name">{%if $data.nickname%}{%$data.nickname%}{%else%}{%$data.displayName%}{%/if%}</li><!--
+                                        --><li class="date">{%$data.create_time|date_format:"%y/%m/%d %H:%M"%}</li><!--
+                                    --></ul>
+                                </div><!--/.hdr-->
+                                <textarea name="code" class="html" rows="6">{%$data.content%}</textarea>
+                            </div><!--/.follow-->
+                        {% /foreach %}
+                        
+                        <div id="nav"></div>
+					</div><!--/.section-->
+				
+				</div><!--/.box-->
+				
+				<input type="hidden" id="arrayCount" value='{%$arrayCount%}'>
+				<input type="hidden" id="archivesCount" value='{%$archivesCount%}'>
+				<input type="hidden" id="pageIndex" value='1'>
+                <input type="hidden" id="txtUid" value='{%$uid%}'>
+                <input type="hidden" id="type" value='{%$type%}'>
+                <input type="hidden" id="language" value='{%$language%}'>
+                <input type="hidden" id="txtFeaturesCount" value="{%$userFeature.count%}" >
+			</div><!--/.inner-->
+			
+		</div><!--/#wrap-->
+		
+	</div><!--/#mainColumn-->
+	
+	{%if $isOwner==1%}
+	   {%include file="scripteditor/common/subbox.phtml"%}
+	{%else%}
+	   {%include file="scripteditor/common/subauthorbox.phtml"%}
+	{%/if%}
+	    
+{%include file="scripteditor/common/footer.phtml"%}

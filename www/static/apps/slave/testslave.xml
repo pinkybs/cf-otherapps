@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="Slave Test" description="Slave Test" author="Community Factory Inc." author_link="http://communityfactory.com"> 
+        <Require feature="opensocial-0.8" />
+        <Require feature="dynamic-height" />
+        <Require feature="flash" />
+        <Require feature="views" />
+        <Optional feature="content-rewrite">
+            <Param name="expires">86400</Param>
+            <Param name="include-urls"></Param>
+            <Param name="exclude-urls">.*</Param>
+        </Optional>
+    </ModulePrefs>
+
+    <Content type="html" view="canvas">
+    <![CDATA[
+       <script type="text/javascript" src="http://mixitest.communityfactory.net/static/cmn/js/mixios.canvas.js?v=1.1"></script>
+     
+       <script type="text/javascript">
+           var canvas = mixios.application.newCanvas('http://mixitest.communityfactory.net', 'slave');
+           //default debug is disabled
+           canvas.enableDebug(true);
+           //default height is 800
+           //canvas.setHeight(1700);
+          
+           //let's go
+           canvas.start();
+       </script>
+    ]]>
+    </Content>
+
+	<Content type="html" view="home, profile">
+	<![CDATA[   
+		<style type="text/css">
+		* {
+		    margin:0;
+		    padding:0;
+		    border:none;
+		}
+		</style>
+		
+		<script type="text/javascript" src="http://mixitest.communityfactory.net/static/cmn/js/mixios.gadget.js?v=1.1"></script>
+    
+        <script type="text/javascript">        
+            var gadget = mixios.application.newGadget('http://mixitest.communityfactory.net', 'slave');
+            gadget.enableDebug(true);
+            //gadget.setHeight(1000);
+            gadget.registerOnLoadHandler(getGadgetSlave);
+            
+            function getGadgetSlave() {
+                var url = gadget.getHost() + '/ajax/openslave/gadetload';
+                var uid = gadget.getOwnerId();
+                var params = {};
+                params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.POST;
+                params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
+                params[gadgets.io.RequestParameters.AUTHORIZATION] = gadgets.io.AuthorizationType.SIGNED;
+                params[gadgets.io.RequestParameters.POST_DATA] = gadgets.io.encodeValues({ownerId : uid});
+                gadgets.io.makeRequest(url, embedFlash, params);  
+            }
+            
+            function embedFlash(response) {
+                var data = response.data;
+                var opt = {
+                    id : 'slave',
+                    flashvars : 'voice=' + data.balloon + '&nickname=' + data.nickname + '&url=' + encodeURIComponent(data.url) + '&thumb=' + data.thumb,
+                    allowScriptAccess: 'always',
+                    height: 210,
+                    width: 210,
+                    allowFullScreen : false
+                };
+            
+                gadgets.flash.embedFlash(gadget.getHost() + '/static/apps/slave/swf/gadget.swf?verson=1', gadget.getContainerId(), 8.0, opt); 
+            }
+            
+            //start
+            gadget.start();
+        </script>
+	]]>
+	</Content>
+  
+</Module>

@@ -1,0 +1,134 @@
+﻿{%include file="chat/common/header.phtml"%}
+
+<body id="static" class="invite">
+<div id="container">
+	{%include file="chat/common/nav.phtml"%}
+	<script type="text/javascript">
+		$j('#liTop').addClass('stay');
+	</script>
+
+	<div id="mainColumn">
+
+		{% if $feedCount>0 %}
+		<div id="newsBox" class="innerBox">
+			<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_news.png" width="77" height="24" alt="お知らせ" /></h1>
+			<div id="newslist" class="inner">
+			</div><!--/.inner-->
+			<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/feedlist.js?{%$version.js%}"></script>
+		</div><!--/.innerBox-->
+		{% /if %}
+
+		<div id="invitedBox" class="innerBox">
+
+			<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_chat_list.png" width="121" height="21" alt="チャット一覧" /></h1>
+			<div class="inner">
+				{% if $lstOwnerChat %}
+				<!-- owner -->
+				<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_owner_list.png" width="218" height="20" alt="あなたが幹事のチャット" /></h2>
+				<table class="colTable">
+					<tr>
+						<th scope="col">チャット名</th>
+						<th scope="col">日時</th>
+						<th scope="col">参加メンバー</th>
+					</tr>
+					{% foreach name=ownerList from=$lstOwnerChat item=ownerChat %}
+					<tr>
+						<td><a href="{%$baseUrl%}/chat/view?cid={%$ownerChat.cid%}">{%$ownerChat.title|escape%}</a></td>
+						<td>{%$ownerChat.start_time|replace:"-":"/"%}&#12316;</td>
+						<td>
+							{% if $ownerChat.ary_member %}
+							<ul class="memberList"><!--
+								{% foreach from=$ownerChat.ary_member item=ownerMem %}
+								--><li><a href="{%$ownerMem.profileUrl%}">{%$ownerMem.displayName|truncatejp:16%}</a></li><!--
+								{% /foreach %}
+							--></ul>
+							{% else %}
+							なし
+							{% /if %}
+						</td>
+					</tr>
+					{% /foreach %}
+				</table>
+				{% /if %}
+
+				{% if $lstJoinerChat %}
+				<!-- joiner -->
+				<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_guest_list.png" width="182" height="20" alt="参加予定のチャット" /></h2>
+				<table class="colTable">
+					<tr>
+						<th scope="col">チャット名</th>
+						<th scope="col">日時</th>
+						<th scope="col">参加メンバー</th>
+					</tr>
+					{% foreach name=joinerList from=$lstJoinerChat item=joinerChat %}
+					<tr>
+						<td><a href="{%$baseUrl%}/chat/view?cid={%$joinerChat.cid%}">{%$joinerChat.title|escape%}</a></td>
+						<td>{%$joinerChat.start_time|replace:"-":"/"%}&#12316;</td>
+						<td>
+							{% if $joinerChat.ary_member %}
+							<ul class="memberList"><!--
+								{% foreach from=$joinerChat.ary_member item=joinerMem %}
+								--><li><a href="{%$joinerMem.profileUrl%}">{%$joinerMem.displayName|truncatejp:16%}</a></li><!--
+								{% /foreach %}
+							--></ul>
+							{% else %}
+							なし
+							{% /if %}
+						</td>
+					</tr>
+					{% /foreach %}
+				</table>
+				{% /if %}
+
+				{% if $lstNeedConChat %}
+				<!-- need cofirm -->
+				<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_visited_list.png" width="236" height="20" alt="招待を受けているチャット" /></h2>
+				<table class="colTable">
+					<tr>
+						<th scope="col">チャット名</th>
+						<th scope="col">日時</th>
+						<th scope="col">参加メンバー</th>
+					</tr>
+					{% foreach name=needConList from=$lstNeedConChat item=needConChat %}
+					<tr>
+						<td><a href="{%$baseUrl%}/chat/confirm?cid={%$needConChat.cid%}">{%$needConChat.title|escape%}</a></td>
+						<td>{%$needConChat.start_time|replace:"-":"/"%}&#12316;</td>
+						<td>
+							{% if $needConChat.ary_member %}
+							<ul class="memberList"><!--
+								{% foreach from=$needConChat.ary_member item=needConMem %}
+								--><li><a href="{%$needConMem.profileUrl%}">{%$needConMem.displayName|truncatejp:16%}</a></li><!--
+								{% /foreach %}
+							--></ul>
+							{% else %}
+							なし
+							{% /if %}
+						</td>
+					</tr>
+					{% /foreach %}
+				</table>
+				{% /if %}
+
+			</div><!--/.inner-->
+		</div><!--/.innerBox-->
+
+		<div id="xxxxBox" class="innerBox">
+			<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_invite.png" width="266" height="24" alt="友達をチャットに招待する" /></h1>
+
+			<div class="inner">
+				<ul class="btnList"><!--
+					--><li><a href="{%$baseUrl%}/chat/add"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_invite.png" width="228" height="34" alt="友達を招待する" /></a></li><!--
+				--></ul>
+			</div><!--/.inner-->
+		</div><!--/.innerBox-->
+
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="chat/common/subcolumn.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript">
+		adjustHeight();
+	</script>
+{%include file="chat/common/footer.phtml"%}

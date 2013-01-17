@@ -1,0 +1,272 @@
+﻿{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn">
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+		$j('#gNavRanking').addClass('active');
+
+		var hidPos = '{%$hasPos%}';
+    	if (null != cm_getCookie('app_top_url') && '1' != hidPos) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+		<input type="hidden" id="hidHasPos" value="{%$hasPos%}" />
+
+		<!-- price mymixi -->
+		<div id="personalRankingBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_personalRanking.png" width="383" height="19" alt="ドレイちゃん価格ランキングーマイミクのみ" /></h2>
+			</div><!--/.hdr-->
+
+			<div class="rankingWrap">
+				<ul class="rankingLeftNav"><!--
+					--><li class="toUnder"><a id="btnLeft1" href="javascript:void(0);"></a></li><!--
+					--><li class="toUnderMore"><a id="btnLeftMore1" href="javascript:void(0);"></a></li><!--
+				--></ul>
+
+				<div class="otherRanking">
+					<div id="memberFrame1" style="height:132px;width:408px;overflow:hidden;position:relative;">
+        			<div id="innaerFrame1" style="position:absolute;top:0;width:990000px;">
+        			<ol class="items" id="olRank1"><!--
+        			      {% foreach name=lstPriceFriend from=$lstPriceFriend item=pdata %}
+                            --><li>
+                                <p class="ranking">{%$pdata.rankNo%}</p>
+                                <p class="name">{% if null == $pdata.uid %}<a onclick="mixi_invite();return false;" href="javascript:void(0);">{% else %}<a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}">{% /if %}{%$pdata.name%}</a></p>
+                                {% if null == $pdata.uid %}
+                                <p class="pic"><a onclick="mixi_invite();return false;" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/slave/img/dummy/pic_s_4.png" alt="{%$pdata.name%}" width="76px" height="76px" /></a></p>
+                                {% else %}
+                                <p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}"><img src="{%$pdata.pic%}" alt="{%$pdata.name%}" width="76px" height="76px" /></a></p>
+                                {% /if %}
+                                <p class="price">{%$pdata.format_price%}</p>
+                            </li><!--
+                        {% /foreach %}
+        			 --></ol>
+        			</div>
+        		</div>
+				</div><!--/.otherRanking-->
+
+				<ul class="rankingRightNav"><!--
+					--><li class="toTop"><a id="btnRight1" href="javascript:void(0);"></a></li><!--
+					--><li class="toTopMore"><a id="btnRightMore1" href="javascript:void(0);"></a></li><!--
+				--></ul><!--/.rankingRightNav-->
+
+				<div class="topRanking">
+					<ol><!--
+					{% foreach name=priceFriendLeaderList from=$lstPriceFriendLeader item=pFdata %}
+						--><li>
+							<p class="ranking">{%$pFdata.rankNo%}</p>
+                                <p class="name">{% if null == $pFdata.uid %}<a onclick="mixi_invite();return false;" href="javascript:void(0);">{% else %}<a href="{%$baseUrl%}/slave/profile?uid={%$pFdata.uid%}">{% /if %}{%$pFdata.name%}</a></p>
+							{% if null == $pFdata.uid %}
+							<p class="pic"><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image: url({%$staticUrl%}/apps/slave/img/dummy/pic_s_4.png);"><img src="{%$staticUrl%}/apps/slave/img/dummy/spacer.gif" alt="{%$pFdata.name%}" width="76px" height="76px" /></a></p>
+							{% else %}
+							<p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$pFdata.uid%}" style="background-image: url({%$pFdata.pic%});"><img src="{%$staticUrl%}/apps/slave/img/dummy/spacer.gif" alt="{%$pFdata.name%}" width="76px" height="76px" /></a></p>
+							{% /if %}
+							<p class="price">{%$pFdata.format_price%}</p>
+						</li><!--
+					{% /foreach %}
+					--></ol>
+				</div><!--/.topRanking-->
+
+				<input type="hidden" id="hidCntRank1" value="{% $countOne %}" />
+	            <input type="hidden" id="hidRankprev1" value="{% $rankStartOne %}" />
+	            <input type="hidden" id="hidRanknext1" value="{% $rankEndOne %}" />
+
+			</div><!--/.rankingWrap-->
+		</div><!--/#personalRankingBox.box-->
+
+		<!-- price all -->
+		<div id="allRankingBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_allRanking.png" width="383" height="19" alt="ドレイちゃん価格ランキングーミクシィ全体" /></h2>
+			</div><!--/.hdr-->
+
+			<div class="rankingWrap">
+				<ul class="rankingLeftNav"><!--
+					--><li class="toUnder"><a id="btnLeft2" href="javascript:void(0);"></a></li><!--
+					--><li class="toUnderMore"><a id="btnLeftMore2" href="javascript:void(0);"></a></li><!--
+				--></ul>
+
+				<div class="otherRanking">
+				<div id="memberFrame2" style="height:132px;width:408px;overflow:hidden;position:relative;">
+        			<div id="innaerFrame2" style="position:absolute;top:0;width:990000px;">
+        			<ol class="items" id="olRank2"><!--
+	        			 {% foreach name=priceAllList from=$lstPriceAll item=pdata %}
+	                        --><li>
+	                            <p class="ranking">{%$pdata.rankNo%}</p>
+                                <p class="name">{% if null == $pdata.uid %}<a onclick="mixi_invite();return false;" href="javascript:void(0);">{% else %}<a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}">{% /if %}{%$pdata.name%}</a></p>
+	                            {% if null == $pdata.uid %}
+	                            <p class="pic"><a onclick="mixi_invite();return false;" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/slave/img/dummy/pic_s_4.png" alt="{%$pdata.name%}" width="76px" height="76px" /></a></p>
+	                            {% else %}
+	                            <p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}"><img src="{%$pdata.pic%}" alt="{%$pdata.name%}" width="76px" height="76px" /></a></p>
+	                            {% /if %}
+	                            <p class="price">{%$pdata.format_price%}</p>
+	                        </li><!--
+	                    {% /foreach %}
+        			--></ol>
+        			</div>
+        		</div>
+				</div><!--/.otherRanking-->
+
+				<ul class="rankingRightNav"><!--
+					--><li class="toTop"><a id="btnRight2" href="javascript:void(0);"></a></li><!--
+					--><li class="toTopMore"><a id="btnRightMore2" href="javascript:void(0);"></a></li><!--
+				--></ul>
+
+				<div class="topRanking">
+					<ol><!--
+					{% foreach name=priceAllLeaderList from=$lstPriceAllLeader item=pdata %}
+						--><li>
+							<p class="ranking">{%$pdata.rankNo%}</p>
+                                <p class="name">{% if null == $pdata.uid %}<a onclick="mixi_invite();return false;" href="javascript:void(0);">{% else %}<a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}">{% /if %}{%$pdata.name%}</a></p>
+							{% if null == $pdata.uid %}
+							<p class="pic"><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image: url({%$staticUrl%}/apps/slave/img/dummy/pic_s_4.png);"><img src="{%$staticUrl%}/apps/slave/img/dummy/spacer.gif" alt="{%$pdata.name%}" width="76px" height="76px" /></a></p>
+							{% else %}
+							<p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}" style="background-image: url({%$pdata.pic%});"><img src="{%$staticUrl%}/apps/slave/img/dummy/spacer.gif" alt="{%$pdata.name%}" width="76px" height="76px" /></a></p>
+							{% /if %}
+							<p class="price">{%$pdata.format_price%}</p>
+						</li><!--
+					{% /foreach %}
+					--></ol>
+				</div><!--/.topRanking-->
+			</div><!--/.rankingWrap-->
+			<input type="hidden" id="hidCntRank2" value="{% $countTwo %}" />
+			<input type="hidden" id="hidRankprev2" value="{% $rankStartTwo %}" />
+			<input type="hidden" id="hidRanknext2" value="{% $rankEndTwo %}" />
+		</div><!--/#allRankingBox.box-->
+
+		<!-- fortune mymixi -->
+		<div id="personalFortuneBox" class="box">
+
+			<div class="hdr">
+					<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_personalFortune.png" width="293" height="19" alt="総資産ランキングーマイミクのみ" /></h2>
+			</div><!--/.hdr-->
+
+			<div class="rankingWrap">
+
+				<ul class="rankingLeftNav"><!--
+					--><li class="toUnder"><a id="btnLeft3" href="javascript:void(0);"></a></li><!--
+					--><li class="toUnderMore"><a id="btnLeftMore3" href="javascript:void(0);"></a></li><!--
+				--></ul><!--/.rankingLeftNav-->
+
+				<div class="otherRanking">
+					<div id="memberFrame3" style="height:132px;width:408px;overflow:hidden;position:relative;">
+        			<div id="innaerFrame3" style="position:absolute;top:0;width:990000px;">
+        				<ol class="items" id="olRank3"><!--
+                         {% foreach name=lstTotalFriend from=$lstTotalFriend item=pdata %}
+                            --><li>
+                                <p class="ranking">{%$pdata.rankNo%}</p>
+                                <p class="name">{% if null == $pdata.uid %}<a onclick="mixi_invite();return false;" href="javascript:void(0);">{% else %}<a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}">{% /if %}{%$pdata.name%}</a></p>
+                                {% if null == $pdata.uid %}
+                                <p class="pic"><a onclick="mixi_invite();return false;" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/slave/img/dummy/pic_s_4.png" alt="{%$pdata.name%}" width="76px" height="76px" /></a></p>
+                                {% else %}
+                                <p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}"><img src="{%$pdata.pic%}" alt="{%$pdata.name%}" width="76px" height="76px" /></a></p>
+                                {% /if %}
+                                <p class="price">{%$pdata.format_price%}</p>
+                            </li><!--
+                        {% /foreach %}
+                    --></ol>
+        			</div>
+        		</div>
+				</div><!--/.otherRanking-->
+
+				<ul class="rankingRightNav"><!--
+					--><li class="toTop"><a id="btnRight3" href="javascript:void(0);"></a></li><!--
+					--><li class="toTopMore"><a id="btnRightMore3" href="javascript:void(0);"></a></li><!--
+				--></ul><!--/.rankingRightNav-->
+
+				<div class="topRanking">
+					<ol><!--
+					{% foreach name=totalFriendLeaderList from=$lstTotalFriendLeader item=tFdata %}
+						--><li>
+							<p class="ranking">{%$tFdata.rankNo%}</p>
+                                <p class="name">{% if null == $tFdata.uid %}<a onclick="mixi_invite();return false;" href="javascript:void(0);">{% else %}<a href="{%$baseUrl%}/slave/profile?uid={%$tFdata.uid%}">{% /if %}{%$tFdata.name%}</a></p>
+							{% if null == $tFdata.uid %}
+							<p class="pic"><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image: url({%$staticUrl%}/apps/slave/img/dummy/pic_s_4.png);"><img src="{%$staticUrl%}/apps/slave/img/dummy/spacer.gif" alt="{%$tFdata.name%}" width="76px" height="76px" /></a></p>
+							{% else %}
+							<p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$tFdata.uid%}" style="background-image: url({%$tFdata.pic%});"><img src="{%$staticUrl%}/apps/slave/img/dummy/spacer.gif" alt="{%$tFdata.name%}" width="76px" height="76px" /></a></p>
+							{% /if %}
+							<p class="price">{%$tFdata.format_price%}</p>
+						</li><!--
+					{% /foreach %}
+					--></ol>
+				</div><!--/.topRanking-->
+				<input type="hidden" id="hidCntRank3" value="{% $countThree %}" />
+	            <input type="hidden" id="hidRankprev3" value="{% $rankStartThree %}" />
+	            <input type="hidden" id="hidRanknext3" value="{% $rankEndThree %}" />
+			</div><!--/.rankingWrap-->
+
+		</div><!--/#personalFortuneBox.box-->
+
+		<!-- fortune all -->
+		<div id="allFortuneBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_allFortune.png" width="291" height="19" alt="総資産ランキングーミクシィ全体" /></h2>
+			</div><!--/.hdr-->
+
+			<div class="rankingWrap">
+				<ul class="rankingLeftNav"><!--
+					--><li class="toUnder"><a id="btnLeft4" href="javascript:void(0);"></a></li><!--
+					--><li class="toUnderMore"><a id="btnLeftMore4" href="javascript:void(0);"></a></li><!--
+				--></ul><!--/.rankingLeftNav-->
+
+				<div class="otherRanking">
+					<div id="memberFrame4" style="height:132px;width:408px;overflow:hidden;position:relative;">
+        			<div id="innaerFrame4" style="position:absolute;top:0;width:990000px;">
+        				<ol class="items" id="olRank4"><!--
+                         {% foreach name=lstTotalAll from=$lstTotalAll item=pdata %}
+                            --><li>
+                                <p class="ranking">{%$pdata.rankNo%}</p>
+                                <p class="name">{% if null == $pdata.uid %}<a onclick="mixi_invite();return false;" href="javascript:void(0);">{% else %}<a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}">{% /if %}{%$pdata.name%}</a></p>
+                                {% if null == $pdata.uid %}
+                                <p class="pic"><a onclick="mixi_invite();return false;" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/slave/img/dummy/pic_s_4.png" alt="{%$pdata.name%}" width="76px" height="76px" /></a></p>
+                                {% else %}
+                                <p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}"><img src="{%$pdata.pic%}" alt="{%$pdata.name%}" width="76px" height="76px" /></a></p>
+                                {% /if %}
+                                <p class="price">{%$pdata.format_price%}</p>
+                            </li><!--
+                        {% /foreach %}
+                    --></ol>
+        			</div>
+        		</div>
+				</div><!--/.otherRanking-->
+
+				<ul class="rankingRightNav"><!--
+					--><li class="toTop"><a id="btnRight4" href="javascript:void(0);"></a></li><!--
+					--><li class="toTopMore"><a id="btnRightMore4" href="javascript:void(0);"></a></li><!--
+				--></ul><!--/.rankingRightNav-->
+
+				<div class="topRanking">
+					<ol><!--
+                    {% foreach name=totalAllLeaderList from=$lstTotalAllLeader item=tdata %}
+                        --><li>
+                            <p class="ranking">{%$tdata.rankNo%}</p>
+                                <p class="name">{% if null == $tdata.uid %}<a onclick="mixi_invite();return false;" href="javascript:void(0);">{% else %}<a href="{%$baseUrl%}/slave/profile?uid={%$tdata.uid%}">{% /if %}{%$tdata.name%}</a></p>
+                            {% if null == $tdata.uid %}
+                            <p class="pic"><a onclick="mixi_invite();return false;" href="javascript:void(0);" style="background-image: url({%$staticUrl%}/apps/slave/img/dummy/pic_s_4.png);"><img src="{%$staticUrl%}/apps/slave/img/dummy/spacer.gif" alt="{%$tdata.name%}" width="76px" height="76px" /></a></p>
+                            {% else %}
+                            <p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$tdata.uid%}" style="background-image: url({%$tdata.pic%});"><img src="{%$staticUrl%}/apps/slave/img/dummy/spacer.gif" alt="{%$tdata.name%}" width="76px" height="76px" /></a></p>
+                            {% /if %}
+                            <p class="price">{%$tdata.format_price%}</p>
+                        </li><!--
+                    {% /foreach %}
+                    --></ol>
+				</div><!--/.topRanking-->
+				<input type="hidden" id="hidCntRank4" value="{% $countFour %}" />
+                <input type="hidden" id="hidRankprev4" value="{% $rankStartFour %}" />
+                <input type="hidden" id="hidRanknext4" value="{% $rankEndFour %}" />
+			</div><!--/.rankingWrap-->
+		</div><!--/#allFortuneBox.box-->
+
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="slave/common/adbox.phtml"%}
+		{%include file="slave/common/logbox.phtml"%}
+		{%include file="slave/common/popularbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/rank.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

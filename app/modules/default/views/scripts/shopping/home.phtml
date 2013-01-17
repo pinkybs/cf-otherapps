@@ -1,0 +1,33 @@
+{%include file="shopping/common/header.phtml"%}
+
+<body id="home">
+<div id="continer">
+	{%include file="shopping/common/hdr.phtml"%}
+	<script type="text/javascript">
+		$j('#gNavHome').addClass('active');
+		$j('#gNavStore > a').removeAttr('href');
+		$j('#gNavMyCart > a').removeAttr('href');
+	</script>
+
+	<div id="mainColumn">
+
+		<div id="playBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_play.png" alt="ゲームスタート" /></h2>
+			</div><!--/.hdr-->
+
+			<div id="playBoxFlash"><a href="{%$baseUrl%}/shopping/gamestart"><img src="{%$staticUrl%}/apps/shopping/img/dummy/image_playBox.png" alt="スタート" /></a></div>
+		</div><!--/#playBox.box-->
+        {%include file="shopping/common/rank.phtml"%}
+	</div><!--/#mainColumn-->
+
+<hr />
+
+	<div id="subColumn">
+		{%include file="shopping/common/adbox.phtml"%}
+		{%include file="shopping/common/profbox.phtml"%}
+		{%include file="shopping/common/wishbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript" src="{%$staticUrl%}/apps/shopping/js/home.js?{%$version.js%}"></script>
+{%include file="shopping/common/footer.phtml"%}

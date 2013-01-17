@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<app>
+	<secret>
+		<validationKey>0003AC14AEE8DD55394C9A07E8352A99512E0B21</validationKey>
+		<validation>sha1</validation>
+	</secret>
+	
+	
+	<version>
+		<js>01:20090209</js>
+		<css>01:20090209</css>
+	</version>
+	
+	
+  <session>
+     <cookie_domain>shenhw.cn</cookie_domain>
+  </session>
+
+    
+    <cache>
+        <memcache>
+           <servers>
+               <server>
+                   <host>127.0.0.1</host>
+                   <port>11211</port>
+                   <persistent>true</persistent>
+               </server>
+           </servers>
+        </memcache>
+    </cache>
+
+	<server>
+		<host>http://mixi.zhaoxh.cn</host>
+		<static>http://mixi.zhaoxh.cn/static</static>
+        <photo>http://mixi.zhaoxh.cn/photo</photo>
+	</server>
+
+    <upload>
+        <photo>
+            <basePath>D:/work/mixi/mixi_app/www/photo</basePath>
+        </photo>
+    </upload>
+	
+</app>

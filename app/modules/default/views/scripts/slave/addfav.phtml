@@ -1,0 +1,44 @@
+﻿{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn">
+
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+
+		<div id="addFavBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_addFav.png" width="216" height="23" alt="お気に入りからはずす" /></h2>
+			</div><!--/.hdr-->
+
+			<p class="intro">このギフトをお気に入りに登録しました。</p>
+
+
+			<div class="section">
+				<p class="pic"><a style="cursor:default;background-image:url({%$giftInfo.gift_small_pic%})">{%$giftInfo.gift_name%}</a></p>
+				<p class="name">{%$giftInfo.name%}</p>
+				<p class="price">価格：&yen;{%$giftInfo.gift_format_price%}<!-- （下取り価格：&yen;{%$giftInfo.gift_format_price%}） --></p>
+			</div><!--/.section-->
+
+			<p class="actionBackGiftShop btn"><a href="{%$baseUrl%}/slave/giftshop">ギフト屋にもどる</a></p>
+		</div><!--/#addFavBox.box-->
+
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+	{%include file="slave/common/adbox.phtml"%}
+	{%include file="slave/common/logbox.phtml"%}
+	</div><!--/#subColumn-->
+
+<script type="text/javascript">
+    $j(document).ready(function() {
+		adjustHeight();
+    });
+</script>
+{%include file="slave/common/footer.phtml"%}

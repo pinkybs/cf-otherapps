@@ -1,0 +1,58 @@
+{%include file="disney/common/header.phtml"%}
+
+<div style="background-color:#edd9ae; font-size:x-small;" >
+<div style="background-color:#50b83a; text-align:center;">
+		
+        {% if $from == 'tradeaward' %}
+        
+            {% disneyimg name="sub_ti_trade" %}<br />
+            {%include file="disney/common/topmenu.phtml"%}
+            <img copyright="yes" src="{%$baseUrl%}/mobile/disneyflash/showmap?uid={%$uid%}&CF_aid={%$aid%}" align="top" /><br />
+        
+			<div style="background-color:#f8f1df; color:#ff0000; text-align:center;" >
+                ご当地ｽﾃｨｯﾁ･ｼﾘｰｽﾞ<br />
+                {%$areaInfo.name%}地方
+			</div>
+            <span style="color:#ff0000;">ﾄﾚｰﾄﾞしたい自分のご当地ｷｬﾗｸﾀｰを選んでね｡</span><br />
+            
+        {% else %}
+        
+            {% disneyimg name="sub_ti_map" %}<br />
+            {%include file="disney/common/topmenu.phtml"%}
+            <img copyright="yes" src="{%$baseUrl%}/mobile/disneyflash/showmap?uid={%$uid%}&CF_aid={%$aid%}" align="top" /><br />
+			<div style="background-color:#f8f1df; color:#ff0000; text-align:center;" >
+                ご当地ｽﾃｨｯﾁ･ｼﾘｰｽﾞ<br />
+                {%$areaInfo.name%}地方
+			</div>
+			
+			<div style="color:#5e250f; text-align:right;">
+				≫<a href='{% "$baseUrl/mobile/disney/country"|mixiurl %}'>全国一覧で見る</a>
+			</div>
+        
+        {% /if %}
+        
+
+        {% foreach from=$placeAry item=place key=key %}
+        <div style="{%if $key%2==0%}background-color:#f8f1df; color:#5e250f;{%else%}background-color:#f8b463; color:#5e250f;{%/if%}" >
+            {% foreach from=$place item=data %}
+                &nbsp;&nbsp;{% emoji code="F983"%}
+                {% if $data.count > 0 %}
+                    <a href='{% "$baseUrl/mobile/disney/award?CF_pid=`$data.pid`&CF_tradePid=`$tradePid`&CF_fid=`$fid`&CF_from=`$from`"|mixiurl %}'>{%$data.name%}({%$data.count%})</a>
+                {% else %}
+                    {%$data.name%}
+                {% /if %}
+            {% /foreach %}
+        </div>
+        {% /foreach %}
+
+        
+        &#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/map?CF_aid=8&CF_tradePid=`$tradePid`&CF_fid=`$fid`&CF_from=`$from`"|mixiurl %}'>北海道／東北</a>&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/map?CF_aid=7&CF_tradePid=`$tradePid`&CF_fid=`$fid`&CF_from=`$from`"|mixiurl %}'>北陸</a><br/>
+        &#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/map?CF_aid=6&CF_tradePid=`$tradePid`&CF_fid=`$fid`&CF_from=`$from`"|mixiurl %}'>関東</a>&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/map?CF_aid=5&CF_tradePid=`$tradePid`&CF_fid=`$fid`&CF_from=`$from`"|mixiurl %}'>東海</a>&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/map?CF_aid=4&CF_tradePid=`$tradePid`&CF_fid=`$fid`&CF_from=`$from`"|mixiurl %}'>近畿</a><br />
+		&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/map?CF_aid=3&CF_tradePid=`$tradePid`&CF_fid=`$fid`&CF_from=`$from`"|mixiurl %}'>中国</a>&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/map?CF_aid=2&CF_tradePid=`$tradePid`&CF_fid=`$fid`&CF_from=`$from`"|mixiurl %}'>四国</a>&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/map?CF_aid=1&CF_tradePid=`$tradePid`&CF_fid=`$fid`&CF_from=`$from`"|mixiurl %}'>九州／沖縄</a><br/>
+        
+        <div class="mymixi" style="background-color: rgb(248, 241, 223);">
+        	&#160;&#160;{% emoji code="F9CB"%}<a href='{% "$baseUrl/mobile/disney/mymixilist"|mixiurl %}'>ﾏｲﾐｸ情報</a><br/>
+        </div><!--/.mymixi-->
+        
+        
+{%include file="disney/common/footer.phtml"%}

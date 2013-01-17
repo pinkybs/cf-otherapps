@@ -1,0 +1,1993 @@
+﻿/* @override http://mixitest.communityfactory.net/static/apps/dynamite/css/main.css */
+
+@charset "utf-8";
+
+/*
+----------------------------------------------
+DDP main CSS
+
+Created Date: 2009/06/29
+Author: Yu Uno
+Last Up Date : 2009/08/21
+Author: Taiki Toyosawa
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+
+* {
+	outline: none;
+}
+
+body,html {
+}
+
+body {
+	color: #333333;
+}
+
+a:link,a:hover {
+	color: #258FB8;
+}
+a:link,a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+img {
+	display: block;
+}
+
+textarea {
+	margin: 0;
+	padding: 3px;
+}
+
+pre {
+	margin: 0;
+	padding: 0;
+}
+
+
+/*#container
+----------------------------------------------*/
+#container {
+	margin-bottom: 10px;
+	width: 945px;
+}
+	#container #containerInner1 {
+	}
+	#container #containerInner2 {
+	}
+
+#wrap {
+}
+
+#mainColumn {
+	position: relative;
+	zoom: 1;
+	display: inline;
+	float: left;
+	width: 687px;
+	display: hidden;
+	_overflow: hidden;/*IE6*/
+}
+
+#subColumn {
+	position: relative;
+	zoom: 1;
+	display: inline;
+	float: right;
+	width: 250px;
+}
+
+
+/*#hdr
+----------------------------------------------*/
+#hdr {
+	position: relative;
+	margin-bottom: 10px;
+}
+	#hdr ul#gNav {
+		padding: 6px 6px 6px 10px;
+		background-color: #424242;
+	}
+		#hdr ul#gNav li {
+			display: inline;
+			float: left;
+			margin-right: 24px;
+			text-indent: -9999px;
+		}
+			#hdr ul#gNav li a {
+				display: block;
+				height: 18px;
+				background: url(../img/bg_gNav.png) no-repeat;
+			}
+			#hdr ul#gNav li#gNavTop a {
+				width: 66px;
+				background-position: 0 0;
+			}
+			#hdr ul#gNav li#gNavTop a:hover {
+				background-position: 0 bottom;
+			}
+			#hdr ul#gNav li#gNavInvite a {
+				width: 97px;
+				background-position: -66px 0;
+			}
+			#hdr ul#gNav li#gNavInvite a:hover {
+				background-position: -66px bottom;
+			}
+			#hdr ul#gNav li#gNavRanking a {
+				width: 89px;
+				background-position: -358px 0 !important;
+			}
+			#hdr ul#gNav li#gNavRanking a:hover {
+				background-position: -358px bottom !important;
+			}
+			#hdr ul#gNav li#gNavHitman a {
+				width: 117px;
+				background-position: -508px 0;
+			}
+			#hdr ul#gNav li#gNavHitman a:hover {
+				background-position: -508px bottom;
+			}
+		#hdr ul#gNav li#gNavHowTo {
+			display: none;
+		}
+			#hdr ul#gNav li#gNavHowTo a {
+				width: 137px;
+				background-position: -163px 0;
+			}
+			#hdr ul#gNav li#gNavHowTo a:hover {
+				background-position: -163px bottom;
+			}
+			#hdr ul#gNav li#gNavHelp a {
+				width: 57px;
+				background-position: -301px 0;
+			}
+			#hdr ul#gNav li#gNavHelp a:hover {
+				background-position: -301px bottom;
+			}
+			#hdr ul#gNav li#gNavRanking a {
+				width: 88px;
+				background-position: right 0;
+			}
+			#hdr ul#gNav li#gNavRanking a:hover {
+				background-position: right bottom;
+			}
+
+	
+
+
+/*#mainColumn
+----------------------------------------------*/
+#mainColumn #mainHdr {
+	position: relative;
+	height: 42px;
+	font-size: 14px;
+	color: #000000;
+	background: url(../img/bg_mainHdr.png);
+}
+	#mainColumn #mainHdr h1 {
+		padding-top: 8px;
+		margin-left: 70px;
+		line-height: 32px;
+	}
+	#mainColumn #mainHdr p.pic {
+		position: absolute;
+		top: 2px;
+		left:  25px;
+		display: block;
+		width: 32px;
+		height: 32px;
+		background: #fff no-repeat center center;
+		text-indent: -9999px;
+		border: 1px solid #231815;
+	}
+	#mainColumn #mainHdr p.price {
+		position: absolute;
+		top: 14px;
+		right: 10px;
+		width: 204px;
+		text-align: center;
+		line-height: 26px;
+		font-weight: bold;
+		font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	}
+
+#mainColumn #playArea {
+	position: relative;
+	height: 303px;
+	overflow: hidden;
+}
+	#mainColumn #playArea #playAreaWrap {
+		position: relative;
+		left: 0;
+		width: 10000px;
+	}
+	#mainColumn #playArea .inner {
+		display: inline;
+		float: left;
+		position: relative;
+		width: 687px;
+		height: 303px;
+		background-repeat: no-repeat;
+		background-position: center top;
+	}
+		#mainColumn #playArea .inner ul#personList {
+			padding-top: 0;
+			margin-left: 2px;
+		}
+			#mainColumn #playArea .inner ul#personList li {
+				position: relative;
+				display: inline;
+				float: left;
+				margin-top: 5px;
+				margin-left: 30px;
+				width: 134px;
+				height: 230px;
+				background: no-repeat center 43px;
+			}
+				#mainColumn #playArea .inner ul#personList li p.price {
+					margin-bottom: 3px;
+					padding-top: 13px;
+					padding-bottom: 7px;
+					height: 20px;
+					background: url(../img/bg_wanted.png);
+					line-height: 20px;
+					color: #231815;
+					font-size: 12px;
+					font-weight: bold;
+					text-align: center;
+				}
+				#mainColumn #playArea .inner ul#personList li p.price.dead {
+					background-color: #222222;
+				}
+				#mainColumn #playArea .inner ul#personList li p.stamina {
+					margin-bottom: 90px;
+				}
+				#mainColumn #playArea .inner ul#personList li ul.bomb {
+					margin-left: -2px;
+					margin-bottom: 3px;
+					height: 33px;
+				}
+					#mainColumn #playArea .inner ul#personList li ul.bomb li {
+						margin: 0 0 0 9px;
+						width: 24px;
+						height: 33px;
+					}
+					#mainColumn #playArea .inner ul#personList li ul.bomb li.mine {
+					}
+						#mainColumn #playArea .inner ul#personList li ul.bomb li.mine span {
+							position: absolute;
+							top: -26px;
+							left: -10px;
+							padding: 7px 6px;
+							width: 74px;
+							height: 18px;
+							z-index: 100;
+							background: url(../img/bg_dynamiteName.png) no-repeat left top;
+							font-size: 10px;
+							line-height: 1em;
+							overflow: hidden;
+							text-overflow: ellipsis;/*IE*/
+							-webkit-text-overflow: ellipsis;/*Safari*/
+							-o-text-overflow: ellipsis;/*Opera*/
+							white-space: nowrap;
+						}
+							#mainColumn #playArea .inner ul#personList li ul.bomb li.mine span nobr {
+								display: block;
+								width: 74px;
+								overflow: hidden;
+							}
+				
+				#mainColumn #playArea .inner ul#personList li ul.bomber {
+					margin-left: -2px;
+					margin-bottom: 3px;
+				}
+					#mainColumn #playArea .inner ul#personList li ul.bomber li {
+						display: inline;
+						float: left;
+						margin: 0 0 0 9px;
+						width: 24px;
+						height: auto;
+						text-indent: -9999px;
+					}
+						#mainColumn #playArea .inner ul#personList li ul.bomber li a {
+							display: block;
+							height: 24px;
+							background-repeat: no-repeat;
+							background-position: center center;
+						}
+				
+				#mainColumn #playArea .inner ul#personList li p.btn_setup,
+				#mainColumn #playArea .inner ul#personList li p.btn_removal,
+				#mainColumn #playArea .inner ul#personList li p.btn_blasting,
+				#mainColumn #playArea .inner ul#personList li p.btn_ConcludeAlliance {
+					text-indent: -9999px;
+				}
+						#mainColumn #playArea .inner ul#personList li p.btn_setup a,
+						#mainColumn #playArea .inner ul#personList li p.btn_removal a,
+						#mainColumn #playArea .inner ul#personList li p.btn_blasting a,
+						#mainColumn #playArea .inner ul#personList li p.btn_ConcludeAlliance a {
+							display: block;
+							width: 135px;
+							height: 30px;
+							background: url(../img/btn/action.png) no-repeat;
+						}
+						#mainColumn #playArea .inner ul#personList li p.btn_setup a {
+							background-position: left top;
+						}
+						/*#mainColumn #playArea .inner ul#personList li p.btn_setup.disable a,*/
+						#mainColumn #playArea .inner ul#personList li p.btn_setup_disable a {
+							background-position: left bottom;
+						} 
+						#mainColumn #playArea .inner ul#personList li p.btn_removal a {
+							background-position: -270px top;
+						}
+						/*#mainColumn #playArea .inner ul#personList li p.btn_removal.disable a,*/
+						#mainColumn #playArea .inner ul#personList li p.btn_removal_disable a {
+							background-position: -270px bottom;
+						}
+						#mainColumn #playArea .inner ul#personList li p.btn_blasting a {
+							background-position: -135px top;
+						}
+						/*#mainColumn #playArea .inner ul#personList li p.btn_blasting.disable a,*/
+						#mainColumn #playArea .inner ul#personList li p.btn_blasting_disable a {
+							background-position: -135px bottom;
+						}
+						/*#mainColumn #playArea .inner ul#personList li p.btn_ConcludeAlliance a {
+							background-position: -402px top;
+						}
+						#mainColumn #playArea .inner ul#personList li p.btn_ConcludeAlliance.disable a,
+						#mainColumn #playArea .inner ul#personList li p.btn_ConcludeAlliance_disable a {
+							background-position: -402px bottom;*/
+						}
+						#mainColumn #playArea .inner ul#personList li .disable a {
+							cursor: default !important;
+						}
+						#mainColumn #playArea .inner ul#personList li p.disable a {
+							background-position-y: bottom !important;
+						}
+				
+				#mainColumn #playArea .inner ul#personList p.img_blasting {
+					position: absolute;
+					top: 3px;
+					left: -41px;
+					width: 217px;
+					height: 218px;
+					/*background: url(../img/explode.gif) no-repeat center center;*/
+				}
+		
+			#mainColumn #playArea ul#slideNav {
+				position: absolute;
+				z-index: 100;
+				left: 195px;
+				bottom: 0;
+				width: 297px;
+				height: 33px;
+			}
+				#mainColumn #playArea ul#slideNav li {
+					display: inline;
+					float: left;
+					width: 99px;
+					text-indent: -9999px;
+				}
+					#mainColumn #playArea ul#slideNav li a {
+						display: block;
+						height: 33px;
+						background: url(../img/btn/ctrl.png) no-repeat;
+					}
+					#mainColumn #playArea ul#slideNav li#slideNavLeft a {
+						background-position: left top;
+					}
+					#mainColumn #playArea ul#slideNav li#slideNavLeft a:hover {
+						background-position: left bottom;
+					}
+					#mainColumn #playArea ul#slideNav li#slideNavHome a {
+						background-position: center top;
+					}
+					#mainColumn #playArea ul#slideNav li#slideNavHome a:hover {
+						background-position: center bottom;
+					}
+					#mainColumn #playArea ul#slideNav li#slideNavRight a {
+						background-position: right top;
+					}
+					#mainColumn #playArea ul#slideNav li#slideNavRight a:hover {
+						background-position: right bottom;
+					}
+				
+			#mainColumn #playArea p#btnCancellation {
+				position: absolute;
+				right: 9px;
+				bottom: 5px;
+				width: 175px;
+				text-indent: -9999px;
+			}
+				#mainColumn #playArea p#btnCancellation a {
+					display: block;
+					height: 30px;
+					background: url(../img/btn/action.png) right top;
+				}
+				
+			#mainColumn #playArea p#btnConcludelation {
+				display: none;
+				position: absolute;
+				right: 9px;
+				bottom: 5px;
+				width: 173px;
+				text-indent: -9999px;
+			}
+				#mainColumn #playArea p#btnConcludelation a {
+					display: block;
+					height: 30px;
+					background: url(../img/btn/action.png) -406px top;
+				}
+				#mainColumn #playArea p#btnConcludelation.disabled a {
+					background-position: -405px -30px;
+					cursor: default !important;
+				}
+		
+#mainColumn #statusArea {
+	padding: 10px 10px 8px;
+	background-color: #424242;
+}
+	#mainColumn #statusArea p.price {
+		display: inline;
+		float: left;
+		padding-right: 30px;
+		width: 258px;
+		height: 52px;
+		background: url(../img/bg_userPriceBox.png) no-repeat left top;
+		color: #000000;
+		font: 20px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		text-align: right;
+		line-height: 50px;
+		font-weight: bold;
+	}
+	
+	#mainColumn #statusArea .bombList {
+		padding: 2px 5px 0 5px;
+		height: 58px;
+		background: url(../img/bg_bombListBox.png) no-repeat left top;
+	}
+	#mainColumn #statusArea .bombList ul {
+	}
+		#mainColumn #statusArea .bombList ul li {
+			position: relative;
+			display: inline;
+			float: left !important;
+			margin-top: -21x;
+			margin-left: 2px;
+		}
+			#mainColumn #statusArea .bombList ul li a {
+				display: block;
+				_display: inline;/*IE6*/
+			}
+			#mainColumn #statusArea .bombList ul li span {
+				display: none;
+				position: absolute;
+				top: -26px;
+				left: -4px !important;
+				padding: 7px 6px;
+				width: 74px;
+				height: 18px;
+				z-index: 100;
+				background: url(../img/bg_dynamiteName.png) no-repeat left top;
+				font-size: 10px;
+				line-height: 1em;
+				overflow: hidden;
+				text-overflow: ellipsis;/*IE*/
+				-webkit-text-overflow: ellipsis;/*Safari*/
+				-o-text-overflow: ellipsis;/*Opera*/
+				white-space: nowrap;
+			}
+				#mainColumn #statusArea .bombList ul li span nobr {
+					display: block;
+					width: 74px;
+					overflow: hidden;
+				}
+
+#mainColumn #userListArea {
+	position: relative;
+	margin-bottom: 5px;
+	padding: 0 10px 34px;
+	background: #424242;
+	border-bottom-right-radius: 5px;/*CSS3*/
+	-webkit-border-bottom-right-radius: 5px;/*safari*/
+	-moz-border-radius-bottomright: 5px;/*Firerox*/
+	border-bottom-left-radius: 5px;/*CSS3*/
+	-webkit-border-bottom-left-radius: 5px;/*safari*/
+	-moz-border-radius-bottomleft: 5px;/*Firerox*/
+}
+	#mainColumn #userListArea .inner {
+		padding: 0 0 0 15px;
+		height: 133px;
+		background-color: #FFFFFF;
+		border: 2px solid #231815;
+		border-top-right-radius: 5px;/*CSS3*/
+		-webkit-border-top-right-radius: 5px;/*safari*/
+		-moz-border-radius-topright: 5px;/*Firerox*/
+		border-top-left-radius: 5px;/*CSS3*/
+		-webkit-border-top-left-radius: 5px;/*safari*/
+		-moz-border-radius-topleft: 5px;/*Firerox*/
+		border-bottom-right-radius: 5px;/*CSS3*/
+		-webkit-border-bottom-right-radius: 5px;/*safari*/
+		-moz-border-radius-bottomright: 5px;/*Firerox*/
+	}
+	
+	#mainColumn #userListArea ul#userListNav {
+	}
+		#mainColumn #userListArea ul#userListNav li {
+			position: absolute;
+			width: 41px;
+			height: 41px;
+		}
+			#mainColumn #userListArea ul#userListNav li a {
+				display: block;
+				width: 41px;
+				height: 41px;
+				background: url(../img/btn/ranking.png) no-repeat;
+				text-indent: -9999px;
+			}
+		#mainColumn #userListArea ul#userListNav li#userListNavLeft {
+			top: 37px;
+			left: 26px;
+		}
+			#mainColumn #userListArea ul#userListNav li#userListNavLeft a {
+				background-position: left top;
+			}
+			#mainColumn #userListArea ul#userListNav li#userListNavLeft a:hover {
+				background-position: left -82px;
+			}
+		#mainColumn #userListArea ul#userListNav li#userListNavMaxLeft {
+			top: 85px;
+			left: 26px;
+		}
+			#mainColumn #userListArea ul#userListNav li#userListNavMaxLeft a {
+				background-position: left -41px;
+			}
+			#mainColumn #userListArea ul#userListNav li#userListNavMaxLeft a:hover {
+				background-position: left -123px;
+			}
+		#mainColumn #userListArea ul#userListNav li#userListNavRight {
+			top: 37px;
+			left: 518px;
+		}
+			#mainColumn #userListArea ul#userListNav li#userListNavRight a {
+				background-position: right top;
+			}
+			#mainColumn #userListArea ul#userListNav li#userListNavRight a:hover {
+				background-position: right -82px;
+			}
+		#mainColumn #userListArea ul#userListNav li#userListNavMaxRight {
+			top: 85px;
+			left: 518px;
+		}
+			#mainColumn #userListArea ul#userListNav li#userListNavMaxRight a {
+				background-position: right -41px;
+			}
+			#mainColumn #userListArea ul#userListNav li#userListNavMaxRight a:hover {
+				background-position: right -123px;
+			}
+	
+	#mainColumn #userListArea #userListWrap {
+		position: absolute;
+		top: 3px;
+		left: 71px;
+		width: 438px;
+		height: 123px;
+		overflow: hidden;
+	}
+		#mainColumn #userListArea #userListWrap ul#userList {
+			width: 990000px;
+		}
+		#mainColumn #userListArea #firstUser {
+			position: absolute;
+			top: 5px;
+			left: 568px;
+		}
+			#mainColumn #userListArea #userListWrap ul#userList li,
+			#mainColumn #userListArea #firstUser li {
+				position: relative;
+				display: inline;
+				float: left;
+				margin-right: 7px;
+				padding: 0 9px 0 8px;
+				width: 65px;
+				height: 124px;
+				background: url(../img/bg_userPic.png) no-repeat center 32px;
+			}
+				#mainColumn #userListArea #userListWrap ul#userList li p.number,
+				#mainColumn #userListArea #firstUser li p.number {
+					line-height: 1em;
+					text-align: center;
+					color: #000000;
+					font: bold 14px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+				}
+				#mainColumn #userListArea #userListWrap ul#userList li p.name,
+				#mainColumn #userListArea #firstUser li p.name {
+					width: 65px;
+					padding-bottom: 8px;
+					text-align: center;
+					font-size: 12px;
+					overflow: hidden;
+					line-height: 14px;
+					text-overflow: ellipsis;/*IE,Safari*/
+					white-space: nowrap;
+				}
+				#mainColumn #userListArea #userListWrap ul#userList li p.pic,
+				#mainColumn #userListArea #firstUser li p.pic {
+					width: 63px;
+					height: 63px;
+					border: 1px solid #CCCCCC;
+					background-color: #FFFFFF;
+					text-indent: -9999px;
+}
+					#mainColumn #userListArea #userListWrap ul#userList li p.pic a,
+					#mainColumn #userListArea #firstUser li p.pic a {
+						display: block;
+						width: 63px;
+						height: 63px;	
+						background-repeat: no-repeat;
+						background-position: center center;	
+					}
+				#mainColumn #userListArea #userListWrap ul#userList li p.price,
+				#mainColumn #userListArea #firstUser li p.price {
+					padding: 2px 0 3px;
+					text-align: center;
+					font: bold 10px/10px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+				}
+				#mainColumn #userListArea #userListWrap ul#userList li img#loginPlayer,
+				#mainColumn #userListArea #firstUser li img#loginPlayer {
+					position: absolute;
+					bottom: 23px;
+					right: 13px;
+				}
+	 
+	
+	#mainColumn #userListArea ul.btnList {
+		position: absolute;
+		top: 141px;
+		right: 10px;
+		width: 230px;
+	}
+		#mainColumn #userListArea ul.btnList li {
+			display: inline;
+			float: left;
+			margin-left: 5px;
+			width: 110px;
+			text-indent: -9999px;
+		}
+			#mainColumn #userListArea ul.btnList li a {
+				display: block;
+				height: 20px;
+				background: url(../img/btn/type.png) no-repeat;
+			}
+			#mainColumn #userListArea ul.btnList li.disable a {
+				cursor: default;
+			}
+			#mainColumn #userListArea ul.btnList li#btnListMyMixi a {
+				background-position: 0 bottom;
+			}
+			#mainColumn #userListArea ul.btnList li#btnListMyMixi a:hover,
+			#mainColumn #userListArea ul.btnList li#btnListMyMixi.disable a {
+				background-position: 0 top;
+			}
+		#mainColumn #userListArea ul.btnList li#btnListAliance {
+			display: none;
+		}
+			#mainColumn #userListArea ul.btnList li#btnListAliance a {
+				background-position: -110px bottom;
+			}
+			#mainColumn #userListArea ul.btnList li#btnListAliance a:hover,
+			#mainColumn #userListArea ul.btnList li#btnListAliance.disable a {
+				background-position: -110px top;
+			}
+		#mainColumn #userListArea ul.btnList li#btnListEnemy {
+			display: none;
+		}
+			#mainColumn #userListArea ul.btnList li#btnListEnemy a {
+				background-position: -220px bottom;
+			}
+			#mainColumn #userListArea ul.btnList li#btnListEnemy a:hover,
+			#mainColumn #userListArea ul.btnList li#btnListEnemy.disable a {
+				background-position: -220px top;
+			}
+			#mainColumn #userListArea ul.btnList li#btnListAll a {
+				background-position: -330px bottom;
+			}
+			#mainColumn #userListArea ul.btnList li#btnListAll a:hover,
+			#mainColumn #userListArea ul.btnList li#btnListAll.disable a {
+				background-position: -330px top;
+			}
+		
+		#mainColumn #userListArea ul#rankingTab {
+			position: absolute;
+			top: 135px;
+			left: 10px;
+		}
+			#mainColumn #userListArea ul#rankingTab li {
+				display: inline;
+				float: left;
+				margin-right: 5px;
+				width: 157px;
+				text-indent: -9999px;
+			}
+				#mainColumn #userListArea ul#rankingTab li a {
+					display: block;
+					height: 24px;
+					background: url(../img/tab_ranking.png) no-repeat;
+				}
+				#mainColumn #userListArea ul#rankingTab li#tabTotalRanking a,
+				#mainColumn #userListArea ul#rankingTab li#tabPriceRanking a {
+					cursor: default;
+				}
+				#mainColumn #userListArea ul#rankingTab li#tabTotalRanking.disable a:hover,
+				#mainColumn #userListArea ul#rankingTab li#tabPriceRanking.disable a:hover {
+					cursor: pointer;
+				}
+				#mainColumn #userListArea ul#rankingTab li#tabTotalRanking.disable a {
+					background-position: left bottom;
+				}
+				#mainColumn #userListArea ul#rankingTab li#tabTotalRanking a,
+				#mainColumn #userListArea ul#rankingTab li#tabTotalRanking a:hover {
+					background-position: left top;
+				}
+				#mainColumn #userListArea ul#rankingTab li#tabPriceRanking.disable a {
+					background-position: right bottom;
+				}
+				#mainColumn #userListArea ul#rankingTab li#tabPriceRanking a,
+				#mainColumn #userListArea ul#rankingTab li#tabPriceRanking a:hover {
+					background-position: right top;
+				}
+				
+#mainColumn #mainColumnAd {
+	padding-bottom: 5px;
+}
+				
+#mainColumn #newsArea {
+	padding-bottom: 10px;
+	background: #FFFFFF url(../img/bg_newsArea.png) no-repeat left bottom;
+}
+	#mainColumn #newsArea h2 {
+		height: 30px;
+		padding-bottom: 10px;
+		background: url(../img/headline/feed.png) no-repeat 0 0;
+		text-indent: -9999px;
+	}
+	#mainColumn #newsArea #newsAreaInner {
+		margin-right: 5px;
+		height: 256px;
+		overflow: auto;
+	}
+	
+	#mainColumn #newsArea .jScrollPaneContainer {
+	}
+		#mainColumn #newsArea .jScrollPaneContainer .jScrollPaneDrag,
+		#overlayBox.help .jScrollPaneContainer .jScrollPaneDrag {
+			background: url(../img/toggle_middle.png) repeat-y center center;
+		}
+		#mainColumn #newsArea .jScrollPaneContainer .jScrollPaneDragTop,
+		#mainColumn #newsArea .jScrollPaneContainer .jScrollPaneDragBottom,		
+		#overlayBox.help .jScrollPaneContainer .jScrollPaneDragTop,
+		#overlayBox.help .jScrollPaneContainer .jScrollPaneDragBottom {
+			padding: 2px 0;
+			background: url(../img/toggle.png) no-repeat;
+		}
+		#mainColumn #newsArea .jScrollPaneContainer .jScrollPaneTrack {
+			padding: 5px 0;
+			height: 369px;
+			background: no-repeat;
+		}
+		#overlayBox.help .jScrollPaneContainer .jScrollPaneTrack {
+			background: #FFFFFF url(../img/slider_s.png) no-repeat center top;
+		}
+		#mainColumn #newsArea .jScrollPaneContainer .jScrollPaneDragTop,
+		#overlayBox.help .jScrollPaneContainer .jScrollPaneDragTop {
+			height: 71px;
+			background-position: center top;
+		}
+		#mainColumn #newsArea .jScrollPaneContainer .jScrollPaneDragBottom,
+		#overlayBox.help .jScrollPaneContainer .jScrollPaneDragBottom {
+			height: 2px;
+			background-position: center bottom;
+		}
+	
+	
+	#mainColumn #newsArea ul {
+		margin: 0 5px 5px 10px;
+		font-size: 12px;
+		line-height: 1.4;
+	}
+		#mainColumn #newsArea ul li {
+			margin-bottom: 7px;
+			padding: 0 0 0 18px;
+			background: no-repeat left top;
+		}
+		#mainColumn #newsArea ul li.dynamite {
+			background-image: url(../img/icon/dynamite.gif);
+		}
+		#mainColumn #newsArea ul li.dead {
+			background-image: url(../img/icon/dead.gif);
+		}
+		#mainColumn #newsArea ul li.hitman {
+			background-image: url(../img/icon/hitman.gif);
+		}
+			#mainColumn #newsArea ul li p.title {
+			}
+				#mainColumn #newsArea ul li p.title font {
+					font-weight: bold;
+				}
+				#mainColumn #newsArea ul li p.title span.date {
+					padding-left: 5px;
+					color: #777777;
+				}
+				#mainColumn #newsArea ul li p.title a {
+					color: #AA1111;
+				}
+				#mainColumn #newsArea ul li p.pic {
+					display: inline;
+					float: left;
+					width: 30px;
+					height: 30px;
+					border: 1px solid #CFCFCF;
+					text-indent: -9999px;
+				}
+					#mainColumn #newsArea ul li p.pic a {
+						display: block;
+						width: 30px;
+						height: 30px;
+						background: no-repeat center center;
+					}
+				
+				#mainColumn #newsArea ul li p.comment {
+					margin-left: 30px;
+					padding-left: 20px;
+					height: 32px;
+					width: 494px;
+					background: url(../img/fukidashi_s.png) no-repeat 1px top;
+					line-height: 32px;
+					font-size: 14px;
+					font-weight: bold;
+				}
+
+
+/*#subColumn
+----------------------------------------------*/
+#subColumn #adArea {
+	position: relative;
+	z-index: 10000;
+	margin-bottom: 5px;
+}
+
+#subColumn ul#bannerArea {
+}
+	#subColumn ul#bannerArea li {
+		margin-bottom: 5px;
+		text-indent: -9999px;
+	}
+		#subColumn ul#bannerArea li a {
+			display: block;
+			height: 48px;
+			background-repeat: no-repeat;
+			background-position: center bottom;
+		}
+		#subColumn ul#bannerArea li a:hover {
+			background-position: center top;
+		}
+		#subColumn ul#bannerArea li#btnHelp a {
+			background-image: url(../img/btn/help.png);
+		}
+		#subColumn ul#bannerArea li#btnInvite a {
+			background-image: url(../img/btn/invite.png);
+		}
+
+#subColumn #itemArea {
+	background: #FFFFFF url(../img/bg_itemArea.png) no-repeat left bottom;
+}
+	#subColumn #itemArea h2 {
+		width: 250px;
+		height: 30px;
+		background: url(../img/headline/item.png) no-repeat 0 0;
+		text-indent: -9999px;
+	}
+	#subColumn #itemArea ul {
+		margin: 10px 10px 0;
+		padding-bottom: 5px;
+	}
+		#subColumn #itemArea ul li {
+			position: relative;
+			margin-bottom: 5px;
+			/margin-bottom: 4px;
+			padding-bottom: 5px;
+			/padding-bottom: 9px;
+			border-bottom: 1px solid #999999;
+			font-size: 12px;
+		}
+			#subColumn #itemArea ul li p.pic {
+				display: inline;
+				float: left;
+				width: 63px;
+				height: 56px;
+				text-indent: -9999px;
+			}
+			#subColumn #itemArea ul li p.name {
+				margin: 0 0 16px 68px;
+				font-size: 13px;
+				font-weight: bold;
+			}
+			#subColumn #itemArea ul li p.rest {
+				display: inline;
+				float: left;
+				margin: 0 0 5px 5px;
+				background-color: #F9F1E1;
+				vertical-align: middle;
+				font: bold 16px/24px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+			}
+				#subColumn #itemArea ul li p.rest img {
+					display: inline;
+					margin-right: 5px;
+					vertical-align: top !important;
+				}
+			#subColumn #itemArea ul li p.btnUse {
+				position: absolute;
+				bottom: 5px;
+				right: 0;
+				z-index: 1000;
+				/*display: inline;
+				float: right;*/
+				width: 70px;
+				text-indent: -9999px;
+			}
+				#subColumn #itemArea ul li p.btnUse a {
+					display: block;
+					height: 24px;
+					background: url(../img/btn/use.png) no-repeat left top;
+					cursor: pointer;
+				}
+				#subColumn #itemArea ul li p.btnUse.using a {
+					background-position: left center;
+					cursor: default !important;
+				}
+				#subColumn #itemArea ul li p.btnUse.disabled a {
+					background-position: left bottom;
+					cursor: default !important;
+				}
+			
+			#subColumn #itemArea ul li .itemHelp {
+				display: none;
+				position: absolute;
+				z-index: 1002;
+				left: -130px;
+				top: 5px;
+				padding-bottom: 13px;
+				width: 143px;
+				background: url(../img/item/item_help_bottom.png) no-repeat left bottom;
+			}
+				#subColumn #itemArea ul li .itemHelp p {
+					padding: 13px 25px 0 10px;
+					background: url(../img/item/item_help_top.png) no-repeat left top;
+					font-size: 12px;
+					line-height: 1.3;
+					color: #FFFFFF;
+					font-weight: bold;
+				}
+
+
+#subColumn #playingCharaArea {
+	position: relative;
+	margin-bottom: 5px;
+	width: 250px;
+	height: 198px;
+	background: no-repeat left top;
+}
+#subColumn .chara01 {
+	background-image: url(../img/chara_select/playingchara_01.png) !important;
+}
+#subColumn .chara02 {
+	background-image: url(../img/chara_select/playingchara_02.png) !important;
+}
+#subColumn .chara03 {
+	background-image: url(../img/chara_select/playingchara_03.png) !important;
+}
+#subColumn .chara04 {
+	background-image: url(../img/chara_select/playingchara_04.png) !important;
+}
+#subColumn .chara05 {
+	background-image: url(../img/chara_select/playingchara_05.png) !important;
+}
+#subColumn .chara06 {
+	background-image: url(../img/chara_select/playingchara_06.png) !important;
+}
+#subColumn .chara07 {
+	background-image: url(../img/chara_select/playingchara_07.png) !important;
+}
+#subColumn .chara08 {
+	background-image: url(../img/chara_select/playingchara_08.png) !important;
+}
+#subColumn .chara09 {
+	background-image: url(../img/chara_select/playingchara_09.png) !important;
+}
+#subColumn .chara10 {
+	background-image: url(../img/chara_select/playingchara_10.png) !important;
+}
+#subColumn .chara11 {
+	background-image: url(../img/chara_select/playingchara_11.png) !important;
+}
+	#subColumn #playingCharaArea p {
+		position: absolute;
+		top: 42px;
+		left: 15px;
+		width: 220px;
+		text-align: center;
+		overflow: hidden;
+		text-overflow: ellipsis;/*IE*/
+		-webkit-text-overflow: ellipsis;/*Safari*/
+		-o-text-overflow: ellipsis;/*Opera*/
+		white-space: nowrap;
+		font-size: 11px;
+		line-height: 14px;
+	}
+	#subColumn #playingCharaArea img {
+		position: absolute;
+		top: 58px;
+		left: 0;
+		width: 97px;
+	}
+	#subColumn #playingCharaArea.chara03 img {
+		top: 66px;
+	}
+	#subColumn #playingCharaArea.chara4 img {
+		top: 62px;
+	}
+
+
+
+/*#overlay
+----------------------------------------------*/
+#overlay,
+#overlay iframe {
+	position: fixed;
+	_position: absolute;/*IE6*/
+	_top: expression(eval(document.documentElement.scrollTop+0));/*IE6*/
+	top: 0;
+	width: 945px;
+	height: 1200px;
+	z-index: 1000;
+}
+	#overlay iframe {
+		border: medium none;
+		background-color: transparent;
+		filter:alpha(opacity=0);/*IE*/
+		-moz-opacity:0;/*FF2*/
+		opacity: 0;/*FF,Safari,Opera*/
+	}
+	#overlay #overlayBox {
+		position: relative;
+		z-index: 1001;
+		top: 100px;
+		left: 30px;
+		padding: 5px;
+		width: 614px;
+		background: url(../img/bg_overlay.png) repeat;
+		_background: url(../img/bg_overlay_8.png) repeat;/*IE6*/
+		font-size: 13px;
+		line-height: 1.4;
+	}
+		#overlay #overlayBox #overlayBoxInner {
+			padding-bottom: 20px;
+			background-color: #FFFFFF;
+		}
+		#overlay #overlayBox p {
+			margin: 0 15px 15px;
+		}
+			#overlay #overlayBox p strong {
+				color: #A40000;
+			}
+		#overlay #overlayBox h2 {
+			position: relative;
+			top: 0;
+			left: 0;
+			margin: 0 0 15px;
+			width: 614px;
+			height: 30px;
+			background: url(../img/headline/overray.png) no-repeat;
+			text-indent: -9999px;
+		}
+		#overlay #overlayBox.visitersGift h2 {
+			background-position: left top;
+		}
+		#overlay #overlayBox.explode h2 {
+			background-position: left -30px;
+		}
+		#overlay #overlayBox.remove h2 {
+			background-position: left -90px;
+		}
+		#overlay #overlayBox.remove.failure h2 {
+			background-position: left -90px;
+		}
+		#overlay #overlayBox.set h2 {
+			background-position: left -60px;
+		}
+		#overlay #overlayBox.gameover h2 {
+			background-position: left -120px;
+		}
+		#overlay #overlayBox.gameover.organization h2 {
+			background-position: left -150px;
+		}
+		#overlay #overlayBox.invite h2 {
+			background-position: left -180px;
+		}
+		#overlay #overlayBox.help h2 {
+			background-position: left -210px;
+		}
+		#overlay #overlayBox.error.communication h2 {
+			background-position: left -270px;
+		}
+		#overlay #overlayBox.error.system h2 {
+			background-position: left -240px;
+		}
+		#overlay #overlayBox.useItem h2 {
+			background-position: left -300px;
+		}
+		#overlay #overlayBox.bonus h2 {
+			background-position: left -510px;
+		}
+		#overlay #overlayBox.useItem.drink {
+		}
+			#overlay #overlayBox.useItem.drink ul#itemList {
+				margin-left: 0;
+			}
+				#overlay #overlayBox.useItem.drink ul#itemList li {
+					display: inline;
+					float: left;
+					margin-left: 25px;
+					width: 122px !important;
+				}
+					#overlay #overlayBox.useItem.drink ul#itemList li a {
+						display: block;
+						width: 122px;
+						height: 160px !important;
+						text-align: center;
+						background: url(../img/item/bg_hitmanSelect.gif) no-repeat right top;
+					}
+					#overlay #overlayBox.useItem.drink ul#itemList li a {
+					}
+					#overlay #overlayBox.useItem.drink ul#itemList li a:hover {
+						background-position: left top;
+					}
+						#overlay #overlayBox.useItem.drink ul#itemList li a img {
+							margin: 0 auto;
+						}
+						#overlay #overlayBox.useItem.drink ul#itemList li a img.stamina {
+							position: relative;
+							margin-top: -5px;
+							z-index: 10;
+						}
+						#overlay #overlayBox.useItem.drink ul#itemList li a img.hitman {
+							margin-top: -15px;
+						}
+		#overlay #overlayBox.alliance h2 {
+			background-position: left -330px;
+		}
+		#overlay #overlayBox.alliance.end h2 {
+			background-position: left -360px;
+		}
+		#overlay #overlayBox.alliance.select h2 {
+			background-position: left -390px;
+		}
+		#overlay #overlayBox.alliance.cancel h2 {
+			background-position: left -420px;
+		}
+		#overlay #overlayBox.addDynamite h2 {
+			background-position: left -450px;
+		}
+		#overlay #overlayBox.remove.failure p {
+			margin: 0 35px 10px;
+		}
+		#overlay #overlayBox.remove.failure p.btnClose {
+			margin: 0;
+		}
+		#overlay #overlayBox.remove.failure p.comment {
+			display: none;
+		}
+		#overlay #overlayBox.remove.failure p#btnRevenge.btn {
+			clear: both;
+			padding-bottom: 0;
+		}
+		#overlay #overlayBox.visitersGift ul#giftList,
+		#overlay #overlayBox.explode ul#giftList,
+		#overlay #overlayBox.useItem ul#itemList {
+			padding-bottom: 43px;
+		}
+			#overlay #overlayBox.visitersGift ul#giftList li,
+			#overlay #overlayBox.explode ul#giftList li,
+			#overlay #overlayBox.useItem ul#itemList li {
+				display: inline;
+				float: left;
+				margin-left: 16px;
+				width: 104px;
+				text-indent: -9999px;
+			}
+				#overlay #overlayBox.visitersGift ul#giftList li a,
+				#overlay #overlayBox.explode ul#giftList li a,
+				#overlay #overlayBox.useItem ul#itemList li a {
+					display: block;
+					width: 104px;
+					height: 104px;
+					background: url(../img/treasure.png) no-repeat left top;
+				}
+				#overlay #overlayBox.useItem ul#itemList li a {
+					background-image: url(../img/item/b/1.gif);
+				}
+				#overlay #overlayBox.visitersGift ul#giftList li a:hover,
+				#overlay #overlayBox.visitersGift ul#giftList li a:active,
+				#overlay #overlayBox.explode ul#giftList li a:hover,
+				#overlay #overlayBox.explode ul#giftList li a:active,
+				#overlay #overlayBox.useItem ul#itemList li a:hover,
+				#overlay #overlayBox.useItem ul#itemList li a:active {
+					background-position: right top;
+				}
+		
+		#overlay #overlayBox ul.btnList {
+			clear: both;
+			margin-left: 2px;
+			padding-bottom: 10px;
+		}
+			#overlay #overlayBox ul.btnList li {
+				display: inline;
+				float: left;
+				margin-left: 25px;
+				width: 266px;
+				text-indent: -9999px;
+			}
+				#overlay #overlayBox ul.btnList li a {
+					display: block;
+				}
+				#overlay #overlayBox ul.btnList.big li a {
+					height: 105px;
+					background: url(../img/btn/wire.png) no-repeat;
+				}				
+				#overlay #overlayBox ul.btnList.big li#btnRed a {
+					background-position: left top;
+				}
+				#overlay #overlayBox ul.btnList.big li#btnRed.comfirm a {
+					background-position: left center;
+				}
+				#overlay #overlayBox ul.btnList.big li#btnRed.select a {
+					background-position: left bottom;
+				}
+				#overlay #overlayBox ul.btnList.big li#btnBlue a {
+					background-position: right top;
+				}
+				#overlay #overlayBox ul.btnList.big li#btnBlue.comfirm a {
+					background-position: right bottom;
+				}
+				#overlay #overlayBox ul.btnList.big li#btnBlue.select a {
+					background-position: right center;
+				}
+				
+			#overlay #overlayBox ul.btnList.small li {
+				margin-bottom: 13px;
+			}
+				#overlay #overlayBox ul.btnList.small li a {
+					height: 45px;
+					background: url(../img/btn/msg.png);
+				}
+				#overlay #overlayBox ul.btnList.small li#btn01 a {
+					background-position: left top;
+				}
+				#overlay #overlayBox ul.btnList.small li#btn02 a {
+					background-position: right top;
+				}
+				#overlay #overlayBox ul.btnList.small li#btn03 a {
+					background-position: left center;
+				}
+				#overlay #overlayBox ul.btnList.small li#btn04 a {
+					background-position: right center;
+				}
+				#overlay #overlayBox ul.btnList.small li#btn05 a {
+					background-position: left bottom;
+				}
+				#overlay #overlayBox ul.btnList.small li#btn06 a {
+					background-position: right bottom;
+				}
+				
+				#overlay #overlayBox.alliance ul.btnList.small li a {
+					background: url(../img/btn/alliance.png) no-repeat;
+				}
+				#overlay #overlayBox.alliance ul.btnList.small li#btnCancel a {
+					background-position: left top;
+				}
+				#overlay #overlayBox.alliance ul.btnList.small li#btnAlliance a {
+					background-position: -266px top;
+				}
+				#overlay #overlayBox.alliance ul.btnList.small li#btnCancellation a {
+					background-position: -532px top;
+				}
+
+		
+		#overlay #overlayBox p.pic_item {
+			display: inline;
+			float: left;
+			margin-bottom: 0;
+			padding-bottom: 15px;
+			width: 130px;
+		}
+		
+		#overlay #overlayBox p.pic_user {
+			display: inline;
+			float: left;
+			margin-right: 3px;
+			width: 74px;
+			height: 74px;
+			border: 1px solid #CCCCCC;
+			text-indent: -9999px;
+		}
+			#overlay #overlayBox p.pic_user a {
+				display: block;
+				width: 74px;
+				height: 74px;
+				background-position: center center;
+			}
+		
+		#overlay #overlayBox p.comment {
+			margin-left: 95px;
+			padding-left: 40px;
+			width: 427px;
+			height: 76px;
+			background: url(../img/fukidashi_b.png) no-repeat 3px 0;
+			line-height: 76px;
+			font-size: 26px;
+		}
+		
+		#overlay #overlayBox label {
+			display: block;
+			margin: 0 15px 10px;
+			padding: 15px;
+			background: #F0F0F0;
+			border: 1px solid #CCCCCC;
+			font-size: 14px;
+			text-align: center;
+		}
+			#overlay #overlayBox label input {
+				margin-left: 10px;
+				width: 420px;
+				border: 1px solid #999999;
+			}
+		
+		#overlay #overlayBox p.btn {
+			margin-bottom: 0;
+			padding-bottom: 20px;
+			cursor: pointer !important;
+		}
+			#overlay #overlayBox p.btn a {
+				display: block;
+				background: ;
+			}
+			#overlay #overlayBox p.btn img {
+				cursor: pointer;
+			}
+		
+		#overlay #overlayBox .floatBox {
+			display: table-cell;
+			/display: inline;/*IE6,IE7*/
+			zoom:1;/*IE6,IE7*/
+			height: 116px;
+			vertical-align: middle;
+		}
+			#overlay #overlayBox .floatBox p {
+				margin-left: 0;
+			}
+		
+		#overlay #overlayBox p.btnClose {
+			position: absolute;
+			top: -10px;
+			margin: 0;
+			right: -10px;
+			width: 32px;
+			height: 32px;
+			cursor: pointer;
+		}
+			#overlay #overlayBox p.btnClose img {
+				cursor: pointer;
+			}
+
+	#overlay #overlayBox.help {
+		padding-bottom: 5px;
+	}
+		#overlay #overlayBox.help #helpFlash {
+			margin: -5px 5px 5px;
+		}
+		#overlay #overlayBox.help #helpList {
+			margin: 0 5px;
+			height: 217px;
+			overflow: auto;
+		}
+			#overlay #overlayBox.help #helpList .section {
+				margin: 0 10px 10px;
+			}
+				#overlay #overlayBox.help #helpList .section h3 {
+					margin-bottom: 5px;
+					padding: 5px 8px;
+					background-color: #000000;
+					color: #FFFFFF;
+					font-size: 14px;
+				}
+				#overlay #overlayBox.help #helpList .section ul {
+				}
+					#overlay #overlayBox.help #helpList .section ul li {
+						display: inline;
+						float: left;
+						width: 150px;
+						padding-left: 6px;
+						padding-bottom: 5px;
+						background: url(../img/bg_listdot.gif) no-repeat left 6px;
+					}
+				#overlay #overlayBox.help #helpList .section p {
+					margin-left: 0;
+					margin-right: 0;
+				}
+		
+		#overlay #overlayBox.alliance p.pic_user {
+			display: inline;
+			margin-right: 10px;
+		}
+		#overlay #overlayBox.alliance p.text {
+			display: table-cell;
+			/display: inline;/*IE6,IE7*/
+			_display: block;/*IE6*/
+			zoom:1;/*IE6,IE7*/
+			vertical-align: middle;
+			height: 78px;
+		}
+		
+	#overlay #overlayBox.addDynamite {
+	}
+		#overlay #overlayBox.addDynamite ul.bombList {
+			margin-bottom: 20px;
+			text-align: center;
+		}
+			#overlay #overlayBox.addDynamite ul.bombList li {
+				display: -moz-inline-box;/*Firefox2*/
+				display: inline-block;/*CSS3*/
+				/display: inline !important;/*IE6,IE7*/
+				/zoom: 1;/*IE6,IE7*/
+				margin: 0 3px
+			}
+		
+
+
+
+
+
+
+
+/*#copyright
+----------------------------------------------*/
+#copyright {
+	margin: 10px 0 0;
+	font: bold 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+
+/*#charaShop
+----------------------------------------------*/
+body#charaShop {
+}
+	body#charaShop #mainColumn {
+	}
+		body#charaShop #mainColumn h1 {
+			margin-left: 20px;
+		}
+		body#charaShop #mainColumn #contentWrap {
+			position: relative;
+			width: 687px;
+			height: 550px;
+		}
+		body#charaShop #mainColumn #contentWrap #bg,
+		body#charaShop #mainColumn #contentWrap #selectedChara,
+		body#charaShop #mainColumn #contentWrap #selectChara {
+			position: absolute;
+			background: no-repeat left top;
+		}
+		body#charaShop #mainColumn #contentWrap #bg {
+			top: 65px;
+			left: 0;
+			width: 687px;
+			height: 550px;
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect01 #bg {
+			background-image: url(../img/chara_select/bg_01.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect02 #bg {
+			background-image: url(../img/chara_select/bg_02.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect03 #bg {
+			background-image: url(../img/chara_select/bg_03.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect04 #bg {
+			background-image: url(../img/chara_select/bg_04.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect05 #bg {
+			background-image: url(../img/chara_select/bg_05.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect06 #bg {
+			background-image: url(../img/chara_select/bg_06.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect07 #bg {
+			background-image: url(../img/chara_select/bg_07.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect08 #bg {
+			background-image: url(../img/chara_select/bg_08.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect09 #bg {
+			background-image: url(../img/chara_select/bg_09.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect10 #bg {
+			background-image: url(../img/chara_select/bg_10.png);
+		}
+		body#charaShop #mainColumn #contentWrap #selectedChara {
+			top: 73px;
+			left: 272px;
+			width: 365px;
+			height: 466px;
+			display: none;
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect01 #selectedChara {
+			background-image: url(../img/chara_select/chara_01.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect02 #selectedChara {
+			background-image: url(../img/chara_select/chara_02.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect03 #selectedChara {
+			background-image: url(../img/chara_select/chara_03.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect04 #selectedChara {
+			background-image: url(../img/chara_select/chara_04.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect05 #selectedChara {
+			background-image: url(../img/chara_select/chara_05.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect06 #selectedChara {
+			background-image: url(../img/chara_select/chara_06.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect07 #selectedChara {
+			background-image: url(../img/chara_select/chara_07.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect08 #selectedChara {
+			background-image: url(../img/chara_select/chara_08.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect09 #selectedChara {
+			background-image: url(../img/chara_select/chara_09.png);
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect10 #selectedChara {
+			background-image: url(../img/chara_select/chara_10.png);
+		}
+		body#charaShop #mainColumn #contentWrap #selectChara {
+			top: 297px;
+			left: 0;
+			width: 687px;
+			height: 330px;
+			background: url(../img/chara_select/select.png) no-repeat left top;
+		}
+		body#charaShop #mainColumn #contentWrap #selectChara.disable {
+			background-image: url(../img/chara_select/select_disable.png);
+		}
+			body#charaShop #mainColumn #contentWrap #selectChara.disable #selectChara area {
+				cursor: default;
+			}
+		body#charaShop #mainColumn #contentWrap.charaSelect01 #selectChara {
+			background-position: 0 -330px;
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect02 #selectChara {
+			background-position: 0 -660px;
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect03 #selectChara {
+			background-position: 0 -990px;
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect04 #selectChara {
+			background-position: 0 -1320px;
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect05 #selectChara {
+			background-position: 0 -1650px;
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect06 #selectChara {
+			background-position: 0 -1980px;
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect07 #selectChara {
+			background-position: 0 -2310px;
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect08 #selectChara {
+			background-position: 0 -2640px;
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect09 #selectChara {
+			background-position: 0 -2970px;
+		}
+		body#charaShop #mainColumn #contentWrap.charaSelect10 #selectChara {
+			background-position: 0 -3300px;
+		}
+		
+		body#charaShop #mainColumn #contentWrap #selectComfirm {
+			position: absolute;
+			display: none;
+			top:  320px;
+			left: 143px;
+			width: 401px;
+			height: 128px;
+			background: url(../img/chara_select/btn_comfirm.png) no-repeat left top;
+			z-index: 100;
+		}
+			body#charaShop #mainColumn #contentWrap #selectComfirm li {
+				position: absolute;
+				width: 167px;
+				text-indent: -9999px;
+			}
+			body#charaShop #mainColumn #contentWrap #selectComfirm.finish li {
+				display: none;
+			}
+			body#charaShop #mainColumn #contentWrap #selectComfirm li.no {
+				top: 57px;
+				left: 24px;
+			}
+			body#charaShop #mainColumn #contentWrap #selectComfirm li.yes {
+				top: 57px;
+				left: 210px;
+			}
+				body#charaShop #mainColumn #contentWrap #selectComfirm li a {
+					display: block;
+					height: 46px;
+				}
+			body#charaShop #mainColumn #contentWrap #selectComfirm #toHome {
+				position: absolute;
+				top: 57px;
+				left: 115px;
+				display: none;
+				width: 167px;
+				text-indent: -9999;
+			}
+			body#charaShop #mainColumn #contentWrap #selectComfirm.finish #toHome {
+				display: block;
+			}
+				body#charaShop #mainColumn #contentWrap #selectComfirm #toHome a {
+					display: block;
+					height: 46px;
+				}
+
+
+
+
+
+
+/*ranking
+----------------------------------------------*/
+body#ranking {
+}
+	body#ranking #mainColumn {
+	}
+		body#ranking #mainColumn #mainHdr {
+		}
+			body#ranking #mainColumn #mainHdr h1 {
+				display: inline;
+				margin: 0;
+				padding: 0;
+				height: 42px;
+				background: url(../img/ranking/tit_rank.png) no-repeat;
+				text-indent: -9999px;
+			}
+			body#ranking #mainColumn #mainHdr h1#titPriceRank {
+				display: inline;
+				float: left;
+				width: 343px;
+				background-position: left top;
+			}
+			body#ranking #mainColumn #mainHdr h1#titDeadRank {
+				display: inline;
+				float: right;
+				width: 344px;
+				background-position: right top;
+			}
+			body#ranking #mainColumn .column,
+			body#ranking #mainColumn .column .inner {
+				background: url(../img/ranking/bg_rank.png) no-repeat;
+			}
+			body#ranking #mainColumn .column {
+				display: inline;
+				padding-top: 200px;
+				width: 343px;
+				overflow: hidden;
+				background-position: center top;
+			}
+				body#ranking #mainColumn .column .inner {
+					padding-bottom: 30px;
+					background-position: center bottom;
+				}
+			body#ranking #mainColumn #priceRankColumn.column {
+				float: left;
+			}
+			body#ranking #mainColumn #deadRankColumn.column {
+				float: right;
+			}
+				body#ranking #mainColumn .column ul.nav {
+					position: relative;
+					top: -190px;
+					left: 85px;
+					width: 182px;
+				}
+					body#ranking #mainColumn .column ul.nav li {
+						display: inline;
+						float: left;
+						width: 86px;
+						margin-right: 5px;
+						text-indent: -9999px;
+					}
+						body#ranking #mainColumn .column ul.nav li a {
+							display: block;
+							height: 20px;
+							background: url(../img/ranking/nav.gif) no-repeat;
+						}
+						body#ranking #mainColumn .column ul.nav li.navMyMixi a {
+							background-position: 0 -20px;
+						}
+						body#ranking #mainColumn .column ul.nav li.navMyMixi a:hover,
+						body#ranking #mainColumn .column ul.nav li.navMyMixi.active a {
+							background-position: 0 0;
+						}
+					body#ranking #mainColumn .column ul.nav li.navAlliance {
+						display: none;
+					}
+						body#ranking #mainColumn .column ul.nav li.navAlliance a {
+							background-position: -66px 0;
+						}
+						body#ranking #mainColumn .column ul.nav li.navAlliance a:hover,
+						body#ranking #mainColumn .column ul.nav li.navAlliance.active a {
+							background-position: -66px -20px;
+						}
+					body#ranking #mainColumn .column ul.nav li.navEnemy {
+						display: none;
+					}
+						body#ranking #mainColumn .column ul.nav li.navEnemy a {
+							background-position: -132px 0;
+						}
+						body#ranking #mainColumn .column ul.nav li.navEnemy a:hover,
+						body#ranking #mainColumn .column ul.nav li.navEnemy.active a {
+							background-position: -132px -20px;
+						}
+						body#ranking #mainColumn .column ul.nav li.navAll a {
+							background-position: right -20px;
+						}
+						body#ranking #mainColumn .column ul.nav li.navAll a:hover,
+						body#ranking #mainColumn .column ul.nav li.navAll.active a {
+							background-position: right 0;
+						}
+				
+				body#ranking #mainColumn .column .first {
+					position: relative;
+					clear: both;
+					width: 210px;
+					top: -180px;
+					margin: 0 66px;
+					padding-bottom: 20px;
+					background: url(../img/ranking/bg_first.gif) no-repeat center 25px;
+				}
+					body#ranking #mainColumn .column .first p.rank {
+						margin-bottom: 58px;
+						text-align: center;
+						font: bold 24px Georgia, "Times New Roman", Times, serif;
+					}
+					body#ranking #mainColumn .column .first p.pic {
+						margin: 0 25px 8px;
+						width: 160px;
+						border: 1px solid #000000;
+						text-indent: -9999px;
+					}
+						body#ranking #mainColumn .column .first p.pic a {
+							display: block;
+							height: 160px;
+							background: #FFFFFF no-repeat center center;
+						}
+					body#ranking #mainColumn .column .first p.name {
+						margin: 0 25px;
+						width: 160px;
+						white-space: nowrap;
+						font-size: 14px;
+						overflow: hidden;
+						text-overflow: ellipsis;/*IE*/
+						-webkit-text-overflow: ellipsis;/*Safari*/
+						-o-text-overflow: ellipsis;/*Opera*/
+					}
+					body#ranking #mainColumn .column .first p.name a {
+						display: block;
+						text-align: center;
+					}
+					body#ranking #mainColumn .column .first p.price {
+						margin: 0 25px;
+						padding-bottom: 16px;
+						width: 160px;
+						text-align: center;
+						font-size: 28px;
+						font-weight: bold;
+					}
+				
+					body#ranking #mainColumn .column ul.rankList {
+						position: relative;
+						margin-top: -180px;
+						margin-left: 19px;
+					}
+						body#ranking #mainColumn .column ul.rankList li {
+							display: inline;
+							float: left;
+							margin-left: 3px;
+							width: 97px;
+							overflow: hidden;
+							background: url(../img/ranking/bg_rankList.gif) no-repeat center 17px;
+						}
+							body#ranking #mainColumn .column ul.rankList li p.rank {
+								text-align: center;
+								font: bold 14px Georgia, "Times New Roman", Times, serif;
+							}
+							body#ranking #mainColumn .column ul.rankList li p.pic {
+								margin: 38px 10px 3px;
+								width: 74px;
+								overflow: hidden;
+								border: 1px solid #000000;
+								background-color: #FFFFFF;
+								text-indent: -9999px;
+							}
+								body#ranking #mainColumn .column ul.rankList li p.pic a {
+									display: block;
+									height: 74px;
+									background: no-repeat center center;
+								}
+							body#ranking #mainColumn .column ul.rankList li p.name {
+								margin: 0 6px;
+								width: 84px;
+								overflow: hidden;
+								font-size: 12px;
+								text-align: center;
+								white-space: nowrap;
+								text-overflow: ellipsis;/*IE*/
+								-webkit-text-overflow: ellipsis;/*Safari*/
+								-o-text-overflow: ellipsis;/*Opera*/
+							}
+							body#ranking #mainColumn .column ul.rankList li p.price {
+								font-size: 14px;
+								font-weight: bold;
+								text-align: center;
+								text-align: center;
+								white-space: nowrap;
+								padding-bottom: 20px;
+							}
+
+					
+/*help
+----------------------------------------------*/
+body#help {
+}
+	body#help #mainColumn {
+	}
+		body#help #mainColumn #mainHdr {
+			background-image: url(../img/help/tit_help.png);
+		}
+			body#help #mainColumn #mainHdr h1 {
+				margin-left: 20px;
+			}
+			body#help #mainColumn .column,
+			body#help #mainColumn .column .inner {
+				background: url(../img/help/bg_main.png) no-repeat;
+			}
+			body#help #mainColumn .column {
+				padding-bottom: 30px;
+				background-position: center bottom;
+			}
+				body#help #mainColumn .column .inner {
+					padding: 20px;
+					background-position: center top;
+				}
+				body#help #mainColumn .column object {
+					margin: 0 25px;
+					width: 600px;
+				}
+				body#help #mainColumn .column ul#helpList {
+					margin-left: -10px;
+				}
+					body#help #mainColumn .column ul#helpList li,
+					body#help #mainColumn .column ul#helpList li .listInner {
+					}
+					body#help #mainColumn .column ul#helpList li {
+						display: inline;
+						float: left;
+						margin-left: 42px;
+						margin-bottom: 20px;
+						width: 272px;
+						background: url(../img/help/bg_comment_middle.gif) repeat-y left top;
+						font-size: 12px;
+						line-height: 1.4;
+					}
+					body#help #mainColumn .column ul#helpList li#help001 .listInner2,
+					body#help #mainColumn .column ul#helpList li#help002 .listInner2 {
+						/*min-height: 275px;
+						_height: 275px;IE6*/
+					}
+					body#help #mainColumn .column ul#helpList li#help003 .listInner2,
+					body#help #mainColumn .column ul#helpList li#help004 .listInner2 {
+						/*min-height: 390px;
+						_height: 390px;IE6*/
+					}
+					body#help #mainColumn .column ul#helpList li#help003 {
+						clear: left;
+					}
+					body#help #mainColumn .column ul#helpList li#help005 {
+						clear: left;
+					}
+						body#help #mainColumn .column ul#helpList li li {
+							background: none;
+							display: block;
+							float: none;
+							margin-left: 0;
+							padding: 0;
+							width: auto;
+						}
+						body#help #mainColumn .column ul#helpList li .listInner {
+							background: url(../img/help/bg_comment_top.gif) no-repeat left top;
+						}
+						body#help #mainColumn .column ul#helpList li .listInner2 {
+							background:  url(../img/help/bg_comment_bottom.gif) no-repeat left bottom;
+							padding: 30px 20px 10px;
+						}
+						body#help #mainColumn .column ul#helpList li h2 {
+							margin-bottom: 10px;
+							font-size: 16px;
+						}
+						body#help #mainColumn .column ul#helpList li p {
+							padding-bottom: 10px;
+						}
+						body#help #mainColumn .column ul#helpList li ul {
+						}
+							body#help #mainColumn .column ul#helpList li ul li {
+								margin-bottom: 5px;
+								padding-left: 10px;
+								background: url(../img/help/icn_list.gif) no-repeat left 0.45em;
+							}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#overlay1 {
+	height:1200px;
+position:fixed;
+top:0;
+width:945px;
+z-index:1000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

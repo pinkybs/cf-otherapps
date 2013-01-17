@@ -1,0 +1,26 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="check">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">通報完了</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%$message%}{% emoji code="F9F8"%}<br />
+	</div><!--/.description-->
+
+	<div class="inform" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/inform0{%$image%}.gif" width="156" height="100" /><br />
+		1-2時間後､警察がやって来ます<br />
+	</div><!--/.inform-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{{% "$baseUrl/mobile/parking/start?opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&parking_pid=`$pid`&parking_rand=$rand"|mobile_flashurl %}'>{%$parkingUserName%}の駐車場にもどる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#check-->
+{%include file="parking/common/footer.phtml"%}

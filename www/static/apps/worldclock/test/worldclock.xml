@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="World Clock Test" description="World Clock" author="Community Factory Inc." author_link="http://communityfactory.com"> 
+    <Require feature="opensocial-0.8"/>
+    <Require feature="dynamic-height"/>
+    <Require feature="flash"/>
+  </ModulePrefs>
+  <Content type="html" view="canvas">
+  <![CDATA[ 
+  <div id="divTop" style="display:none">
+      <div id='divAmage' style='position: absolute; width:14;left:931;visibility: visible;z-index: 1'>
+        <image onclick="closeAd();" src='http://mixitest.communityfactory.net/static/cmn/ad/img/btn_close_s.png' />
+      </div>
+      <div id='divAd'></div>
+      <div style='height:1px;'></div>
+  </div>
+  <div style="font-weight:bold" id="comment"></div>   
+  <div id='divFlash'></div>
+
+   <script type="text/javascript"> 
+   
+    var APP_ID = 6541;
+    var CACHE_OWNER = null;
+    var CACHE_VIEWER = null;
+    var isSelf = false;
+    
+    function thisMovie(movieName) {
+        if (navigator.appName.indexOf("Microsoft") != -1) {
+            return window[movieName];
+        }else{
+            if(document[movieName].length != undefined){
+                return document[movieName][1];
+            }
+            return document[movieName];
+        }
+    }
+
+   function sendStatus(status) {
+     if (isSelf) {
+	     var req = opensocial.newDataRequest();
+	     req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "clockList", status), "set_data");
+	     req.send(onSendStatus);
+     }
+     else {
+        onSendStatus(null);
+     }
+   }
+
+   function onSendStatus(response) {
+     var success = false;
+     if (response != null && !response.get("set_data").hadError()) {
+        success = true;
+     }
+     var mainworldclock = thisMovie('mainworldclock');
+     if (mainworldclock){   
+        try{
+            mainworldclock.sendStatusCallBack(success);
+        }catch(e){
+	        if (window.console && console.log) {
+	            var msg = '';
+	            if (e.description == null) {
+	               msg = e.message;
+	            }
+	            else {
+	               msg = e.description;
+	            }
+	            console.log(msg);
+	        }
+        }
+     }
+   }
+
+   function getClockStatus() {
+     var p = {};
+     var req = opensocial.newDataRequest();
+     var idspec = opensocial.newIdSpec({'userId':'OWNER', 'groupId':'SELF'});
+     req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.OWNER, p), 'owner');
+     req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER, p), 'viewer');
+     req.add(req.newFetchPersonAppDataRequest(idspec, 'clockList'), "data");
+     req.send(handleRequesClockStatus);
+   }
+
+   function handleRequesClockStatus(resp) {
+        var ownerResp = resp.get('owner');
+        var viewerResp = resp.get('viewer');
+        var dataResp = resp.get('data');
+        var clockList = '';
+        
+        if(ownerResp.hadError() || viewerResp.hadError() || dataResp.hadError()){
+            clockList = '225,true,222,true,10,true';//japan,china,american
+        }
+        else {
+            var owner = ownerResp.getData();
+            var viewer = viewerResp.getData();
+            var data = dataResp.getData();
+            var ownerData = data[owner.getId()];
+            if (ownerData && ownerData['clockList']) {
+                clockList = ownerData['clockList'];
+            }
+            else {
+                clockList = '225,true,222,true,10,true';//japan,china,american
+            }
+            
+            CACHE_OWNER = owner;
+            CACHE_VIEWER = viewer;
+            isSelf = (owner.getId() == viewer.getId());
+            if (window.console && console.log) {
+                console.log("isSelf:" + isSelf);
+            }
+        }
+
+        var opt = {
+            id : 'mainworldclock',
+            width : 945,
+            height: 663,
+            quality: 'high',
+            align: 'middle',
+            bgcolor: '#ffffff',
+            scale: 'showall',
+            wmode: 'window',
+            allowFullScreen: 'false',
+            flashvars : 'clockList=' + clockList,
+            allowScriptAccess: 'always'
+        };
+        
+        checkHasAd();
+        gadgets.flash.embedFlash('http://static.mixitest.communityfactory.net/apps/worldclock/detail-1.1.swf?ver=1.0', 'divFlash', 9.0, opt);  
+    }
+
+    function checkHasAd() {
+        var params = {};        
+        params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
+        gadgets.io.makeRequest('http://mixitest.communityfactory.net/ad/checkhasad/app_id/' + APP_ID + '/uid/' + CACHE_VIEWER.getId(), function(response) {
+            var status = response.data;
+            if (status) {
+                gadgets.window.adjustHeight(820);
+                document.getElementById('divTop').style.display = 'block';
+                document.getElementById('divAd').innerHTML = '<iframe id="topAreaAdFrame" src="http://mixitest.communityfactory.net/ad/top/app_id/' + APP_ID + '/uid/' + CACHE_VIEWER.getId() + '" width="945" height="68" scrolling="no" frameborder="0"></iframe>';
+            }        
+        }, params);  
+    }
+   
+    function init() {
+        gadgets.window.adjustHeight(750);
+        getClockStatus();
+        addComment();
+    }
+    
+    function closeAd() {
+        gadgets.io.makeRequest('http://mixitest.communityfactory.net/ad/closetopad/app_id/' + APP_ID + '/uid/' + CACHE_VIEWER.getId());
+        document.getElementById('divTop').style.display = 'none';
+        gadgets.window.adjustHeight(750);
+    }
+    
+    function addComment() {
+        document.getElementById('comment').innerHTML = '<br>2010年5月24日（月）をもちましてサービスを終了いたします。<br>今までご利用ありがとうございました。';
+    }
+    gadgets.util.registerOnLoadHandler(init);
+
+ </script>
+
+  ]]> 
+
+  </Content>
+    <Content type="html" view="home, profile">
+    <![CDATA[
+    <div id='divFlash'></div>
+
+    <script>
+   function getClockStatus() {
+     var p = {};
+     var req = opensocial.newDataRequest();
+     var idspec = opensocial.newIdSpec({'userId':'OWNER', 'groupId':'SELF'});
+     req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.OWNER, p), 'owner');
+     req.add(req.newFetchPersonAppDataRequest(idspec, 'clockList'), "data");
+     req.send(handleRequesClockStatus);
+   }
+
+   function handleRequesClockStatus(resp) {
+        var ownerResp = resp.get('owner');
+        var dataResp = resp.get('data');
+        var clockList = '';
+
+        if(ownerResp.hadError() || dataResp.hadError()){
+            clockList = '225,true,222,true,10,true';//japan,china,american
+        }
+        else {
+	        var owner = ownerResp.getData();
+	        var data = dataResp.getData();
+	        var ownerData = data[owner.getId()];
+	        if (ownerData && ownerData['clockList']) {
+	            clockList = ownerData['clockList'];
+	        }
+	        else {
+	            clockList = '225,true,222,true,10,true';//japan,china,american
+	        }
+        }
+
+        embedFlash(clockList);
+   }
+
+   function embedFlash(clockList){
+        var opt = {
+            width : 210,
+            height: 210,
+            quality: 'high',
+            align: 'middle',
+            bgcolor: '#ffffff',
+            allowFullScreen: 'false',
+            flashvars : 'clockList=' + clockList,
+            allowScriptAccess: 'always'
+        };
+        
+        gadgets.flash.embedFlash('http://static.mixitest.communityfactory.net/apps/worldclock/top-1.2.swf?ver=1.0', 'divFlash', 9.0, opt);
+   }
+
+    function init() {
+        gadgets.window.adjustHeight(210);
+        getClockStatus();
+    }
+
+    gadgets.util.registerOnLoadHandler(init);
+    </script>
+    ]]></Content>
+</Module>

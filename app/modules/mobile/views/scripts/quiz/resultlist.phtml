@@ -1,0 +1,45 @@
+{%include file="quiz/common/header.phtml" headAd=1 %}
+
+<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+
+	<div class="description">
+		<table width="228" cellpadding="0" cellspacing="0" border="0" align="center" style="text-align:center;">
+			<tr>
+				<td align="left" style="background:#fff;{% if $ua==1 %}font-size:x-small;{% /if %}text-align:left;">{% if $result %}ｸｲｽﾞに正解したﾏｲﾐｸを項目別に表示しています｡{% else %}ｸｲｽﾞに誤答したﾏｲﾐｸを項目別に表示しています｡{%/if%}</td>
+				<td width="50" style="width:50px;"><img src="{%$staticUrl%}/apps/quiz/mobile/img/host4.gif" width="50" height="40" /></td>
+			</tr>
+		</table>
+	</div><!--/.description-->
+
+<div class="group">
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div class="headline" style="background:#993333;color:#ffffff;">
+		{% if $result %}
+			ｱﾅﾀを知っているﾏｲﾐｸ!!
+		{% else %}
+			ｱﾅﾀに興味がないかもﾏｲﾐｸ
+		{%/if%}
+	</div>
+	{%include file="quiz/common/pager.phtml"%}
+	{% foreach from=$quizlist item=data key=key %}
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div class="section" {% if ($key%2) == 0 %}style="background:#a8dada;"{%/if%}>
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		{% if $data.result == '1' %}
+		<span style="color:#ff3366;">[○正解]</span>{%$data.format_time%}<br /><a href='{% "$baseUrl/mobile/quiz/profile?CF_fid=`$data.answer_uid`"|mixiurl %}'>{%$data.displayName%}</a>はｱﾅﾀの{%$data.quiz_name%}を覚えていました!<br />
+		{% else %}
+		<span style="color:#666666;">[×不正解]</span>{%$data.format_time%}<br /><a href='{% "$baseUrl/mobile/quiz/profile?CF_fid=`$data.answer_uid`"|mixiurl %}'>{%$data.displayName%}</a>はｱﾅﾀの{%$data.quiz_name%}を知りませんでした…｡<br />
+		{%/if%}
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	</div><!--/.section-->
+	{% /foreach %}
+	{%include file="quiz/common/pager.phtml"%}
+	<span style="color:#ff0000;">⇒</span><a href='{% "$baseUrl/mobile/quiz/resulttypelist?CF_result=`$result`"|mixiurl %}'>項目別に見る</a>&nbsp;
+</div><!--/.group-->
+
+<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+<div class="line" style="background:#669999;"><img src="http://mm.mixi.net/img/dot0.gif" width="2" height="2" /></div>
+
+{%include file="quiz/common/menu.phtml"%}
+{%include file="quiz/common/recommend.phtml"%}
+{%include file="quiz/common/footer.phtml" footAd=1 %}

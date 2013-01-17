@@ -1,0 +1,75 @@
+{%include file="dynamite/common/header.phtml" headAd=1 %}
+
+	{% if $mode=="1" %}
+	<div id="dynamiteBomb">
+		<div class="actionImg" style="text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/bomb/{%$profileInfo.bomb_hitman_pic%}" width="210" height="160" style="margin:3px 0;" /></div>
+		<div class="description">{%$profileInfo.displayName%}組のﾋｯﾄﾏﾝに{%$bombInfo.damage_power%}のﾀﾞﾒｰｼﾞを与えました。懸賞金をGETするには、あと{%$bombInfo.remain_health%}のﾀﾞﾒｰｼﾞを与える必要があります。<br />
+		{% if $bombInfo.is_gain_bomb==1 %}ﾀﾞｲﾅﾏｲﾄの残りがｾﾞﾛになったため、未使用ﾀﾞｲﾅﾏｲﾄが4つ支給されました!<br />{% /if %}
+		<br />今すぐ息の根を止めましょう！</div>
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="toTop">
+			{% if $isFromFlash %}
+			<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/agit?CF_uid=`$profileInfo.profile_uid`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$myDynamiteInfo.uid`&rand=`$rand`"|mobile_flashurl %}'>{%$profileInfo.displayName%}組のｱｼﾞﾄへ</a>&nbsp;
+			{% else %}
+			<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/profile?CF_uid=`$profileInfo.profile_uid`"|mixiurl %}'>{%$profileInfo.displayName%}組へ</a>&nbsp;
+			{% /if %}
+			{% if $bombInfo.has_other_bomb_to_bomb && $bombInfo.has_other_bomb_to_bomb=="1" %}
+			<br /><span style="color:#ff9933;">⇒</span><a style="color:#ff9933;" href='{% "$baseUrl/mobile/dynamite/dynamitelist"|mixiurl %}'>設置ダイナマイト一覧</a>&nbsp;
+			{% /if %}
+		</div><!--/.toTop-->
+	</div><!--/#dynamiteBomb-->
+	{% /if %}
+
+	{% if $mode=="2" %}
+	<div id="dynamiteSet">
+		<div class="actionImg" style="text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/bomb/{%$profileInfo.bomb_hitman_pic%}" width="210" height="160" style="margin:3px 0;" /></div>
+		<div class="description">{%$profileInfo.displayName%}組のﾋｯﾄﾏﾝを殉職させ、懸賞金${%$bombInfo.format_gain_bonus%}をGETしました！<br />
+			<br />
+			所持金 ${%$bombInfo.format_bonus%}<br />
+			ﾐｸｼｨ全体ﾗﾝｷﾝｸﾞ {%$bombInfo.rank_all%}位{% if $bombInfo.rank_all<$bombInfo.prev_rank_all %}{% emoji code="F8D9"%}{% elseif $bombInfo.rank_all>$bombInfo.prev_rank_all %}{% emoji code="F8F7"%}{% else %}{% emoji code="F99F"%}{% /if %}<br />
+			ﾏｲﾐｸｼｨ内ﾗﾝｷﾝｸﾞ {%$bombInfo.rank_friend%}位{% if $bombInfo.rank_friend<$bombInfo.prev_rank_friend %}{% emoji code="F8D9"%}{% elseif $bombInfo.rank_friend>$bombInfo.prev_rank_friend %}{% emoji code="F8F7"%}{% else %}{% emoji code="F99F"%}{% /if %}<br />
+			<br />
+			{% if $bombInfo.is_gain_bomb==1 %}ﾀﾞｲﾅﾏｲﾄの残りがｾﾞﾛになったため、未使用ﾀﾞｲﾅﾏｲﾄが4つ支給されました!<br /><br />{% /if %}
+			敵対ﾋｯﾄﾏﾝを殉職させるごとに爆破ﾎﾞｰﾅｽをﾌﾟﾚｾﾞﾝﾄ！
+		</div><!--/.description-->
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="toBonus" style="text-align:center;">
+			<span style="color:#ff9933;">≫</span><a href='{% "$baseUrl/mobile/dynamite/bombgift?CF_cid=`$bombInfo.gain_gift`"|mixiurl %}'>爆破ﾎﾞｰﾅｽをGET!!</a><span style="color:#ff9933;">≪</span>
+		</div><!--/.toBonus-->
+	</div><!--/#dynamiteSet-->
+	{% /if %}
+
+	{% if $mode=="3" %}
+	<div id="clash">
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+		<div class="headline" style="background:#777777;color:#ffffff;">爆破失敗!!</div>
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="description">
+			他の組織に先を越されました…。
+		</div><!--/.description-->
+
+		<div class="nullImage" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/dynamite/mobile/img/null.gif" width="118" height="106" style="margin:2px 0;" />
+		</div><!--/.nullImage-->
+
+		<div class="toProfile">
+			{% if $isFromFlash %}
+			<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/agit?CF_uid=`$profileInfo.profile_uid`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$myDynamiteInfo.uid`&rand=`$rand`"|mobile_flashurl %}'>{%$profileInfo.displayName%}組のｱｼﾞﾄへ</a>
+			{% else %}
+			<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/profile?CF_uid=`$profileInfo.profile_uid`"|mixiurl %}'>{%$profileInfo.displayName%}組へ</a>
+			{% /if %}
+		</div><!--/.toProfile-->
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+	</div><!--/#clash-->
+	{% /if %}
+
+{% if $mode=="1" or $mode=="3" %}
+{%include file="dynamite/common/menu.phtml"%}
+{% /if %}
+{%include file="dynamite/common/footer.phtml" footAd=1 %}

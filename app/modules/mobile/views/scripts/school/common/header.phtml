@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr">
+<head>
+{% if $ua!=1 %}
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+{% else %}
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=Shift_JIS" />
+{% /if %}
+	<title>みんなの時間割♪ - mixiｱﾌﾟﾘ</title>
+	<style type="text/css">
+		a:link{color:#258fb8;}
+		a:visited{color:#258fb8;}
+		a:focus{}
+		*{
+			{% if $ua==2 %}
+			font-size:5;
+			{% else %}
+			font-size:x-small;
+			{% /if %}
+		}
+	</style>
+</head>
+<body style="background:#{% if $bgColor %}52a0ff{% else %}fcf5cc{% /if %};color:#666666;">
+
+{% if $headAd %}{%include file="school/common/ad_header.phtml"%}{% /if %}

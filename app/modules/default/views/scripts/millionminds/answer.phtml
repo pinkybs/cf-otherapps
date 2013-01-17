@@ -1,0 +1,80 @@
+{%include file="millionminds/common/header.phtml"%}
+
+<body>
+    {%include file="topad.phtml"%}
+    <script type="text/javascript" src="{%$staticUrl%}/apps/millionminds/js/index.js?{%$version.js%}"></script>
+	<div id="container">
+
+		{%include file="millionminds/common/hdr.phtml"%}
+
+		<ul id="gnav">
+            <li class="top"><a href="{%$baseUrl%}/millionminds">MillionMindsトップ</a></li>
+            <li class="profile"><a href="{%$baseUrl%}/millionminds/profile">プロフィール</a></li>
+            <li class="log"><a href="{%$baseUrl%}/millionminds/log">あしあと</a></li>
+            <li class="archive"><a href="{%$baseUrl%}/millionminds/archive">アーカイブ</a></li>
+            <li class="add"><a href="{%$baseUrl%}/millionminds/newquestion">クエスチョン作成</a></li>
+            <li class="help"><a href="{%$baseUrl%}/millionminds/help">ヘルプ</a></li>
+            <li class="invite"><a href="javascript:void(0)" onclick="invite();">友達を招待</a></li>
+        </ul><!--/#grav-->
+        
+		<div id="content">
+            
+			<div id="mainColumn">
+				
+				{%include file="millionminds/common/answer.phtml"%}
+
+                {%include file="millionminds/common/nature.phtml"%}
+                
+                <input type="hidden" id="activityTitle" value="{%$activityTitle%}">
+                
+                <div class="article" id="divPopular">
+                    <h2 class="popular">人気のクエスチョン</h2>
+                    <ul class="cat" id="ulPopular">
+                        <li class="all"><a href="javascript:void(0)" class="active" onclick="jQuery.top.getQuestion(0,1);">すべて</a></li>
+                        <li class="character"><a href="javascript:void(0)" onclick="jQuery.top.getQuestion(1,1)">性格診断</a></li>
+                        <li class="politics"><a href="javascript:void(0)" onclick="jQuery.top.getQuestion(2,1)">政治・経済</a></li>
+                        <li class="life"><a href="javascript:void(0)" onclick="jQuery.top.getQuestion(3,1);">社会生活</a></li>
+                        <li class="entertainment"><a href="javascript:void(0)" onclick="jQuery.top.getQuestion(4,1);">芸能・スポーツ</a></li>
+                        <li class="hobby"><a href="javascript:void(0)" onclick="jQuery.top.getQuestion(5,1);">趣味・その他</a></li>
+                    </ul><!--/.cat-->
+                    {% if $popularQuestion %}
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="list">
+                        <tr>
+                            <th class="title"></th>
+                            <th class="count descend"><a href="{%$baseUrl%}/millionminds/archive?field=1">回答数▼</a></th>
+                            <th class="date ascend"><a href="{%$baseUrl%}/millionminds/archive?field=2">作成日▼</a></th>
+                        </tr>
+                        {% foreach from=$popularQuestion item=data%}
+                        <tr class="section">
+                            <td class="title stringCut"><a href="{%$baseUrl%}/millionminds/question?qid={%$data.qid%}" class="ico">{%$data.question|escape%}</a></td>
+                            <td class="count">{%$data.answer%}</td>
+                            <td class="date">{%$data.create_time%}</td>
+                        </tr><!--/.section-->
+                        {% /foreach %}
+                    </table>
+                    <p class="more">⇒<a href="{%$baseUrl%}/millionminds/archive?field=1">人気のクエスチョンをもっと見る</a></p>
+                    {% else %}
+                    <p class="null"><a href="{%$baseUrl%}/millionminds/newquestion">クエスチョンを作成する</a></p>
+                    {% /if %}
+                </div><!--/.article-->
+                
+			</div><!--/#mainColumn-->
+
+			<div id="subColumn">
+				{%include file="millionminds/common/ad.phtml"%}
+				
+				{%include file="millionminds/common/article.phtml"%}
+				
+			</div><!--/#subColumn-->
+
+		</div><!--/#content-->
+		
+		<script type="text/javascript" language="javascript">
+        $().ready(function() {
+            if ( $('#activityTitle').val() ) {
+                postActivity($('#activityTitle').val());
+            }
+        });
+        </script>
+
+{%include file="millionminds/common/footer.phtml"%}

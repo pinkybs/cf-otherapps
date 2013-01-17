@@ -1,0 +1,39 @@
+{%include file="scripteditor/common/header.phtml"%}
+
+{%include file="scripteditor/common/codejsbox.phtml"%}
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/search.js?{%$version.js%}"></script>
+
+<body id="search">
+{%include file="topad.phtml"%}
+<div id="continer">
+
+	{%include file="scripteditor/common/topbox.phtml"%}
+	
+	<div id="mainColumn">
+	
+	     <div id="infoBox"><input type="text" id="searchInput" value="{%$search%}" onkeydown="if (event.keyCode==13) {jQuery.search.sumbitSearch();}" /></div>
+	     
+		 <input type="hidden" id="langType" value="{%$langType%}"/>
+		 <input type="hidden" id="isOnFocus" value="{%$isOnFocus%}"/>
+		     
+		<div id="wrap">
+			
+			<h1><img src="{%$staticUrl%}/apps/scripteditor/img/tit_search_entries.png" width="166" height="22" alt="エントリー検索" /></h1>
+			
+			<div class="inner">
+				
+				<div id="follows" class="box">
+				</div><!--/.box-->
+				
+			</div><!--/.inner-->
+			
+			<input type="hidden" id="pageIndex" value="1" >
+		</div><!--/#wrap-->
+		
+	</div><!--/#mainColumn-->
+	
+	{%include file="scripteditor/common/subbox.phtml"%}
+
+{%include file="scripteditor/common/footer.phtml"%}
+

@@ -1,0 +1,80 @@
+{%include file="hotel/common/header.phtml"%}
+<style type="text/css">
+    a:link{color:#a77809;}
+    a:visited{color:#a77809;}
+    *{color:#000000;font-size:x-small;font-size:5;}
+    .icon{vertical-align: middle;}
+    a img {border: none;}
+
+    body {
+        background: #ffffff;
+    }
+
+    .hrYellow {
+        color:#fbf8c9;
+        border: 0;
+        background-color:#fbf8c9;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrWhite {
+        color:#ffffff;
+        border: 0;
+        background-color:#ffffff;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrSp {
+        background-color:#fdd89e;
+        color:#fdd89e;
+        height:1px;
+        border:0px solid #fdd89e;
+        margin:0.3em 0;
+    }
+
+    #mixiHeader {
+        background:#fbb03b;
+    }
+
+    .headlineFun {
+        background:#cf1226;
+        color:#ffffff;
+    }
+
+    .headlineBack {
+        background:#f6ddbc;
+    }
+
+    .headlineTip {
+        background:#fdd89e;
+        color:#000000;
+    }
+
+    .toTop {
+        background-color:#ffffff;
+    }
+
+    #copyright {
+        background:#fbb03b;
+    }
+
+    #itemFinish {
+        background:#fbf8c9;
+    }
+    </style>
+    <div id="itemFinish">
+        <hr class="hrWhite" size="1" />
+        <div class="headlineTip" style="background:red;color:#ffffff;">{%$message%}</div>
+        <hr class="hrWhite" size="1" />
+        <div class="description">设置使者完了完了</div><!--/.description-->
+        <div class="ad" style="text-align:center;">
+            <a href="#"><img src="{%$staticUrl%}/apps/hotel/mobile/img/ad192x106.gif" width="192" height="106" style="margin:3px 0;" /></a>
+        </div><!--/.ad-->
+        <!--<div class="toTop">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/profile"|mixiurl %}'>トップへ戻る</a>&nbsp;
+        </div>/.toTop-->
+    </div><!--/#itemFinish-->
+{%include file="hotel/common/menu.phtml"%}
+{%include file="hotel/common/footer.phtml"%}

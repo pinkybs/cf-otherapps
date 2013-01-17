@@ -1,0 +1,83 @@
+{%include file="header.phtml"%}
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+    {%include file="nav.phtml"%}
+	<div id="container">
+		<h2>駐車戦争 - アプリケーション管理</h2>
+		<div id="appsAdmin">
+            <ul class="nav">
+                <li><a href="{%$baseUrl%}/aparking/top">トップページ</a></li>
+                <li><span>自動車 追加・編集</span></li>
+                <li><a href="{%$baseUrl%}/aparking/addbackground">不動産 追加・編集</a></li>
+            </ul><!--/.nav-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0" id="twoPain">
+				<tr>
+					<td>{%include file="aparking/common/listcar.phtml"%}</td>
+					<th>
+						<h3><strong>自動車 追加・編集</strong></h3>
+                       <div id="step1">
+						<form id="frmAddCar" method="post" enctype="multipart/form-data">
+							<div class="description">
+								<p>新しい自動車を追加します。以下の項目をすべて入力してください。</p>
+							</div><!--/.description-->
+                            <div id="errMsg" class="error" style="display: none;">
+                                <p>エラーメッセージ</p>
+                            </div>
+                            <!--/.error-->
+							<ul>
+								<li><label for="#">名称：</label><br />
+									<input type="text" id="txtName" name="txtName" class="required" maxlength="50" value="" size="50" />
+									<div id="advice-required-txtName" class="validation-advice" title="名称を入力してください" style="display: none;"></div>
+							    </li>
+								<li><label for="#">値段：</label><br />
+									<input type="text" id="txtPrice" name="txtPrice" class="required validate-int-range-1000-2147483647" maxlength="10" value="" size="10" />
+                                    <div id="advice-required-txtPrice" class="validation-advice" title="値段を入力してください" style="display: none;"></div>
+								</li>
+								<li><label for="#">ユニークKEY：</label><br />
+									<input type="text" id="txtCavName" name="txtCavName" class="required validate-alphanum-hyphen" maxlength="20" value="" size="20" />
+                                    <div id="advice-required-txtCavName" class="validation-advice" title="ユニークKEYを入力してください" style="display: none;"></div>
+								</li>
+								<li><label for="#">駐車料金の掛け率：</label><br />
+									<input type="text" id="txtTimes" name="txtTimes" class="required validate-float-range-0-1000" value="" size="20" />
+                                    <div id="advice-required-txtTimes" class="validation-advice" title="駐車料金の掛け率を入力してください" style="display: none;"></div>
+								</li>
+								<li><input type="button" id="btnConfirm" name="btnConfirm" value="　確認画面へ　" /></li>
+							</ul>
+						</form>
+						</div><!--/.step1 End -->
+                        <div id="step2" style="display: none">
+                            <div class="description">
+                                <p>以下の内容でよろしければ、作成をクリックしてください。</p>
+                            </div><!--/.description-->
+                            <ul>
+                                <li><label for="#">名称：</label><br />
+                                    <p id="pName"></p>
+                                </li>
+                                <li><label for="#">値段：</label><br />
+                                    <p id="pPrice"></p>
+                                </li>
+                                <li><label for="#">ユニークKEY：</label><br />
+                                    <p id="pCavName"></p>
+                                </li>
+                                <li><label for="#">駐車料金の掛け率：</label><br />
+                                    <p id="pTimes"></p>
+                                </li>
+                                <li>
+                                    <input type="button" id="btnRevision" name="btnRevision" value="　戻る　" />
+                                    <input type="button" id="btnSubmit" name="btnSubmit" value="　作成　" />
+                                </li>
+                            </ul>
+                        </div><!--/.step2 End -->
+                        <div id="loading" style="display: none"></div>
+                        <div id="step3" style="display: none">
+                            <div class="description">
+                                <p>新しい自動車が作成完了しました。</p>
+                            </div><!--/.description-->
+                        </div><!--/.step3 End -->
+					</th>
+				</tr>
+			</table><!--/#towPain-->
+		</div><!--/#appsAdmin-->
+	</div><!--/#container-->
+	<script src="{%$staticUrl%}/admin/js/aparking/addcar.js?{%$version.js%}"></script>
+{%include file="footer.phtml"%}

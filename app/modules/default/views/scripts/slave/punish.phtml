@@ -1,0 +1,30 @@
+{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn">
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+		<div id="punishBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_punish.png" width="160" height="23" alt="ペナルティ発生" /></h2>
+			</div><!--/.hdr-->
+			<p class="intro">ニックネームやフキダシなどで、他人が著しく不快に感じる内容が含まれた場合、ペナルティが課せられます。次回からは気をつけましょう</p>
+			<p class="pic"><img src="{%$staticUrl%}/apps/slave/img/content/valueDump.png" alt="市場価値20％ダウン" /></p>
+			<p class="actionBackHome btn"><a href="{%$baseUrl%}/slave/home">ホームにもどる</a></p>
+		</div><!--/#punishBox.box-->
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="slave/common/adbox.phtml"%}
+		{%include file="slave/common/logbox.phtml"%}
+		{%include file="slave/common/popularbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/setnickname.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

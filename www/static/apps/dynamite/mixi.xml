@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="Dynamite " description="Dynamite " author="Community Factory Inc." author_link="http://communityfactory.com"> 
+        <Require feature="opensocial-0.8" />
+        <Require feature="dynamic-height" />
+        <Require feature="flash" />
+        <Require feature="views" />
+    </ModulePrefs>
+    
+    <Content type="html" view="canvas">
+    <![CDATA[
+       <script type="text/javascript" src="http://static.mixi.communityfactory.net/cmn/js/mixios.canvas-1.0-min.js?v=1.1"></script>
+     
+       <script type="text/javascript">
+           var canvas = mixios.application.newCanvas('http://ddp.mixi.communityfactory.net', 'dynamite');
+           //default debug is disabled
+           canvas.enableDebug(true);
+           //default height is 800
+           canvas.setHeight(580);
+          
+          var imgStaticUrl = 'http://static.mixi.communityfactory.net/apps/dynamite/img';
+          
+          var imgs = [  imgStaticUrl + '/start/image_main.png', 
+                        imgStaticUrl + '/start/selectChara.png',
+                        imgStaticUrl + '/chara_select/select.png',
+                        imgStaticUrl + '/chara_select/select_disable.png',
+                        imgStaticUrl + '/bg/01.png',
+                        imgStaticUrl + '/bg/02.png', 
+                        imgStaticUrl + '/bg/03.png',
+                        imgStaticUrl + '/bg/04.png', 
+                        imgStaticUrl + '/bg/05.png',
+                        imgStaticUrl + '/bg/06.png', 
+                        imgStaticUrl + '/bg/07.png',
+                        imgStaticUrl + '/bg/08.png',
+                        imgStaticUrl + '/bg/09.png',
+                        imgStaticUrl + '/bg/10.png',
+                        imgStaticUrl + '/explode.gif',
+                        imgStaticUrl + '/hitman/01a.gif',
+                        imgStaticUrl + '/hitman/01b.gif',
+                        imgStaticUrl + '/hitman/07a.gif',
+                        imgStaticUrl + '/hitman/07b.gif',
+                        imgStaticUrl + '/hitman/09a.gif',
+                        imgStaticUrl + '/hitman/09b.gif',
+                        imgStaticUrl + '/hitman/03a.gif',
+                        imgStaticUrl + '/hitman/03b.gif',
+                        imgStaticUrl + '/hitman/06a.gif',
+                        imgStaticUrl + '/hitman/06b.gif',
+                        imgStaticUrl + '/hitman/08a.gif',
+                        imgStaticUrl + '/hitman/08b.gif',
+                        imgStaticUrl + '/hitman/02a.gif',
+                        imgStaticUrl + '/hitman/02b.gif',
+                        imgStaticUrl + '/hitman/04a.gif',
+                        imgStaticUrl + '/hitman/04b.gif',
+                        imgStaticUrl + '/hitman/05a.gif',
+                        imgStaticUrl + '/hitman/05b.gif',
+                        imgStaticUrl + '/hitman/10a.gif',
+                        imgStaticUrl + '/hitman/10b.gif',
+                        imgStaticUrl + '/hitman/dead.gif',
+                        imgStaticUrl + '/chara_select/chara_01.png',
+                        imgStaticUrl + '/chara_select/chara_02.png',
+                        imgStaticUrl + '/chara_select/chara_03.png',
+                        imgStaticUrl + '/chara_select/chara_04.png',
+                        imgStaticUrl + '/chara_select/chara_05.png',
+                        imgStaticUrl + '/chara_select/chara_06.png',
+                        imgStaticUrl + '/chara_select/chara_07.png',
+                        imgStaticUrl + '/chara_select/chara_08.png',
+                        imgStaticUrl + '/chara_select/chara_09.png',
+                        imgStaticUrl + '/chara_select/chara_10.png',
+                        imgStaticUrl + '/chara_select/bg_01.png',
+                        imgStaticUrl + '/chara_select/bg_02.png',
+                        imgStaticUrl + '/chara_select/bg_03.png',
+                        imgStaticUrl + '/chara_select/bg_04.png',
+                        imgStaticUrl + '/chara_select/bg_05.png',
+                        imgStaticUrl + '/chara_select/bg_06.png',
+                        imgStaticUrl + '/chara_select/bg_07.png',
+                        imgStaticUrl + '/chara_select/bg_08.png',
+                        imgStaticUrl + '/chara_select/bg_09.png',
+                        imgStaticUrl + '/chara_select/bg_10.png'
+                    ];
+           
+           canvas.preLoadImage(imgs);
+           
+           //let's go
+           canvas.start();
+       </script>
+    ]]>
+    </Content>
+
+    <Content type="html" view="home, profile">
+    <![CDATA[
+        <style type="text/css">
+        * {
+            margin:0;
+            padding:0;
+            border:none;
+        }
+        </style>
+            
+        <script type="text/javascript" src="http://static.mixi.communityfactory.net/cmn/js/mixios.gadget-1.0-min.js"></script>
+        
+        <script type="text/javascript">
+            var gadget = mixios.application.newGadget('http://ddp.mixi.communityfactory.net', 'dynamite');
+            gadget.enableDebug(true);
+            
+            gadget.registerOnLoadHandler(embedFlash);
+            
+            function getUserID() {
+                return gadget.getOwnerId() + '*' + gadget.getViewerId();
+            }
+            
+            function embedFlash() {
+                var opt = {
+                    id : 'dynamite',
+                    flashvars : 'gadgetURL=' + gadget.getHost() + '/ajax/opendynamite/gadgetload',
+                    allowScriptAccess: 'always',
+                    height: 210,
+                    width: 210,
+                    allowFullScreen : false
+                };
+    
+                gadgets.flash.embedFlash('http://static.mixi.communityfactory.net/apps/dynamite/swf/gadget.swf?verson=1.0', gadget.getContainerId(), 8.0, opt);
+            }
+            
+            //start
+            gadget.start();
+            
+        </script>
+        ]]>
+    </Content>
+  
+    <Content type="url" view="mobile" href="http://ddp.mixi.communityfactory.net/mobile/index" />
+</Module>

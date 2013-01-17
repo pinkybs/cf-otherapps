@@ -1,0 +1,134 @@
+﻿{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn">
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+		<div id="laborBox" class="box">
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_labor.png" width="159" height="23" alt="強制労働させる" /></h2>
+			</div><!--/.hdr-->
+
+			<!-- step1 -->
+			<div id="step1">
+			<p class="intro"><span>{%$tarName%}に強制労働させるよ。働かせる内容を選んでね。</span><span>それぞれの仕事内容によって、報酬額が異なるから気をつけてね（消耗した体力は１時間で１つ回復するよ）</span></p>
+			<div class="section">
+				<p class="pic"><a style="cursor:default;background-image:url({%$tarPic%})">{%$tarName%}</a></p>
+				<p class="name"><span>{%$tarName%} 改め </span>{%if $tarSlaveInfo.nickname %}{%$tarSlaveInfo.nickname|escape%}{% else %}{%$tarName%}ちゃん{% /if %}</p>
+				<p class="comment">{% if $tarSlaveInfo.balloon %}{%$tarSlaveInfo.balloon|escape%}{% else %}誰か私を買って下さい{% /if %}　<span></span></p>
+				<ul><!--
+					--><li class="job">職業：{%$tarSlaveInfo.work_category|escape%}</li><!--
+					--><li class="power" >体力：{% foreach from=$tarSlaveInfo.work_health item=hpdata %}{% if 1==$hpdata %}<span style="color:#DC4749;">&#9829;</span>{% else %}<span>&#9829;</span>{% /if %}{% /foreach %}</li><!--
+				--></ul>
+			</div><!--/.section-->
+			<div id="laborFeed">
+				<ul id="ulSelWork"><!--
+					{% foreach from=$lstWork item=wdata %}
+					--><li>
+						<p class="pic"><a style="cursor:default;background-image:url({%$staticUrl%}{%$wdata.pic_big%})">{%$wdata.work_category|escape%}</a></p>
+						<p class="work">{%$wdata.wname|escape%}【レベル：{%$wdata.wtitle|escape%}】</p>
+						<ul><!--
+							--><li class="pay">報酬：￥{%$wdata.format_salary%}</li><!--
+							--><li class="cosumePower"> 消費体力：{% foreach from=$wdata.consume_health_array item=hpdata %}{% if 1==$hpdata %}<span>&#9829;</span>{% else %}<span class="light">&#9829;</span>{% /if %}{% /foreach %}
+							</li><!--
+						--></ul>
+						<input class="wid" type="hidden" value="{%$wdata.category_id%}" />
+						<input class="wlevel" type="hidden" value="{%$wdata.wlevel%}" />
+						<input class="wsalary" type="hidden" value="{%$wdata.salary%}" />
+						<input class="whealth" type="hidden" value="{%$wdata.consume_health%}" />
+					</li><!--
+					{% /foreach %}
+				--></ul>
+			</div><!--/#laborFeed-->
+			<ul class="actionList"><!--
+				--><li class="actionAbolish disable"><a href="javascript:cm_goBack();">キャンセル</a></li><!--
+				--><li class="actionNext"><a id="btnConfirm" href="javascript:void(0);">つぎへ</a></li><!--
+			--></ul>
+			<!--/.actionList-->
+			</div>
+
+			<!-- step2 workConfirm -->
+			<div id="step2" style="display:none">
+			<p class="intro"><span>{%$tarName%}にこの内容で強制労働させるよ。</span><span>実行する場合は「決定」をクリックしてね。</span></p>
+			<ul class="sectionList"><!--
+				--><li>
+					<p class="pic"><a style="cursor:default;background-image:url({%$tarPic%})">{%$tarName%}</a></p>
+    				<p class="name"><span>{%$tarName%} 改め </span>{%if $tarSlaveInfo.nickname %}{%$tarSlaveInfo.nickname|escape%}{% else %}{%$tarName%}ちゃん{% /if %}</p>
+    				<p class="comment">{% if $tarSlaveInfo.balloon %}{%$tarSlaveInfo.balloon|escape%}{% else %}誰か私を買って下さい{% /if %}　<span></span></p>
+    				<ul><!--
+    					--><li class="job">職業：{%$tarSlaveInfo.work_category|escape%}</li><!--
+    					--><li class="power" >体力：{% foreach from=$tarSlaveInfo.work_health item=hpdata %}{% if 1==$hpdata %}<span style="color:#DC4749;">&#9829;</span>{% else %}<span class="light">&#9829;</span>{% /if %}{% /foreach %}</li><!--
+    				--></ul>
+				</li><!--
+				--><li class="liWork">
+					<p class="pic" id="confirmWorkPic"><a href="" style="background-image:url()">???</a></p>
+					<p class="work" id="confirmWorkName">???</p>
+					<ul><!--
+						--><li id="confirmWorkPay" class="pay">報酬：￥???</li><!--
+						--><li id="confirmWorkHealth" class="cosumePower"> 消費体力：<span>&#9829; &#9829; &#9829; &#9829; &#9829; &#9829; &#9829;</span> <span class="light">&#9829;</span></li><!--
+					--></ul>
+				</li><!--
+			--></ul><!--/.sectionList-->
+			<ul class="actionList"><!--
+				--><li class="actionAbolish disable"><a id="btnBack" href="javascript:void(0);">キャンセル</a></li><!--
+				--><li class="actionDecision"><a id="btnWork" href="javascript:void(0);">決定</a></li><!--
+			--></ul><!--/.actionList-->
+			</div>
+
+			<div id="loading" style="display:none"><img src="{%$staticUrl%}/cmn/img/loading/ajax_loader.gif" /></div>
+
+			<!-- step3 workFinish1 -->
+			<div id="step3" style="display:none">
+			<p class="intro"><span>{%$tarName%}に働かせたよ！</span><span>アナタは{%$tarName%}の報酬額の90%をピンハネして、￥<label id="lblWorkGet">???</label>ゲットしました♪</span></p>
+			<div class="section">
+				<p class="pic"><a style="cursor:default;background-image:url({%$myPic%})">{%$myName%}</a></p>
+				<p class="name"><span>{%$myName%}</span> 改め {%if $mineInfo.nickname %}{%$mineInfo.nickname|escape%}{% else %}{%$myName%}ちゃん{% /if %}</p>
+				<p class="property">総資産：￥<label id="lblTotal">???</label></p>
+				<p class="propertyOrder">総資産ランキング：<label id="lblTotalRank">???位↓</label></p>
+			</div>
+			<p class="actionBackHome"><a href="{%$baseUrl%}/slave/home">ホームにもどる</a></p>
+			</div>
+
+			<!-- step4 workFinish2 -->
+			<div id="step4" style="display:none">
+			<p class="intro"><span>{%$tarName%}に働かせたよ！</span><span>アナタは{%$tarName%}の報酬額の90%をピンハネして、￥<label id="lblWorkGet2">???</label>ゲットしました♪</span></p>
+			<p class="tips">{%$tarName%}の職業が「<label id="lblNextTitle">見習いコック</label>」に昇格しました。 {%$tarName%}の市場価値が<label id="lblUpPercent">???</label>％アップします。</p>
+			<ul class="sectionList"><!--
+				--><li>
+					<p class="pic"><a style="cursor:default;background-image:url({%$myPic%})">{%$myName%}</a></p>
+					<p class="name">{%$myName%} 改め {%if $mineInfo.nickname %}{%$mineInfo.nickname|escape%}{% else %}{%$myName%}ちゃん{% /if %}</p>
+					<p class="property">総資産：￥<label id="lblTotal2">???</label></p>
+					<p class="propertyOrder">総資産ランキング：<label id="lblTotalRank2">???位↓</label></p>
+				</li><!--
+				--><li>
+					<p class="pic"><a style="cursor:default;background-image:url({%$tarPic%})">{%$tarName%}</a></p>
+					<p class="name">{%$tarName%} 改め {%if $tarSlaveInfo.nickname %}{%$tarSlaveInfo.nickname|escape%}{% else %}{%$tarName%}ちゃん{% /if %}</p>
+					<p class="price">市場価値：￥<label id="lblPrice">???</label></p>
+					<p class="popularOrder">人気ドレイちゃんランキング：<label id="lblPriceRank">???位↑</label></p>
+				</li><!--
+			--></ul><!--/.sectionList-->
+			<p class="actionBackHome btn"><a href="{%$baseUrl%}/slave/home">ホームにもどる</a></p>
+			</div>
+
+			<input type="hidden" id="hidTarUid" value="{%$tarSlaveInfo.uid%}" />
+			<input type="hidden" id="hidTarHealth" value="{%$tarSlaveInfo.health%}" />
+			<input type="hidden" id="hidTarPriceRank" value="{%$tarSlaveInfo.price_rank%}" />
+			<input type="hidden" id="hidMyTotalRank" value="{%$mineInfo.total_rank%}" />
+
+		</div><!--/#laborBox.box-->
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="slave/common/adbox.phtml"%}
+		{%include file="slave/common/logbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/work.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

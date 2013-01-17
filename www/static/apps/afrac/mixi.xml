@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="Board Test" > 
+        <Require feature="opensocial-0.8"/>
+        <Require feature="dynamic-height"/>
+        <Require feature="views" />
+        <Optional feature="content-rewrite">
+            <Param name="expires">86400</Param>
+            <Param name="include-urls"></Param>
+            <Param name="exclude-urls">.*</Param>
+        </Optional>
+    </ModulePrefs>
+
+    <Content type="html" view="canvas">
+    <![CDATA[
+      <script type="text/javascript" src="http://mixi.communityfactory.net/static/cmn/js/mixios.js"></script>
+     
+      <script type="text/javascript">
+          var canvas = mixios.application.newCanvas('http://mixi.communityfactory.net', 4011, true);
+    
+          canvas.setRunUrl('/index/runboard');
+          //canvas.setIframeHeight(1700);
+          canvas.start();
+      </script>
+    ]]>
+    </Content>
+  
+<Content type="html" view="home,profile">
+<![CDATA[
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+#container {
+    width: 210px;
+    height: 193px;
+    overflow: hidden;
+}
+span {
+    display: block;
+    margin-bottom: 3px;
+    border: 2px solid #ffba36;
+}
+
+textarea {
+    width: 100%;
+    height: 146px;
+    font-size: 14px;
+    border: none;
+}
+
+</style>
+
+<script>
+    var owner;
+    var viewer;
+    
+    var DEBUG = (true && (window.console));
+    var APP_ID = 4011;
+    var SAP_HOST = 'http://mixi.communityfactory.net';
+    
+    function getOwner() {
+        var req = opensocial.newDataRequest();
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.OWNER), 'owner');
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
+
+        req.send(onGetOwner);
+    }
+
+    function onGetOwner(data) {
+        owner = data.get('owner').getData();
+        viewer = data.get('viewer').getData();
+        var postdata = {ownerId : owner.getId(), viewerId : viewer.getId()};
+        requestCommentList(SAP_HOST + '/ajax/minicomment/getminicomment', postdata);
+    }
+
+    function init() {
+        getOwner();
+    }
+
+    function requestCommentList(url, postdata) {
+        var params = {};
+        postdata = gadgets.io.encodeValues(postdata);
+        params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
+        params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.POST;
+        params[gadgets.io.RequestParameters.POST_DATA] = postdata;
+        gadgets.io.makeRequest(url, onCommentList, params);
+    }
+
+    function onCommentList(data) {
+        gadgets.window.adjustHeight(210);
+
+        var commentList;
+        var allowComment = data.data['allowComment'];
+        var openflag = data.data['openflag'];
+        
+        if (owner.getId() == viewer.getId()) {
+            allowComment = 0;
+            openflag = 0;
+        }
+        
+        html = new Array();
+        html.push('<div id="container">');
+        html.push(' <form id="frmContent" onsubmit="return false;">');
+        if (3 != openflag) {
+            if (0 == allowComment) {
+                html.push('     <span><textarea id="txtCotent" name="txtCotent"></textarea></span>');
+                html.push('     <input type="image" id="post" src="' + SAP_HOST + '/static/apps/board/img/gadget/gadget.png" onclick="addBoard();" alt="投稿" />');
+            } else if (1 == allowComment){
+                html.push('     <span><textarea id="txtCotent" name="txtCotent" disabled></textarea></span>');
+                html.push('     <input type="image" id="post" src="' + SAP_HOST + '/static/apps/board/img/gadget/gadget.png" onclick="addBoard();" alt="投稿" />');
+            }
+        } else {
+            html.push('     <span><textarea id="txtCotent" name="txtCotent" disabled></textarea></span>');
+            html.push('     <input type="image" id="post" src="' + SAP_HOST + '/static/apps/board/img/gadget/gadget.png" onclick="return false;" alt="投稿" disabled />');
+        }
+        /*
+        if (1 == allowComment) {
+            html.push('     <span><textarea id="txtCotent" name="txtCotent" disabled></textarea></span>');
+            html.push('     <input type="image" id="post" src="' + SAP_HOST + '/static/apps/board/img/gadget/gadget.png" onclick="addBoard();" alt="投稿" />');
+        } else if (0 == allowComment) {
+            if (3 != openflag) {
+                html.push('     <span><textarea id="txtCotent" name="txtCotent"></textarea></span>');
+                html.push('     <input type="image" id="post" src="' + SAP_HOST + '/static/apps/board/img/gadget/gadget.png" onclick="addBoard();" alt="投稿" />');
+            } else {
+                html.push('     <span><textarea id="txtCotent" name="txtCotent" disabled></textarea></span>');
+                html.push('     <input type="image" id="post" src="' + SAP_HOST + '/static/apps/board/img/gadget/gadget.png" onclick="return false;" alt="投稿" disabled />');
+            }
+        }
+        */
+        html.push(' </form>');
+        html.push('</div><!--/#container-->');
+
+        document.getElementById('main').innerHTML = html.join('');
+
+    }
+
+    function navigateToCanvas(uid) {
+        var canvas = gadgets.views.getSupportedViews();
+        var params = {uid : uid};
+        gadgets.views.requestNavigateTo(canvas["canvas"], params);
+    }
+
+    function addBoard()
+    {
+        var txtCotent = document.getElementById('txtCotent').value;
+        
+        if ("" == txtCotent) {
+            navigateToCanvas(owner.getId());
+            return;
+        }
+
+        var url = SAP_HOST + '/ajax/minicomment/new';
+        var data = {ownerId : owner.getId(), commentUid : viewer.getId(), txtContent : txtCotent};
+
+        var params = {};
+        var postdata = gadgets.io.encodeValues(data);
+        params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
+        params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.POST;
+        params[gadgets.io.RequestParameters.POST_DATA] = postdata;
+        gadgets.io.makeRequest(url, renderResults, params);
+    }
+
+    function renderResults(data){
+        var title = data.data['activity'];
+        //alert(title);
+        var params = {};
+        params[opensocial.Activity.Field.TITLE] = title;        
+        var activity = opensocial.newActivity(params);
+        opensocial.requestCreateActivity(activity, opensocial.CreateActivityPriority.HIGH);
+
+        navigateToCanvas(owner.getId());
+    }
+    
+    function checkStatus()
+    {
+		 if (document.all) {
+			document.body.setAttribute("scroll", "no");
+         }
+         else {
+			document.body.style.overflow = 'hidden';
+         }
+
+         var url = SAP_HOST + '/index/checkstatus';
+         var params = {};
+         params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.POST;
+         params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
+         params[gadgets.io.RequestParameters.AUTHORIZATION] = gadgets.io.AuthorizationType.SIGNED;
+         var post_data = {app_id : APP_ID, view: "gadget"};
+         params[gadgets.io.RequestParameters.POST_DATA] = gadgets.io.encodeValues(post_data);
+         
+         gadgets.io.makeRequest(url, function(response) {
+             var status = response.data;
+             if (status) {
+               if (status.code == 1) {
+                   init();
+               }
+               else {
+                   var iframe_container = document.getElementById('main');
+                   if (iframe_container) {
+                       iframe_container.innerHTML = status.html;
+                   }
+               }
+             }
+             
+         }, params);  
+    }
+
+    gadgets.util.registerOnLoadHandler(checkStatus);
+</script>
+<div id='main'>
+</div>
+
+]]></Content>
+  
+</Module>

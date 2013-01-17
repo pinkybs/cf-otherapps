@@ -1,0 +1,91 @@
+{%include file="disney/common/header.phtml"%}
+
+{% if $action == 'apply' %}
+
+	<div style="font-size:x-small; background-color:#ffd990;">
+		{% disneyimg name="sub_ti_trade" style='width="100%"' %}<br /><br />
+		<div style="text-align:center;color:#663300;">
+			{% if $result.status == '1' %}
+				{%$friendInfo->getDisplayName()%}さんへのﾄﾚｰﾄﾞﾘｸｴｽﾄを完了!<br />
+					ﾘｸｴｽﾄをﾏｲﾐｸがOKしたら10点獲得できるよ｡<br />
+				<br />
+				<a href='{% "$baseUrl/mobile/disney/help?CF_help=faq004"|mixiurl %}'>※ﾄﾚｰﾄﾞﾘｸｴｽﾄ有効期限は1週間です｡</a>
+			{% elseif $result.status == '-4' %}
+				このｷｬﾗｸﾀｰのﾄﾚｰﾄﾞはﾘｸｴｽﾄ済みです｡<br />
+				同じｷｬﾗｸﾀｰのﾄﾚｰﾄﾞはできません｡
+			{% elseif $result.status == '-2' %}	
+				同じご当地ｷｬﾗｸﾀｰ同士のﾄﾚｰﾄﾞは、できません。
+			{% elseif $result.status == '-10' %}
+				このご当地ｷｬﾗｸﾀｰは､ﾄﾚｰﾄﾞﾘｸｴｽﾄ中です｡<br />
+				他のご当地ｷｬﾗｸﾀｰを選択してください｡
+			{% elseif $result.status == '-11' %}
+				このご当地ｷｬﾗｸﾀｰは､ﾄﾚｰﾄﾞﾘｸｴｽﾄ中です｡
+			{% elseif $result.status == '-12' %}    
+                ﾄﾚｰﾄﾞは､ｷｬﾗｸﾀｰに関係なく､1日3回までです｡
+			{% else %}
+				申請を失敗しました｡
+			{% /if %}
+			<br /><br />
+	</div>
+{% elseif $action == 'accept' %}
+
+<div style="font-size:x-small; background-color:#ffd990;">
+	{% disneyimg name="sub_ti_get" width="100%" %}
+	<div style="background-color:#ff0000; padding-left:2px; padding-right:2px; padding-top:2px; padding-bottom:2px; margin:5px;">
+		<div style="background-color:#ffffff;padding:5px;color:#663300;">
+			{%$friendInfo->getDisplayName()%}さんからﾄﾚｰﾄﾞの依頼が来ています｡
+		</div>
+	</div><br />
+	<div style="text-align:center;color:#663300;">
+		<img copyright="yes" src="{%$staticUrl%}/apps/disney/img/chara_trade/{%$userPlaceInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" /> <img copyright="yes" src="{%$staticUrl%}/apps/disney/img/chara_trade/{%$friendPlaceInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" /><br />
+		<br />
+	</div>
+	<div style="color:#663300;">
+		あなたの{%$userPlaceInfo.award_name%}ｽﾃｨｯﾁと{%$friendInfo->getDisplayName()%}さんの{%$friendPlaceInfo.award_name%}ｽﾃｨｯﾁのﾄﾚｰﾄﾞﾘｸｴｽﾄがあります。承認しますか?<br />
+		<br />
+		※ﾄﾚｰﾄﾞが成立すると自分のご当地ｷｬﾗｸﾀｰは1つ減ります。<br />
+	</div>
+	<br />
+	<div style="text-align:center;">
+		{% disneyimg style='height="4"' name="dot0" %}<br />
+		<a href='{% "$baseUrl/mobile/disney/tradeaward?CF_nid=`$nid`&CF_step=acceptcomplete"|mixiurl %}'>{% disneyimg name="yes" style='width="39%"' %}</a><br />
+		{% disneyimg style='height="4"' name="dot0" %}<br />
+		<a href='{% "$baseUrl/mobile/disney/news?CF_step=acceptcancel&CF_nid=`$nid`"|mixiurl %}'>{% disneyimg name="no" style='width="39%"' %}</a><br />	
+		{% disneyimg style='height="4"' name="dot0" %}<br />
+	</div>
+
+{% elseif $action == 'acceptconfirm' %}
+
+<div style="font-size:x-small; background-color:#ffd990; text-align:center;">
+	{% disneyimg name="sub_ti_trade" width="100%" %}<br />
+	<br />
+	<div style="text-align:left;color:#663300;">
+		あなたの{%$userPlaceInfo.award_name%}ｽﾃｨｯﾁと{%$friendInfo->getDisplayName()%}さんの{%$friendPlaceInfo.award_name%}ｽﾃｨｯﾁのﾄﾚｰﾄﾞﾘｸｴｽﾄがあります。承認しますか?<br /><br />
+		※ﾄﾚｰﾄﾞが成立すると自分のご当地ｷｬﾗｸﾀｰは1つ減ります。<br /><br />
+	</div>
+	<div style="text-align:center;">
+		{% disneyimg style='height="4"' name="dot0" %}<br />
+		<a href='{% "$baseUrl/mobile/disney/tradeaward?CF_nid=`$nid`&CF_step=acceptcomplete"|mixiurl %}'>{% disneyimg name="yes" style='width="39%"' %}</a><br />
+		{% disneyimg style='height="4"' name="dot0" %}<br />
+		<a href='{% "$baseUrl/mobile/disney/news?CF_step=acceptcancel&CF_nid=`$nid`"|mixiurl %}'>{% disneyimg name="no" style='width="39%"' %}</a><br />		
+		{% disneyimg style='height="4"' name="dot0" %}<br />
+	</div>
+{% elseif $action == 'acceptcomplete' %}
+		<div style="font-size:x-small; background-color:#ffd990;">
+	{% disneyimg name="sub_ti_trade_fin" width="100%" %}   <br /><br />
+		<div style="text-align:center;color:#663300;">
+	{% if $result.status == '1' %}
+		ご当地ｷｬﾗｸﾀｰのﾄﾚｰﾄﾞが成立したよ｡<br/>
+		{% emoji code="F99F"%}10点獲得!{% emoji code="F99F"%}<br/>
+		<br/>
+	{% else %}
+		ご当地ｷｬﾗｸﾀｰのﾄﾚｰﾄﾞを失敗しました｡<br/>
+		<br/>
+	{% /if %}
+		</div>
+		<div style="text-align:center;">
+			<a href='{% "$baseUrl/mobile/disney/index"|mixiurl %}'>ご当地ｺﾚｸｼｮﾝTOPへ</a>
+		</div>
+		<br />
+	{% /if %}
+{%include file="disney/common/footer.phtml"%}

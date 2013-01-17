@@ -1,0 +1,87 @@
+﻿{%include file="slave/common/header.phtml"%}
+<body id="twoColumn" class="{%$presentClass%}">
+
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+
+		<div id="presentGiftBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_presentGift.png" width="140" height="23" alt="ギフトを贈る" /></h2>
+			</div><!--/.hdr-->
+
+			<p class="intro" id="pInfo">{%$pinfo%}</p>
+
+			<!-- hidden info -->
+				<input type="hidden" value="{%$friendId%}" id="hidFriendId" name="hidFriendId"/>
+				<input type="hidden" value="{%$id%}" id="hidKeyGid" name="hidKeyGid"/>
+				<input type="hidden" value="{%$giftcss%}" id="hidCss" name="hidCss"/>
+				<input type="hidden" value="" id="hidSelectedGid" name="hidSelectedGid"/>
+				<input type="hidden" value="" id="hidSelectedFriendId" name="hidSelectedFriendId"/>
+
+			<!-- /hidden info -->
+
+			<div class="section">
+				<div id="giftInfo" style="display:{%$giftcss%}">
+					<p class="pic"><a style="cursor:default;background-image:url({%$giftInfo.gift_small_pic%})">{%$giftInfo.gift_name%}</a></p>
+					<p class="name">{%$giftInfo.gift_name%}</p>
+					<p class="price">価格：&yen;{%$giftInfo.gift_format_price%}</p>
+				</div>
+
+				<div id="friendInfo"  style="display:{%$friendcss%}">
+					<p class="pic"><a style="cursor:default;background-image: url({%$msPic%});">{%$msName%}</a></p>
+					<p class="name"><span>{%$msName%} 改め </span>{%$friendInfo.nickname%}</p>
+					<p class="comment">{%$friendInfo.balloon%}<span></span></p>
+				</div>
+
+				<div id="presendGiftFinish" style="display: none;">
+				</div>
+			</div><!--/.section-->
+			<div id="presentGift">
+				<div id="presentGiftFeed">
+					<ul id="ulFeed">
+					<!--{% if $giftcss == "none" %}
+	                        {% foreach name=lstGiftInfo from=$lstGiftInfo item=gdata %}
+	                           --><li id="{% $sdata.price_rank %}">
+	                                  <input type="hidden" value="{% $gdata.id %}" id="{% $gdata.id %}">
+	                                  <p class="pic"><a style="cursor:default;background-image:url({%$gdata.gift_small_pic%})">{%$giftInfo.gift_name%}</a></p>
+				                      <p class="name">{%$gdata.gift_name%}</p>
+				                      <p class="price">価格：&yen;{%$gdata.gift_format_price%}</p>
+	                            </li><!--
+	                        {% /foreach %}
+                        {% else %}
+	                        {% foreach name=lstFriendInfo from=$lstFriendInfo item=sdata %}
+                                --><li>
+		                                <input type="hidden" value="{% $sdata.uid %}">
+		                                <p class="pic"><a style="cursor:default;background-image:url({%$sdata.thumbnailUrl%})">{%$sdata.displayName%}</a></p>
+		                                <p class="name"><span>{%$sdata.displayName%} 改め </span>{%if $sdata.nickname %}{%$sdata.nickname|escape%}{% else %}{%$sdata.displayName%}ちゃん{% /if %}</p>
+		                                <p class="comment">{% if $sdata.balloon %}{%$sdata.balloon|escape%}{% else %}誰か私を買ってください{% /if %}　<span></span></p>
+                                </li><!--
+	                        {% /foreach %}
+                        {% /if %}
+					--></ul>
+				</div><!--/#presentGiftFeed-->
+
+				<ul class="actionList"><!--
+					--><li class="actionAbolish disable"><a href="javascript:cm_goBack();">キャンセル</a></li><!--
+					--><li class="actionCarryOut"><a id="presentNext" href="javascript:void(0);">実行</a></li><!--
+				--></ul><!--/.actionList-->
+			</div><!--/#presentGift-->
+
+			<p  id="pFinish" style="display: none;" class="actionBackHome btn"><a href="{%$baseUrl%}/slave/home">ホームにもどる</a></p>
+
+		</div><!--/#presentGiftBox.box-->
+	</div><!--/#mainColumn-->
+	<div id="subColumn">
+	{%include file="slave/common/adbox.phtml"%}
+	{%include file="slave/common/logbox.phtml"%}
+	</div><!--/#subColumn-->
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/presentgift.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

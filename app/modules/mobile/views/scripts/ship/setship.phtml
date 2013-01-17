@@ -1,0 +1,35 @@
+{% include file="ship/common/header.phtml" headerAd=1 %}
+
+<div id="setship">
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+		<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		海賊船の詳細<br />
+		<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+	</div><!--/.headline-->
+	<div class="inner">
+		{% emoji code="F947"%}<span style="color:#7c4825;">海賊船 {%$shipInfo.shipName|escape%}号</span><br />
+		<div style="text-align:right;">強奪率:{%$shipInfo.times*100%}%&nbsp;</div>
+		<div style="text-align:center">
+			<img src="{%$staticUrl%}/apps/ship/img/ship/{%$shipInfo.cav_name%}.gif" width="200" height="120" style="margin:3px 0;" /><br />
+			{%if $shipInfo.activation ==1 %}{%$shipInfo.status%}{%else%}使用禁止状態{%/if%}<br />
+			{%if $shipInfo.activation ==1 %}<span style="color:#cd424a;">{% if $shipInfo.money!="破壊されました" %}収入:金貨{% /if %}{%$shipInfo.money%}</span><br />{%/if%}
+		</div>
+		<div class="link">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			{% if $shipInfo.activation != 1 %}
+			    <!-- <span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/activationship/CF_userShipId/`$shipInfo.id`"|mixiurl %}'>激活</a><br /> -->
+			{% elseif $shipInfo.shipStatus != 1 %}
+				<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/repair/CF_userShipId/`$shipInfo.id`"|mixiurl %}'>この海賊船を修理する</a><br />
+			{% else %}
+				<!-- <span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/appointcaptain/CF_userShipId/`$shipInfo.id`"|mixiurl %}'>ﾏｲﾐｸをこの海賊船の船長に委任</a><br /> -->
+				<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/renameship/CF_userShipId/`$shipInfo.id`"|mixiurl %}'>この海賊船の名前を変更する</a><br />
+				{% if $canSendShip == 1 %}<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/sendship/CF_userShipId/`$shipInfo.id`"|mixiurl %}'>この海賊船をﾏｲﾐｸに譲渡する</a><br />{% /if %}
+			    <!-- <span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/prohibitship/CF_userShipId/`$shipInfo.id`"|mixiurl %}'>使用禁止</a><br /> -->
+			{% /if %}
+		</div><!--/.link-->
+	</div><!--/.inner-->
+</div><!--/#setship-->
+
+{%include file="ship/common/menu.phtml"%}
+{% include file="ship/common/footer.phtml" footerAd=1 %}

@@ -1,0 +1,12 @@
+<div id="menu">
+    <div class="headline" style="background:#{% $designSetting.tplColor_i %};color:#{% $designSetting.reverseText %};">アプリメニュー</div>
+        <div class="inner" style="color:#{% $designSetting.linkText %};">
+              {% emoji code="F8F9"%}<a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/list?CF_uid=`$viewerId`"|mixiurl %}'>あしあと帳ﾄｯﾌﾟ</a><br />
+              {% emoji code="F994"%}<a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/friendlist?CF_uid=`$viewerId`"|mixiurl %}'>ﾏｲﾐｸ一覧({% $friendsCount %})</a><br />
+              ├<a style="color:#{% $designSetting.linkText %};" href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/board/list" %}'>ﾏｲﾐｸを招待する</a>{% emoji code="F973"%}<br />
+              └<a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/introduce?CF_uid=`$viewerId`"|mixiurl %}'>あしあと帳をﾌﾟﾛﾌで紹介</a>{% emoji code="F995"%}<br />
+              {% emoji code="F8F5"%}<a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/design"|mixiurl %}'>ﾃﾞｻﾞｲﾝ変更</a><br />
+              {% emoji code="F9A0"%}<a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/setting"|mixiurl %}'>設定変更</a><br />
+              {% emoji code="F999"%}<a style="color:#{% $designSetting.linkText %};" href='{% "$baseUrl/mobile/board/help"|mixiurl %}'>よくある質問</a><br />
+    </div><!--/.inner-->
+</div><!--/#menu-->

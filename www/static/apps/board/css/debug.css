@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+HarachokuWall debug CSS
+
+Created Date: 2009/02/23
+Author: Yu Uno
+Last Up Date : 2009/02/23
+Author: Yu Uno
+----------------------------------------------
+*/
+
+
+/*clearfix
+----------------------------------------------*/
+.clearfix,
+ul,
+.inner,
+#container,
+#mainColumn,
+#subColumn,
+#hdr,
+#content {
+    zoom:1;/*for IE 5.5-7*/
+}
+.clearfix:after,
+ul:after,
+.inner:after,
+#container:after,
+#mainColumn:after,
+#subColumn:after,
+#hdr:after,
+#content:after {/*for modern browser*/
+    content:".";
+    display: block;
+    height:0px;
+    clear:both;
+    visibility:hidden;
+}
+

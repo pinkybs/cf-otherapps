@@ -1,0 +1,57 @@
+{%include file="faq/common/header.phtml"%}
+	
+	<hr />
+
+	<div id="contet">
+		◆<a href='/faq/faq001?query_id={%$qid%}'><span style="color:#5b2806;">各種設定</span></a><br />
+		◆<a href='/faq/faq002?query_id={%$qid%}'><span style="color:#5b2806;">ご当地キャラクター取得</span></a><br />
+		◆<a href='/faq/faq003?query_id={%$qid%}'><span style="color:#5b2806;">ご当地マップ</span></a><br />
+		◆<a href='/faq/faq004?query_id={%$qid%}'><span style="color:#5b2806;">トレード</span></a><br />
+		<!--
+		◆<a href='/faq/faq005?query_id={%$qid%}'><span style="color:#5b2806;">デコメ化</span></a><br />
+		◆<a href='/faq/faq006?query_id={%$qid%}'><span style="color:#5b2806;">マイミクに贈る</span></a><br />
+		-->
+		◆<a href='/faq/faq007?query_id={%$qid%}'><span style="color:#5b2806;">マイミク情報</span></a><br />
+		◆<a href='/faq/faq008?query_id={%$qid%}'><span style="color:#5b2806;">アワード</span></a><br />
+		<!--
+		◆<a href='/faq/faq009?query_id={%$qid%}'><span style="color:#5b2806;">メールファクトリー会員特典</span></a><br />
+		-->
+		◆<a href='/faq/faq010?query_id={%$qid%}'><span style="color:#5b2806;">ターゲットツアー</span></a><br />
+		<!--
+		◆<a href='/faq/faq011?query_id={%$qid%}'><span style="color:#5b2806;">チャレンジゲーム</span></a><br />
+		◆<a href='/faq/faq012?query_id={%$qid%}'><span style="color:#5b2806;">ゲームチケット</span></a><br />
+		-->
+		◆<a href='/faq/faq013?query_id={%$qid%}'><span style="color:#5b2806;">ランキング</span></a><br />
+		<!--
+		◆<a href='/faq/faq014?query_id={%$qid%}'><span style="color:#5b2806;">マイミク招待</span></a><br />
+		-->
+		◆<a href='/faq/faq015?query_id={%$qid%}'><span style="color:#5b2806;">お試し版について</span></a><br />
+		◆<a href='/faq/faq016?query_id={%$qid%}'><span style="color:#5b2806;">通信中断</span></a><br />
+		<!--
+		◆<a href='/faq/faq017?query_id={%$qid%}'><span style="color:#5b2806;">mixiポイント</span></a><br />
+		◆<a href='/faq/faq018?query_id={%$qid%}'><span style="color:#5b2806;">課金情報について</span></a><br />
+		-->
+		◆<a href='/faq/faq019?query_id={%$qid%}'><span style="color:#5b2806;">入退会</span></a><br />
+		◆<a href='/faq/phone?query_id={%$qid%}'><span style="color:#5b2806;">対応機種</span></a>
+	</div><!--/#contet-->
+	
+	<hr />
+	
+	<div id="comment">
+		解決しなかった場合は、お手数ですが下記より再度内容をご確認のうえ、お問い合わせください。
+	</div><!--/#comment-->
+	
+	<hr />
+	
+	<div align="center">
+		<form action="http://xiad.disney.co.jp/mxcs/detail.pl" method="GET">
+		    <input type="hidden" name="query_id" id="query_id" value="{%$qid%}" />
+			<input type="submit" value="詳細を問い合わせる" />
+		</form>
+	</div>
+	
+	<br />
+</div><!--/#continer-->
+
+</body>
+</html>

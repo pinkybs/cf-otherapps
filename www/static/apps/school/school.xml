@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="school test" scrolling="false"> 
+        <Require feature="opensocial-0.8"/>
+        <Require feature="views" />
+				<Optional feature="content-rewrite">
+					<Param name="expires">86400</Param>
+					<Param name="include-urls"></Param>
+					<Param name="exclude-urls">.*</Param>
+				</Optional>
+
+    	<Link rel="event.addapp" href="http://ec2.mixi.communityfactory.net/callback/addapp" method="GET" />
+    	<Link rel="event.removeapp" href="http://ec2.mixi.communityfactory.net/callback/removeapp" method="POST" />
+    </ModulePrefs>
+    
+    <Content type="url" view="mobile" href="http://ec2.mixi.communityfactory.net/mobile/index" />
+</Module>

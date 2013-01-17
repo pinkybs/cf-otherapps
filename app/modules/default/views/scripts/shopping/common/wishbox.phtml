@@ -1,0 +1,12 @@
+		{% if $myWishItemInfo %}
+		<div id="wishBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_wish.png" alt="欲しいものリスト" /></h2>
+			</div><!--/.hdr-->
+
+			<p class="pic"><a href="{%$baseUrl%}/shopping/wish" style="background-image:url({%$myWishItemInfo.pic_big%})">{%$myWishItemInfo.name|escape%}</a></p>
+			<p class="des">{%$myWishItemInfo.name|escape%}</p>
+			<div id="btnRakuten"><a href="{%$baseUrl%}/shopping/torakuten?iid={%$myWishItemInfo.iid%}">楽天市場で商品を購入する</a></div>
+			<p class="moreLink"><a href="{%$baseUrl%}/shopping/wish">もっと見る</a></p>
+		</div><!--/#wishBox.box-->
+		{% /if %}

@@ -1,0 +1,100 @@
+{%include file="parking/common/header.phtml"%}
+
+<body id="carShop">
+    <script type="text/javascript" src="{%$staticUrl%}/apps/parking/js/carshop.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/apps/parking/js/useitem.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/cmn/js/common.js?{%$version.js%}"></script>
+    
+    <script type="text/javascript">
+        Event.observe(window, 'load', function() {  
+	       adjustHeight(1560);
+        });
+    </script>
+    
+{%include file="parking/common/nav.phtml"%}
+
+<div id="continer">
+    <div id="mainArea">
+
+        <div id="parkingHead">
+            <p class="pic"><a href=""><img src="{%$staticUrl%}/apps/parking/img/shop/carshop.gif" width="25" height="25" alt="" /></a></p>
+            <h1>カーショップ</h1>
+        </div>
+
+        <div id="hdrAd" style="margin-bottom:5px;">
+            <iframe id="hdrAdFrame" width="705" height="35" src="{%$staticUrl%}/apps/parking/img/ad/next.html" scrolling="no" frameborder="0"></iframe>
+        </div><!--/#hdrAdd-->
+
+        <div id="carShopArea" class="box">
+            <div class="header">
+                <h2>所有車一覧</h2>
+            </div>
+            <ul class="listNav top">
+                <li class="prev" onClick="javascript:prePage()"></li>
+                <li class="next" onClick="javascript:nextPage()"></li>
+                <li class="money" id="moneytop">所持金：¥{%$asset%}</li>
+                <li class="showing" id="showingtop">
+                    {%$count%}件中 {%$currenCountFrom%}-{%$currenCountTo%}件を表示
+                </li>
+            </ul>
+            <input type="hidden" id="pageIndex" name="pageIndex" value="{%$pageIndex%}"/>
+            <input type="hidden" id="count" name="count" value="{%$count%}"/>
+            <input type="hidden" id="userAsset" name="userAsset" value="{%$assetTwo%}"/>
+            <input type="hidden" id="userCard" name="userCard" value="{%$userCard%}"/>
+            <input type="hidden" id="oldCarPrice" name="oldCarPrice" value="{%$oldCarPrice%}"/>
+            <input type="hidden" id="maxPrice" name="maxPrice" value="{%$maxPrice%}"/>
+            <div class="inner" id="divCarList">
+
+                {%foreach from=$carList item=rowdata key=index%}
+
+                    <div id="car{%$index%}" class="section">
+                        <p class="carPic"><img alt="" class="alphafilter" src="{%$staticUrl%}/apps/parking/img/car/{%$rowdata.cav_name%}/big/{%$rowdata.color%}.png"></p>
+                        <h3>{%$rowdata.name%}</h3>
+                        <ul class="status">
+                            <li class="price">{%$rowdata.price|outputdollars%}</li>
+                            <li class="car">駐車料金×{%$rowdata.times%}倍</li>
+                        </ul>
+                        <ul class="btnList">
+                        {%if $rowdata.price > $assetTwo%}
+                            <li class="btnBuy disable">
+                                <a>購入する</a>
+                        {%else%}
+                            <li class="btnBuy">
+                                <a href="javascript:void(0);" onclick="buyCar({%$rowdata.cid%},'{%$rowdata.color%}','{%$rowdata.name%}',{%$rowdata.price%},'{%$rowdata.cav_name%}');">購入する</a>
+                        {%/if%}
+                            </li>
+                            <li class="btnTrade">
+                                {%if ($car_id != null && $car_color != null)%}
+                                    {%if ($rowdata.price-$oldCarPrice*0.9)>$assetTwo %}
+                                        <a class="disable">所有車を売却して、購入する</a>
+                                    {%else%}
+                                        <a href="javascript:void(0);" onclick="changeCarSelectFromParkingPage({%$rowdata.cid%},{%$rowdata.price%},'{%$rowdata.name%}','{%$rowdata.color%}','{%$rowdata.cav_name%}');">所有車を売却して、購入する</a>
+                                    {%/if%}
+                                {%elseif ($rowdata.price - $maxPrice*0.9)>$assetTwo%}
+                                    <a class="disable">所有車を売却して、購入する</a>
+                                    {%else%}
+                                    <a href="javascript:void(0);" onclick="changeCar({%$rowdata.cid%},{%$rowdata.price%},'{%$rowdata.name%}','{%$rowdata.color%}','{%$rowdata.cav_name%}');">所有車を売却して、購入する</a>
+                                {%/if%}
+                            </li>
+                         </ul>
+                      </div>
+                {%/foreach%}
+
+
+            </div><!--/.inner-->
+
+            <ul class="listNav bottom">
+                <li class="prev" onClick="javascript:prePage()"></li>
+                <li class="next" onClick="javascript:nextPage()"></li>
+                <li class="money" id="moneylow">所持金：¥{%$asset%}</li>
+                <li class="showing" id="showinglow">
+                    {%$count%}件中 {%$currenCountFrom%}-{%$currenCountTo%}件を表示
+                </li>
+            </ul>
+        </div><!--/#carListArea-->
+
+    </div><!--/#mainArea-->
+
+    {%include file="parking/common/useitem.phtml"%}
+
+{%include file="parking/common/footer.phtml"%}

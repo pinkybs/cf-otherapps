@@ -1,0 +1,81 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+	{%include file="nav.phtml"%}
+
+	<div id="container">
+		<h2>みんなの時間割 - コンテンツ監視　[授業共同編集]</h2>
+		<div id="appsAdmin">
+			<ul class="nav">
+				<li><a href="{%$baseUrl%}/aschool/watchtop">トップページ</a></li>
+				<!-- <li><a href="{%$baseUrl%}/aschool/forbidword">禁止語の設定</a></li>
+				<li><a href="{%$baseUrl%}/aschool/dealstat">処理の集計</a></li> -->
+			</ul><!--/.nav-->
+
+			<div id="watchHead">
+				<h3><span id="lblTitle">共同編集ﾉｰﾄは､授業のﾒﾓ･概要･関連情報･攻略法をみんなで編集する情報共有型ｳｨｷです｡</span></h3>
+				<br/>
+			</div><!--/.watchHead-->
+		{%if $step == 'start' %}
+			{% if $errorMsg %}
+				<div class="errorMsg" style="color:#cc0000;">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					{%emoji code="F9DC"%}入力ｴﾗｰ<br />
+					{%$errorMsg|nl2br%}
+				</div><!--/.errorMsg-->
+			{% /if %}
+			<form method="post" name="frmDeal" action="{%$baseUrl%}/aschool/watchclassnoteedit">
+				○共同編集ﾉｰﾄ<br />
+				<div id="divList">
+					<textarea name="introduce" rows="6" cols="100">{%$classInfo.introduce%}</textarea>
+				</div>
+				<div style="text-align:right;color:red;">※全角30000文字以内</div>
+				<div class="btn" style="text-align:center;">
+					<input type="hidden" name="cid" value="{%$classInfo.cid%}">
+					<input type="hidden" name="step" value="confirm">
+					<input type="submit" value="編集"/>
+				</div><!--/.btn-->
+			</form>
+			<form method="post" action="{%$baseUrl%}/aschool/watchclassnoteedit">
+				<div class="btn" style="text-align:center;">
+					<input type="hidden" name="cid" value="{%$classInfo.cid%}">
+					<input type="hidden" name="step" value="roolback">
+					<input type="submit" value="ｷｬﾝｾﾙ" />
+				</div><!--/.btn-->
+			</form>
+		{%elseif $step == 'confirm' %}
+			<form method="post" name="frmEdit" action="{%$baseUrl%}/aschool/watchclassnoteedit">
+				○共同編集ﾉｰﾄ<br />
+				<div id="divList">
+					{%$classInfo.introduce|escape|nl2br%}<br/>
+				</div>
+				<div class="btn" style="text-align:center;">
+					<input type="hidden" name="cid" value="{%$classInfo.cid%}">
+					<input type="hidden" name="step" value="finish">
+					<input type="submit" value="送 信" id="btnSubmit"/>
+				</div><!--/.btn-->
+			</form>
+			<form method="post" action="{%$baseUrl%}/aschool/watchclassnoteedit">
+				<div class="btn" style="text-align:center;">
+					<input type="hidden" name="cid" value="{%$classInfo.cid%}">
+					<input type="submit" value="修 正" />
+				</div><!--/.btn-->
+			</form>
+		{%elseif $step == 'finish' %}
+			<div class="headline" style="background:#8fc31f;">共同編集完了</div>
+			<div class="footlink">
+				<span style="color:#f58320;">⇒</span><a href="{%$baseUrl%}/aschool/watchclassnote">コンテンツ監視へ戻る</a><br />
+			</div><!--/.footlink-->
+		{%elseif $step == 'error' %}
+			<div id="classDescription">
+				<div class="headline" style="background:#8fc31f;">共同編集ﾉｰﾄ</div>
+				<div class="description">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					他のﾕｰｻﾞｰが編集中ですので、少々お待ちください｡<br />
+				</div><!--/.description-->
+			</div><!--/#classDescription-->
+		{%/if%}
+		</div><!--/#appsAdmin-->
+	</div><!--/#container-->
+{%include file="footer.phtml"%}

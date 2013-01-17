@@ -1,0 +1,80 @@
+﻿{%include file="chat/common/header.phtml"%}
+
+<body id="static" class="invite finish">
+<div id="container">
+	{%include file="chat/common/nav.phtml"%}
+	<script type="text/javascript">
+		$j('#liInvite').addClass('stay');
+	</script>
+
+	<div id="mainColumn">
+		<ul style="" id="alertBox"><!--
+			--><li><a id="alertClose" href="javascript:void(0);"><img width="16" height="16" alt="閉じる" src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/alert/btn_close.png"/></a><span>{%$chatName|escape%}への招待を完了しました。<br />{%$chatDate%}&#12316;です。忘れないように気をつけてくださいね。</span></li><!--
+		--></ul>
+
+		<div id="messageBox" class="innerBox">
+				<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_message.png" width="299" height="21" alt="参加メンバーにメッセージを書く" /></h1>
+				<div class="inner">
+
+				<form id="frmToMessage" method="post" action="{%$mixiHostUrl%}/send_message.pl" target="_blank" accept-charset="euc-jp">
+					<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_member_select.png" width="147" height="20" alt="メンバーを選択" /></h2>
+					<div class="memberSelect" id="divattendlist">
+						<ul><!--
+						{% foreach name=attendList from=$lstAttendC item=data %}
+							--><li style="background-image:url({%$data.thumbnailUrl%})" class="active"><input type="checkbox" checked="checked" id="check{%$smarty.foreach.attendList.iteration%}" value="{%$data.id%}" /><label for="check{%$smarty.foreach.attendList.iteration%}"><span class="lightspan">{%$data.displayName%}</span></label></li><!--
+						{% /foreach %}
+						{% foreach name=memList from=$lstMem item=data %}
+							{% if $data.id!=$uid %}
+							--><li style="background-image:url({%$data.thumbnailUrl%})" class="active"><input type="checkbox" checked="checked" id="checkm{%$smarty.foreach.memList.iteration%}" value="{%$data.id%}" /><label for="checkm{%$smarty.foreach.memList.iteration%}"><span class="lightspan">{%$data.displayName%}</span></label></li><!--
+							{% /if %}
+						{% /foreach %}
+						--></ul>
+					</div>
+
+					<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_app_url.png" width="169" height="19" alt="アプリページURL" /></h2>
+
+					<p><input type="text" class="inputText" id="message_body" name="message_body" value="{%$mixiHostUrl%}/run_appli.pl?id={%$mixiAppId%}" /></p>
+					<p class="note">↑コピーしてメッセージを貼付けよう</p>
+					<ul class="btnList"><!--
+						--><li><a href="javascript:void(0);" onclick="mixi_invite();return false;"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_message.png" width="228" height="34" alt="メッセージを書く" /></a></li><!--
+					--></ul>
+				</form>
+				<input type="hidden" id="activity" value="{%$activity%}" />
+			</div><!--/.inner-->
+		</div><!--/.innerBox-->
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="chat/common/subcolumn.phtml"%}
+	</div><!--/#subColumn-->
+
+	<script type="text/javascript">
+        $j(document).ready(function() {
+        	if (null != cm_getCookie('app_top_url')) {
+        		top.location.href = cm_getCookie('app_top_url') +  '#bodyArea';
+        	}
+    		//activity
+        	if (null != $j('#activity') && '' != $j('#activity').val()) {
+        		postActivity($j('#activity').val());
+        	}
+
+			$j("#alertClose").click(function() {
+            	$j("#alertBox").fadeOut("normal");
+            });
+
+            $j("#divattendlist").find('input[type=checkbox]').click(function(){
+				checkedCheck("#divattendlist");
+			});
+
+			$j('#divattendlist').find('li').hover(
+        		function(){
+        			$j(this).find('span').show();
+        		},
+        		function(){
+        			$j(this).find('span').hide();
+        		}
+        	);
+        	adjustHeight();
+        });
+	</script>
+{%include file="chat/common/footer.phtml"%}

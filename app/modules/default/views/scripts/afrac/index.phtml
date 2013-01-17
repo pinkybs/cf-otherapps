@@ -1,0 +1,71 @@
+{%include file="afrac/common/header.phtml"%}
+
+<body id="home">
+    <script type="text/javascript" src="{%$staticUrl%}/cmn/js/commonjquery.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/apps/afrac/js/index.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/cmn/js/swfobject.2.2.js"></script>
+    
+    <div id="container">
+    	<div id="mainColumn">    	
+    		<div id="playArea"><div id="afracFlash"></div></div><!--/#playArea-->
+    		<script type="text/javascript" language="javascript">
+    		    var flashvars = {
+    		        baseURL : '{%$baseUrl%}/ajax/afrac/updatescore',
+    		        uid : {%$uid%},
+    		        best : {%$best%},
+    		        first : {%$first%}};
+                
+    		    var params = {      
+    		        wmode: "transparent",
+    		        allowScriptAccess : "always"
+    		    };
+                swfobject.embedSWF("{%$staticUrl%}/apps/afrac/swf/afrac.swf?{%$version.js%}","afracFlash","100%","490","9.0.0","",flashvars,params);
+            </script>
+    		
+    		<div id="rankingArea">
+    			<h2><img src="{%$staticUrl%}/apps/afrac/img/ranking_header.png" width="155" height="47" alt="あなたは何番目？スコアランキング" /></h2>
+    			     <div id="innaerFrame" style="height:469px;width:155px;overflow:hidden;position:relative;left:0px;top:21px">
+    			     <ol style="position:absolute;top:0px;height:999999px;left:0px;"  id="olli">
+    			     {% foreach from=$rankInfo item=data %}
+    						<li>
+    						    <p class="pic" style="background-image:url({% $data.miniThumbnailUrl %});">{% $data.displayName %}</p>
+            					<p class="rank">〓<span>{% $data.rank %}位</span>〓</p>
+            					<p class="name">{% $data.displayName %}</p>
+            					<p class="score">{% $data.score %}点</p>
+    						</li>
+    				{% /foreach %}
+    				</ol>
+    				</div>
+    				<input type="hidden" id="hidRankBegin" value="{% $rankBegin %}">
+    				<input type="hidden" id="hidRankEnd" value="{% $rankEnd %}">
+    			    <input type="hidden" id="hidUserCnt" value="{% $userCnt %}">
+    		       <ul id="scoreController"><!--
+    				--><li id="scoreUp"><a href="javascript:void(0);" id="scoreUpUP">上</a></li><!--
+    				--><li id="scoreDown"><a href="javascript:void(0);" id="scoreDownDown">下</a></li><!--
+    			--></ul>
+    			<p id="allRanking" class="btn" onclick="changeType(1);"><a href="javascript:void(0);">ミイクシィ全体ランキング</a></p>
+    			<p id="myMixiRanking" class="btn active" onclick="changeType(2);"><a href="javascript:void(0);">マイミクシィ内ランキング</a></p>
+    		</div><!--/#rankingArea-->
+    		
+    		<address><img src="{%$staticUrl%}/apps/afrac/img/copyright.png" width="680" height="25" alt="Copyright 2009 Aflac Japan" /></address>
+    	
+    	</div><!--/#mainColumn-->
+    
+    	<div id="subColumn">
+    		
+    		<p class="btn"><a href="javascript:void(0);" onclick="invite();"><img src="{%$staticUrl%}/apps/afrac/img/btn_invite.png" width="250" height="35" alt="マイミクシィを招待する" /></a></p>
+    		
+    		<div id="adBanner" class="banner"><script type="text/javascript" src="http://mixi.jp/ad_tag.pl?id=6451&area=shoulder"></script></div>
+    		
+    		<div id="helpBanner" class="banner"><img src="{%$staticUrl%}/apps/afrac/img/howto.png" width="250" height="225" alt="ゲームの遊びかた" /></div>
+    			
+    	</div><!--/#subColumn-->
+    	
+    	<div id="bigBanner"><script type="text/javascript" src="http://mixi.jp/ad_tag.pl?id=6451&area=footer"></script></div>
+    
+        <script type="text/javascript">
+            jQuery(function($){
+               adjustHeight();
+            });
+        </script>
+{%include file="afrac/common/footer.phtml"%}

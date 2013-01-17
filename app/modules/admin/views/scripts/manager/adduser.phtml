@@ -1,0 +1,93 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+	<ul id="nav">
+		<li><a href="{%$baseUrl%}/manager/listapp">アプリケーション一覧</a></li>
+		<li><span>ユーザーID管理</span></li>
+		<li><a href="{%$baseUrl%}/manager/changepass">パスワード変更</a></li>
+		<li><a href="{%$baseUrl%}/auth/logout">ログアウト</a></li>
+	</ul>
+	<div id="container">
+		<h2>ユーザーID管理</h2>
+		<table width="100%" cellpadding="0" cellspacing="0" border="0" id="twoPain">
+			<tr>
+				<td>{%include file="manager/common/listuser.phtml"%}</td>
+
+				<th>
+					<h3><strong>ユーザー新規作成</strong></h3>
+
+					<div id="step1">
+					<form method="post" id="frmAddUser" name="frmAddUser">
+						<div class="description">
+							<p>新規ユーザーを作成します。<br />
+								以下の項目をすべて入力してください。</p>
+						</div><!--/.description-->
+
+						<div id="divError" class="error" style="display:none">
+							<p>エラーメッセージ</p>
+						</div><!--/.error-->
+						<ul>
+							<li><label for="#">名前：</label><br />
+								<input type="text" id="txtName" name="txtName" class="required"  maxlength="200" /></li>
+							<li><label for="#">メールアドレス：</label><br />
+								<input type="text" id="txtEmail" name="txtEmail" class="required-email validate-email" maxlength="200" /></li>
+							<li><label for="#">権限：</label><br />
+								<select id="selAuth" name="selAuth">
+									<option value="" selected="selected">選択してください</option>
+									{% foreach from=$roles item=data %}
+									{% if 1!=$data.rid %}
+									<option value="{%$data.rid%}">{%$data.role_name|escape%}</option>
+									{% /if %}
+									{% /foreach %}
+								</select></li>
+							<li><div id="divMulSelect">
+								<label for="#">利用範囲：</label><br />
+								<select id="selApp0" name="selApp[]">
+									<option value="" selected="selected">選択してください</option>
+									{% foreach from=$apps item=data2 %}
+									<option value="{%$data2.aid%}">{%$data2.app_name|escape%}</option>
+									{% /foreach %}
+								</select> <a href="javascript:void(0);" onclick="addRow();return false;">＋追加</a>
+
+								</div></li>
+							<li><input type="button" id="btnConfirm" name="btnConfirm" value="　確認画面へ　" /></li>
+						</ul>
+					</form>
+					</div><!--/.step1 End -->
+
+					<div id="loading" style="display:none"></div>
+					<div id="step2" style="display:none">
+						<div class="description">
+							<p>登録内容を確認して、作成ボタンをクリックしてください。<br />
+							以下メールアドレスよりメールを送信し、送信先のユーザーがパスワードを設定すると、新規IDが作成完了となります。</p>
+						</div><!--/.description-->
+
+						<ul>
+							<li>名前：<br />
+								<span id="lblName"></span></li>
+							<li>メールアドレス：<br />
+								<span id="lblEmail"></span></li>
+							<li>権限：<br />
+								<span id="lblAuth"></span></li>
+							<li>利用範囲：<br />
+								<span id="lblApps"></span></li>
+							<li><input type="button" id="btnBack" name="btnBack" value="　戻る　" />
+							<input type="button" id="btnSubmit" name="btnSubmit" value="　作成　" /></li>
+						</ul>
+					</div><!--/.step2 End -->
+
+					<div id="step3" style="display:none">
+						<div class="description">
+						<p>ユーザーIDの作成が完了しました。<br />
+							<br />
+							<a href="{%$baseUrl%}/manager/manageuser">&raquo;ユーザーID管理 一覧へ</a></p>
+						</div><!--/.description-->
+					</div><!--/.step3 End -->
+				</th>
+			</tr>
+		</table>
+		<script src="{%$staticUrl%}/admin/js/manager/adduser.js?{%$version.js%}"></script>
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

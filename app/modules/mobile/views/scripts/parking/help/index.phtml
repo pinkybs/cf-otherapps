@@ -1,0 +1,41 @@
+<div id="help">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">駐車戦争ﾍﾙﾌﾟ</span><br />
+	</div><!--/.headline-->
+
+	<div class="intro" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<object data="{%$staticUrl%}/apps/parking/swf/intro.swf" type="application/x-shockwave-flash" width="210" height="160">
+			<param name="bgcolor" value="FFFFFF" />
+			<param name="loop" value="off" />
+			<param name="quality" value="high" />
+			<embed src="{%$staticUrl%}/apps/parking/swf/intro.swf" width="210" height="160" loop="off" quality="high" bgcolor="#FFFFFF"></embed>
+		</object>
+	</div><!--/.intro-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		駐車戦争は、自分の車を動かして友達のﾊﾟｰｷﾝｸﾞ（駐車場）を回りつつ、ばれないように友達のﾊﾟｰｷﾝｸﾞに勝手に駐車してお金を稼ぐｹﾞｰﾑです{% emoji code="F99F"%}<br />
+		<br />
+		どこのﾊﾟｰｷﾝｸﾞにも停めていない車には、2円/分のｶﾞｿﾘﾝ代がかかり続けてしまいます｡<br />
+		<br />
+		最大で24時間(2,880円)のｶﾞｿﾘﾝ代が発生してしまうから、空きﾊﾟｰｷﾝｸﾞを見つけたら、どんどん駐車していこう{% emoji code="F9A2"%}<br />
+	</div><!--/.description-->
+
+	<div class="menu">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">◆</span>ﾍﾙﾌﾟﾒﾆｭｰ<br />
+		<span style="color:#777;">├</span><a href='{% "$baseUrl/mobile/parking/help?parking_parm=profit"|mixiurl %}'>お金を稼ぐ方法</a><br />
+		<span style="color:#777;">├</span><a href='{% "$baseUrl/mobile/parking/help?parking_parm=parkingrule"|mixiurl %}'>駐車のﾙｰﾙ</a><br />
+		<span style="color:#777;">├</span><a href='{% "$baseUrl/mobile/parking/help?parking_parm=stick"|mixiurl %}'>取り締まる</a><br />
+		<span style="color:#777;">├</span><a href='{% "$baseUrl/mobile/parking/help?parking_parm=police"|mixiurl %}'>警察</a><br />
+		<span style="color:#777;">├</span><a href='{% "$baseUrl/mobile/parking/help?parking_parm=report"|mixiurl %}'>通報</a><br />
+		<span style="color:#777;">├</span><a href='{% "$baseUrl/mobile/parking/help?parking_parm=carshop"|mixiurl %}'>ｶｰｼｮｯﾌﾟ</a><br />
+		<span style="color:#777;">├</span><a href='{% "$baseUrl/mobile/parking/help?parking_parm=house"|mixiurl %}'>不動産</a><br />
+		<span style="color:#777;">├</span><a href='{% "$baseUrl/mobile/parking/help?parking_parm=item"|mixiurl %}'>ｱｲﾃﾑ</a><br />
+		<span style="color:#777;">├</span><a href='{% "$baseUrl/mobile/parking/help?parking_parm=breakcar"|mixiurl %}'>廃車</a><br />
+		<span style="color:#777;">└</span><a href='{% "$baseUrl/mobile/parking/help?parking_parm=gift"|mixiurl %}'>ﾌﾟﾚｾﾞﾝﾄ</a><br />
+	</div><!--/.menu-->
+</div><!--/#help-->

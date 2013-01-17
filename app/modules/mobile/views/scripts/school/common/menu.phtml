@@ -1,0 +1,16 @@
+    <div id="menu" style="background:#fcf5cc;">
+        <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+        <div class="line" style="background:#ff9933;"><img src="http://mm.mixi.net/img/dot0.gif" width="2" height="2" /></div>
+        <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+        <div class="inner">
+        	{%emoji code="F987"%}<a href='{% "$baseUrl/mobile/school/home"|mixiurl %}' accesskey="1">みんなの時間割♪ﾄｯﾌﾟ</a><br />
+        	{%emoji code="F989"%}<a href='{% if $isClearComplete %}{% "$baseUrl/mobile/school/home"|mixiurl %}{% else %}{% "$baseUrl/mobile/school/sflash?CF_uid=`$mineInfo.uid`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$mineInfo.uid`&rand=`$rand`"|mobile_flashurl %}{% /if %}' accesskey="3">{%$mineInfo.displayName%}ｻﾝの時間割</a><br />
+        	{%emoji code="F9E3"%}時間割設定変更<br />
+        	<span style="color:#777;">┣</span>{%emoji code="F98A"%}<a href='{% "$baseUrl/mobile/school/schedule"|mixiurl %}' accesskey="4">時間割編集</a><span style="color:#777;">|</span><a href='{% "$baseUrl/mobile/school/designlist"|mixiurl %}'>ﾃﾞｻﾞｲﾝ変更</a><br />
+        	<span style="color:#777;">┗</span><a href='{% "$baseUrl/mobile/school/timepartset"|mixiurl %}'>時限設定</a><span style="color:#777;">|</span><a href='{% "$baseUrl/mobile/school/privacyset"|mixiurl %}'>ﾌﾟﾗｲﾊﾞｼｰ設定</a><br />
+        	{%emoji code="F973"%}<a href='{% "invite:classmate?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/school/invitefinish" %}'>同級生招待</a><span style="color:#777;">|</span><a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/school/invitefinish" %}'>ﾏｲﾐｸ招待</a><br />
+        	{%emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/school/help"|mixiurl %}'>ﾍﾙﾌﾟ(よくある質問)</a><br />
+        	{%*{%emoji code="F8E4"%}<a href='{% "$baseUrl/mobile/school/cfinfo"|mixiurl %}'>特定商取引法に基づく表示</a><br />*%}
+        </div><!--/.inner-->
+		{%include file="school/common/copyright.phtml"%}
+    </div><!--/#menu-->

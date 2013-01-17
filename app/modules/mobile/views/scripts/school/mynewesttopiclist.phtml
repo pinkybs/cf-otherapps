@@ -1,0 +1,38 @@
+{%include file="school/common/header.phtml" headAd=1 %}
+	<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+		<div id="classTopics">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<div class="headline" style="background:#b7cb6d;">授業Q&amp;A ｱﾅﾀの質問</div>
+			{% if $cntTopic==0 %}
+				<div class="description">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					登録授業の授業Q&Aがまだありません｡<br />
+					<div class="morelink" style="text-align:right;">
+						<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/schedule"|mixiurl %}'>授業を追加する</a><br />
+					</div><!--/.morelink-->
+				</div><!--/.description-->
+			{% else %}
+				<div class="count">
+					{%$pager.count%}件中 {%$startNm%}-{%$endNm%}件<br />
+					<div class="line" style="background:#b7cb6d;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+				</div><!--/.count-->
+				<div class="list">
+				{% foreach name=topiclist from=$listTopic item=tdata key=key %}
+					<div class="section" style="background:{% if $key%2==0 %}#fffddb{% else %}#fcf5cc{% /if %};">
+						<span style="color:#a35625;">[{%$tdata.format_time%}]</span>{%$tdata.c_name|escape%}<br />
+						<a href='{% "$baseUrl/mobile/school/topic?CF_tid=`$tdata.tid`&CF_cid=`$tdata.cid`"|mixiurl %}'>{%$tdata.t_name|escape%}({%$tdata.t_comment_count%})</a><br />
+					</div><!--/.section-->
+				{% /foreach %}
+				</div><!--/.list-->
+				{%include file="school/common/pager.phtml"%}
+				<div class="footlink">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					<div class="line" style="background:#b7cb6d;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/newesttopiclist"|mixiurl %}'>授業Q&amp;A最新書き込み一覧</a><br />
+				</div><!--/.footlink-->
+			{% /if %}
+		</div><!--/#classTopics-->
+		{%include file="school/common/menu.phtml"%}
+	</div><!--/#container-->
+{%include file="school/common/footer.phtml" footAd=1 %}

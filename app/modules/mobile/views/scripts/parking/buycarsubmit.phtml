@@ -1,0 +1,26 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="carShop">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">&nbsp;{%$title%}</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%$message%}<br />
+	</div><!--/.description-->
+
+	<div class="commodity" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/car/{%$cavName%}/m/normal/{%$carColor%}.gif" width="200" height="100" /><br />
+	</div><!--/.commodity-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/start?opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&parking_rand=$rand" | mobile_flashurl %}'>さっそく駐車する</a><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/carshop"|mixiurl %}'>ｶｰｼｮｯﾌﾟにもどる</a><br />
+	</div><!--/.link-->
+</div><!--/#carShop-->
+
+{%include file="parking/common/footer.phtml"%}

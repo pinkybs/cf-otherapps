@@ -1,0 +1,24 @@
+{%include file="school/common/header.phtml" headAd=0 %}
+    <div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+        <div id="classInfo">
+            {%include file="school/common/headline.phtml"%}
+        </div><!--/#classInfo-->
+        <div id="classTopicsDel">
+            <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+            <div class="headline" style="background:#b7cb6d;">ｲｲﾈ!送信完了♪</div>
+            <div class="description">
+                <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				{%$nickname%}さんの回答に{% emoji code="F9CC"%}ｲｲﾈ!しました!<br />
+            </div><!--/.description-->
+            {%include file="school/common/ad_complete.phtml"%}
+            <div class="footlink">
+                <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+                <span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/topic?CF_tid=`$tid`&CF_cid=`$classInfo.cid`"|mixiurl %}'>ｲｲﾈ!したQ&Aに戻る</a><br />
+                <span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/topiclist?CF_cid=`$classInfo.cid`"|mixiurl %}'>この授業のQ&A一覧</a><br />
+                <span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/class?CF_cid=`$classInfo.cid`"|mixiurl %}'>{%$classInfo.name%}ﾄｯﾌﾟ</a><br />
+                <span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/mynewesttopiclist"|mixiurl %}'>履修中授業のQ&A一覧</a><br />
+            </div><!--/.footlink-->
+        </div><!--/#classTopicsDel-->
+        {%include file="school/common/menu.phtml"%}
+    </div><!--/#container-->
+{%include file="school/common/footer.phtml" footAd=0 %}

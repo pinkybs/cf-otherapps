@@ -1,0 +1,35 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="carShop">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+	<span style="color:#fff;">所有車と交換</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+	所有車を下取りして､新車を購入します｡売却する車を選んでください｡<br />
+	<div style="text-align:right;">所持金：¥{%$userAsset|outputdollars%}</div>
+	</div><!--/.description-->
+
+	<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+	<input type="hidden" name="asser" value="{%$userAsset%}">
+	{%foreach from=$cars item=rowdata key=index%}
+		<div class="section" {%if ($index%2)==0 %}style="background:#fee;"{%else%}style="background:#ffe;"{%/if%}>
+			<span style="color:#cd424a;">{% emoji code="F8BF"%}{%$rowdata.name%}({%$carColor[$rowdata.car_color]%})</span><br />
+			<div style="text-align:right;">下取り価格:¥{%$rowdata.price*0.9|outputdollars%}&nbsp;<br />
+				<span style="color:#c00;">購入金額:¥{%$rowdata.price|outputdollars%}</span>&nbsp;<br />
+				{%if $haveSameCar==1%}
+					<a href='{% "$baseUrl/mobile/parking/changesamecar?parking_ocid=`$rowdata.car_id`&parking_ncid=$ncid&parking_oldcolor=`$rowdata.car_color`"|mixiurl %}'>この車を選択</a>&nbsp;
+				{%else%}
+					<a href='{% "$baseUrl/mobile/parking/changecarconfirm?parking_ocid=`$rowdata.car_id`&parking_ncid=$ncid&parking_oldcolor=`$rowdata.car_color`"|mixiurl %}'>この車を選択</a>&nbsp;
+				{%/if%}
+			</div>
+			<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" /></div>
+		</div><!--/.section-->
+	{%/foreach%}
+	<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/carshop"|mixiurl %}'>ｶｰｼｮｯﾌﾟにもどる</a>
+</div><!--/#carShop-->
+
+{%include file="parking/common/footer.phtml"%}

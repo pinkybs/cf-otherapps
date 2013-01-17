@@ -1,0 +1,6051 @@
+﻿@charset "utf-8";
+
+/*
+----------------------------------------------
+Dorei-Chan main CSS
+
+Created Date : 2009/05/18
+Author: Yu Uno
+Last Up Date : 2009/8/21
+Author: Taiki Toyosawa
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+
+* {
+	outline: none;
+}
+html*body,html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+body,html {
+	height: 100%;
+	overflow: visible;
+}
+
+
+body {
+	/* _background: url(null) fixed; */
+	font-family: 'Hiragino Kaku Gothic Pro';/*Safari*/
+	/font-family: 'メイリオ';/*IE6,IE7*/
+	color: #333333;
+}
+
+a:link,a:hover {
+	color: #258FB8;
+}
+a:link,a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+img {
+	display: block;
+}
+
+textarea {
+	margin: 0;
+	padding: 3px;
+}
+
+pre {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	cursor: text;
+}
+
+a.noLink {
+	cursor: default;
+}
+
+/*CommonParts
+----------------------------------------------*/
+.btn {
+	text-indent: -9999px;
+}
+	.btn a {
+		display: block;
+		background-repeat: no-repeat;
+		background-position: left top;
+	}
+
+.jScrollPaneContainer {
+	z-index: 100;
+}
+.jScrollPaneTrack {
+	background: #FFFFFF url(../img/scroll/slider_bg.png) no-repeat center top;
+}
+.jScrollPaneDrag {
+	background: url(../img/scroll/slider_middle.png) no-repeat 0 50%;
+}
+.jScrollPaneDragTop {
+	right: -1px;
+	background: url(../img/scroll/slider_top.png) no-repeat center bottom;
+	height: 5px;
+}
+.jScrollPaneDragBottom {
+	background: url(../img/scroll/slider_bottom.png) no-repeat center top;
+	height: 5px;
+}
+
+
+
+/*#hdr
+----------------------------------------------*/
+#hdr {
+	width: 690px;
+	position: relative;
+	_margin-bottom: 5px;
+}
+	#hdr h2 {
+		height: 20px;
+	}
+	#hdr ul#hdrLink {
+	 display: none;/*  Hidden  */
+	}
+		#hdr ul#hdrLink li {
+			position: absolute;
+			top: 3px;
+			text-indent: -9999px;
+		}
+			#hdr ul#hdrLink li a {
+				display: block;
+				width: 100px;
+				height: 20px;
+				background: url(../img/hdr/btn_hdrLink.png);
+			}
+		#hdr ul#hdrLink li#hdrLinkHelp {
+			right: 106px;
+		}
+			#hdr ul#hdrLink li#hdrLinkHelp a {
+				background-position: left top;
+			}
+			#hdr ul#hdrLink li#hdrLinkHelp a:hover,
+			#hdr ul#hdrLink li#hdrLinkHelp.acrive a {
+				background-position: left bottom;
+			}
+		#hdr ul#hdrLink li#hdrLinkInvite {
+			right: 3px;
+		}
+			#hdr ul#hdrLink li#hdrLinkInvite a {
+				background-position: right top;
+			}
+			#hdr ul#hdrLink li#hdrLinkInvite a:hover,
+			#hdr ul#hdrLink li#hdrLinkInvite.active a {
+				background-position: right bottom;
+			}
+
+ul#gNav {
+	display: inline;
+	float: left;
+	padding-bottom: 5px;
+	_padding-bottom: 0px;
+	width: 690px;
+}
+	ul#gNav li {
+		float: left;
+		width: 114px;
+		text-indent: -9999px;
+	}
+	ul#gNav li#gNavHome,
+	ul#gNav li#gNavHelp {
+		width: 117px;
+	}
+		ul#gNav li a {
+			display: block;
+			background: url(../img/hdr/gNav.png) no-repeat;
+		}
+		ul#gNav li#gNavHome a,
+		ul#gNav li#gNavProfile a,
+		ul#gNav li#gNavGiftShop a {
+			height: 76px;
+		}
+		ul#gNav li#gNavDoreiShop a,
+		ul#gNav li#gNavRanking a,
+		ul#gNav li#gNavHelp a {
+			height: 41px;
+		}
+
+		ul#gNav li#gNavHome a {
+			background-position: 0 0;
+		}
+		ul#gNav li#gNavHome a:hover,
+		ul#gNav li#gNavHome.active a {
+			background-position: 0 bottom;
+		}
+		ul#gNav li#gNavProfile a {
+			background-position: -117px 0;
+		}
+		ul#gNav li#gNavProfile a:hover,
+		ul#gNav li#gNavProfile.active a {
+			background-position: -117px bottom;
+		}
+		ul#gNav li#gNavGiftShop a {
+			background-position: -231px 0;
+		}
+		ul#gNav li#gNavGiftShop a:hover,
+		ul#gNav li#gNavGiftShop.active a {
+			background-position: -231px bottom;
+		}
+		ul#gNav li#gNavDoreiShop a {
+			background-position: -345px 0;
+		}
+		ul#gNav li#gNavDoreiShop a:hover,
+		ul#gNav li#gNavDoreiShop.active a {
+			background-position: -345px bottom;
+		}
+		ul#gNav li#gNavRanking a {
+			background-position: -459px 0;
+		}
+		ul#gNav li#gNavRanking a:hover,
+		ul#gNav li#gNavRanking.active a {
+			background-position: -459px bottom;
+		}
+		ul#gNav li#gNavHelp a {
+			background-position: right 0;
+		}
+		ul#gNav li#gNavHelp a:hover,
+		ul#gNav li#gNavHelp.active a {
+			background-position: right bottom;
+		}
+#moneyBox {
+	position: absolute;
+	bottom: 5px;
+	right: 0;
+	padding: 10px 10px 7px;
+	width: 325px;
+	height: 20px;
+	background: url(../img/hdr/bg_main.png) no-repeat right bottom;
+	text-align: right;
+	z-index: 100;
+}
+* html #moneyBox {
+	position: relative;
+	top: -43px;
+	float: right;
+	padding: 10px 10px 6px;
+	margin-bottom: -43px;
+	width: 325px;
+	height: 20px;
+	background: url(../img/hdr/bg_main.png) no-repeat right bottom;
+	text-align: right;
+}
+
+	#moneyBox img {
+		display: inline;
+		vertical-align: bottom;
+	}
+	
+
+/*column
+----------------------------------------------*/
+#continer {
+	position: relative;
+	width: 944px;
+}
+
+#profColumn,
+#mainColumn,
+#subColumn {
+	display: inline;
+	overflow: hidden;
+}
+	#profColumn .box,
+	#mainColumn .box,
+	#subColumn .box {
+		position: relative;
+		margin-bottom: 5px;
+		padding: 0 8px 8px;
+		border: 2px solid #DC4749;
+		overflow: hidden;
+	}
+		#profColumn .box .hdr,
+		#mainColumn .box .hdr,
+		#subColumn .box .hdr {
+			position: relative;
+			left: -8px;
+			margin-bottom: 10px;
+			padding: 5px 7px 7px;
+			background-color: #DC4749;
+		}
+
+#profColumn {
+	float: left;
+	width: 223px;
+}
+	#profColumn .box {
+		width: 203px;
+		background-color: #FFE0E1;
+	}
+	#profColumn .box .hdr {
+		width: 205px;
+	}
+
+#mainColumn {
+	float: left;
+	margin-left: 5px;
+	width: 461px;
+}
+	#mainColumn .box {
+		width: 441px;
+		padding-bottom: 4px;
+	}
+		#mainColumn .box .hdr {
+			width: 443px;
+		}
+	
+#subColumn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 250px;
+}
+	#subColumn .box {
+		width: 230px;
+	}
+		#subColumn .box .hdr {
+			width: 232px;
+		}
+
+
+/*#profColumn #profBox
+----------------------------------------------*/
+#profColumn #profBox {
+	padding-top: 8px;
+}
+	#profColumn #profBox p.comment {
+		position: relative;
+		margin-bottom: 21px;
+		padding: 10px;
+		background-color: #FFFFFF;
+		border: 2px solid #AAAAAA;
+		text-align: center;
+		font-size: 14px;
+		line-height: 1.4;
+	}
+		#profColumn #profBox p.comment span {
+			position: absolute;
+			left: 100px;
+			bottom: -18px;
+			display: block;
+			width: 11px;
+			height: 18px;
+			background: url(../img/content/comment_allow_2.png) no-repeat center bottom;
+		}
+	
+	#profColumn #profBox p.pic {
+		margin-bottom: 10px;
+		text-indent: -9999px;
+	}
+		#profColumn #profBox p.pic a {
+			display: block;
+			margin: 0 auto;
+			width: 174px;
+			height: 174px;
+			background-repeat: no-repeat;
+			background-position: center center;
+		}
+	
+	#profColumn #profBox h2 {
+		position: static;
+		margin-bottom: 6px;
+		padding: 0;
+		background: none;
+		text-align: center;
+		font-size: 14px;
+		color: #DC4749;
+		line-height: 1.4;
+	}
+		#profColumn #profBox h2 span {
+			display: block;
+			font-size: 12px;
+			color: #333333;
+		}
+	
+	#profColumn #profBox p.price,
+	#profColumn #profBox p.job,
+	#profColumn #profBox p.money {
+		margin-left: 25px;
+		font-size: 12px;
+		line-height: 1.4;
+	}
+	#profColumn #profBox p.price {
+		font-weight: bold;
+		color: #DC4749;
+	}
+	
+	#profColumn #profBox p#btnPrevent.btn,
+	#profColumn #profBox p#btnPurchase.btn {
+		padding-top:5px;
+	}
+		#profColumn #profBox p#btnPrevent.btn a {
+			width: 203px;
+			height: 40px;
+			margin-bottom:5px;
+			background-image: url(../img/content/btn_prevent.png);
+		}
+		#profColumn #profBox p#btnPrevent.btn.disable a {
+			background-position:left bottom;
+		}
+	
+		#profColumn #profBox p#btnNickname.btn a {
+			width: 203px;
+			height: 40px;
+			margin-bottom:5px;
+			background-image: url(../img/content/btn_nickname.png);
+		}
+		#profColumn #profBox p#btnNickname.btn.disable a {
+			background-position: left -40px;
+		}
+		
+		#profColumn #profBox p#btnEdit.btn a {
+			width: 203px;
+			height: 40px;
+			margin-bottom:5px;
+			background-image: url(../img/content/btn_edit.png);
+		}
+		#profColumn #profBox p#btnEdit.btn.disable a {
+			background-position: left -40px;
+		}
+		
+		#profColumn #profBox p#btnTease.btn a {
+			width: 203px;
+			height: 40px;
+			margin-bottom:5px;
+			background-image: url(../img/content/btn_tease.png);
+		}
+		#profColumn #profBox p#btnTease.btn.disable a {
+			background-position: left -40px;
+		}
+		
+		#profColumn #profBox p#btnLabor.btn a {
+			width: 203px;
+			height: 40px;
+			margin-bottom:5px;
+			background-image: url(../img/content/btn_labor.png);
+		}
+		#profColumn #profBox p#btnLabor.btn.disable a {
+			background-position: left -40px;
+		}
+		
+		#profColumn #profBox p#btnGift.btn a {
+			width: 203px;
+			height: 40px;
+			margin-bottom:5px;
+			background-image: url(../img/content/btn_gift.png);
+		}
+		#profColumn #profBox p#btnGift.btn.disable a {
+			background-position: left -40px;
+		}
+		
+		#profColumn #profBox p#btnThrow.btn a {
+			width: 203px;
+			height: 40px;
+			margin-bottom:5px;
+			background-image: url(../img/content/btn_throw.png);
+		}
+		#profColumn #profBox p#btnThrow.btn.disable a {
+			background-position: left -40px;
+		}
+		
+		#profColumn #profBox p#btnPurchase.btn a {
+			width: 203px;
+			height: 40px;
+			margin-bottom:5px;
+			background-image: url(../img/content/btn_purchase.png);
+		}
+		#profColumn #profBox p#btnPurchase.btn.disable a {
+			background-position: left -40px;
+		}
+	
+	#profColumn #profBox #owner {
+		margin: 8px 0 0;
+		font-size: 12px;
+	}
+		#profColumn #profBox #owner h2 {
+			margin-bottom: 10px;
+		}
+			#profColumn #profBox #owner h2 img {
+				width: 135px;
+				margin: 0 auto;
+			}
+			
+		#profColumn #profBox #owner p.pic {
+			display: inline;
+			float: left;
+			width: 76px;
+		}
+			#profColumn #profBox #owner p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px;
+				background: #FFFFFF no-repeat center center;
+			}
+		#profColumn #profBox #owner p.name,
+		#profColumn #profBox #owner p.price,
+		#profColumn #profBox #owner p.job,
+		#profColumn #profBox #owner p.money {
+			margin-left: 81px;
+			margin-bottom: 3px; 
+			line-height: 1.4;
+		}
+		#profColumn #profBox #owner p.name {
+			font-weight: bold;
+			color: #DC4749;
+			font-size: 14px;
+		}
+			#profColumn #profBox #owner p.name span {
+				display: block;
+				font-weight: normal;
+				font-size: 12px;
+				color: #333333;
+			}
+		#profColumn #profBox #owner p.price {
+			color: #333333;
+			font-weight: normal;
+		}
+		#profColumn #profBox p#btnRevolution.btn {
+		 	margin-top: 3px;
+		}
+			#profColumn #profBox p#btnRevolution.btn a {
+				width: 203px;
+				height: 40px;
+				background-image: url(../img/content/btn_revolution.png);
+			}
+			#profColumn #profBox p#btnRevolution.btn.disable a {
+				background-position: left bottom;
+			}
+			
+
+
+/*#profColumn #giftBox
+----------------------------------------------*/
+#profColumn #giftBox {
+}
+	#profColumn #giftBox .hdr {
+	}
+		#profColumn #giftBox .hdr ul.allowList {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 68px;
+		}
+			#profColumn #giftBox .hdr ul.allowList li {
+				display: inline;
+				float: left;
+				margin-left: 2px;
+				width: 32px;
+				height: 30px;
+				text-indent: -9999px;
+			}
+				#profColumn #giftBox .hdr ul.allowList li a {
+					display: block;
+					height: 30px;
+					background: url(../img/content/allow_1.png) no-repeat;
+				}
+				#profColumn #giftBox .hdr ul.allowList li.allowLeft a {
+					background-position: left top;
+				}
+				#profColumn #giftBox .hdr ul.allowList li.allowLeft a:hover {
+					background-position: left bottom;
+				}
+				#profColumn #giftBox .hdr ul.allowList li.allowRight a {
+					background-position: right top;
+				}
+				#profColumn #giftBox .hdr ul.allowList li.allowRight a:hover {
+					background-position: right bottom;
+				}
+	
+	#profColumn #giftBox p.pic {
+		margin-bottom: 5px;
+		text-indent: -9999px;
+	}
+		#profColumn #giftBox p.pic span {
+			display: block;
+			margin: 0 auto;
+			width: 128px;
+			height: 128px;
+			background-repeat: no-repeat;
+			background-position: center center;
+		}
+	
+	#profColumn #giftBox p.name,
+	#profColumn #giftBox p.price {
+		margin-bottom: 5px;
+		line-height: 1.2;
+		font-weight: bold;
+		font-size: 14px;
+		color: #DC4749;
+	}
+	
+	#profColumn #giftBox p.price {
+		text-align: right;
+	}
+	
+	#profColumn #giftBox ul.action.box {
+		margin-bottom: 5px;
+		padding: 8px 10px;
+		width: auto;
+		background: #FFFDCC;
+		border: 1px solid #CFA46D;
+		font-size: 12px;
+	}
+		#profColumn #giftBox ul.action.box li {
+			line-height: 1.4;
+		}
+			#profColumn #giftBox ul.action.box li a {
+				padding-left: 12px;
+				background: url(../img/content/icn_more.png) no-repeat left center;
+			}
+	
+	#profColumn #giftBox #btnRakuten {
+		text-indent: -9999px;
+	}
+		#profColumn #giftBox #btnRakuten a {
+			display: block;
+			width: 203px;
+			height: 40px;
+			background: url(../img/content/btn_rakuten.png) no-repeat left top;
+		}
+
+
+/*#mainColumn #neighborBox
+----------------------------------------------*/
+#mainColumn #neighborBox {
+}
+	#mainColumn #neighborBox ul {
+		margin-bottom: 5px;
+		margin-left: 22px;
+	}
+		#mainColumn #neighborBox ul li {
+			float: left;
+			display: inline;
+			margin-left: 2px;
+			border: 2px solid #fff;
+		}
+		#mainColumn #neighborBox ul li.active {
+			border:2px solid #8ac451;
+		}
+			#mainColumn #neighborBox ul li a {
+				display: block;
+				width: 60px;
+				height: 60px;
+				background-position: center center;
+				background-repeat: no-repeat;
+			}
+			#mainColumn #neighborBox ul li a img {
+				display: block;
+				background-position: center center;
+				background-repeat: no-repeat;
+				/*background-image: url(../img/dummy/pic_wak_s_p.png);*/
+			}
+			/*#mainColumn #neighborBox ul li a:hover img,
+			#mainColumn #neighborBox ul li a.active img {
+				background-image: url(../img/dummy/pic_wak_s.png);
+			}*/
+	#mainColumn #neighborBox p.preButton,
+	#mainColumn #neighborBox p.nextButton {
+		width:23px;
+		height:60px;
+	}
+	#mainColumn #neighborBox p.preButton {
+		position:absolute;
+		left:5px;
+		top:43px;
+	}
+	#mainColumn #neighborBox p.nextButton {
+		position:absolute;
+		left:430px;
+		top:43px;
+	}
+		#mainColumn #neighborBox p.preButton a,
+		#mainColumn #neighborBox p.nextButton a {
+			display:block;
+			width:23px;
+			height:60px;
+			text-indent:-9999px;
+		}
+		#mainColumn #neighborBox p.preButton a {
+			background:url(../img/content/neighborButton1.png) no-repeat left top;
+		}
+		#mainColumn #neighborBox p.nextButton a {
+			background:url(../img/content/neighborButton2.png) no-repeat left top;
+		}
+		
+
+/*#mainColumn #newsBox
+----------------------------------------------*/
+#mainColumn #newsBox {
+}
+	#mainColumn #newsBox .hdr {
+	}
+		#mainColumn #newsBox .hdr ul.tabNews {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 244px;
+		}
+			#mainColumn #newsBox .hdr ul.tabNews li {
+				display: inline;
+				float: left;
+				margin-left: 2px;
+				text-indent: -9999px;
+			}
+				#mainColumn #newsBox .hdr ul.tabNews li a {
+					display: block;
+					width: 120px;
+					height: 30px;
+					background: url(../img/content/tab_news.png) no-repeat;
+				}
+				#mainColumn #newsBox .hdr ul.tabNews li#tabOwn a {
+					background-position: left top;
+				}
+				#mainColumn #newsBox .hdr ul.tabNews li#tabOwn a:hover,
+				#mainColumn #newsBox .hdr ul.tabNews li#tabOwn.active a {
+					background-position: left bottom;
+				}
+				#mainColumn #newsBox .hdr ul.tabNews li#tabMyMixi a {
+					background-position: right top;
+				}
+				#mainColumn #newsBox .hdr ul.tabNews li#tabMyMixi a:hover,
+				#mainColumn #newsBox .hdr ul.tabNews li#tabMyMixi.active a {
+					background-position: right bottom;
+				}
+
+
+	#mainColumn #newsBox #newsFeed {
+		padding: 0 !important;
+		height: 430px;
+		overflow: auto;
+	}
+		#mainColumn #newsBox #newsFeed ul {
+			margin: 0;
+			font-size: 12px;
+			line-height: 1.3;
+		}
+			#mainColumn #newsBox #newsFeed ul li {
+				padding: 5px;
+			}
+			#mainColumn #newsBox #newsFeed ul li.even {
+				background-color: #F4EDED;
+			}
+				#mainColumn #newsBox #newsFeed ul li p.pic {
+					display: inline;
+					float: left;
+					width: 74px;
+					text-indent: -9999px;
+				}
+					#mainColumn #newsBox #newsFeed ul li p.pic a {	
+						display: block;
+						width: 74px;
+						height: 74px;
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+				
+				#mainColumn #newsBox #newsFeed ul li p.date,
+				#mainColumn #newsBox #newsFeed ul li p.action {
+					margin: 0 0 0 84px;
+				}
+				#mainColumn #newsBox #newsFeed ul li p.date {
+					margin-bottom: 5px;
+					color: #777777;
+				}
+		
+
+/*#mainColumn #doreiActionBox
+----------------------------------------------*/
+#mainColumn #doreiActionBox {
+}
+	#mainColumn #doreiActionBox ul {
+		line-height: 1.4;
+		font-size: 12px;
+	}
+		#mainColumn #doreiActionBox ul li {
+			vertical-align: middle;
+			clear: both;
+			margin-bottom: 5px;
+			padding: 10px;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+			#mainColumn #doreiActionBox ul li p.pic {
+				position: relative;
+				display: inline;
+				float: left;
+				width: 74px;
+				text-indent: -9999px;
+			}
+				#mainColumn #doreiActionBox ul li p.pic a {
+					display: block;
+					height: 74px;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+				#mainColumn #doreiActionBox ul li p.pic img {
+					position: absolute;
+					right: 3px;
+					bottom: 3px;
+					z-index: 2;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+			#mainColumn #doreiActionBox ul li p.name,
+			#mainColumn #doreiActionBox ul li p.comment {
+				margin-left: 84px;
+			}
+			#mainColumn #doreiActionBox ul li p.name {
+				margin-bottom: 8px;
+				color: #DC4749;
+				font-weight: bold;
+			}
+				#mainColumn #doreiActionBox ul li p.name span {
+					color: #333333;
+					font-weight: normal;
+				}
+			#mainColumn #doreiActionBox ul li p.comment {
+				height: 18px;
+				position: relative;
+				margin-bottom: 5px;
+				padding: 3px 5px;
+				border: 1px solid #AAAAAA;
+				background-color: #FFFFFF;
+			}
+				#mainColumn #doreiActionBox ul li p.comment span {
+					position: absolute;
+					left: 0;
+					top: 24px;
+					display: block;
+					width: 20px;
+					height: 14px;
+					background: url(../img/content/comment_allow_1.png) no-repeat left top;
+				}
+			
+			#mainColumn #doreiActionBox ul li ul {
+				text-align: right;
+			}
+				#mainColumn #doreiActionBox ul li ul li.price,
+				#mainColumn #doreiActionBox ul li ul li.job {
+					display: -moz-inline-box;/*Firefox2*/
+					display: inline-block;/*CSS3*/
+					/display: inline;/*IE6,IE7*/
+					/zoom: 1;/*IE6,IE7*/
+					margin: 0 5px 0 0;
+					padding: 0;
+					color: #DC4749;
+				}
+			
+			#mainColumn #doreiActionBox ul li ul.actionList {
+				position: relative;
+				margin-top: 5px;
+				padding: 6px 0 1px 1px;
+				/padding: 6px 0 6px 1px;
+				background-color: #FFFFFF;
+				clear: both;
+			}
+				#mainColumn #doreiActionBox ul li ul.actionList li {
+					clear: none;
+					display: inline;
+					float: left;
+					margin: 0 0 5px 5px;
+					padding: 0;
+					width: 133px;
+					text-align: center;
+					color: #FFFFFF;
+				}
+					#mainColumn #doreiActionBox ul li ul.actionList li a {
+						white-space: nowrap;
+						display: block;
+						padding: 10px;
+						background-color: #FC8A8C;
+						border-radius: 3px;/*CSS3*/
+						-webkit-border-radius: 3px;/*Safari*/
+						-moz-border-radius: 3px;/*Firefox*/
+						color: #FFFFFF;
+						font-weight: bold;
+					}
+					#mainColumn #doreiActionBox ul li ul.actionList li a:hover {
+						background-color: #8AC451;
+						text-decoration: none;
+					}
+					#mainColumn #doreiActionBox ul li ul.actionList li a.disable {
+						background-color: #cccccc;
+						cursor: default;
+					}
+
+/*#subColumn #inviteBtnBox
+----------------------------------------------*/
+#subColumn #inviteBtnBox {
+	padding: 0 0 5px 0;
+	height: 35px;
+	width: 250px;
+}
+	#subColumn #inviteBtnBox a {
+		display: block;
+		width: 250px;
+		height: 35px;
+		text-indent: -10000px;
+		background-image: url(../img/content/btn_invite.png);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+	}
+	#subColumn #inviteBtnBox a:hover {
+		background-position: 0 bottom;
+	}
+
+
+/*#subColumn #adBox
+----------------------------------------------*/
+#subColumn #adBox {
+	padding: 0;
+	width: 250px;
+	border: medium none;
+}
+
+
+/*#subColumn #logBox
+----------------------------------------------*/
+#subColumn #logBox,
+#subColumn #popularBox {
+	padding-bottom: 4px;
+}
+	#subColumn #logBox ul,
+	#subColumn #popularBox ul {
+	}
+		#subColumn #logBox ul li,
+		#subColumn #popularBox ul li {
+			margin-bottom: 5px;
+		}
+			#subColumn #logBox ul li p.pic,
+			#subColumn #popularBox ul li p.pic {
+				display: inline;
+				float: left;
+				width: 60px;
+				text-indent: -9999px;
+			}
+				#subColumn #logBox ul li p.pic a,
+				#subColumn #popularBox ul li p.pic a {
+					display: block;
+					width: 60px;
+					height: 60px;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+			#subColumn #logBox ul li p.name,
+			#subColumn #logBox ul li p.price,
+			#subColumn #popularBox ul li p.name,
+			#subColumn #popularBox ul li p.price {
+				margin: 0 0 0 65px;
+				line-height: 1.4;
+				font-size: 12px;
+			}
+			#subColumn #logBox ul li p.name,
+			#subColumn #popularBox ul li p.name {
+				color: #DC4749;
+				font-weight: bold;
+			}
+				#subColumn #logBox ul li p.name span,
+				#subColumn #popularBox ul li p.name span {
+					display: block;
+					font-weight: normal;
+					color: #333333;
+					font-size: 10px;
+				}
+	
+	#subColumn #popularBox p.more {
+		text-align: right;
+		line-height: 1.4;
+		font-size: 12px;
+	}
+		#subColumn #popularBox p.more a {
+			padding-left: 12px;
+			background: url(../img/content/icn_more.png) no-repeat left center;
+		}
+		#subColumn #popularBox p.more a:link,
+		#subColumn #popularBox p.more a:visited {
+			text-decoration: underline;
+		}
+		#subColumn #popularBox p.more a:hover {
+			text-decoration: none;
+		}
+
+
+/*address#copyright
+----------------------------------------------*/
+address#copyright {
+	clear: both;
+	line-height: 1.3;
+	margin-bottom: 20px;
+	padding-top: 20px;
+	font-size: 12px;
+}
+
+
+/*02_profileNull 01_homeNull
+----------------------------------------------*/
+#profColumn #profBox p.pic.profileNull a,
+#profColumn #profBox p.pic.homeNull a {
+	width: 180px;
+	height: 180px;
+}
+
+	#profColumn #profBox #owner p.pic.profileNull a,
+	#profColumn #profBox #owner p.pic.homeNull a {
+		width:76px;
+		height:76px;
+	}
+
+#profColumn #giftBox p.pic.profileNull span,
+#profColumn #giftBox p.pic.homeNull span { 
+	width:182px;
+	height:182px;
+}
+
+#mainColumn #newsBox #newsFeed.homeNull {
+	padding: 0 !important;
+	height: 88px;
+	overflow: auto;
+}
+
+	#profileNull #mainColumn #doreiActionBox ul li p.pic,
+	#mainColumn #doreiActionBox ul.homeNull li p.pic {
+		width: 76px;
+	}
+		#mainColumn #doreiActionBox ul.profileNull  li p.pic a,
+		#mainColumn #doreiActionBox ul.homeNull li p.pic a {
+			height: 76px;
+		}
+
+#profColumn #giftBox #btnRakuten.profileNull a,
+#profColumn #giftBox #btnRakuten.homeNull a {
+		display: block;
+		width: 203px;
+		height: 42px;
+		background: url(../img/content/btn_null.png) no-repeat left top;
+	}
+	
+	#mainColumn #doreiActionBox ul.profileNull li,
+	#mainColumn #doreiActionBox ul.homeNull li {
+		background-color:#f5ebeb;
+	}
+		#mainColumn #doreiActionBox ul.profileNull li p.name,
+		#mainColumn #doreiActionBox ul.homeNull li p.name {
+			color: #b76a6a;
+		}
+			#mainColumn #doreiActionBox ul.profileNull li p.name span,
+			#mainColumn #doreiActionBox ul.homeNull li p.name span {
+				color: #b76a6a;
+				font-weight: normal;
+			}
+				#mainColumn #doreiActionBox ul.profileNull li p.name span a,
+				#mainColumn #doreiActionBox ul.homeNull li p.name span a {
+					color: #b76a6a;
+				}
+		
+		#mainColumn #doreiActionBox ul.profileNull li p.comment,
+		#mainColumn #doreiActionBox ul.homeNull li p.comment {
+			border: 1px solid #b76a6a;
+			color: #b76a6a;
+		}
+			#mainColumn #doreiActionBox ul.profileNull li p.comment span,
+			#mainColumn #doreiActionBox ul.homeNull li p.comment span {
+				background: url(../img/content/comment_allow_5.png) no-repeat left top;
+			}
+		
+			#mainColumn #doreiActionBox ul.profileNull li ul li.price, 
+			#mainColumn #doreiActionBox ul.profileNull li ul li.job,
+			#mainColumn #doreiActionBox ul.homeNull li ul li.price, 
+			#mainColumn #doreiActionBox ul.homeNull li ul li.job {
+				color: #b76a6a;
+			}
+				#mainColumn #doreiActionBox ul.profileNull li ul.actionList li a,
+				#mainColumn #doreiActionBox ul.homeNull li ul.actionList li a {
+					background-color:#debbbb;
+				}
+
+#subColumn #logBox p.pic.profileNull a,
+#subColumn #popularBox p.pic.profileNull a,
+#subColumn #logBox p.pic.homeNull a,
+#subColumn #popularBox p.pic.homeNull a {
+	display: block;
+	margin: 0 auto;
+	width: 182px;
+	height: 182px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-bottom:10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*#twoColumn column
+----------------------------------------------*/
+#twoColumn #mainColumn {
+	display: inline;
+	overflow: hidden;
+	float: left;
+	margin-left:0;
+	width: 689px;
+}
+	#twoColumn #mainColumn .box {
+		position: relative;
+		margin-bottom: 5px;
+		padding: 0 8px 8px;
+		border: 2px solid #DC4749;
+		overflow: hidden;
+		width: 669px;
+		padding-bottom: 4px;
+	}
+		#twoColumn #mainColumn .box .hdr {
+			position: relative;
+			left: -8px;
+			margin-bottom: 10px;
+			padding: 5px 7px 7px;
+			background-color: #DC4749;
+			width: 671px;
+		}
+
+
+/*#twoColumn #mainColumn #sellBox 03_slaveShop
+----------------------------------------------*/
+#twoColumn #mainColumn #sellBox {
+}
+	#twoColumn #mainColumn #sellBox .hdr {
+	}
+		#twoColumn #mainColumn #sellBox .hdr ul.tabNews {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 244px;
+		}
+			#twoColumn #mainColumn #sellBox .hdr ul.tabNews li {
+				display: inline;
+				float: left;
+				margin-left: 2px;
+				text-indent: -9999px;
+				clear: none;
+				margin-bottom: 0;
+				padding: 0;
+			}
+				#twoColumn #mainColumn #sellBox .hdr ul.tabNews li a {
+					display: block;
+					width: 120px;
+					height: 30px;
+					background: #dc4749 url(../img/content/tab_sell.png) no-repeat;
+				}
+				#twoColumn #mainColumn #sellBox .hdr ul.tabNews li#tabOwn a {
+					background-position: left top;
+				}
+				#twoColumn #mainColumn #sellBox .hdr ul.tabNews li#tabOwn a:hover,
+				#twoColumn #mainColumn #sellBox .hdr ul.tabNews li#tabOwn.active a {
+					background-position: left bottom;
+				}
+				#twoColumn #mainColumn #sellBox .hdr ul.tabNews li#tabMyMixi a {
+					background-position: right top;
+				}
+				#twoColumn #mainColumn #sellBox .hdr ul.tabNews li#tabMyMixi a:hover,
+				#twoColumn #mainColumn #sellBox .hdr ul.tabNews li#tabMyMixi.active a {
+					background-position: right bottom;
+				}	
+
+	#twoColumn #mainColumn #sellBox p.order {
+		padding-bottom:10px;
+		font-size:15px;
+		color:#000;
+		font-weight:bold;
+	}
+		#twoColumn #mainColumn #sellBox p.order span.ascend,
+		#twoColumn #mainColumn #sellBox p.order span.descend {
+		}
+			#twoColumn #mainColumn #sellBox p.order span.ascend a {
+				color:#258fb8;
+			}
+			#twoColumn #mainColumn #sellBox p.order span.descend a {
+				color:#dc4749;
+			}
+			#twoColumn #mainColumn #sellBox p.order span a:hover {
+				text-decoration:none;
+			}
+		
+	
+	#twoColumn #mainColumn #sellBox ul {
+		line-height: 1.4;
+		font-size: 12px;
+		}
+		#twoColumn #mainColumn #sellBox ul li {
+			clear: both;
+			margin-bottom: 5px;
+			vertical-align: middle;
+			padding: 10px;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+			#twoColumn #mainColumn #sellBox ul li p.pic {
+				position: relative;
+				display: inline;
+				float: left;
+				width: 74px;
+				text-indent: -9999px;
+			}
+				#twoColumn #mainColumn #sellBox ul li p.pic a {
+					display: block;
+					height: 74px;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+				#twoColumn #mainColumn #sellBox ul li p.pic img {
+					position: absolute;
+					right: 3px;
+					bottom: 3px;
+					z-index: 2;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+			#twoColumn #mainColumn #sellBox ul li p.name,
+			#twoColumn #mainColumn #sellBox ul li p.comment {
+				margin-left: 84px;
+			}
+			#twoColumn #mainColumn #sellBox ul li p.name {
+				margin-bottom: 8px;
+				color: #DC4749;
+				font-weight: bold;
+			}
+				#twoColumn #mainColumn #sellBox ul li p.name span {
+					color: #333333;
+					font-weight: normal;
+				}
+			#twoColumn #mainColumn #sellBox ul li p.comment {
+				position: relative;
+				margin-bottom: 5px;
+				padding: 3px 5px;
+				border: 1px solid #AAAAAA;
+				background-color: #FFFFFF;
+			}
+				#twoColumn #mainColumn #sellBox ul li p.comment span {
+					position: absolute;
+					left: 0;
+					bottom: -14px;
+					display: block;
+					width: 20px;
+					height: 14px;
+					background: url(../img/content/comment_allow_1.png) no-repeat left top;
+				}
+			
+			#twoColumn #mainColumn #sellBox ul li ul {
+				text-align: right;
+			}
+				#twoColumn #mainColumn #sellBox ul li ul li.price,
+				#twoColumn #mainColumn #sellBox ul li ul li.job {
+					display: -moz-inline-box;/*Firefox2*/
+					display: inline-block;/*CSS3*/
+					/display: inline;/*IE6,IE7*/
+					/zoom: 1;/*IE6,IE7*/
+					margin: 0 5px 0 0;
+					padding: 0;
+					color: #DC4749;
+				}
+			
+			#twoColumn #mainColumn #sellBox ul li ul.actionList {
+				position: relative;
+				margin-top: 5px;
+				padding: 6px 0 1px 1px;
+				/padding: 6px 0 6px 1px;
+				background-color: #FFFFFF;
+			}
+				#twoColumn #mainColumn #sellBox ul li ul.actionList li {
+					clear: none;
+					display: inline;
+					float: left;
+					margin: 0 0 5px 5px;
+					padding: 0;
+					width: 209px;
+					text-align: center;
+					color: #FFFFFF;
+				}
+					#twoColumn #mainColumn #sellBox ul li ul.actionList li a {
+						display: block;
+						padding: 10px;
+						background-color: #FC8A8C;
+						border-radius: 3px;/*CSS3*/
+						-webkit-border-radius: 3px;/*Safari*/
+						-moz-border-radius: 3px;/*Firefox*/
+						color: #FFFFFF;
+						font-weight: bold;
+					}
+					#twoColumn #mainColumn #sellBox ul li ul.actionList li a:hover {
+						background-color: #8AC451;
+						text-decoration: none;
+					}
+					#twoColumn #mainColumn #sellBox ul li ul.actionList li a.disable {
+						background-color: #c0c0c0;
+						cursor: default;
+					}
+
+	#twoColumn #mainColumn #sellBox #pager {
+		overflow:hidden;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+		#twoColumn #mainColumn #sellBox #pager p {
+			float: left;
+			width: 52px;
+			height: 21px;
+			line-height: 21px;
+			text-align: center;
+			border: 1px solid #258fb8;
+			margin-right:5px;
+		}
+			#twoColumn #mainColumn #sellBox #pager p a {
+				display: block;
+				color: #258fb8;
+				font-size: 13px;
+			}
+			#twoColumn #mainColumn #sellBox #pager p a:hover {
+				color: #FFFFFF;
+				background-color: #258fb8;
+				text-decoration:none;
+			}
+			
+		#twoColumn #mainColumn #sellBox #pager ul {
+			float: left;
+			display: inline;
+		}
+			#twoColumn #mainColumn #sellBox #pager ul li {
+				float:left;
+				display:inline;
+				clear: none;
+				margin-right:5px;
+				margin-bottom: 0px;
+				padding: 0px;
+				background-color: #fff;
+				border-radius: 0px;/*CSS3*/
+				-webkit-border-radius: 0px;/*Safari*/
+				-moz-border-radius: 0px;/*Firefox*/
+			}
+				#twoColumn #mainColumn #sellBox #pager ul li a {
+					font-size:14px;
+					display: block;
+					width: 21px;
+					height: 21px;
+					line-height: 21px;
+					text-align: center;
+					border: 1px solid #258fb8;
+				}
+				#twoColumn #mainColumn #sellBox #pager ul li a:hover {
+					background-color: #258fb8;
+					text-decoration: none;
+					color: #FFF;
+				}
+				#twoColumn #mainColumn #sellBox #pager ul li a.disable {
+					background-color: #ccc;
+					border: 1px solid #ccc;
+					color: #000;
+					cursor:default;
+				}
+
+
+/*#twoColumn #mainColumn #searchBox
+----------------------------------------------*/
+#twoColumn #mainColumn #searchBox {
+}
+	#twoColumn #mainColumn #searchBox .hdr {
+	}
+		#twoColumn #mainColumn #searchBox form {
+		}
+			#twoColumn #mainColumn #searchBox form ul {
+				padding-bottom: 5px;
+				font-size:14px;
+				font-weight: bold;
+			}
+			#twoColumn #mainColumn #searchBox form ul li {
+				float: left;
+				margin-right:5px;
+				display: inline;
+			}
+				#twoColumn #mainColumn #searchBox ul li input.inputText {
+					width: 412px;
+					height: 20px;
+					border: 1px solid #ffa700;
+				}
+				#twoColumn #mainColumn #searchBox ul li input.submitBtn {
+					width: 100px;
+					height: 25px;
+					background-color: #990000;
+					background: url(../img/content/btn_search.png) no-repeat left top;
+					border: none;
+				}
+				
+
+
+
+/*#twoColumn #mainColumn #popularGiftBox 04_giftShop_default
+----------------------------------------------*/
+#twoColumn #mainColumn #popularGiftBox {
+}
+	#twoColumn #mainColumn #popularGiftBox .hdr {
+	}
+
+	#twoColumn #mainColumn #popularGiftBox p.order {
+		padding-bottom:10px;
+		font-size:15px;
+		color:#000;
+		font-weight:bold;
+	}
+		#twoColumn #mainColumn #popularGiftBox p.order span.ascend,
+		#twoColumn #mainColumn #popularGiftBox p.order span.descend {
+		}
+			#twoColumn #mainColumn #popularGiftBox p.order span.ascend a {
+				color:#258fb8;
+			}
+			#twoColumn #mainColumn #popularGiftBox p.order span.descend a {
+				color:#dc4749;
+			}
+			#twoColumn #mainColumn #popularGiftBox p.order span a:hover {
+				text-decoration:none;
+			}
+		
+	
+	#twoColumn #mainColumn #popularGiftBox ul {
+		line-height: 1.4;
+		font-size: 12px;
+		}
+		#twoColumn #mainColumn #popularGiftBox ul li {
+			clear: both;
+			margin-bottom: 5px;
+			padding: 10px;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+			#twoColumn #mainColumn #popularGiftBox ul li p.pic {
+				position: relative;
+				display: inline;
+				float: left;
+				width: 74px;
+				text-indent: -9999px;
+				margin-bottom: 10px;
+			}
+				#twoColumn #mainColumn #popularGiftBox ul li p.pic a {
+					display: block;
+					height: 74px;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+				#twoColumn #mainColumn #popularGiftBox ul li p.pic img {
+					position: absolute;
+					right: 3px;
+					bottom: 3px;
+					z-index: 2;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+			#twoColumn #mainColumn #popularGiftBox ul li p.name,
+			#twoColumn #mainColumn #popularGiftBox ul li p.price {
+				margin-left: 84px;
+			}
+			#twoColumn #mainColumn #popularGiftBox ul li p.name {
+				color: #333;
+				font-weight: bold;
+				font-size:15px;
+				line-height:1.2;
+			}
+			#twoColumn #mainColumn #popularGiftBox ul li p.price {
+				color: #333;
+				font-size: 14px;
+			}
+			
+				#twoColumn #mainColumn #popularGiftBox ul li ul li.price {
+					display: inline;
+					margin: 0 5px 0 0;
+					padding: 0;
+					color: #DC4749;
+				}
+			
+			#twoColumn #mainColumn #popularGiftBox ul li ul.actionList {
+				position: relative;
+				clear: both;
+				padding: 6px 0 1px 1px;
+				/padding: 6px 0 6px 1px;
+				background-color: #FFFFFF;
+			}
+				#twoColumn #mainColumn #popularGiftBox ul li ul.actionList li {
+					clear: none;
+					display: inline;
+					float: left;
+					margin: 0 0 5px 5px;
+					padding: 0;
+					width: 316px;
+					text-align: center;
+					color: #FFFFFF;
+				}
+					#twoColumn #mainColumn #popularGiftBox ul li ul.actionList li a {
+						display: block;
+						padding: 10px;
+						background-color: #FC8A8C;
+						border-radius: 3px;/*CSS3*/
+						-webkit-border-radius: 3px;/*Safari*/
+						-moz-border-radius: 3px;/*Firefox*/
+						color: #FFFFFF;
+						font-weight: bold;
+					}
+					#twoColumn #mainColumn #popularGiftBox ul li ul.actionList li a.disable {
+						background-color: #c0c0c0;
+						cursor: default;
+					}
+					#twoColumn #mainColumn #popularGiftBox ul li ul.actionList li.disable a:hover {
+						background-color: #c0c0c0;
+					}
+					#twoColumn #mainColumn #popularGiftBox ul li ul.actionList li a.disable:hover {
+						background-color: #c0c0c0;
+					}
+					
+					#twoColumn #mainColumn #popularGiftBox ul li ul.actionList li a:hover {
+						background-color: #8AC451;
+						text-decoration: none;
+					}
+					#twoColumn #mainColumn #popularGiftBox ul li ul.actionList li a.active {
+						background-color: #bf0000;
+					}
+
+	#twoColumn #mainColumn #popularGiftBox #pager {
+		overflow:hidden;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+		#twoColumn #mainColumn #popularGiftBox #pager p {
+			float: left;
+			width: 52px;
+			height: 21px;
+			line-height: 21px;
+			text-align: center;
+			border: 1px solid #258fb8;
+			margin-right:5px;
+		}
+			#twoColumn #mainColumn #popularGiftBox #pager p a {
+				display: block;
+				color: #258fb8;
+				font-size: 13px;
+			}
+			#twoColumn #mainColumn #popularGiftBox #pager p a:hover {
+				color: #FFF;
+				background-color: #258fb8;
+				text-decoration:none;
+			}
+			
+		#twoColumn #mainColumn #popularGiftBox #pager ul {
+			float: left;
+			display: inline;
+		}
+			#twoColumn #mainColumn #popularGiftBox #pager ul li {
+				float:left;
+				display:inline;
+				clear: none;
+				margin-right:5px;
+				margin-bottom: 0px;
+				padding: 0px;
+				background-color: #fff;
+				border-radius: 0px;/*CSS3*/
+				-webkit-border-radius: 0px;/*Safari*/
+				-moz-border-radius: 0px;/*Firefox*/
+			}
+				#twoColumn #mainColumn #popularGiftBox #pager ul li a {
+					font-size:14px;
+					display: block;
+					width: 21px;
+					height: 21px;
+					line-height: 21px;
+					text-align: center;
+					border: 1px solid #258fb8;
+				}
+				#twoColumn #mainColumn #popularGiftBox #pager ul li a:hover {
+					background-color: #258fb8;
+					text-decoration: none;
+					color: #FFF;
+				}
+				#twoColumn #mainColumn #popularGiftBox #pager ul li a.disable {
+					background-color: #ccc;
+					border: 1px solid #ccc;
+					color: #000;
+					cursor:default;
+				}
+
+
+	#twoColumn #mainColumn #popularityGiftBox p.order {
+			padding-bottom:10px;
+			font-size:15px;
+			color:#000;
+			font-weight:bold;
+		}
+			#twoColumn #mainColumn #popularityGiftBox.box p.order span.ascend,
+			#twoColumn #mainColumn #popularityGiftBox.box p.order span.descend {
+			}
+				#twoColumn #mainColumn #popularityGiftBox.box p.order span.ascend a {
+					color:#258fb8;
+				}
+				#twoColumn #mainColumn #popularityGiftBox.box p.order span.descend a {
+					color:#dc4749;
+				}
+				#twoColumn #mainColumn #popularityGiftBox.box p.order span a:hover {
+					text-decoration:none;
+				}
+			
+		
+		#twoColumn #mainColumn #popularityGiftBox.box ul {
+			line-height: 1.4;
+			font-size: 12px;
+			}
+			#twoColumn #mainColumn #popularityGiftBox.box ul li {
+				clear: both;
+				margin-bottom: 5px;
+				padding: 10px;
+				background-color: #FFE0E1;
+				border-radius: 3px;/*CSS3*/
+				-webkit-border-radius: 3px;/*Safari*/
+				-moz-border-radius: 3px;/*Firefox*/
+			}
+				#twoColumn #mainColumn #popularityGiftBox.box ul li p.pic {
+					position: relative;
+					display: inline;
+					float: left;
+					width: 74px;
+					text-indent: -9999px;
+					margin-bottom: 10px;
+				}
+					#twoColumn #mainColumn #popularityGiftBox.box ul li p.pic a {
+						display: block;
+						height: 74px;
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+					#twoColumn #mainColumn #popularityGiftBox.box ul li p.pic img {
+						position: absolute;
+						right: 3px;
+						bottom: 3px;
+						z-index: 2;
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+				#twoColumn #mainColumn #popularityGiftBox.box ul li p.name,
+				#twoColumn #mainColumn #popularityGiftBox.box ul li p.price {
+					margin-left: 84px;
+				}
+				#twoColumn #mainColumn #popularityGiftBox.box ul li p.name {
+					color: #333;
+					font-weight: bold;
+					font-size:15px;
+					line-height:1.2;
+				}
+				#twoColumn #mainColumn #popularityGiftBox.box ul li p.price {
+					color: #333;
+					font-size: 14px;
+				}
+				
+					#twoColumn #mainColumn #popularityGiftBox.box ul li ul li.price {
+						display: inline;
+						margin: 0 5px 0 0;
+						padding: 0;
+						color: #DC4749;
+					}
+				
+				#twoColumn #mainColumn #popularityGiftBox.box ul li ul.actionList {
+					position: relative;
+					clear: both;
+					padding: 6px 0 1px 1px;
+					/padding: 6px 0 6px 1px;
+					background-color: #FFFFFF;
+				}
+					#twoColumn #mainColumn #popularityGiftBox.box ul li ul.actionList li {
+						clear: none;
+						display: inline;
+						float: left;
+						margin: 0 0 5px 5px;
+						padding: 0;
+						width: 316px;
+						text-align: center;
+						color: #FFFFFF;
+					}
+						#twoColumn #mainColumn #popularityGiftBox.box ul li ul.actionList li a {
+							display: block;
+							padding: 10px;
+							background-color: #FC8A8C;
+							border-radius: 3px;/*CSS3*/
+							-webkit-border-radius: 3px;/*Safari*/
+							-moz-border-radius: 3px;/*Firefox*/
+							color: #FFFFFF;
+							font-weight: bold;
+						}
+						#twoColumn #mainColumn #popularityGiftBox.box ul li ul.actionList li a.disable {
+							background-color: #c0c0c0;
+							cursor: default;
+						}
+						#twoColumn #mainColumn #popularityGiftBox.box ul li ul.actionList li.disable a:hover {
+							background-color: #c0c0c0;
+						}
+						#twoColumn #mainColumn #popularityGiftBox.box ul li ul.actionList li a.disable:hover {
+							background-color: #c0c0c0;
+						}
+						
+						#twoColumn #mainColumn #popularityGiftBox.box ul li ul.actionList li a:hover {
+							background-color: #8AC451;
+							text-decoration: none;
+						}
+						#twoColumn #mainColumn #popularityGiftBox.box ul li ul.actionList li a.active {
+							background-color: #bf0000;
+						}
+	
+					#twoColumn #mainColumn #popularityGiftBox.box #pager {
+						overflow:hidden;
+						padding-top: 10px;
+						padding-bottom: 10px;
+					}
+						#twoColumn #mainColumn #popularityGiftBox.box #pager p {
+							float: left;
+							width: 52px;
+							height: 21px;
+							line-height: 21px;
+							text-align: center;
+							border: 1px solid #258fb8;
+							margin-right:5px;
+						}
+							#twoColumn #mainColumn #popularityGiftBox.box #pager p a {
+								display: block;
+								color: #258fb8;
+								font-size: 13px;
+							}
+							#twoColumn #mainColumn #popularityGiftBox.box #pager p a:hover {
+								color: #FFF;
+								background-color: #258fb8;
+								text-decoration:none;
+							}
+							
+						#twoColumn #mainColumn #popularityGiftBox.box #pager ul {
+							float: left;
+							display: inline;
+						}
+							#twoColumn #mainColumn #popularityGiftBox.box #pager ul li {
+								float:left;
+								display:inline;
+								clear: none;
+								margin-right:5px;
+								margin-bottom: 0px;
+								padding: 0px;
+								background-color: #fff;
+								border-radius: 0px;/*CSS3*/
+								-webkit-border-radius: 0px;/*Safari*/
+								-moz-border-radius: 0px;/*Firefox*/
+							}
+								#twoColumn #mainColumn #popularityGiftBox.box #pager ul li a {
+									font-size:14px;
+									display: block;
+									width: 21px;
+									height: 21px;
+									line-height: 21px;
+									text-align: center;
+									border: 1px solid #258fb8;
+								}
+								#twoColumn #mainColumn #popularityGiftBox.box #pager ul li a:hover {
+									background-color: #258fb8;
+									text-decoration: none;
+									color: #FFF;
+								}
+								#twoColumn #mainColumn #popularityGiftBox.box #pager ul li a.disable {
+									background-color: #ccc;
+									border: 1px solid #ccc;
+									color: #000;
+									cursor:default;
+								}
+									
+								
+	/*#twoColumn #mainColumn #popularGiftBox2 04_giftShop_default
+----------------------------------------------*/
+#twoColumn #mainColumn #popularGiftBox2 {
+}
+	#twoColumn #mainColumn #popularGiftBox2 .hdr {
+	}
+
+	#twoColumn #mainColumn #popularGiftBox2 p.order {
+		padding-bottom:10px;
+		font-size:15px;
+		color:#000;
+		font-weight:bold;
+	}
+		#twoColumn #mainColumn #popularGiftBox2 p.order span.ascend,
+		#twoColumn #mainColumn #popularGiftBox2 p.order span.descend {
+		}
+			#twoColumn #mainColumn #popularGiftBox2 p.order span.ascend a {
+				color:#258fb8;
+			}
+			#twoColumn #mainColumn #popularGiftBox2 p.order span.descend a {
+				color:#dc4749;
+			}
+			#twoColumn #mainColumn #popularGiftBox2 p.order span a:hover {
+				text-decoration:none;
+			}
+		
+	
+	#twoColumn #mainColumn #popularGiftBox2 ul {
+		line-height: 1.4;
+		font-size: 12px;
+		}
+		#twoColumn #mainColumn #popularGiftBox2 ul li {
+			clear: both;
+			margin-bottom: 5px;
+			padding: 10px;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+			#twoColumn #mainColumn #popularGiftBox2 ul li p.pic {
+				position: relative;
+				display: inline;
+				float: left;
+				width: 74px;
+				text-indent: -9999px;
+				margin-bottom: 10px;
+			}
+				#twoColumn #mainColumn #popularGiftBox2 ul li p.pic a {
+					display: block;
+					height: 74px;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+				#twoColumn #mainColumn #popularGiftBox2 ul li p.pic img {
+					position: absolute;
+					right: 3px;
+					bottom: 3px;
+					z-index: 2;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+			#twoColumn #mainColumn #popularGiftBox2 ul li p.name,
+			#twoColumn #mainColumn #popularGiftBox2 ul li p.price {
+				margin-left: 84px;
+			}
+			#twoColumn #mainColumn #popularGiftBox2 ul li p.name {
+				color: #333;
+				font-weight: bold;
+				font-size:15px;
+				line-height:1.2;
+			}
+			#twoColumn #mainColumn #popularGiftBox2 ul li p.price {
+				color: #333;
+				font-size: 14px;
+			}
+			
+				#twoColumn #mainColumn #popularGiftBox2 ul li ul li.price {
+					display: inline;
+					margin: 0 5px 0 0;
+					padding: 0;
+					color: #DC4749;
+				}
+			
+			#twoColumn #mainColumn #popularGiftBox2 ul li ul.actionList {
+				position: relative;
+				clear: both;
+				padding: 6px 0 1px 1px;
+				/padding: 6px 0 6px 1px;
+				background-color: #FFFFFF;
+			}
+				#twoColumn #mainColumn #popularGiftBox2 ul li ul.actionList li {
+					clear: none;
+					display: inline;
+					float: left;
+					margin: 0 0 5px 5px;
+					padding: 0;
+					width: 316px;
+					text-align: center;
+					color: #FFFFFF;
+				}
+					#twoColumn #mainColumn #popularGiftBox2 ul li ul.actionList li a {
+						display: block;
+						padding: 10px;
+						background-color: #FC8A8C;
+						border-radius: 3px;/*CSS3*/
+						-webkit-border-radius: 3px;/*Safari*/
+						-moz-border-radius: 3px;/*Firefox*/
+						color: #FFFFFF;
+						font-weight: bold;
+					}
+					#twoColumn #mainColumn #popularGiftBox2 ul li ul.actionList li a.disable {
+						background-color: #c0c0c0;
+						cursor: default;
+					}
+					#twoColumn #mainColumn #popularGiftBox2 ul li ul.actionList li.disable a:hover {
+						background-color: #c0c0c0;
+					}
+					#twoColumn #mainColumn #popularGiftBox2 ul li ul.actionList li a.disable:hover {
+						background-color: #c0c0c0;
+					}
+					
+					#twoColumn #mainColumn #popularGiftBox2 ul li ul.actionList li a:hover {
+						background-color: #8AC451;
+						text-decoration: none;
+					}
+					#twoColumn #mainColumn #popularGiftBox2 ul li ul.actionList li a.active {
+						background-color: #bf0000;
+					}
+
+	#twoColumn #mainColumn #popularGiftBox2 #pager {
+		overflow:hidden;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+		#twoColumn #mainColumn #popularGiftBox2 #pager p {
+			float: left;
+			width: 52px;
+			height: 21px;
+			line-height: 21px;
+			text-align: center;
+			border: 1px solid #258fb8;
+			margin-right:5px;
+		}
+			#twoColumn #mainColumn #popularGiftBox2 #pager p a {
+				display: block;
+				color: #258fb8;
+				font-size: 13px;
+			}
+			#twoColumn #mainColumn #popularGiftBox2 #pager p a:hover {
+				color: #FFF;
+				background-color: #258fb8;
+				text-decoration:none;
+			}
+			
+		#twoColumn #mainColumn #popularGiftBox2 #pager ul {
+			float: left;
+			display: inline;
+		}
+			#twoColumn #mainColumn #popularGiftBox2 #pager ul li {
+				float:left;
+				display:inline;
+				clear: none;
+				margin-right:5px;
+				margin-bottom: 0px;
+				padding: 0px;
+				background-color: #fff;
+				border-radius: 0px;/*CSS3*/
+				-webkit-border-radius: 0px;/*Safari*/
+				-moz-border-radius: 0px;/*Firefox*/
+			}
+				#twoColumn #mainColumn #popularGiftBox2 #pager ul li a {
+					font-size:14px;
+					display: block;
+					width: 21px;
+					height: 21px;
+					line-height: 21px;
+					text-align: center;
+					border: 1px solid #258fb8;
+				}
+				#twoColumn #mainColumn #popularGiftBox2 #pager ul li a:hover {
+					background-color: #258fb8;
+					text-decoration: none;
+					color: #FFF;
+				}
+				#twoColumn #mainColumn #popularGiftBox2 #pager ul li a.disable {
+					background-color: #ccc;
+					border: 1px solid #ccc;
+					color: #000;
+					cursor:default;
+				}
+
+
+	#twoColumn #mainColumn #popularityGiftBox2 p.order {
+			padding-bottom:10px;
+			font-size:15px;
+			color:#000;
+			font-weight:bold;
+		}
+			#twoColumn #mainColumn #popularityGiftBox2.box p.order span.ascend,
+			#twoColumn #mainColumn #popularityGiftBox2.box p.order span.descend {
+			}
+				#twoColumn #mainColumn #popularityGiftBox2.box p.order span.ascend a {
+					color:#258fb8;
+				}
+				#twoColumn #mainColumn #popularityGiftBox2.box p.order span.descend a {
+					color:#dc4749;
+				}
+				#twoColumn #mainColumn #popularityGiftBox2.box p.order span a:hover {
+					text-decoration:none;
+				}
+			
+		
+		#twoColumn #mainColumn #popularityGiftBox2.box ul {
+			line-height: 1.4;
+			font-size: 12px;
+			}
+			#twoColumn #mainColumn #popularityGiftBox2.box ul li {
+				clear: both;
+				margin-bottom: 5px;
+				padding: 10px;
+				background-color: #FFE0E1;
+				border-radius: 3px;/*CSS3*/
+				-webkit-border-radius: 3px;/*Safari*/
+				-moz-border-radius: 3px;/*Firefox*/
+			}
+				#twoColumn #mainColumn #popularityGiftBox2.box ul li p.pic {
+					position: relative;
+					display: inline;
+					float: left;
+					width: 74px;
+					text-indent: -9999px;
+					margin-bottom: 10px;
+				}
+					#twoColumn #mainColumn #popularityGiftBox2.box ul li p.pic a {
+						display: block;
+						height: 74px;
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+					#twoColumn #mainColumn #popularityGiftBox2.box ul li p.pic img {
+						position: absolute;
+						right: 3px;
+						bottom: 3px;
+						z-index: 2;
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+				#twoColumn #mainColumn #popularityGiftBox2.box ul li p.name,
+				#twoColumn #mainColumn #popularityGiftBox2.box ul li p.price {
+					margin-left: 84px;
+				}
+				#twoColumn #mainColumn #popularityGiftBox2.box ul li p.name {
+					color: #333;
+					font-weight: bold;
+					font-size:15px;
+					line-height:1.2;
+				}
+				#twoColumn #mainColumn #popularityGiftBox2.box ul li p.price {
+					color: #333;
+					font-size: 14px;
+				}
+				
+					#twoColumn #mainColumn #popularityGiftBox2.box ul li ul li.price {
+						display: inline;
+						margin: 0 5px 0 0;
+						padding: 0;
+						color: #DC4749;
+					}
+				
+				#twoColumn #mainColumn #popularityGiftBox2.box ul li ul.actionList {
+					position: relative;
+					clear: both;
+					padding: 6px 0 1px 1px;
+					/padding: 6px 0 6px 1px;
+					background-color: #FFFFFF;
+				}
+					#twoColumn #mainColumn #popularityGiftBox2.box ul li ul.actionList li {
+						clear: none;
+						display: inline;
+						float: left;
+						margin: 0 0 5px 5px;
+						padding: 0;
+						width: 316px;
+						text-align: center;
+						color: #FFFFFF;
+					}
+						#twoColumn #mainColumn #popularityGiftBox2.box ul li ul.actionList li a {
+							display: block;
+							padding: 10px;
+							background-color: #FC8A8C;
+							border-radius: 3px;/*CSS3*/
+							-webkit-border-radius: 3px;/*Safari*/
+							-moz-border-radius: 3px;/*Firefox*/
+							color: #FFFFFF;
+							font-weight: bold;
+						}
+						#twoColumn #mainColumn #popularityGiftBox2.box ul li ul.actionList li a.disable {
+							background-color: #c0c0c0;
+							cursor: default;
+						}
+						#twoColumn #mainColumn #popularityGiftBox2.box ul li ul.actionList li.disable a:hover {
+							background-color: #c0c0c0;
+						}
+						#twoColumn #mainColumn #popularityGiftBox2.box ul li ul.actionList li a.disable:hover {
+							background-color: #c0c0c0;
+						}
+						
+						#twoColumn #mainColumn #popularityGiftBox2.box ul li ul.actionList li a:hover {
+							background-color: #8AC451;
+							text-decoration: none;
+						}
+						#twoColumn #mainColumn #popularityGiftBox2.box ul li ul.actionList li a.active {
+							background-color: #bf0000;
+						}
+	
+					#twoColumn #mainColumn #popularityGiftBox2.box #pager {
+						overflow:hidden;
+						padding-top: 10px;
+						padding-bottom: 10px;
+					}
+						#twoColumn #mainColumn #popularityGiftBox2.box #pager p {
+							float: left;
+							width: 52px;
+							height: 21px;
+							line-height: 21px;
+							text-align: center;
+							border: 1px solid #258fb8;
+							margin-right:5px;
+						}
+							#twoColumn #mainColumn #popularityGiftBox2.box #pager p a {
+								display: block;
+								color: #258fb8;
+								font-size: 13px;
+							}
+							#twoColumn #mainColumn #popularityGiftBox2.box #pager p a:hover {
+								color: #FFF;
+								background-color: #258fb8;
+								text-decoration:none;
+							}
+							
+						#twoColumn #mainColumn #popularityGiftBox2.box #pager ul {
+							float: left;
+							display: inline;
+						}
+							#twoColumn #mainColumn #popularityGiftBox2.box #pager ul li {
+								float:left;
+								display:inline;
+								clear: none;
+								margin-right:5px;
+								margin-bottom: 0px;
+								padding: 0px;
+								background-color: #fff;
+								border-radius: 0px;/*CSS3*/
+								-webkit-border-radius: 0px;/*Safari*/
+								-moz-border-radius: 0px;/*Firefox*/
+							}
+								#twoColumn #mainColumn #popularityGiftBox2.box #pager ul li a {
+									font-size:14px;
+									display: block;
+									width: 21px;
+									height: 21px;
+									line-height: 21px;
+									text-align: center;
+									border: 1px solid #258fb8;
+								}
+								#twoColumn #mainColumn #popularityGiftBox2.box #pager ul li a:hover {
+									background-color: #258fb8;
+									text-decoration: none;
+									color: #FFF;
+								}
+								#twoColumn #mainColumn #popularityGiftBox2.box #pager ul li a.disable {
+									background-color: #ccc;
+									border: 1px solid #ccc;
+									color: #000;
+									cursor:default;
+								}
+			
+				
+/*#twoColumn #mainColumn #searchResultBox 04_giftShop_noResult
+----------------------------------------------*/
+#twoColumn #mainColumn #searchResultBox {
+	padding-bottom:10px;
+}
+	#twoColumn #mainColumn #searchResultBox p {
+		padding-top: 3px;
+		font-size: 14px;
+		color: #333;
+		line-height: 1.2;
+	}
+		#twoColumn #mainColumn #searchResultBox p span {
+			font-weight: bold;
+		}
+
+
+/*#twoColumn.giftShopNull #mainColumn #popularGiftBox 04_giftShop_null
+----------------------------------------------*/
+#twoColumn.giftShopNull #mainColumn #popularGiftBox {
+	padding-bottom: 5px;
+}
+	#twoColumn.giftShopNull #mainColumn #popularGiftBox p {
+		font-size: 14px;
+		line-height: 1.2;
+		padding-bottom: 3px; 
+	}
+
+
+/*#twoColumn.giftShopSearchResult #mainColumn #searchResultBox 04_giftShop_searchResult
+----------------------------------------------*/
+#twoColumn.giftShopSearchResult #mainColumn #searchResultBox {
+}
+	#twoColumn.giftShopSearchResult #mainColumn #searchResultBox .hdr {
+	}
+	#twoColumn.giftShopSearchResult #mainColumn #searchResultBox p.order {
+		padding-bottom:10px;
+		font-size:15px;
+		color:#000;
+		font-weight:bold;
+		padding-top: 0;
+	}
+		#twoColumn.giftShopSearchResult #mainColumn #searchResultBox p.order span.ascend,
+		#twoColumn.giftShopSearchResult #mainColumn #searchResultBox p.order span.descend {
+		}
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox p.order span.ascend a {
+				color:#258fb8;
+			}
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox p.order span.descend a {
+				color:#dc4749;
+			}
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox p.order span a:hover {
+				text-decoration:none;
+			}
+		
+	
+	#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul {
+		line-height: 1.4;
+		font-size: 12px;
+		}
+		#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li {
+			clear: both;
+			margin-bottom: 5px;
+			padding: 10px;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li p.pic {
+				position: relative;
+				display: inline;
+				float: left;
+				width: 74px;
+				text-indent: -9999px;
+				margin-bottom: 10px;
+			}
+				#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li p.pic a {
+					display: block;
+					height: 74px;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+				#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li p.pic img {
+					position: absolute;
+					right: 3px;
+					bottom: 3px;
+					z-index: 2;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li p.name,
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li p.price {
+				margin-left: 84px;
+			}
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li p.name {
+				color: #333;
+				font-weight: bold;
+				font-size:15px;
+				line-height:1.2;
+			}
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li p.price {
+				color: #333;
+				font-size: 14px;
+			}
+			
+				#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li ul li.price {
+					display: inline;
+					margin: 0 5px 0 0;
+					padding: 0;
+					color: #DC4749;
+				}
+			
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li ul.actionList {
+				position: relative;
+				clear: both;
+				padding: 6px 0 1px 1px;
+				/padding: 6px 0 6px 1px;
+				background-color: #FFFFFF;
+			}
+				#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li ul.actionList li {
+					clear: none;
+					display: inline;
+					float: left;
+					margin: 0 0 5px 5px;
+					padding: 0;
+					width: 316px;
+					text-align: center;
+					color: #FFFFFF;
+				}
+					#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li ul.actionList li a {
+						display: block;
+						padding: 10px;
+						background-color: #FC8A8C;
+						border-radius: 3px;/*CSS3*/
+						-webkit-border-radius: 3px;/*Safari*/
+						-moz-border-radius: 3px;/*Firefox*/
+						color: #FFFFFF;
+						font-weight: bold;
+					}
+					#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li ul.actionList li a.disable {
+						background-color: #c0c0c0;
+					}
+					#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li ul.actionList li a.disable:hover {
+						background-color: #c0c0c0;
+					}
+					#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li ul.actionList li a:hover {
+						background-color: #8AC451;
+						text-decoration: none;
+					}
+					#twoColumn.giftShopSearchResult #mainColumn #searchResultBox ul li ul.actionList li a.active {
+						background-color: #bf0000;
+					}
+
+	#twoColumn.giftShopSearchResult #mainColumn #searchResultBox #pager {
+		overflow:hidden;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+		#twoColumn.giftShopSearchResult #mainColumn #searchResultBox #pager p {
+			float: left;
+			width: 52px;
+			height: 21px;
+			line-height: 21px;
+			text-align: center;
+			border: 1px solid #258fb8;
+			margin-right: 5px;
+			padding-top: 0;
+		}
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox #pager p a {
+				display: block;
+				color: #258fb8;
+				font-size: 13px;
+			}
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox #pager p a:hover {
+				color: #FFFFFF;
+				background-color: #258FB8;
+				text-decoration:none;
+			}
+			
+		#twoColumn.giftShopSearchResult #mainColumn #searchResultBox #pager ul {
+			float: left;
+			display: inline;
+		}
+			#twoColumn.giftShopSearchResult #mainColumn #searchResultBox #pager ul li {
+				float:left;
+				display:inline;
+				clear: none;
+				margin-right:5px;
+				margin-bottom: 0px;
+				padding: 0px;
+				background-color: #fff;
+				border-radius: 0px;/*CSS3*/
+				-webkit-border-radius: 0px;/*Safari*/
+				-moz-border-radius: 0px;/*Firefox*/
+			}
+				#twoColumn.giftShopSearchResult #mainColumn #searchResultBox #pager ul li a {
+					font-size:14px;
+					display: block;
+					width: 21px;
+					height: 21px;
+					line-height: 21px;
+					text-align: center;
+					border: 1px solid #258fb8;
+				}
+				#twoColumn.giftShopSearchResult #mainColumn #searchResultBox #pager ul li a:hover {
+					background-color: #258fb8;
+					text-decoration: none;
+					color: #FFF;
+				}
+				#twoColumn.giftShopSearchResult #mainColumn #searchResultBox #pager ul li a.disable {
+					background-color: #ccc;
+					border: 1px solid #ccc;
+					color: #000;
+					cursor:default;
+				}
+				
+				
+/*#twoColumn #mainColumn #personalRankingBox 05_ranking
+----------------------------------------------*/
+#twoColumn #mainColumn #personalRankingBox {
+}
+	#twoColumn #mainColumn #personalRankingBox .rankingWrap {
+		position: relative;
+		height: 135px;
+	}
+		#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingLeftNav {
+			position: absolute;
+			left: 2px;
+			top: 33px;
+		}
+			#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingLeftNav li {
+			}
+			#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingLeftNav li.toUnder {
+				margin-bottom: 2px;
+			}
+				#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingLeftNav li a {
+					display: block;
+					width: 40px;
+					height: 47px;
+				}
+				#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingLeftNav li.toUnder a {
+					background: url(../img/content/btn_ranking1.png) no-repeat left top;
+				}
+				#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingLeftNav li.toUnderMore a {
+					background: url(../img/content/btn_ranking2.png) no-repeat left top;
+				}
+		
+		#twoColumn #mainColumn #personalRankingBox .rankingWrap .otherRanking {
+			overflow: hidden;
+			position: absolute;
+			left: 48px;
+		}
+			#twoColumn #mainColumn #personalRankingBox .rankingWrap .otherRanking ol.items {
+			}
+				#twoColumn #mainColumn #personalRankingBox .rankingWrap .otherRanking ol.items li {
+					width: 76px;
+					float: left;
+					display: inline;
+					margin-right: 6px;
+				}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .otherRanking ol.items li p {
+						text-align: center;
+					}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .otherRanking ol.items li p.ranking {
+						padding: 0 3px 3px;
+						font-weight: bold;
+						font-family: "Arial";
+						color: #000;
+						white-space: nowrap;
+					}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .otherRanking ol.items li p.name {
+						padding: 0 3px 3px;
+						color: #258fb8;
+						font-size: 10px;
+						overflow: hidden;
+						white-space: nowrap;
+					}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .otherRanking ol.items li p.pic a {
+						display: block;
+						background-position: center center;
+						background-repeat: no-repeat;
+					}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .otherRanking ol.items li p.pic a img {
+						background-position: center center;
+						background-repeat: no-repeat;
+					}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .otherRanking ol.items li p.price {
+						height: 20px;
+						background-color: #000;
+						color: #fff;
+						line-height: 20px;
+						font-size: 13px;
+						white-space: nowrap;
+					}
+					
+		#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingRightNav {
+			position: absolute;
+			left: 459px;
+			top: 33px;
+		}
+			#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingRightNav li {
+			}
+			#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingRightNav li.toTop {
+				margin-bottom: 2px;
+			}
+				#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingRightNav li a {
+					display: block;
+					width: 40px;
+					height: 47px;
+				}
+				#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingRightNav li.toTop a {
+					background: url(../img/content/btn_ranking3.png) no-repeat left top;
+				}
+				#twoColumn #mainColumn #personalRankingBox .rankingWrap ul.rankingRightNav li.toTopMore a {
+					background: url(../img/content/btn_ranking4.png) no-repeat left top;
+				}
+		
+		#twoColumn #mainColumn #personalRankingBox .rankingWrap .topRanking {
+			position: absolute;
+			left: 500px;
+			width: 200px;
+			height: 300px;
+		}
+			#twoColumn #mainColumn #personalRankingBox .rankingWrap .topRanking ol {
+			}
+				#twoColumn #mainColumn #personalRankingBox .rankingWrap .topRanking ol li {
+					width: 76px;
+					float: left;
+					display: inline;
+					margin-left: 6px;
+				}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .topRanking ol li p {
+						text-align: center;
+					}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .topRanking ol li p.ranking {
+						padding: 0 3px 3px;
+						font-weight: bold;
+						font-family: "Arial";
+						color: #000;
+						white-space: nowrap;
+					}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .topRanking ol li p.name {
+						padding: 0 3px 3px;
+						color: #258fb8;
+						overflow: hidden;
+						font-size: 10px;
+						white-space: nowrap;
+					}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .topRanking ol li p.pic a {
+						display: block;
+						background-position: center center;
+						background-repeat: no-repeat;
+					}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .topRanking ol li p.pic img {
+						background-position: center center;
+						background-repeat: no-repeat;
+						vertical-align:top;
+					}
+					#twoColumn #mainColumn #personalRankingBox .rankingWrap .topRanking ol li p.price {
+						height: 20px;
+						background-color: #000;
+						color: #fff;
+						line-height: 20px;
+						font-size: 13px;
+						white-space: nowrap;
+					}
+				
+
+/*#twoColumn #mainColumn #personalFortuneBox 05_ranking
+  #twoColumn #mainColumn #personalFortuneBox
+  #twoColumn #mainColumn #allFortuneBox
+----------------------------------------------*/				
+#twoColumn #mainColumn #allRankingBox,
+#twoColumn #mainColumn #personalFortuneBox,
+#twoColumn #mainColumn #allFortuneBox {
+}
+	#twoColumn #mainColumn #allRankingBox .rankingWrap, 
+	#twoColumn #mainColumn #personalFortuneBox .rankingWrap,
+	#twoColumn #mainColumn #allFortuneBox .rankingWrap {
+		position: relative;
+		height: 135px;
+	}
+		#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingLeftNav, 
+		#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingLeftNav,
+		#twoColumn #mainColumn #allFortuneBox .rankingWrap ul.rankingLeftNav {
+			position: absolute;
+			left: 2px;
+			top: 33px;
+		}
+			#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingLeftNav li,
+			#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingLeftNav li,
+			#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingLeftNav li {
+			}
+			#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingLeftNav li.toUnder,
+			#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingLeftNav li.toUnder,
+			#twoColumn #mainColumn #allFortuneBox .rankingWrap ul.rankingLeftNav li.toUnder {
+				margin-bottom: 2px;
+			}
+				#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingLeftNav li a,
+				#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingLeftNav li a,
+				#twoColumn #mainColumn #allFortuneBox .rankingWrap ul.rankingLeftNav li a {
+					display: block;
+					width: 40px;
+					height: 47px;
+				}
+				#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingLeftNav li.toUnder a,
+				#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingLeftNav li.toUnder a,
+				#twoColumn #mainColumn #allFortuneBox .rankingWrap ul.rankingLeftNav li.toUnder a {
+					background: url(../img/content/btn_ranking1.png) no-repeat left top;
+				}
+				#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingLeftNav li.toUnderMore a,
+				#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingLeftNav li.toUnderMore a,
+				#twoColumn #mainColumn #allFortuneBox .rankingWrap ul.rankingLeftNav li.toUnderMore a {
+					background: url(../img/content/btn_ranking2.png) no-repeat left top;
+				}
+		
+		#twoColumn #mainColumn #allRankingBox .rankingWrap .otherRanking,
+		#twoColumn #mainColumn #personalFortuneBox .rankingWrap .otherRanking,
+		#twoColumn #mainColumn #allFortuneBox .rankingWrap .otherRanking {
+			overflow: hidden;
+			position: absolute;
+			left: 48px;
+		}
+			#twoColumn #mainColumn #allRankingBox .rankingWrap .otherRanking ol.items,
+			#twoColumn #mainColumn #personalFortuneBox .rankingWrap .otherRanking ol.items,
+			#twoColumn #mainColumn #allFortuneBox .rankingWrap .otherRanking ol.items {
+			}
+				#twoColumn #mainColumn #allRankingBox .rankingWrap .otherRanking ol.items li,
+				#twoColumn #mainColumn #personalFortuneBox .rankingWrap .otherRanking ol.items li,
+				#twoColumn #mainColumn #allFortuneBox .rankingWrap .otherRanking ol.items li {
+					width: 76px;
+					float: left;
+					display: inline;
+					margin-right: 6px;
+				}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .otherRanking ol.items li p,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .otherRanking ol.items li p,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .otherRanking ol.items li p {
+						text-align: center;
+					}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .otherRanking ol.items li p.ranking,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .otherRanking ol.items li p.ranking,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .otherRanking ol.items li p.ranking {
+						padding: 0 3px 3px;
+						font-weight: bold;
+						font-family: "Arial";
+						color: #000;
+						white-space: nowrap;
+					}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .otherRanking ol.items li p.name,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .otherRanking ol.items li p.name,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .otherRanking ol.items li p.name {
+						padding: 0 3px 3px;
+						color: #258fb8;
+						font-size: 10px;
+						overflow: hidden;
+						white-space: nowrap;
+					}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .otherRanking ol.items li p.pic a,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .otherRanking ol.items li p.pic a,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .otherRanking ol.items li p.pic a {
+						display: block;
+						background-position: center center;
+						background-repeat: no-repeat;
+					}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .otherRanking ol.items li p.pic img,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .otherRanking ol.items li p.pic img,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .otherRanking ol.items li p.pic img {
+						background-position: center center;
+						background-repeat: no-repeat;
+					}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .otherRanking ol.items li p.price,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .otherRanking ol.items li p.price,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .otherRanking ol.items li p.price  {
+						height: 20px;
+						background-color: #000;
+						color: #fff;
+						line-height: 20px;
+						font-size: 13px;
+						white-space: nowrap;
+					}
+					
+				
+		#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingRightNav,
+		#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingRightNav,
+		#twoColumn #mainColumn #allFortuneBox .rankingWrap ul.rankingRightNav {
+			position: absolute;
+			left: 459px;
+			top: 33px;
+		}
+			#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingRightNav li,
+			#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingRightNav li,
+			#twoColumn #mainColumn #allFortuneBox .rankingWrap ul.rankingRightNav li {
+			}
+			#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingRightNav li.toTop,
+			#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingRightNav li.toTop,
+			#twoColumn #mainColumn #allFortuneBox .rankingWrap ul.rankingRightNav li.toTop {
+				margin-bottom: 2px;
+			}
+				#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingRightNav li a,
+				#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingRightNav li a,
+				#twoColumn #mainColumn #allFortuneBox .rankingWrap ul.rankingRightNav li a {
+					display: block;
+					width: 40px;
+					height: 47px;
+				}
+				#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingRightNav li.toTop a,
+				#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingRightNav li.toTop a,
+				#twoColumn #mainColumn #allFortuneBox .rankingWrap ul.rankingRightNav li.toTop a {
+					background: url(../img/content/btn_ranking3.png) no-repeat left top;
+				}
+				#twoColumn #mainColumn #allRankingBox .rankingWrap ul.rankingRightNav li.toTopMore a,
+				#twoColumn #mainColumn #personalFortuneBox .rankingWrap ul.rankingRightNav li.toTopMore a,
+				#twoColumn #mainColumn #allFortuneBox .rankingWrap ul.rankingRightNav li.toTopMore a {
+					background: url(../img/content/btn_ranking4.png) no-repeat left top;
+				}
+		
+		#twoColumn #mainColumn #allRankingBox .rankingWrap .topRanking,
+		#twoColumn #mainColumn #personalFortuneBox .rankingWrap .topRanking,
+		#twoColumn #mainColumn #allFortuneBox .rankingWrap .topRanking {
+			position: absolute;
+			left: 500px;
+		}
+			#twoColumn #mainColumn #allRankingBox .rankingWrap .topRanking ol,
+			#twoColumn #mainColumn #personalFortuneBox .rankingWrap .topRanking ol,
+			#twoColumn #mainColumn #allFortuneBox .rankingWrap .topRanking ol {
+			}
+				#twoColumn #mainColumn #allRankingBox .rankingWrap .topRanking ol li,
+				#twoColumn #mainColumn #personalFortuneBox .rankingWrap .topRanking ol li,
+				#twoColumn #mainColumn #allFortuneBox .rankingWrap .topRanking ol li {
+					width: 76px;
+					float: left;
+					display: inline;
+					margin-left: 6px;
+				}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .topRanking ol li p,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .topRanking ol li p,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .topRanking ol li p {
+						text-align: center;
+					}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .topRanking ol li p.ranking,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .topRanking ol li p.ranking,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .topRanking ol li p.ranking {
+						padding: 0 3px 3px;
+						font-weight: bold;
+						font-family: "Arial";
+						color: #000;
+						white-space: nowrap;
+					}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .topRanking ol li p.name,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .topRanking ol li p.name,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .topRanking ol li p.name {
+						padding: 0 3px 3px;
+						color: #258fb8;
+						overflow: hidden;
+						font-size: 10px;
+						white-space: nowrap;
+					}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .topRanking ol li p.pic a,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .topRanking ol li p.pic a,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .topRanking ol li p.pic a {
+						display: block;
+						background-position: center center;
+						background-repeat: no-repeat;
+					}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .topRanking ol li p.pic img,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .topRanking ol li p.pic img,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .topRanking ol li p.pic img {
+						background-position: center center;
+						background-repeat: no-repeat;
+					}
+					#twoColumn #mainColumn #allRankingBox .rankingWrap .topRanking ol li p.price,
+					#twoColumn #mainColumn #personalFortuneBox .rankingWrap .topRanking ol li p.price,
+					#twoColumn #mainColumn #allFortuneBox .rankingWrap .topRanking ol li p.price {
+						height: 20px;
+						background-color: #000;
+						color: #fff;
+						line-height: 20px;
+						font-size: 13px;
+						white-space: nowrap;
+					}
+
+
+/*#twoColumn #mainColumn #helpBox 06_help
+----------------------------------------------*/	
+/*#twoColumn #mainColumn #helpBox {
+}
+	#twoColumn #mainColumn #helpBox .hdr {
+	}
+	#twoColumn #mainColumn #helpBox h3 {
+		margin-bottom: 10px;
+	}
+	#twoColumn #mainColumn #helpBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+		padding-bottom: 8px;
+	}
+	#twoColumn #mainColumn #helpBox ul {
+		font-size: 12px;
+		padding-left: 15px;
+		padding-bottom: 12px;
+		line-height: 1.4;
+	}
+		#twoColumn #mainColumn #helpBox ul li {
+			padding-left: 15px;
+			background:url(../img/content/icn_arrrow.gif) no-repeat left center;
+		}
+			#twoColumn #mainColumn #helpBox ul li span {
+				font-size: 10px;
+				color: #dc4749;
+			}*/
+	
+
+/*#twoColumn #mainColumn #errorBox 07_error
+----------------------------------------------*/					
+#twoColumn #mainColumn #errorBox {
+}
+	#twoColumn #mainColumn #errorBox .hdr {
+	}
+	#twoColumn #mainColumn #errorBox p.comment {
+		font-size: 13px;
+		color: #000;
+		padding-bottom: 5px; 
+	}
+		#twoColumn #mainColumn #errorBox p.comment span {
+			color: #258fb8;
+		}		
+						
+
+/*#twoColumn #mainColumn #addFavBox 08_action_addFav
+----------------------------------------------*/	
+#twoColumn #mainColumn #addFavBox {
+	padding-bottom: 8px;
+}
+	#twoColumn #mainColumn #addFavBox .hdr {
+	}
+	#twoColumn #mainColumn #addFavBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+		padding-bottom: 10px;
+	}
+	#twoColumn #mainColumn #addFavBox .section {
+		clear: both;
+		margin-bottom: 10px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border: 3px solid #dc4749;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+		#twoColumn #mainColumn #addFavBox .section p.pic {
+			float: left;
+			width: 76px;
+			height: 76px;
+			display: inline;
+			line-height: 1.4;
+			text-indent: -9999px;
+			position: relative;
+		}
+			#twoColumn #mainColumn #addFavBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px;
+				background-position: center center;
+				background-repeat: no-repeat;
+			}
+			
+		#twoColumn #mainColumn #addFavBox .section p.name,
+		#twoColumn #mainColumn #addFavBox .section p.price {
+			color: #333;
+			line-height: 1.4;
+			margin-left: 84px;
+		}
+		#twoColumn #mainColumn #addFavBox .section p.name {
+			font-weight: bold;
+			padding-top: 15px;
+		}
+			#twoColumn #mainColumn #addFavBox .section p.name a {
+				color: #333;
+			}
+		
+		#twoColumn #mainColumn #addFavBox .section p.price {
+		}
+		
+		#twoColumn #mainColumn #addFavBox .section p.buy {
+			padding-top: 10px;
+			text-align: right;
+		}
+			#twoColumn #mainColumn #addFavBox .section p.buy a {
+				color: #258FB8;
+			}
+			
+	#twoColumn #mainColumn #addFavBox p.actionBackGiftShop.btn {
+	}
+		#twoColumn #mainColumn #addFavBox p.actionBackGiftShop.btn a {
+			display: block;
+			width: 669px;
+			height: 34px;
+			background: transparent url(../img/content/btn_backGiftShop.png) no-repeat left top;
+		}
+
+
+/*#twoColumn #mainColumn #buyGiftBox 08_action_buyGift_finish
+----------------------------------------------*/	
+#twoColumn #mainColumn #buyGiftBox {
+	padding-bottom: 8px;
+}
+	#twoColumn #mainColumn #buyGiftBox .hdr {
+	}
+	#twoColumn #mainColumn #buyGiftBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+		padding-bottom: 10px;
+	}
+	#twoColumn #mainColumn #buyGiftBox .section {
+		clear: both;
+		margin-bottom: 10px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border: 3px solid #dc4749;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+		#twoColumn #mainColumn #buyGiftBox .section p.pic {
+			float: left;
+			width: 76px;
+			height: 76px;
+			display: inline;
+			line-height: 1.4;
+			text-indent: -9999px;
+			position: relative;
+		}
+			#twoColumn #mainColumn #buyGiftBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px;
+				background-position: center center;
+				background-repeat: no-repeat;
+			}
+			
+		#twoColumn #mainColumn #buyGiftBox .section p.name,
+		#twoColumn #mainColumn #buyGiftBox .section p.price {
+			color: #333;
+			line-height: 1.4;
+			margin-left: 84px;
+		}
+		#twoColumn #mainColumn #buyGiftBox .section p.name {
+			font-weight: bold;
+			padding-top: 15px;
+		}
+			#twoColumn #mainColumn #buyGiftBox .section p.name a {
+				color: #333;
+			}
+		
+		#twoColumn #mainColumn #buyGiftBox .section p.price {
+		}
+		
+		#twoColumn #mainColumn #buyGiftBox .section p.buy {
+			padding-top: 10px;
+			text-align: right;
+		}
+			#twoColumn #mainColumn #buyGiftBox .section p.buy a {
+				color: #258FB8;
+			}
+			
+	#twoColumn #mainColumn #buyGiftBox p.actionBackHome.btn {
+	}
+		#twoColumn #mainColumn #buyGiftBox p.actionBackHome.btn a {
+			display: block;
+			width: 669px;
+			height: 34px;
+			background: transparent url(../img/content/btn_backHome.png) no-repeat left top;
+		}
+
+
+/*#twoColumn #mainColumn #buyGiftBox ul 08_action_buyGift
+----------------------------------------------*/	
+#twoColumn #mainColumn #buyGiftBox ul.actionList {
+}
+	#twoColumn #mainColumn #buyGiftBox ul.actionList li {
+		float: left;
+		display: inline;
+	}
+		#twoColumn #mainColumn #buyGiftBox ul.actionList li a {
+			display: block;
+			width: 331px;
+			height: 34px;
+			text-indent: -9999px;
+		}
+		
+	#twoColumn #mainColumn #buyGiftBox ul.actionList li.actionAbolish {
+		margin-right: 7px;
+	}
+		#twoColumn #mainColumn #buyGiftBox ul.actionList li.actionAbolish a {
+			background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+		}
+		
+	#twoColumn #mainColumn #buyGiftBox ul.actionList li.actionBuy {
+	}
+		#twoColumn #mainColumn #buyGiftBox ul.actionList li.actionBuy a {
+			background: transparent url(../img/content/btn_buy.png) no-repeat left top;
+		}
+	
+
+/*#twoColumn #mainColumn #punishBox 08_action_punish
+----------------------------------------------*/	
+#twoColumn #mainColumn #punishBox {
+	padding-bottom: 8px;
+}
+	#twoColumn #mainColumn #punishBox .hdr {
+	}
+	
+	#twoColumn #mainColumn #punishBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+		padding-bottom: 10px;
+	}
+	
+	#twoColumn #mainColumn #punishBox p.pic {
+		padding-bottom: 10px;	
+	}
+		#twoColumn #mainColumn #punishBox p.pic img {
+			display: block;
+			margin: 0 auto;
+		}
+		
+	#twoColumn #mainColumn #punishBox p.actionBackHome.btn {
+	}
+		#twoColumn #mainColumn #punishBox p.actionBackHome.btn a {
+			display: block;
+			width: 669px;
+			height: 34px;
+			background: transparent url(../img/content/btn_backHome.png) no-repeat left top;
+		}
+
+	
+/*#twoColumn.buySlaveFinish #mainColumn #buySlaveBox 08_action-buySlave_finish
+----------------------------------------------*/
+#twoColumn.buySlaveFinish #mainColumn #buySlaveBox {
+	padding-bottom: 10px;
+}
+	#twoColumn.buySlaveFinish #mainColumn #buySlaveBox p.intro {
+		font-size: 12px;
+		padding-bottom: 10px;
+		line-height: 1.4;
+	}
+	#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section {
+		clear: both;
+		margin-bottom: 10px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+		#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			background-repeat: no-repeat;
+			text-indent: -9999px;	
+		}
+			#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px; 
+				background-repeat: no-repeat;
+				background-position: center top;
+			}
+		#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section p.name,
+		#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section p.comment {
+			color: #333;
+			margin-left: 84px;
+		}
+		#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section p.name {
+			font-weight: bold;
+			margin-bottom: 8px;
+		}
+			#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section p.name span {
+			}
+				#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section p.name span a {
+					color: #333;
+				}
+				
+		#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section p.comment {
+			position: relative;
+			padding: 3px 5px;
+			border: 1px solid #AAAAAA;
+			background-color: #FFFFFF;
+			line-height: 1.4;
+			margin-bottom: 10px;
+		}
+			#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section p.comment span {
+				position: absolute;
+				left: 0;
+				bottom: -14px;
+				display: block;
+				width: 20px;
+				height: 14px;
+				background: url(../img/content/comment_allow_1.png) no-repeat left top;	
+			}
+		
+		#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section ul {
+			
+		}
+			#twoColumn.buySlaveFinish #mainColumn #buySlaveBox .section ul li {
+				display: inline;
+				float: right;
+				margin-left: 5px;
+				color: #dc4749;
+			}
+	
+	#twoColumn.buySlaveFinish #mainColumn #buySlaveBox p.actionGotoSlave {
+	}
+		#twoColumn.buySlaveFinish #mainColumn #buySlaveBox p.actionGotoSlave a {
+			display: block;
+			width: 669px;
+			height: 34px;
+			background: url(../img/content/btn_goto.png) no-repeat center center;
+			text-indent: -9999px;
+		}
+	
+
+/*#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox 08_action_buySlave_step1
+----------------------------------------------*/
+#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox {
+	padding-bottom: 10px;
+}
+	#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox p.intro {
+		font-size: 12px;
+		padding-bottom: 10px;
+		line-height: 1.4;
+	}
+	#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section {
+		clear: both;
+		margin-bottom: 10px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border:3px solid #dc4749;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+		#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			text-indent: -9999px;	
+		}
+			#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px; 
+				background-repeat: no-repeat;
+				background-position: center top;
+			}
+		#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section p.name,
+		#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section p.comment {
+			color: #333;
+			margin-left: 84px;
+		}
+		#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section p.name {
+			font-weight: bold;
+			margin-bottom: 8px;
+		}
+			#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section p.name span {
+			}
+				#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section p.name span a {
+					color: #333;
+				}
+				
+		#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section p.comment {
+			position: relative;
+			padding: 3px 5px;
+			border: 1px solid #AAAAAA;
+			background-color: #FFFFFF;
+			line-height: 1.4;
+			margin-bottom: 10px;
+		}
+			#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section p.comment span {
+				position: absolute;
+				left: 0;
+				bottom: -14px;
+				display: block;
+				width: 20px;
+				height: 14px;
+				background: url(../img/content/comment_allow_1.png) no-repeat left top;	
+			}
+		
+		#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section ul {
+			
+		}
+			#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox .section ul li {
+				display: inline;
+				float: right;
+				margin-left: 5px;
+				color: #dc4749;
+			}
+		
+	#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox ul.actionList {
+		margin-top: 10px;
+		position: relative;
+	}
+		#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox ul.actionList li {
+			display: inline;
+			float: left;
+			width: 331px;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+		#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox ul.actionList li.actionAbolish {
+			margin-right: 7px;
+		}
+			#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox ul.actionList li.actionAbolish a,
+			#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox ul.actionList li.actionBuy a {
+				display: block;
+				width: 331px;
+				height: 34px;
+				text-indent: -9999px;
+			}
+			#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox ul.actionList li.actionAbolish.disable a {
+				background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+			}
+			#twoColumn.buySlaveStep1 #mainColumn #buySlaveBox ul.actionList li.actionBuy a {
+				background: transparent url(../img/content/btn_buy.png) no-repeat left top;
+			}					
+			
+			
+/*#twoColumn #mainColumn #buySlaveBox 08_action_buySlave_step2
+----------------------------------------------*/			
+#twoColumn #mainColumn #buySlaveBox {
+	padding-bottom: 10px;
+}
+	#twoColumn #mainColumn #buySlaveBox p.intro {
+		font-size: 12px;
+		padding-bottom: 10px;
+		line-height: 1.4;
+	}
+	#twoColumn #mainColumn #buySlaveBox #buySlaveFeed {
+		padding: 0 !important;
+		height: 408px;
+		overflow: auto;
+
+	}
+		#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul {
+			font-size: 12px;
+			line-height: 1.4;
+		}
+			#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li {
+				clear: both;
+				margin-bottom: 3px;
+				padding: 10px;
+				background-color: #f0f0f0;
+				border: 2px solid #fff; 
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/ 
+			}
+			#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li.active {
+				border:2px solid #ff8409;
+				background-color: #FFFFFF;
+			}
+			#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li.section {
+				padding: 10px;
+				font-size: 12px;
+				background-color: #ffe0e1;
+				border:3px solid #dc4749;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/ 
+				margin-bottom: 5px;	
+			}
+				#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li p.pic {
+					position: relative;
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+					text-indent: -9999px;
+				}
+					#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li p.pic a {	
+						display: block;
+						width: 76px;
+						height: 76px; 
+						background-repeat: no-repeat;
+						background-position: center top;
+					}
+				#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li p.name,
+				#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li p.comment {
+					color: #333;
+					margin-left: 84px;
+				}
+				#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li p.name {
+					margin-bottom: 8px;
+					font-weight: bold;
+				}
+					#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li p.name a {
+						color: #333;
+					}
+					#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li p.name a:hover {
+						text-decoration: none;
+					}
+					
+				#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li p.comment {
+					position: relative;
+					/* margin-bottom: 5px; */
+					padding: 3px 5px;
+					border: 1px solid #AAAAAA;
+					background-color: #FFFFFF;
+				}
+					#twoColumn #mainColumn #buySlaveBox #buySlaveFeed ul li p.comment span {
+						position: absolute;
+						left: 0;
+						bottom: -14px;
+						display: block;
+						width: 20px;
+						height: 14px;
+						background: url(../img/content/comment_allow_1.png) no-repeat left top;
+					}
+
+	#twoColumn #mainColumn #buySlaveBox ul.actionList {
+		margin-top: 10px;
+		position: relative;
+	}
+		#twoColumn #mainColumn #buySlaveBox ul.actionList li {
+			display: inline;
+			float: left;
+			width: 331px;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+		#twoColumn #mainColumn #buySlaveBox ul.actionList li.actionAbolish {
+			margin-right: 7px;
+		}
+			#twoColumn #mainColumn #buySlaveBox ul.actionList li.actionAbolish a,
+			#twoColumn #mainColumn #buySlaveBox ul.actionList li.actionDecision a {
+				display: block;
+				width: 331px;
+				height: 34px;
+				text-indent: -9999px;
+			}
+			#twoColumn #mainColumn #buySlaveBox ul.actionList li.actionAbolish.disable a {
+				background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+			}
+			#twoColumn #mainColumn #buySlaveBox ul.actionList li.actionDecision a {
+				background: transparent url(../img/content/btn_decision.png) no-repeat left top;
+			}
+			
+
+/*#twoColumn #mainColumn #changeFukidashiBox 08_action_changeFukidashi
+----------------------------------------------*/	
+#twoColumn #mainColumn #changeFukidashiBox {
+	padding-bottom: 8px;
+}
+	#twoColumn #mainColumn #changeFukidashiBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+	}
+		#twoColumn #mainColumn #changeFukidashiBox p.intro span {
+			display: block;
+		}
+		
+	#twoColumn #mainColumn #changeFukidashiBox .section {
+		clear: both;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 12px;
+		overflow: hidden;
+	}
+		#twoColumn #mainColumn #changeFukidashiBox .section p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			text-indent: -9999px;	
+		}
+			#twoColumn #mainColumn #changeFukidashiBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px; 
+				background-repeat: no-repeat;
+				background-position: center center;
+			}
+			
+		#twoColumn #mainColumn #changeFukidashiBox .section p.name,
+		#twoColumn #mainColumn #changeFukidashiBox .section p.comment {
+			color: #333;
+			margin-left: 84px;
+		}
+		#twoColumn #mainColumn #changeFukidashiBox .section p.name {
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+			#twoColumn #mainColumn #changeFukidashiBox .section p.name a {
+				color: #333;
+			}
+			#twoColumn #mainColumn #changeFukidashiBox .section p.name span {
+				color: #dc4749
+			}
+				#twoColumn #mainColumn #changeFukidashiBox .section p.name span a {
+					color: #333;
+				}
+				
+		#twoColumn #mainColumn #changeFukidashiBox .section p.comment {
+			position: relative;
+			padding: 3px 5px;
+			border: 1px solid #ffa700;
+			background-color: #FFFFFF;
+			line-height: 1.4;
+			/* margin-bottom: 6px; */
+		}
+			#twoColumn #mainColumn #changeFukidashiBox .section p.comment span {
+				position: absolute;
+				left: 0;
+				bottom: -14px;
+				display: block;
+				width: 20px;
+				height: 14px;
+				background: url(../img/content/comment_allow_6.png) no-repeat left top;	
+			}
+			
+		#twoColumn #mainColumn #changeFukidashiBox form {
+			margin: 0;
+			padding: 0;
+		}
+			#twoColumn #mainColumn #changeFukidashiBox p.commentForm {
+				position: relative;
+				padding-left: 84px;
+				*padding-left: 7px; /*ie6ie7*/
+			}
+				#twoColumn #mainColumn #changeFukidashiBox p.commentForm span {
+					position: absolute;
+					/* left: 85px; */
+					*left: 8px; /*ie6ie7*/
+					top: 25px;
+					*top: 26px; /*ie6ie7*/
+					display: block;
+					width: 20px;
+					height: 14px;
+					background: url(../img/content/comment_allow_6.png) no-repeat left top;	
+				}
+			#twoColumn #mainColumn #changeFukidashiBox p.commentForm input {
+				display: block;
+				padding: 3px 5px;
+				font-size: 14px;
+				line-height: 18px;
+				width: 573px;
+				height: 18px;
+				*width:571px; /*ie6ie7*/
+				border: 1px solid #ffa700;
+			}
+		
+		#twoColumn #mainColumn #changeFukidashiBox .section p.alert {
+			color: #c00;
+			background-color: #ffe1c2;
+			border: 1px solid #c00;
+			font-size: 12px;
+			margin-top: 6px;
+			padding: 4px;
+			padding-left: 30px;
+			width: 519px;
+			float: right;
+			display: inline;
+			background: #ffe1c2 url(../img/content/icn_warning.gif) no-repeat 8px center;
+		}
+		
+	#twoColumn #mainColumn #changeFukidashiBox ul.actionList {
+		position: relative;
+	}
+		#twoColumn #mainColumn #changeFukidashiBox ul.actionList li {
+			display: inline;
+			float: left;
+			width: 331px;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+		#twoColumn #mainColumn #changeFukidashiBox ul.actionList li.actionAbolish {
+			margin-right: 7px;
+		}
+			#twoColumn #mainColumn #changeFukidashiBox ul.actionList li.actionAbolish a,
+			#twoColumn #mainColumn #changeFukidashiBox ul.actionList li.actionNext a {
+				display: block;
+				width: 331px;
+				height: 34px;
+				text-indent: -9999px;
+			}
+			#twoColumn #mainColumn #changeFukidashiBox ul.actionList li.actionAbolish.disable a {
+				background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+			}
+			#twoColumn #mainColumn #changeFukidashiBox ul.actionList li.actionNext a {
+				background: transparent url(../img/content/btn_next.png) no-repeat left top;
+			}
+
+
+/*#twoColumn.changeFukidashiC  08_action_changeFukidashi_c
+  #twoColumn.changeFukidashiF  08_action_changeFukidashi_f
+----------------------------------------------*/	
+	#twoColumn.changeFukidashiC #mainColumn #changeFukidashiBox .section p.comment,
+	#twoColumn.changeFukidashiF #mainColumn #changeFukidashiBox .section p.comment {
+		border: 1px solid #aaa;
+	}
+		#twoColumn.changeFukidashiC #mainColumn #changeFukidashiBox .section p.comment span,
+		#twoColumn.changeFukidashiF #mainColumn #changeFukidashiBox .section p.comment span {
+	 		background: url(../img/content/comment_allow_1.png) no-repeat left top;	
+		}
+
+		#twoColumn.changeFukidashiC #mainColumn #changeFukidashiBox ul.actionList li.actionDecision a {
+			display: block;
+			width: 331px;
+			height: 34px;
+			text-indent: -9999px;
+			background: transparent url(../img/content/btn_decision.png) no-repeat left top;
+		}
+
+#twoColumn.changeFukidashiF #mainColumn #changeFukidashiBox p.actionLookatSlave {
+}
+	#twoColumn.changeFukidashiF #mainColumn #changeFukidashiBox p.actionLookatSlave a {
+		display: block;
+		text-indent: -9999px;
+		width: 669px;
+		height: 34px;
+		background: url(../img/content/btn_lookat.png) no-repeat center center;
+	}
+
+
+/*#twoColumn #mainColumn #changeNicknameBox 08_action_changeNickname
+----------------------------------------------*/	
+#twoColumn #mainColumn #changeNicknameBox {
+	padding-bottom: 8px;
+}
+	#twoColumn #mainColumn #changeNicknameBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+	}
+		#twoColumn #mainColumn #changeNicknameBox p.intro span {
+			display: block;
+		}
+		
+	#twoColumn #mainColumn #changeNicknameBox .section {
+		clear: both;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 12px;
+		overflow: hidden;
+	}
+		#twoColumn #mainColumn #changeNicknameBox .section p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			text-indent: -9999px;	
+		}
+			#twoColumn #mainColumn #changeNicknameBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px; 
+				background-repeat: no-repeat;
+				background-position: center center;
+			}
+			
+		#twoColumn #mainColumn #changeNicknameBox .section p.name,
+		#twoColumn #mainColumn #changeNicknameBox .section p.comment {
+			color: #333;
+			margin-left: 84px;
+		}
+		#twoColumn #mainColumn #changeNicknameBox .section p.name {
+			font-weight: bold;
+			margin-bottom: 3px;
+			line-height: 1.4;
+		}
+			#twoColumn #mainColumn #changeNicknameBox .section p.name a {
+				color: #333;
+			}
+			#twoColumn #mainColumn #changeNicknameBox .section p.name span {
+				color: #dc4749
+			}
+				#twoColumn #mainColumn #changeNicknameBox .section p.name span a {
+					color: #333;
+				}
+				
+		#twoColumn #mainColumn #changeNicknameBox .section p.comment {
+			position: relative;
+			padding: 2px 5px;
+			border: 1px solid #ffa700;
+			background-color: #FFFFFF;
+			line-height: 1.4;
+			/* margin-bottom: 6px; */
+		}
+			#twoColumn #mainColumn #changeNicknameBox .section p.comment span {
+				position: absolute;
+				left: 0;
+				bottom: -14px;
+				display: block;
+				width: 20px;
+				height: 14px;
+				background: url(../img/content/comment_allow_6.png) no-repeat left top;	
+			}
+		
+		#twoColumn #mainColumn #changeNicknameBox form {
+			margin: 0;
+			padding: 0;
+		}
+			#twoColumn #mainColumn #changeNicknameBox p.commentForm {
+				padding-left: 84px;
+				*padding-left: 7px;
+			}
+			
+			#twoColumn #mainColumn #changeNicknameBox p.commentForm input {
+				padding: 3px 5px;
+				width: 573px;
+				*width:571px;
+				border: 1px solid #ffa700;
+			} 
+		
+		#twoColumn #mainColumn #changeNicknameBox .section p.alert {
+			color: #c00;
+			background-color: #ffe1c2;
+			border: 1px solid #c00;
+			font-size: 12px;
+			margin-top: 6px;
+			padding: 4px;
+			padding-left: 30px;
+			margin-left: 84px;
+			position: relative;
+			background: #ffe1c2 url(../img/content/icn_warning.gif) no-repeat 8px center;
+		}
+		
+	#twoColumn #mainColumn #changeNicknameBox ul.actionList {
+		position: relative;
+	}
+		#twoColumn #mainColumn #changeNicknameBox ul.actionList li {
+			display: inline;
+			float: left;
+			width: 331px;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+		#twoColumn #mainColumn #changeNicknameBox ul.actionList li.actionAbolish {
+			margin-right: 7px;
+		}
+			#twoColumn #mainColumn #changeNicknameBox ul.actionList li.actionAbolish a,
+			#twoColumn #mainColumn #changeNicknameBox ul.actionList li.actionNext a {
+				display: block;
+				width: 331px;
+				height: 34px;
+				text-indent: -9999px;
+			}
+			#twoColumn #mainColumn #changeNicknameBox ul.actionList li.actionAbolish.disable a {
+				background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+			}
+			#twoColumn #mainColumn #changeNicknameBox ul.actionList li.actionNext a {
+				background: transparent url(../img/content/btn_next.png) no-repeat left top;
+			}
+			
+
+/*#twoColumn.changeNicknameCo 08_action_changeNickname_co
+----------------------------------------------*/
+#twoColumn.changeNicknameCo #mainColumn #changeNicknameBox .section p.comment {
+	color: #dc4749;
+	border: none;
+	padding: 0;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#twoColumn.changeNicknameCo #mainColumn #changeNicknameBox ul.actionList li.actionBack {
+	margin-right: 7px;
+}
+	#twoColumn.changeNicknameCo #mainColumn #changeNicknameBox ul.actionList li.actionBack a,
+	#twoColumn.changeNicknameCo #mainColumn #changeNicknameBox ul.actionList li.actionDecision a {
+		display: block;
+		width: 331px;
+		height: 34px;
+		text-indent: -9999px;
+	}
+		#twoColumn.changeNicknameCo #mainColumn #changeNicknameBox ul.actionList li.actionBack.disable a {
+			background: transparent url(../img/content/btn_back.png) no-repeat left top;
+		}
+		#twoColumn.changeNicknameCo #mainColumn #changeNicknameBox ul.actionList li.actionDecision a {
+			background: transparent url(../img/content/btn_decision.png) no-repeat left top;
+		}
+
+
+/*#twoColumn.changeNicknameFi 08_action_changeNickname_fi
+----------------------------------------------*/
+	#twoColumn.changeNicknameFi #mainColumn #changeNicknameBox .section p.name {
+		padding-top: 15px;
+	}
+
+	#twoColumn.changeNicknameFi #mainColumn #changeNicknameBox .section p.comment {
+		color: #dc4749;
+		border: none;
+		padding: 0;
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+#twoColumn.changeNicknameFi #mainColumn #changeNicknameBox p.actionLookatSlave {
+}
+	#twoColumn.changeNicknameFi #mainColumn #changeNicknameBox p.actionLookatSlave a {
+		display: block;
+		text-indent: -9999px;
+		width: 669px;
+		height: 34px;
+		background: url(../img/content/btn_lookat.png) no-repeat center center;
+	}	
+
+
+/*#twoColumn #mainColumn #presentGiftBox 08_action_presentGift_finis
+----------------------------------------------*/
+#twoColumn #mainColumn #presentGiftBox {
+	padding-bottom: 8px;
+}
+	#twoColumn #mainColumn #presentGiftBox .hdr {
+	}
+	#twoColumn #mainColumn #presentGiftBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+		padding-bottom: 10px;
+	}
+	#twoColumn #mainColumn #presentGiftBox .section {
+		clear: both;
+		margin-bottom: 10px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+		#twoColumn #mainColumn #presentGiftBox .section p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			text-indent: -9999px;	
+		}
+			#twoColumn #mainColumn #presentGiftBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px; 
+				background-repeat: no-repeat;
+				background-position: center top;
+			}
+			
+		#twoColumn #mainColumn #presentGiftBox .section p.name,
+		#twoColumn #mainColumn #presentGiftBox .section p.price {
+			color: #333333;
+			margin-left: 84px;
+			line-height: 1.4;
+		}
+		#twoColumn #mainColumn #presentGiftBox .section p.name {
+			font-weight: bold;
+			padding-top: 15px;
+		}
+			#twoColumn #mainColumn #presentGiftBox .section p.name a {
+				color: #333;
+			}
+		
+		#twoColumn #mainColumn #presentGiftBox .section p.price {
+		}
+		#twoColumn #mainColumn #presentGiftBox .section p.buy {
+			text-align: right;
+			padding-top: 10px;
+		}
+			#twoColumn #mainColumn #presentGiftBox .section p.buy a {
+				color: #258fb8;
+			}
+			
+	#twoColumn #mainColumn #presentGiftBox p.actionBackHome {
+	}
+		#twoColumn #mainColumn #presentGiftBox p.actionBackHome a {
+			display: block;
+			width: 669px;
+			height: 34px;
+			background: transparent url(../img/content/btn_backHome.png) no-repeat center center;
+		}
+		
+		
+/*#twoColumn.presentGiftS1 #mainColumn #presentGiftBox 08_action_presentGift_step1
+----------------------------------------------*/
+#twoColumn.presentGiftS1 #mainColumn #presentGiftBox {
+	padding-bottom: 8px;
+}
+	#twoColumn.presentGiftS1 #mainColumn #presentGiftBox p.intro {
+		font-size: 12px;
+		padding-bottom: 10px;
+		line-height: 1.4;
+	}
+	#twoColumn.presentGiftS1 #mainColumn #presentGiftBox .section {
+		clear: both;
+		margin-bottom: 5px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border:3px solid #dc4749;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+	#twoColumn.presentGiftS1 #mainColumn #presentGiftBox .section p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			text-indent: -9999px;	
+		}
+		#twoColumn.presentGiftS1 #mainColumn #presentGiftBox .section p.pic a {
+			display: block;
+			width: 76px;
+			height: 76px; 
+			background-repeat: no-repeat;
+			background-position: center center;
+		}
+	#twoColumn.presentGiftS1 #mainColumn #presentGiftBox .section p.name,
+	#twoColumn.presentGiftS1 #mainColumn #presentGiftBox .section p.comment {
+		color: #333;
+		margin-left: 84px;
+	}
+	#twoColumn.presentGiftS1 #mainColumn #presentGiftBox .section p.name {
+		font-weight: bold;
+		margin-bottom: 8px;
+		padding-top: 0;
+	}
+		#twoColumn.presentGiftS1 #mainColumn #presentGiftBox .section p.name span a {
+			color: #333;
+		}
+		#twoColumn.presentGiftS1 #mainColumn #presentGiftBox .section p.name span a:hover {
+			text-decoration: none;
+		}
+	#twoColumn.presentGiftS1 #mainColumn #presentGiftBox .section p.comment {
+		position: relative;
+		padding: 3px 5px;
+		border: 1px solid #AAAAAA;
+		background-color: #FFFFFF;
+		line-height: 1.4;
+	}
+		#twoColumn.presentGiftS1 #mainColumn #presentGiftBox .section p.comment span {
+			position: absolute;
+			left: 0;
+			bottom: -14px;
+			display: block;
+			width: 20px;
+			height: 14px;
+			background: url(../img/content/comment_allow_1.png) no-repeat left top;	
+		}
+		
+	#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed {
+		padding: 0 !important;
+		height: 408px;
+		overflow: auto;
+	}
+		#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul {
+			font-size: 12px;
+			line-height: 1.4;
+		}
+			#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li {
+				clear: both;
+				margin-bottom: 3px;
+				padding: 10px;
+				background-color: #f0f0f0;
+				border:2px solid #fff;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/ 
+			}
+			#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li.active {
+				border:2px solid #ff8409;
+				background-color: #FFFFFF;
+			}
+				#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li p.pic {
+					position: relative;
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+					text-indent: -9999px;
+				}
+					#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li p.pic a {	
+						display: block;
+						width: 76px;
+						height: 76px; 
+						background-repeat: no-repeat;
+						background-position: center top;
+					}
+				#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li p.name,
+				#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li p.price {
+					color: #333;
+					margin-left: 84px;
+				}
+				#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li p.name {
+					/* margin-bottom: 8px; */
+					font-weight: bold;
+					padding-top: 15px;
+				}
+					#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li p.name a {
+						color: #333;
+					}
+					#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li p.name a:hover {
+						text-decoration: none;
+					}
+					
+				#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li p.price {
+					position: relative;
+					/* margin-bottom: 5px; */
+					/* padding: 3px 5px; */
+				}
+				#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li p.buy {
+					position: relative;
+					text-align: right;
+					padding-top: 10px;
+				}
+					#twoColumn.presentGiftS1 #mainColumn #presentGiftBox #presentGiftFeed ul li p.buy a {
+						color: #258fb8;
+						text-decoration: underline;
+					}
+				
+
+	#twoColumn.presentGiftS1 #mainColumn #presentGiftBox ul.actionList {
+		margin-top: 5px;
+		position: relative;
+	}
+		#twoColumn.presentGiftS1 #mainColumn #presentGiftBox ul.actionList li {
+			display: inline;
+			float: left;
+			width: 331px;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+		#twoColumn.presentGiftS1 #mainColumn #presentGiftBox ul.actionList li.actionAbolish {
+			margin-right: 7px;
+		}
+			#twoColumn.presentGiftS1 #mainColumn #presentGiftBox ul.actionList li.actionAbolish a,
+			#twoColumn.presentGiftS1 #mainColumn #presentGiftBox ul.actionList li.actionCarryOut a {
+				display: block;
+				width: 331px;
+				height: 34px;
+				text-indent: -9999px;
+			}
+			#twoColumn.presentGiftS1 #mainColumn #presentGiftBox ul.actionList li.actionAbolish.disable a {
+				background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+			}
+			#twoColumn.presentGiftS1 #mainColumn #presentGiftBox ul.actionList li.actionCarryOut a {
+				background: transparent url(../img/content/btn_carryOut.png) no-repeat left top;
+			}					
+			
+
+/*#twoColumn.presentGiftS1a #mainColumn #presentGiftBox 08_action_presentGift_step1a
+----------------------------------------------*/
+#twoColumn.presentGiftS1a #mainColumn #presentGiftBox {
+	padding-bottom: 8px;
+}
+	#twoColumn.presentGiftS1a #mainColumn #presentGiftBox p.intro {
+		font-size: 12px;
+		padding-bottom: 10px;
+		line-height: 1.4;
+	}
+	#twoColumn.presentGiftS1a #mainColumn #presentGiftBox .section {
+		clear: both;
+		margin-bottom: 5px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+	#twoColumn.presentGiftS1a #mainColumn #presentGiftBox .section p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			text-indent: -9999px;	
+		}
+		#twoColumn.presentGiftS1a #mainColumn #presentGiftBox .section p.pic a {
+			display: block;
+			width: 76px;
+			height: 76px; 
+			background-repeat: no-repeat;
+			background-position: center center;
+		}
+	#twoColumn.presentGiftS1a #mainColumn #presentGiftBox .section p.name,
+	#twoColumn.presentGiftS1a #mainColumn #presentGiftBox .section p.comment {
+		color: #333;
+		margin-left: 84px;
+	}
+	#twoColumn.presentGiftS1a #mainColumn #presentGiftBox .section p.name {
+		font-weight: bold;
+	}
+		#twoColumn.presentGiftS1a #mainColumn #presentGiftBox .section p.name span a {
+			color: #333;
+		}
+		#twoColumn.presentGiftS1a #mainColumn #presentGiftBox .section p.name span a:hover {
+			text-decoration: none;
+		}
+	#twoColumn.presentGiftS1a #mainColumn #presentGiftBox .section p.comment {
+		position: relative;
+		padding: 3px 5px;
+		border: 1px solid #AAAAAA;
+		background-color: #FFFFFF;
+		line-height: 1.4;
+	}
+		#twoColumn.presentGiftS1a #mainColumn #presentGiftBox .section p.comment span {
+			position: absolute;
+			left: 0;
+			bottom: -14px;
+			display: block;
+			width: 20px;
+			height: 14px;
+			background: url(../img/content/comment_allow_1.png) no-repeat left top;	
+		}
+		
+	#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed {
+		padding: 0 !important;
+		height: 408px;
+		overflow: auto;
+	}
+		#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul {
+			font-size: 12px;
+			line-height: 1.4;
+		}
+			#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul li {
+				clear: both;
+				margin-bottom: 3px;
+				padding: 10px;
+				background-color: #f0f0f0;
+				border:2px solid #fff;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/ 
+			}
+			#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul li.active {
+				border:2px solid #ff8409;
+				background-color: #FFFFFF;
+			}
+				#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul li p.pic {
+					position: relative;
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+					text-indent: -9999px;
+				}
+					#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul li p.pic a {	
+						display: block;
+						width: 76px;
+						height: 76px; 
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+				#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul li p.name,
+				#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul li p.comment {
+					color: #333;
+					margin-left: 84px;
+				}
+				#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul li p.name {
+					margin-bottom: 8px;
+					font-weight: bold;
+				}
+					#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul li p.name a {
+						color: #333;
+					}
+					#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul li p.name a:hover {
+						text-decoration: none;
+					}
+					
+				#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul li p.comment {
+					position: relative;
+					/* margin-bottom: 5px; */
+					padding: 3px 5px;
+					border: 1px solid #AAAAAA;
+					background-color: #FFFFFF;
+				}
+					#twoColumn.presentGiftS1a #mainColumn #presentGiftBox #presentGiftFeed ul li p.comment span {
+						position: absolute;
+						left: 0;
+						bottom: -14px;
+						display: block;
+						width: 20px;
+						height: 14px;
+						background: url(../img/content/comment_allow_1.png) no-repeat left top;
+					}
+
+	#twoColumn.presentGiftS1a #mainColumn #presentGiftBox ul.actionList {
+		margin-top: 5px;
+		position: relative;
+	}
+		#twoColumn.presentGiftS1a #mainColumn #presentGiftBox ul.actionList li {
+			display: inline;
+			float: left;
+			width: 331px;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+		#twoColumn.presentGiftS1a #mainColumn #presentGiftBox ul.actionList li.actionAbolish {
+			margin-right: 7px;
+		}
+			#twoColumn.presentGiftS1a #mainColumn #presentGiftBox ul.actionList li.actionAbolish a,
+			#twoColumn.presentGiftS1a #mainColumn #presentGiftBox ul.actionList li.actionCarryOut a {
+				display: block;
+				width: 331px;
+				height: 34px;
+				text-indent: -9999px;
+			}
+			#twoColumn.presentGiftS1a #mainColumn #presentGiftBox ul.actionList li.actionAbolish.disable a {
+				background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+			}
+			#twoColumn.presentGiftS1a #mainColumn #presentGiftBox ul.actionList li.actionCarryOut a {
+				background: transparent url(../img/content/btn_carryOut.png) no-repeat left top;
+			}					
+
+/*#twoColumn #mainColumn #releaseSlaveBox 08_action_releaseSlave
+----------------------------------------------*/
+#twoColumn #mainColumn #releaseSlaveBox {
+	padding-bottom: 10px;
+}
+	#twoColumn #mainColumn #releaseSlaveBox p.intro {
+		font-size: 12px;
+		padding-bottom: 10px;
+		line-height: 1.4;
+	}
+	#twoColumn #mainColumn #releaseSlaveBox .section {
+		clear: both;
+		margin-bottom: 10px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border:3px solid #dc4749;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+		#twoColumn #mainColumn #releaseSlaveBox .section p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			text-indent: -9999px;	
+		}
+			#twoColumn #mainColumn #releaseSlaveBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px; 
+				background-repeat: no-repeat;
+				background-position: center center;
+			}
+		#twoColumn #mainColumn #releaseSlaveBox .section p.name,
+		#twoColumn #mainColumn #releaseSlaveBox .section p.comment {
+			color: #333;
+			margin-left: 84px;
+		}
+		#twoColumn #mainColumn #releaseSlaveBox .section p.name {
+			font-weight: bold;
+			margin-bottom: 8px;
+		}
+			#twoColumn #mainColumn #releaseSlaveBox .section p.name span {
+			}
+				#twoColumn #mainColumn #releaseSlaveBox .section p.name span a {
+					color: #333;
+				}
+				
+		#twoColumn #mainColumn #releaseSlaveBox .section p.comment {
+			position: relative;
+			padding: 3px 5px;
+			border: 1px solid #AAAAAA;
+			background-color: #FFFFFF;
+			line-height: 1.4;
+			margin-bottom: 10px;
+		}
+			#twoColumn #mainColumn #releaseSlaveBox .section p.comment span {
+				position: absolute;
+				left: 0;
+				bottom: -14px;
+				display: block;
+				width: 20px;
+				height: 14px;
+				background: url(../img/content/comment_allow_1.png) no-repeat left top;	
+			}
+		
+		#twoColumn #mainColumn #releaseSlaveBox .section ul {
+			text-align: right;
+		}
+			#twoColumn #mainColumn #releaseSlaveBox .section ul li {
+				display: inline;
+				color: #dc4749;
+			}
+		
+	#twoColumn #mainColumn #releaseSlaveBox ul.actionList {
+		margin-top: 10px;
+		position: relative;
+	}
+		#twoColumn #mainColumn #releaseSlaveBox ul.actionList li {
+			display: inline;
+			float: left;
+			width: 331px;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+		#twoColumn #mainColumn #releaseSlaveBox ul.actionList li.actionAbolish {
+			margin-right: 7px;
+		}
+			#twoColumn #mainColumn #releaseSlaveBox ul.actionList li.actionAbolish a,
+			#twoColumn #mainColumn #releaseSlaveBox ul.actionList li.actioncarryOut a {
+				display: block;
+				width: 331px;
+				height: 34px;
+				text-indent: -9999px;
+			}
+			#twoColumn #mainColumn #releaseSlaveBox ul.actionList li.actionAbolish.disable a {
+				background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+			}
+			#twoColumn #mainColumn #releaseSlaveBox ul.actionList li.actioncarryOut a {
+				background: transparent url(../img/content/btn_carryOut.png) no-repeat left top;
+			}					
+
+
+/*#twoColumn.releaseSlaveFini #mainColumn #releaseSlaveBox 08_action_releaseSlave_fini
+----------------------------------------------*/
+#twoColumn.releaseSlaveFini #mainColumn #releaseSlaveBox .section {
+	border: none;
+}
+
+#twoColumn.releaseSlaveFini #mainColumn #releaseSlaveBox p.actionBackHome {
+}
+		#twoColumn.releaseSlaveFini #mainColumn #releaseSlaveBox p.actionBackHome a {
+			display: block;
+			width: 669px;
+			height: 34px;
+			background: transparent url(../img/content/btn_backHome.png) no-repeat center center;
+		}
+
+
+/*#twoColumn #mainColumn #removeFavBox 08_action_removeFav
+----------------------------------------------*/	
+#twoColumn #mainColumn #removeFavBox {
+	padding-bottom: 8px;
+}
+	#twoColumn #mainColumn #removeFavBox .hdr {
+	}
+	#twoColumn #mainColumn #removeFavBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+		padding-bottom: 10px;
+	}
+	#twoColumn #mainColumn #removeFavBox .section {
+		clear: both;
+		margin-bottom: 10px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border: 3px solid #dc4749;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+		#twoColumn #mainColumn #removeFavBox .section p.pic {
+			float: left;
+			width: 76px;
+			height: 76px;
+			display: inline;
+			line-height: 1.4;
+			text-indent: -9999px;
+			position: relative;
+		}
+			#twoColumn #mainColumn #removeFavBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px;
+				background-position: center top;
+				background-repeat: no-repeat;
+			}
+			
+		#twoColumn #mainColumn #removeFavBox .section p.name,
+		#twoColumn #mainColumn #removeFavBox .section p.price {
+			color: #333;
+			line-height: 1.4;
+			margin-left: 84px;
+		}
+		#twoColumn #mainColumn #removeFavBox .section p.name {
+			font-weight: bold;
+			padding-top: 15px;
+		}
+			#twoColumn #mainColumn #removeFavBox .section p.name a {
+				color: #333;
+			}
+		
+		#twoColumn #mainColumn #removeFavBox .section p.price {
+		}
+		
+		#twoColumn #mainColumn #removeFavBox .section p.buy {
+			padding-top: 10px;
+			text-align: right;
+		}
+			#twoColumn #mainColumn #removeFavBox .section p.buy a {
+				color: #258FB8;
+			}
+			
+	#twoColumn #mainColumn #removeFavBox p.actionBackGiftShop.btn {
+	}
+		#twoColumn #mainColumn #removeFavBox p.actionBackGiftShop.btn a {
+			display: block;
+			width: 669px;
+			height: 34px;
+			background: transparent url(../img/content/btn_backGiftShop.png) no-repeat left top;
+		}
+
+
+/*#twoColumn #mainColumn #revolutionBox 08_action_revolution_step2
+----------------------------------------------*/
+#twoColumn #mainColumn #revolutionBox {
+	padding-bottom: 8px;
+}
+	#twoColumn #mainColumn #revolutionBox p.intro {
+		font-size: 12px;
+		padding-bottom: 10px;
+		line-height: 1.4;
+	}
+		#twoColumn #mainColumn #revolutionBox p.intro span {
+			display: block;
+		}
+		
+	#twoColumn #mainColumn #revolutionBox #revolutionFeed {
+		padding: 0 !important;
+		height: 408px;
+		overflow: auto;
+
+	}
+		#twoColumn #mainColumn #revolutionBox #revolutionFeed ul {
+			font-size: 12px;
+			line-height: 1.4;
+		}
+			#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li {
+				clear: both;
+				margin-bottom: 3px;
+				padding: 10px;
+				background-color: #f0f0f0;
+				border:2px solid #fff;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/ 
+			}
+			#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li.active {
+				border:2px solid #ff8409;
+				background-color: #FFFFFF;
+			}
+			#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li.section {
+				padding: 10px;
+				font-size: 12px;
+				background-color: #ffe0e1;
+				border:3px solid #dc4749;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/ 
+				margin-bottom: 5px;	
+			}
+				#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li p.pic {
+					position: relative;
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+					text-indent: -9999px;
+				}
+					#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li p.pic a {	
+						display: block;
+						width: 76px;
+						height: 76px; 
+						background-repeat: no-repeat;
+						background-position: center top;
+					}
+				#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li p.name,
+				#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li p.comment {
+					color: #333;
+					margin-left: 84px;
+				}
+				#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li p.name {
+					margin-bottom: 8px;
+					font-weight: bold;
+				}
+					#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li p.name a {
+						color: #333;
+					}
+					#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li p.name a:hover {
+						text-decoration: none;
+					}
+					
+				#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li p.comment {
+					position: relative;
+					/* margin-bottom: 5px; */
+					padding: 3px 5px;
+					border: 1px solid #AAAAAA;
+					background-color: #FFFFFF;
+				}
+					#twoColumn #mainColumn #revolutionBox #revolutionFeed ul li p.comment span {
+						position: absolute;
+						left: 0;
+						bottom: -14px;
+						display: block;
+						width: 20px;
+						height: 14px;
+						background: url(../img/content/comment_allow_1.png) no-repeat left top;
+					}
+
+	#twoColumn #mainColumn #revolutionBox ul.actionList {
+		padding-top: 8px;
+		position: relative;
+	}
+		#twoColumn #mainColumn #revolutionBox ul.actionList li {
+			display: inline;
+			float: left;
+			width: 331px;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+		#twoColumn #mainColumn #revolutionBox ul.actionList li.actionAbolish {
+			margin-right: 7px;
+		}
+			#twoColumn #mainColumn #revolutionBox ul.actionList li.actionAbolish a,
+			#twoColumn #mainColumn #revolutionBox ul.actionList li.actionDecision a {
+				display: block;
+				width: 331px;
+				height: 34px;
+				text-indent: -9999px;
+			}
+			#twoColumn #mainColumn #revolutionBox ul.actionList li.actionAbolish.disable a {
+				background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+			}
+			#twoColumn #mainColumn #revolutionBox ul.actionList li.actionDecision a {
+				background: transparent url(../img/content/btn_decision.png) no-repeat left top;
+			}					
+
+
+/*#twoColumn.revolutionFini #mainColumn #revolutionBox p.pic 08_action-revolution_finish
+----------------------------------------------*/
+#twoColumn.revolutionFini #mainColumn #revolutionBox p.pic {
+	padding-bottom: 10px;
+}
+	#twoColumn.revolutionFini #mainColumn #revolutionBox p.pic img {
+		display: block;
+		margin: 0 auto;
+	}
+	
+#twoColumn.revolutionFini #mainColumn #revolutionBox p.actionBackHome {
+}
+	#twoColumn.revolutionFini #mainColumn #revolutionBox p.actionBackHome a {
+		display: block;
+		width: 669px;
+		height: 34px;
+		text-indent: -9999px;
+		background: transparent url(../img/content/btn_backHome.png) no-repeat left top;
+	}
+		
+
+/*#twoColumn #mainColumn #revolutionBox ul.actionList li.actionCarryOut a  08_action_revolution_step1
+----------------------------------------------*/
+#twoColumn #mainColumn #revolutionBox ul.actionList li.actionCarryOut a {
+	background: transparent url(../img/content/btn_carryOut.png) no-repeat left top;
+	display: block;
+	width: 331px;
+	height: 34px;
+	text-indent: -9999px;
+}
+
+/*#twoColumn #mainColumn #revolutionStopBox 08_action-revolution_stop
+----------------------------------------------*/
+#twoColumn #mainColumn #revolutionStopBox {
+	padding-bottom: 10px;
+}
+	#twoColumn #mainColumn #revolutionStopBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+		padding-bottom: 10px;
+	}
+		#twoColumn #mainColumn #revolutionStopBox p.intro span {
+			display: block;
+		}
+	
+	#twoColumn #mainColumn #revolutionStopBox p.pic {
+		padding-bottom: 10px;
+	}
+		#twoColumn #mainColumn #revolutionStopBox p.pic img {
+			display: block;
+			margin: 0 auto;
+		}
+	
+	#twoColumn #mainColumn #revolutionStopBox p.actionGoto {
+		width: 669px;
+		height: 34px;
+	}
+		#twoColumn #mainColumn #revolutionStopBox p.actionGoto a {
+			display: block;
+			width: 669px;
+			height: 34px;
+			text-indent: -9999px;
+			background:transparent url(../img/content/btn_goto.png) no-repeat left top;
+		}
+
+
+/*#twoColumn #mainColumn #sellGiftBox 08_action_sellGift
+----------------------------------------------*/
+#twoColumn #mainColumn #sellGiftBox {
+	padding-bottom: 8px;
+}
+	#twoColumn #mainColumn #sellGiftBox .hdr {
+	}
+	#twoColumn #mainColumn #sellGiftBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+		padding-bottom: 10px;
+	}
+	#twoColumn #mainColumn #sellGiftBox .section {
+		clear: both;
+		margin-bottom: 10px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border: 3px solid #dc4749;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+		#twoColumn #mainColumn #sellGiftBox .section p.pic {
+			float: left;
+			width: 76px;
+			height: 76px;
+			display: inline;
+			line-height: 1.4;
+			text-indent: -9999px;
+			position: relative;
+		}
+			#twoColumn #mainColumn #sellGiftBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px;
+				background-position: center center;
+				background-repeat: no-repeat;
+			}
+			
+		#twoColumn #mainColumn #sellGiftBox .section p.name,
+		#twoColumn #mainColumn #sellGiftBox .section p.price {
+			color: #333;
+			line-height: 1.4;
+			margin-left: 84px;
+		}
+		#twoColumn #mainColumn #sellGiftBox .section p.name {
+			font-weight: bold;
+			padding-top: 15px;
+		}
+			#twoColumn #mainColumn #sellGiftBox .section p.name a {
+				color: #333;
+			}
+		
+		#twoColumn #mainColumn #sellGiftBox .section p.price {
+		}
+		
+		#twoColumn #mainColumn #sellGiftBox .section p.buy {
+			padding-top: 10px;
+			text-align: right;
+		}
+			#twoColumn #mainColumn #sellGiftBox .section p.buy a {
+				color: #258FB8;
+			}
+	
+	#twoColumn #mainColumn #sellGiftBox ul.actionList {
+	}
+		#twoColumn #mainColumn #sellGiftBox ul.actionList li {
+			float: left;
+			display: inline;
+			width: 331px;
+		}
+			#twoColumn #mainColumn #sellGiftBox ul.actionList li.actionAbolish.disable {
+				margin-right: 7px;
+			}
+				#twoColumn #mainColumn #sellGiftBox ul.actionList li.actionAbolish.disable a {
+					display: block;
+					width: 331px;
+					height: 34px;
+					text-indent: -9999px;
+					background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+				}
+				
+			#twoColumn #mainColumn #sellGiftBox ul.actionList li.actionSellGift {
+			}
+				#twoColumn #mainColumn #sellGiftBox ul.actionList li.actionSellGift a {
+					display: block;
+					width: 331px;
+					height: 34px;
+					text-indent: -9999px;
+					background: transparent url(../img/content/btn_sellGift.png) no-repeat left top;
+				}
+			
+					
+	#twoColumn #mainColumn #sellGiftBox p.actionBackHome.btn {
+	}
+		#twoColumn #mainColumn #sellGiftBox p.actionBackHome.btn a {
+			display: block;
+			width: 695px;
+			height: 34px;
+			background: transparent url(../img/content/btn_backHome.png) no-repeat left top;
+		}
+
+
+/*#twoColumn.sellGiftFini #mainColumn #sellGiftBox 08_action_sellGift_finish
+----------------------------------------------*/
+#twoColumn.sellGiftFini #mainColumn #sellGiftBox {
+	padding-bottom: 8px;
+}
+	#twoColumn.sellGiftFini #mainColumn #sellGiftBox .hdr {
+	}
+	#twoColumn.sellGiftFini #mainColumn #sellGiftBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+		padding-bottom: 8px;
+	}
+		#twoColumn.sellGiftFini #mainColumn #sellGiftBox .section {
+			clear: both;
+			margin-bottom: 10px;
+			padding: 10px;
+			font-size: 12px;
+			background-color: #ffe0e1;
+			border: none;
+			border-radius: 5px;/*CSS3*/
+			-webkit-border-radius: 5px;/*Safari*/
+			-moz-border-radius: 5px;/*Firefox*/ 
+			overflow: hidden;
+		}
+			#twoColumn.sellGiftFini #mainColumn #sellGiftBox .section p.pic {
+				float: left;
+				width: 76px;
+				height: 76px;
+				display: inline;
+				position: relative;
+			}
+				#twoColumn.sellGiftFini #mainColumn #sellGiftBox .section p.pic a {
+					display: block;
+					width: 76px;
+					height: 76px;
+					backgroud-position: left top;
+					background-repeat: no-repeat;
+				}
+				
+			#twoColumn.sellGiftFini #mainColumn #sellGiftBox .section p.name,
+			#twoColumn.sellGiftFini #mainColumn #sellGiftBox .section p.property,
+			#twoColumn.sellGiftFini #mainColumn #sellGiftBox .section p.propertyOrder {
+				color: #333;
+				margin-left: 84px;
+				padding-bottom: 8px;
+			}
+				#twoColumn.sellGiftFini #mainColumn #sellGiftBox .section p.name {
+					font-weight: bold;
+					padding-top: 0;
+				}
+				#twoColumn.sellGiftFini #mainColumn #sellGiftBox .section p.property {
+				}
+				#twoColumn.sellGiftFini #mainColumn #sellGiftBox .section p.propertyOrder {
+					color: #dc4749;
+				}
+				
+	#twoColumn.sellGiftFini #mainColumn #sellGiftBox p.actionBackHome {
+	}
+		#twoColumn.sellGiftFini #mainColumn #sellGiftBox p.actionBackHome a {
+			display: block;
+			width: 669px;
+			height: 34px;
+			background: transparent url(../img/content/btn_backHome.png) no-repeat left top;
+			text-indent: -9999px;
+		}
+
+
+/*#twoColumn.teaseConfirm #mainColumn #teaseBox 08_action_tease_confirm
+----------------------------------------------*/
+#twoColumn.teaseConfirm #mainColumn #teaseBox {
+	padding-bottom: 8px;
+}
+	#twoColumn.teaseConfirm #mainColumn #teaseBox .hdr {
+	}
+	#twoColumn.teaseConfirm #mainColumn #teaseBox p.intro {
+		font-size: 12px;
+		line-height: 1.4;
+		padding-bottom: 10px;
+	}
+	#twoColumn.teaseConfirm #mainColumn #teaseBox ul.sectionList {
+		position: relative;
+		padding-bottom: 3px;
+	}
+		#twoColumn.teaseConfirm #mainColumn #teaseBox ul.sectionList li {
+			position: relative;
+			clear: both;
+			margin-bottom: 5px;
+			vertical-align: middle;
+			padding: 10px;
+			background-color: #FFE0E1;
+			border-radius: 5px;/*CSS3*/
+			-webkit-border-radius: 5px;/*Safari*/
+			-moz-border-radius: 5px;/*Firefox*/ 
+		}
+			#twoColumn.teaseConfirm #mainColumn #teaseBox ul.sectionList li p.pic {
+				float: left;
+				display: inline;
+				width: 76px;
+				height: 76px;
+			}
+				#twoColumn.teaseConfirm #mainColumn #teaseBox ul.sectionList li p.pic a {
+					display: block;
+					width: 76px;
+					height: 76px;
+					text-indent: -9999px;
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+				
+			#twoColumn.teaseConfirm #mainColumn #teaseBox ul.sectionList li p.name {
+				font-size: 14px;
+				font-weight: bold;
+				margin-left: 84px;
+				padding-top: 25px;
+				line-height: 1.4;
+			}
+				#twoColumn.teaseConfirm #mainColumn #teaseBox ul.sectionList li p.name a {
+					color: #333;
+				}
+				
+			#twoColumn.teaseConfirm #mainColumn #teaseBox ul.sectionList li p.comment {
+				font-size: 14px;
+				font-wieght: bold;
+				margin-left: 84px;
+				line-height: 1.4;
+			}
+		
+		#twoColumn.teaseConfirm #mainColumn #teaseBox ul.actionList {
+			margin-top: 0;
+		}		
+			#twoColumn.teaseConfirm #mainColumn #teaseBox ul.actionList li {
+				display: inline;
+				float: left;
+				width: 331px;
+				text-align: center;
+				color: #FFFFFF;
+				background-color: #FFE0E1;
+				border-radius: 3px;/*CSS3*/
+				-webkit-border-radius: 3px;/*Safari*/
+				-moz-border-radius: 3px;/*Firefox*/	
+			}
+				#twoColumn.teaseConfirm #mainColumn #teaseBox ul.actionList li.actionBack.disable {
+					margin-right: 7px;
+				}
+					#twoColumn.teaseConfirm #mainColumn #teaseBox ul.actionList li.actionBack.disable a {
+						display: block;
+						widht: 344px;
+						height: 34px;
+						text-indent: -9999px;
+						background: url(../img/content/btn_back.png) no-repeat left top;
+					}
+				
+					#twoColumn.teaseConfirm #mainColumn #teaseBox ul.actionList li.actionCarryOut a {
+						display: block;
+						widht: 344px;
+						height: 34px;
+						text-indent: -9999px;
+						background: url(../img/content/btn_carryOut.png) no-repeat left top;
+					}
+				
+				
+/*#twoColumn.teaseFinish #mainColumn #teaseBox 08_action_tease_finish
+----------------------------------------------*/
+#twoColumn.teaseFinish #mainColumn #teaseBox {
+	padding-bottom: 8px;
+}
+	#twoColumn.teaseFinish #mainColumn #teaseBox .hdr {
+	}
+	
+	#twoColumn.teaseFinish #mainColumn #teaseBox p.intro {
+		padding-bottom: 10px;
+		font-size: 12px;
+		line-height: 1.4;
+	}
+		#twoColumn.teaseFinish #mainColumn #teaseBox p.intro span {
+			display: block;
+		}	
+		
+	#twoColumn.teaseFinish #mainColumn #teaseBox .section {
+		clear: both;
+		margin-bottom: 8px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border: none;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+		#twoColumn.teaseFinish #mainColumn #teaseBox .section p.pic {
+			float: left;
+			display: inline;
+			width: 76px;
+			height: 76px;
+			position: relative;
+		}
+			#twoColumn.teaseFinish #mainColumn #teaseBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px;
+				background-positon: center top;
+				background-repeat: no-repeat;
+			}
+		
+		#twoColumn.teaseFinish #mainColumn #teaseBox .section p.name,
+		#twoColumn.teaseFinish #mainColumn #teaseBox .section p.price,
+		#twoColumn.teaseFinish #mainColumn #teaseBox .section p.popularOrder {
+			color: #333;
+			margin-left: 84px;
+			font-size: 12px;
+			line-height: 1.4;
+			padding-bottom: 5px;
+		}
+		#twoColumn.teaseFinish #mainColumn #teaseBox .section p.name {
+			font-weight: bold;
+			padding-top: 0;
+			margin-bottom: 0;
+		}
+			#twoColumn.teaseFinish #mainColumn #teaseBox .section p.name span {
+			}
+				#twoColumn.teaseFinish #mainColumn #teaseBox .section p.name span a {
+					color: #333;
+				}
+				
+		#twoColumn.teaseFinish #mainColumn #teaseBox .section p.price {
+		}
+		#twoColumn.teaseFinish #mainColumn #teaseBox .section p.popularOrder {
+			color: #dc4749;
+			font-weight: bold;
+		}
+	
+	#twoColumn.teaseFinish #mainColumn #teaseBox p.actionBackHome {
+	}
+		#twoColumn.teaseFinish #mainColumn #teaseBox p.actionBackHome a {
+			text-indent: -9999px;
+			display: block;
+			width: 669px;
+			height: 34px;
+			background: url(../img/content/btn_backHome.png) no-repeat left top;
+		}
+		
+						
+/*#twoColumn #mainColumn #teaseBox 08_action_tease_step1
+----------------------------------------------*/
+#twoColumn #mainColumn #teaseBox {
+	padding-bottom: 8px;
+}
+	#twoColumn #mainColumn #teaseBox p.intro {
+		font-size: 12px;
+		padding-bottom: 10px;
+		line-height: 1.4;
+	}
+	#twoColumn #mainColumn #teaseBox .section {
+		clear: both;
+		margin-bottom: 5px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border: 3px solid #dc4749;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+	#twoColumn #mainColumn #teaseBox .section p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			text-indent: -9999px;	
+		}
+		#twoColumn #mainColumn #teaseBox .section p.pic a {
+			display: block;
+			width: 76px;
+			height: 76px; 
+			background-repeat: no-repeat;
+			background-position: center center;
+		}
+	#twoColumn #mainColumn #teaseBox .section p.name,
+	#twoColumn #mainColumn #teaseBox .section p.comment {
+		color: #333;
+		margin-left: 84px;
+	}
+	#twoColumn #mainColumn #teaseBox .section p.name {
+		font-weight: bold;
+		margin-bottom: 8px;
+	}
+		#twoColumn #mainColumn #teaseBox .section p.name span a {
+			color: #333;
+		}
+		#twoColumn #mainColumn #teaseBox .section p.name span a:hover {
+			text-decoration: none;
+		}
+	#twoColumn #mainColumn #teaseBox .section p.comment {
+		position: relative;
+		padding: 3px 5px;
+		border: 1px solid #AAAAAA;
+		background-color: #FFFFFF;
+		line-height: 1.4;
+	}
+		#twoColumn #mainColumn #teaseBox .section p.comment span {
+			position: absolute;
+			left: 0;
+			bottom: -14px;
+			display: block;
+			width: 20px;
+			height: 14px;
+			background: url(../img/content/comment_allow_1.png) no-repeat left top;	
+		}
+		
+	#twoColumn #mainColumn #teaseBox #teaseFeed {
+		padding: 0 !important;
+		height: 408px;
+		overflow: auto;
+	}
+		#twoColumn #mainColumn #teaseBox #teaseFeed ul {
+			font-size: 12px;
+			line-height: 1.4;
+		}
+			#twoColumn #mainColumn #teaseBox #teaseFeed ul li {
+				clear: both;
+				margin-bottom: 3px;
+				padding: 10px;
+				background-color: #f0f0f0;
+				border:2px solid #fff;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/ 
+			}
+			#twoColumn #mainColumn #teaseBox #teaseFeed ul li.active {
+				border:2px solid #ff8409;
+				background-color: #FFFFFF;
+			}
+				#twoColumn #mainColumn #teaseBox #teaseFeed ul li p.pic {
+					position: relative;
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+					text-indent: -9999px;
+				}
+					#twoColumn #mainColumn #teaseBox #teaseFeed ul li p.pic a {	
+						display: block;
+						width: 76px;
+						height: 76px; 
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+				#twoColumn #mainColumn #teaseBox #teaseFeed ul li p.name,
+				#twoColumn #mainColumn #teaseBox #teaseFeed ul li p.comment {
+					color: #333;
+					margin-left: 84px;
+				}
+				#twoColumn #mainColumn #teaseBox #teaseFeed ul li p.name {
+					margin-bottom: 8px;
+					font-weight: bold;
+				}
+					#twoColumn #mainColumn #teaseBox #teaseFeed ul li p.name a {
+						color: #333;
+					}
+					#twoColumn #mainColumn #teaseBox #teaseFeed ul li p.name a:hover {
+						text-decoration: none;
+					}
+					
+				#twoColumn #mainColumn #teaseBox #teaseFeed ul li p.comment {
+					position: relative;
+					/* margin-bottom: 5px; */
+					padding: 3px 5px;
+					border: 1px solid #AAAAAA;
+					background-color: #FFFFFF;
+				}
+					#twoColumn #mainColumn #teaseBox #teaseFeed ul li p.comment span {
+						position: absolute;
+						left: 0;
+						bottom: -14px;
+						display: block;
+						width: 20px;
+						height: 14px;
+						background: url(../img/content/comment_allow_1.png) no-repeat left top;
+					}
+
+	#twoColumn #mainColumn #teaseBox ul.actionList {
+		margin-top: 5px;
+		position: relative;
+	}
+		#twoColumn #mainColumn #teaseBox ul.actionList li {
+			display: inline;
+			float: left;
+			width: 331px;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+		#twoColumn #mainColumn #teaseBox ul.actionList li.actionAbolish {
+			margin-right: 7px;
+		}
+			#twoColumn #mainColumn #teaseBox ul.actionList li.actionAbolish a,
+			#twoColumn #mainColumn #teaseBox ul.actionList li.actionNext a {
+				display: block;
+				width: 331px;
+				height: 34px;
+				text-indent: -9999px;
+			}
+			#twoColumn #mainColumn #teaseBox ul.actionList li.actionAbolish.disable a {
+				background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+			}
+			#twoColumn #mainColumn #teaseBox ul.actionList li.actionNext a {
+				background: transparent url(../img/content/btn_next.png) no-repeat left top;
+			}					
+	
+/*#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed 08_action-tease_step2
+----------------------------------------------*/
+#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed {
+	height: 510px;
+}
+	#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul {
+	}
+		#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special {
+			background-color: #f0f0f0;
+		}
+			#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special p.name {
+				font-size: 12px;
+				padding-top: 0;
+			}
+			/* #twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special p.comment {
+				position: relative;
+				width: 253px;
+				border: 1px solid #ffa700;
+				margin-bottom: 10px;
+				padding: 3px 5px;
+				background-color: #FFFFFF;
+			}
+				#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special p.comment span {
+					background: none;
+					width: 40px;
+					position:absolute;
+					left:270px;
+					top: 4px;
+					white-space:nowrap;
+				} */
+				
+			#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special form {
+				margin-bottom: 10px;
+			}
+				#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special form p {
+					margin-left: 84px;
+					*margin-left: 7px;
+				}
+					#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special form p input {
+						border: 1px solid #ffa700;
+						padding: 3px 5px;
+						width: 253px;
+						*vertical-align: middle;
+					}
+					#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special form p span {
+						padding-left: 5px;
+					}
+			
+			
+			#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special p.addAlbum {
+				text-align: right;
+				/* padding-top: 5px; */
+			}
+				#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special p.addAlbum a {
+					vertical-align: baseline;
+					color: #258fb8;
+					font-size: 13px;
+					/* magin-top: 10px; */
+				}
+			
+			#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li p.name {
+				font-size: 16px;
+				margin-bottom: 4px;
+				padding-top: 15px;
+			}
+			#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li p.comment {
+				background-color: transparent;
+				border: none;
+				padding: 0;
+			}
+			
+#twoColumn #mainColumn #teaseBox #teaseFeed2 {
+		padding: 0 !important;
+		height: 408px;
+		overflow: auto;
+	}
+		#twoColumn #mainColumn #teaseBox #teaseFeed2 ul {
+			font-size: 12px;
+			line-height: 1.4;
+		}
+			#twoColumn #mainColumn #teaseBox #teaseFeed2 ul li {
+				clear: both;
+				margin-bottom: 3px;
+				padding: 10px;
+				background-color: #f0f0f0;
+				border:2px solid #fff;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/ 
+			}
+			#twoColumn #mainColumn #teaseBox #teaseFeed2 ul li.active {
+				border:2px solid #ff8409;
+				background-color: #FFFFFF;
+			}
+				#twoColumn #mainColumn #teaseBox #teaseFeed2 ul li p.pic {
+					position: relative;
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+					text-indent: -9999px;
+				}
+					#twoColumn #mainColumn #teaseBox #teaseFeed2 ul li p.pic a {	
+						display: block;
+						width: 76px;
+						height: 76px; 
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+				#twoColumn #mainColumn #teaseBox #teaseFeed2 ul li p.name,
+				#twoColumn #mainColumn #teaseBox #teaseFeed2 ul li p.comment {
+					color: #333;
+					margin-left: 84px;
+				}
+				#twoColumn #mainColumn #teaseBox #teaseFeed2 ul li p.name {
+					margin-bottom: 8px;
+					font-weight: bold;
+				}
+					#twoColumn #mainColumn #teaseBox #teaseFeed2 ul li p.name a {
+						color: #333;
+					}
+					#twoColumn #mainColumn #teaseBox #teaseFeed2 ul li p.name a:hover {
+						text-decoration: none;
+					}
+					
+				#twoColumn #mainColumn #teaseBox #teaseFeed2 ul li p.comment {
+					position: relative;
+					/* margin-bottom: 5px; */
+					padding: 3px 5px;
+					border: 1px solid #AAAAAA;
+					background-color: #FFFFFF;
+				}
+					#twoColumn #mainColumn #teaseBox #teaseFeed2 ul li p.comment span {
+						position: absolute;
+						left: 0;
+						bottom: -14px;
+						display: block;
+						width: 20px;
+						height: 14px;
+						background: url(../img/content/comment_allow_1.png) no-repeat left top;
+					}
+
+#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 {
+	height: 510px;
+}
+	#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 ul {
+	}
+		#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 ul li.special {
+			background-color: #f0f0f0;
+		}
+			#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 ul li.special p.name {
+				font-size: 12px;
+				padding-top: 0;
+			}
+			/* #twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special p.comment {
+				position: relative;
+				width: 253px;
+				border: 1px solid #ffa700;
+				margin-bottom: 10px;
+				padding: 3px 5px;
+				background-color: #FFFFFF;
+			}
+				#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed ul li.special p.comment span {
+					background: none;
+					width: 40px;
+					position:absolute;
+					left:270px;
+					top: 4px;
+					white-space:nowrap;
+				} */
+				
+			#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 ul li.special form {
+				margin-bottom: 10px;
+			}
+				#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 ul li.special form p {
+					margin-left: 84px;
+					*margin-left: 7px;
+				}
+					#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 ul li.special form p input {
+						border: 1px solid #ffa700;
+						padding: 3px 5px;
+						width: 253px;
+						*vertical-align: middle;
+					}
+					#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 ul li.special form p span {
+						padding-left: 5px;
+					}
+			
+			
+			#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 ul li.special p.addAlbum {
+				text-align: right;
+				/* padding-top: 5px; */
+			}
+				#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 ul li.special p.addAlbum a {
+					vertical-align: baseline;
+					color: #258fb8;
+					font-size: 13px;
+					/* magin-top: 10px; */
+				}
+			
+			#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 ul li p.name {
+				font-size: 16px;
+				margin-bottom: 4px;
+				padding-top: 15px;
+			}
+			#twoColumn.teaseStep2 #mainColumn #teaseBox #teaseFeed2 ul li p.comment {
+				background-color: transparent;
+				border: none;
+				padding: 0;
+			}
+			
+#twoColumn.teaseStep2 #mainColumn #teaseBox ul.actionList {
+	margin-top: 10px;
+}
+	#twoColumn.teaseStep2 #mainColumn #teaseBox ul.actionList li {
+	}
+	#twoColumn.teaseStep2 #mainColumn #teaseBox ul.actionList li.actionBack {
+		margin-right: 7px;
+	}
+		#twoColumn.teaseStep2 #mainColumn #teaseBox ul.actionList li.actionBack a {
+			display: block;
+			width: 331px;
+			height: 34px;
+			text-indent: -9999px;
+		}
+		#twoColumn.teaseStep2 #mainColumn #teaseBox ul.actionList li.actionBack.disable a {
+			background: transparent url(../img/content/btn_back.png) no-repeat center center;
+		}
+
+
+/*#twoColumn.teaseStep2.teaseStep2Photo #continer 08_action-tease_step2_photo
+----------------------------------------------*/
+#twoColumn.teaseStep2.teaseStep2Photo #continer {
+	position: relative;
+}
+	#twoColumn.teaseStep2.teaseStep2Photo #uploadBox {
+		position: absolute;
+		left: 193px;
+		top: 145px;
+		width:568px;
+		height: 398px;
+		border: 1px solid #fff;
+		z-index: 10000;
+	}
+		#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper {
+			width: 530px;
+			height: 360px;
+			border: 5px solid #fc8a8c;
+			background-color: #ffe0e1;
+			padding:14px;
+		}
+			#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper .hdr {
+				margin-bottom: 10px;
+			}
+			#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody {
+				height: 253px;
+				padding: 15px;
+				background-color: #fff;
+			}
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody p.intro,
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody p.tips,
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody p.alert {
+					font-size: 13px;
+					margin-bottom: 8px;
+					line-height: 1.2;
+				}
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody p.intro {
+					color: #333;
+				}
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody p.tips {
+					color: #dc4749;
+				}
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody p.alert {
+					color: #c00;
+					background-color: #ffe1c2;
+					border: 1px solid #c00;
+					font-size: 12px;
+					padding: 5px 30px 5px;
+					background: #ffe1c2 url(../img/content/icn_warning.gif) no-repeat 8px center;
+				}
+				
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody #selfSelect {
+					padding: 10px;
+					margin-bottom: 5px;
+					border: 3px solid #fff;
+					border-radius: 4px;/*CSS3*/
+					-webkit-border-radius: 4px;/*Safari*/
+					-moz-border-radius: 4px;/*Firefox*/ 
+				}
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody #selfSelect.active {
+					padding: 10px;
+					margin-bottom: 5px;
+					border: 3px solid #ff8409;
+					border-radius: 4px;/*CSS3*/
+					-webkit-border-radius: 4px;/*Safari*/
+					-moz-border-radius: 4px;/*Firefox*/ 
+				}
+				
+					#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody #selfSelect p.intro,
+					#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody #urlSelect p.intro {
+						font-size: 14px;
+						font-weight: bold;
+					}
+				
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody #urlSelect {
+					background-color: #f0f0f0;
+					padding: 10px;
+					border-radius: 4px;/*CSS3*/
+					-webkit-border-radius: 4px;/*Safari*/
+					-moz-border-radius: 4px;/*Firefox*/ 
+					border: 3px solid #f0f0f0;
+				}
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody #urlSelect.active {
+					border: 3px solid #ff8409;
+				}
+					#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody #urlSelect p {
+					}
+						#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper #uploadBody #urlSelect p input {
+							display: block;
+							width: 467px;
+							border: 1px solid #ffa700;
+							padding: 3px 5px;
+						}
+			
+			#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper ul {
+				margin-top: 10px;
+			}
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper ul li {
+					float: left;
+					display: inline;
+					width: 261px;
+					height: 34px;
+				}
+				#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper ul li.disable {
+					margin-right: 8px;
+				}
+					#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper ul li input.inputReset,
+					#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper ul li input.inputSubmit {
+						border: none;
+						display: block;
+						width: 261px;
+						height: 34px;
+					}
+					#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper ul li input.inputReset {
+						background: url(../img/content/btn_abolish_s.png) no-repeat center center;
+					}
+					#twoColumn.teaseStep2.teaseStep2Photo #uploadBox #uploadWrapper ul li input.inputSubmit {
+						background: url(../img/content/btn_add_s.png) no-repeat center center;
+					}
+					
+			
+			
+			#twoColumn.teaseStep2.teaseStep2Photo #mainColumn #teaseBox #teaseFeed ul li.special p.upLoadAlbum {
+				text-align: right;
+			}
+				#twoColumn.teaseStep2.teaseStep2Photo #mainColumn #teaseBox #teaseFeed ul li.special p.upLoadAlbum a {
+					vertical-align: baseline;
+					color: #258fb8;
+					font-size: 13px;
+				}
+				
+	#twoColumn.teaseStep2.teaseStep2Photo #mainColumn #teaseBox ul.actionList li.actionAbolish {
+		margin-right: 7px;
+	}
+		#twoColumn.teaseStep2.teaseStep2Photo #mainColumn #teaseBox ul.actionList li.actionAbolish a {
+			display: block;
+			width: 331px;
+			height: 34px;
+			text-indent: -9999px;
+		}
+		#twoColumn.teaseStep2.teaseStep2Photo #mainColumn #teaseBox ul.actionList li.actionAbolish.disable a {
+			background: transparent url(../img/content/btn_abolish.png) no-repeat center center;
+		}
+
+
+/*#twoColumn #mainColumn #toRakutenBox 08_action_toRakuten
+----------------------------------------------*/
+#twoColumn #mainColumn #toRakutenBox {
+	padding-bottom: 10px;
+}
+	#twoColumn #mainColumn #toRakutenBox p.intro {
+		font-size: 12px;
+		padding-bottom: 10px;
+		line-height: 1.4;
+	}
+	#twoColumn #mainColumn #toRakutenBox .section {
+		clear: both;
+		margin-bottom: 10px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border:3px solid #dc4749;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+		#twoColumn #mainColumn #toRakutenBox .section p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			text-indent: -9999px;	
+		}
+			#twoColumn #mainColumn #toRakutenBox .section p.pic a {
+				display: block;
+				width: 76px;
+				height: 76px; 
+				background-repeat: no-repeat;
+				background-position: center top;
+			}
+			
+		#twoColumn #mainColumn #toRakutenBox .section p.intro,
+		#twoColumn #mainColumn #toRakutenBox .section p.price {
+			color: #333;
+			margin-left: 84px;
+		}
+		#twoColumn #mainColumn #toRakutenBox .section p.intro {
+			margin-bottom: 8px;
+			padding-bottom: 0;
+		}
+			#twoColumn #mainColumn #toRakutenBox .section p.intro span {
+			}
+		
+		#twoColumn #mainColumn #toRakutenBox .section ul {
+			text-align: right;
+		}
+			#twoColumn #mainColumn #toRakutenBox .section ul li {
+				display: inline;
+				color: #dc4749;
+			}
+		
+	#twoColumn #mainColumn #toRakutenBox ul.actionList {
+		margin-top: 10px;
+		position: relative;
+	}
+		#twoColumn #mainColumn #toRakutenBox ul.actionList li {
+			display: inline;
+			float: left;
+			width: 331px;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+		#twoColumn #mainColumn #toRakutenBox ul.actionList li.actionAbolish {
+			margin-right: 7px;
+		}
+			#twoColumn #mainColumn #toRakutenBox ul.actionList li.actionAbolish a,
+			#twoColumn #mainColumn #toRakutenBox ul.actionList li.actionToRakuten a {
+				display: block;
+				width: 331px;
+				height: 34px;
+				text-indent: -9999px;
+			}
+			#twoColumn #mainColumn #toRakutenBox ul.actionList li.actionAbolish.disable a {
+				background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+			}
+			#twoColumn #mainColumn #toRakutenBox ul.actionList li.actionToRakuten  a {
+				background: transparent url(../img/content/btn_toRakuten.png) no-repeat left top;
+			}					
+		
+
+/*#twoColumn #mainColumn #laborBox 08_action_work
+----------------------------------------------*/
+#twoColumn #mainColumn #laborBox {
+	padding-bottom: 8px;
+}
+	#twoColumn #mainColumn #laborBox p.intro {
+		font-size: 12px;
+		padding-bottom: 10px;
+		line-height: 1.4;
+	}
+		#twoColumn #mainColumn #laborBox p.intro span {
+			display: block;
+		}
+		
+	#twoColumn #mainColumn #laborBox .section {
+		clear: both;
+		margin-bottom: 5px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border:3px solid #dc4749;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+	#twoColumn #mainColumn #laborBox .section p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			text-indent: -9999px;	
+		}
+		#twoColumn #mainColumn #laborBox .section p.pic a {
+			display: block;
+			width: 76px;
+			height: 76px; 
+			background-repeat: no-repeat;
+			background-position: center center;
+		}
+		
+	#twoColumn #mainColumn #laborBox .section p.name,
+	#twoColumn #mainColumn #laborBox .section p.comment {
+		color: #333;
+		margin-left: 84px;
+	}
+	#twoColumn #mainColumn #laborBox .section p.name {
+		font-weight: bold;
+		margin-bottom: 8px;
+		padding-top: 0;
+	}
+		#twoColumn #mainColumn #laborBox .section p.name span a {
+			color: #333;
+		}
+		#twoColumn #mainColumn #laborBox .section p.name span a:hover {
+			text-decoration: none;
+		}
+		
+	#twoColumn #mainColumn #laborBox .section p.comment {
+		position: relative;
+		margin-bottom: 10px;
+		padding: 3px 5px;
+		border: 1px solid #AAAAAA;
+		background-color: #FFFFFF;
+		line-height: 1.4;
+	}
+		#twoColumn #mainColumn #laborBox .section p.comment span {
+			position: absolute;
+			left: 0;
+			bottom: -14px;
+			display: block;
+			width: 20px;
+			height: 14px;
+			background: url(../img/content/comment_allow_1.png) no-repeat left top;	
+		}
+	
+	#twoColumn #mainColumn #laborBox .section ul {
+		text-align: right;
+	}
+		#twoColumn #mainColumn #laborBox .section ul li {
+			font-size: 12px;
+			position: relative;
+			margin-right: 5px;
+			display: -moz-inline-box;/*Firefox2*/
+			display: inline-block;/*CSS3*/
+			/display: inline;/*IE6,IE7*/
+			/zoom: 1;/*IE6,IE7*/
+			color: #dc4749;
+		}
+			#twoColumn #mainColumn #laborBox .section ul li.power {
+				
+			}
+				#twoColumn #mainColumn #laborBox .section ul li.power span {
+					font-size: 19px;
+					color: #fc8a8c;
+				}
+		
+	#twoColumn #mainColumn #laborBox #laborFeed {
+		padding: 0 !important;
+		height: 408px;
+		overflow: auto;
+	}
+		#twoColumn #mainColumn #laborBox #laborFeed ul {
+			font-size: 12px;
+			line-height: 1.4;
+		}
+			#twoColumn #mainColumn #laborBox #laborFeed ul li {
+				clear: both;
+				margin-bottom: 3px;
+				padding: 10px;
+				background-color: #f0f0f0;
+				border:2px solid #fff;
+				border-radius: 5px;/*CSS3*/
+				-webkit-border-radius: 5px;/*Safari*/
+				-moz-border-radius: 5px;/*Firefox*/ 
+			}
+			#twoColumn #mainColumn #laborBox #laborFeed ul li.active {
+				border:2px solid #ff8409;
+				background-color: #FFFFFF;
+			}
+				#twoColumn #mainColumn #laborBox #laborFeed ul li p.pic {
+					position: relative;
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+					text-indent: -9999px;
+				}
+					#twoColumn #mainColumn #laborBox #laborFeed ul li p.pic a {	
+						display: block;
+						width: 76px;
+						height: 76px; 
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+					
+				#twoColumn #mainColumn #laborBox #laborFeed ul li p.work {
+					color: #333;
+					margin-left: 84px;
+				}
+				#twoColumn #mainColumn #laborBox #laborFeed ul li p.work {
+					font-size: 14px;
+					font-weight: bold;
+					padding-top: 15px;
+				}
+					#twoColumn #mainColumn #laborBox #laborFeed ul li p.work a {
+						color: #333;
+					}
+					#twoColumn #mainColumn #laborBox #laborFeed ul li p.work a:hover {
+						text-decoration: none;
+					}
+					
+				#twoColumn #mainColumn #laborBox #laborFeed ul li ul {
+					position: relative;
+					margin-left: 84px;
+				}
+					#twoColumn #mainColumn #laborBox #laborFeed ul li ul li {
+						font-weight: bold;
+						position: relative;
+						clear: none;
+						display: inline;
+						padding: 0;
+						border: none;
+						margin-right: 5px;
+						background-color: transparent;
+						vertical-align: middle;
+					}
+						#twoColumn #mainColumn #laborBox #laborFeed ul li ul li span {
+							font-weight: normal;
+							font-size: 19px;
+							color: #dc4749;
+						}
+						#twoColumn #mainColumn #laborBox #laborFeed ul li ul li span.light {
+							color: #fc8a8c;
+						}
+							
+	#twoColumn #mainColumn #laborBox ul.actionList {
+		margin-top: 8px;
+		position: relative;
+	}
+		#twoColumn #mainColumn #laborBox ul.actionList li {
+			display: inline;
+			float: left;
+			width: 331px;
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FFE0E1;
+			border-radius: 3px;/*CSS3*/
+			-webkit-border-radius: 3px;/*Safari*/
+			-moz-border-radius: 3px;/*Firefox*/
+		}
+		#twoColumn #mainColumn #laborBox ul.actionList li.actionAbolish {
+			margin-right: 7px;
+		}
+			#twoColumn #mainColumn #laborBox ul.actionList li.actionAbolish a,
+			#twoColumn #mainColumn #laborBox ul.actionList li.actionNext a {
+				display: block;
+				width: 331px;
+				height: 34px;
+				text-indent: -9999px;
+			}
+			#twoColumn #mainColumn #laborBox ul.actionList li.actionAbolish.disable a {
+				background: transparent url(../img/content/btn_abolish.png) no-repeat left top;
+			}
+			#twoColumn #mainColumn #laborBox ul.actionList li.actionNext a {
+				background: transparent url(../img/content/btn_next.png) no-repeat left top;
+			}
+
+/*#twoColumn.workConfirm #mainColumn #laborBox ul.sectionList 08_action_work_confirm
+----------------------------------------------*/
+
+	#twoColumn #mainColumn #laborBox ul.sectionList li {
+		clear: both;
+		margin-bottom: 5px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #ffe0e1;
+		border:3px solid #dc4749;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+	#twoColumn #mainColumn #laborBox ul.sectionList li.liWork {
+		clear: both;
+		margin-bottom: 5px;
+		padding: 10px;
+		font-size: 12px;
+		background-color: #f0f0f0;
+		border:3px solid #f0f0f0;
+		border-radius: 5px;/*CSS3*/
+		-webkit-border-radius: 5px;/*Safari*/
+		-moz-border-radius: 5px;/*Firefox*/ 
+		overflow: hidden;
+	}
+
+	#twoColumn #mainColumn #laborBox ul.sectionList li p.pic {
+			position: relative;
+			display: inline;
+			float: left;
+			width: 76px;
+			height: 76px;
+			text-indent: -9999px;	
+		}
+		#twoColumn #mainColumn #laborBox ul.sectionList li p.pic a {
+			display: block;
+			width: 76px;
+			height: 76px; 
+			background-repeat: no-repeat;
+			background-position: center center;
+		}
+		
+	#twoColumn #mainColumn #laborBox ul.sectionList li p.name,
+	#twoColumn #mainColumn #laborBox ul.sectionList li p.comment {
+		color: #333;
+		margin-left: 84px;
+	}
+	#twoColumn #mainColumn #laborBox ul.sectionList li p.name {
+		font-weight: bold;
+		margin-bottom: 8px;
+		padding-top: 0;
+	}
+		#twoColumn #mainColumn #laborBox ul.sectionList li p.name span a {
+			color: #333;
+		}
+		#twoColumn #mainColumn #laborBox ul.sectionList li p.name span a:hover {
+			text-decoration: none;
+		}
+		
+	#twoColumn #mainColumn #laborBox ul.sectionList li p.comment {
+		position: relative;
+		margin-bottom: 10px;
+		padding: 3px 5px;
+		border: 1px solid #AAAAAA;
+		background-color: #FFFFFF;
+		line-height: 1.4;
+	}
+		#twoColumn #mainColumn #laborBox ul.sectionList li p.comment span {
+			position: absolute;
+			left: 0;
+			bottom: -14px;
+			display: block;
+			width: 20px;
+			height: 14px;
+			background: url(../img/content/comment_allow_1.png) no-repeat left top;	
+		}
+	
+	#twoColumn #mainColumn #laborBox ul.sectionList li ul {
+		text-align: right;
+	}
+		#twoColumn #mainColumn #laborBox ul.sectionList li ul li {
+			font-size: 12px;
+			position: relative;
+			margin-right: 5px;
+			display: -moz-inline-box;/*Firefox2*/
+			display: inline-block;/*CSS3*/
+			/display: inline;/*IE6,IE7*/
+			/zoom: 1;/*IE6,IE7*/
+			color: #dc4749;
+			padding: 0;
+			font-size: 12px;
+			background-color: transparent;
+			border:none;
+			border-radius: 0;
+			-webkit-border-radius: 0;
+			-moz-border-radius: 0;
+			overflow: visible;
+
+		}
+			#twoColumn #mainColumn #laborBox ul.sectionList li ul li.power {
+			}
+				#twoColumn #mainColumn #laborBox ul.sectionList li ul li.power span {
+					font-size: 19px;
+					color: #fc8a8c;
+				}
+			#twoColumn #mainColumn #laborBox ul.sectionList li ul li.cosumePower {
+				
+			}
+				#twoColumn #mainColumn #laborBox ul.sectionList li ul li.cosumePower span {
+					font-size: 19px;
+					color: #fc8a8c;
+				}
+
+
+
+				#twoColumn #mainColumn #laborBox ul.sectionList li p#confirmWorkPic {
+					position: relative;
+					display: inline;
+					float: left;
+					width: 76px;
+					height: 76px;
+					text-indent: -9999px;
+				}
+					#twoColumn #mainColumn #laborBox ul.sectionList li p#confirmWorkPic a {	
+						display: block;
+						width: 76px;
+						height: 76px; 
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+					
+				#twoColumn #mainColumn #laborBox ul.sectionList li p#confirmWorkName {
+					color: #333;
+					margin-left: 84px;
+				}
+				#twoColumn #mainColumn #laborBox ul.sectionList li p#confirmWorkName {
+					font-size: 14px;
+					font-weight: bold;
+					padding-top: 15px;
+				}
+					#twoColumn #mainColumn #laborBox ul.sectionList li p#confirmWorkName a {
+						color: #333;
+					}
+					#twoColumn #mainColumn #laborBox ul.sectionList li p#confirmWorkName a:hover {
+						text-decoration: none;
+					}
+					
+				
+#twoColumn.workConfirm #mainColumn #laborBox ul.actionList {
+	margin-top: 0;
+}
+	#twoColumn.workConfirm #mainColumn #laborBox ul.actionList li.actionDecision {
+	}
+		#twoColumn.workConfirm #mainColumn #laborBox ul.actionList li.actionDecision a {
+			width: 331px;
+			height: 34px;
+			display: block;
+			text-indent: -9999px;
+			background: url(../img/content/btn_decision.png) no-repeat left top;
+		}
+
+
+/*#twoColumn.workFinish2 #mainColumn #laborBox p.intro 08_action_work_finish2
+----------------------------------------------*/
+#twoColumn.workFinish2 #mainColumn #laborBox p.intro {
+	padding-bottom: 20px;
+}
+
+#twoColumn.workFinish2 #mainColumn #laborBox p.tips {
+	font-size: 12px;
+	color: #dc4749;
+	padding-bottom: 5px;
+}
+		
+		#twoColumn.workFinish2 #mainColumn #laborBox ul.sectionList li p.name,
+		#twoColumn.workFinish2 #mainColumn #laborBox ul.sectionList li p.property,
+		#twoColumn.workFinish2 #mainColumn #laborBox ul.sectionList li p.propertyOrder,
+		#twoColumn.workFinish2 #mainColumn #laborBox ul.sectionList li p.price,
+		#twoColumn.workFinish2 #mainColumn #laborBox ul.sectionList li p.popularOrder {
+			color: #333;
+			font-size: 12px;
+			margin-left: 84px;
+			padding-bottom: 5px;
+		}
+			#twoColumn.workFinish2 #mainColumn #laborBox ul.sectionList li p.name {
+				font-weight: bold;
+			}
+				#twoColumn.workFinish2 #mainColumn #laborBox ul.sectionList li p.name a {
+					color: #333;
+				}
+				
+		#twoColumn.workFinish2 #mainColumn #laborBox ul.sectionList li p.propertyOrder,
+		#twoColumn.workFinish2 #mainColumn #laborBox ul.sectionList li p.popularOrder {
+			color: #dc4749;
+			font-weight: bold;
+		}
+			
+#twoColumn.workFinish2 #mainColumn #laborBox p.actionBackHome {
+}
+	#twoColumn.workFinish2 #mainColumn #laborBox p.actionBackHome a {
+		text-indent: -9999px;
+		display: block;
+		width: 669px;
+		height: 34px;
+		background: url(../img/content/btn_backHome.png) no-repeat left top;
+	}
+
+
+/*#twoColumn.workFinish1 #mainColumn #laborBox p.intro 08_action_work_finish1
+----------------------------------------------*/
+#twoColumn.workFinish1 #mainColumn #laborBox p.intro {
+	padding-bottom: 8px;
+}
+
+#twoColumn.workFinish1 #mainColumn #laborBox .section {
+	border: none;
+	margin-bottom: 8px;
+}
+
+	#twoColumn.workFinish1 #mainColumn #laborBox .section p.property,
+	#twoColumn.workFinish1 #mainColumn #laborBox .section p.propertyOrder {
+		margin-left: 84px;
+		padding-bottom: 8px;
+	}
+	#twoColumn.workFinish1 #mainColumn #laborBox .section p.propertyOrder {
+		color: #dc4749;
+		font-weight: bold;
+	}
+	
+	#twoColumn.workFinish1 #mainColumn #laborBox p.actionBackHome a {
+		text-indent: -9999px;
+		display: block;
+		width: 669px;
+		height: 34px;
+		background: url(../img/content/btn_backHome.png) no-repeat left top;
+	}
+
+
+
+/* #uploadBox
+----------------------------------------------*/
+#uploadBox {
+		position: absolute;
+		left: 193px;
+		top: 145px;
+		width:568px;
+		/* height: 398px; */
+		border: 1px solid #fff;
+		z-index: 10000;
+	}
+		#uploadBox #uploadWrapper {
+			width: 530px;
+			/* height: 360px; */
+			border: 5px solid #fc8a8c;
+			background-color: #ffe0e1;
+			padding:14px;
+		}
+			#uploadBox #uploadWrapper .hdr {
+				margin-bottom: 10px;
+			}
+			#uploadBox #uploadWrapper #uploadBody {
+				/* height: 253px; */
+				padding: 15px;
+				background-color: #fff;
+			}		
+
+
+/* #helpBox
+----------------------------------------------*/
+#helpBox {
+	background-color: #ffffdd;
+}
+	#helpBox .helpBlock {
+		margin: 0 0 12px 0;
+		line-height: 1.3;
+	}
+		#helpBox .helpBlock p {
+			margin: 6px 10px 0 10px;
+			line-height: 1.2;
+			font-size: 14px;
+		}
+		#helpBox .helpBlock ul {
+			margin: 6px 10px 0 10px;
+			line-height: 1.2;
+			padding: 0;
+			background: none;
+			font-size: 14px;
+		}
+			#helpBox .helpBlock ul li {
+				margin: 0 0 6px 0;
+				line-height: 1.2;
+				padding: 0;
+				background: none;
+			}
+				#helpBox .helpBlock ul li ol {
+					margin: 2px 0 2px 15px;
+					line-height: 1.2;
+				}
+					#helpBox .helpBlock ul li ol li {
+						margin: 0 0  0;
+						line-height: 1;
+						padding: 0;
+						background: none;
+					}
+		#helpBox .helpBlock em {
+			font-weight: bold;
+			color: #dc4749;
+			font-style: normal;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

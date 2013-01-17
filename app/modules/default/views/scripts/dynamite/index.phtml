@@ -1,0 +1,149 @@
+﻿{%include file="dynamite/common/header.phtml"%}
+<script type="text/javascript">
+    $j(function(){
+
+        $j('#bombListBox ul li[class^="bomb"] a').hover(
+            function(){
+                $j(this).next().fadeIn(150);
+            },
+            function(){
+                $j(this).next().fadeOut(200);
+            }
+         )
+     });//
+</script>
+
+
+<script type="text/javascript">
+    if ( null != getCookie('app_top_url_dynamite') ) {
+        top.location.href = getCookie('app_top_url_dynamite') +  '#pagetop';
+    }
+</script>
+
+<body id="dynamiteBody">
+{%include file="topad.phtml"%}
+
+<div style="left: -100em; position: absolute; width: 100em;"></div>
+<div id="container"><div id="containerInner1"><div id="containerInner2">
+
+    <div id="hdr">
+        <ul id="gNav"><!--
+            --><li id="gNavTop"><a href="{%$baseUrl%}/dynamite">トップ</a></li><!--
+            --><li id="gNavHitman"><a href="{%$baseUrl%}/dynamite/charashop">ヒットマン紹介所</a></li><!--
+            --><li id="gNavRanking"><a href="{%$hostUrl%}/dynamite/specialrank">ランキング</a></li><!--
+            --><li id="gNavInvite"><a href="javascript:void(0)" onclick="invite()">友達招待</a></li><!--
+            --><li id="gNavHowTo"><a href="javascript:void(0)" onclick="jQuery.help.showHelpFlash()">このゲームの遊び方</a></li><!--
+            --><li id="gNavHelp"><a href="{%$baseUrl%}/dynamite/help">ヘルプ</a></li><!--
+        -->
+    </div>
+
+    <div id="wrap">
+
+        <div id="mainColumn">
+			{%*
+			<div id="alertBox" style="border: 2px solid #FF0000;color:#ff0000;font-weight:700; padding: 5px;background: #FFC9BC;font-size:12px;margin-bottom:5px;">
+				1/25 14:00〜16:00 システム改修の為サービスを一時停止いたします｡<br />
+			</div>
+			*%}
+
+            <div id="mainHdr">
+                <h1>{%$userDynamite.displayName%}組のアジト</h1>
+                <p class="pic" style="background-image: url({%$userDynamite.miniThumbnailUrl%})">[{%$userDynamite.displayName%}]</p>
+                <p class="price">所持金：$&nbsp;{%$userDynamite.bonus|outputdollars%}</p>
+            </div><!--/#mainHdr-->
+
+            <div id="playArea">
+
+                <div id="playAreaWrap" style="left: -0px;">
+                </div><!--/#playAreaWrap-->
+
+                <ul id="slideNav"><!--
+                    --><li id="slideNavLeft"><a href="javascript:void(0);" onclick="jQuery.dynamite.goBack()">左</a></li><!--
+                    --><li id="slideNavHome"><a href="javascript:void(0);" onclick="jQuery.dynamite.goHome()">ホーム</a></li><!--
+                    --><li id="slideNavRight"><a href="javascript:void(0);" onclick="jQuery.dynamite.goNext()">右</a></li><!--
+                --></ul>
+                <div id="divLation"></div>
+
+            </div><!--/#playArea-->
+
+            <input type="hidden" id="txtUid" value='{%$uid%}'>
+            <input type="hidden" id="txtUserDynamite" value='{%$txtUserDynamite|singlequote_escape%}'>
+            <input type="hidden" id="txtArrDynamite" value='{%$arrDynamite|singlequote_escape%}'>
+            <!--<input type="hidden" id="txtMyMixiUser" value='{%$myMixiUser|singlequote_escape%}'>-->
+
+            <input type="hidden" id="txtMyRemainderBomb" value='{%$myDynamite.remainder_bomb_count%}'>
+            <input type="hidden" id="needRestartGame" value='{%$needRestartGame%}'>
+            <input type="hidden" id="firstLogin" value='{%$firstLogin%}'>
+            <input type="hidden" id="sendBombCount" value='{%$sendBombCount%}'>
+            <input type="hidden" id="txtHitmanSelf" value='{%$hitmanSelf%}'>
+            <input type="hidden" id="firstJoin" value='{%$firstJoin%}'>
+            <input type="hidden" id="userName" value='{%$userName%}'>
+            <!--<input type="hidden" id="haveAllianceApply" value='{%$haveAllianceApply%}'>-->
+            <input type="hidden" id="txtUserAlliance" value='{%$userAlliance%}'>
+            <input type="hidden" id="isHadApplyAlliance" value='{%$isHadApplyAlliance%}'>
+            <input type="hidden" id="autoSendBomb" value=''>
+            <input type="hidden" id="isChecked" value=''>
+            <input type="hidden" id="sendBombAfterConfiscate" value=''>
+            <input type="hidden" id="gameMode" value='{%$myDynamite.game_mode%}'>
+            <input type="hidden" id="sendHelpCard" value='{%$sendHelpCard%}'>
+            <input type="hidden" id="currentUid" value='{%$uid%}'>
+            <div id="statusArea">
+                <div class="bombList" id="bombListBox">
+                    <ul>
+                        {% foreach from=$userBomb item=userBomb %}
+                            <li class="bomb{%$userBomb.bomb_power%}"><a href="javascript:void(0)" onclick="jQuery.dynamite.goUserDynamite({%$userBomb.bomb_uid%})"><img src="{%$staticUrl%}/apps/dynamite/img/dynamite/b/{%if $userBomb.bomb_power>0 && $userBomb.needWait != 1 %}{%$userBomb.bomb_power%}_mine_use{%else%}{%$userBomb.bomb_power%}_mine{%/if%}.gif" width="23" height="32" alt="{%$userBomb.bomb_power%}" /></a><span><nobr>{%$userBomb.displayName%}</nobr></span></li>
+                        {% /foreach %}
+
+                        {% foreach from=$userRemoveBomb item=removeB %}
+                            <li class="bomb{%$userBomb.bomb_power%}"><img src="{%$staticUrl%}/apps/dynamite/img/dynamite/b/{%$removeB.bomb_power%}_not.gif" width="23" height="32" alt="" /></li>
+                        {% /foreach %}
+                        {% foreach from=$remainderBomb item=remainB %}
+                            <li class="bomb0"><img src="{%$staticUrl%}/apps/dynamite/img/dynamite/b/nomal.gif" width="23" height="32" alt="" /></li>
+                        {% /foreach %}
+
+                        {% foreach from=$arrEmptyBomb item=emptyBomb %}
+                            <li><img src="{%$staticUrl%}/apps/dynamite/img/dynamite/b/null.gif" width="23" height="32" alt="" /></li>
+                        {% /foreach %}
+                    </ul>
+                </div><!--/.bombList-->
+            </div><!--/#statusArea-->
+
+            {%include file="dynamite/rank.phtml"%}
+
+            <div id="mainColumnAd"><a href="javascript:void(0)" onclick="invite()"><img src="{%$staticUrl%}/apps/dynamite/img/ddp_banner.gif" width="687" height="150" alt="" /></a></div>
+
+            <div id="newsArea">
+                <h2>あなたの更新情報</h2>
+                <div id="newsAreaInner">
+                    <ul><!--
+                        {% foreach from=$feed item=data %}
+                            --><li class="dynamite" style="background-image:url({%$data.icon%})">
+                                <p class="title"><font color="#AA1111">{%$data.feed_type%}</font><span class="date">[{%$data.create_time|date_format:"%y/%m/%d %H:%M"%}]</span></p>
+                                <p class="text">{%$data.title%}</p>
+                               </li><!--
+                        {% /foreach %}
+                    --></ul>
+                </div><!--/.inner-->
+            </div>
+            <!--/#newsArea-->
+
+        </div><!--/#mainColumn-->
+
+        <div id="subColumn">
+
+            {%include file="dynamite/common/adbox.phtml"%}
+
+            {%include file="dynamite/common/charaAreaBox.phtml"%}
+            {%include file="dynamite/item.phtml"%}
+
+        </div><!--/#subColumn-->
+
+    </div><!--/#wrap-->
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/dynamite/js/index.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/dynamite/js/item.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/dynamite/js/help.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/dynamite/js/rank.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/dynamite/js/init.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/dynamite/js/common.js?{%$version.js%}"></script>
+{%include file="dynamite/common/footer.phtml"%}

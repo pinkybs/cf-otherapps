@@ -1,0 +1,106 @@
+{%include file="scripteditor/common/header.phtml"%}
+
+{%include file="scripteditor/common/codejsbox.phtml"%}
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/entry.js?{%$version.js%}"></script>
+
+<body id="editor">
+{%include file="topad.phtml"%}
+<div id="continer">
+
+	{%include file="scripteditor/common/topbox.phtml"%}
+	
+	<div id="mainColumn">
+	
+		{%include file="scripteditor/common/searchbox.phtml"%}
+		
+		<div id="wrap">
+			
+			<h1><img src="{%$staticUrl%}/apps/scripteditor/img/tit_entry.png" width="121" height="20" alt="エントリー" /></h1>
+			
+			<div class="inner">
+				
+				<h2 id="ctitle">{%$entryInfo.title|escape%}</h2>
+				
+				<input type="hidden" id="txtId" value="{%$entryInfo.eid%}">
+				
+				<div id="entryStatus" class="box">
+					<ul class="status"><!--
+						--><li class="name"><a href="{%$baseUrl%}/scripteditor/profile/uid/{%$entryInfo.uid%}" id="nickname">{%if $entryInfo.nickname%}{%$entryInfo.nickname%}{%else%}{%$entryInfo.displayName%}{%/if%}</a></li><!--
+						--><li class="date"><label id="create_time">{%$entryInfo.create_time|date_format:"%y/%m/%d %H:%M"%}</label></li><!--
+						--><li class="run"><a href="javascript:void(0);" onclick="runCode('{%$entryInfo.language%}','#inputCode_{%$entryInfo.eid%}')">プログラムを実行</a></li><!--
+					--></ul>
+					
+					{%if $arrTag.0%}
+					<ul id="tags"><!--
+					   {% foreach from=$arrTag item=tag %}
+						--><li><a href="{%$baseUrl%}/scripteditor/search?search={%$tag|escape%}">{%$tag|escape%}</a></li><!--
+					   {% /foreach %}
+					--></ul>
+					{%/if%}
+				</div><!--/#status-->
+				
+				<div id="entryCode" class="box">
+					<h3>ソースコード（PHP）</h3>
+					<pre><textarea name="code" id="inputCode_{%$entryInfo.eid%}" class="css" disabled="disabled">{%$entryInfo.content|escape%}</textarea></pre>
+					<ul class="btnList"><!--
+						--><li id="btnRun"><a href="javascript:void(0);" onclick="runCode('{%$entryInfo.language%}','#inputCode_{%$entryInfo.eid%}')">プログラムを実行</a></li><!--
+						--><li id="btnFollow"><a href="{%$baseUrl%}/scripteditor/follow/eid/{%$entryInfo.eid%}">Followする</a></li><!--
+						--><li id="btnDownload"><a href="javascript:void(0);" onclick="jQuery.entry.download();" >ダウンロード</a></li><!--
+					--></ul>
+				</div><!--/#entryCode-->
+				
+				<div id="entryPaste" class="box">
+					<h3>このエントリーをブログに貼り付け</h3>
+					<input type="text" id="codePaste" value="{%$showEntry|escape%}" onclick="this.select();" readonly />
+				</div>
+				
+				{%if $entryFollowList%}
+				<div id="follows" class="box">
+				
+					<h3>このエントリーへのFollow</h3>
+				    
+				    {% foreach from=$entryFollowList item=follow %}
+					<div class="follow">
+						<div class="hdr">
+							<h4><a href="{%$baseUrl%}/scripteditor/entry/eid/{%$follow.eid%}">{%$follow.title|escape|truncatejp:20:"…"%}{%if $follow.follow_count%}({%$follow.follow_count%}){%/if%}</a></h4>
+							<ul class="status"><!--
+								--><li class="name"><a href="{%$baseUrl%}/scripteditor/profile/uid/{%$follow.uid%}">{%if $follow.nickname%}{%$follow.nickname%}{%else%}{%$follow.displayName%}{%/if%}</a></li><!--
+								--><li class="date">{%$follow.create_time|date_format:"%y/%m/%d %H:%M"%}</li><!--
+							--></ul>
+						</div><!--/.hdr-->
+						<textarea name="code" class="html" rows="6" disabled="disabled">{%$follow.content|escape%}</textarea>
+					</div><!--/.follow-->
+					{% foreachelse %}
+					   <p class="null"><img src="{%$staticUrl%}/apps/scripteditor/img/btn_null.png" width="310" height="50" alt="まだPHPみたいです。" /></p>
+					{% /foreach %}
+					
+				</div><!--/.box-->
+				{%/if%}
+				<input type="hidden" id="followCount" value="{%$entryFollowCount%}">
+			</div><!--/.inner-->
+			
+		</div><!--/#wrap-->
+				
+	</div><!--/#mainColumn-->
+	
+    {%include file="scripteditor/common/subauthorbox.phtml"%}
+    <script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/coderun.js?{%$version.js%}"></script>
+    <script type="text/javascript">
+       function runCode(language, contentid) {
+           var nickname = jQuery('#nickname').html();
+           var title = jQuery('#ctitle').html();
+           var content = jQuery(contentid).val();
+           var time = jQuery('#create_time').text();
+           var keys = ['nickname', 'title', 'language', 'content', 'time'];
+           var values = [nickname, title, language, content, time];      
+           jQuery.coderun.showDialog(keys, values);
+       }
+    </script>  
+    <script type="text/javascript">
+       jQuery(function($){
+           dp.SyntaxHighlighter.HighlightAll('code');
+           adjustHeight();
+       });
+    </script>
+{%include file="scripteditor/common/footer.phtml"%}

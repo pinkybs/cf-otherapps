@@ -1,0 +1,96 @@
+{%include file="hotel/common/header.phtml"%}
+<style type="text/css">
+        a:link{color:#a77809;}
+        a:visited{color:#a77809;}
+        *{color:#000000;font-size:x-small;font-size:5;}
+        .icon{vertical-align: middle;}
+        a img {border: none;}
+        body {
+            background: #ffffff;
+        }
+        .hrYellow {
+            color:#fbf8c9;
+            border: 0;
+            background-color:#fbf8c9;
+            height:1px;
+            margin:0.3em 0;
+        }
+        .hrWhite {
+            color:#ffffff;
+            border: 0;
+            background-color:#ffffff;
+            height:1px;
+            margin:0.3em 0;
+        }
+        .hrSp {
+            background-color:#fdd89e;
+            color:#fdd89e;
+            height:1px;
+            border:0px solid #fdd89e;
+            margin:0.3em 0;
+        }
+        #mixiHeader {
+            background:#fbb03b;
+        }
+        .headlineFun {
+            background:#cf1226;
+            color:#ffffff;
+        }
+        .headlineBack {
+            background:#f6ddbc;
+        }
+        .headlineTip {
+            background:#fdd89e;
+            color:#000000;
+        }
+        .toTop {
+            background-color:#ffffff;
+        }
+        #copyright {
+            background:#fbb03b;
+        }
+        #ranking {
+            background-color:#fbf8c9;
+        }
+        .tdBg {
+            background-color:#d2d0bc;
+        }
+    </style>
+<div id="enemyList">
+        <hr class="hrYellow" size="1" />
+        <div class="headlineTip">使者を追払う</div>
+        <hr  class="hrYellow" size="1" />
+        <div class="description">
+                        使者を追払う使者を追払う使者を追払う使者を追払う使者を追払う
+        </div><!--/.description-->
+        <span style="color:red">{%$message%}</span>
+        {% if $spylist %}
+            {% foreach from=$spylist item=data key=key %}
+                <div class="section">
+                    <table {% if ($key%2) == 0 %}class="tdBg"{%/if%} width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td width="60" valign="top" align="center" style="width:60px;text-align:center;vertical-align:top;">
+                                <img src="{%$staticUrl%}/apps/hotel/mobile/img/item1.gif" width="60" height="60" />
+                            </td>
+                            <td>
+                                {% if $data.displayName %}
+                                    {%$data.index%}号使者正在{%$data.displayName%}さん屋<br /><br/>
+                                         获利 ： {%$data.money%} 円<br/>
+                                    <span style="color:#ff9933;">⇒</span>
+                                    <a href='{% "$baseUrl/mobile/hotel/myspylist?CF_index=`$data.index`"|mixiurl %}' title="{%$data.money%}">召回</a>
+                                {%else%}
+                                    {%$data.index%}号何もない
+                                {%/if%}
+                            </td>
+                        </tr>
+                    </table>
+                </div><!--/.section "-->
+            {% /foreach %}
+        {% /if%}
+        <hr class="hrYellow" size="1" />
+        <!--<div class="toTop">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/profile"|mixiurl %}'>トップへ戻る</a>&nbsp;
+        </div>/.toTop-->
+    </div><!--/#mymixilist-->
+{%include file="hotel/common/menu.phtml"%}
+{%include file="hotel/common/footer.phtml"%}

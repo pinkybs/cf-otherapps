@@ -1,0 +1,89 @@
+{% if $action == 'start' %}
+	{% include file="ship/common/header.phtml" headerAd=0 %}
+	<div id="buyShip">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			購入確認<br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		</div><!--/.headline-->
+		<div class="commodity" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/ship/img/ship/{%$shipInfo.cav_name%}.gif" width="200" height="120" style="margin:3px 0;" /><br />
+		</div><!--/.commodity-->
+		<div class="inner">
+			<span style="color:#9e623a;">購入する商品</span><br />
+			<div style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			{% emoji code="F947"%}<span style="color:#7c4825;">海賊船 {%$shipInfo.name%}号</span><br />
+			価　格:{%if $shipInfo.price%}${%$shipInfo.price|outputdollars%}{%/if%}{%if $shipInfo.diamond%}/ﾀﾞｲﾔ {%$shipInfo.diamond%}ｺ{%/if%}<br />
+			強奪率:{%$shipInfo.times*100%}%<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#9e623a;">購入後のｽﾃｰﾀｽ</span><br />
+			<div style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			所有船:{%$shipUser.ship_count%}→{%$shipUser.ship_count+1%}<br />
+			{% if $shipInfo.price %}
+			  金　貨:${%$shipUser.asset|outputdollars%}→<span style="color:#cd424a;">{%if $remainAssetPrice < 0%}金貨不足{%else%}${%$remainAssetPrice|outputdollars%}{%/if%}</span><br />
+		    {% /if %}
+		    {% if $shipInfo.diamond %}
+		          ﾀﾞｲﾔ:{%$shipUser.asset_diamond%}→<span style="color:#cd424a;">{%if $remainAssetDiamond < 0%}ﾀﾞｲﾔ不足{%else%}{%$remainAssetDiamond%}{%/if%}</span><br />
+		    {% /if %}
+		</div><!--/.inner-->
+		<div class="submit" style="text-align:center;">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		    {% if $remainAssetPrice < 0 %}
+			    <span style="color:#cd424a;">金貨が足りません!</span><br />
+			{% /if %}
+			{% if $remainAssetDiamond < 0 %}
+			    <span style="color:#cd424a;">ﾀﾞｲﾔが足りません!</span><br />
+			{% /if %}
+            {% if $remainAssetPrice >= 0 || $remainAssetDiamond >= 0 %}
+			<form method="post" action='{% "$baseUrl/mobile/ship/buyship/CF_shipId/`$shipInfo.sid`/CF_step/complete/CF_payType/1"|mixiurl %}'>
+			    <!-- {% if $remainAssetPrice >= 0 && $shipInfo.price > 0 %}
+			    <input name="CF_payType" type="radio" value="1" checked="checked" />金貨
+			    {% /if %}
+			    {% if $remainAssetDiamond >= 0 && $shipInfo.diamond > 0 %}
+			       <input name="CF_payType" type="radio" value="2" {%if $remainAssetPrice < 0 %}checked="checked"{%/if%} />ﾀﾞｲﾔ
+			    {% /if %} -->
+				<input type="submit" value=" 購入する " />
+			</form>
+			{% /if %}
+		</div><!--/.submit-->
+		<div class="nomenuAlert">
+			<br />
+			直前のﾍﾟｰｼﾞは{% emoji code="F8E9" %}の<span style="color:#cd424a;">[戻るﾎﾞﾀﾝ]</span>でお戻りください<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		</div><!--/.nomenuAlert-->
+	</div><!--/#buyShip-->
+	{% include file="ship/common/footer.phtml" footerAd=0 %}
+{% elseif $action == 'complete' %}
+	{% include file="ship/common/header.phtml" %}
+	<div id="buyShip">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			購入完了<br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		</div><!--/.headline-->
+		<div class="description">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			{% if $result.status == 1 %}
+				<span style="color:#7c4825;">海賊船 {%$result.shipName|escape%}号</span>を造船しました!<br />
+				{%if $result.assetType==1%}
+					金貨が<span style="color:#cd424a;">${%$result.remainAsset|outputdollars%}</span>になりました｡<br />
+				{%else%}
+					ﾀﾞｲﾔが<span style="color:#cd424a;">{%$result.remainAsset%}ｺ</span>になりました｡<br />
+				{%/if%}
+			{% elseif $result.status == -4 %}
+				船は8隻までしか所有できません<br />
+			{% else %}
+				すでに造船が完了しています<br />
+			{% /if %}
+		</div><!--/.description-->
+		<div class="link">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/rankingfriend"|mixiurl %}'>さっそくﾏｲﾐｸの島を攻めにいく!</a><br />
+			<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/shipfactory"|mixiurl %}'>続けて造船する</a><br />
+		</div><!--/.link-->
+	</div><!--/#buyShip-->
+	{%include file="ship/common/menu.phtml"%}
+	{%include file="ship/common/footer.phtml"%}
+{% /if %}

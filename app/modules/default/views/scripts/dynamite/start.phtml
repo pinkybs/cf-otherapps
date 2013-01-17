@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>どきどきダイナマイトパニック</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+    <link rel="stylesheet" href="{%$staticUrl%}/apps/dynamite/css/import.css" type="text/css" media="print,screen" />
+    <link rel="stylesheet" href="{%$staticUrl%}/apps/dynamite/css/start.css" type="text/css" media="print,screen" />
+
+    <script type="text/javascript" src="{%$staticUrl%}/cmn/js/jquery.min.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/cmn/js/jquery.mousewheel.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/cmn/js/jquery.em.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/apps/dynamite/js/jScrollPane.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/apps/dynamite/js/main.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/cmn/js/commonjquery.js?{%$version.js%}"></script>
+
+    <script type="text/javascript" language="javascript" src="{%$smarty.const.MIXI_HOST%}/static/js/platform/json.js?1228977457"></script>
+    <script type="text/javascript" language="javascript" src="{%$smarty.const.MIXI_HOST%}/static/js/platform/rpc.js?1228977457"></script>
+    <script type="text/javascript" language="javascript">
+        gadgets.rpc.setRelayUrl('..', "{%$mixi_platform_api_url%}", false);
+
+        function adjustHeight(height) {
+            if (!height) {
+                var height =  document.documentElement.scrollHeight;
+                if (jQuery.browser.mozilla) {
+                    var offsetHeight = document.documentElement.offsetHeight;
+                    //var clientHeight = document.documentElement.clientHeight;
+                    //mozilla
+                    //content true height
+                    //scrollHeight, offsetHeight,
+                    //but scrollHeight >= clientHeight, offsetHeight can little than clientHeight
+                    if (offsetHeight < height) {
+                        height = offsetHeight;
+                    }
+                }
+            }
+            CurrentHeight = height;
+
+            if (jQuery.browser.safari) {
+               window.setTimeout(function() {
+                   gadgets.rpc.call(null, 'remote_adjustHeight', null, CurrentHeight);
+               }, 100);
+            }
+            else {
+                gadgets.rpc.call(null, 'remote_adjustHeight', null, height);
+            }
+        }
+    </script>
+
+</head>
+
+<body id="start" onload="adjustHeight();">
+    {%include file="topad.phtml"%}
+
+<div id="container">
+
+<!--page1-->
+<div id="startView">
+	<div id="mainBox">
+		<div class="linkText start"><a href="/dynamite/index"><img src="{%$staticUrl%}/apps/dynamite/img/start/text_start.png" alt="ゲームスタート" /></a></div>
+		<div class="linkText help"><a href="/dynamite/help"><img src="{%$staticUrl%}/apps/dynamite/img/start/text_help.png" alt="ゲームの遊び方" /></a></div>
+	</div>
+	<div id="copyrightBox"><img src="{%$staticUrl%}/apps/dynamite/img/start/copyright.png" alt="Community Factory inc. All Rights Reserved." /></div>
+</div>
+
+</div><!--/#container-->
+
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-1572579-42");
+        pageTracker._trackPageview();
+    }
+    catch(err) {}
+</script>
+
+</body>
+</html>
+

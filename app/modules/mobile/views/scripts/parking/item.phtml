@@ -1,0 +1,197 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="itemList">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">ｱｲﾃﾑ一覧</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		ｱｲﾃﾑを使って､ｹﾞｰﾑを有利に進めましょう{% emoji code="F99F"%}<br />
+	</div><!--/.description-->
+
+	<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+	{%foreach from=$userItemInfo item=rowdata key=index%}
+		<div class="section" {%if ($index%2)==0 %}style="background:#fee;"{%else%}style="background:#ffe;"{%/if%}>
+			<span style="color:#cd424a;">{% emoji code="F9A3"%}{%$rowdata.name%}×{%$rowdata.count%}</span><br />
+			<table width="220" cellpadding="2" cellspacing="1" border="0" align="center" style="text-align:center;">
+				<tr>
+					<td style="text-align:left;"><div style="font-size:x-small;">{%$rowdata.introduce%}</div></td>
+				</tr>
+			</table>
+			<div style="color:#999;text-align:right;">
+				{% if ($rowdata.sid==1) %}
+					{% if ($havaFreePark==0)%}
+						使用中&nbsp;
+					{% else %}
+						{%if ($rowdata.count>0)%}
+							<a href='{% "$baseUrl/mobile/parking/useitemconform?parking_id=1"|mixiurl %}'>使用する</a>&nbsp;
+						{%elseif ($rowdata.count==0) %}
+							{%if $rowdata.price>$userAsset%}
+								ｱｲﾃﾑｼｮｯﾌﾟで購入&nbsp;
+							{%else%}
+								<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=1"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟで購入</a>&nbsp;
+							{%/if%}
+						{%/if%}
+					{%/if%}
+				{% /if %}
+
+				{%if $rowdata.sid==2 %}
+					{%if ($rowdata.count>0)%}
+						使用可&nbsp;
+					{%elseif ($rowdata.count==0) %}
+						{%if $rowdata.price > $userAsset%}
+							ｱｲﾃﾑｼｮｯﾌﾟで購入&nbsp;
+						{%else%}
+							<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=2"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟで購入</a>&nbsp;
+						{%/if%}
+					{%/if%}
+				{%/if%}
+
+				{%if $rowdata.sid==3%}
+					{%if $rowdata.count>0%}
+						{%if ($last_bribery_time<=3)%}使用中&nbsp;{%/if%}
+						{%if ($last_bribery_time>3)%}<a href='{% "$baseUrl/mobile/parking/useitemconform?parking_id=3"|mixiurl %}'>使用する</a>&nbsp;{%/if%}
+					{%/if%}
+					{%if $rowdata.count==0%}
+						{%if ($last_bribery_time<=3)%}
+							使用中&nbsp;
+						{%elseif $rowdata.price<=$userAsset%}
+							<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=3"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟで購入</a>&nbsp;
+						{%else%}
+							ｱｲﾃﾑｼｮｯﾌﾟで購入&nbsp;
+						{%/if%}
+					{%/if%}
+				{%/if%}
+
+				{%if $rowdata.sid==4 %}
+					{%if ($rowdata.count>0)%}
+						使用可&nbsp;
+					{%elseif ($rowdata.count==0) %}
+						{%if $rowdata.price > $userAsset%}
+							ｱｲﾃﾑｼｮｯﾌﾟで購入&nbsp;
+						{%else%}
+							<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=4"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟで購入</a>&nbsp;
+						{%/if%}
+					{%/if%}
+				{%/if%}
+
+				{% if ($rowdata.sid==5) %}
+					{%if ($rowdata.count>0)%}
+						<a href='{% "$baseUrl/mobile/parking/useitemconform?parking_id=5"|mixiurl %}'>使用する</a>&nbsp;
+					{%elseif ($rowdata.count==0) %}
+						{%if $rowdata.price > $userAsset%}
+							ｱｲﾃﾑｼｮｯﾌﾟで購入&nbsp;
+						{%else%}
+							<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=5"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟで購入</a>&nbsp;
+						{%/if%}
+					{%/if%}
+				{%/if%}
+
+				{%if $rowdata.sid==6%}
+					{%if $rowdata.count>0%}
+						{%if ($last_check_time<=1)%}使用中&nbsp;{%/if%}
+						{%if ($last_check_time>1)%}<a href='{% "$baseUrl/mobile/parking/useitemconform?parking_id=6"|mixiurl %}'>使用する</a>&nbsp;{%/if%}
+					{%/if%}
+					{%if $rowdata.count==0%}
+						{%if ($last_check_time<=1)%}
+							使用中&nbsp;
+						{%elseif $rowdata.price<=$userAsset%}
+							<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=6"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟで購入</a>&nbsp;
+						{%else%}
+							ｱｲﾃﾑｼｮｯﾌﾟで購入&nbsp;
+						{%/if%}
+					{%/if%}
+				{%/if%}
+
+				{% if ($rowdata.sid==7)%}
+					{%if ($rowdata.count>0)%}
+						{%if ($rowdata.insurance_card == 0)%}
+							<a href='{% "$baseUrl/mobile/parking/useitemconform?parking_id=7"|mixiurl %}'>使用する</a>&nbsp;
+						{%/if%}
+						{%if ($rowdata.insurance_card == 1)%}
+							使用中&nbsp;
+						{%/if%}
+					{%/if%}
+					{%if ($rowdata.count == 0)%}
+						{%if ($rowdata.insurance_card == 1)%}
+							使用中&nbsp;
+						{%elseif $rowdata.price<=$userAsset%}
+							<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=7"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟで購入</a>&nbsp;
+						{%else%}
+							ｱｲﾃﾑｼｮｯﾌﾟで購入&nbsp;
+						{%/if%}
+					{%/if%}
+				{%/if%}
+
+				{%if $rowdata.sid==8%}
+					{%if $rowdata.count>0%}
+						{%if ($last_evasion_time<=2)%}使用中&nbsp;{%/if%}
+						{%if ($last_evasion_time>2)%}<a href='{% "$baseUrl/mobile/parking/useitemconform?parking_id=8"|mixiurl %}'>使用する</a>&nbsp;{%/if%}
+					{%/if%}
+					{%if $rowdata.count==0%}
+						{%if ($last_evasion_time<=2)%}
+							使用中&nbsp;
+						{%elseif $rowdata.price<=$userAsset%}
+							<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=8"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟで購入</a>&nbsp;
+						{%else%}
+							ｱｲﾃﾑｼｮｯﾌﾟで購入&nbsp;
+						{%/if%}
+					{%/if%}
+				{%/if%}
+
+				{%if $rowdata.sid==9%}
+					{%if ($rowdata.count>0)%}
+						<a href='{% "$baseUrl/mobile/parking/useitemconform?parking_id=9"|mixiurl %}'>使用する</a>&nbsp;
+					{%elseif ($rowdata.count==0) %}
+						{%if $rowdata.price > $userAsset%}
+							ｱｲﾃﾑｼｮｯﾌﾟで購入&nbsp;
+						{%else%}
+							<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=9"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟで購入</a>&nbsp;
+						{%/if%}
+					{%/if%}
+				{%/if%}
+
+				{% if ($rowdata.sid==10)%}
+					{%if ($rowdata.count>0)%}
+					   {%if $hasBreakCar == 1 %}
+						<a href='{% "$baseUrl/mobile/parking/userepair"|mixiurl %}'>使用する</a>&nbsp;
+						{%else%}
+						<span style="color:#999;">使用する</span>&nbsp;
+						{%/if%}
+					{%elseif ($rowdata.count==0) %}
+						{%if $rowdata.price > $userAsset%}
+							ｱｲﾃﾑｼｮｯﾌﾟで購入&nbsp;
+						{%else%}
+							<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=10"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟで購入</a>&nbsp;
+						{%/if%}
+					{%/if%}
+				{%/if%}
+
+				{% if ($rowdata.sid==11)%}
+					{%if $rowdata.count > 0%}
+						{% if ($haveFriends != null && $haveFriends != '')%}
+							<a href='{% "$baseUrl/mobile/parking/useyankee"|mixiurl %}'>使用する</a>&nbsp;
+						{%else%}
+							使用する&nbsp;
+						{%/if%}
+					{%/if%}
+					{%if $rowdata.count == 0%}
+						{%if $rowdata.price > $userAsset%}
+							ｱｲﾃﾑｼｮｯﾌﾟで購入&nbsp;
+						{%else%}
+							<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=11"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟで購入</a>&nbsp;
+						{%/if%}
+					{%/if%}
+				{%/if%}
+			</div>
+			<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+		</div><!--/.section-->
+	{%/foreach%}
+
+</div><!--/#itemList-->
+
+{%include file="parking/common/footer.phtml"%}

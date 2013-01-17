@@ -1,0 +1,27 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="parking">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">駐車失敗</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%$message%}<br />
+	</div><!--/.description-->
+
+	<div class="car" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/car/{%$cav_name%}/m/normal/{%$car_color%}.gif" width="200" height="100" /><br />
+	</div><!--/.car-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/start?opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&parking_pid=$pid&parking_rand=$rand"|mobile_flashurl %}'>{%$parking_user%}の駐車場にもどる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#parking-->
+
+{%include file="parking/common/footer.phtml"%}

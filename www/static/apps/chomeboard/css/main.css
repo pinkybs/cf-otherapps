@@ -1,0 +1,393 @@
+/* @override http://mixitest.linno.jp/static/apps/chomeboard/css/main.css */
+
+@charset "utf-8";
+
+/*
+----------------------------------------------
+ChomeChome Board main CSS
+
+Created Date: 2009/04/30
+Author: Yu Uno
+Last Up Date : 2009/06/04
+Author: Yu Uno
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+
+* {
+	outline: none;
+}
+
+body,html {
+    overflow-y:hidden;
+	/*height: 100%;*/
+}
+
+body {
+	color: #333333;
+}
+
+a:link,a:hover {
+	color: #429EC1;
+}
+a:link,a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+img {
+	display: block;
+}
+
+/*column
+----------------------------------------------*/
+#continer {
+	width: 945px;
+}
+
+#friendsColumn {
+	display: inline;
+	float: left;
+	width: 211px;
+	margin-bottom: 12px;
+}
+	#friendsColumn .inner {
+		height: 502px;
+		overflow: auto;
+	}
+#boardColumn {
+	display: inline;
+	position: relative;
+	float: right;
+	width: 723px;
+	height: 502px;
+	background: url(../img/swf_dammy.png) no-repeat left bottom;
+}
+
+
+/*#boardColumn
+----------------------------------------------*/
+#boardColumn #alertBox {
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	padding: 3px 5px;
+	width: 480px;
+	background: #FF6200;
+	font-size: 14px;
+	color: #FFFFFF;
+	line-height: 1.3;
+}
+	#boardColumn #alertBox a {
+		color: #FFFFFF;
+	}
+	#boardColumn #alertBox a:link,
+	#boardColumn #alertBox a:visited {
+		text-decoration: underline;
+	}
+	#boardColumn #alertBox a:hover {
+		text-decoration: none;
+	}
+
+#boardColumn #board {
+	width: 502px;
+	height: 502px;
+	background: no-repeat 1px 1px;
+}
+
+
+/*#friendsColumn
+----------------------------------------------*/
+#friendsColumn ul {
+	float: right;
+}
+	#friendsColumn ul li {
+		margin-bottom: 5px;
+	}
+		#friendsColumn ul li a {
+			display: block;
+			padding-top: 12px;
+			width: 186px;
+			height: 88px;
+			background: url(../img/author_bg.png) no-repeat left top;
+		}
+		#friendsColumn ul li.active a {
+			background-position: left bottom;
+		}
+			#friendsColumn ul li a span {
+				display: block;
+				margin: 0 auto;
+				padding: 0;
+				width: 72px;
+				height: 72px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-color: #FFFFFF;
+			}
+
+
+.jScrollPaneContainer {
+	z-index: 100;
+}
+.jScrollPaneTrack {
+	background: #FFFFFF url(../img/slider_bg.png) no-repeat center top;
+}
+.jScrollPaneDrag {
+	background: url(../img/slider_middle.png) no-repeat 0 50%;
+}
+.jScrollPaneDragTop {
+	right: -1px;
+	background: url(../img/slider_top.png) no-repeat center bottom;
+	height: 5px;
+}
+.jScrollPaneDragBottom {
+	background: url(../img/slider_bottom.png) no-repeat center top;
+	height: 5px;
+}
+
+
+
+
+
+
+/*#rankingArea
+----------------------------------------------*/
+
+#rankingArea {
+	clear: both;
+	position: relative;
+	margin: 0 0 5px;
+	padding: 4px 5px 5px;
+	min-height: 140px;
+	_height: 140px;/*IE6*/
+	background-color: #9B9B9B;
+}
+	#rankingArea .loading {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 150px;
+	}
+		#rankingArea .loading img {
+			margin: 40px auto 0;
+		}
+
+/*#wrap*/
+#rankingArea #wrap {
+	position: relative;
+	padding: 11px 10px 10px;
+	min-height: 98px;
+	_height: 98px;/*IE6*/
+	overflow: hidden;
+	background-color: #FFFFFF;
+}
+	#rankingArea #wrap .ui-tabs-hide {
+		display: none;
+	}
+	#rankingArea #wrap #topRanking {
+		position: absolute;
+		right: 6px;
+		width: 116px;
+		overflow: hidden;
+	}
+	#rankingArea #wrap #otherRanking {
+		position: relative;
+		left: 49px;
+		width: 695px;
+		overflow: hidden;
+	}
+	#rankingArea #wrap ul#rankingLeftNav,
+	#rankingArea #wrap ul#rankingRightNav {
+		width: 40px;
+		top: 43px;
+		height: 65px;
+	}
+		#rankingArea #wrap ul#rankingLeftNav li,
+		#rankingArea #wrap ul#rankingRightNav li {
+			cursor: pointer;
+		}
+			#rankingArea #wrap ul#rankingLeftNav li,
+			#rankingArea #wrap ul#rankingRightNav li {
+				display: block;
+				width: 40px;
+				height: 31px;
+				background-image: url(../img/ctrl.gif);
+				background-repeat: no-repeat;
+			}
+			#rankingArea #wrap ul#rankingLeftNav li#toUnder,
+			#rankingArea #wrap ul#rankingRightNav li#toTop {
+				margin: 0 0 3px;
+			}
+			#rankingArea #wrap ul#rankingLeftNav li#toUnder {
+				background-position: 0 0;
+			}
+			#rankingArea #wrap ul#rankingLeftNav li#toUnderMore {
+				background-position: 0 -31px;
+			}
+			#rankingArea #wrap ul#rankingRightNav li#toTop {
+				background-position: -40px 0;
+			}
+			#rankingArea #wrap ul#rankingRightNav li#toTopMore {
+				background-position: -40px -31px;
+			}
+	#rankingArea #wrap ul#rankingLeftNav {
+		position: absolute;
+		left: 10px;
+	}
+	#rankingArea #wrap ul#rankingRightNav {
+		position: absolute;
+		right: 132px;
+	}
+		#rankingArea #wrap ul#rankingRightNav #navi {
+			
+		}
+		#rankingArea #wrap #otherRanking ol {
+			position: relative;
+			width: 10000px;
+		}
+			#rankingArea #wrap ol li {
+				position: relative;
+				display: inline;
+				float: left;
+				margin: 0 4px;
+				width: 50px;
+				overflow: hidden;
+			}
+				#rankingArea #wrap ol li p.ranking {
+					margin: 0 0 2px;
+					text-align: center;
+					font: bold 16px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+					line-height: 1em;
+				}
+				#rankingArea #wrap ol li p.name {
+					margin: 0 0 4px;
+					font-size: 10px;
+					line-height: 1em;
+					white-space: nowrap;
+				}
+				#rankingArea #wrap ol li p.pic {
+				}
+					#rankingArea #wrap ol li p.pic img {
+						vertical-align: bottom;
+					}
+				#rankingArea #wrap ol li p.plice {
+					padding: 2px 0 3px;
+					background-color: #000000;
+					text-align: center;
+					font: bold 10px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+					line-height: 1em;
+					color: #FFFFFF;
+				}
+				#rankingArea #wrap ol li p.icon {
+					position: absolute;
+					top: 64px;
+					left: 30px;
+					width: 16px;
+					height: 16px;
+				}
+				
+				
+#rankingTabs {
+	position: relative;
+}
+
+#totalRankingTab a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 165px;
+	height: 20px;
+	background: url(../img/rank_board.png) no-repeat left bottom;
+	text-indent: -9999px;
+}
+#totalRankingTab a.active,
+#totalRankingTab a:hover {
+	background-position: left top;
+}
+
+#carsRankingTab a {
+	position: absolute;
+	top: 0;
+	left: 165px;
+	display: block;
+	width: 166px;
+	height: 20px;
+	background: url(../img/rank_author.png) no-repeat left bottom;
+	text-indent: -9999px;
+}
+#carsRankingTab a.active,
+#carsRankingTab a:hover {
+	background-position: left top;
+}
+
+#allSphereTabs a {
+	position: absolute;
+	display: block;
+	top: 3px;
+	right: 105px;
+	width: 100px;
+	height: 17px;
+	background: url(../img/global.png) no-repeat left bottom;
+	text-indent: -9999px;
+}
+#allSphereTabs a.active,
+#allSphereTabs a:hover {
+	background-position: left top;
+}
+
+#friendSphereTabs a {
+	position: absolute;
+	display: block;
+	top: 3px;
+	right: 0;
+	display: block;
+	width: 100px;
+	height: 17px;
+	background: url(../img/local.png) no-repeat left bottom;
+	text-indent: -9999px;	
+}
+#friendSphereTabs a.active,
+#friendSphereTabs a:hover {
+	background-position: left top;
+}
+
+
+
+
+
+address#copyright {
+	font-size:  12px;
+}
+
+
+/* add @yhirano
+-------------------------- */
+#continer #chomeHead {
+	background:transparent url(../img/owner.png) repeat scroll 0 0;
+	height:37px;
+	margin:0 0 10px 0;
+}
+#continer #chomeHead p.pic{
+	float: left;
+	padding: 5px 7px 5px 10px;
+}
+#continer #chomeHead p.pic img{
+	display: block;
+}
+#continer #chomeHead h1{
+	padding: 10px 0;
+}
+
+
+
+
+
+
+

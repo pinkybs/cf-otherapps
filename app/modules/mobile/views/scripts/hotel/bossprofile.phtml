@@ -1,0 +1,139 @@
+{%include file="hotel/common/header.phtml"%}
+<style type="text/css">
+    a:link{color:#a77809;}
+    a:visited{color:#a77809;}
+    *{color:#000000;font-size:x-small;font-size:5;}
+    .icon{vertical-align: middle;}
+    a img {border: none;}
+
+    body {
+        background: #ffffff;
+    }
+
+    .hrYellow {
+        color:#fbf8c9;
+        border: 0;
+        background-color:#fbf8c9;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrWhite {
+        color:#ffffff;
+        border: 0;
+        background-color:#ffffff;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrSp {
+        background-color:#fdd89e;
+        color:#fdd89e;
+        height:1px;
+        border:0px solid #fdd89e;
+        margin:0.3em 0;
+    }
+
+    #mixiHeader {
+        background:#fbb03b;
+    }
+
+    .headlineFun {
+        background:#cf1226;
+        color:#ffffff;
+    }
+
+    .headlineBack {
+        background:#f6ddbc;
+    }
+
+    .headlineTip {
+        background:#fdd89e;
+        color:#000000;
+    }
+
+    .toTop {
+        background-color:#ffffff;
+    }
+
+    #copyright {
+        background:#fbb03b;
+    }
+
+    .sectionImg {
+        background:#dedcc6;
+    }
+
+    .sectionList {
+        background:#fbf8c9;
+    }
+
+    .owner {
+        background:#fbf8c9;
+    }
+    </style>
+	<div id="profile">
+	<hr class="hrWhite" size="1" />
+        <div class="owner">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td valign="top" width="66" align="center" style="width:66px;text-align:center;">
+                        <img src="{%$staticUrl%}/apps/hotel/mobile/img/bossSmall.gif" style="margin:2px 0;" /><br/>
+                    </td>
+                    <td valign="top" style="padding-top:5px;">
+                                                店長<br />
+                        <span style="font-size:small;color:#ffcc00;">
+                            "受付に聞いてゲームのルールを分かれるそうです！"
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+	                 <td colspan="2">
+			                        ホテル名：{%$info.displayName%}ホテル<br/>
+						店 長  暦：24ヶ月<br/>
+						ス タ  ー：★★★<br/>
+	                  </td>
+                </tr>
+            </table>
+        </div><!--/.owner-->
+        <div style="height:10px;" class="setInterval"></div>
+        <div class="sectionImg">
+            <div><img src="{%$staticUrl%}/apps/hotel/mobile/img/bossRoom.gif" /></div>
+        </div><!--/.section-->
+        <div class="sectionList">
+            <hr class="hrSp" size="1" />
+            <div class="headline"><span style="color:#666666;">〓</span>店長室<span style="color:#666666;">〓</span></div>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="120" align="center" style="padding-top:5px;width:120px;text-align:center;"><img src="{%$staticUrl%}/apps/hotel/mobile/img/bossM.gif" width="100" height="59" /></td>
+                    <td style="padding-top:5px;"></td>
+                </tr>
+            </table>
+            <div class="hint" style="text-align:left;">
+                <span style="color:#ff9933;">⇒</span><a href="#">詳細を見る</a>&nbsp;
+            </div><!--/.hint-->
+        </div><!--/.section-->
+
+        <div class="sectionList">
+            <hr class="hrSp" size="1" />
+            <div class="headline"><span style="color:#666666;">〓</span>技能研究室<span style="color:#666666;">〓</span></div>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="120" align="center" style="padding-top:5px;width:120px;text-align:center;"><img src="{%$staticUrl%}/apps/hotel/mobile/img/system.gif" width="100" height="59" style="margin:2px 0;" /></td>
+                    <td style="color:#333333;">&nbsp;</td>
+                </tr>
+            </table>
+            <div class="description">
+                <div class="submit" style="text-align:left;">
+                    <span style="color:#ff9933;">⇒</span>
+                    <a href='{% "$baseUrl/mobile/hotel/techlist"|mixiurl %}'>詳細を見る</a>&nbsp;
+                </div>
+            </div><!--/.description-->
+        </div><!--/.section-->
+    </div><!--/#profile-->
+    <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+     <!--<div class="toTop">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/profile"|mixiurl %}'>トップへ戻る</a>&nbsp;
+        </div>/.toTop-->
+{%include file="hotel/common/menu.phtml"%}
+{%include file="hotel/common/footer.phtml"%}

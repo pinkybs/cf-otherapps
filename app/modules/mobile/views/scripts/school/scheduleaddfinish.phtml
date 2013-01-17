@@ -1,0 +1,26 @@
+{%include file="school/common/header.phtml" headAd=0 %}
+
+	<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+		<div id="changeSchedule">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<div class="headline" style="background:#b7cb6d;">
+				時間割編集({%$day%}曜日{%$part%}限)<br />
+				<div class="line" style="background:#e5efbd;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+				{%$message|escape%}<br />
+			</div><!--/.headline-->
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				{%$day%}曜日{%$part%}限に｢{%$classDisplay%}｣を{%if $message == '授業変更完了' %}変更{%else%}追加{%/if%}しました｡<br />
+			</div><!--/.description-->
+			{%include file="school/common/ad_complete.phtml"%}
+			<div class="footlink">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/schedule"|mixiurl %}'>続けて時間割を編集する</a><br />
+				<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/sflash?CF_uid=`$mineInfo.uid`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$mineInfo.uid`&rand=`$rand`"|mobile_flashurl %}'>時間割を見る</a><br />
+				{%if $action != 'delschedule'%}<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/class?CF_cid=`$cInfo.cid`"|mixiurl %}'>{%$cInfo.name|escape%}ﾄｯﾌﾟ</a><br />{%/if%}
+			</div><!--/.footlink-->
+		</div><!--/#changeSchedule-->
+		{%include file="school/common/menu.phtml"%}
+	</div><!--/#container-->
+
+{%include file="school/common/footer.phtml" footAd=0 %}

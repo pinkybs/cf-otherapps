@@ -1,0 +1,60 @@
+<div id="subColumn">
+    <div class="inner">
+        <div id="contactList" class="subBox">
+            <div class="inner">
+                <h2><img src="{%$staticUrl%}/apps/board/img/tit_contactList.gif" alt="マイミクシィのあしあと帳" /></h2>
+            <div id="picListBox" style="height:{%$picListBoxHeight%}px">
+            {%if $response!=null%}
+                <div id="picListScroll" class="picListScroll" style="left:0px; height:{%$picListBoxHeight%}px;width:{%$picListBoxWidth%}px;">
+                <div style="height:{%$picListBoxHeight%}px;"><ul class="picList">
+                {%foreach from=$response.info item=rowdata key=index%}
+                    {%if ($index!=0)&&(0==($index%$contactNumPerPage))%}
+                        </ul></div>
+                        <div style="height:{%$picListBoxHeight%}px;"><ul class="picList">
+                    {%/if%}
+
+                    {%if $bownerId == $rowdata.uid%}
+                        <li id="li{%$bownerId%}" class="active">
+                        {%else%}<li id="li{%$rowdata.uid%}" class="">
+                    {%/if%}
+                    {%if $rowdata.thumbnailUrl != ''%}
+                        <!--<a href="{%$baseUrl%}/board/list?uid={%$rowdata.uid%}">-->
+                        <a href="javascript:void(0)" onclick="javascript:viewFriendBoard('{%$rowdata.uid%}');">
+                        <img width="61" height="61" alt="{%$rowdata.displayName%}" title="{%$rowdata.displayName%}" src="{%$rowdata.thumbnailUrl%}"/></a></li>
+                        {%else%}
+                        <!--<a href="{%$baseUrl%}/board/list?uid={%$rowdata.uid%}">-->
+                        <a href="javascript:void(0);" onclick="javascript:viewFriendBoard('{%$rowdata.uid%}')">
+                        <img width="61" height="61" alt="{%$rowdata.displayName%}" title="{%$rowdata.displayName%}" src="{%$staticUrl%}/apps/board/img/user_pic.gif"/></a></li>
+                    {%/if%}
+                {%/foreach%}
+                </ul></div>
+                </div><!--/#scrollable-->
+            {%else%}
+                                    まだコンタクトがありません
+            {%/if%}
+
+            </div><!--/#picListBobx-->
+            </div>
+        </div><!--/#contactList-->
+        <div class="clearfix">
+            <p id="prevPage" class="prevPage" {%if $response.pageindex>1%}style="display:block;"{%else%}style="display:none;"{%/if%}><a href="javascript:void(0)" onclick="paging(-1);"><img src="{%$staticUrl%}/apps/board/img/btn_contactList_prev.jpg" alt="前を表示" /></a></p>
+            <p id="nextPage" class="nextPage" {%if $response.pageindex<$response.maxPage%}style="display:block;"{%else%}style="display:none;"{%/if%}><a href="javascript:void(0)" onclick="paging(1);"><img src="{%$staticUrl%}/apps/board/img/btn_contactList_next.jpg" alt="次を表示" /></a></p>
+        </div>
+        <div id="urlBox">
+            <div class="inner">
+                <h2><img src="{%$staticUrl%}/apps/board/img/tit_urlBox.png" alt="あしあと帳のURLを、プロフィールに貼り付けよう！" /></h2>
+                <p class="inputBlock"><input type="text" id="boardUrl" value="http://mixi.jp/run_appli.pl?id=4011&owner_id={%$uid%}"><input type="button" id="clip_button" value="URLをコピーする"></p>
+            </div>
+        </div><!--!/#urlBox-->
+    </div>
+</div><!--/#subColumn-->
+<a href="javascript:void(0)" onclick="invite()"> >>マイミクを招待する</a>
+
+<input type="hidden" id="contactMaxPager" name="contactMaxPager" value="{%$response.maxPage%}"/>
+<input type="hidden" id="contactPageIndex" name="contactPageIndex" value="{%$response.pageindex%}"/>
+<input type="hidden" id="rightCount" name="rightCount" value="0"/>
+<input type="hidden" id="leftCount" name="leftCount" value="0"/>
+
+<script  type="text/javascript" src="{%$staticUrl%}/apps/board/js/ZeroClipboard.js?{%$version.js%}"></script>
+<script  type="text/javascript" src="{%$staticUrl%}/apps/board/js/contactlist.js?{%$version.js%}"></script>
+

@@ -1,0 +1,34 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="itemShop">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+	<span style="color:#fff;">{%$itemInfo.name%}購入</span><br />
+	</div><!--/.headline-->
+
+	<div class="item">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">{% emoji code="F9A3"%}{%$itemInfo.name%}</span><br />
+		<div style="text-align:right;">¥{%$itemInfo.price|outputdollars%}&nbsp;</div>
+		<div class="commodity" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/parking/mimg/items/{%$itemInfo.sid%}_m.gif" width="156" height="100" style="margin:2px 0;" /><br />
+		</div><!--/.commodity-->
+		<table width="220" cellpadding="2" cellspacing="1" border="0" align="center" style="background:#ddd;text-align:center;">
+			<tr>
+				<td style="background:#ffe;text-align:left;"><div style="font-size:x-small;">{%$itemInfo.introduce%}</div></td>
+			</tr>
+		</table>
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#c00;">購入後の所持金:¥{%$remainAsset|outputdollars%}</span><br />
+		<div style="color:#999;text-align:right;"><a href='{% "$baseUrl/mobile/parking/buyitemsubmit?parking_cid=$cardId"|mixiurl %}'>購入する</a>&nbsp;</div>
+	</div><!--/.item-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/itemshop"|mixiurl %}'>ｱｲﾃﾑｼｮｯﾌﾟにもどる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#itemShop-->
+
+{%include file="parking/common/footer.phtml"%}

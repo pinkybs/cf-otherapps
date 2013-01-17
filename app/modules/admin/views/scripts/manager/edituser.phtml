@@ -1,0 +1,162 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+	<ul id="nav">
+		<li><a href="{%$baseUrl%}/manager/listapp">アプリケーション一覧</a></li>
+		<li><span>ユーザーID管理</span></li>
+		<li><a href="{%$baseUrl%}/manager/changepass">パスワード変更</a></li>
+		<li><a href="{%$baseUrl%}/auth/logout">ログアウト</a></li>
+	</ul>
+	<div id="container">
+		<h2>ユーザーID管理</h2>
+		<table width="100%" cellpadding="0" cellspacing="0" border="0" id="twoPain">
+			<tr>
+				<td>{%include file="manager/common/listuser.phtml"%}</td>
+
+				<th>
+					<h3><strong>ユーザー情報の編集</strong></h3>
+
+					<div id="step1">
+					<form method="post" id="frmEditUser">
+						<div class="description">
+							<p>既存ユーザーの登録情報変更および削除を行います。<br />
+								以下の項目を変更するか、削除ボタンをクリックしてください。</p>
+						</div><!--/.description-->
+
+						<div id="divError" class="error" style="display:none">
+							<p>エラーメッセージ</p>
+						</div><!--/.error-->
+						<ul>
+							<li><label for="#">名前：</label><br />
+								<input type="text" id="txtName" name="txtName" class="required"  maxlength="200" value="{% $userInfo.name %}"/></li>
+							<li><label for="#">メールアドレス：</label><br />
+								<input type="text" id="txtEmail" name="txtEmail" class="required-email validate-email" maxlength="200"  value="{% $userInfo.email %}" disabled/></li>
+							<li><label for="#">権限：</label><br />
+                                {% if 1 == $userRole %}
+								<select id="selAuth" name="selAuth" disabled>
+                                    <option value="1" selected="selected">superUser</option>
+                                </select>
+								{% else %}
+                                <select id="selAuth" name="selAuth">
+									<option value="" selected="selected">選択してください</option>
+									{% foreach from=$roles item=data %}
+									{% if 1!=$data.rid %}
+    									{% if $userRole == $data.rid %}
+    									<option value="{%$data.rid%}" selected>{%$data.role_name|escape%}</option>
+    									{% else %}
+                                        <option value="{%$data.rid%}">{%$data.role_name|escape%}</option>
+    									{% /if %}
+									{% /if %}
+									{% /foreach %}
+								</select>
+                                {% /if %}
+								</li>
+							<li><div id="divMulSelect">
+								<label for="#">利用範囲：</label><br />
+								{% foreach from=$userApps item=userapp key=key %}
+                                    {% if 1 == $userRole %}
+                                    <select id="selApp{% $key %}" name="selApp[]" disabled>
+                                    {% else %}
+                                    <select id="selApp{% $key %}" name="selApp[]">
+                                    {% /if %}
+    									<option value="" selected="selected">選択してください</option>
+    									{% foreach from=$apps item=data2 %}
+    									{% if $data2.aid == $userapp.aid%}
+    									<option value="{%$data2.aid%}" selected>{%$data2.app_name|escape%}</option>
+    									{% else %}
+                                        <option value="{%$data2.aid%}">{%$data2.app_name|escape%}</option>
+    									{% /if %}
+    									{% /foreach %}
+    								</select>
+    								{% if $key < $userAppCount-1 %}
+    								<br/>
+    								{% /if %}
+								{% /foreach %}
+                                {% if 1 == $userRole %}
+                                                                 ＋追加
+                                {% else %}
+                                <a href="javascript:void(0);" onclick="addRow();return false;">＋追加</a>
+                                {% /if %}
+								
+
+								</div></li>
+							 <li>
+							 {% if 1 == $userRole %}
+							     <input type="button" id="btnConfirm4delete" name="btnConfirm4delete" value="　このユーザーを削除する　" disabled/>
+							 {% else %}
+                                 <input type="button" id="btnConfirm4delete" name="btnConfirm4delete" value="　このユーザーを削除する　" />
+                             {% /if %}
+							 
+                                 <input type="button" id="btnConfirm4update" name="btnConfirm4update" value="　上記の内容で変更する　" />
+							 </li>
+						</ul>
+                        <input type="hidden" id="uid" name="uid" value="{% $uid %}">
+						<input type="hidden" id="userRole" name="userRole" value="{% $userRole %}">
+                        <input type="hidden" id="userAppCount" name="userAppCount" value="{% $userAppCount %}">
+					</form>
+					</div><!--/.step1 End -->
+
+					<div id="loading" style="display:none"></div>
+					<div id="step2" style="display:none">
+						<div class="description">
+							<p>以下の内容に変更します。<br />
+							よろしければ変更ボタンをクリックしてください。</p>
+						</div><!--/.description-->
+
+						<ul>
+							<li>名前：<br />
+								<span id="lblName"></span></li>
+							<li>メールアドレス：<br />
+								<span id="lblEmail"></span></li>
+							<li>権限：<br />
+								<span id="lblAuth"></span></li>
+							<li>利用範囲：<br />
+								<span id="lblApps"></span></li>
+							<li><input type="button" id="btnBack4update" name="btnBack4update" value="　戻る　" />
+							<input type="button" id="btnUpdate" name="btnUpdate" value="　変更　" /></li>
+						</ul>
+					</div><!--/.step2 End -->
+
+					<div id="step3" style="display:none">
+						<div class="description">
+						<p>ユーザー情報の変更が完了しました。<br />
+							<br />
+							<a href="{%$baseUrl%}/manager/manageuser">&raquo;ユーザーID管理 一覧へ</a></p>
+						</div><!--/.description-->
+					</div><!--/.step3 End -->
+					
+                    <div id="step4" style="display:none">
+                        <div class="description">
+                            <p>本当に以下のユーザーを削除してよろしいですか？<br />
+                                                        削除実行後、このIDは復元できません。</p>
+                        </div><!--/.description-->
+
+                        <ul>
+                            <li>名前：<br />
+                                <span id="lblName4Delete"></span></li>
+                            <li>メールアドレス：<br />
+                                <span id="lblEmail4Delete"></span></li>
+                            <li>権限：<br />
+                                <span id="lblAuth4Delete"></span></li>
+                            <li>利用範囲：<br />
+                                <span id="lblApps4Delete"></span></li>
+                            <li><input type="button" id="btnBack4delete" name="btnBack4delete" value="　戻る　" />
+                            <input type="button" id="btnDelete" name="btnDelete" value="　削除　" /></li>
+                        </ul>
+                    </div><!--/.step4 End -->
+
+                    <div id="step5" style="display:none">
+                        <div class="description">
+                        <p>ユーザー削除処理が完了しました。<br />
+                            <br />
+                            <a href="{%$baseUrl%}/manager/manageuser">&raquo;ユーザーID管理 一覧へ</a></p>
+                        </div><!--/.description-->
+                    </div><!--/.step5 End -->
+				</th>
+			</tr>
+		</table>
+		<script src="{%$staticUrl%}/admin/js/manager/edituser.js?{%$version.js%}"></script>
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

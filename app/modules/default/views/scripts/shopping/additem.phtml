@@ -1,0 +1,60 @@
+{%include file="shopping/common/header.phtml"%}
+
+<body id="wish">
+<div id="continer">
+    {%include file="shopping/common/hdr.phtml"%}
+    <script type="text/javascript">
+        $j('#gNavWish').addClass('active');
+        $j('#gNavStore > a').removeAttr('href');
+		$j('#gNavMyCart > a').removeAttr('href');
+		if (null != cm_getCookie('app_top_url')) {
+	         top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+	    }
+    </script>
+
+    <div id="mainColumn">
+        <div id="wishBox" class="box">
+            <div class="hdr">
+                <h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_wish_add.png" alt="欲しいものリスト" /></h2>
+            </div><!--/.hdr-->
+
+            <div class="message" id="message">以下の商品を欲しいものリストに追加しますか？</div>
+
+            <!-- hidden info -->
+            <input type="hidden" name="hidIid" id="hidIid" value="{% $itemInfo.iid %}">
+             <!-- hidden info end-->
+
+            <!-- step one -->
+            <div class="itemList" id="wishItem">
+                <div class="section itemView">
+                    <dl class="itemBlock clearfix"><!--
+                        --><dt class="pic"><a style="cursor:default;background-image:url({%$itemInfo.pic_small%})"><img src="{%$staticUrl%}/apps/shopping/img/spacer.gif" width="76"  height="76" alt="" /></a></dt><!--
+                        --><dd class="name">{%$itemInfo.name%}</dd><!--
+                        --><dd class="price">価格：￥{%$itemInfo.format_price%}</dd><!--
+                        --><dd class="buy"><a href="{%$baseUrl%}/shopping/torakuten?iid={%$itemInfo.iid%}">&gt;この商品を楽天市場で購入する</a></dd><!--
+                    --></dl>
+                </div>
+            </div>
+
+            <ul class="btnSection clearfix" id="btnAddNext"><!--
+                --><li><a href="javascript:cm_goBack();"><img src="{%$staticUrl%}/apps/shopping/img/content/btn_cancel.png" alt="" /></a></li><!--
+                --><li><a href="javascript:void(0);" id="addNext"><img src="{%$staticUrl%}/apps/shopping/img/content/btn_add.png" alt="" /></a></li><!--
+            --></ul>
+            <!-- /step one -->
+
+            <!-- step two -->
+            <ul class="btnSection clearfix" id="btnaddConfirm" style="display: none;"><!--
+                --><li class="back"><a href="{%$baseUrl%}/shopping/wish"><img src="{%$staticUrl%}/apps/shopping/img/content/btn_back.png" alt="" /></a></li><!--
+            --></ul>
+            <!-- /step two -->
+
+        </div><!--/#wishBox.box-->
+    </div><!--/#mainColumn-->
+<hr />
+    <div id="subColumn">
+        {%include file="shopping/common/adbox.phtml"%}
+        {%include file="shopping/common/profbox.phtml"%}
+    </div><!--/#subColumn-->
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/shopping/js/additem.js?{%$version.js%}"></script>
+{%include file="shopping/common/footer.phtml"%}

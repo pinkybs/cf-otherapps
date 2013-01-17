@@ -1,0 +1,32 @@
+{%include file="school/common/header.phtml" headAd=1 %}
+
+<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+	<div id="classInfo">
+		{%include file="school/common/headline.phtml"%}
+	</div><!--/#classInfo-->
+	<div id="classMember">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#ffdb33;">この授業を履修中({%$classInfo.member_count%})</div>
+		{%if $pager.count %}
+			<div class="count">
+				{%$pager.count%}件中 {%$startNm%}-{%$endNm%}件　<span style="color:#777777;">{% emoji code="F99F"%}…ﾏｲﾐｸ</span><br />
+				<div class="line" style="background:#f6e99e;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			</div><!--/.count-->
+			<div class="list">
+				{% foreach from=$memberLst item=data key=key %}
+					<div class="section" style="background:#{% if ($key%2) == 0 %}fffddb{%else%}fcf5cc{%/if%};">
+						<a href='{% "$baseUrl/mobile/school/profile?CF_uid=`$data.uid`"|mixiurl %}'>{%$data.displayName%}</a>{% if $data.is_friend %}{% emoji code="F99F"%}{%/if%}<br />
+					</div><!--/.section-->
+				{% /foreach %}
+			</div><!--/.list-->
+		{%/if%}
+		{%include file="school/common/pager.phtml"%}
+		<div class="footlink">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/class?CF_cid=`$classInfo.cid`"|mixiurl %}'>{%$classInfo.name|escape%}ﾄｯﾌﾟ</a><br />
+		</div><!--/.footlink-->
+	</div><!--/#classMember-->
+	{%include file="school/common/menu.phtml"%}
+</div><!--/#container-->
+
+{%include file="school/common/footer.phtml" footAd=1 %}

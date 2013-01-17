@@ -1,0 +1,166 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+main CSS
+
+Created Date : 2009/08/14
+Author: Taiki Toyosawa
+Last Up Date : 2009/08/14
+Author: Taiki Toyosawa
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+
+body {
+	_background: url(../cmn/css/null) fixed;/*IE6*/
+	font-family: 'Hiragino Kaku Gothic Pro';/*Safari*/
+	/font-family: 'メイリオ';/*IE6,IE7*/
+	color: #333333;
+}
+a {
+	color: #2f59ff;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+a:visited {
+	color: #941D55;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    visibility: hidden;
+    height: 0.1px;
+    font-size: 0.1em;
+    line-height: 0;
+    clear: both;
+}  
+
+
+
+
+
+
+
+
+/*page1
+----------------------------------------------*/
+body#start #container {
+	width: 944px;
+	height: 573px;
+	overflow: hidden;	
+}
+
+body#start #startView {
+	width: 944px;
+	height: 573px;
+	overflow: hidden;
+}
+	body#start #startView #mainBox {
+		position: relative;
+		display: block;
+		width: 944px;
+		height: 550px;
+		background: url(../img/start/image_main.png) no-repeat 0 0;
+	}
+		body#start #startView #mainBox .linkText {
+			position: absolute;
+			display: block;
+		}
+			body#start #startView #mainBox .linkText.start a {
+				display: block;
+				padding-left: 56px;
+				background: none;
+			}
+			body#start #startView #mainBox .linkText.help a {
+				display: block;
+				padding-left: 76px;
+				background: none;
+			}
+			body#start #startView #mainBox .linkText a:hover {
+				background: url(../img/start/icn_bomb.png) no-repeat 0 center;
+			}
+
+				body#start #startView #mainBox .linkText a img {
+					display: block;
+				}
+		body#start #startView #mainBox .linkText.start {
+			top: 399px;
+			left: 298px;
+		}
+		body#start #startView #mainBox .linkText.help {
+			top: 464px;
+			left: 297px;
+		}
+
+	body#start #startView #copyrightBox {
+		position: relative;
+		display: block;
+		width: 944px;
+	}
+
+	/*page2
+	----------------------------------------------*/
+
+body#charaSelect #selectCharactorView {
+	width: 944px;
+}
+	body#charaSelect #selectCharactorView #mainBox {
+		position: relative;
+		display: block;
+		width: 944px;
+		height: 725px;
+	}
+		body#charaSelect #selectCharactorView #mainBox .map {
+			position: absolute;
+			display: block;
+		}
+			body#charaSelect #selectCharactorView #mainBox .map img {
+				background: url(../img/start/selectChara.png) no-repeat left top;
+			}
+			body#charaSelect #selectCharactorView #mainBox .map img.chara01 {
+				background-position: left -646px;
+			}
+			body#charaSelect #selectCharactorView #mainBox .map img.chara05 {
+				background-position: left -1938px;
+			}
+			body#charaSelect #selectCharactorView #mainBox .map img.chara03 {
+				background-position: left -1292px;
+			}
+				body#charaSelect #selectCharactorView #mainBox .map a img {
+					display: block;
+				}
+
+	body#charaSelect #selectCharactorView #copyrightBox {
+		position: relative;
+		display: block;
+		width: 944px;
+	}
+	body#charaSelect form {
+		position: absolute;
+		top: 0;
+		left: -1000px;
+	}
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

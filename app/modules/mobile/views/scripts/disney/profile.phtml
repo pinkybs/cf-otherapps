@@ -1,0 +1,47 @@
+{%include file="disney/common/header.phtml"%}
+
+	<div style="font-size:x-small; background-color:#edd9ae;">
+		{% disneyimg name="sub_ti_award2" %}<br />
+		<br />
+		<div style="color:#ff0000; text-align:center;">
+			{% emoji code="F99F"%}{%$disneyFriend.displayName%}さんの取得ｷｬﾗｸﾀｰ{% emoji code="F99F"%}<br/><br/>
+		</div>
+		<div style="text-align:center;color:#9f3d44;">
+			{% emoji code="F9BF"%}総合ｽｺｱ:<span style="color:#ff0000;">{%$disneyFriend.game_point%}点</span>
+			<br/>
+		</div>
+		<img copyright="yes" src="{%$baseUrl%}/mobile/disneyflash/showmap?CF_aid={%$aid%}&uid={%$fid%}" align="top" /><br />
+
+		<div style="background-color:#f8f1df;">
+			<div style="color:#ff0000; text-align:center;">
+				ご当地ｽﾃｨｯﾁ・ｼﾘｰｽﾞ
+				<br/>
+				{%$areaInfo.name%}地方
+			</div>
+		 </div>
+
+		{% foreach from=$placeAry item=place key=key %}
+		<div style="{%if $key%2==0%}background-color:#f8f1df; color:#5e250f;{%else%}background-color:#f8b463; color:#5e250f;{%/if%}">
+			{% foreach from=$place item=data %}
+			&nbsp;&nbsp;{% emoji code="F983"%}
+			{% if $data.count > 0 %}
+				<a href='{% "$baseUrl/mobile/disney/award?CF_pid=`$data.pid`&CF_fid=`$fid`&CF_from=trade"|mixiurl %}'>{%$data.name%}({%$data.count%})</a>
+			{% else %}
+				{%$data.name%}
+			{% /if %}
+			{% /foreach %}
+		</div>
+		{% /foreach %}
+		&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$fid`&CF_aid=8"|mixiurl %}'>北海道／東北</a>&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$fid`&CF_aid=7"|mixiurl %}'>北陸</a><br/>
+		&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$fid`&CF_aid=6"|mixiurl %}'>関東</a>&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$fid`&CF_aid=5"|mixiurl %}'>東海</a>&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$fid`&CF_aid=4"|mixiurl %}'>近畿</a><br />
+		&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$fid`&CF_aid=3"|mixiurl %}'>中国</a>&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$fid`&CF_aid=2"|mixiurl %}'>四国</a>&#160;&#160;{% emoji code="F981"%}<a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$fid`&CF_aid=1"|mixiurl %}'>九州／沖縄</a><br/>	
+		{% if $cupList %}
+			{% disneyimg name="sub_ti_award3" %}<br />
+			<br />
+			{% foreach from=$cupList item=data key=key %}
+			<div style="{%if $key%2==0%}background-color:#f8f1df; color:#5e250f;{%else%}background-color:#f8b463; color:#5e250f;{%/if%}">
+				&nbsp;&nbsp;{% emoji code="F983"%}<a href='{% "$baseUrl/mobile/disney/cup?CF_fid=`$data.uid`&CF_cid=`$data.cid`"|mixiurl %}'>{%$data.name%}ｱﾜｰﾄﾞ</a>
+			</div>
+			{% /foreach %}
+		{% /if %}
+{%include file="disney/common/footer.phtml"%}

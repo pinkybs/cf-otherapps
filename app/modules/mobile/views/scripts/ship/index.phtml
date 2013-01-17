@@ -1,0 +1,82 @@
+{% include file="ship/common/header.phtml" headerAd=1 %}
+
+<div id="index">
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div id="main" style="background:#d7cfb3;">
+		<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			{%$shipUser.displayName%}の海賊島<br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		</div><!--/.headline-->
+		<div class="money" style="color:#7c4825;text-align:right;">
+			金貨:${%$shipUser.asset|outputdollars%}&nbsp;ﾀﾞｲﾔ:{%$shipUser.asset_diamond%}ｺ&nbsp;<br />
+		</div><!--/.money-->
+		
+        <object data='{% "$baseUrl/mobile/ship/topflash?CF_parkingUid=`$shipUser.uid`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$userId`&rand=`$rand`"|mobile_flashurl %}' type="application/x-shockwave-flash" width="240" height="160">
+            <param name="bgcolor" value="FFFFFF" />
+            <param name="loop" value="on" />
+            <param name="quality" value="high" />
+            <embed src='{% "$baseUrl/mobile/ship/topflash?CF_parkingUid=`$shipUser.uid`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$userId`&rand=`$rand`"|mobile_flashurl %}' width="240" height="160" loop="on" quality="high" bgcolor="#FFFFFF"></embed>
+        </object>
+                
+		<div class="estateInfo" style="color:#7c4825;text-align:center;">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			{%$shipUser.name%}[{% emoji code="F98B" %}<a href='{% "$baseUrl/mobile/ship/start?CF_parkingUid=`$shipUser.uid`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$userId`&rand=`$rand`"|mobile_flashurl %}' accesskey="5">見る</a>]<br />
+			埋蔵金貨 ${%$shipUser.fee*32*4|outputdollars%}<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /></div>
+		</div><!--/.estateInfo-->
+	</div><!--/#main-->
+	{%*
+	<div class="toInvite" style="color:#ff9933;">
+		◎<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/ship/index" %}'>マイミクを招待しよう</a>
+	</div><!--/.toInvite-->
+	*%}
+	<div class="nav" style="color:#258fb8;text-align:center;">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		←[*]<a href='{% "$baseUrl/mobile/ship/index/CF_uid/`$lrFriendId.leftUid`"|mixiurl %}' accesskey="*">左の島</a>　<a href='{% "$baseUrl/mobile/ship/index/CF_uid/`$lrFriendId.rightUid`"|mixiurl %}' accesskey="#">右の島</a>[#]→<br />
+		{% if $userId == $shipUser.uid %}
+			▼<a href="#menuBlock">海賊メニュー</a>▼<br />
+		{% else %}
+			{% emoji code="F989" %}<a href='{% "$baseUrl/mobile/ship/index"|mixiurl %}' accesskey="3">海賊ﾏｲﾍﾟｰｼﾞ</a> {% emoji code="F9BF"%}<a href='{% "$baseUrl/mobile/ship/rankingfriend"|mixiurl %}'>ﾗﾝｷﾝｸﾞ</a><br />
+		{% /if %}
+	</div><!--/.nav-->
+	<div style="text-align:center;"><img src="{%$staticUrl%}/apps/ship/img/twoline.gif" width="230" height="27" /></div>
+	{% foreach from=$currentShip item=data key=key %}
+		<div class="section">
+			{% if $data.sid != 0 %}
+				{% emoji code="F947"%}<span style="color:#7c4825;">{%$data.shipName|escape%}号</span><br />
+				<img src="{%$staticUrl%}/apps/ship/img/meter/meter_{%$data.temp%}.gif" width="89" height="3" style="margin:3px 0;" /><br />
+				{% emoji code="F9F8"%}<span style="color:#777;">{%$data.displayName%}</span><br />
+				<div style="color:#cd424a;text-decoration:blink;">金貨強奪中! ${%$data.park_money|outputdollars%}</div>
+				{% if $isMyShip == 1 %}
+					<div style="text-align:right;">{% emoji code="F9A2" %}<a href='{% "$baseUrl/mobile/ship/stick/CF_loca/`$key`"|mixiurl %}'>金貨を奪い返す</a>&nbsp;<br /></div>
+				{% elseif $data.uid != $userId && in_array($data.uid, $lrFriendId.friendIds) %}
+					<div style="text-align:right;">{% emoji code="F8E9" %}<a href='{% "$baseUrl/mobile/ship/report/CF_loca/`$key`/CF_parkingUid/`$shipUser.uid`"|mixiurl %}'>世界政府に通報</a>&nbsp;<br /></div>
+				{% /if %}
+			{% else %}
+				{% emoji code="F9C0" %}宝箱<br />
+				<span style="color:#777;">　埋蔵金貨 ${%$shipUser.fee*32|outputdollars%}</span><br />
+				{% if in_array($shipUser.uid, $lrFriendId.friendIds) || $shipUser.uid < 0 %}
+					<div style="text-align:right;">{% emoji code="F9CC" %}<a href='{% "$baseUrl/mobile/ship/park/CF_step/choiceship/CF_parkingUid/`$shipUser.uid`/CF_loca/`$key`"|mixiurl %}'>金貨を運び出す</a>&nbsp;<br /></div>
+				{% /if %}
+			{% /if %}
+			<div style="text-align:center;" class="lineDash"><img src="{%$staticUrl%}/apps/ship/img/newLine.gif" width="230" height="27" /></div>
+		</div><!--/.section-->
+	{% /foreach %}
+	<div class="nav" style="color:#258fb8;text-align:center;">
+		←[*]<a href='{% "$baseUrl/mobile/ship/index/CF_uid/`$lrFriendId.leftUid`"|mixiurl %}' accesskey="*">左の島</a>　<a href='{% "$baseUrl/mobile/ship/index/CF_uid/`$lrFriendId.rightUid`"|mixiurl %}' accesskey="#">右の島</a>[#]→<br />
+	</div><!--/.nav-->
+</div><!--/#index-->
+
+{% if $userId == $shipUser.uid %}
+	{%include file="ship/common/menu.phtml"%}
+{% else %}
+	<div class="nav">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="line" style="background:#ca8251;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		{% emoji code="F987" %}<a href='{% "$baseUrl/mobile/ship/top"|mixiurl %}' accesskey="1">海賊ﾄｯﾌﾟ</a> {% emoji code="F989" %}<a href='{% "$baseUrl/mobile/ship/index"|mixiurl %}' accesskey="3">海賊ﾏｲﾍﾟｰｼﾞ</a><br />
+	</div><!--/.nav-->
+{% /if %}
+
+{% include file="ship/common/footer.phtml" footerAd=1 %}

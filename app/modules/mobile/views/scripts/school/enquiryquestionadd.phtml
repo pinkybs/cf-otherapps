@@ -1,0 +1,117 @@
+{% if $step=="start" %}
+
+	{%include file="school/common/header.phtml" headAd=1 %}
+		<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+			<div id="enquete">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<div class="headline" style="background:#7ecef4;">教えて!ﾌﾟﾛﾌ 質問する</div>
+				<div class="description">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					ｶﾃｺﾞﾘ･質問内容を入力し､[確認]を押してください｡<br />
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					※質問は匿名で投稿されますが､公序良俗に反する内容の場合､運営者によって削除されることがあります｡あらかじめご了承ください｡<br />
+					{% if $errorMsg %}
+						<div class="errorMsg" style="color:#cc0000;">
+							<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+							{% emoji code="F9DC"%}入力ｴﾗｰ<br />
+							{% $errorMsg|nl2br %}<br />
+						</div><!--/.errorMsg-->
+					{% /if %}
+				</div><!--/.description-->
+				<div class="inputElement">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					<form method="post" action='{% "$baseUrl/mobile/school/enquiryquestionadd"|mixiurl %}'>
+						○ｶﾃｺﾞﾘ<br />
+						<select name="enqueteQuestionCat">
+							{% html_options options=$nbTypeLst selected=$questioncat %}
+						</select><br />
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+						○質問内容<br />
+						<input type="text" name="enqueteQuestion" value="{%$question|escape|unescape_emoji%}" maxlength="30"/><br />
+						<div style="text-align:right;">※全角30文字以内</div>
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+						<div class="btn" style="text-align:center;">
+							<input type="submit" value=" 確 認 " />
+						</div><!--/.btn-->
+						<input type="hidden" name="CF_step" value="confirm" />
+					</form>
+					<form method="post" action='{% "$baseUrl/mobile/school/enquiry"|mixiurl %}'>
+						<div class="btn" style="text-align:center;">
+							<input type="submit" value=" ｷｬﾝｾﾙ " />
+						</div><!--/.btn-->
+					</form>
+				</div><!--/.inputElement-->
+				<div class="footlink">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					<div class="line" style="background:#7ecef4;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/enquiry"|mixiurl %}'>教えて!ﾌﾟﾛﾌ ﾄｯﾌﾟ</a><br />
+				</div><!--/.footlink-->
+			</div><!--/#enquete-->
+			{%include file="school/common/menu.phtml"%}
+		</div><!--/#container-->
+	{%include file="school/common/footer.phtml" footAd=1 %}
+
+{% elseif $step=="confirm" %}
+
+	{%include file="school/common/header.phtml" headAd=0 %}
+		<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+			<div id="enquete">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<div class="headline" style="background:#7ecef4;">教えて!ﾌﾟﾛﾌ 質問する</div>
+				<div class="description">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					入力内容を確認し､よろしければ[送信]を押してください｡<br />
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					※質問は匿名で投稿されますが､公序良俗に反する内容の場合､運営者によって削除されることがあります｡あらかじめご了承ください｡<br />
+				</div><!--/.description-->
+				<div class="inputElement">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					<form method="post" action='{% "$baseUrl/mobile/school/enquiryquestionadd"|mixiurl %}'>
+						○ｶﾃｺﾞﾘ<br />
+						{%$rowCategory.name|escape%}<br />
+						<input type="hidden" name="enqueteQuestionCat" value="{%$rowCategory.id%}" />
+						<input type="hidden" name="CF_step" value="finish" />
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+						○質問内容<br />
+						{%$question|escape|unescape_emoji%}<br />
+						<input type="hidden" name="enqueteQuestionTitle" value="{%$question%}" />
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+						<div class="btn" style="text-align:center;">
+							<input type="submit" value=" 送 信 " />
+						</div><!--/.btn-->
+					</form>
+					<form method="post" action='{% "$baseUrl/mobile/school/enquiryquestionadd"|mixiurl %}'>
+						<div class="btn" style="text-align:center;">
+							<input type="submit" value=" 修 正 " />
+						</div><!--/.btn-->
+					</form>
+				</div><!--/.inputElement-->
+			</div><!--/#classTopicsAdd-->
+			{%include file="school/common/menu.phtml"%}
+		</div><!--/#container-->
+	{%include file="school/common/footer.phtml" footAd=0 %}
+
+{% elseif $step=="finish" %}
+
+	{%include file="school/common/header.phtml"%}
+		<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+			<div id="enquete">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<div class="headline" style="background:#7ecef4;">教えて!ﾌﾟﾛﾌ 質問する</div>
+				<div class="description">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					質問の送信が完了しました｡<br />
+				</div><!--/.description-->
+				{%include file="school/common/ad_complete.phtml"%}
+				<div class="footlink">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/enquiryanswerlist?CF_qid=`$qid`"|mixiurl %}'>質問を確認</a><br />
+					<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/enquiry"|mixiurl %}'>教えて!ﾌﾟﾛﾌ ﾄｯﾌﾟ</a><br />
+				</div><!--/.footlink-->
+			</div><!--/#enquete-->
+			{%include file="school/common/menu.phtml"%}
+		</div><!--/#container-->
+	{%include file="school/common/footer.phtml"%}
+
+{% /if %}

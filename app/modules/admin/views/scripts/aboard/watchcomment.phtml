@@ -1,0 +1,62 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+	{%include file="nav.phtml"%}
+
+	<div id="container">
+		<h2>あしあと帳 - コンテンツ監視　[コメント]</h2>
+		<div id="appsAdmin">
+			<ul class="nav">
+				<li><a href="{%$baseUrl%}/aboard/watchtop">トップページ</a></li>
+				<li><a href="{%$baseUrl%}/aboard/forbidword">禁止語の設定</a></li>
+				<li><a href="{%$baseUrl%}/aboard/dealstat">処理の集計</a></li>
+			</ul><!--/.nav-->
+
+			<div id="watchHead">
+				<h3><span id="lblTitle">容疑コンテンツ一覧/コンテンツ検索結果 （検索キーワード「フライアウェイ」, 検索対象「すべて」）</span></h3>
+				<div id="divHead" style="display:none"><p>全<span id="lblCount"></span>件中 <span id="lblNumS"></span>件～<span id="lblNumB"></span>件までを表示しています。</p>
+				<p>監視対象のコンテンツ内容を確認し、最適な状態を選択してください。<br />
+					すべての選択が完了したら、「実行」をクリックしてください。</p></div>
+				<div class="error" id="divMsg" style="display:none">
+					選択したn件の処理が完了しました。
+				</div><!--/.error-->
+			</div><!--/.watchHead-->
+
+			<form method="post" id="frmDeal" name="frmDeal">
+			<div id="divList"></div>
+			</form>
+
+			<div id="watchFoot" style="display:none">
+				<input type="button" value="　実行　" id="btnSubmit"/>
+			</div><!--/.watchHead-->
+
+			<!-- form post use -->
+			<div id="searchBox">
+				<form action="{%$baseUrl%}/aboard/watchcomment" method="post" id="frmSrh" name="frmSrh">
+					コンテンツ検索：<br />
+					<input type="text" id="srhKeyword" name="srhKeyword" value="{%$srhKeyword%}" maxlength="200" /><input type="submit" value="　検索　" /><br />
+					<label for="flag0"><input type="radio" id="flag0" name="srhStatus" value="1" {% if 1==$srhStatus||2==$srhStatus %}checked="checked"{% /if %} />未処理</label>
+					<label for="flag1"><input type="radio" id="flag1" name="srhStatus" value="4" {% if 4==$srhStatus %}checked="checked"{% /if %} />保留</label>
+					<label for="flag2"><input type="radio" id="flag2" name="srhStatus" value="5" {% if 5==$srhStatus %}checked="checked"{% /if %} />違反</label>
+					<label for="flag3"><input type="radio" id="flag3" name="srhStatus" value="3" {% if 3==$srhStatus %}checked="checked"{% /if %} />問題なし</label>
+					<label for="flag4"><input type="radio" id="flag4" name="srhStatus" value="0" {% if 0==$srhStatus %}checked="checked"{% /if %} />すべて</label>
+				</form>
+				<form action="{%$baseUrl%}/aboard/watchcomment" method="post" id="frmList" name="frmList">
+					<input type="hidden" id="showType" name="showType" value="" />
+					<input type="hidden" id="typeId" name="typeId" value="" />
+				</form>
+			</div><!--/#searchBox-->
+		</div><!--/#appsAdmin-->
+
+		<!-- ajax request use -->
+		<input type="hidden" id="pageIndex" name="pageIndex" value="1" />
+		<input type="hidden" id="hidIsWatcher" name="hidIsWatcher" value="{%$isWatcher%}" />
+		<input type="hidden" id="hidSrhStatus" name="hidSrhStatus" value="{%$srhStatus%}" />
+		<input type="hidden" id="hidSrhKeyword" name="hidSrhKeyword" value="{%$srhKeyword%}" />
+		<input type="hidden" id="hidShowType" name="hidShowType" value="{%$showType%}" />
+		<input type="hidden" id="hidTypeId" name="hidTypeId" value="{%$typeId%}" />
+		<script src="{%$staticUrl%}/admin/js/aboard/watchcomment.js?{%$version.js%}"></script>
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

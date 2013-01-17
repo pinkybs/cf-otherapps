@@ -1,0 +1,60 @@
+{%include file="millionminds/common/header.phtml"%}
+
+<body>
+    {%include file="topad.phtml"%}
+	<div id="container">
+
+		{%include file="millionminds/common/hdr.phtml"%}
+		
+		<ul id="gnav">
+            <li class="top"><a href="{%$baseUrl%}/millionminds">MillionMindsトップ</a></li>
+            <li class="profile"><a href="{%$baseUrl%}/millionminds/profile">プロフィール</a></li>
+            <li class="log"><a class="active">あしあと</a></li>
+            <li class="archive"><a href="{%$baseUrl%}/millionminds/archive">アーカイブ</a></li>
+            <li class="add"><a href="{%$baseUrl%}/millionminds/newquestion">クエスチョン作成</a></li>
+            <li class="help"><a href="{%$baseUrl%}/millionminds/help">ヘルプ</a></li>
+            <li class="invite"><a href="javascript:void(0)" onclick="invite();">友達を招待</a></li>
+        </ul><!--/#grav-->
+        
+		<div id="content">
+		
+			<div id="mainColumn">
+                
+				<div id="log" class="article">
+					<h2 class="log">あしあと</h2>
+					<ul class="description">
+						<li>アナタのプロフィールに訪問したユーザーを最新{% if $logCount < 10 %}{%$logCount%}{% else %}10{%/if%}件まで表示しています。</li>
+						<li><strong>総アクセス数：{%$logCount%}</strong></li>
+					</ul><!--/.description-->
+					<ul class="truth">
+					   {% foreach from=$logArray item=log key=key %}
+    						<li class="{%if $key%2==0%}i{%else%}ii{%/if%}">
+    						    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    							<tr>
+    								<th><span><a href="{%$baseUrl%}/millionminds/profile/uid/{%$log.visiter_uid%}" style="background-image: url({%$log.thumbnailUrl%});" title="{%$log.displayName%}">{%$log.displayName%}</a></span></th>
+    								<td><p class="user"><a href="{%$baseUrl%}/millionminds/profile/uid/{%$log.visiter_uid%}">{%$log.displayName%}</a>さん<br />{%$log.visit_time|date_format:"%Y年 %m月 %d日 %H:%M"%}</p></td>
+    							</tr>
+    							</table>
+    						</li>
+						{% foreachelse %}
+						    <p class="null"><a href="javascript:void(0)" onclick="invite();">友達を招待する</a></p>
+						{% /foreach %}	
+					</ul><!--/.truth-->
+				</div><!--/#log .article-->
+
+				{%include file="millionminds/common/nature.phtml"%}
+
+			</div><!--/#mainColumn-->
+
+			<div id="subColumn">
+				{%include file="millionminds/common/ad.phtml"%}
+				
+				{%include file="millionminds/common/article.phtml"%}
+			</div><!--/#subColumn-->
+
+		</div><!--/#content-->
+
+    <script type="text/javascript" src="{%$staticUrl%}/apps/millionminds/js/common.js?{%$version.js%}"></script>
+    
+{%include file="millionminds/common/footer.phtml"%}
+

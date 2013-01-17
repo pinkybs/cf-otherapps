@@ -1,0 +1,158 @@
+{%include file="disney/common/header.phtml"%}
+
+{% if $action == 'start' %}
+	<div id="targettour" style="background-color:#ffffcc; font-size:x-small; text-align:center;">
+	<div style="background-color:#50b83a; text-align:center;">
+	{% disneyimg name="sub_ti_targettour" %}
+	{%include file="disney/common/topmenu.phtml"%}  
+
+		{% disneyimg name="targettour_01" style='height="115" width="215"' %}
+
+	<div class="message" style="color:#ff0000; text-align:center;">
+		学校や会社までの行き帰りに<br/>
+		｢ﾁｪｯｸ｣するだけでOK!
+	</div><!--/.message-->
+
+	<div class="DistanceCheck" style="color:#6D2801;text-align: center;">
+		{% disneyimg name="img_targettour" %}<br />
+		<span style="color:#fa660a;">沖縄までの距離500kmを毎日の移動で稼いで、ｽﾃｨｯﾁをGET!</span>
+	</div><!--/.DistanceCheck-->
+
+	<div class="headline" style="text-align: center;">
+		{% disneyimg name="targettour" %}
+	</div><!--/.headline-->
+
+	{% if $ua!=3 %}
+	<div class="select" style="color: rgb(109, 40, 1);">
+		{% disneyimg name="targettour_icon1" style='height="22" width="28" align="left" style="float: left; margin-top: 0pt; margin-bottom: 0pt;"' %}
+		<span style="text-align: left;">ﾀｰｹﾞｯﾄ(目的地)を設定<br/></span>
+		<div style="clear: both;" clear="all"/></div>
+		{% disneyimg name="targettour_icon2" style='height="22" width="28" align="left" style="float: left; margin-top: 0pt; margin-bottom: 0pt;"' %}
+		<span style="text-align: left;">ﾏｲﾀｳﾝからﾀｰｹﾞｯﾄへの距離(Km)が決定<br/></span>
+		<div style="clear: both;" clear="all"/></div>
+			{% disneyimg name="targettour_icon3" style='height="22" width="28" align="left" style="float: left; margin-top: 0pt; margin-bottom: 0pt;"' %}
+			<span style="text-align: left;">毎日の移動で距離を稼ごう!<br/></span>
+		<div style="clear: both;" clear="all"/></div>
+	</div><!--/.select-->
+	{% else %}
+
+	<table width="100%" cellspacing="0" cellpadding="0" border="0">
+		<tr>
+			<td style="width: 40px; text-align: center;">{% disneyimg name="targettour_icon1" style='style="margin-bottom: 5px;"' %}</td>
+			<td><div style="color: rgb(109, 40, 1); font-size: x-small; text-align: left;">
+			ﾀｰｹﾞｯﾄ(目的地)を設定<br/></div></td>
+		</tr>
+	</table>
+
+	<table width="100%" cellspacing="0" cellpadding="0" border="0">
+		<tr>
+			<td style="width: 40px; text-align: center;">{% disneyimg name="targettour_icon2" style='style="margin-bottom: 5px;"' %}</td>
+			<td><div style="color: rgb(109, 40, 1); font-size: x-small; text-align: left;">
+			ﾏｲﾀｳﾝからﾀｰｹﾞｯﾄへの距離(Km)が決定<br/></div></td>
+		</tr>
+	</table>
+
+	<table width="100%" cellspacing="0" cellpadding="0" border="0">
+		<tr>
+			<td style="width: 40px; text-align: center;">{% disneyimg name="targettour_icon3" style='style="margin-bottom: 5px;"' %}</td>
+			<td><div style="color: rgb(109, 40, 1); font-size: x-small; text-align: left;">
+			毎日の移動で距離を稼ごう!<br/></div></td>
+		</tr>
+	</table>
+{% /if %}
+
+	<div class="message" style="color: rgb(102, 0, 153); text-align: center;">
+		目的地のKmまで到達したら<br/>
+		ご当地ｷｬﾗｸﾀｰGET!
+	</div><!--/.message-->
+
+	<div class="goTomore" style="color: rgb(102, 0, 0); text-align: right;">
+		⇒<a href='{% "$baseUrl/mobile/disney/targettour?CF_step=introduce"|mixiurl %}'>もっと詳しく</a><br/>
+	</div><!--/.goTomore--> 
+
+{% else %}
+
+	<div id="targettour" style="background-color: rgb(255, 255, 204); font-size: x-small; text-algin:center;">
+	<div style="background-color:#50b83a; text-align:center;">
+		{% disneyimg name="sub_ti_targettours" %}
+		{%include file="disney/common/topmenu.phtml"%}
+
+	{% if $ua!=3 %}
+		<div class="select" style="color: rgb(255, 51, 102);">
+			{% disneyimg name="targettour_icon1" style='height="22" width="28" align="left" style="float: left; margin-top: 0pt; margin-bottom: 0pt;"' %}
+			<span style="text-align: left;">ﾀｰｹﾞｯﾄ(目的地)を設定<br/></span>
+			<div style="clear: both;" clear="all"/></div>
+			<div class="txt1" style="color: rgb(102, 0, 102); text-align: left;">       
+				なかなか現地に行けない都道府県のご当地ｷｬﾗｸﾀｰを集めるために､欲しいご当地ｷｬﾗｸﾀｰの都道府県をﾀｰｹﾞｯﾄ設定しよう!
+			</div><!--/.txt1-->
+			<br/>
+			{% disneyimg name="map_line" %}<br/>
+			<br/>
+			{% disneyimg name="targettour_icon2" style='height="22" width="28" align="left" style="float: left; margin-top: 0pt; margin-bottom: 0pt;"' %}
+			<span style="text-align: left;">ﾏｲﾀｳﾝからﾀｰｹﾞｯﾄへの距離(Km)が決定<br/></span>
+			<div style="clear: both;" clear="all"/></div>
+			<div class="txt1" style="color: rgb(102, 0, 102); text-align: left;">       
+				設定したﾏｲﾀｳﾝからﾀｰｹﾞｯﾄへの実際のKmが表示されるよ。<br/>
+				※表示されるのは実際の県庁間の距離です
+			</div><!--/.txt1-->
+
+			<br/>
+			{% disneyimg name="map_line" %}<br/>
+			<br/>
+			{% disneyimg name="targettour_icon3" style='height="22" width="28" align="left" style="float: left; margin-top: 0pt; margin-bottom: 0pt;"' %}
+			<span style="text-align: left;">毎日の移動で距離を稼ごう!<br/></span>
+			<div style="clear: both;" clear="all"/></div> 
+
+			<div class="txt1" style="color: rgb(102, 0, 102); text-align: left;">       
+				日々の移動距離を測るには、とにかくｺﾏﾒに”ﾁｪｯｸする"ﾎﾞﾀﾝを押してね。家を出る前にﾁｪｯｸ!学校に着いたらﾁｪｯｸ!友達の家に遊びに行ったらﾁｪｯｸ!だよ★
+			</div><!--/.txt1-->
+			<br/>
+		</div><!--/.select-->
+
+{% else %}
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tr>
+				<td style="width: 40px; text-align: center;">{% disneyimg name="targettour_icon1" style='style="margin-bottom: 5px;"' %}</td>
+				<td><div style="color: rgb(255, 51, 102); font-size: x-small; text-align: left;">
+				ﾀｰｹﾞｯﾄ(目的地)を設定<br/></div></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="color: rgb(102, 0, 102); font-size: x-small;">
+				なかなか現地に行けない都道府県のご当地ｷｬﾗｸﾀｰを集めるために､欲しいご当地ｷｬﾗｸﾀｰの都道府県をﾀｰｹﾞｯﾄ設定しよう!</td>
+			</tr>
+		</table>
+		<br/>
+		{% disneyimg name="map_line" %}<br/>
+		<br/>
+
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tr>
+				<td style="width: 40px; text-align: center;">{% disneyimg name="targettour_icon2" style='style="margin-bottom: 5px;"' %}</td>
+				<td><div style="color: rgb(255, 51, 102); font-size: x-small; text-align: left;">
+				ﾏｲﾀｳﾝからﾀｰｹﾞｯﾄへの距離(Km)が決定<br/></div></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="color: rgb(102, 0, 102); font-size: x-small;">
+				設定したﾏｲﾀｳﾝからﾀｰｹﾞｯﾄへの実際のKmが表示されるよ。<br/>
+				※表示されるのは実際の県庁間の距離です</td>
+			</tr>
+		</table>
+		<br/>
+		{% disneyimg name="map_line" %}<br/>
+		<br/>
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tr>
+				<td style="width: 40px; text-align: center;">{% disneyimg name="targettour_icon3" style='style="margin-bottom: 5px;"' %}</td>
+				<td><div style="color: rgb(255, 51, 102); font-size: x-small; text-align: left;">
+				毎日の移動で距離を稼ごう!<br/></div></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="color: rgb(102, 0, 102); font-size: x-small;">
+				日々の移動距離を測るには、とにかくｺﾏﾒに”ﾁｪｯｸする"ﾎﾞﾀﾝを押してね。
+				家を出る前にﾁｪｯｸ!学校に着いたらﾁｪｯｸ!友達の家に遊びに行ったらﾁｪｯｸ!だよ★
+				</td>
+			</tr>
+		</table>
+{% /if %}
+{% /if %}
+{%include file="disney/common/firstfooter.phtml"%}

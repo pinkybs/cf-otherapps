@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title></title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<link rel="stylesheet" href="{%$staticUrl%}/cmn/ad/css/base.css?10" type="text/css" media="print,screen" />
+	<link rel="stylesheet" href="{%$staticUrl%}/cmn/ad/css/main.css?10" type="text/css" media="print,screen" />
+	<link rel="stylesheet" href="{%$staticUrl%}/cmn/ad/css/debug.css?10" type="text/css" media="print,screen" />	
+		
+    <script type="text/javascript" language="javascript">    
+        function closeAd(aid)
+        {
+            location.href = '/ad/closetopad/app_id/' + aid;
+            element = parent.document.getElementById('topAreaAdFrame');
+            element.style.display = 'none';
+            parent.adjustHeight();
+            //element.parentNode.removeChild(element);
+            showRightAd();
+        }
+        
+        function showRightAd()
+        {
+            element = parent.document.getElementById('adArea');
+            
+            if (element) {
+                element.innerHTML = '<iframe id="subAreaAdFrame" src="/ad/right/app_id/{%$appId%}" width="250" height="250" scrolling="no" frameborder="0"></iframe>';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="banListApps">
+    	<h3><img src="{%$staticUrl%}/cmn/ad/img/tit_list_s.png" alt="" /></h3>
+    	<div class="btnClose"><a href="javascript:void(0);" onclick="closeAd({%$appId%});"><img src="{%$staticUrl%}/cmn/ad/img/btn_close_s.png" alt="コミュニティファクトリーのアプリ" /></a></div>
+    	<div class="banListInner">
+            {% foreach name=adver from=$ad item=data key=key %}
+               <p class="ban{%$key+1%}"><a href="/ad/showad/aid/{%$data.id%}" style="background-image: url({%$data.img_url%});" title="{%if $data.alt%}{%$data.alt%}{%else%}{%$data.link_url%}{%/if%}" target="_blank"><span class="des">{%$data.introduce%}</span><span class="tit">{%$data.alt%}</span></a></p>
+            {% /foreach %}
+        </div>
+    </div>
+</body>
+</html>

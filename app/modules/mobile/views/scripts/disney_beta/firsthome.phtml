@@ -1,0 +1,110 @@
+{%include file="disney/common/header.phtml"%}
+
+    
+    <div style="font-size:x-small;">
+            
+    {% if $step == 'firstlogin' %}
+            
+        <div id="bgcolor1" style="background-color:#ffe2ae;text-align:center;">
+	        {% disneyimg name="top" style='width="100%"' %}<br/>            
+	        <span style="color:#ff6600;">ご当地ｺﾚｸｼｮﾝにようこそ!</span><br/>
+	        {% disneyimg name="tuto_line" %}<br/>
+			<div style="text-align:left;color:#600;">
+				{% disneyimg name="tu_th" style='height="107" width="80" align="left" style="float: left; margin-top: 0pt; margin-left: 0pt;"' %}<br/>
+				ﾃﾞｨｽﾞﾆｰご当地ｺﾚｸｼｮﾝは、全国各地のご当地ｷｬﾗｸﾀｰをｺﾚｸｼｮﾝすることができるｱﾌﾟﾘだよ♪
+			</div><!--/left-->
+			<div style="clear: both;" clear="all"/></div>
+ 
+			<div id="yellow" style="background-color:#ffffb0;text-align:left;">
+	         	{% disneyimg name="ti_atumeyou" width="100%" %}
+				<div class="select" style="color:#f36;">
+					{% disneyimg name="targettour_icon1" style='height="22" width="28" align="left" style="float: left; margin-top: 0pt; margin-bottom: 0pt;"' %}
+					<span style="text-align:left;">現在地でGET!</span>
+					<div style="clear: both;" clear="all" /></div>
+					{% disneyimg name="targettour_icon2" style='height="22" width="28" align="left" style="float: left; margin-top: 0pt; margin-bottom: 0pt;"' %}
+					<span style="text-align:left;">日々の移動距離でGET!</span>
+					<div style="clear: both;" clear="all" /></div>
+					{% disneyimg name="targettour_icon3" style='height="22" width="28" align="left" style="float: left; margin-top: 0pt; margin-bottom: 0pt;"' %}
+					<span style="text-align:left;">ﾏｲﾐｸとﾄﾚｰﾄﾞしてGET!</span>
+					<div style="clear: both;" clear="all" /></div>  
+				</div><!--/.select-->           
+			</div><!--/#yellow-->
+	    </div>    
+		<div id="pulple" style="background-color:#fbe1ff;font-size:x-small;">
+	      		{% disneyimg name="ti_atumeyou2"style='width="100%"' %}
+			<div style="text-align: left; color: rgb(204, 0, 204);">
+				獲得点数の累計でﾗﾝｷﾝｸﾞが決まるよ｡さらにｺｺだけの{% emoji code="F99B"%}限定{% emoji code="F99B"%}ご当地ﾒｰﾙ素材や待受にも加工できるよ{% emoji code="F8E9"%}<br/>
+		                <br/>
+			</div>
+
+		        <img copyright="yes" height="100" width="240" src="{%$staticUrl%}/apps/disney/img/7_3_ehime.gif"/><br/>
+			<img copyright="yes" height="100" width="240" src="{%$staticUrl%}/apps/disney/img/8_8_okinawa.gif"/><br/>
+	                <br/>
+			<div style="color:#C09;text-align:center;">
+				まずはｷﾐのいる現在地の<br />
+				ご当地ｷｬﾗｸﾀｰをGETするよ!<br />
+	                </div>
+					
+	                <div style="text-align:center;">
+				<a href='{% "location:cell?url=$baseUrl/mobile/disney/firsthome/CF_step/complete/rand/$rand" %}'>{% disneyimg name="bn01" %}</a><br />
+	                <br />
+			</div>
+		</div>
+	    {% elseif $step == 'auto' %}
+		<div style="background-color:#bffab8;color:#009933;font-size:x-small;">
+			{% disneyimg name="sub_ti_homeset" style='width="100%"' %}<br />
+			<br />
+			あなたの"ﾏｲﾀｳﾝ"を｢<span style="color:#ff0000;">{%$placeInfo.name%}</span>｣に設定するよ。{% emoji code="F8F6"%}<br />			
+			<span style="color:#ff0000;">※設定した"ﾏｲﾀｲｳﾝ"がﾀｰｹﾞｯﾄﾂｱｰのkm起算の起点となります。</span><br />
+			<br />
+			<div style="text-align:center;">
+				<a href='{% "$baseUrl/mobile/disney/firsthome?CF_step=confirm&CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="yes" %}</a><br/>
+				{% disneyimg name="dot0" style='height="4"' %}<br/>
+				<a href='{% "$baseUrl/mobile/disney/firsthome?CF_step=select"|mixiurl %}'>{% disneyimg name="no" %}</a><br />
+				{% disneyimg name="dot0" style='height="4"' %}<br/>
+			</div>
+		{% elseif $step == 'select' %}
+			
+		<div style="background-color:#bffab8;color:#009933;font-size:x-small;">
+			{% disneyimg name="sub_ti_homeset" style='width="100%"' %}<br />
+			<br />
+			このｹﾞｰﾑを始めるには、基本設定が必要だよ。まずは、ﾏｲﾀｳﾝ設定{% emoji code="F89F"%}<br />
+			あなたの"ﾏｲﾀｳﾝ"がある都道府県を選んでね{% emoji code="F8F6"%}<br /> 
+			<span style="color:#ff0000;">※設定した"ﾏｲﾀｳﾝ"がﾀｰｹﾞｯﾄﾂｱｰのkm起算の起点となります。</span><br />
+			<br />
+			<div style="text-align:center;"> 
+				<form method="POST" action='{% "$baseUrl/mobile/disney/firsthome?CF_step=confirm"|mixiurl %}'>
+				<select name="CF_pid" style="font-size: 10px;">
+					{% html_options options=$placeList %}
+				</select><br />
+				<br />
+				<input type="submit" name="btnConfirm" value="次へ" style="font-size:x-small;" /><br />
+				</form><br />
+			</div>
+			{% elseif $step == 'confirm' %}
+			{% disneyimg name="sub_ti_homeset" style='width="100%"' %}       
+			<div style="background-color:#bffab8; color:#009933;font-size:x-small;"><br />
+				<br />
+				あなたの"ﾏｲﾀｳﾝ"を「<span style="color:#ff0000;">{%$placeInfo.name%}</span>」に設定しました。<br />
+				<br />
+				<span style="text-align:right;">
+					<a href='{% "$baseUrl/mobile/disney/firsttarget"|mixiurl %}'>＞次はﾀｰｹﾞｯﾄﾂｱｰのｺﾞｰﾙを設定するよ</a><br />
+				</span>
+				<br />
+			</div>
+			{% elseif $step == 'complete' %}
+			<div style="background-color:#bffab8;color:#009933;font-size:x-small;">
+				<img src="{%$staticUrl%}/apps/disney/img/chara_get/{%$placeInfo.award_icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" align="top" copyright="yes" /><br />
+				<br />
+				<div style="text-align:center;">
+					{%$placeInfo.name%}ｽﾃｨｯﾁをGETしたよ!<br />
+				</div>
+				<br />
+				<div style="text-align:right;">
+					<a href='{% "$baseUrl/mobile/disney/firsthome?CF_step=auto"|mixiurl %}'>＞次は日々の移動でGETするための設定だよ</a><br />
+				</div>
+			{% /if %}
+			</div>
+	</div>
+</body>
+</html>

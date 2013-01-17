@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+/* #help
+------------------------------*/
+
+#help{
+/*width:943px;*/
+font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','ＭＳ Ｐゴシック',sans-serif;
+}
+
+#help p,
+#help li{
+margin:0 0 10px;
+color:#333333;
+font-size:12px;
+line-height:140%;
+}
+
+#help h3{
+overflow:hidden;
+height:30px;
+margin:10px 0 0;
+padding:0;
+color:#FFFFFF;
+font-size:12px;
+font-weight:bold;
+text-shadow:#000 0 1px 3px;
+background:url(../img/help/help_title_bg.jpg) no-repeat 0 0;
+}
+
+	#help h3 span{
+	display:block;
+	padding:6px 24px 0;
+	}
+
+#help #helpFlash{
+margin:0 0 0 103px;
+}
+
+#help .helpBox{
+zoom:1;
+padding:10px;
+border-right:1px solid #DDDDDD;
+border-bottom:1px solid #DDDDDD;
+border-left:1px solid #DDDDDD;
+}
+
+	#help .helpBox:after{/*clearFix*/
+	content:"."; 
+	display:block; 
+	height:0; 
+	clear:both; 
+	visibility:hidden;
+	line-height:0;
+	}
+
+	#help .helpBox ul{
+	margin:0;
+	padding:0;
+	}
+	
+	#help .helpBox li{
+	padding-left:20px;
+	list-style-type:none;
+	background:url(../img/help/help_icon_2.gif) no-repeat left 4px;
+	}
+
+	#help .helpBox li.attention{
+	color:#FF0000;
+	padding-left:40px;
+	background:url(../img/help/help_icon_1.gif) no-repeat 20px center;
+	}
+
+	#help .helpBox img{
+	float:right;
+	margin:0 0 10px 20px;
+	}
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="welcome">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">ｳｪﾙｶﾑｷﾞﾌﾄ</span><br />
+	</div><!--/.headline-->
+
+	<div class="inner">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		SASAKI 原付と現金40万円を手に入れました{% emoji code="F9A7"%}夢の高級外車ﾍﾟﾗﾘｰﾆ購入を目指してがんばってください{% emoji code="F8BF"%}<br />
+		<div class="car" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/parking/mimg/car/{%$cavName%}/m/normal/{%$color%}.gif" width="200" height="100" /><br />
+		</div><!--/.car-->
+	</div><!--/.inner-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/start?opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&parking_rand=$rand" | mobile_flashurl %}'>さっそく駐車場を確認</a>{% emoji code="F8F2"%}<br />
+	</div><!--/.link-->
+
+</div><!--/#welcome-->
+
+{%include file="parking/common/footer.phtml"%}

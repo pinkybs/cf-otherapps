@@ -1,0 +1,134 @@
+﻿{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn">
+
+<div id="continer">
+
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+		$j('#gNavGiftShop').addClass('active');
+
+		var hidPos = '{%$hasPos%}';
+    	if (null != cm_getCookie('app_top_url') && '1' != hidPos) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+		<div id="mainColumn">
+
+		<div id="searchBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_search.png" width="98" height="19" alt="ギフト検索 のコピー" /></h2>
+			</div><!--/.hdr-->
+
+			<form id="SearchResultFrm" onsubmit="return false;">
+				<ul><!--
+					--><li><input class="inputText" name="txtKeyWord" id="txtKeyWord" type="text" /></li><!--
+					--><li><input class="submitBtn" name="searchResultBtn" id="searchResultBtn" type="button" value="" style="cursor:pointer;" /></li><!--
+				--></ul>
+
+				<ul><!--
+					--><li><label><input name="radSort" id="radSortDown" type="radio" value="1" checked="checked"/>価格が安い順</label></li><!--
+					--><li><label><input name="radSort" id="radSortHigh" type="radio" value="2" />価格が高い順</label></li><!--
+				--></ul>
+			</form>
+		</div><!--/#searchBox.box-->
+
+		<div id="popularGiftBox" class="box">
+			<!-- hidden Info -->
+				<input type="hidden" id="hidMyCash" name="hidMyCash" value="{%$myCash%}"/>
+				<input type="hidden" id="hidUid" name="hidUid" value="{%$uid%}"/>
+
+				<input type="hidden" id="hidSort" name="hidSort" value=""/>
+				<input type="hidden" id="hidPsort" name="hidPsort" value=""/>
+				<input type="hidden" id="hidFavGidStr" name="hidFavGidStr" value="{%$gids%}"/>
+			<!-- /hidden Info -->
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_popularGift.png" width="176" height="19" alt="お気に入りのギフト" /></h2>
+			</div><!--/.hdr-->
+			{% if $lstGiftInfo %}
+				<p id="pInfo" class="order"><span id="maxCount">{%$favCount%}</span>件中<label id="lblNumS">1</label>-<label id="lblNumB">{% if $favCount > "10" %}10{% else %}{%$favCount%}{% /if %}</label>件を表示 <span class="ascend">  [ <a id="sortDesc" href="javascript:void(0);">▲価格が安い順</a></span> | <span class="descend"><a id="sort" href="javascript:void(0);">▼価格が高い順</a></span> ]</p>
+				<!-- #giftShop div -->
+				<div id="giftShop"><!--
+					--><ul><!--
+						{% foreach name=lstGiftInfo from=$lstGiftInfo item=fdata %}
+						 	--><li>
+							<p class="pic"><a style="cursor:default;background-image:url({% $fdata.gift_small_pic %})">{%$fdata.gift_name%}</a></p>
+							<p class="name">{%$fdata.gift_name %}</p>
+							<p class="price">価格：&yen;{%$fdata.gift_format_price%}<span></span></p>
+							<ul class="actionList"><!--
+								{% if $fdata.buy %}--><li class="actionName"><a class="disable">購入する</a></li><!--
+								{% else %}--><li class="actionName"><a href="{%$baseUrl%}/slave/buygift?gid={%$fdata.gid%}">購入する</a></li><!--
+								{% /if %}
+								--><li class="actionComment"><a href="{%$baseUrl%}/slave/removefav?gid={%$fdata.gid%}">お気に入りからはずす</a></li><!--**<li class="actionPoke"><a class="active" href="{%$baseUrl%}/slave/torakuten?gid={%$fdata.gid%}">楽天市場で購入する</a></li>--><!--
+							--></ul><!--/.actionList-->
+							</li><!--
+						{% /foreach %}
+					 --></ul>
+
+					 {% if count($page) != 1 %}
+						 <div id="pager">
+								<ul><!--
+									{% foreach name=page from=$page item=data %}
+									--><li><a href="javascript:changePageAction({%$data%})" {% if $data == "1" %}class="disable" {% /if%}>{%$data%}</a></li><!--
+									{% /foreach %}
+								--></ul>
+
+								<p class="nextButton"><a href="javascript:changePageAction(2)">Next &gt;</a></p>
+						</div><!--/#pager-->
+					{% /if %}
+				</div><!-- /#giftShop div -->
+			{% else %}
+				<p id="favNull"><img src="{%$staticUrl%}/apps/slave/img/dummy/favorite_null.png"/></p>
+			{% /if %}
+			<input type="hidden" id="pageIndex" value="1" />
+            {% if $favCount < 6 %}
+                <!-- #Popularity gift hdr div -->
+
+            </div><!--/#popularGiftBox.box-->
+
+            <div id="popularGiftBox2" class="box">
+
+                    <div class="hdr">
+                    <h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_present.png" alt="人気のギフト" /></h2>
+                </div><!--/Popularity hdr-->
+
+                <p class="order">{%$Pcount%}件中1-{%$Pcount%}件を表示</p>
+
+                <!-- #Popularity giftShop div -->
+                <div id="popularGift"><!--
+                    --><ul><!--
+                        {% foreach name=lstPopularityGift from=$lstPopularityGift item=gdata %}
+                            --><li>
+                            <p class="pic"><a style="cursor:default;background-image:url({% $gdata.gift_small_pic %})">{%$gdata.gift_name%}</a></p>
+                            <p class="name">{%$gdata.gift_name %}</p>
+                            <p class="price">価格：&yen;{%$gdata.gift_format_price%}<span></span></p>
+                            <ul class="actionList"><!--
+                                {% if $gdata.buy %}--><li class="actionName"><a class="disable">購入する</a></li><!--
+                                {% else %}--><li class="actionName"><a href="{%$baseUrl%}/slave/buygift?gid={%$gdata.gid%}">購入する</a></li><!--
+                                {% /if %}
+                                {% if $gdata.add %}--><li class="actionComment"><a class="disable">お気に入りに追加</a></li><!--
+                                {% else %}--><li class="actionComment"><a href="{%$baseUrl%}/slave/addfav?gid={%$gdata.gid%}">お気に入りに追加</a></li><!--**{% /if %}<li class="actionPoke"><a class="active" href="{%$baseUrl%}/slave/torakuten?gid={%$gdata.gid%}">楽天市場で購入する</a></li>--><!--
+                            --></ul><!--/.actionList-->
+                            </li><!--
+                        {% /foreach %}
+                    --></ul><!--
+                 --></div><!-- /#Popularity giftShop -->
+                 {% /if %}
+		</div><!--/#popularGiftBox2.box-->
+
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+	{%include file="slave/common/adbox.phtml"%}
+	{%include file="slave/common/logbox.phtml"%}
+	{%include file="slave/common/popularbox.phtml"%}
+	</div><!--/#subColumn-->
+<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/giftshop.js?{%$version.js%}"></script>
+<script type="text/javascript">
+        $j(document).ready(function() {
+            adjustHeight();
+        });
+</script>
+{%include file="slave/common/footer.phtml"%}

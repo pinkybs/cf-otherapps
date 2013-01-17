@@ -1,0 +1,241 @@
+{%include file="millionminds/common/header.phtml"%}
+
+<body>
+    {%include file="topad.phtml"%}
+    <script type="text/javascript" language="javascript" src="{%$staticUrl%}/apps/millionminds/js/wz_jsgraphics.js?{%$version.js%}"></script>
+    
+	<div id="container">
+
+		{%include file="millionminds/common/hdr.phtml"%}
+
+		<ul id="gnav">
+            <li class="top"><a href="{%$baseUrl%}/millionminds">MillionMindsトップ</a></li>
+            <li class="profile"><a class="active">プロフィール</a></li>
+            <li class="log"><a href="{%$baseUrl%}/millionminds/log">あしあと</a></li>
+            <li class="archive"><a href="{%$baseUrl%}/millionminds/archive">アーカイブ</a></li>
+            <li class="add"><a href="{%$baseUrl%}/millionminds/newquestion">クエスチョン作成</a></li>
+            <li class="help"><a href="{%$baseUrl%}/millionminds/help">ヘルプ</a></li>
+            <li class="invite"><a href="javascript:void(0)" onclick="invite();">友達を招待</a></li>
+        </ul><!--/#grav-->
+                
+		<div id="content">
+		
+			<div id="mainColumn">
+			    
+			    <div class="unav">
+                    <div class="prev"><a id="navLeft" href="javascript:void(0);" onclick="jQuery.profile.leftOne(1)">前へ</a></div>
+                    <div id="divRankList" class="ulWrapper">
+                    <ul id="rankList" style="width: 10000px;">
+                        {%foreach from=$allAppRankArr.arrInvite item=invite key=keyId %}
+                          <li><span><a target="_top" href="javascript:void(0)" style="background-image: url({%$staticUrl%}/apps/parking/img/invite.gif);" title="invite" onclick="invite();">invite</a></span></li>
+                        {%/foreach%}
+                        {%foreach from=$allAppRankArr.rankInfo item=rank key=key %}
+                          <li {%if $rank.uid == $mindsUser.uid%}class="active"{%/if%}><span><a href="{%$baseUrl%}/millionminds/profile/uid/{%$rank.uid%}" style="background-image: url({%$rank.thumbnailUrl%});" title="{%$rank.displayName%}">{%$rank.displayName%}</a></span></li>
+                        {%/foreach%}
+                    </ul>
+                    </div>
+                    <div class="next"><a id="navRight" href="javascript:void(0);" onclick="jQuery.profile.rightOne(1)">次へ</a></div>
+                </div><!--/.unav-->
+                
+				<input type="hidden" name="rankPrev" id="rankPrev" value="{%$allAppRankArr.rankPrev%}">
+                <input type="hidden" name="lastUserRankNum" id="lastUserRankNum" value="{%$allAppRankArr.lastUserRankNum%}">
+                <input type="hidden" name="rankCount" id="rankCount" value="{%$allAppRankArr.allCount%}">
+                
+				<div id="profile">
+					<div class="inner">
+						<table width="100%" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<th><div class="user" style="background-image: url({%$mindsUser.largeThumbnailUrl%});">
+										<a href="{%$mindsUser.profileUrl%}" title="{%$mindsUser.displayName%}のmixiプロフィールへ" target="_blank">{%$mindsUser.displayName%}</a>
+									</div>
+									<ul class="info">
+										<li class="nickname"><strong>{%$mindsUser.displayName%}</strong>さん</li>
+										<li class="count">クエスチョン回答数：{%$mindsUser.answerCount%}</li>
+									</ul></th>
+								{% if $userType == 1 %}
+    								<td class="self"><h4>自己評価による性格診断</h4>
+    									<div class="result" id="divSelf" style="position:relative">
+    									   {% if $mindsUser.nature_result != 0 %}
+        										<p class="chart"><img src="{%$staticUrl%}/apps/millionminds/img/chart/self/chart_00000.png" width="170" height="143" alt="" /></p>
+        										<p class="btn retry"><a href="{%$baseUrl%}/millionminds/nature?isAgain=1">もう一度診断する</a></p>
+    									   {% else %}
+        									    <p class="chart"><img src="{%$staticUrl%}/apps/millionminds/img/chart/self/chart_null.png" width="170" height="143" alt="" /></p>
+                                                <p class="btn try"><a href="{%$baseUrl%}/millionminds/nature">性格診断する</a></p>
+    									   {% /if %}
+    									</div>
+    							    </td>
+    								<td class="other"><h4>マイミクからの性格診断</h4>
+    									<div class="result">
+    										<p class="chart"><img src="{%if $mindsUser.friend_evaluation%}{%$staticUrl%}/apps/millionminds/img/chart/self/chart_00351.png{%else%}{%$staticUrl%}/apps/millionminds/img/chart/friend/chart_null.png{%/if%}" width="170" height="143" alt="" /></p>
+    										<p class="btn req"><a href="javascript:void(0);" onclick="jQuery.profile.sendNatureRequest(2)">性格診断をリクエスト</a></p>
+    									</div>
+    								</td>
+								{% elseif $userType == 2 %}
+								    <td class="self"><h4>自己評価による性格診断</h4>
+                                        <div class="result">
+                                            <p class="chart"><img src="{%if $mindsUser.nature_result!=0%}{%$staticUrl%}/apps/millionminds/img/chart/self/chart_55555.png{%else%}{%$staticUrl%}/apps/millionminds/img/chart/self/chart_null.png{%/if%}" width="170" height="143" alt="" /></p>
+                                            <p class="btn req"><a href="javascript:void(0);" onclick="jQuery.profile.sendNatureRequest(1)">性格診断をリクエスト</a></p>
+                                        </div>
+                                    </td>
+                                    <td class="other"><h4>マイミクからの性格診断</h4>
+                                        <div class="result">
+                                            <p class="chart"><img src="{%if $mindsUser.friend_evaluation%}{%$staticUrl%}/apps/millionminds/img/chart/friend/chart_30303.png{%else%}{%$staticUrl%}/apps/millionminds/img/chart/friend/chart_null.png{%/if%}" width="170" height="143" alt="" /></p>
+                                            <p class="btn try"><a href="{%$baseUrl%}/millionminds/nature/uid/{%$mindsUser.uid%}{%if $mindsUser.user_evaluation%}?isAgain=1{%/if%}">性格診断する</a></p>
+                                        </div>
+                                    </td>
+								{% else %}
+    								<td class="self"><h4>自己評価による性格診断</h4>
+                                        <div class="result">
+                                            <p class="chart"><img src="{%if $mindsUser.nature_result!=0%}{%$staticUrl%}/apps/millionminds/img/chart/self/chart_55555.png{%else%}{%$staticUrl%}/apps/millionminds/img/chart/self/chart_null.png{%/if%}" width="170" height="143" alt="" /></p>
+                                            <p class="btn invite"><a href="{%$baseUrl%}/millionminds/nature">アナタも診断する？</a></p>
+                                        </div>
+                                    </td>
+                                    <td class="other"><h4>マイミクからの性格診断</h4>
+                                        <div class="result">
+                                            <p class="chart"><img src="{%if $mindsUser.friend_evaluation%}{%$staticUrl%}/apps/millionminds/img/chart/friend/chart_30303.png{%else%}{%$staticUrl%}/apps/millionminds/img/chart/friend/chart_null.png{%/if%}" width="170" height="143" alt="" /></p>
+                                            <p class="btn try"><span>性格診断する</span></p>
+                                        </div>
+                                    </td>
+								{% /if %}
+							</tr>
+						</table>
+						<h3 class="result1">この人のオモテのカオ</h3>
+						<p class="resultTxt">{%if $mindsUser.content_in%}{%$mindsUser.content_in%}{%else%}性格診断を完了させると、ここにアナタの「<strong>オモテのカオ</strong>」が表示されます。{%/if%}</p>
+						
+						<h3 class="result2">この人のウラのカオ</h3>
+						<p class="resultTxt">{%if $mindsUser.friend_evaluation%}{%$mindsUser.friend_evaluation%}{%else%}性格診断を完了させると、ここにアナタの「<strong>ウラのカオ</strong>」が表示されます。{%/if%}</p>
+    					{% if $userType !=1 %}
+    						<h3 class="fate">この人とアナタの相性</h3>
+    						<p class="resultTxt">{%$complareInfo.content%}</p>
+						{% /if %}
+						
+					</div><!--/.inner-->
+					
+					{% if $userNearPeople %}
+                        <h3 class="bestmember">相性が良いマイミクは、こんな人たち</h3>
+                        <ul class="answers">
+                            {% foreach from=$userNearPeople item=data %}
+                              <li><span><a href="{%$baseUrl%}/millionminds/profile/uid/{%$data.uid%}" style="background-image: url({%$data.thumbnailUrl%});" title="{%$data.displayName%}">{%$data.displayName%}</a></span></li>
+                            {% /foreach %}
+                        </ul><!--/.answers-->
+                    {% /if %}
+                    
+				</div><!--/#profile-->
+				
+				<div style="height: 117px;" class="unav">
+				    <h2>この人のマイミク</h2>
+				    <div style="padding-bottom:10px;*margin-bottom:-15px;"></div>
+                    <div class="prev"><a id="navLeftMixi" href="javascript:void(0);" onclick="jQuery.profile.leftOne(2)">前へ</a></div>
+                    <div class="ulWrapper">
+                    <ul id="rankListMixi" style="width: 10000px;">
+                        {%foreach from=$myMixiRankArr.arrInvite item=invite key=keyId %}
+                          <li><span><a target="_top" href="javascript:void(0)" style="background-image: url({%$staticUrl%}/apps/parking/img/invite.gif);" title="invite" onclick="topInvite();">invite</a></span></li>
+                        {%/foreach%}
+                        {%foreach from=$myMixiRankArr.rankInfo item=rank key=key %}
+                          <li {%if $rank.uid == $mindsUser.uid%}class="active"{%/if%}><span><a href="{%$baseUrl%}/millionminds/profile/uid/{%$rank.uid%}" style="background-image: url({%$rank.thumbnailUrl%});" title="{%$rank.displayName%}">{%$rank.displayName%}</a></span></li>
+                        {%/foreach%}
+                    </ul>
+                    </div>
+                    <div class="next"><a id="navRightMixi" href="javascript:void(0);" onclick="jQuery.profile.rightOne(2)">次へ</a></div>
+                </div><!--/.unav-->
+                
+                <input type="hidden" name="rankPrev" id="rankPrevMixi" value="{%$myMixiRankArr.rankPrev%}">
+                <input type="hidden" name="lastUserRankNum" id="lastUserRankNumMixi" value="{%$myMixiRankArr.lastUserRankNum%}">
+                <input type="hidden" name="rankCount" id="rankCountMixi" value="{%$myMixiRankArr.allCount%}">
+				
+                <input type="hidden" id="pageIndex" value="1">
+                <input type="hidden" id="userAnswerType" value="0">
+                <input type="hidden" id="txtMindsUid" value="{%$mindsUser.uid%}">
+                <input type="hidden" id="txtMindsUserName" value="{%$mindsUser.displayName%}">
+                <input type="hidden" id="answerCount" value="{%$userAnswerCount%}">
+                <input type="hidden" id="pageSize" value="{%$userAnswerPageSize%}">
+                
+				<div class="article" id="divAnswer">
+					<h2 class="truth">この人のホンネと価値観</h2>
+					<ul class="cat">
+                        <li class="all"><a href="javascript:void(0)" class="active" onclick="jQuery.profile.changePageAction(1, 0, 1);">すべて</a></li>
+                        <li class="character"><a href="javascript:void(0)" onclick="jQuery.profile.changePageAction(1, 1, 1);">性格診断</a></li>
+                        <li class="politics"><a href="javascript:void(0)" onclick="jQuery.profile.changePageAction(1, 2, 1);">政治・経済</a></li>
+                        <li class="life"><a href="javascript:void(0)" onclick="jQuery.profile.changePageAction(1, 3, 1);">社会生活</a></li>
+                        <li class="entertainment"><a href="javascript:void(0)" onclick="jQuery.profile.changePageAction(1, 4, 1);">芸能・スポーツ</a></li>
+                        <li class="hobby"><a href="javascript:void(0)" onclick="jQuery.profile.changePageAction(1, 5, 1);">趣味・その他</a></li>
+                    </ul><!--/.cat-->
+					<ul class="truth" id="arrayUserAnswer">
+					    {% foreach from=$userAnswer item=answer key=key %}
+    						<li class="{%if $key%2==0%}i{%else%}ii{%/if%}">
+    						  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    							<tr>
+    							    <th>
+    							    {% if $answer.type == 1 %}
+    								    <span class="chara">性格診断</span>
+    								{% else %}
+    								    {% if $answer.nickname_auth ==1 %}
+    								    <span><a href="{%$baseUrl%}/millionminds/profile/uid/{%$answer.question_uid%}" style="background-image: url({%$answer.thumbnailUrl%});" title="{%$answer.displayName%}">{%$answer.displayName%}</a></span>
+    								    {% else %}
+    								    <span class="secret">匿名希望</span>
+    								    {% /if %}
+								    {% /if %}
+    								</th>
+    								<td>
+    								{% if $answer.type != 1 %}
+        								{% if $answer.nickname_auth ==1 %}
+        								<p class="user"><a href="{%$baseUrl%}/millionminds/profile/uid/{%$answer.question_uid%}">{%$answer.displayName%}</a>さん</p>
+        								{% else %}
+        								<p class="user">匿名希望さん</p>
+        								{% /if %}
+    								{% /if %}
+								    <p class="content stringCut" style="width:500px;"><strong><a href="{%$baseUrl%}/millionminds/question/qid/{%$answer.qid%}">{%$answer.question|escape%}</a></strong></p></td>
+    							</tr>
+    							<tr>
+    								<th><span><a href="{%$baseUrl%}/millionminds/profile/uid/{%$mindsUser.uid%}" style="background-image: url({%$mindsUser.thumbnailUrl%});" title="{%$mindsUser.displayName%}">{%$mindsUser.displayName%}</a></span></th>
+    								<td>
+    								    <p class="user">{%$mindsUser.displayName%}</p>
+    									<p class="content"><strong>{%$answer.answer|escape%}</strong></p>
+    								</td>
+    							</tr>
+    						  </table>
+    						</li>
+    					{% foreachelse %}
+    						<p class="null"><a href="{%$baseUrl%}/millionminds/newquestion">クエスチョンを作成する</a></p>
+						{% /foreach %}
+					</ul><!--/.truth-->
+				</div><!--/#evaluate-->
+
+			</div><!--/#mainColumn-->
+
+			<div id="subColumn">
+				{%include file="millionminds/common/ad.phtml"%}
+				
+				{% if $userQuestion %}
+				<div class="article">
+					<h3 class="add">この人が作成したクエスチョン</h3>
+					<div class="inner">
+						<ul>
+						{% foreach from=$userQuestion item=data%}
+                            <li style="width:230px"><a href="{%$baseUrl%}/millionminds/question?qid={%$data.qid%}" class="ico stringCut">{%$data.question|escape%}</a></li>
+                        {% /foreach %}
+						</ul>
+					</div><!--/.inner-->
+				</div><!--/.article-->
+				{% /if %}
+				
+				<div class="article">
+					<h3 class="recent">新着のクエスチョン</h3>
+					<div class="inner">
+						<ul>
+							{% foreach from=$newQuestion item=data%}
+                                <li style="width:230px"><a href="{%$baseUrl%}/millionminds/question?qid={%$data.qid%}" class="ico stringCut">{%$data.question|escape%}</a></li>
+                            {% /foreach %}
+						</ul>
+						<p class="more">⇒<a href="{%$baseUrl%}/millionminds/archive?field=2">もっと見る</a></p>
+					</div><!--/.inner-->
+				</div><!--/.article-->
+			</div><!--/#subColumn-->
+
+		</div><!--/#content-->
+    
+        <div style="display: none;" id="fullOverlay"></div><!--/#fullOverlay-->
+    
+    <script type="text/javascript" src="{%$staticUrl%}/apps/millionminds/js/profile.js?{%$version.js%}"></script>
+
+{%include file="millionminds/common/footer.phtml"%}

@@ -1,0 +1,4 @@
+============ prototypejs ==============
+Update     2008/07/18    Hulj    #001
+update     2008/07/18    Hulj    #002
+update     2008/07/18    Hulj    #003

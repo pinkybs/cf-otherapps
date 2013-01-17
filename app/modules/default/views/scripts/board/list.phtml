@@ -1,0 +1,190 @@
+{%include file="board/header.phtml"%}
+<style>
+body #container{
+    background-repeat:no-repeat;
+    background-position:0 46px;
+}
+body.skin1 #container {
+    background-image:url({%$staticUrl%}{%$headPic%});
+}
+
+</style>
+<script  type="text/javascript" src="{%$staticUrl%}/apps/board/js/edit.js?{%$version.js%}"></script>
+<script  type="text/javascript" src="{%$staticUrl%}/apps/board/js/history.js?{%$version.js%}"></script>
+<body id="bbsb" class="skin1" name="boardBody">
+    {%include file="topad.phtml"%}
+
+    <div id="priviewDiv"  onmousedown="selectSkin()" onmouseover="previewBoardSet()" onmouseout="deletePreview()"></div>
+<div id="container">
+    <a id="top" name="top"></a>
+
+    <div id="appHdr">
+    <p id="appTit"><img src="{%$staticUrl%}/apps/board/img/tit_app.gif" alt="あしあと帳" /></p>
+    <p id="btnMypage"><a href="javascript:void(0);" onclick="gotoboard({%$uid%});"><img src="{%$staticUrl%}/apps/board/img/btn_mypage.jpg" alt="自分のあしあと帳へ" /></a></p>
+    </div>
+
+    <div id="mainColumn">
+        {%include file="board/common/head.phtml"%}
+        <ul id="gNav">
+            <li id="bbs">
+            <!--<a href="{%$baseUrl%}/board/list{% if $fid %}?uid={%$fid%}{% /if %}">あしあと帳</a>-->
+            <a href="javascript:void(0);" onclick="gotoboard({% if $fid %}{%$fid%}{%else%}{%$uid%}{% /if %});">あしあと帳</a>
+            </li>
+            <li id="posted">
+            <!--<a href="{%$baseUrl%}/board/history{% if $fid %}?uid={%$fid%}{% /if %}">投稿履歴</a>-->
+            <a href="javascript:void(0);" onclick="getHistoryList({% if $fid %}{%$fid%}{% /if %});">投稿履歴</a>
+            </li>
+           {% if not $skin %}
+           {% if not $fid %}
+            <li id="edit">
+            <!--<a href="{%$baseUrl%}/board/edit">設定変更</a>-->
+            <a href="javascript:void(0)" onclick="getUserSetInfo();return false;">設定変更</a>
+            </li>
+            {% /if %}
+            {% /if %}
+        </ul>
+        {% if $openflag == 3 %}
+            <div id="content"><div class="inner">このあしあと帳は非公開です。</div></div>
+        {% elseif $openflag == 2 %}
+            <div id="content"><div class="inner">友人まで公開のため閲覧することが出来ません。</div></div>
+        {% elseif $openflag == 1 %}
+            <div id="content"><div class="inner">友達の友達迄公開のため閲覧することが出来ません。</div></div>
+        {% else %}
+
+        <div id="content"><div class="inner">
+            {% if !($allowComment == 1) %}
+            <div id="postArea">
+                <p class="pic"><img src="{%$userInfo->getThumbnailUrl()%}" width="50" height="50" alt="" /></p>
+                <div id="paint" style="display:none">
+                <div id="post">
+                    <ul id="postNav">
+                        <li id="navOekaki" class="active">
+                            <a href="javascript:void(0);">お絵かき</a>
+                        </li>
+                        <li id="navText">
+                            <a href="javascript:void(0);" onclick="$('paint').hide();$('write').show();return false;">テキスト</a>
+                        </li>
+                    </ul>
+                    <div id="postBox">
+                        <object id="paintIE" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="580" height="204" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0">
+                            <param name="movie" value="{%$staticUrl%}/apps/board/swf/paint.swf" />
+                            <param name="wmode" value="Opaque" />
+                            <param name="quality" value="high" />
+                            <param name="bgcolor" value="#ffffff" />
+                            <param name="name" value="paint" />
+                            <param name="align" value="top" />
+                            <param name="allowScriptAccess" value="always" />
+                            <param name="allowFullScreen" value="false" />
+                            <param name="type" value="application/x-shockwave-flash" />
+                            <param name="pluginspage" value="http://www.macromedia.com/go/getflashplayer" />
+                            <param name="FlashVars" value="uuid={%$bownerId%}&user={%$uid%}&postUrl={%$baseUrl%}/ajax/board/newimage&forwardUrl={%$baseUrl%}/board{% if $fid %}?uid={%$fid%}{% /if %}" />
+                            <embed id="paint" src="{%$staticUrl%}/apps/board/swf/paint.swf" wmode="Opaque" quality="high" bgcolor="#ffffff" width="580" height="204" name="paint" align="top"
+                                allowScriptAccess="always" allowFullScreen="false" type="application/x-shockwave-flash"
+                                pluginspage="http://www.macromedia.com/go/getflashplayer"
+                                FlashVars="uuid={%$bownerId%}&user={%$uid%}&postUrl={%$baseUrl%}/ajax/board/newimage&forwardUrl={%$baseUrl%}/board{% if $fid %}?uid={%$fid%}{% /if %}" />
+                        </object>
+                    </div>
+                </div><!--/#post-->
+                </div>
+                <div id="write">
+                <div id="post">
+                    <ul id="postNav">
+                    <li id="navOekaki">
+                        <a href="javascript:void(0);" onclick="$('paint').show();$('write').hide();return false;">お絵かき</a>
+                    </li>
+                    <li id="navText" class="active">
+                        <a href="javascript:void(0);">テキスト</a>
+                    </li>
+                    </ul>
+                    <div id="postBox">
+                        <form id="frmBoard" name="frmBoard" method="post" onsubmit="return false;">
+                            <textarea id="txtContent" name="txtContent"></textarea>
+                            <p class="note">※全角100文字以内</p>
+                            <div id="alert"></div>
+                            <input type="image" id="btnPost" name="btnPost" src="{%$staticUrl%}/apps/board/img/btn_post.png"/>
+                        </form>
+                    </div>
+                </div><!--/#post-->
+                </div>
+                <!--<div id="add01" class="addArea"><img src="{%$staticUrl%}/apps/board/img/demoimg/ad_468x60.gif" alt="" /></div>-->
+            </div><!--/#postArea-->
+            {% /if %}
+            <div id="boardList">
+
+                {%if $info!=null%}
+                <div class="pageNumber">
+                {%if $listCount.startCount == $listCount.endCount%}
+                    {%$count%}件中{%$listCount.startCount%}件を表示
+                {%else%}
+                    {%$count%}件中{%$listCount.startCount%}-{%$listCount.endCount%}件を表示
+                {%/if%}
+                </div>
+                {%foreach from=$info item=rowdata key=index%}
+                    <div {%if ($index%2)==0 %}class="section"{%else%}class="section even"{%/if%}>
+
+                        {%if $uid == $rowdata.comment_uid%}
+                            <p class="pic"><a href="javascript:void(0);" onclick="gotoboard({%$uid%})"><img src="{%$rowdata.thumbnailUrl%}" width="50" height="50" /></a></p>
+                            <p class="name"><a href="javascript:void(0);" onclick="gotoboard({%$uid%})">{%$rowdata.displayName%}</a></p>
+                        {%else%}
+                            <p class="pic"><a href="javascript:void(0);" onclick="gotoboard({%$rowdata.comment_uid%})"><img src="{%$rowdata.thumbnailUrl%}" width="50" height="50" /></a></p>
+                            <p class="name"><a href="javascript:void(0);" onclick="gotoboard({%$rowdata.comment_uid%})">{%$rowdata.displayName%}</a></p>
+                        {%/if%}
+                        <p class="date">{%$rowdata.create_time|date_format:"%m月%d日 %H:%M"%}</p>
+                        {%if $uid == $rowdata.comment_uid || $uid == $bownerId%}
+                            <p class="btnDelete"><a href="javascript:void(0);" onclick="deleteBoard({%$rowdata.bid%});return false;"><img src="{%$staticUrl%}/apps/board/img/btn_delete.png" width="39" height="11" alt="削除" /></a></p>
+                        {%/if%}
+                        <p class="comment">
+                            <span class="inner">
+                            {%if $rowdata.type==0%}{%$rowdata.content|escape|nl2br%}
+                            {%else%}<img src="{%$photoUrl%}/apps/board/flash{%$rowdata.pic_url%}" style="height:136px"/>
+                            {%/if%}
+                            </span>
+                        </p>
+                    </div>
+                {%/foreach%}
+                <div id="navlist"></div>
+                {%else%}
+                <div class="section">
+                    <p class="imgNull"><img src="{%$staticUrl%}/apps/board/img/txt_null.png" style="height:80px"></p>
+                </div><!--/.section-->
+
+                {%/if%}
+            </div>
+        </div></div><!--/#content-->
+        {% /if %}
+        <input type="hidden" id="bownerId" name="bownerId" value="{%$bownerId%}">
+        <input type="hidden" id="uid" name="uid" value="{%$uid%}">
+        <input type="hidden" id="pageIndex" name="pageIndex" value="{%$pageIndex%}">
+        <input type="hidden" id="openflag" name="openflag" value="{%$openflag%}">
+        <input type="hidden" id="count" name="count" value="{%$count%}">
+        <input type="hidden" id="pageName" name="pageName" value="board">
+
+    </div><!--/#mainColumn-->
+    <div style="display:none">
+            <img src="{%$staticUrl%}/apps/board/img/skin1_s.png" alt=""/>
+            <img src="{%$staticUrl%}/apps/board/img/skin2_s.png" />
+            <img src="{%$staticUrl%}/apps/board/img/skin3_s.png" />
+            <img src="{%$staticUrl%}/apps/board/img/skin4_s.png" />
+            <img src="{%$staticUrl%}/apps/board/img/skin5_s.png" />
+            <img src="{%$staticUrl%}/apps/board/img/skin6_s.png" />
+            <img src="{%$staticUrl%}/apps/board/img/btn_change.png" />
+
+            <img src="{%$staticUrl%}/apps/board/img/preview01.png.png" />
+            <img src="{%$staticUrl%}/apps/board/img/preview02.png.png" />
+            <img src="{%$staticUrl%}/apps/board/img/preview03.png.png" />
+            <img src="{%$staticUrl%}/apps/board/img/preview04.pnge.png" />
+            <img src="{%$staticUrl%}/apps/board/img/preview05.png.png" />
+            <img src="{%$staticUrl%}/apps/board/img/preview06.png.png" />
+
+            <input type="hidden" id="oldUid" name="oldUid" value="{%$bownerId%}">
+    </div>
+    {%include file="board/common/contactlist.phtml"%}
+
+    {% if $openflag == 0 %}
+    <script  type="text/javascript" src="{%$staticUrl%}/apps/board/js/list.js?{%$version.js%}"></script>
+    <script  type="text/javascript" src="{%$staticUrl%}/apps/board/js/common.js?{%$version.js%}"></script>
+    {% /if %}
+    <script  type="text/javascript" src="{%$staticUrl%}/apps/board/js/swfobject.js?{%$version.js%}"></script>
+
+
+{%include file="board/footer.phtml"%}

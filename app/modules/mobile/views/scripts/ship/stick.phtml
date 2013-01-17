@@ -1,0 +1,55 @@
+{% if $result.status == 1 %}
+	{% include file="ship/common/header.phtml" headerAd=1 %}
+	<div id="stick">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			金貨を奪い返す<br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		</div><!--/.headline-->
+		<div class="description">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#7c4825;">海賊船 {%$result.name%}号</span>を攻撃！<span style="color:#7c4825;">{%$result.parkingName%}海賊団</span>は金貨と財宝を置いて逃げていきました。<br />
+		</div><!--/.description-->
+		<div class="hit" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/ship/img/hit.gif" width="123" height="87" style="margin:3px 0;" /><br />
+			<div style="color:#cd424a;text-decoration:blink;">金貨 ${%$result.money|outputdollars%}を獲得!</div>
+		</div><!--/.hit-->
+		<div class="link">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/index/CF_uid/`$result.parkingUid`"|mixiurl %}'>{%$result.parkingName%}の海賊島へ</a><br />
+		</div><!--/.link-->
+	</div><!--/#stick-->
+	{%include file="ship/common/menu.phtml"%}
+	{% include file="ship/common/footer.phtml" footerAd=1 %}
+	
+{% else %}
+
+	{% include file="ship/common/header.phtml" %}
+	<div id="stick">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			金貨を奪い返す<br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		</div><!--/.headline-->
+		<div class="description">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			{% if $result.status == -2 %}
+				まだ金貨の強奪が始まっておらず､阻止できませんでした｡<br />
+				強奪を阻止するには､強奪開始後1時間以上の時間経過が必要です｡<br />
+			{%else%}
+				敵の海賊船が立ち去ってしまい､攻撃できませんでした｡<br />
+			{%/if%}
+		</div><!--/.description--> 
+
+		{%include file="ship/common/ad_complete.phtml"%}
+
+		<div class="link">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/index/CF_uid/`$result.parkingUid`"|mixiurl %}'>{%$result.parkingName%}の海賊島へ</a><br />
+		</div><!--/.link-->
+	</div><!--/#stick-->
+	{%include file="ship/common/menu.phtml"%}
+	{% include file="ship/common/footer.phtml" %}
+{% /if %}

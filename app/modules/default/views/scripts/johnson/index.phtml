@@ -1,0 +1,83 @@
+{%include file="johnson/header.phtml"%}
+
+<body id="home">
+    <script type="text/javascript" src="{%$staticUrl%}/apps/johnson/js/johnson.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/apps/johnson/js/swfobject.2.2.js?{%$version.js%}"></script>
+
+    <div id="container">
+        <div id="mainColumn">
+            <div id="playArea"><div id="mameFlash">
+            
+            
+            <div id="attention">
+            <a href="http://www.adobe.com/go/JP-H-GET-FLASH" target="_top"><img src="{%$staticUrl%}/apps/johnson/img/alternative.png" alt="Adobe Flash Player のダウンロード" width="755" height="506" /></a>
+        	</div>
+      
+            </div></div><!--/#playArea-->
+            <script type="text/javascript" language="javascript">
+                var flashvars = {
+                    post_url : '{%$baseUrl%}/ajax/johnson/aftergameover',
+                    uid : {%$uid%},
+                    incentive_id : '{%$incentiveId%}',
+                    is_first_access : {%$firstLogin%},
+                    rest_item_id : '{%$itemIdString%}'
+                };
+
+                var params = {
+                    wmode: "transparent",
+    		        allowScriptAccess : "always"
+                };
+                
+                var isMSIE = /*@cc_on!@*/false;
+                var fpv = swfobject.getFlashPlayerVersion();
+                if( isMSIE && fpv.major == 9  )
+                {
+                    swfobject.embedSWF_IE9("{%$staticUrl%}/apps/johnson/swf/preloader.swf?{%$version.js%}","mameFlash","100%","506","9.0.45","expressInstall.swf",flashvars,params);
+                }
+                else
+                {
+                    swfobject.embedSWF("{%$staticUrl%}/apps/johnson/swf/preloader.swf?{%$version.js%}","mameFlash","100%","506","9.0.45","expressInstall.swf",flashvars,params);
+                }
+            </script>
+
+
+            <div id="rankingArea">
+                <h2><img src="{%$staticUrl%}/apps/johnson/img/ranking_header.png" width="180" height="38" alt="あなたは何番目？スコアランキング" /></h2>
+                     <div id="innaerFrame" style="height:270px;width:160px;overflow:hidden;position:relative;left:10px;top:20px">
+                     <ol style="position:absolute;top:0px;height:999999px;left:0px;"  id="olli">
+                            {% foreach from=$rankInfo item=data%}
+                            <li {%if $data.honor_id==13%}class="king"{%/if%}{%if $data.honor_id >= 10 && $data.honor_id <= 12 %}class="master"{%/if%}>
+                                <p class="pic" style="background-image:url({% $data.miniThumbnailUrl %});">{% $data.displayName %}</p>
+                                <p class="rank"><span>{% $data.rank %}位</span></p>
+                                <p class="name">{% $data.displayName %}</p>
+                                <p class="score">{% $data.score %}点</p>
+                            </li>
+                            {% /foreach %}
+                    </ol>
+                    </div>
+
+                    <input type="hidden" id="hidRankBegin" value="{% $rankBegin %}">
+                    <input type="hidden" id="hidRankEnd" value="{% $rankEnd %}">
+                    <input type="hidden" id="hidUserCnt" value="{% $userCnt %}">
+
+                   <ul id="scoreController"><!--
+                    --><li id="scoreUp"><a href="javascript:void(0);" id="scoreUpUP" onclick="moveToUpOrDown('up')">上</a></li><!--
+                    --><li id="scoreDown"><a href="javascript:void(0);" id="scoreDownDown" onclick="moveToUpOrDown('down')">下</a></li><!--
+                --></ul>
+                <p id="allRanking" class="btn" onclick="otherTypeRank(1);"><a href="javascript:void(0);">ミイクシィ全体ランキング</a></p>
+                <p id="myMixiRanking" class="btn active" onclick="otherTypeRank(2);"><a href="javascript:void(0);">マイミクシィ内ランキング</a></p>
+                <p id="inviteBtn"><a href="javascript:void(0);" onclick="invite()"><img src="{%$staticUrl%}/apps/johnson/img/btn_invite.png" alt="プレゼントがもらえる！マイミクを招待" /></a></p>
+            </div><!--/#rankingArea-->
+
+        </div><!--/#mainColumn-->
+
+        <div id="ftrBanner"><img src="{%$staticUrl%}/apps/johnson/img/jj_apli_footer.gif" width="945" height="70" alt="" /></div>
+    </div><!--/#container-->
+
+    <script type="text/javascript">
+        jQuery(function($) {
+            adjustHeight();
+        });
+	</script>
+</body>
+</html>

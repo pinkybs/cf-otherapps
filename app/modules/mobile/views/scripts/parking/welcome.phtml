@@ -1,0 +1,35 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="welcome">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">駐車戦争へようこそ!</span><br />
+	</div><!--/.headline-->
+
+	<div class="intro" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<object data="{%$staticUrl%}/apps/parking/swf/intro.swf" type="application/x-shockwave-flash" width="210" height="160">
+			<param name="bgcolor" value="FFFFFF" />
+			<param name="loop" value="off" />
+			<param name="quality" value="high" />
+			<embed src="{%$staticUrl%}/apps/parking/swf/intro.swf" width="210" height="160" loop="off" quality="high" bgcolor="#FFFFFF"></embed>
+		</object>
+	</div><!--/.intro-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		無断駐車をしてｵｶﾈを稼いでいくｽﾘﾙ感と､違反駐車のｷｯﾌﾟを切る快感が楽しめる白熱の駐車戦争{% emoji code="F99F"%}<br />
+		<br />
+		ﾏｲﾐｸの駐車場に違反駐車をして､憧れのｸﾙﾏをGETしよう{% emoji code="F9A2"%}<br />
+	</div><!--/.description-->
+
+	<div class="link" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<a href='{% "$baseUrl/mobile/parking/startgame?parking_cl=$color"|mixiurl %}'>駐車戦争をはじめる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#welcome-->
+
+{%include file="parking/common/footer.phtml"%}

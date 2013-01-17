@@ -1,0 +1,172 @@
+{%include file="header.phtml"%}
+
+<body id="home">
+    
+{%include file="linno/common/header.phtml"%}
+
+<div id="container">
+
+	<div id="primaryColumn">
+
+		<div id="profBox">
+			<h2>まこまこさん（慶應大学）</h2>
+			<div id="profProperty">
+				<p class="picThum"><a href="{%$profile_url%}"><img src="{%$user_pic%}" width="50" height="50" alt="" /></a></p>
+				<p class="univ">大学：［<span>{%$user.network_name%}</span>］</p>
+				<p class="department">学部：［<span>{%$user.institute_name%}</span>］</p>
+				<p class="subject">学科：［<span>{%$user.subject_name%}</span>］</p>
+				<p class="campus">キャンパス：［<span>{%$user.campus_name%}</span>］</p>
+				<p class="campus">学年：［<span>{%$user.entrance_year%}</span>］</p>
+			</div>
+			<div id="profGraph">
+				<img src="{%$staticUrl%}/apps/linno/img/graph.png" width="200" height="216" alt="ダミー" />
+			</div><!--/#profGraph-->
+		</div><!--/#profBox-->
+		
+		<div id="memberBox">
+				<h2><span>大学つながりメンバー一覧</span></h2>
+				<div class="headingHelp">
+					<a href="#" title="この項目のヘルプ">この項目のヘルプ</a>
+				</div>
+				<ul><!--
+				-->{% foreach from=$networkUser item=user %}
+			       <li>
+    			      <p class="picThum"><a href="#"><img src="{%$user.thumbnailUrl%}" width="50" height="50" alt="" /></a></p>
+    				  <p class="name"><a href="#">{%$user.displayName%}</a>さん</p>
+    				  <p class="univInfo">{%$user.network_name%} / {%$user.institute_name%} {%$user.subject_name%}</p>
+    				  <p class="valuation"><a href="#"><img src="{%$staticUrl%}/apps/linno/img/contents/home/btn_appraise.png" width="56" height="19" alt="評価する" /></a></p>
+				   </li>
+			       {% /foreach %}<!--
+				--></ul>
+				<div class="more"><a href="#">一覧を見る</a></div>
+		</div><!--/#memberBox-->
+
+	</div><!--/#primaryColumn-->
+
+
+	<div id="secondaryColumn">
+
+		<div id="infoBox">
+			<ul>
+				<li class="info"><a href="#">所属大学を登録すると同級生や授業評価が使えるようになります。</a></li>
+				<li class="alert"><a href="#">新しく追加された通信簿が2件あります。</a></li>
+			</ul>
+		</div><!--/#tabBox-->
+
+		<div id="tabBox">
+			
+				<div id="tabSectionSurvey" class="tabSection stay">
+					<h2 class="tab"><a href="#" title="アンケート">アンケート</a></h2>
+					<div class="block">
+						<div class="innerBlock">
+						<h3 class="innerBlockHead"><span><span>ああああ</span></span></h3>
+						<ul class="selectList clearfix">
+							<li class="asw1"><a href="#">回答</a></li>
+							<li class="asw2"><a href="#">回答</a></li>
+							<li class="asw3"><a href="#">回答</a></li>
+							<li class="asw4"><a href="#">回答</a></li>
+							<li class="asw5"><a href="#">回答</a></li>
+							<li class="asw6"><a href="#">回答</a></li>
+						</ul>
+						<p class="alert">※回答すると結果を見ることができます。回答はあなたのプロフィールに追加されます。</p>
+						</div>
+					</div>
+				</div><!--/#tabSectionSurvey-->
+				<div id="tabSectionReport" class="tabSection absence">
+					<h2 class="tab"><a href="#" title="キャラクター通信簿">キャラクター通信簿</a></h2>
+					<div class="block">
+						<div class="innerBlock">
+						<h3 class="innerBlockHead"><span><span>ああああ</span></span></h3>
+						<ul class="selectList clearfix">
+							<li class="asw1"><a href="#">回答</a></li>
+							<li class="asw2"><a href="#">回答</a></li>
+							<li class="asw3"><a href="#">回答</a></li>
+							<li class="asw4"><a href="#">回答</a></li>
+							<li class="asw5"><a href="#">回答</a></li>
+							<li class="asw6"><a href="#">回答</a></li>
+						</ul>
+						<p class="alert">※回答すると結果を見ることができます。回答はあなたのプロフィールに追加されます。</p>
+						</div>
+					</div>
+				</div><!--/#tabSectionReport-->
+				
+		</div><!--/#tabBox-->
+
+		<div id="newsFeedBox">
+				<h2>更新情報</h2>
+				<div class="headingHelp">
+					<a href="#" title="この項目のヘルプ">この項目のヘルプ</a>
+				</div>
+				<p class="note">※全体の更新情報を表示しています。<br />※マイミクがこのアプリを登録すると、マイミクの更新情報が表示されます。</p>
+				<ul><!--
+					--><li>
+						<p class="pic"><a href="#">Yuto Tadano</a>さんが写真を更新しました。</p>
+					</li><!--
+					--><li class="odd">
+						<p class="community"><a href="#">Shen Hongwei</a>さんが「<a href="#">CF-Company Member</a>」というサークルに参加しました。<a href="#">コメントする</a></p>
+					</li><!--
+					--><li>
+						<p class="pic"><a href="#">Yuto Tadano</a>さんが写真を更新しました。</p>
+					</li><!--
+					--><li class="odd">
+						<p class="community"><a href="#">Shen Hongwei</a>さんが「<a href="#">CF-Company Member</a>」というサークルに参加しました。<a href="#">コメントする</a></p>
+					</li><!--
+					--><li>
+						<p class="pic"><a href="#">Yuto Tadano</a>さんが写真を更新しました。</p>
+					</li><!--
+					--><li class="odd">
+						<p class="community"><a href="#">Shen Hongwei</a>さんが「<a href="#">CF-Company Member</a>」というサークルに参加しました。<a href="#">コメントする</a></p>
+					</li><!--
+					--><li>
+						<p class="pic"><a href="#">Yuto Tadano</a>さんが写真を更新しました。</p>
+					</li><!--
+					--><li class="odd">
+						<p class="community"><a href="#">Shen Hongwei</a>さんが「<a href="#">CF-Company Member</a>」というサークルに参加しました。<a href="#">コメントする</a></p>
+					</li><!--
+				--></ul>
+		</div><!--/#newsFeedBox-->
+
+	</div><!--/#secondaryColumn-->
+
+
+	<div id="tertiaryColumn">
+
+		<div id="rectangleAdBox">
+			<div class="ad">
+				<img src="{%$staticUrl%}/apps/linno/img/dummy_ad.png" width="250" height="250" alt="ダミー" />
+			</div>
+		</div><!--/#rectangleAdBox-->
+
+		<div id="hotSurveyBox">
+				<h2><span>人気のアンケート</span></h2>
+				<div class="headingHelp">
+					<a href="#" title="この項目のヘルプ">この項目のヘルプ</a>
+				</div>
+				<ul>
+					<li><a href="#">質問質問質問質問質問質問質問質問質問質問質問質問質問質問</a></li>
+					<li><a href="#">質問質問質問質問質問質問質問質問質問質問質問質問質問質問</a></li>
+					<li><a href="#">質問質問質問質問質問質問質問質問質問質問質問質問質問質問</a></li>
+					<li><a href="#">質問質問質問質問質問質問質問質問質問質問質問質問質問質問</a></li>
+				</ul>
+				<div class="more"><a href="#">一覧を見る</a></div>
+		</div><!--/#hotSurveyBox-->
+		<div id="hotReportBox">
+				<h2><span>人気のキャラクター通信簿</span></h2>
+				<div class="headingHelp">
+					<a href="#" title="この項目のヘルプ">この項目のヘルプ</a>
+				</div>
+				<ul>
+					<li><a href="#">通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿</a></li>
+					<li><a href="#">通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿</a></li>
+					<li><a href="#">通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿</a></li>
+					<li><a href="#">通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿通信簿</a></li>
+				</ul>
+				<div class="more"><a href="#">一覧を見る</a></div>
+		</div><!--/#hotReportBox-->
+
+	</div><!--/#tertiaryColumn-->
+
+
+</div><!--/#container-->
+
+{%include file="linno/common/footer.phtml"%}

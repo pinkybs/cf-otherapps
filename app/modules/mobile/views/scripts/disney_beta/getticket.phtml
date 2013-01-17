@@ -1,0 +1,34 @@
+{%include file="disney/common/header.phtml"%}
+	<div style="font-size:x-small;background-color:#bffab8;text-align:center;">
+		{% disneyimg name="sub_ti_ticket" style='align="top" width="100%"' %}
+		<br /><br />
+
+	{% if $action == 'start' %}
+		<div style="text-align:center;">	
+			<span style="color:#009933;">ｹﾞｰﾑﾁｹｯﾄの<br /> 
+			購入枚数を選んでね。</span><br />
+			<br />
+			<form method="POST" action='{% "$baseUrl/mobile/disney/pay?CF_param=ticket"|mixiurl %}'>
+				<select name="CF_ticket" style="font-size:x-small;">
+				{% html_options options=$ticketList %}
+				</select>
+				<br /><br />
+				<input type="submit" name="btnConfirm" style="font-size:x-small;" value="ｹﾞｰﾑﾁｹｯﾄの購入" /><br /><br />
+			</form>
+			<form method="POST" action='{% "$baseUrl/mobile/disney/index"|mixiurl %}'>
+				<input type="submit" name="btn_no" style="font-size:x-small;" value="やめる" /><br />
+			</form>
+			<span style="color:#609;">※購入には、mixiﾎﾟｲﾝﾄが必要です。</span><br />
+			<br />
+		{% elseif $action == 'complete' %}
+		{% if $result == 1 %}
+			<span style="color:#009933;">ｹﾞｰﾑﾁｹｯﾄの購入が完了したよ。</span>
+				{% else %}
+			<span style="color:#009933;">ｹﾞｰﾑﾁｹｯﾄの購入が失敗しました。</span>
+		{% /if %}
+			<br /><br /><br />
+			<a href='{% "$baseUrl/mobile/disney/game"|mixiurl %}'>今すぐﾁｬﾚﾝｼﾞｹﾞｰﾑで遊ぶ</a><br /><br />
+		</div>
+		{% /if %}
+	</div>
+{%include file="disney/common/footer.phtml"%}

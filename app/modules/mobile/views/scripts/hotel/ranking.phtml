@@ -1,0 +1,106 @@
+{%include file="hotel/common/header.phtml"%}
+<style type="text/css">
+        a:link{color:#a77809;}
+        a:visited{color:#a77809;}
+        *{color:#000000;font-size:x-small;font-size:5;}
+        .icon{vertical-align: middle;}
+        a img {border: none;}
+        body {
+            background: #ffffff;
+        }
+        .hrYellow {
+            color:#fbf8c9;
+            border: 0;
+            background-color:#fbf8c9;
+            height:1px;
+            margin:0.3em 0;
+        }
+        .hrWhite {
+            color:#ffffff;
+            border: 0;
+            background-color:#ffffff;
+            height:1px;
+            margin:0.3em 0;
+        }
+        .hrSp {
+            background-color:#fdd89e;
+            color:#fdd89e;
+            height:1px;
+            border:0px solid #fdd89e;
+            margin:0.3em 0;
+        }
+        #mixiHeader {
+            background:#fbb03b;
+        }
+        .headlineFun {
+            background:#cf1226;
+            color:#ffffff;
+        }
+        .headlineBack {
+            background:#f6ddbc;
+        }
+        .headlineTip {
+            background:#fdd89e;
+            color:#000000;
+        }
+        .toTop {
+            background-color:#ffffff;
+        }
+        #copyright {
+            background:#fbb03b;
+        }
+        #ranking {
+            background-color:#fbf8c9;
+        }
+        .tdBg {
+            background-color:#d2d0bc;
+        }
+    </style>
+<div id="ranking">
+	<hr class="hrWhite" size="1" />
+	   <div class="headlineTip">ランキング<br />
+            {% if $colname == 'money' %}
+			       所持金ランキング&nbsp;
+			   <a href='{% "$baseUrl/mobile/hotel/ranking?CF_colname=level"|mixiurl %}'>Level</a>
+            {%else%}
+               <a href='{% "$baseUrl/mobile/hotel/ranking?CF_colname=money"|mixiurl %}'>所持金ランキング</a>
+               Level&nbsp;
+            {%/if%}
+	   </div>
+	<hr class="hrYellow" size="1" />
+    {% if $rankInfo %}
+		<div class="description">
+			{%if $listCount.startCount == $listCount.endCount%}
+			      {%$count%}件中{%$listCount.startCount%}件
+			{%else%}
+			      {%$count%}件中{%$listCount.startCount%}-{%$listCount.endCount%}件
+			{%/if%}
+		</div>
+	    {% foreach from=$rankInfo item=data key=key %}
+			<div class="section">
+				<table {% if ($key%2) == 0 %}class="tdBg"{%/if%} width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td width="44" valign="top" align="center" style="width:44px;text-align:center;vertical-align:top;"><img src="{%$data.miniThumbnailUrl%}" style="margin:2px 0;" /></td>
+						<td>
+                            {% if $data.uid == $uid %}
+                                <span style="color:#ff0000;">〓{%$data.rank%}位〓</span><br />
+                            {%else%}
+                                <span style="color:#777777;">〓</span>
+                                {%$data.rank%}位<span style="color:#777777;">〓</span><br />
+                            {%/if%}
+							<a href='{% "$baseUrl/mobile/hotel/bossprofile?CF_uid=`$data.uid`"|mixiurl %}'>店長 {%$data.displayName%}さん</a><br />
+							{% if $colname == 'money' %}
+							         所持金:${%$data.format_money%}
+							{%else%}
+							     lv{%$data.level%}
+							{%/if%}
+						</td>
+					</tr>
+				</table>
+			</div><!--/.section-->
+        {% /foreach %}
+		{%include file="hotel/common/pager.phtml"%}
+    {%/if%}
+</div><!--/#ranking-->
+{%include file="hotel/common/menu.phtml"%}
+{%include file="hotel/common/footer.phtml"%}

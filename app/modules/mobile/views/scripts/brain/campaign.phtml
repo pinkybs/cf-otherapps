@@ -1,0 +1,35 @@
+{%include file="brain/common/header.phtml" headerAd=1 %}
+
+<div id="campaign">
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div class="headline" style="background:#009999;color:#ffffff;text-align:center;">マイミクを招待して<br />新しい授業に挑戦しよう！</div>
+	<div class="inner">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		ﾏｲﾐｸを招待すると新しい授業｢社会科 戦国武将編｣が利用できるようになります!<br />
+		
+		<div style="text-align:center;"><img src="{%$staticUrl%}/apps/brain/img/game/05.gif" width="100" height="100" style="margin:5px 0;" /></div>
+		
+		授業やﾄﾞﾗﾏ･ﾏﾝｶﾞでお馴染みの戦国武将からﾏｲﾅｰな武将まで全126名の武将が出題されます！<br />
+		<br />
+		この授業で勉強すれば戦国武将通間違い無し!?<br />
+		<br />
+		ﾏｲﾐｸを招待して新しい授業に挑戦してみよう！<br />
+		<br />
+		<div style="text-align:center;"><a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/brain/invitecomplete" %}'>{% emoji code="F973"%}ﾏｲﾐｸを招待する{% emoji code="F973"%}</a></div>
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	</div><!--/.inner-->
+	<div class="headline" style="background:#009999;color:#ffffff;text-align:center;">ﾏｲﾐｸ招待時の注意点</div>
+	<div class="inner">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		◯まだ｢頭を鍛える!ﾏｲﾐｸ頭脳くらべ｣を利用したことが無いﾏｲﾐｸを招待する必要があります｡<br />
+		<br />
+		◯招待が成立するには招待先が当ｱﾌﾟﾘを登録していずれかの授業のｽｺｱを記録される必要があります｡
+		<br />
+		<div style="text-align:center;"><a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/brain/invitecomplete" %}'>注意点を良く理解して<br />{% emoji code="F973"%}ﾏｲﾐｸを招待する{% emoji code="F973"%}</a></div>
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	</div><!--/.inner-->
+</div><!--/#campaign-->
+
+{%include file="brain/common/menu.phtml"%}
+{%include file="brain/common/recommend.phtml"%}
+{%include file="brain/common/footer.phtml" footerAd=1 %}

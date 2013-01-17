@@ -1,0 +1,69 @@
+{%include file="disney/common/header.phtml"%}
+
+<div style="font-size:x-small; background-color:#d4f1f9;text-align:center;">
+
+	{% if $step == 'start' %}
+
+	{% disneyimg name="sub_ti_targetset3" style='align="top" width="100%"' %}
+	<br /><br />
+	<span style="color:#232577;>あなたのﾏｲﾀｳﾝ<span style="color:#ff0000;">{%$disneyUser.current_name%}</span>から<br /></span>
+	<form method="post" action='{% "$baseUrl/mobile/disney/settarget?CF_step=confirm"|mixiurl %}'>
+		<select name="CF_pid" style="font-size: 10px;">
+		{% html_options options=$placeList %}
+		</select>
+		<br /><br />
+		<input type="submit" name="btnConfirm" value="設定" /><br />
+		{% emoji code="F8C4"%}<a href='{% "$baseUrl/mobile/disney/sethome"|mixiurl %}'>ﾏｲﾀｳﾝ設定の変更</a><br />
+	</form>
+	<br />
+	<div style="color:#232577;text-align:left;">
+		日々の移動距離を｢ﾁｪｯｸする!｣とご当地ｷｬﾗｸﾀｰをGETできるよ。<br />
+		ﾀｰｹﾞｯﾄにしたいご当地ｷｬﾗｸﾀｰの都道府県を設定してね。<br />
+		<br />
+	</div>	
+	{% elseif $step == 'confirm' %}
+
+		{% disneyimg name="sub_ti_targetset3" style='align="top" width="100%"' %}
+		<br /><br />
+		<div style="color:#232577;text-align:left;">
+			ﾀｰｹﾞｯﾄを{%$placeInfo.mixi_name%}の{%$placeInfo.name%}ｽﾃｨｯﾁに設定するよ<br />
+		<span style="color:#ff0000;">※現在設定中のﾀｰｹﾞｯﾄへのkmはﾘｾｯﾄされます。</span><br />
+		</div> 
+		<br />
+			 <div style="text-align:center;">
+			 	{% disneyimg style='height="4"' name="dot0" %}<br />
+		<a href='{% "$baseUrl/mobile/disney/settarget?CF_step=complete&CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="yes" style='align="top" width="39%"' %}</a><br />
+				{% disneyimg style='height="4"' name="dot0" %}<br />
+		<a href='{% "$baseUrl/mobile/disney/settarget"|mixiurl %}'>{% disneyimg name="no" style='align="top" width="39%"' %}</a><br />
+		{% disneyimg style='height="4"' name="dot0" %}<br />
+			</div>
+			<br />
+{% else %}
+
+		{% disneyimg name="sub_ti_targetset1" style='align="top" width="100%"' %}<br />
+			<br />
+			<span style="color:#537bff;">
+		{%$placeInfo.name%}まであと</span><br />
+		{% foreach from=$arrayDistance item=data %}
+		{% disneyimg name="km_$data" %}
+		{% /foreach %}
+		{% disneyimg name="km" %}<br />
+				
+				<div style="text-align:right;">
+					<a href='{% "$baseUrl/mobile/disney/help?CF_help=location"|mixiurl %}'>位置情報の差異について</a><br />
+				</div>
+				
+				{% disneyimg style='height="4"' name="dot0" %}<br />
+				<div style="text-align:center;">
+					<a href='{% "location:cell?url=$baseUrl/mobile/disney/checkdistance/rand/$rand" %}'accesskey="5"'>
+					{% disneyimg name="target_bn" style='align="top" width="69%"' %}<br />{% emoji code="F98B"%}今すぐﾁｪｯｸ!</a><br />					
+				</div>
+				{% disneyimg style='height="4"' name="dot0" %}<br />
+				
+				<div style="text-align:left;">
+			<span style="color:#537bff;">毎日の生活の中で移動したらｺﾏﾒに"ﾁｪｯｸ!"しよう!</span><br />
+		</div>	
+		<br />
+		<br />
+{% /if %}
+{%include file="disney/common/footer.phtml"%}

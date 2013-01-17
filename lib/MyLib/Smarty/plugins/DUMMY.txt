@@ -1,0 +1,3 @@
+============ Zend ==============
+Update     Zend_Mail    2008/07/18    Hulj    #001
+update     Zend_Validate_EmailAddress    2008/07/18    Hulj    #001

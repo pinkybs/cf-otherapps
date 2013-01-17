@@ -1,0 +1,98 @@
+﻿{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn" class="giftShopSearchResult">
+
+<div id="continer">
+
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+		$j('#gNavGiftShop').addClass('active');
+	</script>
+
+		<div id="mainColumn">
+
+		<div id="searchBox" class="box">
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_search.png" width="98" height="19" alt="ギフト検索 のコピー" /></h2>
+			</div><!--/.hdr-->
+
+			<form id="SearchResultFrm" onsubmit="return false;">
+				<ul><!--
+					--><li><input class="inputText" name="txtKeyWord" id="txtKeyWord" type="text" value="{%$keyWord%}"/></li><!--
+					--><li><input class="submitBtn" name="searchResultBtn" id="searchResultBtn" type="button" value="" style="cursor:pointer;" /></li><!--
+				--></ul>
+
+				<ul>
+					<li><label><input name="radSort" id="radSortDown" type="radio" value="1" {% if $sort==1 %}checked="checked"{% /if %}/>価格が安い順</label></li><!--
+					--><li><label><input name="radSort" id="radSortHigh" type="radio" value="2" {% if $sort==2 %}checked="checked"{% /if %}/>価格が高い順</label></li><!--
+				--></ul>
+
+			</form>
+
+		</div><!--/#searchBox.box-->
+
+			<!-- hidden Info -->
+				<input type="hidden" id="hidMyCash" name="hidMyCash" value="{%$myCash%}"/>
+				<input type="hidden" id="hidUid" name="hidUid" value="{%$uid%}"/>
+
+				<input type="hidden" id="hidKeyWord" name="hidKeyWord" value="{%$keyWord%}"/>
+				<input type="hidden" id="hidSort" name="hidSort" value="{%$sort%}"/>
+
+				<input type="hidden" id="hidFavGidStr" name="hidFavGidStr" value="{%$gids%}"/>
+
+			<!-- /hidden Info -->
+
+		<div id="searchResultBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_searchResult.png" width="138" height="19" alt="ギフト検索結果" /></h2>
+			</div><!--/.hdr-->
+			{% if $lstSearchGift %}
+			<p id="pInfo" class="order"><span id="maxCount">{%$searchCount%}</span>件中<label id="lblNumS">1</label>-<label id="lblNumB">{% if $searchCount > "10" %}10{% else %}{%$searchCount%}{% /if %}</label>件を表示 <span class="ascend">  [ <a id="sortDesc" href="javascript:void(0);">▲価格が安い順</a></span> | <span class="descend"><a id="sort" href="javascript:void(0);">▼価格が高い順</a></span> ]</p>
+				<!-- #search result div -->
+				<div id="searchResult"><!--
+					--><ul><!--
+						{% foreach name=lstSearchGift from=$lstSearchGift item=sdata %}
+						 	--><li>
+							<p class="pic"><a style="cursor:default;background-image:url({% $sdata.gift_small_pic %})">{%$sdata.gift_name%}</a></p>
+							<p class="name">{%$sdata.gift_name %}</p>
+							<p class="price">価格：&yen;{%$sdata.gift_format_price%}<span></span></p>
+							<ul class="actionList"><!--
+								{% if $sdata.buy %}--><li class="actionName"><a class="disable">購入する</a></li><!--
+								{% else %}--><li class="actionName"><a href="{%$baseUrl%}/slave/buygift?gid={%$sdata.gid%}">購入する</a></li><!--
+								{% /if %}
+								{% if $sdata.add %}--><li class="actionComment"><a class="disable">お気に入りに追加</a></li><!--
+								{% else %}--><li class="actionComment"><a href="{%$baseUrl%}/slave/addfav?gid={%$sdata.gid%}">お気に入りに追加</a></li><!--
+								{% /if %}
+							--></ul><!--/.actionList-->
+							</li><!--
+					{% /foreach %}
+ 				--></ul>
+ 				{% if count($page) != 1 %}
+	 				<div id="pager">
+						<ul><!--
+							{% foreach name=page from=$page item=data %}
+							--><li><a href="javascript:changePageAction({%$data%})" {% if $data == "1" %}class="disable" {% /if%}>{%$data%}</a></li><!--
+							{% /foreach %}
+						--></ul>
+
+						<p class="nextButton"><a href="javascript:changePageAction(2)">Next &gt;</a></p>
+					</div><!--/#pager-->
+				{% /if %}
+			</div><!-- /#search result div -->
+			{% else %}
+				<p><span>「 {%$keyWord%} 」</span> で検索した結果、何も見つかりませんでした。</p>
+    			<p>別のキーワードを入力して、もう一度検索してみてください。</p>
+			{% /if %}
+			<input type="hidden" id="pageIndex" value="1" />
+		</div><!--/#searchResultBox.box-->
+	</div><!--/#mainColumn-->
+
+
+	<div id="subColumn">
+	{%include file="slave/common/adbox.phtml"%}
+	{%include file="slave/common/popularbox.phtml"%}
+	</div><!--/#subColumn-->
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/searchresult.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

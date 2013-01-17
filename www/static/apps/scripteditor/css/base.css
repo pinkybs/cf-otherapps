@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+Parking Wars Base CSS
+
+Created Date: 2009/01/01
+Author: Yu Uno
+Last Up Date : 2009/01/28
+Author: Yu Uno
+----------------------------------------------
+*/
+
+
+/*Tag
+----------------------------------------------*/
+
+* {
+	zoom:1;
+}
+
+body {
+	background-color: #FFFFFF;
+	line-height: 1;
+}
+
+body,h1,h2,h3,h4,h5,p,table,thead,tfoot,th,td,ul,ol,li,dl,dt,dd,form,fieldset,blockquote,object,iframe,pre,span,abbr,acronym,address,cite,code,strong,em,img,caption,button {
+	margin:0;
+	padding:0;
+	border:none;
+	outline:0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+ul ul,ul dl,dl ul,table p,table ul,table table{
+  font-size:1em;
+}
+
+table{
+  border-collapse:collapse;
+  border:none;
+  border-spacing:0;
+  margin: 0;
+  padding: 0;
+}
+
+th,td{
+  vertical-align:top;
+  font-weight:normal;
+  text-align:left;
+  margin: 0;
+  padding: 0;
+}
+
+caption{
+  text-align:left;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+ul,ol,dl {
+	list-style:none;
+}
+
+li{
+	display:list-item;
+	zoom:normal;
+}
+
+img,a img {
+	border:none;
+	background:transparent;
+}
+
+object,embed{
+  vertical-align:top;
+}
+
+em,address,dfn{
+  font-style:normal;
+}
+
+.imgover {
+}
+
+input,textarea {
+	font-size: 1em;
+	font-family:'Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック','ヒラギノ角ゴ Pro W3',sans-serif;
+}

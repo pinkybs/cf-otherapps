@@ -1,0 +1,57 @@
+{% include file="ship/common/header.phtml" headerAd=1 %}
+
+<div id="island">
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+		<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		海賊島一覧<br />
+		<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+	</div><!--/.headline-->
+	<div class="description">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		埋蔵金貨の高い島に変更し､ﾏｲﾐｸを誘引しよう!強奪金額が高くなったら､一気に奪い返せ{% emoji code="F9A2" %}<br />
+	</div><!--/.description-->
+	<div class="help" style="text-align:right;">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/help?CF_help=b08"|mixiurl %}'>島を開拓するには?</a>&nbsp;<br />
+	</div><!--/.help-->
+	<div style="text-align:center;"><img src="{%$staticUrl%}/apps/ship/img/twoline.gif" width="230" height="27" /></div>
+	{% foreach from=$islandList item=data key=key %}
+		<div class="section">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="67" align="center" valign="top" style="width:67px;text-align:center;vertical-align:center;"><img src="{%$staticUrl%}/apps/ship/img/background/bg_{%$data.cav_name%}_s.gif" width="63" height="60" /></td>
+					<td><div style="{% if $ua==1 %}font-size:x-small;{% /if %}">{% emoji code="F8F9" %}<span style="color:#7c4825;">{%$data.name%}</span><br />
+						{%*
+						開拓費用:{%if $data.type != 'A' %}{%if $data.price%}金貨 ${%$data.price|outputdollars%}{%/if%}{%if $data.diamond%}ﾀﾞｲﾔ {%$data.diamond%}ｺ{%/if%}{%else%}無料{%/if%}<br />
+						*%}
+						宝箱の数:{%$data.ship%}個<br />
+						埋蔵金貨:${%$data.fee*32%}<br />
+						{%if $data.type != 'A' %}
+							使用期限:{%$data.usable_time/86400%}日<br />
+							開 拓 日:{%$data.create_time|date_format:"%y/%m/%d"%}<br />
+						{% else %}
+							使用期限:無期限<br />
+						{%/if%}
+						<div style="text-align:right;">
+						{% if $data.id == $shipUser.background %}
+						  <span style="color:#cd424a;">使用中</span>&nbsp;
+						{% else %}
+						  <a href='{% "$baseUrl/mobile/ship/changeisland/CF_id/`$data.id`"|mixiurl %}'>使用する</a>&nbsp;
+						{% /if %}
+						</div>
+						</div></td>
+				</tr>
+			</table>
+			<div style="text-align:center;" class="lineDash"><img src="{%$staticUrl%}/apps/ship/img/newLine.gif" width="230" height="27" /></div>
+		</div><!--/.section-->
+	{% /foreach %}
+	{%include file="ship/common/pager.phtml"%}
+	<div class="link">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/island"|mixiurl %}'>島の開拓へ</a>&nbsp;<br />
+	</div><!--/.link-->
+</div><!--/#island-->
+
+{%include file="ship/common/menu.phtml"%}
+{% include file="ship/common/footer.phtml" footerAd=1 %}

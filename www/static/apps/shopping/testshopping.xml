@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="ShoppingTest" description="ShoppingTest" author="Community Factory Inc." author_link="http://communityfactory.com"> 
+        <Require feature="opensocial-0.8" />
+        <Require feature="dynamic-height" />
+        <Require feature="flash" />
+        <Require feature="views" />
+        <Optional feature="content-rewrite">
+            <Param name="expires">86400</Param>
+            <Param name="include-urls"></Param>
+            <Param name="exclude-urls">.*</Param>
+        </Optional>
+    </ModulePrefs>
+
+    <Content type="html" view="canvas">
+    <![CDATA[
+       <script type="text/javascript" src="http://static.mixitest.communityfactory.net/cmn/js/mixios.canvas.js?v=1.1"></script>
+     
+       <script type="text/javascript">
+           var canvas = mixios.application.newCanvas('http://mixitest.communityfactory.net', 'shopping');
+           //default debug is disabled
+           //canvas.enableDebug(true);
+           //default height is 800
+           //canvas.setHeight(1700);
+          
+           //let's go
+           canvas.start();
+       </script>
+    ]]>
+    </Content>
+
+	<Content type="html" view="home, profile">
+	<![CDATA[   
+		<style type="text/css">
+		* {
+		    margin:0;
+		    padding:0;
+		    border:none;
+		}
+		</style>
+		
+		<script type="text/javascript" src="http://static.mixitest.communityfactory.net/cmn/js/mixios.gadget.js?v=1.1"></script>
+    
+        
+	]]>
+	</Content>
+  
+</Module>

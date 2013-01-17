@@ -1,0 +1,41 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="present">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">友達にﾌﾟﾚｾﾞﾝﾄする</span><br />
+	</div><!--/.headline-->
+
+	<div class="inner">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%$carInfo.name%}をﾌﾟﾚｾﾞﾝﾄする相手を選び､決定をｸﾘｯｸしてください{% emoji code="F9A2"%}<br />
+		<div class="car" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/parking/mimg/car/{%$carInfo.cav_name%}/m/normal/{%$carColor%}.gif" width="200" height="100" /><br />
+			<form method="post" action="{%$baseUrl%}/mobile/parking/sendcartofriendsubmit?app_id={%$APP_ID%}">
+				<input type="hidden" name="carColor" value="{%$carColor%}" />
+				<input type="hidden" name="carId" value="{%$carId%}" />
+				<input type="hidden" name="carName" value="{%$carInfo.name%}" />
+				<input type="hidden" name="cavName" value="{%$carInfo.cav_name%}" />
+				{%if $friends != null%}
+					<select name="friend">
+						{%foreach from=$friends item=rowdata%}
+							<option value="{%$rowdata.uid%}">{%$rowdata.displayName%}</option>
+						{%/foreach%}
+					</select><input type="submit" value="決定" /><br />
+				{%else%}
+					プルダウンにユーザー名なし
+				{%/if%}
+			</form>
+		</div><!--/.car-->
+	</div><!--/.inner-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/car"|mixiurl %}'>所有車一覧にもどる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#present-->
+
+{%include file="parking/common/footer.phtml"%}

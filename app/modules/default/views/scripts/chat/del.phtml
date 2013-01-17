@@ -1,0 +1,63 @@
+﻿{%include file="chat/common/header.phtml"%}
+
+<body id="static" class="invite">
+<div id="container">
+	{%include file="chat/common/nav.phtml"%}
+
+	<div id="mainColumn">
+		<div id="cancelBox" class="innerBox">
+			<h1><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_chat_cancel.png" width="179" height="21" alt="チャットを取り消し" /></h1>
+			<div class="inner">
+				<form id="frmDel" name="frmDel" action="{%$baseUrl%}/chat/del" method="post">
+    				<p>{%$chatName|escape%}チャットを取り消します。</p>
+    				<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/tit_message_2.png" width="255" height="20" alt="参加メンバーへのメッセージ" /></h2>
+    				<p><textarea id="txtMessage" name="txtMessage"></textarea></p>
+
+    				<ul class="btnList"><!--
+    					--><li><a href="{%$baseUrl%}/chat/edit?cid={%$cid%}"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_prev.png" width="228" height="34" alt="元に戻る" /></a></li><!--
+    					--><li><a href="javascript:void(0);" id="btnDel"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/content/btn_chat_cancel.png" width="228" height="34" alt="チャットを取り消しする" /></a></li><!--
+    				--></ul>
+
+    				<input type="hidden" id="cid" name="cid" value="{%$cid%}" />
+				</form>
+			</div><!--/.inner-->
+		</div><!--/.innerBox-->
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="chat/common/subcolumn.phtml"%}
+	</div><!--/#subColumn-->
+
+	<div id="dialog" title="メッセージ"><p style="text-align:center;padding-top:20px" id="pMessage"></p></div>
+
+	<script type="text/javascript">
+		$j(document).ready(function() {
+			if (null != cm_getCookie('app_top_url')) {
+        		top.location.href = cm_getCookie('app_top_url') +  '#bodyArea';
+        	}
+
+			$j("#btnDel").click(function() {
+				var msg = '';
+				if ( '' == $j.trim($j("#txtMessage").val()) ) {
+            		msg = 'メッセージは必要です。';
+            	}
+				else if ( $j.trim($j("#txtMessage").val()).length > 400 ) {
+            		msg = 'メッセージは全角400文字以内で入力して下さい。';
+            	}
+            	if (msg) {
+            		$j("#pMessage").html(msg);
+            		$j("#dialog").dialog({
+            			autoOpen: true,
+            			bgiframe: true,
+            			modal: true,
+            			resizable: false
+            		}).dialog( 'open' );
+            		return;
+            	}
+            	$j("#frmDel").submit();
+            	return false;
+            });
+            adjustHeight();
+        });
+	</script>
+{%include file="chat/common/footer.phtml"%}

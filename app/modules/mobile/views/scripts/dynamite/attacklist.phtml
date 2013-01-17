@@ -1,0 +1,110 @@
+{%include file="dynamite/common/header.phtml" headAd=1 %}
+
+    <div id="attacklist">
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="headline" style="font-size:x-small;background:#777777;color:#ffffff;">{%$rowUserDynamite.displayName%}組に襲撃中</div>
+
+        {%include file="dynamite/common/bombcount.phtml"%}
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td width="64" align="center" style="width:64px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/hitman/{%$picType%}_{%$garmentType%}.gif" width="60" height="60" style="margin:2px 0;" /></td>
+                <td style="color:#ffffff;font-size:x-small;">ﾋｯﾄﾏﾝ{%$hitmanType%}<br />
+                    <img src="{%$staticUrl%}/apps/dynamite/mobile/img/heart/max{%$rowUserDynamite.max_life%}/{%$hitmanLife%}.gif" width="135" height="14" style="margin-top:2px;" /><br />
+                    <div style="text-align:right;">懸賞金 ${% if $rowUserDynamite.bonus*0.1>10000 %}10,000{% else %}{%$rowUserDynamite.bonus*0.1|outputdollars%}{% /if %}&nbsp;</div></td>
+            </tr>
+        </table>
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        {% if $userType == 1 %}
+            {% if $canRemoveBomb == 1 %}
+                <div class="toRemove" style="color:#ffffff;font-size:x-small;text-align:center;">
+                    <a href='{% "$baseUrl/mobile/dynamite/dynamiteremove?CF_uid=`$rowUserDynamite.uid`&CF_hitmanid=`$hitmanId`"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫ﾀﾞｲﾅﾏｲﾄを撤去!≪</span></a>
+                </div><!--/.toRemove-->
+            {% /if %}
+        {% else %}
+            {% if $canSetBomb == 1 %}
+                <div class="toSet" style="color:#ffffff;font-size:x-small;text-align:center;">
+                    <a href='{% "$baseUrl/mobile/dynamite/dynamiteset?CF_uid=`$rowUserDynamite.uid`&CF_hitmanid=`$hitmanId`"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫ﾀﾞｲﾅﾏｲﾄ設置!≪</span></a>
+                </div><!--/.toSet-->
+            {% elseif $canBomb == 1 %}
+                <div class="toBomb" style="color:#ffffff;font-size:x-small;text-align:center;">
+                    <a href='{% "$baseUrl/mobile/dynamite/dynamitebomb?CF_uid=`$rowUserDynamite.uid`&CF_hitmanid=`$hitmanId`"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫ﾀﾞｲﾅﾏｲﾄを爆破!≪</span></a>
+                </div><!--/.toBomb-->
+            {% /if %}
+        {% /if %}
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="headline" style="color:#ffffff;font-size:x-small;">◎襲撃中の敵対組織</div>
+
+        {% if $userType == 1 %}
+            {% foreach from=$hitmanBomb item=data key=key%}
+            <div class="section" style="color:#ffffff;font-size:x-small;background:{%if $key%2==0 %}#000000{%else%}#333333{%/if%};">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="23" align="center" style="width:27px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/dynamite/b/{%$data.bomb_power%}.gif" width="23" height="32" /></td>
+                        <td width="44" align="center" style="width:44px;text-align:center;"><img src="{%$data.miniThumbnailUrl%}" style="margin:2px 0;" /></td>
+                        <td style="color:#ffffff;font-size:x-small;"><a href='{% "$baseUrl/mobile/dynamite/profile?CF_uid=`$data.uid`"|mixiurl %}'>{%$data.displayName%}</a><span style="color:#ff9933;">組</span><br />
+                            {%if $data.waitTime>0%}あと{%$data.waitTime%}分で撤去可能!{%else%}撤去できます!{%/if%}</td>
+                    </tr>
+                </table>
+            </div><!--/.section-->
+            {% foreachelse %}
+              ダイナマイトがここに設置されていません。
+            {% /foreach %}
+        {% else %}
+            {% foreach from=$hitmanBomb item=data key=key%}
+            <div class="section" style="color:#ffffff;font-size:x-small;background:{%if $data.uid==$userId %}#ffcccc{%elseif $key%2==0 %}#000000{%else%}#333333{%/if%};">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="23" align="center" style="width:27px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/dynamite/b/{%$data.bomb_power%}{%if $data.uid==$userId%}_mine{%if $data.needWait!=1%}_use{%/if%}{%/if%}.gif" width="23" height="32" /></td>
+                        <td width="44" align="center" style="width:44px;text-align:center;"><img src="{%$data.miniThumbnailUrl%}" style="margin:2px 0;" /></td>
+                        {%if $data.uid==$userId %}
+                            <td style="color:#ff0000;font-size:x-small;">{%$data.displayName%}組<br />{%if $data.waitTime>0%}あと{%$data.waitTime%}分で爆破可能!{%else%}今すぐ爆破できます!!{%/if%}</td>
+                        {%else%}
+                            <td style="color:#ffffff;font-size:x-small;"><a href='{% "$baseUrl/mobile/dynamite/profile?CF_uid=`$data.uid`"|mixiurl %}'>{%$data.displayName%}</a><span style="color:#ff9933;">組</span></td>
+                        {%/if%}
+                    </tr>
+                </table>
+            </div><!--/.section-->
+            {% foreachelse %}
+              ダイナマイトがここに設置されていません。
+            {% /foreach %}
+        {% /if %}
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        {% if $userType == 1 %}
+            {% if $canRemoveBomb == 1 %}
+                <div class="toRemove" style="color:#ffffff;font-size:x-small;text-align:center;">
+                    <a href='{% "$baseUrl/mobile/dynamite/dynamiteremove?CF_uid=`$rowUserDynamite.uid`&CF_hitmanid=`$hitmanId`"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫ﾀﾞｲﾅﾏｲﾄを撤去!≪</span></a>
+                </div><!--/.toRemove-->
+            {% /if %}
+        {% else %}
+            {% if $canSetBomb == 1 %}
+                <div class="toSet" style="color:#ffffff;font-size:x-small;text-align:center;">
+                    <a href='{% "$baseUrl/mobile/dynamite/dynamiteset?CF_uid=`$rowUserDynamite.uid`&CF_hitmanid=`$hitmanId`"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫ﾀﾞｲﾅﾏｲﾄ設置!≪</span></a>
+                </div><!--/.toSet-->
+            {% elseif $canBomb == 1 %}
+                <div class="toBomb" style="color:#ffffff;font-size:x-small;text-align:center;">
+                    <a href='{% "$baseUrl/mobile/dynamite/dynamitebomb?CF_uid=`$rowUserDynamite.uid`&CF_hitmanid=`$hitmanId`"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫ﾀﾞｲﾅﾏｲﾄを爆破!≪</span></a>
+                </div><!--/.toBomb-->
+            {% /if %}
+        {% /if %}
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="toTop" style="color:#ffffff;font-size:x-small;">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/profile?CF_uid=`$rowUserDynamite.uid`"|mixiurl %}'>{%$rowUserDynamite.displayName%}組へ</a>&nbsp;
+        </div><!--/.toTop-->
+
+    </div><!--/#attacklist-->
+
+{%include file="dynamite/common/menu.phtml"%}
+{%include file="dynamite/common/footer.phtml" footAd=1 %}

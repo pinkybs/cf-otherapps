@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="Disney Test">
+        <Link rel="event.addapp" href="http://iadm-cfactory.disney.co.jp/lifecycle/addapp" method="GET" />
+        <Link rel="event.removeapp" href="http://iadm-cfactory.disney.co.jp/lifecycle/removeapp" method="GET" />
+    </ModulePrefs>
+    
+    <Content type="url" view="mobile" href="http://iadm-cfactory.disney.co.jp/mobile/index" />
+</Module>

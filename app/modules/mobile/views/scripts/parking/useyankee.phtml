@@ -1,0 +1,43 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="itemList">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">ヤンキーカードを使用する</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		ﾔﾝｷｰｶｰﾄﾞを設置するﾏｲﾐｸｼｨを選択し､決定をｸﾘｯｸしてください{% emoji code="F9A2"%}<br />
+	</div><!--/.description-->
+
+	<div class="item" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/items/11_m.gif" width="156" height="100" alt="" style="margin:2px 0;" />
+		<table width="220" cellpadding="2" cellspacing="1" border="0" align="center" style="background:#ddd;text-align:center;">
+			<tr>
+				<td style="background:#ffe;text-align:left;"><div style="font-size:x-small;">使用後72時間､ﾏｲﾐｸｼｨの有料ｽﾍﾟｰｽを1区画､使用不能にする</div></td>
+			</tr>
+		</table>
+		<form method="post" action="{%$baseUrl%}/mobile/parking/useyankeesubmit?app_id={%$APP_ID%}">
+			{%if $friends != null%}
+				<select name="friend">
+					{%foreach from=$friends item=rowdata%}
+						<option value="{%$rowdata.uid%}">{%$rowdata.displayName%}</option>
+					{%/foreach%}
+				</select><input type="submit" value="決定" /><br />
+			{%else%}
+				ﾔﾝｷｰｶｰﾄﾞは、友達以外には使用できません。<br />
+			{%/if%}
+		</form>
+	</div><!--/.item-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/item"|mixiurl %}'>ｱｲﾃﾑ一覧にもどる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#itemList-->
+
+{%include file="parking/common/footer.phtml"%}

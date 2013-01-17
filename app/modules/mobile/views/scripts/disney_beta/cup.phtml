@@ -1,0 +1,17 @@
+{%include file="disney/common/header.phtml"%}
+    
+<div style="font-size:x-small; background-color:#ffe1b6; text-align:center;">
+	{% disneyimg name="sub_ti_award" style='align="top" width="100%"' %}
+	<br/>      
+        <img src="{%$staticUrl%}/apps/disney/img/award/{%$cup.icon%}_{%if $ua==3%}a.png{%elseif $ua==2%}s.pnz{%else%}d.gif{%/if%}" align="top" copyright="yes" width="100%" /><br/>
+        <br/>
+      <span style="color:#663300; font-size:medium;">{%$cup.name%}ｱﾜｰﾄﾞ</span><br/>
+      <span style="color:#ff9900;">{%$cup.point%}点</span><br/><br/>
+        {% if $friendInfo %}
+            <a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$fid`"|mixiurl %}'>&gt;ｱﾜｰﾄﾞ一覧に戻る</a><br />
+        {% else %}
+            <a href='{% "$baseUrl/mobile/disney/cuplist"|mixiurl %}'>&gt;ｱﾜｰﾄﾞ一覧に戻る</a><br />
+        {% /if %}
+      <br/>
+
+{%include file="disney/common/footer.phtml"%}

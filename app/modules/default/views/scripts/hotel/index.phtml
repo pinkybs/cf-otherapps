@@ -1,0 +1,19 @@
+<html>
+<body>
+<script type="text/javascript" src="{%$staticUrl%}/cmn/js/swfobject.2.2.js"></script>
+
+<div id="afracFlash"></div>
+<script type="text/javascript" language="javascript">
+    var flashvars = {
+        baseURL : '{%$baseUrl%}/ajax/afrac/updatescore',
+        uid : "123",
+        best : "0",
+        first : "1"};
+   // swfobject.embedSWF("{%$staticUrl%}/apps/afrac/swf/afrac.swf","afracFlash","100%","490","9.0.0","expressInstall.swf",flashvars);
+</script>
+<div id="hotelFlash"></div>
+<script type="text/javascript" language="javascript">
+    swfobject.embedSWF("{%$staticUrl%}/apps/hotel/hotel.swf","hotelFlash","100%","100%","9.0.0","expressInstall.swf");
+</script>
+</body>
+</html>

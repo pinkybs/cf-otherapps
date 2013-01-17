@@ -1,0 +1,83 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+	{%include file="nav.phtml"%}
+
+	<div id="container">
+		<h2>あしあと帳 - コンテンツ監視</h2>
+		<div id="appsAdmin">
+			<ul class="nav">
+				<li><a href="{%$baseUrl%}/aboard/watchtop">トップページ</a></li>
+				<li><a href="{%$baseUrl%}/aboard/forbidword">禁止語の設定</a></li>
+				<li><span>処理の集計</span></li>
+			</ul><!--/.nav-->
+
+			<div id="watchHead">
+				<form method="post" id="frmStat" name="frmStat">
+				<h3>処理の集計</h3>
+				<p><select id="selDate" name="selDate" onchange="doSubmit();">
+						<option value="">期間を選択してください</option>
+                        <option value="2009-1" {% if '2009-1'==$selDate %}selected="selected"{% /if %}>2009年1月</option>
+                        <option value="2009-2" {% if '2009-2'==$selDate %}selected="selected"{% /if %}>2009年2月</option>
+                        <option value="2009-3" {% if '2009-3'==$selDate %}selected="selected"{% /if %}>2009年3月</option>
+                        <option value="2009-4" {% if '2009-4'==$selDate %}selected="selected"{% /if %}>2009年4月</option>
+                        <option value="2009-5" {% if '2009-5'==$selDate %}selected="selected"{% /if %}>2009年5月</option>
+                        <option value="2009-6" {% if '2009-6'==$selDate %}selected="selected"{% /if %}>2009年6月</option>
+                        <option value="2009-7" {% if '2009-7'==$selDate %}selected="selected"{% /if %}>2009年7月</option>
+                        <option value="2009-8" {% if '2009-8'==$selDate %}selected="selected"{% /if %}>2009年8月</option>
+                        <option value="2009-9" {% if '2009-9'==$selDate %}selected="selected"{% /if %}>2009年9月</option>
+                        <option value="2009-10" {% if '2009-10'==$selDate %}selected="selected"{% /if %}>2009年10月</option>
+                        <option value="2009-11" {% if '2009-11'==$selDate %}selected="selected"{% /if %}>2009年11月</option>
+                        <option value="2009-12" {% if '2009-12'==$selDate %}selected="selected"{% /if %}>2009年12月</option>
+						{% foreach from=$lstMonth item=data key=value %}
+            			<option value="{%$value%}" {% if $value==$selDate %}selected="selected"{% /if %}>{%$data%}</option>
+            			{% /foreach %}
+					</select></p>
+				</form>
+			</div><!--/.watchHead-->
+
+			<div id="divcontent">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0" id="dataGrid">
+				<thead>
+					<tr>
+						<th rowspan="2" valign="middle" width="200" class="user">担当者</th><th colspan="{%$lstTitle|@count%}">{%$selYear%}年{%$selMonth%}月</th>
+					</tr>
+					<tr>
+						{% foreach from=$lstTitle item=title %}
+						<th>{%$title%}</th>
+						{% /foreach %}
+					</tr>
+				</thead>
+				<tbody>
+					{% foreach name=statList from=$lstUserData item=userData %}
+					{% if 1==$smarty.foreach.statList.iteration%2 %}
+					<tr class="a">
+					{% else %}
+					<tr class="b">
+					{% /if %}
+						<td>{%$userData.name|truncate:12:"..."|escape%}</td>
+						{% foreach from=$userData.aryData item=cntData %}
+						<td align="right">{%$cntData%}</td>
+						{% /foreach %}
+					</tr>
+					{% /foreach %}
+					<tr>
+						<td colspan="{%$lstTitle|@count%}" align="right">累計：</td><td>{%$cntTotal%}</td>
+					</tr>
+				</tbody>
+			</table><!--/#dataGrid-->
+			</div>
+		</div><!--/#appsAdmin-->
+	</div><!--/#container-->
+	<script type="text/javascript" language="javascript">
+        function doSubmit() {
+        	if (null == $F('selDate') || '' == $F('selDate')) {
+        		$('divcontent').hide();
+        		return false;
+        	}
+            $('frmStat').submit();
+        }
+	</script>
+
+{%include file="footer.phtml"%}

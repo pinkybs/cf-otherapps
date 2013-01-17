@@ -1,0 +1,39 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="parking">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">検問ﾄﾗｯﾌﾟ</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%$car_name%}を{%$cur_user%}の駐車場に移動する直前､{%$pre_user%}の駐車場に検問ﾄﾗｯﾌﾟが仕掛けられていました{% emoji code="F999"%}<br />
+	</div><!--/.description-->
+
+	<div class="car" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/car/{%$cav_name%}/m/normal/{%$car_color%}.gif" width="200" height="100" /><br />
+		<span style="color:#c00;">\{%$money%} 獲得失敗{% emoji code="F993"%}</span>
+	</div><!--/.car-->
+
+	<div class="ranking">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		総資産 \{%$asset%}<br />
+		ﾏｲﾐｸ内ﾗﾝｷﾝｸﾞ {%$friendRank%}位{% emoji code="F99F"%}<br />
+		ﾐｸｼｨ内ﾗﾝｷﾝｸﾞ {%$mixiRank%}位{% emoji code="F99F"%}<br />
+	</div><!--/.ranking-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		ﾄﾗｯﾌﾟ回避ｶｰﾄﾞを使うと､検問ﾄﾗｯﾌﾟを回避できます｡<br />
+	</div><!--/.description-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/start?opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&parking_pid=$pid&parking_rand=$rand"|mobile_flashurl %}'>{%$cur_user%}の駐車場にもどる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#parking-->
+
+{%include file="parking/common/footer.phtml"%}

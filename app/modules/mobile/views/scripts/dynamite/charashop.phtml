@@ -1,0 +1,44 @@
+{%include file="dynamite/common/header.phtml" headAd=1 %}
+
+    <div id="hitmanlist">
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="headline" style="background:#777777;color:#ffffff;">ヒットマン紹介所</div>
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="description">
+            所持金が増えると､強いﾋｯﾄﾏﾝを雇えます｡強いﾋｯﾄﾏﾝを雇って､最強のｱｼﾞﾄを目指せ!
+            <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+            <div class="money" style="text-align:right;">現在の所持金:${%$myDynamiteInfo.bonus|outputdollars%}</div><!--/.money-->
+        </div><!--/.description-->
+
+        {% foreach from=$hitmanList item=data %}
+        <div class="section">
+            <hr style="color:#666666;background-color:#666666;height:1px;border:0px solid #666666;margin:0.3em 0;" size="1" />
+            <div class="headline"><span style="color:#666666;">〓</span>{%$data.hitman_name|escape%}<span style="color:#666666;">〓</span></div>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="64" align="center" style="width:64px;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/dynamite/mobile/img/hitman/{%if $data.pic_id < 10%}0{%$data.pic_id%}{%else%}{%$data.pic_id%}{%/if%}_a.gif" width="60" height="60" style="margin:2px 0;" /></td>
+                    <td style="background:#333333;color:#ffffff;font-size:x-small;">ｽﾋﾟｰﾄﾞ：{%$data.trigger_speed%}<br />体　力：{%$data.health%}<br />回復力：{%$data.recover_speed%}</td>
+                </tr>
+            </table>
+            <div class="description">
+                所持金${%$data.price|outputdollars%}以上で契約可能<div class="submit" style="text-align:right;">
+                {% if $myDynamiteInfo.hitman_type == $data.id %}
+                    <span style="color:#ff0000;">契約中</span>
+                {% elseif $myDynamiteInfo.bonus > $data.price %}
+                    <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/characonfirm?CF_hid=`$data.id`"|mixiurl %}'>契約する</a>
+                {% else %}
+                    <span style="color:#666;">⇒契約する</span>
+                {% /if %}
+                &nbsp;</div>
+            </div><!--/.description-->
+        </div><!--/.section-->
+        {% /foreach %}
+
+    </div><!--/#hitmanlist-->
+
+{%include file="dynamite/common/menu.phtml"%}
+{%include file="dynamite/common/footer.phtml" footAd=1 %}

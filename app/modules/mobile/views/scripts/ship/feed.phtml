@@ -1,0 +1,34 @@
+{% include file="ship/common/header.phtml" headerAd=1 %}
+<div id="feed">
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+		<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		更新情報<br />
+		<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+	</div><!--/.headline-->
+
+	{%*
+	<div class="switch" style="text-align:center;">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		{%if $action=='minifeed'%}
+			自分の一覧<span style="color:#999;">|</span><a href='{% "$baseUrl/mobile/ship/feed/CF_step/newsfeed"|mixiurl %}'>みんなの一覧</a><br />
+		{%elseif $action=='newsfeed'%}
+			<a href='{% "$baseUrl/mobile/ship/feed/CF_step/minifeed"|mixiurl %}'>自分の一覧</a><span style="color:#999;">|</span>みんなの一覧<br />
+		{% /if %}
+		自分の一覧
+	</div><!--/.switch-->
+	*%}
+
+	<div style="text-align:center;" class="lineDash"><img src="{%$staticUrl%}/apps/ship/img/twoline.gif" width="230" height="27" /></div>
+	{% foreach from=$feedList item=data key=key %}
+		<div class="section">
+			{% emoji code="F9BE"%}<span style="color:#7c4825;">[{%$data.create_time|date_format:"%Y年%m月%d日 %H:%M"%}]</span><br />
+			{%$data.title%}<br />
+			<div style="text-align:center;" class="lineDash"><img src="{%$staticUrl%}/apps/ship/img/newLine.gif" width="230" height="27" /></div>
+		</div><!--/.section-->
+	{% foreachelse %}
+		まだﾃﾞｰﾀがありません
+	{% /foreach %}
+</div><!--/#feed--> 
+{%include file="ship/common/menu.phtml"%}
+{% include file="ship/common/footer.phtml" footerAd=1 %}

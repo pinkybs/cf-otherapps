@@ -1,0 +1,55 @@
+{%include file="disney/common/header.phtml"%}
+
+<div style="background-color:#FFFCC7;font-size:x-small;">
+<div style="background-color:#50b83a; text-align:center;" >
+	{% disneyimg name="sub_ti_award" %}
+	{%include file="disney/common/topmenu.phtml"%}
+	<br />
+
+	{% disneyimg name="dot0" style='height="3"' %}<br />
+	<div id="headImg" style="text-align:center;">
+		<div class="message" style="text-align:center;color:#F09;">
+			ｷﾐの日々の功績を表彰!<br />
+			{% emoji code="F9E8"%}ｱﾜｰﾄﾞ･ﾄﾛﾌｨｰを集めよう{% emoji code="F9E8"%}
+		</div><!--/.message-->
+		{% disneyimg name="img_aword_top" style='width="240" height="128"' %}
+	</div><!--/#headImg-->
+	<span style="color:#663300;">ｱﾜｰﾄﾞはその場ではなく翌日にもらえるよ</span>
+	<br />
+	<div id="goTofaq008" style="text-align:right;color:#663300;">
+		⇒<a href='{% "$baseUrl/mobile/disney/help?CF_help=faq008"|mixiurl %}'>ｱﾜｰﾄﾞって何ですか?</a>
+	</div><!--/#goTofaq008-->
+
+	{% foreach name=cup from=$cupList item=data %}
+	{% disneyimg name="fna_line2" style='align="top"' %}<br />
+
+	{% if $ua!=3 %}
+	<div style="text-align:left;">
+		{% disneyimg name=$data.icon style='style="float:left;margin-top:0;margin-right:5;margin-left:5;margin-bottom:2; align:left;"' %}<br />
+		<div style="color:#663300; text-align:left;"><span><a href='{% "$baseUrl/mobile/disney/cup?CF_cid=`$data.cid`"|mixiurl %}'>{%$data.name%}ｱﾜｰﾄﾞ</a></span>
+		</div>
+		<div style="color:#663300; text-align:left;">
+			{%$data.point%}点
+		</div>
+		<div style="clear:both;"></div>
+		</div><!--/#left--> 
+	{% else %}
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr>
+				<td style="width:64px;text-align:center;">{% disneyimg name=$data.icon style='style="float:left;margin-top:0;margin-right:5;margin-left:5;margin-bottom:2; align:left;"' %}</td>
+				<td>
+					<div style="font-size:x-small; text-align:left;"><span><a href='{% "$baseUrl/mobile/disney/cup?CF_cid=`$data.cid`"|mixiurl %}'>{%$data.name%}ｱﾜｰﾄﾞ</a><br />
+					<span style="color:#663300;">{%$data.point%}点</span></span>
+					</div>
+				</td>
+			</tr>
+		</table>
+	{% /if %}
+
+	{% foreachelse %}
+		<span style="color:#F09;">まだ取得したｱﾜｰﾄﾞがありません</span><br>
+	{% /foreach %}
+	
+	<span style="text-align:right;">{%include file="disney/common/pager.phtml"%}</span>
+	
+{%include file="disney/common/firstfooter.phtml"%}

@@ -1,0 +1,37 @@
+{%include file="dynamite/common/header.phtml" headAd=1 %}
+
+    <div id="itemlist">
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="headline" style="background:#777777;color:#ffffff;">所有ｱｲﾃﾑ一覧({%if $itemAllCount%}{%$itemAllCount%}{%else%}0{%/if%})</div>
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="description">
+			ｱｲﾃﾑを使って、誰にも負けないｱｼﾞﾄをつくろう! ｱｲﾃﾑはﾋﾞｼﾞﾀｰｷﾞﾌﾄと爆破ﾎﾞｰﾅｽでもらえるよ｡
+        </div><!--/.description-->
+
+		<div style="color:#ff9900;text-align:right;">
+	        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+			⇒<a href='{% "$baseUrl/mobile/dynamite/itemshop"|mixiurl %}'>ｱｲﾃﾑｽﾄｱで購入する</a>&nbsp;<br />
+		</div>
+
+        {% foreach from=$itemList item=rowdata key=key %}
+            <div class="section" style="background:{%if $key%2==0 %}#000000{%else%}#333333{%/if%};">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="60" valign="top" align="center" style="width:56px;text-align:center;vertical-align:top;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/item/{%$rowdata.cid%}.gif" width="56" height="56" style="margin:2px 0;" /></td>
+                        <td style="color:#ffffff;{% if $ua==1 %}font-size:x-small;{%/if%}">{%$rowdata.name%} x{%$rowdata.count%}<br />
+                            <div style="text-align:right;"><a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item`$rowdata.cid`"|mixiurl %}'>説明を見る</a> {%if $rowdata.cid==5%}{%if $rowdata.count > 0 %}{%if $rowdata.useTime > 3 %}<a href='{% "$baseUrl/mobile/dynamite/itemconfirm?CF_cid=`$rowdata.cid`"|mixiurl %}'>使用する</a>{%else%}<span style="color:#666666;">使用する</span>{%/if%}{%else%}<span style="color:#666666;">使用する</span>{%/if%}{%else%}{%if $rowdata.count > 0 && $canUseCardArray[$key] == 1 %}<a href='{% "$baseUrl/mobile/dynamite/itemconfirm?CF_cid=`$rowdata.cid`"|mixiurl %}'>使用する</a>{%else%}<span style="color:#666666;">使用する</span>{%/if%}{%/if%}&nbsp;</div></td>
+                    </tr>
+                </table>
+            </div><!--/.section-->
+        {% /foreach %}
+		<div style="color:#ff9900;text-align:right;">
+	        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+			⇒<a href='{% "$baseUrl/mobile/dynamite/itemshop"|mixiurl %}'>ｱｲﾃﾑｽﾄｱで購入する</a>&nbsp;<br />
+		</div>
+    </div><!--/#itemlist-->
+
+{%include file="dynamite/common/menu.phtml"%}
+{%include file="dynamite/common/footer.phtml" footAd=1 %}

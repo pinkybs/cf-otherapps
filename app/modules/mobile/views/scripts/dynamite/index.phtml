@@ -1,0 +1,34 @@
+{%include file="dynamite/common/header.phtml" headAd=1 %}
+
+	<div id="welcome">
+		<div class="intro" style="text-align:center;">
+			<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+			<object data="{%$staticUrl%}/apps/dynamite/mobile/swf/splash.swf" type="application/x-shockwave-flash" width="210" height="160">
+				<param name="bgcolor" value="FFFFFF" />
+				<param name="loop" value="off" />
+				<param name="quality" value="high" />
+				<embed src="{%$staticUrl%}/apps/dynamite/mobile/swf/splash.swf" width="210" height="160" loop="off" quality="high" bgcolor="#FFFFFF"></embed>
+			</object>
+			<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+		</div><!--/.intro-->
+
+		<div class="description">
+			時間とともに破壊力が増大する特殊なダイナマイト爆弾を使ったマイミク同士の、仁義なきバトルロワイヤル!!<br />
+			<br />
+			個性豊かなヒットマンを雇って、自分のアジトを守り抜けっ!<br />
+			<br />
+			ばれないようにダイナマイトを仕掛け、マイミクのアジトを爆破せよ!!<br />
+			<br />
+			アイテムを駆使して雷自分のアジトを守りつつ、マイミクのヒットマンにかけられた懸賞金ドル袋を奪い取れ!<br />
+			<br />
+			目には目を、裏切り者には報復を!!<br />
+			<br />
+			この終わりなき闘争に終止符を打つのは誰だ!?<br />
+		</div><!--/.description-->
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="toStart" style="text-align:center;"><span style="color:#ff9933;">≫</span><a href='{% "$baseUrl/mobile/dynamite/charaselect"|mixiurl %}'>ゲームSTART!!</a><span style="color:#ff9933;">≪</span></div>
+	</div><!--/#welcome-->
+
+{%include file="dynamite/common/footer.phtml" footAd=1 %}

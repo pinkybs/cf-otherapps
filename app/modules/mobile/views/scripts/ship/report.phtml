@@ -1,0 +1,48 @@
+{% if $action == 'start' %}
+	{% include file="ship/common/header.phtml" headerAd=0 %}
+	<div id="report">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			世界政府に通報する<br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		</div><!--/.headline-->
+		<div class="description">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			世界政府に通報すると､1時間後に連合艦隊の取り締まりがやってきます｡匿名通報ｶｰﾄﾞを使用し､匿名で通報しますか?<br />
+		</div><!--/.description-->
+		<div class="card" style="text-align:center;">
+			<img src="{%$staticUrl%}/apps/ship/img/unite.gif" width="156" height="100" style="margin:3px 0;" /><br />
+		</div><!--/.card-->
+		<div class="link">
+			<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/report/CF_loca/`$location`/CF_parkingUid/`$parkingUid`/CF_isAnonymous/1/CF_step/complete"|mixiurl %}'>匿名で通報する</a><br />
+			<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/report/CF_loca/`$location`/CF_parkingUid/`$parkingUid`/CF_step/complete"|mixiurl %}'>いいえ､今回は使用しません</a><br />
+		</div><!--/.link-->
+	</div><!--/#report-->
+	{%include file="ship/common/menu.phtml"%}
+	{% include file="ship/common/footer.phtml" footerAd=0 %}
+{% elseif $action == 'complete' %}
+	{% include file="ship/common/header.phtml" %}
+	<div id="report">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			{%if $result.isAnonymous == 1%}匿名通報済み{%else%}通報完了{%/if%}<br />
+			<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		</div><!--/.headline-->
+		<div class="description">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			{% if $result.status == 1 %}
+				{%$result.message%}<br />
+			{% else %}
+				すでに世界政府に通報しました｡<br />
+			{% /if %}
+		</div><!--/.description-->
+		{%include file="ship/common/ad_complete.phtml"%}
+		<div class="link">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/index/CF_uid/`$result.parkingUid`"|mixiurl %}'>{%$result.parkingUsername%}の海賊島へ</a><br />
+		</div><!--/.link-->
+	</div><!--/#report-->
+	{%include file="ship/common/footer.phtml"%}
+{% /if %}

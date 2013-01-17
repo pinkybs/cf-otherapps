@@ -1,0 +1,111 @@
+{%include file="hotel/common/header.phtml"%}
+    <style type="text/css">
+    a:link{color:#a77809;}
+    a:visited{color:#a77809;}
+    *{color:#000000;font-size:x-small;font-size:5;}
+    .icon{vertical-align: middle;}
+    a img {border: none;}
+
+    body {
+        background: #ffffff;
+    }
+
+    .hrYellow {
+        color:#fbf8c9;
+        border: 0;
+        background-color:#fbf8c9;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrWhite {
+        color:#ffffff;
+        border: 0;
+        background-color:#ffffff;
+        height:1px;
+        margin:0.3em 0;
+    }
+
+    .hrSp {
+        background-color:#fdd89e;
+        color:#fdd89e;
+        height:1px;
+        border:0px solid #fdd89e;
+        margin:0.3em 0;
+    }
+
+    #mixiHeader {
+        background:#fbb03b;
+    }
+
+    .headlineFun {
+        background:#cf1226;
+        color:#ffffff;
+    }
+
+    .headlineBack {
+        background:#f6ddbc;
+    }
+
+    .headlineTip {
+        background:#fdd89e;
+        color:#000000;
+    }
+
+    .toTop {
+        background-color:#ffffff;
+    }
+
+    #copyright {
+        background:#fbb03b;
+    }
+
+    .sectionImg {
+        background:#dedcc6;
+    }
+
+    .sectionOne {
+        background:#fbf8c9;
+    }
+
+    .owner {
+        background:#fbf8c9;
+    }
+    </style>
+    <div id="profile">
+        <hr class="hrWhite" size="1" />
+        <div class="owner">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td valign="top" width="44" align="center" style="width:44px;text-align:center;"><img src="{%$staticUrl%}/apps/hotel/mobile/img/frontGirlS.gif" style="margin:2px 0;" /></td>
+                    <td valign="top" style="padding-top:5px;">受付（<a href='{% "$baseUrl/mobile/hotel/techlist"|mixiurl %}'>Lv{%$roomInfo.reception%}</a>)<br />
+                            <span style="font-size:small;color:#ffcc00;">"ゲームの一日は現実の一時間ですよ！"</span>
+                            <a href='{% "$baseUrl/mobile/hotel/frontprofile"|mixiurl %}'>（次へ）</a>
+                    </td>
+                </tr>
+            </table>
+        </div><!--/.owner-->
+        <div style="height:10px;" class="setInterval"></div>
+        <div class="sectionImg">
+            <div align="center"><img src="{%$staticUrl%}/apps/hotel/mobile/img/frontB.gif" /></div>
+        </div><!--/.section-->
+        <div class="sectionOne">
+            <hr class="hrSp" size="1" />
+            <div class="headline"><span style="color:#666666;">〓</span>受付室<span style="color:#666666;">〓</span></div>
+            <table class="tdBg" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="100" align="center" style="padding-top:5px;width:100px;text-align:center;"><img src="{%$staticUrl%}/apps/hotel/mobile/img/frontM.gif" width="100" height="59" /></td>
+                    <td style="padding-top:5px;">
+                                        本日のお客数：20名<br/>
+                                        翌日の予約数：15名
+                    </td>
+                </tr>
+            </table>
+        </div><!--/.section-->
+    </div><!--/#profile-->
+    <hr class="hrWhite" size="1" />
+     <!--<div class="toTop">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/profile"|mixiurl %}'>トップへ戻る</a>&nbsp;
+        </div>/.toTop-->
+{%include file="hotel/common/menu.phtml"%}
+{%include file="hotel/common/footer.phtml"%}

@@ -1,0 +1,44 @@
+{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn">
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+		<div id="revolutionStopBox" class="box">
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_stopRevolution.png" width="159" height="23" alt="革命を阻止する" /></h2>
+			</div><!--/.hdr-->
+
+			<p class="intro"><span>ドレイちゃんである{%$slaveName%}の革命を阻止し、所持金￥{%$money%}を奪いました。</span>
+			<span>革命を起こしたことを悔やませるよう、恥ずかしいニックネームやフキダシでクギを刺しましょう！</span></p>
+			<p class="pic"><img src="{%$staticUrl%}/apps/slave/img/content/stopRevolution.png" alt="革命阻止" /></p>
+			<p class="actionGoto btn"><a href="{%$baseUrl%}/slave/profile?uid={%$slaveInfo.uid%}">ドレイちゃんのプロフィールへ移動する</a></p>
+			<input type="hidden" id="activity" value="{%$activity%}" />
+			<input type="hidden" id="activityUser" value="{%$activityUser%}" />
+			<input type="hidden" id="activityPic" value="{%$activityPic%}" />
+		</div><!--/#revolutionStopBox.box-->
+	</div><!--/#mainColumn-->
+
+	<script type="text/javascript">
+        $j(document).ready(function() {
+        	//activity
+        	if (null != $j('#activity') && '' != $j('#activity').val()) {
+				postActivityWithPic($j('#activity').val(),$j('#activityPic').val(), '', $j('#activityUser').val());
+        	}
+            adjustHeight();
+        });
+	</script>
+
+	<div id="subColumn">
+		{%include file="slave/common/adbox.phtml"%}
+		{%include file="slave/common/logbox.phtml"%}
+	</div><!--/#subColumn-->
+
+{%include file="slave/common/footer.phtml"%}

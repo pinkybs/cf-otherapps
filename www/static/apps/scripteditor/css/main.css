@@ -1,0 +1,1125 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+Script Editor main CSS
+
+Created Date: 2009/05/12
+Author: Yu Uno
+Last Up Date : 2009/05/12
+Author: Yu Uno
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+
+* {
+	outline: none;
+}
+
+body,html {
+}
+
+body {
+	color: #707070;
+}
+
+a:link,a:hover {
+	color: #258FB8;
+}
+a:link,a:visited {
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+
+img {
+	display: block;
+}
+
+textarea {
+	margin: 0;
+	padding: 3px;
+}
+
+pre {
+	margin: 0;
+	padding: 0;
+}
+
+
+/*icon
+----------------------------------------------*/
+.name,
+.date,
+.run,
+.security {
+	padding-left: 18px;
+	background: no-repeat left top;
+}
+
+.name {
+	background-image: url(../img/icn/user.png);
+}
+.date {
+	background-image: url(../img/icn/time.png);
+}
+.run {
+	background-image: url(../img/icn/control_play.png);
+}
+.security {
+	background-image: url(../img/icn/key.png);
+}
+
+
+/*gNav
+----------------------------------------------*/
+ul#gNav {
+	margin-bottom: 10px;
+}
+	ul#gNav li {
+		display: inline;
+		float: left;
+		width: 116px;
+		height: 35px;
+		text-indent: -9999px;
+	}
+		ul#gNav li a {
+			display: block;
+			height: 35px;
+			background: url(../img/gNav.png) no-repeat;
+		}
+		ul#gNav li#gNavTop a {
+			background-position: 0 0;
+		}
+		ul#gNav li#gNavTop a:hover,
+		#toppage ul#gNav li#gNavTop a {
+			background-position: 0 -35px;
+		}
+		ul#gNav li#gNavMyPage a {
+			background-position: -116px 0;
+		}
+		ul#gNav li#gNavMyPage a:hover,
+		#mypage ul#gNav li#gNavMyPage a {
+			background-position: -116px -35px;
+		}
+		ul#gNav li#gNavArchive a {
+			background-position: -232px 0;
+		}
+		ul#gNav li#gNavArchive a:hover,
+		#archives ul#gNav li#gNavArchive a {
+			background-position: -232px -35px;
+		}
+		ul#gNav li#gNavEditor a {
+			background-position: -348px 0;
+		}
+		ul#gNav li#gNavEditor a:hover,
+		#editor ul#gNav li#gNavEditor a {
+			background-position: -348px -35px;
+		}
+		ul#gNav li#gNavTag a {
+			background-position: -464px 0;
+		}
+		ul#gNav li#gNavTag a:hover,
+		#tag ul#gNav li#gNavTag a {
+			background-position: -464px -35px;
+		}
+		ul#gNav li#gNavConfig a {
+			background-position: -580px 0;
+		}
+		ul#gNav li#gNavConfig a:hover,
+		#config ul#gNav li#gNavConfig a {
+			background-position: -580px -35px;
+		}
+		ul#gNav li#gNavHelp a {
+			background-position: -696px 0;
+		}
+		ul#gNav li#gNavHelp a:hover,
+		#help ul#gNav li#gNavHelp a {
+			background-position: -696px -35px;
+		}
+	ul#gNav li#gNavInvite {
+		width: 132px;
+	}
+		ul#gNav li#gNavInvite a {
+			background-position: -812px 0;
+		}
+		ul#gNav li#gNavInvite a:hover,
+		#invite ul#gNav li#gNavInvite a {
+			background-position: -812px -35px;
+		}
+
+
+/*column
+----------------------------------------------*/
+#continer {
+	width: 944px;
+}
+
+#mainImage {
+	margin-bottom: 10px;
+}
+
+#mainColumn {
+	display: inline;
+	float: left;
+	width: 684px;
+}
+/*ポップアップ１カラムにつき横幅を別途指定しています。*/
+#mainColumn.popup {
+	width: 710px;
+}
+
+
+#subColumn {
+	display: inline;
+	float: right;
+	width: 250px;
+}
+
+
+/*mainColumn
+----------------------------------------------*/
+#mainColumn #infoBox {
+	height: 35px;
+	margin-bottom: 10px;
+	background: url(../img/info.png) no-repeat 0 0;
+}
+	#mainColumn #infoBox input#searchInput {
+		margin: 4px 0 4px 45px;
+		padding: 0;
+		width: 634px;
+		height: 27px;
+		line-height: 27px;
+		font-size: 14px;
+		color: #666666;
+		border: medium none;
+		background-color: transparent;
+	}
+
+#mainColumn #wrap {
+	padding: 20px;
+	background-color: #E6EC44;
+}
+	#mainColumn #wrap h1 {
+		margin-bottom: 10px;
+	}
+	
+	#mainColumn #wrap .inner {
+		padding: 10px 10px 0;
+		background-color: #FFFFFF;
+	}
+	
+	#mainColumn #wrap h2 {
+		margin-top: 20px;
+		margin-bottom: 15px;
+		font-size: 24px;
+	}
+	
+	#mainColumn #wrap .box {
+		margin-bottom: 10px;
+	}
+	
+	#mainColumn #wrap #entryStatus {
+		margin-bottom: 10px;
+		padding: 4px 10px;
+		border: 1px solid #F0F0F0;
+	}
+		#mainColumn #wrap #entryStatus ul {
+		}
+			#mainColumn #wrap #entryStatus ul li {
+				display: -moz-inline-box;/*Firefox2*/
+				display: inline-block;/*CSS3*/
+				/display: inline;/*IE6,IE7*/
+				/zoom: 1;/*IE6,IE7*/
+				font-size: 14px;
+				line-height: 1.4;		
+			}
+			#mainColumn #wrap #entryStatus ul.status li {
+				margin-right: 10px;
+			}
+		#mainColumn #wrap #entryStatus ul#tags {
+			padding-left: 18px;
+			background: url(../img/icn/tag_green.png) no-repeat left top;
+		}
+			#mainColumn #wrap #entryStatus ul#tags li {
+				margin-right: 5px;
+			}
+	
+	#mainColumn #wrap h3 {
+		margin-bottom: 10px;
+		padding: 5px 10px;
+		background-color: #888600;
+		font-size: 14px;
+		color: #FFFFFF;
+	}
+	
+	#mainColumn #wrap textarea {
+		display: block;
+		width: 618px;
+		background-color: #000000;
+		border: medium none;
+		font-size: 12px;
+		line-height: 1.4;
+		color: #FFFFFF;
+	}
+	
+	#mainColumn #wrap ul.btnList {
+		padding: 10px 0;
+		/padding-left: 5px;
+		background-color: #B2B2B2;
+		text-align: center;
+	}
+		#mainColumn #wrap ul.btnList li {
+			margin: 0 3px;
+			display: -moz-inline-box;/*Firefox2*/
+			display: inline-block;/*CSS3*/
+			display:inline;
+			float:left;
+		}
+			#mainColumn #wrap ul.btnList li#btnPreview {
+				margin-left: 10px;
+				*margin-left: 5px;
+			}
+			#mainColumn #wrap ul.btnList li#btnRun {
+				margin-left: 10px;
+				*margin-left: 5px;
+			}
+				#mainColumn #wrap ul.btnList li a {
+					display: block;
+					height: 40px;
+				}
+				#mainColumn #wrap ul.btnList {
+					padding: 10px 0;
+					/padding-left: 5px;
+					background-color: #B2B2B2;
+					text-align: center;
+				}
+
+	
+	#mainColumn #wrap p.more {
+		font-size: 14px;
+		text-align: right;
+	}
+	
+	#mainColumn #wrap p.null {
+		margin-bottom: 10px;
+		padding: 15px 0;
+		border: 1px solid #D8D0BE;
+		background: url(../img/bg_line.png) left top;
+		text-align: center;
+	}
+		#mainColumn #wrap p.null img {
+			display: inline;
+			vertical-align: bottom;
+		}
+
+
+
+/*#entryCode*/
+#entryCode {
+}
+	#entryCode ul.btnList {
+	}
+		#entryCode ul.btnList li {
+			width: 196px;
+			text-indent: -9999px;
+		}
+			#entryCode ul.btnList li a {
+				width: 196px;
+				background: url(../img/btn_entry.png) no-repeat;
+			}
+			#entryCode ul.btnList li#btnRun a {
+				background-position: 0 0;
+			}
+			#entryCode ul.btnList li#btnFollow a {
+				background-position: -196px 0;
+			}
+			#entryCode ul.btnList li#btnDownload a {
+				background-position: -392px 0;
+			}
+
+
+/*#entryPaste*/
+#entryPaste {
+}
+	#entryPaste input#codePaste {
+		margin: 0;
+		padding: 3px;
+		width: 616px;
+		border: 1px solid #B2B2B2;
+		font-size: 12px;
+		line-height: 1.4;
+	}
+
+
+/*#follows*/
+#follows,
+#entries {
+	margin-bottom: 0 !important;
+}
+	#follows .total,
+	#entries .total {
+		margin-bottom: 10px;
+		font-size: 14px;
+		line-height: 1.4;
+	}
+		#follows .total ul,
+		#entries .total ul {
+			display: inline;
+		}
+			#follows .total ul li,
+			#entries .total ul li {
+				display: -moz-inline-box;/*Firefox2*/
+				display: inline-block;/*CSS3*/
+				/display: inline;/*IE6,IE7*/
+				/zoom: 1;/*IE6,IE7*/
+				margin-right: 5px;			
+			} 
+	#entries .entry,
+	#follows .follow {
+		padding-bottom: 10px;
+	}
+		#entries .entry .hdr,
+		#follows .follow .hdr {
+			margin-bottom: 5px;
+			padding: 4px 10px;
+			border: 1px solid #F0F0F0;
+			font-size: 14px;
+			line-height: 1.4;
+		}
+		#entries .entry .hdr.hover,
+		#follows .follow .hdr.hover {
+			background-color: #E6EC44;
+			cursor: pointer;
+		}
+				#entries .entry .hdr.hover a,
+				#follows .follow .hdr.hover a {
+					text-decoration: none;
+				}
+			#entries .entry .hdr h4,
+			#follows .follow .hdr h4 {
+				float: left;
+				padding-left: 18px;
+				background: url(../img/icn/control_play.png) no-repeat left top;
+			}
+			#entries .entry .hdr ul.status,
+			#follows .follow .hdr ul.status {
+				float: right;
+			}
+				#entries .entry .hdr ul.status li,
+				#follows .follow .hdr ul.status li {
+					display: -moz-inline-box;/*Firefox2*/
+					display: inline-block;/*CSS3*/
+					/display: inline;/*IE6,IE7*/
+					/zoom: 1;/*IE6,IE7*/
+					margin-right: 10px;
+				}
+
+/*#numberList*/
+ol.numberList {
+	padding-bottom: 10px;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+	ol.numberList li {
+		display: inline;
+		float: left;
+		margin-right: 5px;
+		font-size: 14px;
+	}
+		ol.numberList li a {
+			display: block;
+			padding: 2px 0;
+			border: 1px solid #258FB8;
+			text-decoration: none;
+		}
+		ol.numberList li a:hover {
+			background-color: #258FB8;
+			color: #FFFFFF;
+		}
+		ol.numberList li a.active {
+			background-color: #CCCCCC;
+			border-color: #CCCCCC;
+			color: #333333;
+		}
+
+
+
+
+
+
+/*subColumn
+----------------------------------------------*/
+#subColumn .adBox {
+	margin-bottom: 10px;
+}
+
+#subColumn #authorBox {
+	padding: 20px;
+	background-color: #333333;
+}
+	#subColumn #authorBox h2 {
+		margin-bottom: 15px;
+	}
+	
+	#subColumn #authorBox .inner {
+		background-color: #FFFFFF;
+	}
+	
+	#subColumn #authorBox p {
+		padding: 8px 10px;
+		font-size: 14px;
+		line-height: 1.3;
+		color: #333333;
+	}
+	
+	#subColumn #authorBox p.pic {
+		padding: 10px 0;
+		text-align: center;
+	}
+		#subColumn #authorBox p.pic img {
+			display: inline;
+		}
+	
+	#subColumn #authorBox p.name {
+		padding: 0 0 10px;
+		background: none;
+		font-size: 14px;
+		text-align: center;
+		font-weight: bold;
+	}
+	
+	#subColumn #authorBox h3 {
+		padding: 3px 10px;
+		background-color: #777777;
+		color: #FFFFFF;
+		font-size: 14px;
+		font-weight: bold;
+		line-height: 1.2;
+	}
+	
+	#subColumn #authorBox p.statusConf {
+	}
+		#subColumn #authorBox p.statusConf {
+			display: block;
+			margin-top: 10px;
+			padding: 0;
+			width: 210px;
+			height: 40px;
+			text-indent: -9999px;
+		}
+			#subColumn #authorBox p.statusConf a {
+				display: block;
+				height: 40px;
+				background: url(../img/btn_statusEdit.png);
+			}
+
+#subColumn #followBox {
+	padding: 20px;
+	background-color: #888600;
+}
+	#subColumn #followBox h2 {
+		margin-bottom: 15px;
+	}
+	#subColumn #followBox .inner {
+		padding: 8px 8px;
+		background-color: #FFFFFF;
+	}
+		#subColumn #followBox .inner ul {
+			margin-left: -5px;
+		}
+			#subColumn #followBox .inner ul li {
+				display: inline;
+				float: left;
+				margin-left: 5px;
+				margin-bottom: 5px;
+			}
+
+
+
+
+
+/*copyright
+----------------------------------------------*/
+address#copyright {
+	clear: both;
+	display: block;
+	padding: 10px 0;
+	font-size: 12px;
+}
+
+
+
+
+
+
+
+/*body#toppage
+----------------------------------------------*/
+#toppage {
+}
+	#toppage #wrap {
+	}
+		#toppage #wrap #follows {
+		}
+			#toppage #wrap #follows .follow {
+				padding-bottom: 0;
+			}
+			#toppage #wrap #follows .section {
+				padding-bottom: 10px;
+			}
+
+
+
+
+/*body#mypage
+----------------------------------------------*/
+#mypage {
+}
+	#mypage #mainColumn {
+	}
+		#mypage #mainColumn #wrap {	
+			padding-bottom: 0;
+		}
+		#mypage #mainColumn .inner {
+			margin-bottom: 20px;
+		}
+		#mypage #mainColumn #statusBox {
+			margin-bottom: 10px;
+			padding: 20px 20px;
+			background-color: #333333;
+		}
+			#mypage #mainColumn #statusBox h1 {
+				margin-bottom: 10px;
+			}
+			
+			#mypage #mainColumn #statusBox #picColumn,
+			#mypage #mainColumn #statusBox #statusColumn {
+				display: inline;
+			}
+			#mypage #mainColumn #statusBox #picColumn {
+				float: left;
+				width: 240px;
+			}
+				#mypage #mainColumn #statusBox #picColumn #picBox {
+					padding: 15px 0 5px;
+					background-color: #FFFFFF;
+				}
+					#mypage #mainColumn #statusBox #picColumn #picBox img {
+						display: block;
+						margin: 0 auto;
+						border: 1px solid #B2B2B2;
+					}
+				#mypage #mainColumn #statusBox #picColumn p.name {
+					padding: 10px;
+					background: none;
+					font-size: 14px;
+					line-height: 1.3;
+					text-align: center;
+					font-weight: bold;
+					color: #333333;
+				}
+				
+				#mypage #mainColumn #statusBox #picColumn p.statusConf {
+					margin-top: 10px;
+					width: 240px;
+					text-indent: -9999px;
+				}
+					#mypage #mainColumn #statusBox #picColumn p.statusConf a {
+						display: block;
+						height: 40px;
+						background: url(../img/btn_statusConfig.png) no-repeat 0 0;
+					}
+			#mypage #mainColumn #statusBox #statusColumn {
+				float: right;
+				width: 394px;
+			}
+				#mypage #mainColumn #statusBox #statusColumn ul {
+				}
+					#mypage #mainColumn #statusBox #statusColumn ul li {
+						margin-bottom: 5px;
+						background: #FFFFFF url(../img/list_bottom.png) no-repeat left bottom;
+						font-size: 14px;
+						line-height: 1.4;
+					    overflow: hidden;
+						
+					}
+						#mypage #mainColumn #statusBox #statusColumn ul li span {
+							display: -moz-inline-box;/*Firefox2*/
+							display: inline-block;/*CSS3*/
+							/display: inline;/*IE6,IE7*/
+							/zoom: 1;/*IE6,IE7*/
+							padding: 3px 10px;
+							background: url(../img/list_top.png) no-repeat;
+							vertical-align: top;
+						}
+						#mypage #mainColumn #statusBox #statusColumn ul li span.listHdr {
+							width: 117px;
+							background-position: left top;
+						}
+						#mypage #mainColumn #statusBox #statusColumn ul li span.listContent {
+							width: 233px;
+							background-position: right top;
+						}
+
+
+/*body#editor
+----------------------------------------------*/
+body#editor #mainColumn {
+}
+	body#editor #mainColumn .inner {
+		padding-bottom: 1px;
+	}
+	body#editor #mainColumn #entryBody {
+	}
+		body#editor #mainColumn #entryBody table.confTable {
+			margin-bottom: 10px;
+		}
+		body#editor #mainColumn #entryBody tr#editLang {
+		}
+			body#editor #mainColumn #entryBody tr#editLang ul {
+				position: relative;
+				margin-left: -20px;
+			}
+				body#editor #mainColumn #entryBody tr#editLang ul li {
+					display: -moz-inline-box;/*Firefox2*/
+					display: inline-block;/*CSS3*/
+					/display: inline;/*IE6,IE7*/
+					/zoom: 1;/*IE6,IE7*/
+					margin-right: 10px;
+				}
+		
+		body#editor #mainColumn #entryBody ul.btnList {
+		}
+			body#editor #mainColumn #entryBody ul.btnList li {
+				width: 297px;
+				text-indent: -9999px;
+			}
+				body#editor #mainColumn #entryBody ul.btnList li a {
+					display: block;
+					background: url(../img/btn_entry.png) no-repeat !important;
+				}
+				body#editor #mainColumn #entryBody ul.btnList li#btnPreview a {
+					background-position: -885px 0 !important;
+				}
+				body#editor #mainColumn #entryBody ul.btnList li#btnPreview.disable a {
+					background-position: -885px -40px !important;
+				}
+				body#editor #mainColumn #entryBody ul.btnList li#btnDruft a {
+					background-position: -588px 0 !important;
+				}
+				body#editor #mainColumn #entryBody ul.btnList li#btnDruft.disable a {
+					background-position: -588px -40px !important;
+				}
+				
+		body#editor #mainColumn #entryPost,
+		body#config #mainColumn #statusConf #configStatus {
+		}
+			body#editor #mainColumn #entryPost p,
+			body#config #mainColumn #statusConf #configStatus p {
+				margin-bottom: 10px;
+				font-size: 13px;
+				line-height: 1.4;
+			}
+			body#config #mainColumn #statusConf #configStatus p {
+				margin-top: 10px;
+				color: #333333;
+			}
+			body#editor #mainColumn #entryPost textarea,
+			body#config #mainColumn #statusConf #configStatus textarea {
+				width: 616px;
+				border: 1px solid #B2B2B2;
+				background-color: #FFFFFF;
+				color: #707070;
+			}
+			body#editor #mainColumn #entryPost #confirmList,
+			body#config #mainColumn #statusConf #configStatus #confirmList {
+				padding: 10px;
+				margin: 10px 0 0 0;
+				background-color: #B2B2B2;
+			}
+				body#editor #mainColumn #entryPost #confirmList ul,
+				body#config #mainColumn #statusConf #configStatus #confirmList ul {
+					padding: 8px;
+					background-color: #FFFFFF;
+					text-align: center;
+					font-size: 14px;
+				}	
+					body#editor #mainColumn #entryPost #confirmList ul li,
+					body#config #mainColumn #statusConf #configStatus #confirmList ul li {
+						display: -moz-inline-box;/*Firefox2*/
+						display: inline-block;/*CSS3*/
+						/display: inline;/*IE6,IE7*/
+						/zoom: 1;/*IE6,IE7*/
+					}
+				body#editor #mainColumn #entryPost #confirmList p.btnEntry {
+					margin: 10px 0 0;
+					text-indent: -9999px;
+				}
+					body#editor #mainColumn #entryPost #confirmList p.btnEntry #btnSubmit{
+						display: block;
+						height: 40px;
+						background: url(../img/btn_post.png);
+					}
+
+					body#editor #mainColumn #entryPost #confirmList p.btnEntry #btnSubmit2{
+						display: block;
+						height: 40px;
+						background: url(../img/btn_post_dis.png);
+					}
+
+body#editor.runCode #continer {
+	width: auto;
+	min-width: 420px;
+}
+body#editor.runCode #mainColumn {
+    position: relative;
+    display: block;
+    float: none;
+    width: auto !important;
+}
+    body#editor.runCode #mainColumn p.btnClose {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    body#editor.runCode #mainColumn h2 {
+        margin: 0 0 5px;
+        font-size: 18px;
+    }
+    body#editor.runCode #mainColumn #runCode {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 4px solid #F0F0F0;
+    }
+    body#editor.runCode #mainColumn .adBox {
+        margin-bottom: 10px;
+    }
+
+
+/*body#config
+----------------------------------------------*/
+body#config #mainColumn {
+}
+	body#config #mainColumn #statusConf {
+	}
+		body#config #mainColumn #statusConf table.confTable {
+		}
+			body#config #mainColumn #statusConf table.confTable tr#confName {
+			}
+				body#config #mainColumn #statusConf table.confTable tr#confName input,
+				body#config #mainColumn #statusConf table.confTable tr#confLevel input,
+				body#config #mainColumn #statusConf table.confTable tr#confAbility input,
+				body#config #mainColumn #statusConf table.confTable tr#confBlog input {
+					margin: 0;
+					padding: 2px;
+					width: 498px;
+					border: 1px solid #B2B2B2;
+					font-size: 12px;
+					line-height: 1em;
+				}
+				body#config #mainColumn #statusConf table.confTable tr#confLevel input {
+					width: 80px;
+				}
+				body#config #mainColumn #statusConf table.confTable tr#confImage p.delete {
+					float: left;
+					font-size: 12px;
+				}
+				body#config #mainColumn #statusConf table.confTable tr#confImage img {
+					border: 1px solid #B2B2B2;
+				}
+				body#config #mainColumn #statusConf table.confTable tr#confJob select {
+					padding: 3px;
+					width: 504px;
+					border: 1px solid #B2B2B2;
+				}
+			body#config #mainColumn #statusConf table.confTable th,
+			body#config #mainColumn #statusConf table.confTable td {
+			}
+				body#config #mainColumn #statusConf table.confTable td ul {
+				}
+					body#config #mainColumn #statusConf table.confTable td ul li {
+						display: -moz-inline-box;/*Firefox2*/
+						display: inline-block;/*CSS3*/
+						/display: inline;/*IE6,IE7*/
+						/zoom: 1;/*IE6,IE7*/
+						margin-right: 10px;
+					}
+				
+			body#config #mainColumn #statusConf table.confTable table.innerTable {
+				width: 504px;
+				border: 1px solid #CCCCCC;
+				font-size: 12px;
+				color: #333333;
+			}
+				body#config #mainColumn #statusConf table.confTable table.innerTable th,
+				body#config #mainColumn #statusConf table.confTable table.innerTable td {
+					padding: 3px 5px;
+					border: 1px solid #CCCCCC;
+					vertical-align: middle;
+				}
+				body#config #mainColumn #statusConf table.confTable table.innerTable th {
+					padding: 5px;
+					background-color: #CCCCCC;
+					font-weight: bold;
+				}
+				body#config #mainColumn #statusConf table.confTable table.innerTable td {
+				}
+					body#config #mainColumn #statusConf table.confTable table.innerTable td label {
+						display: block;
+						text-align: center;
+					}
+				body#config #mainColumn #statusConf table.confTable table.innerTable tr.years {
+				}
+					body#config #mainColumn #statusConf table.confTable table.innerTable tr.years td {
+						padding: 4px 5px;
+						text-align: center;
+					}
+					
+	body#config #mainColumn #statusConf p.btnConfirm {
+		margin: 10px 0;
+		padding: 10px;
+		background: #B2B2B2;
+		text-indent: -9999px;
+	}
+		body#config #mainColumn #statusConf p.btnConfirm #btnConfirm1{
+			display: block;
+			margin: 0 auto;
+			width: 604px;
+			height: 40px;
+			background: url(../img/btn_confirm.png) no-repeat left top;
+		}
+		body#config #mainColumn #statusConf p.btnConfirm #btnConfirm2{
+			display: block;
+			margin: 0 auto;
+			width: 604px;
+			height: 40px;
+			background: url(../img/btn_confirm_dis.png) no-repeat left top;
+		}
+		
+		body#config #mainColumn #statusConf #configStatus {
+		}
+			body#config #mainColumn #statusConf #configStatus #confirmList {
+			}
+				body#config #mainColumn #statusConf #configStatus #confirmList p.btnConfigStatus {
+					margin: 10px 0 0;
+					text-indent: -9999px;
+				}
+					body#config #mainColumn #statusConf #configStatus #confirmList p.btnConfigStatus a {
+						display: block;
+						width: 604px;
+						height: 40px;
+						background: url(../img/btn_statusConfig_l.png) no-repeat left top;
+					}
+
+			
+
+/*body#help
+----------------------------------------------*/
+#help {
+}
+	#help #mainColumn {
+	}
+		#help #mainColumn .inner {
+			margin-bottom: 10px;
+		}
+		#help #mainColumn p,
+		#help #mainColumn ul {
+			margin: 0 0 8px;
+			line-height: 1.4;
+			font-size: 14px;
+			color: #333333;
+		}
+			#help #mainColumn ul li {
+				padding-left: 20px;
+				background: url(../img/icn/attach.png) no-repeat left top;
+			}
+	
+		#help #mainColumn table {
+			margin-bottom: 10px;
+			width: 624px;
+			border: 1px solid #CCCCCC;
+			background: #FFFFFF;
+			color: #333333;
+		}
+			#help #mainColumn table th,
+			#help #mainColumn table td {
+				padding: 4px 10px;
+				border: 1px solid #CCCCCC;
+			}
+			#help #mainColumn table th {
+				background: url(../img/bg_tableHead.png);
+				font-weight: bold;
+			}
+
+
+
+
+/*#tagCloud
+----------------------------------------------*/
+#tagCloud {
+}
+	#tagCloud ul {
+		margin-bottom: 10px;
+		text-align: left;
+	}
+		#tagCloud ul li {
+			display: -moz-inline-box;/*Firefox2*/
+			display: inline-block;/*CSS3*/
+			/display: inline;/*IE6,IE7*/
+			/zoom: 1;/*IE6,IE7*/
+			margin-right: 10px;
+			line-height: 1.1;
+		}
+		#tagCloud ul li.tagCloudSize1 {
+			font-size: 12px;
+		}
+		#tagCloud ul li.tagCloudSize2 {
+			font-size: 17px;
+		}
+		#tagCloud ul li.tagCloudSize3 {
+			font-size: 23px;
+		}
+		#tagCloud ul li.tagCloudSize4 {
+			font-size: 30px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize5 {
+			font-size: 38px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize6 {
+			font-size: 43px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize7 {
+			font-size: 48px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize8 {
+			font-size: 53px;
+			font-weight: bold;
+		}#tagCloud ul li.tagCloudSize9 {
+			font-size: 58px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize10 {
+			font-size: 63px;
+			font-weight: bold;
+		}#tagCloud ul li.tagCloudSize11 {
+			font-size: 68px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize12 {
+			font-size: 73px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize13 {
+			font-size: 78px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize14 {
+			font-size: 83px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize15 {
+			font-size: 90px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize16 {
+			font-size: 97px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize17 {
+			font-size: 104px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize18 {
+			font-size: 111px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize19 {
+			font-size: 118px;
+			font-weight: bold;
+		}
+		#tagCloud ul li.tagCloudSize20 {
+			font-size: 125px;
+			font-weight: bold;
+		}
+
+
+/*.confTable
+----------------------------------------------*/
+table.confTable {
+	width: 624px;
+	font-size: 14px;
+}
+	table.confTable th,
+	table.confTable td {
+		padding: 8px;
+		border-bottom: 1px solid #E0E0E0;
+	}
+	table.confTable th {
+		padding-left: 0;
+	}
+	table.confTable td {
+		padding-right: 0;
+		width: 504px;
+	}
+		table.confTable td p.note {
+			margin-top: 2px;
+			margin-bottom: -4px;
+			text-align: right;
+			font-size: 12px;
+			line-height: 1.2;
+		}
+			table.confTable td p.note strong {
+				font-weight: normal;
+				color: #FF0000;
+			}
+	
+	table.confTable tr#editTags,
+	table.confTable tr#editTitle {
+	}
+		table.confTable tr#editTags td,
+		table.confTable tr#editTitle td,
+		table.confTable tr#editName td {
+			padding-left: 20px;
+			background: no-repeat left 12px;
+		}
+		table.confTable tr#editTags td {
+			background-image: url(../img/icn/tag_green.png);
+		}
+		table.confTable tr#editTitle td {
+			background-image: url(../img/icn/control_play.png);
+		}
+		table.confTable tr#editName td {
+			background: url(../img/icn/user.png) no-repeat 0 7px;
+		}
+		
+		table.confTable tr#editTags input,
+		table.confTable tr#editTitle input {
+			margin: 0;
+			padding: 2px;
+			width: 498px;
+			border: 1px solid #B2B2B2;
+			font-size: 12px;
+			line-height: 1em;
+		}
+
+
+
+/*#alertBox
+----------------------------------------------*/
+#mainColumn #alertBox {
+	margin: 0 0 10px;
+	padding: 8px 10px 8px 28px;
+	font-size: 14px;
+	border: 2px solid #E6594E;
+	background: #FFCCCC url(../img/icn/delete.png) no-repeat 12px 0.5em;
+	color: #333333;
+}
+

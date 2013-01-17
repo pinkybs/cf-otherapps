@@ -1,0 +1,54 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="itemShop">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">アイテムショップ</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		ｱｲﾃﾑを使って､ｹﾞｰﾑを有利に進めましょう{% emoji code="F99F"%}ｱｲﾃﾑは1日1回のﾋﾞｼﾞﾀｰｷﾞﾌﾄでも､もらえるﾁｬﾝｽがありますよ<br />
+		<div style="text-align:right;">所持金：¥{%$userAsset|outputdollars%}&nbsp;</div>
+	</div><!--/.description-->
+
+	<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+
+	{%foreach from=$itemList item=rowdata key=index%}
+		<div class="section" {%if ($index%2)==0 %}style="background:#fee;"{%else%}style="background:#ffe;"{%/if%}>
+			<span style="color:#cd424a;">{% emoji code="F9A3"%}{%$rowdata.name%}</span><br />
+			<div style="text-align:right;">¥{%$rowdata.price|outputdollars%}&nbsp;</div>
+			<table width="220" cellpadding="2" cellspacing="1" border="0" align="center" style="text-align:center;">
+				<tr>
+					<td style="text-align:left;"><div style="font-size:x-small;">{%$rowdata.introduce%}</div></td>
+				</tr>
+			</table>
+			<div style="color:#999;text-align:right;">
+				{%if $rowdata.sid == 1%}
+					{%if $havaFreePark == 0 || $haveFreeCard == 1%}
+						&nbsp;
+					{%elseif $rowdata.price>$userAsset%}
+						購入する&nbsp;
+					{%else%}
+						<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=`$rowdata.sid`"|mixiurl %}'>購入する</a>&nbsp;
+					{%/if%}
+					{%elseif $rowdata.price>$userAsset%}
+						購入する&nbsp;
+					{%else%}
+						<a href='{% "$baseUrl/mobile/parking/buyitem?parking_cid=`$rowdata.sid`"|mixiurl %}'>購入する</a>&nbsp;
+				{%/if%}
+			</div>
+			<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+		</div><!--/.section-->
+	{%/foreach%}
+
+	<div class="pager" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%include file="parking/common/pager.phtml"%}
+	</div><!--/.pager-->
+
+</div><!--/#itemShop-->
+
+{%include file="parking/common/footer.phtml"%}

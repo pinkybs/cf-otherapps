@@ -1,0 +1,37 @@
+<div id="subColumn">
+        
+    {%include file="scripteditor/common/bannerbox.phtml"%}
+        
+    <div id="authorBox">
+            
+            <h2><img src="{%$staticUrl%}/apps/scripteditor/img/tit_author.png" width="87" height="15" alt="Author" /></h2>
+            
+            <div class="inner">
+        
+            <p class="pic"><a href="{%$baseUrl%}/scripteditor/profile?uid={%$userInfo.uid%}"><img src="{%$userInfo.pic_s%}" width="50" height="50" alt="" /></a></p>
+            <p class="name"><a href="{%$baseUrl%}/scripteditor/profile?uid={%$userInfo.uid%}">{%$userInfo.nickname%}</a></p>
+            
+            {% if $userJob %}
+            <h3>しょくぎょう</h3>
+            <p>{% $userJob %}<br />Lv:{%$userInfo.level%}</p>
+            {% /if %}
+            
+            {% if $userFeature.status == 1 %}
+            <h3>つよさ</h3>
+                <p>
+                {% foreach from=$userFeature.featureInfo item=data %}
+                    <front style="width:80px;float:left">{%$data.feature_content%}</front>{%$data.feature_type%}<br/>
+                {% /foreach %}
+                </p>
+            {% /if %}
+            
+            {% if $userInfo.introduce %}
+            <h3>とくぎ</h3>
+            <p>{% $userInfo.introduce %}</p>
+            {% /if %}
+        
+        </div><!--/.inner-->
+            
+    </div><!--/#authorBox-->
+    
+</div><!--/#subColumn-->

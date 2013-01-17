@@ -1,0 +1,73 @@
+{%include file="board/common/header.phtml"%}
+{% if $step=="confirm" %}
+<body style="background-color:#{%$designSetting.bgColor%};background-image:url({% $designSetting.bgImage %});">
+    <a id="pagetop" name="pagetop"></a>
+    <div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+        <div id="deleteConfirm">
+            <img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="2" /><br />
+            <div class="headline" style="background:#{%$designSetting.tplColor_i%};color:#{% $designSetting.reverseText %};">削除内容の確認</div>
+            <div class="description">
+                <img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="2" /><br />
+                                次の内容を確認し､よろしければ[削除]をおしてください｡
+                <div class="line" style="background:#{%$designSetting.tplColor_i%};"><img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="1" /></div>
+            </div><!--/.description-->
+            <form id="delConfirm" name="delConfirm" method="post" action='?guid=ON&url={%$url%}'>
+                <div class="target">
+                    <img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="2" /><br />
+                    <span style="color:#{% $designSetting.tplColor_i %};">○宛先</span><br />
+                    <table width="228" cellpadding="0" cellspacing="0" border="0" align="center" style="text-align:center;">
+                        <tr>
+                            <td style="width:44px;text-align:center;"><img src="{%$ownerInfo.miniThumbnailUrl%}" /></td>
+                            <td style="text-align:left;"><span style="color:#{%$designSetting.normalText%};{% if $ua==1 %}font-size:x-small;{% /if %}">{% $title %}{% if $commentedCount %} ({%$commentedCount%}) {% /if %}</span></td>
+                        </tr>
+                    </table>
+                </div><!--/.target-->
+                <div class="comment">
+                    <img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="2" /><br />
+                    <span style="color:#{% $designSetting.tplColor_i %};">○ｺﾒﾝﾄ内容</span><br />
+                    {% if $board.type == 1 %}
+                        <div class="paint" style="text-align:center;"><img src="{%$photoUrl%}/apps/board/flash{% $board.mobile_pic_url %}" width="228" height="54" style="margin:2px 0;" /></div>
+                    {% else if $board.type == 0 %}
+                        {% $board.content|escape|nl2br|unescape_emoji %}<br />
+                    {% /if %}
+                </div><!--/.comment-->
+                <div class="btn" style="text-align:center;">
+                    <img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="2" /><br />
+                    <input type="hidden" id="bid" name="bid" value="{% $board.bid %}" />
+                    <input type="hidden" id="uid" name="uid" value="{%$ownerId%}" />
+                    <input type="submit" value="削 除" />
+                </div><!--/.btn-->
+            </form><!--/#delConfirm-->
+            <div class="btn" style="text-align:center;">
+                <form method="post" action='?guid=ON&url={%$cancelUrl%}'>
+                    <input type="hidden" id="uid" name="uid" value="{%$ownerId%}" />
+                    <input type="submit" value="戻 る" />
+                </form>
+            </div><!--/.btn-->
+        </div><!--/.deleteConfirm-->
+        {%include file="board/common/footer.phtml"%}
+{% elseif $step=="complete" %}
+<body style="background-color:#{%$designSetting.bgColor%};background-image:url({% $designSetting.bgImage %});">
+    <a id="pagetop" name="pagetop"></a>
+    <div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+        <div id="contributionComplete">
+            <img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="2" /><br />
+            <div class="headline" style="background:#{%$designSetting.tplColor_i%};color:#{% $designSetting.reverseText %};">ｺﾒﾝﾄ削除完了</div>
+            <div class="description">
+                <img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="2" /><br />
+                                    ｺﾒﾝﾄの削除が完了しました｡<br />
+                <div class="line" style="background:#{%$designSetting.tplColor_i%};"><img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="1" /></div>
+            </div><!--/.description-->
+        </div><!--/.contributionComplete-->
+
+        {%include file="board/common/ad_complete.phtml"%}
+
+        <div id="footLink" style="color:#{% $designSetting.linkText %};">
+            {% emoji code="F8F9"%}<a href='{% "$baseUrl/mobile/board/list?CF_uid=`$ownerInfo.uid`"|mixiurl %}'>{%$ownerInfo.displayName%}さんのあしあと帳</a><br />
+            <img src="{%$staticUrl%}/apps/board/mobile/img/spacer.gif" width="1" height="3" /><br />
+        </div><!--/#footLink-->
+
+        {%include file="board/common/menu.phtml"%}
+        {%include file="board/common/recommend.phtml"%}
+        {%include file="board/common/footer.phtml"%}
+{% /if %}

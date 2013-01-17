@@ -1,0 +1,66 @@
+{%include file="disney/common/header.phtml"%}
+    
+    <div style="font-size:x-small;">
+            
+    {% if $step == 'firstlogin' %}
+            
+        <div id="bgcolor1" style="background-color:#ffffcc;">
+		<div style="background-color:#50b83a; text-align:center;">
+            {% disneyimg name="sub_ti_targettour_s" %}
+		    {%include file="disney/common/topmenu.phtml"%}  
+        </div>	
+            {% disneyimg name="targettour_01" %}
+            <div class="message" style="color:#ff0000; text-align:center;">		
+            	学校や会社までの行き帰りに<br />
+            	｢ﾁｪｯｸ｣するだけでOK!
+			</div><!--/.message--> 
+            {% disneyimg name="targettour_02" %}
+            
+			<div class="headline" style="text-align:center;">
+				{% disneyimg name="targettour" %}
+        	</div><!--/.headline-->
+            
+            <div class="select" style="color:#6D2801;">
+	        	{% disneyimg style='width="28" height="22" align="left" style="float:left; margin-top:0; margin-right:5; margin-left:5; margin-bottom:0;'name="targettour_icon1" %}
+				<span style="color:#f36;text-align:left;">ﾀｰｹﾞｯﾄ(目的地)を設定</span>
+				<div style="clear:both;" clear="all"></div>
+                
+				<div class="txt1" style="color:#606; text-align:left;">		
+                    なかなか現地に行けない都道府県のご当地ｷｬﾗｸﾀｰを集めるために､欲しいご当地ｷｬﾗｸﾀｰの都道府県をﾀｰｹﾞｯﾄ設定しよう!
+                </div><!--/.txt1-->
+				
+				{% disneyimg name="map_line" %}<br />
+			
+	        	{% disneyimg style='width="28" height="22" align="left" style="float:left; margin-top:0; margin-right:5; margin-left:5; margin-bottom:0;'name="targettour_icon2" %}
+            	<span style="color:#f36;text-align:left;">ﾏｲﾀｳﾝからﾀｰｹﾞｯﾄへの距離(Km)が決定</span>
+				<div style="clear:both;" clear="all"></div>
+                
+				<div class="txt1" style="color:#606; text-align:left;">		
+                    設定したﾏｲﾀｳﾝからﾀｰｹﾞｯﾄへの実際のKmが表示されるよ。<br />
+                    ※表示されるのは実際の県庁間の距離です
+                </div><!--/.txt1-->
+				
+				{% disneyimg name="map_line" %}<br />    
+            
+	        	{% disneyimg style='width="28" height="22" align="left" style="float:left; margin-top:0; margin-right:5; margin-left:5; margin-bottom:0;'name="targettour_icon3" %}
+            	<span style="color:#f36;text-align:left;">毎日の移動で距離を稼ごう!</span>
+	        	<div style="clear:both;" clear="all"></div>
+                
+				<div class="txt1" style="color:#606; text-align:left;">		
+                	日々の移動距離を測るには、とにかくｺﾏﾒに”ﾁｪｯｸする"ﾎﾞﾀﾝを押してね。家を出る前にﾁｪｯｸ!学校に着いたらﾁｪｯｸ!友達の家に遊びに行ったらﾁｪｯｸ!だよ★
+                </div><!--/.txt1-->
+     
+        	</div><!--/.select-->
+   
+        
+        <div class="message" style="color:#609;text-align:center;">
+        	目的地のKmまで到達したら<br />
+			ご当地ｷｬﾗｸﾀｰGET!
+        </div><!--/.message-->
+        
+        <div class="goTomore" style="color:#600;text-align:right;">
+        	⇒<a href='{% "$baseUrl/mobile/disney/targettour_s?CF_step=auto"|mixiurl %}'>もっと詳しく</a><br />
+
+        </div><!--/.goTomore--> 
+          </div><!--/#yellow--> 
+{%include file="disney/common/firstfooter.phtml"%}

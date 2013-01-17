@@ -1,0 +1,124 @@
+{%include file="dynamite/common/header.phtml"%}
+<link rel="stylesheet" href="{%$staticUrl%}/apps/dynamite/css/start.css" type="text/css" media="print,screen" />
+<script type="text/javascript" src="{%$staticUrl%}/cmn/js/jquery.min.js?{%$version.js%}"></script>
+<script type="text/javascript">
+	$(function(){
+	    $().ready(function() {
+            //adjustHeight(750);
+        });
+
+		var selectMapID = $('map#selectMap');
+		var charaImgID = $('img#charaImg')
+		selectMapID.find('#chara01').mouseover(
+			/*function(){
+				charaImgID.toggleClass('chara01');
+			},
+			function(){
+				charaImgID.toggleClass('chara01')
+			}*/
+			function(){
+                charaImgID.removeClass();
+    			charaImgID.addClass('chara01');
+			}
+		).click(function(){
+			$('input#chara01Select').attr('checked','checked');
+			window.location.href='/dynamite/setchara/chara/1';
+			return false;
+		});
+		selectMapID.find('#chara05').mouseover(
+			/*function(){
+				charaImgID.toggleClass('chara05')
+			},
+			function(){
+				charaImgID.toggleClass('chara05')
+			}*/
+			function(){
+    			charaImgID.removeClass();
+                charaImgID.addClass('chara05');
+            }
+		).click(function(){
+			$('input#chara05Select').attr('checked','checked');
+			window.location.href='/dynamite/setchara/chara/3';
+			return false;
+		});
+		selectMapID.find('#chara03').mouseover(
+			/*function(){
+				charaImgID.toggleClass('chara03')
+			},
+			function(){
+				charaImgID.toggleClass('chara03')
+			}*/
+			function(){
+    			charaImgID.removeClass();
+                charaImgID.addClass('chara03');
+            }
+		).click(function(){
+			$('input#chara03Select').attr('checked','checked');
+			window.location.href='/dynamite/setchara/chara/2';
+			return false;
+		});
+	});
+
+</script>
+
+<script type="text/javascript">
+    if ( null != getCookie('app_top_url_dynamite') ) {
+        top.location.href = getCookie('app_top_url_dynamite') +  '#pagetop';
+    }
+</script>
+
+<body id="charaSelect">
+    {%include file="topad.phtml"%}
+    {% if $showTopAd %}
+        <script type="text/javascript">
+            $().ready(function() {
+               adjustHeight(818);
+            });
+        </script>
+    {% else %}
+        <script type="text/javascript">
+            $().ready(function() {
+               adjustHeight(702);
+            });
+        </script>
+    {% /if %}
+
+<div id="container">
+
+	<div id="selectCharactorView">
+		<div id="mainBox">
+			<h1><img src="{%$staticUrl%}/apps/dynamite/img/start/text_headline.png" alt="あなたの代わりにアジトを守る、ヒットマンを選べ！" /></h1>
+			<div class="map">
+				<img src="{%$staticUrl%}/apps/dynamite/img/start/spacer.gif" width="944" height="646" id="charaImg" usemap="#select" />
+				<map id="selectMap" name="select">
+					<area href="/dynamite/setchara/chara/1" shape="poly" id="chara01" alt="" title="" coords="0,0,0,559,471,239,471,0" />
+					<area href="/dynamite/setchara/chara/3" shape="poly" id="chara05" alt="" title="" coords="0,559,0,646,944,646,944,559,471,239" />
+					<area href="/dynamite/setchara/chara/2" shape="poly" id="chara03" alt="" title="" coords="471,0,471,239,944,559,944,0" />
+				</map>
+			</div>
+		</div>
+		<div id="copyrightBox"><img src="{%$staticUrl%}/apps/dynamite/img/start/copyright.png" alt="Community Factory inc. All Rights Reserved." /></div>
+	</div>
+
+	<form>
+	<ul>
+		<li><label><input type="radio" id="chara01Select" name="charaSelect" />女子高生</label></li>
+		<li><label><input type="radio" id="chara05Select" name="charaSelect" />ガンマン</label></li>
+		<li><label><input type="radio" id="chara03Select" name="charaSelect" />きぐるみベアー</label></li>
+	</ul>
+	</form>
+</div><!--/#continer-->
+
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-1572579-42");
+        pageTracker._trackPageview();
+    }
+    catch(err) {}
+</script>
+
+</body></html>

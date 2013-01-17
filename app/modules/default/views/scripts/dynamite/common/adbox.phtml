@@ -1,0 +1,11 @@
+<div id="adArea">
+    {% if $showTopAd %}
+    <!-- <a style="display: block;margin-bottom: 4px;" target="_blank" href="{% $mixiHost%}/run_appli.pl?id=6232"><img src="{%$staticUrl%}/apps/dynamite/img/dummy/slave_250x89.jpg" width="250" height="89" alt="" /></a> -->
+	<a style="display: block;margin-bottom: 4px;" target="_blank" href="{% $mixiHost%}/run_appli.pl?id=2689"><img src="{%$staticUrl%}/apps/dynamite/img/dummy/ttm_250x89.jpg" width="250" height="89" alt="" /></a>
+	<a style="display: block;" target="_blank" href="{% $mixiHost%}/run_appli.pl?id=4011"><img src="{%$staticUrl%}/apps/dynamite/img/dummy/logs_250x89.jpg" width="250" height="89" alt="" /></a>
+	{% else %}
+	{%include file="rightad.phtml"%}
+	{% /if %}
+	
+</div><!--/#adArea-->
+		

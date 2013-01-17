@@ -1,0 +1,59 @@
+{% if $step == 'start' %}
+{%include file="disney/common/header.phtml"%}
+	<div style="font-size:x-small; background-color:#ffd990; text-align:center;">
+		{% disneyimg name="sub_ti_gotochiget1" style='width="100%"' %}<br />
+		<br />
+		<img copyright="yes" src="{%$staticUrl%}/apps/disney/img/decome_sample/{%$placeInfo.award_icon%}.gif" width="100%" /><br />
+		<br />
+		
+		<div style="color:#1f7f09; text-align:left;">
+			このご当地ｷｬﾗｸﾀｰをﾃﾞｺﾒにするよ<br />
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+				
+			<span style="color:#ff0000;">※mixiﾎﾟｲﾝﾄが50ﾎﾟｲﾝﾄが必要です。</span>
+		</div>
+		
+		{% disneyimg style='height="3"' name="dot0" %}<br />
+		<br/>
+		
+		<div style="text-align:center;"> 
+			<a href='{% "$baseUrl/mobile/disney/pay?CF_yd=1&CF_param=`$payParam`"|mixiurl %}'>{% disneyimg name="ticket_yes" style='align="top" width="69%"' %}</a><br/>
+			<br/>
+			<span style="text-align:left;"><a href='{% "$baseUrl/mobile/disney/award?CF_pid=`$placeInfo.pid`&CF_from=map"|mixiurl %}'>戻る</a></span><br/>
+			<br/>
+		</div><!--/#center-->
+
+{% else %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr">
+<head>
+{% if $ua==1 %}
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=Shift_JIS" />
+{% else %}
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+{% /if %}
+<title>ご当地ｺﾚｸｼｮﾝTOPへ</title>
+<style type="text/css">
+<![CDATA[
+a:link{color:#0000ff;}
+a:visited{color:#7c027c;}
+]]>
+</style>
+
+</head>
+<body>
+
+<div style="background-color:#e5fcd0; font-size:x-small;">
+	{% disneyimg name="sub_ti_gotochiget1" style='width="100%"' %}<br />
+	<br />
+	<img src="{%$baseUrl%}/mobile/disneyflash/downloadawardimg/pid/{%$placeInfo.pid%}/uid/{%$uid%}" align="top" width="100%" /><br />
+	<br />
+	※携帯{% emoji code="F972"%}の画面保存機能に沿ってﾃﾞｺﾒを保存してね!<br />
+	auのｹｰﾀｲで保存できない場合は､<a href='{% "$baseUrl/mobile/disney/help/CF_help/faq005"|mixiurl %}'>こちらへ</a><br />
+	{% disneyimg style='height="3"' name="dot0" %}<br />
+	<a href='{% "$baseUrl/mobile/disney/map"|mixiurl %}'>その他のご当地ｷｬﾗｸﾀｰをﾃﾞｺﾒ化したり、友達に贈ったり、してみよう♪</a><br />
+	{% if $isDownload == 1 %}ﾃﾞｺﾒ化が完了すると、10点獲得できるよ♪ <br />{%/if%}
+	<br />
+
+{% /if %}
+{%include file="disney/common/footer.phtml"%}

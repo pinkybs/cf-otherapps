@@ -1,0 +1,42 @@
+{%include file="disney/common/header.phtml"%}
+    <style type="text/css">
+        #award{
+        background-color:#ffe1b6;
+        }
+        #menu2{
+        background-color:#faefc5;
+        text-align:left;
+        }   
+    </style>
+
+    {% if $action == 'start' %}
+        <div id="award" style="background-color:#fffcc7;font-size:x-small;text-align:center;">
+
+        {% disneyimg name="sub_ti_award" style='align="top" width="100%"' %}
+        <br />
+        <div style="text-align:center;color:#663300;">
+			いつもﾃﾞｨｽﾞﾆｰ・ﾒｰﾙﾌｧｸﾄﾘｰを
+			使ってくれてありがとう{% emoji code="F8EE"%}<br />
+			<br />
+			次のﾍﾟｰｼﾞで限定ｱﾜｰﾄﾞ{% emoji code="F99F"%}を
+			{% emoji code="F8E6"%}ﾌﾟﾚｾﾞﾝﾄするよ！<br />
+			<br />
+        </div>
+        <div style="text-align:center;">
+            <a href='{% "$baseUrl/mobile/disney/disneycup?CF_step=sendcup"|mixiurl %}'>{% disneyimg name="award_btn" style='align="top"' %}</a><br />
+        </div>        
+        <br />
+    {% else %}
+        <div id="award" style="background-color:#fffcc7;font-size:x-small;text-align:center;">
+
+        {% disneyimg style='align="top" width="100%"' name="sub_ti_award" %}
+        <br /><br />
+        <div style="text-align:center;">
+            既にこのｱﾜｰﾄﾞは取得済です。<br /><br />
+        </div>      
+        <a href='{% "$baseUrl/mobile/disney/index"|mixiurl %}'>ﾄｯﾌﾟへ</a><br />
+        <br />
+    
+    {% /if %}
+
+{%include file="disney/common/footer.phtml"%}

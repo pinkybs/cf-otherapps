@@ -1,0 +1,175 @@
+{%include file="school/common/header.phtml" headAd=1 %}
+
+<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+	<div id="classInfo">
+		{%include file="school/common/headline.phtml"%}
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<table width="228" cellpadding="2" cellspacing="3" border="0" align="center" style="background:#a35625;text-align:center;">
+			<tr>
+				<td style="background:#262713;text-align:left;"><div style="color:#ffffff;{% if $ua==1 %}font-size:x-small;{% /if %}">
+					{% if $classInfo.introduce && $classInfo.status!=5 %}{%$classInfo.introduce|truncatejp:80:"…"|escape|unescape_emoji%}<a href='{% "$baseUrl/mobile/school/classnote?CF_cid=`$classInfo.cid`"|mixiurl %}' style="color:#ffffff;"><span style="color:#ffffff;">続き</span></a><br />{% else %}共同編集ﾉｰﾄは､授業のﾒﾓ･概要･関連情報･攻略法をみんなで編集する情報共有型ｳｨｷです｡<br />{% /if %}
+					<div style="text-align:right;">[<a href='{% "$baseUrl/mobile/school/classnoteadd?CF_cid=`$classInfo.cid`"|mixiurl %}' style="color:#ffffff;"><span style="color:#ffffff;">共同編集</span></a>]</div>
+					</div></td>
+			</tr>
+		</table>
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="inviteFriend" style="text-align:center;">
+			{%emoji code="F9F4"%}<a href='{% "$baseUrl/mobile/school/classinvite?CF_cid=`$classInfo.cid`"|mixiurl %}'>同級生にこの授業を教える</a>{%emoji code="F9F4"%}<br />
+		</div><!--/.inviteFriend-->
+	</div><!--/#classInfo-->
+
+	<div id="noLecture">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#b7cb6d;">この授業の休講予報</div>
+
+		<div class="result" style="text-align:center;">
+			次回 {%$nextSchedule.month%}月{%$nextSchedule.day%}({%$nextSchedule.wday%})の授業は…<br />
+		{% if $classInfo.c_forecast==1 %}
+			<span>{%emoji code="F8A0"%}{%emoji code="F8A0"%}{%emoji code="F8A0"%}休講かも{%emoji code="F8A0"%}{%emoji code="F8A0"%}{%emoji code="F8A0"%}</span><br />
+		{% elseif $classInfo.c_forecast==2 %}
+			<span style="color:#0066cc;">{%emoji code="F8A1"%}{%emoji code="F8A1"%}{%emoji code="F8A1"%}ほぼ休講{%emoji code="F8A1"%}{%emoji code="F8A1"%}{%emoji code="F8A1"%}</span><br />
+		{% else %}
+			<span style="color:#cc0000;">{%emoji code="F89F"%}{%emoji code="F89F"%}{%emoji code="F89F"%}授業アリ{%emoji code="F89F"%}{%emoji code="F89F"%}{%emoji code="F89F"%}</span><br />
+		{% /if %}
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="5" /><br />
+			この予報は…<br />
+		</div><!--/.result-->
+
+		<form method="post" action='{% "$baseUrl/mobile/school/forecast"|mixiurl %}'>
+			<div class="btn" style="text-align:center;">
+				<input type="hidden" name="CF_forecast" value="{%$classInfo.c_forecast%}" />
+				<input type="hidden" name="CF_cid" value="{%$classInfo.cid%}" />
+				<input type="hidden" name="CF_agree" value="1" />
+				<input type="submit" value=" 正しいと思われ " />
+			</div><!--/.btn-->
+		</form><!--/#noLectureTrue-->
+		<form method="post" action='{% "$baseUrl/mobile/school/forecast"|mixiurl %}'>
+			<div class="btn" style="text-align:center;">
+				<input type="hidden" name="CF_forecast" value="{%$classInfo.c_forecast%}" />
+				<input type="hidden" name="CF_cid" value="{%$classInfo.cid%}" />
+				<input type="hidden" name="CF_agree" value="0" />
+				<input type="submit" value=" ガセだと思われ " />
+			</div><!--/.btn-->
+		</form><!--/#noLectureFalse-->
+
+		<div class="description">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="5" /><br />
+			※休講予報はﾕｰｻﾞｰ投票による結果のため､誤りの場合もあります｡ご注意ください｡<br />
+		</div><!--/.description-->
+	</div><!--/#noLecture-->
+
+	<div id="classTopics">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#b7cb6d;">この授業に関するQ&amp;A({%$cntTopic%})</div>
+	{% if $listTopic %}
+		<div class="list">
+		{% foreach name=topiclist from=$listTopic item=tdata key=key %}
+			<div class="section" style="background:{% if $key%2==0 %}#fffddb{% else %}#fcf5cc{% /if %};">
+				<span style="color:#a35625;">[{%$tdata.create_time|date_format:"%y/%m/%d %H:%M"%}]</span><br />
+				<a href='{% "$baseUrl/mobile/school/topic?CF_tid=`$tdata.tid`&CF_cid=`$tdata.cid`"|mixiurl %}'>{%$tdata.title|escape%}({%$tdata.comment_count%})</a><br />
+			</div><!--/.section-->
+		{% /foreach %}
+			<div class="footlink" style="text-align:right;">
+				<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/topiclist?CF_cid=`$classInfo.cid`"|mixiurl %}'>もっと見る</a> <span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/topicadd?CF_cid=`$classInfo.cid`"|mixiurl %}'>質問する</a><br />
+			</div><!--/.footlink-->
+		</div><!--/.list-->
+	{% else %}
+		<div class="description">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			{%$classInfo.name|escape%}の攻略法やｱﾄﾞﾊﾞｲｽなど､授業Q&amp;Aでﾅﾝﾃﾞﾓ聞いてみよう!<br />
+		</div><!--/.description-->
+		<div class="footlink" style="text-align:right;">
+			<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/topicadd?CF_cid=`$classInfo.cid`"|mixiurl %}'>質問する</a><br />
+		</div><!--/.footlink-->
+	{% /if %}
+	</div><!--/#classTopics-->
+
+	{% if $voteResult %}
+	<div id="classVote">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#b7cb6d;">この授業の評価({%$classInfo.vote_count%})</div>
+		<div class="list">
+			<div class="section" style="background:#fffddb;">
+				内　容:<span style="color:#96b034;">{% foreach from=$voteResult.ary_vote_content item=sdata %}★{% /foreach %}</span><span style="color:#beca8f;">{% foreach from=$voteResult.arynull_vote_content item=ndata %}★{% /foreach %}</span> {%$voteResult.vote_content_text%}<br />
+			</div><!--/.section-->
+			<div class="section" style="background:#fcf5cc;">
+				難易度:<span style="color:#96b034;">{% foreach from=$voteResult.ary_vote_difficult item=sdata %}★{% /foreach %}</span><span style="color:#beca8f;">{% foreach from=$voteResult.arynull_vote_difficult item=ndata %}★{% /foreach %}</span> {%$voteResult.vote_difficult_text%}<br />
+			</div><!--/.section-->
+			<div class="section" style="background:#fffddb;">
+				宿　題:<span style="color:#96b034;">{% foreach from=$voteResult.ary_vote_work item=sdata %}★{% /foreach %}</span><span style="color:#beca8f;">{% foreach from=$voteResult.arynull_vote_work item=ndata %}★{% /foreach %}</span> {%$voteResult.vote_work_text%}<br />
+			</div><!--/.section-->
+			<div class="section" style="background:#fcf5cc;">
+				試　験:<span style="color:#96b034;">{% foreach from=$voteResult.ary_vote_test item=sdata %}★{% /foreach %}</span><span style="color:#beca8f;">{% foreach from=$voteResult.arynull_vote_test item=ndata %}★{% /foreach %}</span> {%$voteResult.vote_test_text%}<br />
+			</div><!--/.section-->
+			<div class="section" style="background:#fffddb;">
+				出　席:<span style="color:#96b034;">{% foreach from=$voteResult.ary_vote_attend item=sdata %}★{% /foreach %}</span><span style="color:#beca8f;">{% foreach from=$voteResult.arynull_vote_attend item=ndata %}★{% /foreach %}</span> {%$voteResult.vote_attend_text%}<br />
+			</div><!--/.section-->
+			<div class="footlink" style="text-align:right;">
+				<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/voteadd?CF_cid=`$classInfo.cid`"|mixiurl %}'>評価をやり直す</a><br />
+			</div><!--/.footlink-->
+		</div><!--/.list-->
+	</div><!--/#classVote-->
+	{% else %}
+	<div id="classVoteAdd">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#b7cb6d;">この授業の評価</div>
+		<div class="description">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			この授業の評価を選択し､[確認]を押してください｡<br />
+			{%*<div class="errorMsg" style="color:#cc0000;">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				{%emoji code="F9DC"%}入力ｴﾗｰ<br />
+				･内容を選択してください｡<br />
+				･難易度を選択してください｡<br />
+				･宿題を選択してください｡<br />
+				･試験を選択してください｡<br />
+				･出席を選択してください｡<br />
+			</div><!--/.errorMsg-->*%}
+		</div><!--/.description-->
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<form method="post" action='{% "$baseUrl/mobile/school/voteadd"|mixiurl %}'>
+			<input type="hidden" name="CF_step" value="confirm">
+			<input type="hidden" name="CF_cid" value="{%$classInfo.cid%}">
+			<div class="section" style="background:#fffddb;">
+				内　容:<select name="selContent" style="vertical-align:middle;">{% html_options options=$aryContent selected=0 %}</select><br />
+			</div><!--/.section-->
+			<div class="section" style="background:#fcf5cc;">
+				難易度:<select name="selDifficult" style="vertical-align:middle;">{% html_options options=$aryDifficult selected=0 %}</select><br />
+			</div><!--/.section-->
+			<div class="section" style="background:#fffddb;">
+				宿　題:<select name="selWork" style="vertical-align:middle;">{% html_options options=$aryWork selected=0 %}</select><br />
+			</div><!--/.section-->
+			<div class="section" style="background:#fcf5cc;">
+				試　験:<select name="selTest" style="vertical-align:middle;">{% html_options options=$aryTest selected=0 %}</select><br />
+			</div><!--/.section-->
+			<div class="section" style="background:#fffddb;">
+				出　席:<select name="selAttend" style="vertical-align:middle;">{% html_options options=$aryAttend selected=0 %}</select><br />
+			</div><!--/.section-->
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<div class="btn" style="text-align:center;">
+				<input type="submit" value=" 確 認 " />
+			</div><!--/.btn-->
+		</form>
+	</div><!--/#classVoteAdd-->
+	{% /if %}
+
+	<div id="classMember">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		<div class="headline" style="background:#ffdb33;">この授業を履修中({%$cntMember%})</div>
+		<div class="list">
+		{% foreach name=memberlist from=$listMember item=mdata key=key %}
+			<div class="section" style="background:{% if $key%2==0 %}#fffddb{% else %}#fcf5cc{% /if %};">
+				{%emoji code="F995"%}<a href='{% "$baseUrl/mobile/school/profile?CF_uid=`$mdata.uid`"|mixiurl %}'>{%$mdata.displayName%}</a>{% if $mdata.is_friend=="1"%}{%emoji code="F99F"%}{% /if %}<br />
+			</div><!--/.section-->
+		{% /foreach %}
+		</div><!--/.list-->
+
+		<div class="footlink" style="text-align:right;">
+			{%emoji code="F99F"%}<span style="color:#777777;">…ﾏｲﾐｸ</span> {% if $cntMember>1 %}<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/classmember?CF_cid=`$classInfo.cid`"|mixiurl %}'>もっと見る</a>{% /if %}<br />
+		</div><!--/.footlink-->
+	</div><!--/#classMember-->
+
+	{%include file="school/common/menu.phtml"%}
+</div><!--/#container-->
+
+{%include file="school/common/footer.phtml" footAd=1 %}

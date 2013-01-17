@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+Parking Wars debug CSS
+
+Created Date: 2009/01/01
+Author: Yu Uno
+Last Up Date : 2009/01/28
+Author: Yu Uno
+----------------------------------------------
+*/
+
+
+/*clearfix
+----------------------------------------------*/
+.clearfix,
+ul#gNav,
+#mainArea #parkingArea #dynamicArea,
+#mainArea #ownCarsArea .inner #carIndividual,
+#subArea #friendParkingList ul li,
+#mainArea #rankingArea #wrap ol,
+#mainArea #rankingArea #wrap #otherRanking ol,
+#subArea #itemBox ul li,
+#fullOverlay #overWindow .body,
+#fullOverlay #overWindow .body ul.btnList,
+.section {
+    zoom:1;/*for IE 5.5-7*/
+}
+.clearfix:after,
+ul#gNav:after,
+#mainArea #parkingArea #dynamicArea:after,
+#mainArea #ownCarsArea .inner #carIndividual:after,
+#subArea #friendParkingList ul li:after,
+#mainArea #rankingArea #wrap #otherRanking ol:after,
+#mainArea #rankingArea #wrap ol:after,
+#subArea #itemBox ul li:after,
+#fullOverlay #overWindow .body:after,
+#fullOverlay #overWindow .body ul.btnList:after,
+.section:after {/*for modern browser*/
+    content:".";
+    display: block;
+    height:0px;
+    clear:both;
+    visibility:hidden;
+}
+

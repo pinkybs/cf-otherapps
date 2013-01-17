@@ -1,0 +1,95 @@
+{%include file="disney/common/header.phtml"%}
+
+
+	<div style="background-color:#edd9ae; font-size:x-small;">
+		<div style="background-color:#50b83a; text-align:center;">
+			{% disneyimg name="sub_ti_ranking" style='align="top" width="100%"'  %}
+			{%include file="disney/common/topmenu.phtml"%}
+
+			<div class="goTofaq13" style="text-align:right;">	
+			<a href='{% "$baseUrl/mobile/disney/help?CF_help=faq013"|mixiurl %}'>ﾗﾝｷﾝｸﾞとは?</a>
+		</div><!--/.goTofaq13-->
+		<br />
+
+		<div class="score" style="text-align: center;">
+			<span style="background-color:#f8b463; none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+			<span style="color:#ff0000;">ﾏｲｽｺｱ:</span>{% emoji code="F99F"%}<span style="color:#663300;">{%$disneyUser.game_point%}点</span>{% emoji code="F99F"%}</span>
+		</div>
+		<br />
+		<span style="color:#ff0000; text-align:left;">
+		※ﾗﾝｷﾝｸﾞは、24時間おきに更新されます。<br />
+		</span>
+		{% if $type == 1 %}
+			<span style="color:#663300;">ﾏｲﾐｸ内</span> <a href='{% "$baseUrl/mobile/disney/ranking?CF_type=0"|mixiurl %}'>全体</a><br />
+		{% else %}
+			<a href='{% "$baseUrl/mobile/disney/ranking?CF_type=1"|mixiurl %}'>ﾏｲﾐｸ内</a> <span style="color:#663300;">全体</span><br />
+		{% /if %}
+
+		{% if $ua!=3 %}
+			{% disneyimg style='align="top" width="100%"' name="ran_line3" %}
+			{% foreach name=rank from=$rankingList item=data key=key %}
+		{% if $key%2==0 %}
+			<div style="background-color:#f8b463;">
+		{% /if %}
+
+		<div style="text-align:left;">
+			<img src="{%$data.miniThumbnailUrl%}" style="float:left;margin-top:2;margin-right:10; margin-left:5; margin-bottom:2" align="left"/><br />
+			<span><span style="color:#ff0000;">{%$key+1%}位</span>{% emoji code="F99F"%}<a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$data.uid`"|mixiurl %}'>{%$data.displayName%}</a> <span style="color:#663300;">{%$data.game_point%}点</span></span><br /><br />
+		</div>
+		<div style="clear:both;"></div>
+		{% if $smarty.foreach.rank.last %}
+		{% if $key%2==0 %}
+			</div>
+			{% disneyimg style='align="top" width="100%"' name="ran_line5" %}
+		{% else %}
+			{% disneyimg style='align="top" width="100%"' name="ran_line2" %}
+		{% /if %}
+		{% else %}
+		{% if $key%2==0 %}
+			</div>
+			{% disneyimg style='align="top" width="100%"' name="ran_line5" %}
+		{% else %}
+			{% disneyimg style='align="top" width="100%"' name="ran_line3" %}
+		{% /if %}
+		{% /if %}
+		{% /foreach %}
+		{% else %}
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr style="background-color:#f8b463;">
+					<td colspan="2">{% disneyimg name="ran_line3" %}</td>
+				</tr>
+			{% foreach name=rank from=$rankingList item=data key=key %}
+			{% if $key%2==0 %}
+				<tr style="background-color:#f8b463;">
+			{% else %}
+				<tr style="background-color:#edd9ae;">
+			{% /if %}
+					<td style="width:44px;text-align:center;"><span style="text-align:left"><img src="{%$data.miniThumbnailUrl%}" align="left" style="float:left; margin-top:2;margin-right:10; margin-left:5; margin-bottom:2"/></span></td>
+					<td><div style="font-size:x-small;"><span><span style="color:#ff0000;">{%$key+1%}位</span>{% emoji code="F99F"%}<a href='{% "$baseUrl/mobile/disney/profile?CF_uid=`$data.uid`"|mixiurl %}'>{%$data.displayName%}</a> <span style="color:#663300;">{%$data.game_point%}点</span></span></div></td>                
+				</tr>
+
+			{% if $smarty.foreach.rank.last %}
+			{% if $key%2==0 %}
+				<tr>
+					<td colspan="2">{% disneyimg style='align="top" width="100%"' name="ran_line5" %}</td>
+				</tr> 
+			{% else %}
+				<tr>
+					<td colspan="2">{% disneyimg style='align="top" width="100%"' name="ran_line3" %}</td>
+				</tr> 
+			{% /if %}
+			{% else %}
+			{% if $key%2==0 %}
+				<tr>
+					<td colspan="2">{% disneyimg style='align="top" width="100%"' name="ran_line5" %}</td>
+				</tr> 
+			{% else %}
+				<tr>
+					<td colspan="2">{% disneyimg style='align="top" width="100%"' name="ran_line3" %}</td>
+				</tr> 
+			{% /if %}
+			{% /if %}
+		{% /foreach %}
+			</table>
+		{% /if %}
+{%include file="disney/common/firstfooter.phtml"%}

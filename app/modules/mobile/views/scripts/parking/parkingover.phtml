@@ -1,0 +1,49 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="parking">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">駐車完了</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%$car.name%}を{%$parking_user%}の駐車場に移動しました{% emoji code="F9F8"%}<br />
+	</div><!--/.description-->
+
+	<div class="car" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/car/{%$car.cav_name%}/m/normal/{%$car_color%}.gif" width="200" height="100" /><br />
+		{% if $free==0 %}
+			<span style="color:#c00;">\{%$money%} 獲得{% emoji code="F9A7"%}</span>
+		{%/if%}
+	</div><!--/.car-->
+	
+	{% if $free==0 %}
+	<div class="ranking">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		総資産 \{%$asset%}<br />
+		ﾏｲﾐｸ内ﾗﾝｷﾝｸﾞ {%$friendRanking%}位{% emoji code=$friendRankEmoji %}<br />
+		ﾐｸｼｨ内ﾗﾝｷﾝｸﾞ {%$mixiRanking%}位{% emoji code=$mixiRankEmoji %}<br />
+	</div><!--/.ranking-->
+	{%/if%}
+	
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		
+		{%if $check==0 %}
+			友達にﾊﾞﾚる前にほかの駐車場に移動して、ｵｶﾈを稼ぎましょう{% emoji code="F9A7"%}<br />
+		{%else%}
+			移動前に検問ﾄﾗｯﾌﾟが仕掛けられていましたが､ﾄﾗｯﾌﾟ回避ｶｰﾄﾞを使い､駐車料金のﾖｺどりを阻止しました{% emoji code="F9A7"%}<br />
+		{%/if%}
+	</div><!--/.description-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/start?opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&parking_pid=$pid&parking_rand=$rand"|mobile_flashurl %}'>{%$parking_user%}の駐車場にもどる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#parking-->
+
+{%include file="parking/common/footer.phtml"%}

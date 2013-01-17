@@ -1,0 +1,16 @@
+ <div class="nav" style="color:#ff9933;text-align:center;">
+	<hr class="hrSp" size="1" />
+	{% if $pager.maxPager > 1 %}
+          {% if $pager.pageIndex == 1 %}
+                <span style="color:#666666;">←[*]前へ</span>
+          {% else %}
+              ←[*]<a href='{% "$baseUrl/`$pager.requestUrl`?CF_page=`$pager.pageIndex-1``$pager.pageParam`"|mixiurl %}' accesskey="*">前へ</a>
+          {% /if %}
+
+          {% if $pager.maxPager == $pager.pageIndex%}
+                <span style="color:#666666;">次へ[#]→</span>
+          {% else %}
+              <a href='{% "$baseUrl/`$pager.requestUrl`?CF_page=`$pager.pageIndex+1``$pager.pageParam`"|mixiurl %}' accesskey="#">次へ</a>[#]→
+          {% /if %}
+    {% /if %}
+</div><!--/.nav-->

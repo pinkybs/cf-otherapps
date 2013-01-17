@@ -1,0 +1,45 @@
+{%include file="shopping/common/header.phtml"%}
+
+<body id="game">
+<div id="continer">
+	{%include file="shopping/common/hdr.phtml"%}
+	<script type="text/javascript">
+		$j('#gNavStore > a').removeAttr('href');
+		$j('#gNavMyCart > a').removeAttr('href');
+		if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+
+		<div id="wishBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_result.png" alt="ゲーム結果" /></h2>
+			</div><!--/.hdr-->
+
+			<div id="flashSection">
+				<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="665" height="400" id="flash" align="middle">
+				<param name="allowScriptAccess" value="always" />
+				<param name="allowFullScreen" value="false" />
+				<param name="movie" value="{%$staticUrl%}/apps/shopping/swf/result.swf?resultLoadURL={%$flashUrl%}" />
+				<param name="quality" value="high" />
+				<param name="bgcolor" value="#ffffff" />
+				<param name="wmode" value="transparent" />
+				<embed src="{%$staticUrl%}/apps/shopping/swf/result.swf?resultLoadURL={%$flashUrl%}" quality="high" bgcolor="#ffffff" width="665" height="400" name="flash" align="middle" allowScriptAccess="always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" wmode="transparent" />
+				</object>
+			</div>
+		</div><!--/#wishBox.box-->
+
+	</div><!--/#mainColumn-->
+
+<hr />
+
+	<div id="subColumn">
+		{%include file="shopping/common/adbox.phtml"%}
+	</div><!--/#subColumn-->
+
+<script type="text/javascript">
+    adjustHeight();
+</script>
+{%include file="shopping/common/footer.phtml"%}

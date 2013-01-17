@@ -1,0 +1,40 @@
+{%include file="dynamite/common/header.phtml" headAd=1 %}
+
+    <div id="hitmanlist">
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="headline" style="background:#777777;color:#ffffff;">ヒットマン紹介所</div>
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="description">
+                ｱﾅﾀの代わりにﾊﾞﾄﾙを繰り広げるﾋｯﾄﾏﾝを選択してください。
+        </div><!--/.description-->
+
+        {% foreach from=$hitmanList item=data %}
+            <div class="section">
+                <hr style="color:#666666;background-color:#666666;height:1px;border:0px solid #666666;margin:0.3em 0;" size="1" />
+                <div class="headline"><span style="color:#666666;">〓</span>{%$data.hitman_name|escape%}<span style="color:#666666;">〓</span></div>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="64" align="center" style="width:64px;text-align:center;">
+                        <img src="{%$staticUrl%}/apps/dynamite/mobile/img/hitman/{%if $data.pic_id < 10%}0{%$data.pic_id%}{%else%}{%$data.pic_id%}{%/if%}_a.gif" width="60" height="60" style="margin:2px 0;" /></td>
+                        <td style="background:#333333;color:#ffffff;font-size:x-small;">ｽﾋﾟｰﾄﾞ：{%$data.trigger_speed%}<br />体　力：{%$data.health%}<br />回復力：{%$data.recover_speed%}</td>
+                    </tr>
+                </table>
+                <div class="description">
+                    {% if $data.id == 1 %}
+                        回復力重視の方にｵｽｽﾒ!
+                    {% elseif $data.id == 2 %}
+                        体力重視の方にｵｽｽﾒ!
+                    {% else %}
+                                          ｽﾋﾟｰﾄﾞ重視の方にｵｽｽﾒ!
+                    {% /if %}
+                    <div class="submit" style="text-align:right;"><span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/charaselect?CF_hid=`$data.id`&CF_step=complete"|mixiurl %}'>契約する</a>&nbsp;</div>
+                </div><!--/.description-->
+            </div><!--/.section-->
+        {% /foreach %}
+        
+    </div><!--/#hitmanlist-->
+
+{%include file="dynamite/common/footer.phtml" footAd=1 %}

@@ -1,0 +1,54 @@
+{%include file="dynamite/common/header.phtml" headAd=1 %}
+
+	<div id="visitGift">
+	{% if $mode=="1" %}
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="headline" style="background:#777777;color:#ffffff;">ビジターギフト</div>
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="description">3つの宝箱から、1つを選んでください。1日1回、ｱｲﾃﾑやお金がもらえます{% emoji code="F99F"%}</div>
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="gift"><a href='{% "$baseUrl/mobile/dynamite/visitgift?CF_rand=1"|mixiurl %}'><img src="{%$staticUrl%}/apps/dynamite/mobile/img/gift.gif" width="74" height="58" alt="" /></a><a href='{% "$baseUrl/mobile/dynamite/visitgift?CF_rand=2"|mixiurl %}'><img src="{%$staticUrl%}/apps/dynamite/mobile/img/gift.gif" width="74" height="58" alt="" style="margin:0 3px;" /></a><a href='{% "$baseUrl/mobile/dynamite/visitgift?CF_rand=3"|mixiurl %}'><img src="{%$staticUrl%}/apps/dynamite/mobile/img/gift.gif" width="74" height="58" alt="" /></a></div><!--/.gift-->
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+	{% /if %}
+
+	{% if $mode=="2" %}
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="headline" style="background:#777777;color:#ffffff;">ビジターギフト</div>
+
+		<div class="inner" style="background:#000000;">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="60" valign="top" align="center" style="width:56px;text-align:center;vertical-align:top;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/item/{%$itemInfo.cid%}.gif" width="56" height="56" style="margin:2px 0;" /></td>
+					<td style="color:#ffffff;font-size:x-small;">{% if $itemInfo.ismoney %}{%$itemInfo.introduce|escape%}{% else %}{%$itemInfo.name%}を手に入れました!{% /if %}</td>
+				</tr>
+			</table>
+
+			<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+			{% if not $itemInfo.ismoney %}
+			<table width="228" cellpadding="2" cellspacing="1" border="0" style="background:#eeaa55;text-align:center;">
+				<tr>
+					<td style="background:#fffdde;color:#000000;text-align:left;"><span style="color:#000000;">【アイテム効果】<br />{%$itemInfo.introduce|escape%}</span></td>
+				</tr>
+			</table>
+			{% /if %}
+		</div><!--/.inner-->
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="footLink">
+			{% if $canUse=="1" %}<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/itemconfirm?CF_cid=`$itemInfo.cid`"|mixiurl %}'>{%$itemInfo.name%}を使う</a><br />{% /if %}
+			<span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/dynamite/home"|mixiurl %}'>{%$myDynamiteInfo.displayName%}組へ</a><br />
+		</div><!--/.footLink-->
+	{% /if %}
+	</div><!--/#visitGift-->
+
+{% if $mode=="2" %}{%include file="dynamite/common/menu.phtml"%}{% /if %}
+{%include file="dynamite/common/footer.phtml" footAd=1 %}

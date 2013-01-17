@@ -1,0 +1,49 @@
+﻿{%include file="slave/common/header.phtml"%}
+
+<body id="twoColumn">
+
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+
+		<div id="buyGiftBox" class="box">
+			<!-- hidden info -->
+				<input type="hidden" value="{%$giftInfo.gid%}" id="hidGid" name="hidGid"/>
+				<input type="hidden" value="{%$giftInfo.gift_price%}" id="hidPrice" name="hidPrice"/>
+			<!-- /hidden info -->
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_buyGift.png" width="178" height="23" alt="ギフトを購入する" /></h2>
+			</div><!--/.hdr-->
+
+			<p class="intro" id="pInfo">次のギフトを購入しますか？</p>
+
+			<div class="section">
+				<p class="pic"><a style="cursor:default;background-image:url({%$giftInfo.gift_small_pic%})">{%$giftInfo.gift_name%}</a></p>
+				<p class="name">{%$giftInfo.gift_name%}</p>
+				<p class="price">価格：&yen;{%$giftInfo.gift_format_price%}<!-- （下取り価格：&yen;{%$giftInfo.gift_format_price%}） --></p>
+			</div><!--/.section-->
+
+			<ul class="actionList" id="buySetp"><!--
+				--><li class="actionAbolish disable"><a href="javascript:cm_goBack();">キャンセル</a></li><!--
+				--><li class="actionBuy"><a id="buyNext" href="javascript:void(0);">購入する</a></li><!--
+			--></ul><!--/.actionList-->
+
+		<p id="pBuyGift" style="display: none;" class="actionBackHome btn"><a href="{%$baseUrl%}/slave/home">ホームにもどる</a></p>
+
+		</div><!--/#buyGiftBox.box-->
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+	{%include file="slave/common/adbox.phtml"%}
+	{%include file="slave/common/logbox.phtml"%}
+	</div><!--/#subColumn-->
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/buygift.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

@@ -1,0 +1,43 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+	<div id="container">
+		<div id="auth">
+		{% if 2==$step %}
+			<p>メールアドレスの送信が完了しました♪<br /><br /><a href="{%$baseUrl%}/">&laquo; ログイン画面へ</a></p>
+		{% else %}
+			<p>パスワードを忘れた方は、以下にメールアドレスを入力し、送信ボタンをクリックしてください。<br />
+				登録メールアドレス宛にパスワード変更用のURLが送信されます。</p>
+
+			{% if $errmsg %}
+			<div class="error">
+				<p>{%$errmsg|escape%}</p>
+			</div><!--/.error-->
+			{% /if %}
+			<form id="frmForgot" method="post" action="{%$baseUrl%}/auth/forgotpass">
+				<ul>
+					<li><label for="">メールアドレス：</label><br />
+						<input type="text" id="txtId" name="txtId" class="required-email validate-email" value="{%$adminId%}" maxlength="200" /></li>
+					<li><input type="button" value="　送信　" onclick="send();" /></li>
+				</ul>
+			</form>
+        	<script type="text/javascript" language="">
+                var _valid = new Validation('frmForgot', {immediate:true,useTitles:true});
+                /**
+                 * submit to login action
+                 * @param  null
+                 * @return void
+                 */
+                function send() {
+                    if (!_valid.validate()) {
+                        return ;
+                    }
+                    $('frmForgot').submit();
+                }
+        	</script>
+		{% /if %}
+		</div><!--/#auth-->
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

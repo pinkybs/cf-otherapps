@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" id="mixi">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Script Editor Run</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/jquery.min.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/main.js?{%$version.js%}"></script>
+    <script type="text/javascript" src="{%$staticUrl%}/apps/scripteditor/js/jquery.string.1.0-min.js?{%$version.js%}"></script>
+    
+    <script type="text/javascript" language="javascript">
+        var UrlConfig =  {
+            BaseUrl : '{%$baseUrl%}',
+            StaticUrl : '{%$staticUrl%}',
+            PhotoUrl : '{%$photoUrl%}'
+        };
+        
+        var CODE_RUN_HOST = '{%$smarty.const.CODE_RUN_HOST%}';
+        
+    </script>
+    
+    {% html_linno_app_css type=$csstype %}
+</head>
+
+<body id="editor" class="runCode" style="overflow:hidden;">
+
+<div id="continer">
+    
+    <div id="mainColumn">
+        
+        <div id="wrap">
+            
+            <h1><img src="{%$staticUrl%}/apps/scripteditor/img/tit_run.png" width="193" height="22" alt="プログラムを実行" /></h1>
+            <input type="hidden" id="language" value="{%$language%}" />
+            <input type="hidden" id="file" value="{%$file%}" />
+            <input type="hidden" id="sig" value="{%$sig%}" />
+
+            <p class="btnClose"><a href="javascript:void(0);" onclick="window.close();"><img src="{%$staticUrl%}/apps/scripteditor/img/btn_close.png" width="172" height="21" alt="このウインドウを閉じる" /></a></p>
+            
+            <div class="inner">
+                
+                <h2>{%$title|escape%}&nbsp;</h2>
+                
+                <div id="entryStatus" class="box">
+                    <ul class="status"><!--
+                        --><li class="name">{%$nickname|escape%}&nbsp;</li><!--
+                        --><li class="date">{%$time|escape%}&nbsp;</li><!--
+                    --></ul>
+                </div><!--/#status-->
+
+                
+                <div id="runCode" class="box"><iframe id="runCodeContainer" src="{%$result%}?v=1" frameborder="0" border="0" scrolling="auto" style="height:370px;width:100%"></iframe></div><!--/#entryCode-->
+                
+                <!--<div class="adBox"><a href=""><img src="{%$staticUrl%}/apps/scripteditor/img/ad_wide.png" style="width:624px;height:100%;"alt="" /></a></div>-->
+                
+            </div><!--/.inner-->
+            
+        </div><!--/#wrap-->
+        
+    </div><!--/#mainColumn-->
+    
+    <script type="text/javascript">
+        var WINDOW_INIT_HEIGHT = 556;
+        var IFRAME_INIT_HEIGHT = 370;
+        var RESIZE_TIME = 0;
+        var RESIZE_DELAY = 100;
+        (function($) {
+            $.coderun = {
+                run: function() {
+                    var url = UrlConfig.BaseUrl + '/ajax/scripteditor/run';
+                    var language = $('#language').val();
+                    var file = $('#file').val();
+                    var sig = $('#sig').val();
+                    if (language != '' && file != '' && sig != '') {
+                        $.ajax({
+                             type: 'POST',
+                             dataType: 'text',
+                             url: url,
+                             data: {language: language, file: file, sig: sig},
+                             success: function(data){
+                                if (data != 'false') {
+                                    var c = $('#runCodeContainer');
+                                    c.attr('src', data);
+                                }
+                             } 
+                        });
+                    }
+                }
+            };
+            
+            $().ready(function() {
+                WINDOW_INIT_HEIGHT = $(window).height();
+                $(window).bind('resize', function() {
+                    var wHeight = $(window).height();
+                    if (wHeight == WINDOW_INIT_HEIGHT) {
+                        return;
+                    }
+                    var iHeight = IFRAME_INIT_HEIGHT + (wHeight - WINDOW_INIT_HEIGHT);
+                    var runCodeContainer = $('#runCodeContainer');
+                    runCodeContainer.height(iHeight);
+                    WINDOW_INIT_HEIGHT = wHeight;
+                    IFRAME_INIT_HEIGHT = iHeight;
+                }); 
+                $.coderun.run();
+            });
+        })(jQuery);
+    
+        
+    </script>
+</div><!--/#continer-->
+</body>
+</html>

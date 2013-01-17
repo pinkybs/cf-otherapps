@@ -1,0 +1,31 @@
+{%include file="disney/common/header.phtml"%}
+
+	<div style="font-size:x-small; background-color:#fbe1ff; color:#701b94;">
+	<div style="background-color:#50b83a; text-align:center;">
+        {% disneyimg name="sub_ti_news" %}
+        {%include file="disney/common/topmenu.phtml"%}
+        <br />
+        {% disneyimg style='align="top"' name="line2" %}<br />
+            {% foreach from=$noticeList item=data %}
+            
+                {% if $data.type == 1 %}
+                    <a href='{% "$baseUrl/mobile/disney/index?CF_nid=`$data.id`"|mixiurl %}'>{%$data.title%}</a>
+                {% elseif $data.type == 4 %}
+                    <a href='{% "$baseUrl/mobile/disney/tradeaward?CF_nid=`$data.id`&CF_step=accept"|mixiurl %}'>{%$data.title%}</a>
+                {% elseif $data.type == 5 %}
+                    <a href='{% "$baseUrl/mobile/disney/award?CF_pid=`$data.pid`&CF_nid=`$data.id`&CF_from=accepttrade"|mixiurl %}'>{%$data.title%}</a>
+                {% elseif $data.type == 7 %}
+                    <a href='{% "$baseUrl/mobile/disney/award?CF_pid=`$data.pid`&CF_fid=`$data.actor_uid`&CF_from=acceptsend&CF_nid=`$data.id`"|mixiurl %}'>{%$data.title%}</a>
+                {% elseif $data.type == 9 %}
+                    <a href='{% "$baseUrl/mobile/disney/game?CF_nid=`$data.id`"|mixiurl %}'>{%$data.title%}</a>    
+                {% /if %}
+                
+                <br/>
+                {% disneyimg style='align="top"' name="line2" %}<br />
+            {% foreachelse %}
+                まだありません｡
+            {% /foreach %}
+                        
+        {%include file="disney/common/pager.phtml"%}
+        
+{%include file="disney/common/firstfooter.phtml"%}

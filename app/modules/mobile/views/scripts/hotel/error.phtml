@@ -1,0 +1,17 @@
+{%include file="hotel/common/header.phtml"%}
+<div id="error">
+        <hr class="hrWhite" size="1" />
+        <div class="headlineTip">ｼｽﾃﾑｴﾗｰ</div>
+        <hr class="hrYellow" size="1" />
+        <div class="description">
+            ｼｽﾃﾑｴﾗｰが発生しました。たいへんお手数ですが、TOPにお戻りください。
+        </div><!--/.description-->
+        <div class="nullImage" style="text-align:center;">
+            <img src="{%$staticUrl%}/apps/hotel/mobile/img/null.gif" width="118" height="106" style="margin:2px 0;" />
+        </div><!--/.nullImage-->
+        <!--<div class="toTop">
+            <span style="color:#ff9933;">⇒</span><a href='{% "$baseUrl/mobile/hotel/profile"|mixiurl %}'>トップへ戻る</a>&nbsp;
+        </div>/.toTop-->
+    </div><!--/#mistake-->
+{%include file="hotel/common/menu.phtml"%}
+{%include file="hotel/common/footer.phtml"%}

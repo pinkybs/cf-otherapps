@@ -1,0 +1,244 @@
+{%include file="disney/common/header.phtml"%}
+<style type="text/css">
+<![CDATA[
+a:link{color:#0000ff;}
+a:visited{color:#7c027c;}
+]]>
+</style>
+
+	<div style="font-size:x-small;">
+        <div style="background-color:#edd9ae; text-align:center;" >
+		<div style="background-color:#50b83a; text-align:center;" >
+            {% disneyimg name="top" style='align="top" width="100%"'  %}
+            <!--/#top_img-->
+            <!--ｻｲﾄ内ﾘﾝｸ-->
+            <br />
+            
+			{% if $apologize %}
+			<!--
+			<div class="kokuji_002"style="text-align:center;">
+				<a href='{% "$baseUrl/mobile/disney/kokuj002"|mixiurl %}'>お問い合わせ対応の<br />不具合に関するお詫び(12/8)</a><br />
+				{% disneyimg style='height="3"' name="dot0" %}<br />
+			</div>
+			-->
+			<!--/.kokuji_002-->
+			{% /if%}
+						
+            {% emoji code="F9E5"%}<a href='{% "$baseUrl/mobile/disney/map"|mixiurl %}'><span style="color:#430FBD;">ご当地ﾏｯﾌﾟ</span></a>
+            {% emoji code="F9D8"%}<a href='#game'><span style="color:#430FBD;">ｹﾞｰﾑ</span></a><br />
+        
+        <div style="text-align:center; background-color:#FFB300;" >    
+            {% emoji code="F9BF"%}<a href='{% "$baseUrl/mobile/disney/cuplist"|mixiurl %}'><span style="color:#D6340C;">ｱﾜｰﾄﾞ</span></a>
+            {% emoji code="F9CB"%}<a href='{% "$baseUrl/mobile/disney/mymixilist"|mixiurl %}'><span style="color:#D6340C;">ﾏｲﾐｸ情報</span></a><br />
+        </div></div>              
+		
+			
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+			
+			<div class="campain_">
+				<a href='{% "$baseUrl/mobile/disney/diary"|mixiurl %}'>{% disneyimg name="campain_tbn1" %}</a>&nbsp;
+				<a href='{% "$baseUrl/mobile/disney/invite"|mixiurl %}'>{% disneyimg name="campain_tbn2" %}</a>
+			</div><!--/#campain_-->
+			
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+			
+			<div class="kokuji" style="text-align:center;">
+				<a href='{% "$baseUrl/mobile/disney/kokuji"|mixiurl %}' >重要なお知らせ(1/27)</a>
+			</div>
+			
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+			
+			<!--<div class="message" style="color:#A01F12;text-align:center;">
+				第1弾ｽﾃｨｯﾁｼﾘｰｽﾞ配信中
+			</div>-->
+			
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+			    
+		    {% if $noticeCount > 1 %}
+	            <span style="text-decoration:blink;">{% emoji code="F982"%}</span><a href='{% "$baseUrl/mobile/disney/news"|mixiurl %}'><span style="color:#ff0000;">お知らせがあります({%$noticeCount%})</span></a><span style="text-decoration:blink;">{% emoji code="F982"%}</span><br />
+	        {% elseif $noticeCount == 1 %}
+	        	{% if $noticeList.0.type == 1 %}
+	                <span style="text-decoration:blink;">{% emoji code="F982"%}</span><a href='{% "$baseUrl/mobile/disney/index?CF_nid=`$noticeList.0.id`"|mixiurl %}'>{%$noticeList.0.title%}</a><span style="text-decoration:blink;">{% emoji code="F982"%}</span>
+	            {% elseif $noticeList.0.type == 4 %}
+	                <span style="text-decoration:blink;">{% emoji code="F982"%}</span><a href='{% "$baseUrl/mobile/disney/tradeaward?CF_nid=`$noticeList.0.id`&CF_step=accept"|mixiurl %}'>{%$noticeList.0.title%}</a><span style="text-decoration:blink;">{% emoji code="F982"%}</span>
+	            {% elseif $noticeList.0.type == 5 %}
+					<span style="text-decoration:blink;">{% emoji code="F982"%}</span><a href='{% "$baseUrl/mobile/disney/award?CF_pid=`$noticeList.0.pid`&CF_nid=`$noticeList.0.id`"|mixiurl %}'>{%$noticeList.0.title%}</a><span style="text-decoration:blink;">{% emoji code="F982"%}</span>
+	            {% elseif $noticeList.0.type == 7 %}
+					<span style="text-decoration:blink;">{% emoji code="F982"%}</span><a href='{% "$baseUrl/mobile/disney/award?CF_pid=`$noticeList.0.pid`&CF_fid=`$noticeList.0.actor_uid`&CF_from=acceptsend&CF_nid=`$noticeList.0.id`"|mixiurl %}'>{%$noticeList.0.title%}</a><span style="text-decoration:blink;">{% emoji code="F982"%}</span>
+	            {% elseif $noticeList.0.type == 9 %}
+                    <a href='{% "$baseUrl/mobile/disney/game?CF_nid=`$noticeList.0.id`"|mixiurl %}'>{%$data.title%}</a>    
+                {% /if %}
+	        {% /if %}
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+	        
+	        <div class="playrule" style="color:#0000ff;text-align:center;">
+                {% emoji code="F8E4"%}<a href='{% "$baseUrl/mobile/disney/playrule"|mixiurl %}'>遊び方</a>{% emoji code="F8E4"%}
+            </div><!--/.playrule--> 
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+			            
+	        <a href='{% "location:cell?url=$baseUrl/mobile/disney/getcurrent/rand/$rand" %}' accesskey="3">{% disneyimg name="bn02" style='align="top" width="69%"' %}<br />{% emoji code="F989"%}現在地で今すぐGET♪</a><br />    
+	        <a href="#target">▼ﾀｰｹﾞｯﾄﾂｱｰはこちら</a><br />
+			
+	        <!--ﾗﾝｷﾝｸﾞ-->
+	        <!--
+			<div style="background-color:#f8b463; color:#5e250f; text-align:left;" >
+				{% disneyimg name="ran_line3" width="100%" %}<br />
+				&nbsp;&nbsp;{% emoji code="F995"%}{%$userAwardCount%}ｱｲﾃﾑGET!!<br />
+				</div>      
+				<div style="background-color:#f8f1df; color:#5e250f; text-align:left;" >
+				&nbsp;&nbsp;{% emoji code="F9BF"%}ﾏｲﾐｸ内ﾗﾝｷﾝｸﾞ&nbsp;&nbsp;<a href='{% "$baseUrl/mobile/disney/ranking"|mixiurl %}'>{%$friendRank.rank%}位</a><br />
+				</div>
+				<div style="background-color:#f8b463; color:#5e250f; text-align:left;" >
+				&nbsp;&nbsp;{% emoji code="F9BF"%}全体ﾗﾝｷﾝｸﾞ&nbsp;&nbsp;&nbsp;&nbsp;<a href='{% "$baseUrl/mobile/disney/ranking?CF_type=0"|mixiurl %}'>{%$allRank.rank%}位</a><br/>
+				</div>
+				<div style="color: rgb(94, 37, 15); text-align: center;">
+				<span style="color: rgb(255, 0, 0);">ﾏｲｽｺｱ:</span>{% emoji code="F99F"%}<span style="color: rgb(153, 51, 0);">{%$disneyUser.game_point%}点</span>{% emoji code="F99F"%}
+				<br/>
+				{% disneyimg name="map_line" %}
+            </div>
+			-->
+            {% disneyimg style='width="100%"' name="map_line" %}		
+	        {% disneyimg style='height="3"' name="dot0" %}<br />
+	        <div style="text-align:center;" >
+				{% emoji code="F9BF"%}<a href='{% "$baseUrl/mobile/disney/ranking"|mixiurl %}'>ﾗﾝｷﾝｸﾞ</a> 
+				{% emoji code="F8C4"%}<a href='{% "$baseUrl/mobile/disney/sethome"|mixiurl %}'>ﾏｲﾀｳﾝ設定</a><br />
+				{% emoji code="F9CE"%}<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/disney/index" %}'>ﾏｲﾐｸ招待</a>
+				{% emoji code="F9CB"%}<a href='{% "$baseUrl/mobile/disney/mymixilist"|mixiurl %}'>ﾏｲﾐｸ情報</a><br />
+				{% emoji code="F9E5"%}<a href='{% "$baseUrl/mobile/disney/country"|mixiurl %}'>全国一覧</a><br />
+				
+				{% disneyimg style='height="3"' name="dot0" %}<br />				
+				{% emoji code="F8E6"%}<a href='{% "$baseUrl/mobile/disney/mailfactory"|mixiurl %}'><font color="#844d0b">Disney公式携帯ｻｲﾄ会員特典</font></a>{% emoji code="F8E6"%}
+	        </div>
+
+        <!--ﾀｰｹﾞｯﾄﾂｱｰ-->
+        <a id="target" name="target"></a>
+        <div style="background-color:#d4f1f9; text-align:center;" >
+        {% disneyimg name="m_02" style='align="top" width="100%"'  %}
+         <span style="color:#ff0000;">毎日の移動でGET!</span><br />
+        {% disneyimg name="dot0" style='height="2"' %}
+        {% if $disneyUser.remain_distance - $disneyUser.flash_distance > 0 %}
+            <br />{%$disneyUser.target_name%}<span style="color:#001e5d;">まであと</span><br />
+            {% foreach from=$arrayDistance item=data %}
+                {% disneyimg name="km_$data" %}
+            {% /foreach %}
+            {% disneyimg name="km" %}<br />
+            <a href='{% "location:cell?url=$baseUrl/mobile/disney/checkdistance/rand/$rand" %}' accesskey="5"'>
+            {% disneyimg name="target_bn" style='align="top" width="69%"' %}<br />{% emoji code="F98B"%}今すぐﾁｪｯｸ!</a><br />
+        {% else %}
+            <br />{%$disneyUser.target_name%}<span style="color:#001e5d;">まで到達しました!<br />
+            次のﾀｰｹﾞｯﾄを設定して下さい</span><br /><br />
+        {% /if %}
+        
+        {% emoji code="F8E9"%}<a href='{% "$baseUrl/mobile/disney/settarget"|mixiurl %}'>ﾀｰｹﾞｯﾄ設定</a><br />
+        
+	    <div class="targettour" style="text-align:center; color:#0000ff;">
+            {% emoji code="F8E4"%}<a href='{% "$baseUrl/mobile/disney/targettour"|mixiurl %}'>ﾀｰｹﾞｯﾄﾂｱｰとは?</a>
+        </div><!--/.targettour-->
+        
+		    <!--ﾁｬﾚﾝｼﾞｹﾞｰﾑ-->
+	        <a name="game"></a>
+        <div style="background-color:#fcdbf5;" >  
+		
+		{% if $ua!=3 %}  
+            {% disneyimg name="m_03" style='align="top" width="100%"'  %}
+            <div style="text-align:center">
+                <span style="color:#ff0000;">ｹﾞｰﾑで一気に距離を稼ごう！</span><br />
+                <!--<span style="color:#9F3D44;">(残りﾁｹｯﾄ枚数：{%$disneyUser.game_ticket%}枚)</span><br />-->
+                {% disneyimg style='style="float:left; margin-top:0; margin-right:5; margin-left:5; margin-bottom:0" align="left"' name="roulet" %}<br />
+                {% emoji code="F9A4"%}
+                
+                {% if $disneyUser.remain_distance - $disneyUser.flash_distance > 0 %}
+                    {% if $disneyUser.game_ticket>0%}
+                        <a href='{% "$baseUrl/mobile/disney/game"|mixiurl %}'>
+                    {%else%}
+                        <a href='{% "$baseUrl/mobile/disney/getticket"|mixiurl %}'>
+                    {%/if%}
+                    <span>のりものﾙｰﾚｯﾄ</span></a>
+                {% else %}
+                    <span>のりものﾙｰﾚｯﾄ</span>
+                {% /if %}
+                {% emoji code="F9A4"%}<br />
+				<br />
+                {% emoji code="E715"%}<a href='{% "$baseUrl/mobile/disney/getticket"|mixiurl %}'>ﾁｹｯﾄ購入はこちら</a>{% emoji code="E715"%}<br />
+            </div><!--#center-->
+                <div style="clear:both"></div>
+				
+        {% else %}
+			{% disneyimg name="m_03" style='align="top" width="100%"' %}
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td colspan="2" style="text-align:center;">
+					<span style="color:#ff0000;">ｹﾞｰﾑで一気に距離を稼ごう！</span><br />
+					<!--<span style="color:#9F3D44;">(残りﾁｹｯﾄ枚数：{%$disneyUser.game_ticket%}枚)</span>-->
+					</td>
+				</tr>
+				<tr>
+					<td style="width:84px;text-align:center;">{% disneyimg style='style="margin-bottom:5px"' name="roulet" %}</td>
+					<td><div style="text-align:center;">
+
+					{% emoji code="F9A4"%}
+					
+					{% if $disneyUser.remain_distance - $disneyUser.flash_distance > 0 %}
+						{% if $disneyUser.game_ticket>0%}
+							<a href='{% "$baseUrl/mobile/disney/game"|mixiurl %}'>
+						{%else%}
+							<a href='{% "$baseUrl/mobile/disney/getticket"|mixiurl %}'>
+						{%/if%}
+						<span>のりものﾙｰﾚｯﾄ</span></a>
+					{% else %}
+						<span>のりものﾙｰﾚｯﾄ</span>
+					{% /if %}
+						{% emoji code="F9A4"%}<br />
+						<br />
+						{% emoji code="E715"%}<a href='{% "$baseUrl/mobile/disney/getticket"|mixiurl %}'>ﾁｹｯﾄ購入はこちら</a>{% emoji code="E715"%}<br />
+					</div><!--#left-->
+					<div style="clear:both"></div>
+					</td>
+				</tr>
+			</table>
+			
+		{% /if %}
+			
+        <!--もっとﾂｱｰを楽しもう-->
+	<div style="background-color:#fbe1ff;text-align:left;" >   
+    		{% disneyimg name="m_05" style='align="top" width="100%"' %}
+		<br />
+		<span style="color:#ff0000;">Q 現在地でGET日記を書こう！</span><br />
+		<span style="color:#0000ff;">A</span> <span style="color:#611477;">旅先でGETしたご当地ｷｬﾗｸﾀｰはｱﾌﾟﾘからすぐに日記を書けるよ。ﾌﾟﾚｾﾞﾝﾄ希望者を募ってﾌﾟﾚｾﾞﾝﾄすれば、良いお土産になるね♪</span>						
+		<br />
+        	<div style="text-align:right;">
+    		 	<a href='{% "$baseUrl/mobile/disney/enjoy"|mixiurl %}'>もっと見る</a>
+       	 </div>
+    		{% disneyimg style='height="3"' name="dot0" %}<br />
+    		<!--/.topfooter-->
+    		{% disneyimg style='width="100%"' name="faq_line" %} 
+    		<div style="background-color:#ccff66;">
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+			<span style="color:#3ea124;">├</span>{% emoji code="F8E4"%}<a href='{% "$baseUrl/mobile/disney/rule"|mixiurl %}'>利用規約</a><br />  
+			<span style="color:#3ea124;">├</span>{% emoji code="F97A"%}<a href='{% "$baseUrl/mobile/disney/charge"|mixiurl %}'>有料ｻｰﾋﾞｽ利用規約</a><br />
+			<span style="color:#3ea124;">├</span>{% emoji code="F9B8"%}<a href='{% "$baseUrl/mobile/disney/tokus"|mixiurl %}'>特定商取引法に基づく表示</a><br />  
+			<span style="color:#3ea124;">├</span>{% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/disney/help"|mixiurl %}'>よくある質問</a><br />
+			<span style="color:#3ea124;">├</span>{% emoji code="F8E9"%}<a href='{% "$baseUrl/mobile/disney/phone"|mixiurl %}'>対応端末一覧</a><br />
+			<span style="color:#3ea124;">└</span>{% emoji code="F9BC"%}<a href="http://m.mixi.jp/view_appli.pl?guid=ON&id=11123">Disneyﾏｲﾐｸにｸﾞﾘｰﾃｨﾝｸﾞ!</a><br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#3ea124;">Disneyｸﾞﾘｰﾃｨﾝｸﾞｶｰﾄﾞ</span><br />
+    
+			<!--<span style="color:#3ea124;">└</span>{% emoji code="F97D"%}<a href='{% "$baseUrl/mobile/disney/privacy"|mixiurl %}'>ﾌﾟﾗｲﾊﾞｼｰﾎﾟﾘｼｰ</a><br />-->
+			{% disneyimg style='height="3"' name="dot0" %}<br />
+			
+			<div id="bnrSpace">
+				<div style="background-color:#FDBE00;text-align:center;color:#FFFFFF">
+					Disney mixiアプリ
+				</div>
+				{% disneyimg style='height="3"' name="dot0" %}<br />
+				<a href="http://m.mixi.jp/view_appli.pl?id=22525">
+					<img src="" width="80%" /><!--バナー画像--><br />
+					{% emoji code="F982"%}→Disneyｷｬﾗｸﾀｰに変身しよう!
+				</a><br />
+				{% disneyimg style='height="3"' name="dot0" %}<br />
+			</div><!--/#bnrSpace-->	
+			
+		</div><!--#bgcolor#f8f1df;-->
+	</div><!--bgcolor5-->
+	</div><!--bgcolor3--></div><!--bgcolor2--><!--bgcolor1--></div>
+</div>
+</body>
+</html>

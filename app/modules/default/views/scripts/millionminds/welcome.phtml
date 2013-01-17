@@ -1,0 +1,46 @@
+{%include file="millionminds/common/header.phtml"%}
+
+<body>
+
+	<div id="container">
+
+{%include file="millionminds/common/hdr.phtml"%}
+
+		<ul id="gnav">
+			<li class="top"><a href="/millionminds/index">MillionMindsトップ</a></li>
+			<li class="profile"><a href="{%$baseUrl%}/millionminds/profile">プロフィール</a></li>
+			<li class="log"><a href="{%$baseUrl%}/millionminds/log">あしあと</a></li>
+			<li class="archive"><a href="{%$baseUrl%}/millionminds/archive">アーカイブ</a></li>
+			<li class="add"><a href="{%$baseUrl%}/millionminds/newquestion"">クエスチョン作成</a></li>
+			<li class="help"><a href="{%$baseUrl%}/millionminds/help">ヘルプ</a></li>
+			<li class="invite"><a href="javascript:void(0)" onclick="invite();">友達を招待</a></li>
+		</ul><!--/#grav-->
+
+		<div id="content">
+
+			<div id="mainColumn">
+
+				<div id="help">
+					<div class="content">
+
+						<h3 class="about">MillionMindsとは？</h3>
+						<p class="about">MillionMindsの5つの特長</p>
+						<p>MillionMindsは、自分や友達のホンネと相性を知り、楽しむアプリです。50問の性格診断は、自分で行った結果とマイミクが行った結果を照合して、独自のロジックで結果を表示しています。相性診断は、性格診断の結果と、性格診断以外のクエスチョン（相性診断クエスチョン）を通して、合致する価値観が多ければ多いほど、良い結果となります。</p>
+					</div><!--/.content-->
+				</div><!--/#help-->
+
+				<div id="first">
+					<p><a href="/millionminds/nature">性格診断で本当のアナタを知る</a></p>
+				</div><!--/#first-->
+
+			</div><!--/#mainColumn-->
+
+			<div id="subColumn">
+				<div id="rectangle">
+					<a href="#" target="_blank"><img src="{%$staticUrl%}/apps/millionminds/img/rectangle.png" width="250" height="250" alt="" /></a>
+				</div><!--/#ractangle-->
+			</div><!--/#subColumn-->
+
+		</div><!--/#content-->
+		
+{%include file="millionminds/common/footer.phtml"%}

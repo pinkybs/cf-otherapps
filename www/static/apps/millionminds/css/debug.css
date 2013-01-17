@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+Dorei-Chan debug CSS
+
+Created Date : 2009/05/18
+Author: Yu Uno
+Last Up Date : 2009/05/18
+Author: Yu Uno
+----------------------------------------------
+*/
+
+/*clearfix
+----------------------------------------------*/
+.clearfix,
+ul,
+ul li,
+ol,
+dl,
+dl dt,
+dl dd,
+#hdr,
+#hdr address,
+ul#nav,
+#container,
+#content,
+.section,
+.inner {
+    zoom:1;/*for IE 5.5-7*/
+}
+.clearfix:after,
+ul:after,
+ul li:after,
+ol:after,
+dl:after,
+dl dt:after,
+dl dd:after,
+#hdr:after,
+#hdr address:after,
+ul#nav:after,
+#container:after,
+#content:after,
+.section:after,
+.inner:after {/*for modern browser*/
+    content:".";
+    display: block;
+    height:0px;
+    clear:both;
+    visibility:hidden;
+}
+

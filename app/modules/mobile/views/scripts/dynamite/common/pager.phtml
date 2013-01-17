@@ -1,0 +1,17 @@
+{% if $pager.maxPager > 1 %}
+
+    {% if $pager.pageIndex == 1 %}
+		<span style="color:#color:#777;">←[*]前の{%$pager.pageSize%}件</span>
+	{% else %}
+		←[*]<a href='{% "$baseUrl/`$pager.requestUrl`?CF_page=`$pager.pageIndex-1``$pager.pageParam`"|mixiurl %}' accesskey="*">前の{%$pager.pageSize%}件</a>
+	{% /if %}
+
+	({% $pager.pageIndex %})
+
+	{% if $pager.maxPager == $pager.pageIndex%}
+		<span style="color:#color:#777;">次の{%$pager.pageSize%}件[#]→</span><br />
+	{% else %}
+		<a href='{% "$baseUrl/`$pager.requestUrl`?CF_page=`$pager.pageIndex+1``$pager.pageParam`"|mixiurl %}' accesskey="#">次の{%$pager.pageSize%}件</a>[#]→<br />
+	{% /if %}
+
+{% /if %}

@@ -1,0 +1,96 @@
+{%include file="slave/common/header.phtml"%}
+<body id="twoColumn" class="buySlaveStep1">
+
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+    	if (null != cm_getCookie('app_top_url')) {
+    		top.location.href = cm_getCookie('app_top_url') +  '#pagetop';
+    	}
+	</script>
+
+	<div id="mainColumn">
+		<div id="buySlaveBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_buySlave.png" width="234" height="23" alt="ドレイちゃんを購入する" /></h2>
+			</div><!--/.hdr-->
+
+			<!-- hidden info -->
+			<input type="hidden" id="slaveCount" value={%$slaveCount%}>
+
+			<input type="hidden" id="hidSellSlaveId" name="hidSellSlaveId" value=""/>
+			<input type="hidden" id="hidBuySlaveId" name="hidBuySlaveId" value="{%$slaveInfo.uid%}"/>
+
+			<!-- /hidden info -->
+
+			<!-- #buySlaveBoxStep1 -->
+			<div id="buySlaveStepOne">
+				<p class="intro">このドレイちゃんを購入しますか？</p>
+				<div class="section">
+					<p class="pic"><a style="cursor:default;background-image: url({%$msPic%});">{%$msName%}</a></p>
+					<p class="name"><span>{%$msName%}改め </span>{%$slaveInfo.nickname%}</p>
+					<p class="comment">{%$slaveInfo.balloon%}<span></span></p>
+					<ul><!--
+						--><li>職業：{%$slaveInfo.work_category|escape%}</li><!--
+						--><li>価格：¥{%$slaveInfo.format_price%}</li><!--
+					--></ul>
+				</div><!--/.section-->
+				<ul class="actionList"><!--
+					--><li class="actionAbolish disable"><a href="javascript:cm_goBack();">キャンセル</a></li><!--
+					--><li class="actionBuy"><a id="buySlaveNext" href="javascript:void(0);">購入する</a></li><!--
+				--></ul><!--/.actionList-->
+			</div>
+			<!-- /#buySlaveBoxStep1 -->
+
+			<!-- #buySlaveStep2 -->
+			<div id="buySlaveStepTwo" style="display: none;">
+				<p class="intro">ドレイちゃんは最大4匹まで飼育可能です。新しいドレイちゃんを追加する場合は、現在飼育しているドレイちゃんを、1匹ポイ捨てする必要があるよ。ポイ捨てするドレイちゃんを選択してね。</p>
+				<div id="buySlaveFeed">
+					<ul id="ulFeed"><!--
+					 --><li class="section" id="default">
+							<p class="pic"><a style="cursor:default;background-image: url({%$msPic%});">{%$msName%}</a></p>
+							<p class="name"><span>{%$msName%} 改め </span>{%$slaveInfo.nickname%}</p>
+							<p class="comment">{%$slaveInfo.balloon%}<span></span></p>
+						</li>
+					 </ul>
+				</div><!--/#buySlaveFeed-->
+
+				<ul class="actionList"><!--
+					--><li class="actionAbolish disable"><a id="setpBack" href="javascript:void(0);">キャンセル</a></li><!--
+					--><li class="actionDecision"><a id="buySlaveFinishbtn" href="javascript:void(0);">決定</a></li><!--
+				--></ul><!--/.actionList-->
+
+			</div><!-- /#buySlaveStep2 -->
+
+			<!-- #buySlaveFinish -->
+				<div id="buySlaveFinish" style="display: none;">
+					<p class="intro">{%$msName%}を新しいドレイちゃんに追加しました。</p>
+
+					<div class="section">
+					<p class="pic"><a  style="cursor:default;background-image: url({%$msPic%});">{%$msName%}</a></p>
+					<p class="name"><span>{%$msName%}</a> 改め </span>{%$slaveInfo.nickname%}</p>
+					<p class="comment">{%$slaveInfo.balloon%}<span></span></p>
+					<ul><!--
+						--><li>職業：{%$slaveInfo.work_category|escape%}</li><!--
+						--><li>価格：¥<label id="finishPrice">{%$slaveInfo.price%}</label></li><!--
+					--></ul>
+					</div><!--/.section-->
+
+					<p class="actionGotoSlave btn"><a href="{%$baseUrl%}/slave/profile?uid={%$slaveInfo.uid%}">ドレイちゃんのプロフィールへ移動する</a></p>
+				</div>
+			<!-- /#buySlaveFinish -->
+
+		</div><!--/#buySlaveBox.box-->
+
+		<input type="hidden" id="activity" value="{%$activity%}" />
+		<input type="hidden" id="activityNew" value="{%$activityNew%}" />
+		<input type="hidden" id="activityPic" value="{%$activityPic%}" />
+
+	</div><!--/#mainColumn-->
+	<div id="subColumn">
+	{%include file="slave/common/adbox.phtml"%}
+	{%include file="slave/common/logbox.phtml"%}
+	</div><!--/#subColumn-->
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/buyslave.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

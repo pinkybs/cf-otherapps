@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="ttm Flash Game" author_email="linkage8055@nate.com" description="ttmOpenSocial">
+    <Require feature="flash" />
+    <Require feature="opensocial-0.8" />
+    <Require feature="views"/>
+    <Require feature="dynamic-height"/>
+    <Optional feature="content-rewrite">
+        <Param name="expires">86400</Param>
+        <Param name="include-urls"></Param>
+        <Param name="exclude-urls">.*</Param>
+    </Optional>
+  </ModulePrefs>
+<Content type="html" view="canvas">
+  <![CDATA[
+    <style type="text/css">
+	#leftColumn,#rightColumn {
+		float:left;
+	}
+	
+	#rightColumn {
+		width:224px;
+		display:inline;
+		position:absolute;
+		left:719px;
+		top:0;
+	}
+	
+	.bottomImg {
+		margin-top:3px;
+	}
+	
+	a img {
+		border:none;
+	}
+	</style>
+    <img src="http://mixi.communityfactory.net/static/apps/warning.png" width="400" height="400" border="0" />
+    <script>
+       function init() { 
+          gadgets.window.adjustHeight(500); 
+          gadgets.rpc.call(null, "resize_iframe", null, 500);
+       }
+       gadgets.util.registerOnLoadHandler(init);     
+    </script>
+ ]]>
+</Content>
+
+<Content type="html" view="home,profile,preview">
+    <![CDATA[   
+    <style type="text/css">
+	* {
+		margin:0;
+		padding:0;
+		border:none;
+	}
+	</style>
+	
+	<img src="http://mixi.communityfactory.net/static/apps/warning.png" width="210" height="210" border="0" />
+]]>
+</Content>
+</Module>

@@ -1,0 +1,29 @@
+	<div id="hdr">
+		<h1><img src="{%$staticUrl%}/apps/slave/img/hdr/img_main.png" width="690" height="100" title="" alt="ワタシのドレイちゃん" /></h1>
+		<ul id="hdrLink"><!--
+			--><li id="hdrLinkHelp"><a href="{%$baseUrl%}/slave/help">ヘルプ</a></li><!--
+			--><li id="hdrLinkInvite"><a href="javascript:void(0);" onclick="mixi_invite();return false;">友達を招待</a></li><!--
+		--></ul>
+		<ul id="gNav"><!--
+			--><li id="gNavHome"><a href="{%$baseUrl%}/slave/home">ホーム</a></li><!--
+			--><li id="gNavProfile"><a href="{%$baseUrl%}/slave/profile">プロフ</a></li><!--
+			--><li id="gNavGiftShop"><a href="{%$baseUrl%}/slave/giftshop">ギフト屋</a></li><!--
+			--><li id="gNavDoreiShop"><a href="{%$baseUrl%}/slave/shop">ドレイ屋</a></li><!--
+			--><li id="gNavRanking"><a href="{%$baseUrl%}/slave/rank">ランキング</a></li><!--
+			--><li id="gNavHelp"><a href="{%$baseUrl%}/slave/help">遊び方</a></li><!--
+		--></ul>
+
+		<div id="moneyBox">
+			<img src="{%$staticUrl%}/apps/slave/img/content/txt_money.gif" alt="所持金：" />
+			{% foreach name=cashpicList from=$cashPic item=cdata %}{% if ","==$cdata %}<img src="{%$staticUrl%}/apps/slave/img/content/number_comma.gif" height="20" alt="," />{% else %}<img src="{%$staticUrl%}/apps/slave/img/content/number_{%$cdata%}.gif" height="20" alt="{%$cdata%}" />{% /if %}{% /foreach %}
+		</div>
+	</div><!--/#hdr-->
+
+<script type="text/javascript">/*<!--[*/
+(function(){
+    var src    = "{%$mixiHostUrl%}/ad_application_program_invoker.pl";
+    var query  = "appli_id={%$appId%}&amp;ad_id=DUMMY_AD_ID";
+    //document.writeln(['<scri','pt src="',src,'?',query,'&ts=',(new Date).getTime(),'">','</scri','pt>'].join(''));
+    //window.setTimeout(function() {document.getElementById('MIXI_AD_PROGRAM_CONTAINER').style.position = '';}, 1000);
+})();
+--></script>

@@ -1,0 +1,37 @@
+    <div id="adjustBox" class="box">
+
+            <div class="hdr">
+
+                <h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_myCart_adjust.png" alt="ショッピングカートに入れた商品を精算する" /></h2>
+            </div><!--/.hdr-->
+
+            <p class="des1">ショッピングカートに入れた商品を精算すると、ゲーム終了です。<br />制限時間を過ぎると自動的に生産画面に移動します。ゲームの内容をリセットしたい場合は<a href="{%$baseUrl%}/shopping/restart">コチラ</a>。</p>
+            {% if $challengeInfo.cart_count<10 %}
+            <div class="btnSection" id="isEnd"><img src="{%$staticUrl%}/apps/shopping/img/content/ban_adjust.png" alt="" /></div>
+            {% else %}
+            <div class="btnSection" id="isEnd"><a href="javascript:void(0);" id="toGameEnd"><img src="{%$staticUrl%}/apps/shopping/img/content/ban_adjust.png" alt="" /></a></div>
+            {% /if %}
+            <p class="des2" id="Ptips" style="display: {% if $challengeInfo.cart_count<10 %}block;{% else %}none;{% /if %}">※ショッピングカートに入れた商品を精算するには、１０点以上の商品を選択する必要があります。</p>
+    </div>
+
+<script type="text/javascript">
+	$j("#toGameEnd").click(function (){
+        gameEnd();
+    });
+
+    function gameEnd()
+    {
+        $j('#overlay').show();
+        $j('#removeCart').hide();
+        if ($j('#changePrice').html() == null) {
+            $j('#addCart').hide();
+        }
+        else {
+            $j('#changePrice').hide()
+        }
+        $j('#overBox').css('top', '20%');
+        $j('#sBlankTop').focus();
+        $j('#gameEndConfim').show();
+        return false;
+    }
+</script>

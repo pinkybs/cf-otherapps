@@ -1,0 +1,45 @@
+{%include file="disney/common/header.phtml"%}
+
+{% if $step == 'start' %}
+	<div id="send" style="font-size:x-small;background-color:#e5fcd0;text-align:center;">
+	{% disneyimg name="sub_ti_send" style='width="100%"' %}
+		<br /><br />
+		<div style="color:#color:#090;text-align:left;">
+			{%$friendInfo->getDisplayName()%}さんに､{%$placeInfo.award_name%}ｽﾃｨｯﾁをﾌﾟﾚｾﾞﾝﾄします。よろしいですか?<br />
+			<a href='{% "$baseUrl/mobile/disney/help?CF_help=faq006"|mixiurl %}'>※ﾏｲﾐｸに贈るには、mixiﾎﾟｲﾝﾄが200ﾎﾟｲﾝﾄ必要です。</a><br/>
+		</div>
+		<br/>
+		<!-- <a href='{% "$baseUrl/mobile/disney/sendaward?CF_pid=`$placeInfo.pid`&CF_fid=`$fid`&CF_step=complete"|mixiurl %}'> -->
+		<div style="text-align:center;">
+			{% disneyimg style='height="4"' name="dot0" %}<br />
+			<a href='{% "$baseUrl/mobile/disney/pay?CF_yd=2&CF_param=`$payParam`"|mixiurl %}'>
+			{% disneyimg name="yes" style='width="39%"' %}</a><br />
+			{% disneyimg style='height="4"' name="dot0" %}<br />
+			<a href='{% "$baseUrl/mobile/disney/award?CF_pid=`$placeInfo.pid`"|mixiurl %}'>{% disneyimg name="no" style='width="39%"' %}</a><br />
+			{% disneyimg style='height="4"' name="dot0" %}<br />
+		</div>
+
+{% else %}
+	<div style="font-size:x-small; background-color:#e5fcd0;">
+		{% disneyimg name="sub_ti_send" style='width="100%"' %}
+		<br /><br />
+		{% if $result == 1%}
+			<div style="color:#3ea124;text-align:left;">
+			{%$friendInfo->getDisplayName()%}さんに､{%$placeInfo.award_name%}ｽﾃｨｯﾁを贈ったよ｡<br />
+			</div>
+			<div style="color:#ff0000;text-align:center;">	
+				{% emoji code="F99F"%}50点獲得!{% emoji code="F99F"%}<br />
+			</div>
+			<div style="color:#3ea124;text-align:left;">
+				たくさんのﾏｲﾐｸをｱﾌﾟﾘに招待して、どんどん友達にﾌﾟﾚｾﾞﾝﾄしよう!<br />
+			</div>
+			<div style="text-align:center;">
+				<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/disney/index" %}'>＞ﾏｲﾐｸ招待へ</a><br />
+			</div>
+		{% else %}
+			<div style="color:#3ea124;text-align:left;">
+				{%$friendInfo->getDisplayName()%}さんに､{%$placeInfo.award_name%}ｽﾃｨｯﾁを贈れませんでした｡再度贈り直してください｡<br />
+			</div>
+		{% /if %}
+{% /if %}
+{%include file="disney/common/footer.phtml"%}

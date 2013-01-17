@@ -1,0 +1,137 @@
+﻿{%include file="dynamite/common/header2.phtml"%}
+
+<script type="text/javascript" src="{%$staticUrl%}/cmn/js/commonjquery.js?{%$version.js%}"></script>
+<script type="text/javascript">
+    if ( null != getCookie('app_top_url_dynamite') ) {
+        top.location.href = getCookie('app_top_url_dynamite') +  '#pagetop';
+    }
+</script>
+
+<body id="help"><div style="left: -100em; position: absolute; width: 100em;"></div>
+    {%include file="topad.phtml"%}
+    {% if $showTopAd %}
+        <script type="text/javascript">
+            $().ready(function() {
+               adjustHeight(2008);
+            });
+        </script>
+    {% else %}
+        <script type="text/javascript">
+            $().ready(function() {
+               adjustHeight(1960);
+            });
+        </script>
+    {% /if %}
+
+<div id="container" style="height: 1700px;"><div id="containerInner1"><div id="containerInner2">
+
+	<div id="hdr">
+		<ul id="gNav"><!--
+			--><li id="gNavTop"><a href="{%$baseUrl%}/dynamite">トップ</a></li><!--
+			--><li id="gNavHitman"><a href="{%$baseUrl%}/dynamite/charashop">ヒットマン紹介所</a></li><!--
+			--><li id="gNavRanking"><a href="{%$baseUrl%}/dynamite/specialrank">ランキング</a></li><!--
+			--><li id="gNavInvite"><a href="javascript:void(0)" onClick="invite()">友達招待</a></li><!--
+			--><li id="gNavHowTo"><a href="javascript:void(0)" onClick="jQuery.help.showHelpFlash()">このゲームの遊び方</a></li><!--
+			--><li id="gNavHelp"><a href="{%$baseUrl%}/dynamite/help">ヘルプ</a></li><!--
+		--></ul>
+
+	</div>
+
+	<div id="wrap">
+
+		<div id="mainColumn">
+
+			<div id="mainHdr">
+				<h1>ヘルプ</h1>
+			</div><!--/#mainHdr-->
+
+			<div class="column"><div class="inner">
+
+				<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="600" height="350" id="help" align="middle">
+					<param name="allowScriptAccess" value="sameDomain" />
+					<param name="allowFullScreen" value="false" />
+					<param name="movie" value="{%$staticUrl%}/apps/dynamite/swf/help.swf?1" /><param name="quality" value="high" /><param name="wmode" value="transparent" /><param name="bgcolor" value="#e2ba6a" />	<embed src="{%$staticUrl%}/apps/dynamite/swf/help.swf?1" quality="high" wmode="transparent" bgcolor="#e2ba6a" width="600" height="350" name="help" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+				</object>
+
+				<ul id="helpList"><!--
+					--><li id="help001"><div class="listInner"><div class="listInner2">
+						<h2><img src="{%$staticUrl%}/apps/dynamite/img/help/tit_list_1.png" alt="ダイナマイトパニック　ゲームの概要"></h2>
+						<p>時間とともに破壊力が増大する特殊なダイナマイトを使った、マイミク同士の仁義なきバトルロワイヤル。</p>
+						<p>個性豊かなヒットマンを雇って、自分のアジトを守り抜けっ！！</p>
+						<p>ばれないようにダイナマイトを仕掛けて、マイミクのアジトを爆破せよ！</p>
+						<p>アイテムを駆使して自分のアジトを守りつつ、マイミクのヒットマンにかけられた懸賞金を奪い取れ！！</p>
+					</div></div></li><!--
+					--><li id="help002"><div class="listInner"><div class="listInner2">
+						<h2><img src="{%$staticUrl%}/apps/dynamite/img/help/tit_list_2.png" alt="アジトについて"></h2>
+						<ul>
+							<li>このゲームにチャレンジする勇敢なユーザーには、1つのアジトと　4人のヒットマンを与えよう。</li>
+							<li>ヒットマンの体力は、時間とともに回復していくが、体力が0になってしまうと殉職してしまい、戦線を離脱してしまうぞ。</li>
+							<li>アジトを守っている4人のヒットマンが全員殉職してしまうと、GAMEOVERになってしまい、所持金が半分に減ってしまうから、気をつけろ！！</li>
+						</ul>
+					</div></div></li><!--
+					--><li id="help003"><div class="listInner"><div class="listInner2">
+						<h2><img src="{%$staticUrl%}/apps/dynamite/img/help/tit_list_3.png" alt="ダイナマイトの設置と爆破"></h2>
+						<ul>
+							<li>最初にダイナマイトを4つ与えるから、上手に使うんだ。<br>もし全部のダイナマイトを使い切ってしまったら、また4つのダイナマイトを支給するから、安心してバトルに挑んでくれ！</li>
+							<li>ダイナマイトは、最大で26個まで持つことが出来るぞ。</li>
+							<li>他のアジトにダイナマイトを設置すると、時間とともに破壊力（数字）が上昇して行くぞ。<br>
+								爆破ボタンを押すと、その時点で設置されているダイナマイトの破壊力（数字）を全て合算したダメージを与えることができるぞ！<br>
+								だから、じっくり威力を高めつつ、タイミングを見計らって爆破するんだ！！<br>
+							　（のんびりしてると、敵のヒットマンに撤去されてしまうから気をつけろ！）</li>
+						</ul>
+					</div></div></li><!--
+					--><li id="help004"><div class="listInner"><div class="listInner2">
+						<h2><img src="{%$staticUrl%}/apps/dynamite/img/help/tit_list_4.png" alt="ダイナマイトの撤去"></h2>
+						<ul>
+							<li>自分のアジトに設置されてしまったダイナマイトは、爆破される前に見つけることが出来れば撤去する事が出来るぞ！</li>
+							<li>撤去したダイナマイトは、撤去した時点での破壊力（数字）のまま、他のユーザーのアジトに仕掛ける事も出来るから<br>ベストなタイミングを考えて撤去せよっ。マイミクを出し抜くには撤去した爆弾の再設置が一番だ！</li>
+						</ul>
+					</div></div></li><!--
+					--><li id="help005"><div class="listInner"><div class="listInner2">
+						<h2><img src="{%$staticUrl%}/apps/dynamite/img/help/tit_list_5.png" alt="ヒットマンの回復と蘇生"></h2>
+						<ul>
+							<li>ダメージを負ったヒットマンの体力は、時間とともに回復していくが、時にはアイテム（元気ドリンクetc）を使って、日ごろの労をねぎらい、体力を回復させてあげるのも、BOSSのつとめというものだ。</li>
+							<li>殉職してしまったヒットマンも、72時間の眠りの後に回復するのだが、アイテム（復活の儀式etc）を使って、再び戦線へと復活させれば、BOSSの為に命を捧げたヒットマン達の魂も報われることだろう。</li>
+							<li>アイテムの中には、自分のアジトの全てのヒットマンの体力を完全に回復し、殉職したヒットマンをも復活させてしまう奇跡のアイテムが存在するらしい。</li>
+						</ul>
+					</div></div></li><!--
+					--><li id="help006"><div class="listInner"><div class="listInner2">
+						<h2><img src="{%$staticUrl%}/apps/dynamite/img/help/tit_list_6.png" alt="新たなヒットマンを雇う"></h2>
+						<p>ヒットマンは、個性豊かなキャラが全部で10種類用意されている。</p>
+						<p>所持金の総額に応じて、より強いヒットマンが力を貸してくれるようになるぞ！</p>
+						<p>最強のヒットマンを集めて、マイミクからアジトを守り切れっ！</p>
+					</div></div></li><!--
+					--><li id="help007"><div class="listInner"><div class="listInner2">
+						<h2><img src="{%$staticUrl%}/apps/dynamite/img/help/tit_list_7.png" alt="アイテムを手に入れるには？"></h2>
+						<p>アイテム以下の方法で手に入れる事が出来るぞ！！</p>
+						<ul>
+							<li>他のアジトのヒットマンを殉職させた時にGETできる、爆破ボーナス</li>
+							<li>一日一回のログイン時にGETできる、ログインボーナス</li>
+						</ul>
+						<p>爆破ボーナスは、貴重なアイテムを何回も手に入れる貴重なチャンスだ！</p>
+						<p>確実に一発で仕留められるよう、狙いすまして敵ヒットマンを爆破せよ。</p>
+					</div></div></li><!--
+					--><li id="help008" style="margin-top: -130px"><div class="listInner"><div class="listInner2">
+						<h2><img src="{%$staticUrl%}/apps/dynamite/img/help/tit_list_8.png" alt="マイミクモードの切り替え"></h2>
+						<p>アイテム「マイミクシェルター」を使用すると、マイミク対戦モードに切り替えることが出来るぞ！<br />アイテム「宣戦布告」を使用することで、元の全体対戦モードに戻すことも出来る。</p>
+						<p>これらのアイテムは使用できる回数が決まっているので、戦略的に使ってみよう！</p>
+						<p>
+							※マイミク対戦モードとは、、<br />
+							ダイナマイトの設置・撤去・爆破が「マイミクのみ」で可能になります。<br />
+							つまり、マイミク以外のユーザーから攻撃を受けることがなくなります。<br />
+							ただし、マイミクが5人以上いなければ、マイミク対戦モードには出来ません。
+						</p>
+					</div></div></li><!--
+				--></ul>
+			</div></div><!--/.column-->
+
+		</div><!--/#mainColumn-->
+
+		<div id="subColumn">
+
+        {%include file="dynamite/common/adbox.phtml"%}
+		</div><!--/#subColumn-->
+
+	</div><!--/#wrap-->
+
+{%include file="dynamite/common/footer.phtml"%}

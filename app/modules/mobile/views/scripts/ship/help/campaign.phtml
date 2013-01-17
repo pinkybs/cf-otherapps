@@ -1,0 +1,94 @@
+<div id="help">
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+		<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		キャンペーン詳細情報<br />
+		<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+	</div><!--/.headline-->
+	<div class="content">
+		<div class="section">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#9e623a;">★景品</span><br />
+			<div style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			ダイヤモンド 2つ<br />
+			※ｱﾌﾟﾘ内でご利用いただけるﾃﾞｼﾞﾀﾙｱｲﾃﾑとなります<br />
+		</div><!--/.section-->
+		<div class="section">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#9e623a;">★対象</span><br />
+			<div style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			1/25(月)12:00までに次の海賊日記を<span style="color:#cc0000;">[全体に公開]</span>で投稿した方<br />
+			※1/22(金)以前にご投稿いただいた方も対象に含まれます<br />
+			※<span style="color:#cc0000;">ｱﾌﾟﾘの名前とURLさえ含まれていればﾌﾟﾚｾﾞﾝﾄ対象</span>となります<br />
+			※<span style="color:#cc0000;">検索結果に含まれない場合はﾌﾟﾚｾﾞﾝﾄ対象外</span>となりますのでご注意ください<br />
+		</div><!--/.section-->
+		<div class="section">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#9e623a;">★期間</span><br />
+			<div style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			1/25(月)12:00まで<br />
+			※お1人様2ｺまで付与!<br />
+		</div><!--/.section-->
+		<div class="section">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#9e623a;">★ﾌﾟﾚｾﾞﾝﾄ付与ﾀｲﾐﾝｸﾞ</span><br />
+			<div style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<span style="color:#9e623a;">1/26(火)予定</span><br />
+			※応募状況により､1-2日遅れることもあります｡<br />
+			※当選は付与をもって代えさせていただきます｡<br />
+			※付与された旨は特に通知されませんので予めご了承ください<br />
+		</div><!--/.section-->
+
+		<div style="color:#9e623a;text-align:center;">
+			<br />
+			そのまま投稿でもOK!<br />
+			このﾁｬﾝｽをお見逃しなく!<br />
+			↓↓↓↓↓↓↓↓<br />
+		</div>
+
+		<div class="viral">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			{% if $ua==2 %}
+				{%php%}
+					$diary_title = "【よこどりﾊﾟｲﾚｰﾂ】大海賊時代の幕開けだっ!";
+					$diary_body  = "参加ﾏｲﾐｸが多いほど燃える海賊ｱﾌﾟﾘ!\nhttp://mixi.jp/view_appli.pl?id=13651\n↑今すぐﾓﾊﾞｲﾙで\n\n負ける気がしない!";
+					$searchword  = "よこどりパイレーツ";
+				{%/php%}
+			{% else %}
+				{%php%}
+					$diary_title = "【よこどりﾊﾟｲﾚｰﾂ】大海賊時代の幕開けだっ!";
+					$diary_body  = "ついに始まる、世界を震撼させる大海賊戦争!!参加ﾏｲﾐｸが多いほど、熱い闘いが待っている!!\n\n海賊王は俺だっ!!海賊ｱﾌﾟﾘで待ってるぜ!\nhttp://mixi.jp/view_appli.pl?id=13651（携帯専用）\nhttp://communityfactory.com/img/qr.gif（QR）\n\n負ける気がしない!";
+					$searchword  = "よこどりパイレーツ";
+				{%/php%}
+			{% /if %}
+			<div class="content">
+				<table width="220" cellpadding="3" cellspacing="1" border="0" align="center" style="background:#9e623a;">
+					<tr>
+						<td style="background:#ffeedd;text-align:center;"><div style="{% if $ua==1 %}font-size:x-small;{%/if%}">
+							<img src="{%$staticUrl%}/apps/ship/img/campaign.gif" width="200" height="53" /><br />
+							<span style="color:#cd424a;">1/25 12:00までの特別企画!</span><br />
+							海賊日記を投稿するだけで<br />
+							ダイヤ2つをプレゼント!<br />
+							<form method="get" action="http://m.mixi.jp/add_diary.pl">
+								<input type="hidden" name="diary_title" value="{%php%}echo $diary_title;{%/php%}" />
+								<input type="hidden" name="diary_body" value="{%php%}echo $diary_body;{%/php%}" />
+								<input type="submit" value=" {%if $ua==1%}{% emoji code="F9BE" %}{%/if%}海賊日記を書く " style="color:#cd424a;" /><br />
+							</form>
+							</div></td>
+					</tr>
+				</table>
+			</div><!--/.content-->
+		</div><!--/.viral-->
+
+
+		<div class="nomenuAlert">
+			<br />
+			直前のﾍﾟｰｼﾞは{% emoji code="F8E9" %}の<span style="color:#cd424a;">[戻るﾎﾞﾀﾝ]</span>でお戻りください<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		</div><!--/.nomenuAlert-->
+	</div><!--/.content-->
+</div><!--/#help-->

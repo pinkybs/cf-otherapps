@@ -1,0 +1,241 @@
+﻿{%include file="slave/common/header.phtml"%}
+
+<body id="home">
+<div id="continer">
+	{%include file="slave/common/hdr.phtml"%}
+	<script type="text/javascript">
+		$j('#gNavHome').addClass('active');
+	</script>
+
+	<div id="profColumn">
+		<div id="profBox" class="box">
+			<p class="comment">{%if $slaveInfo.balloon %}{%$slaveInfo.balloon|escape%}{% else %}誰か私を買って下さい{% /if %}<span></span></p>
+			<p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$slaveInfo.uid%}" style="background-image: url({%$myPic|replace:"s.jpg":".jpg"|replace:"76.gif":"180.gif"%});">{%$myName%}</a></p>
+			<h2><span>{%$myName%} 改め </span>{%if $slaveInfo.nickname %}{%$slaveInfo.nickname|escape%}{% else %}{%$myName%}ちゃん{% /if %}</h2>
+
+			<p class="price">市場価値：&yen;{%$slaveInfo.fomat_price%}（{%$slaveInfo.rank_price%}位）</p>
+			<p class="job">職業：{%$slaveInfo.work_category|escape%}</p>
+			<p class="money">所持金：&yen;{%$slaveInfo.fomat_cash%}（{%$slaveInfo.rank_cash%}位）</p>
+
+			<div id="owner">
+			{% if $isFreedom %}
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_owner.png" width="135" height="23" alt="ご主人様" /></h2>
+				<p class="pic"><a style="background-image: url({%$staticUrl%}/apps/slave/img/dummy/pic_s_13.png);">永遠のご主人様</a></p>
+				<p class="name"><span><a>ドレイちゃん伯爵</a> 改め </span>永遠のご主人様</p>
+				<p class="price">市場価値：&yen;999,999</p>
+				<p class="money">所持金：&yen;450,000</p>
+			{% else %}
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_owner.png" width="135" height="23" alt="ご主人様" /></h2>
+				<p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$masterInfo.uid%}" style="background-image: url({%$msPic%});">{%$msName%}</a></p>
+				<p class="name"><span><a href="{%$baseUrl%}/slave/profile?uid={%$masterInfo.uid%}">{%$msName%}</a> 改め </span>{%if $masterInfo.nickname %}{%$masterInfo.nickname|escape%}{% else %}{%$msName%}ちゃん{% /if %}</p>
+				<p class="price">価格：&yen;{%$masterInfo.fomat_price%}</p>
+				<p class="job">職業：{%$masterInfo.work_category|escape%}</p>
+				<p class="money">所持金：&yen;{%$masterInfo.fomat_cash%}</p>
+			{% /if %}
+			</div><!--/#owner-->
+
+			{% if $isFreedom || $isAlreadyInRev %}
+			<p id="btnRevolution" class="btn disable"><a>革命を起こす</a></p>
+			{% else %}
+			<p id="btnRevolution" class="btn"><a href="{%$baseUrl%}/slave/revolute">革命を起こす</a></p>
+			{% /if %}
+		</div><!--/#profBox.box-->
+
+		<div id="giftBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_gift.png" width="116" height="20" alt="ギフトケース" /></h2>
+				<ul class="allowList" style="{% if not $cntGift or 1==$cntGift %}display:none;{% /if %}"><!--
+					--><li class="allowLeft"><a id="btnLeft" href="javascript:void(0);">左</a></li><!--
+					--><li class="allowRight"><a id="btnRight" href="javascript:void(0);">右</a></li><!--
+				--></ul>
+			</div><!--/.hdr-->
+
+			{% if $cntGift %}
+
+			<div id="divgift">
+				<p class="pic" style="cursor:default;"><span style="background-image:url({% if $lstGift.gift_big_pic %}{%$lstGift.gift_big_pic%}{% else %}{%$staticUrl%}/apps/slave/img/dummy/pic_n_s.png{% /if %})">{%$lstGift.name|escape%}</span></p>
+				<p class="name">{%$lstGift.name|escape%}</p>
+				<p class="price">価格：&yen;{%$lstGift.format_price%}</p>
+				<ul class="action box"><!--
+					--><li><a href="{%$baseUrl%}/slave/presentgift?id={%$lstGift.id%}">プレゼントする</a></li><!--
+					--><li><a href="{%$baseUrl%}/slave/sellgift?id={%$lstGift.id%}">ギフト屋に売る</a></li><!--
+				--></ul><!--/.action.box-->
+			</div>
+
+			{% else %}
+
+			<p class="pic homeNull"><a href="{%$baseUrl%}/slave/giftshop?more=1" style="background-image:url({%$staticUrl%}/apps/slave/img/dummy/pic_null1.png)"></a></p>
+			<div id="btnRakuten" class="homeNull"><a href="{%$baseUrl%}/slave/giftshop?more=1">ギフト屋を見る</a></div>
+
+			{% /if %}
+			<input type="hidden" id="pageIndex" value="1" />
+			<input type="hidden" id="hidCntGift" value="{%$cntGift%}" />
+		</div><!--/#giftBox.box-->
+
+	</div><!--/#profColumn-->
+
+
+	<div id="mainColumn">
+
+		<div id="newsBox" class="box">
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_news.png" width="159" height="19" alt="わるのりニュース" /></h2>
+				<ul class="tabNews"><!--
+					--><li id="tabOwn" class="active"><a id="btnOwn" href="javascript:void(0);">アナタ関連</a></li><!--
+					--><li id="tabMyMixi"><a id="btnMyMixi" href="javascript:void(0);">マイミク関連</a></li><!--
+				--></ul>
+			</div><!--/.hdr-->
+
+			<div id="newsFeed" {% if 5>$cntFeed %}class="homeNull"{% /if %}>
+				<ul><!--
+    			{% foreach name=feedlist from=$lstFeed item=fdata %}
+					--><li>
+					   <p class="pic"><a class="noLink" style="background-image:url({%$fdata.pic_url%});"></a></p>
+					   <p class="date">[{%$fdata.format_time%}]</p>
+					   <p class="action">{%$fdata.message%}</p>
+					</li><!--
+    			{% /foreach %}
+    			--></ul>
+			</div><!--/#newsFeed-->
+			<input type="hidden" id="hidUid" value="{%$uid%}" />
+		</div><!--/#newsBox.box-->
+
+
+		<div id="doreiActionBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_dorei.png" width="190" height="19" alt="飼育中のドレイちゃん" /></h2>
+			</div><!--/.hdr-->
+
+			{% if $lstSlaves %}
+			<ul><!--
+			{% foreach name=slavelist from=$lstSlaves item=sdata %}
+			--><li>
+					<p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$sdata.uid%}" style="background-image:url({%$sdata.thumbnailUrl%})">{%$sdata.displayName%}</a>{% if 1==$sdata.is_in_revolution %}<img src="{%$staticUrl%}/apps/slave/img/content/icn_warning.gif" width="16" height="16" alt="" />{% /if %}</p>
+					<p class="name"><span><a href="{%$baseUrl%}/slave/profile?uid={%$sdata.uid%}">{%$sdata.displayName%}</a> 改め </span>{%if $sdata.nickname %}{%$sdata.nickname|escape%}{% else %}{%$sdata.displayName%}ちゃん{% /if %}</p>
+					<p class="comment">{% if $sdata.balloon %}{%$sdata.balloon|escape%}{% else %}誰か私を買って下さい{% /if %}　<span></span></p>
+					<ul><!--
+						--><li class="price">市場価値：&yen;{%$sdata.format_price%}</li><!--
+						--><li class="job">職業：{%$sdata.work_category|escape%}</li><!--
+					--></ul>
+					<ul class="actionList"><!--
+						--><li class="actionName"><a href="{%$baseUrl%}/slave/setnickname?uid={%$sdata.uid%}">ニックネームを編集</a></li><!--
+						--><li class="actionComment"><a href="{%$baseUrl%}/slave/setballoon?uid={%$sdata.uid%}">フキダシを編集</a></li><!--
+						{% if $mineSlaveCnt < 2 %}--><li class="actionPoke"><a class="disable">からかう</a></li><!--
+						{% else %}--><li class="actionPoke"><a href="{%$baseUrl%}/slave/tease?uid={%$sdata.uid%}">からかう</a></li><!--
+						{% /if %}
+						--><li class="actionWork"><a href="{%$baseUrl%}/slave/work?uid={%$sdata.uid%}">強制労働させる</a></li><!--
+						{% if $mineGiftCnt < 1 %}}--><li class="actionGift"><a class="disable">ギフトを贈る</a></li><!--
+						{% else %}--><li class="actionGift"><a href="{%$baseUrl%}/slave/presentgift?uid={%$sdata.uid%}">ギフトを贈る</a></li><!--
+						{% /if %}
+						--><li class="actionDelete"><a href="{%$baseUrl%}/slave/sellslave?uid={%$sdata.uid%}">ポイ捨てする</a></li><!--
+					--></ul><!--/.atctionList-->
+				</li><!--
+			{% /foreach %}
+			--></ul>
+			{% else %}
+			<ul class="homeNull"><!--
+				--><li>
+					<p class="pic"><a style="background-image:url({%$staticUrl%}/apps/slave/img/dummy/pic_n_s.png)">?????</a></p>
+					<p class="name"><span>????? 改め </span>?????</p>
+					<p class="comment">誰か私を買って下さい。<span></span></p>
+					<ul><!--
+						--><li class="price">市場価値：&yen;??????</li><!--
+						--><li class="job">職業：??????</li><!--
+					--></ul>
+					<ul class="actionList"><!--
+						--><li class="actionName"><a>ニックネームを編集</a></li><!--
+						--><li class="actionComment"><a>フキダシを編集</a></li><!--
+						--><li class="actionPoke"><a>からかう</a></li><!--
+						--><li class="actionWork"><a>強制労働させる</a></li><!--
+						--><li class="actionGift"><a>ギフトを贈る</a></li><!--
+						--><li class="actionDelete"><a>ポイ捨てする</a></li><!--
+					--></ul><!--/.atctionList-->
+				</li><!--
+				--><li>
+					<p class="pic"><a style="background-image:url({%$staticUrl%}/apps/slave/img/dummy/pic_n_s.png)">?????</a></p>
+					<p class="name"><span>????? 改め </span>?????</p>
+					<p class="comment">誰か私を買って下さい。<span></span></p>
+					<ul><!--
+						--><li class="price">市場価値：&yen;??????</li><!--
+						--><li class="job">職業：??????</li><!--
+					--></ul>
+					<ul class="actionList"><!--
+						--><li class="actionName"><a>ニックネームを編集</a></li><!--
+						--><li class="actionComment"><a>フキダシを編集</a></li><!--
+						--><li class="actionPoke"><a>からかう</a></li><!--
+						--><li class="actionWork"><a>強制労働させる</a></li><!--
+						--><li class="actionGift"><a>ギフトを贈る</a></li><!--
+						--><li class="actionDelete"><a>ポイ捨てする</a></li><!--
+					--></ul><!--/.atctionList-->
+				</li><!--
+				--><li>
+					<p class="pic"><a style="background-image:url({%$staticUrl%}/apps/slave/img/dummy/pic_n_s.png)">?????</a></p>
+					<p class="name"><span>????? 改め </span>?????</p>
+					<p class="comment">誰か私を買って下さい。<span></span></p>
+					<ul><!--
+						--><li class="price">市場価値：&yen;??????</li><!--
+						--><li class="job">職業：??????</li><!--
+					--></ul>
+					<ul class="actionList"><!--
+						--><li class="actionName"><a>ニックネームを編集</a></li><!--
+						--><li class="actionComment"><a>フキダシを編集</a></li><!--
+						--><li class="actionPoke"><a>からかう</a></li><!--
+						--><li class="actionWork"><a>強制労働させる</a></li><!--
+						--><li class="actionGift"><a>ギフトを贈る</a></li><!--
+						--><li class="actionDelete"><a>ポイ捨てする</a></li><!--
+					--></ul><!--/.atctionList-->
+				</li><!--
+				--><li>
+					<p class="pic"><a style="background-image:url({%$staticUrl%}/apps/slave/img/dummy/pic_n_s.png)">?????</a></p>
+					<p class="name"><span>????? 改め </span>?????</p>
+					<p class="comment">誰か私を買って下さい。<span></span></p>
+					<ul><!--
+						--><li class="price">市場価値：&yen;??????</li><!--
+						--><li class="job">職業：??????</li><!--
+					--></ul>
+					<ul class="actionList"><!--
+						--><li class="actionName"><a>ニックネームを編集</a></li><!--
+						--><li class="actionComment"><a>フキダシを編集</a></li><!--
+						--><li class="actionPoke"><a>からかう</a></li><!--
+						--><li class="actionWork"><a>強制労働させる</a></li><!--
+						--><li class="actionGift"><a>ギフトを贈る</a></li><!--
+						--><li class="actionDelete"><a>ポイ捨てする</a></li><!--
+					--></ul><!--/.atctionList-->
+				</li><!--
+			--></ul>
+			{% /if %}
+		</div><!--/#doreiActionBox.box-->
+		<input type="hidden" id="activity" value="{%$activity%}" />
+		<input type="hidden" id="activityNew" value="{%$activityNew%}" />
+		<input type="hidden" id="activityPic" value="{%$activityPic%}" />
+	</div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		{%include file="slave/common/adbox.phtml"%}
+		{%include file="slave/common/logbox.phtml"%}
+		{%include file="slave/common/popularbox.phtml"%}
+	</div><!--/#subColumn-->
+
+	{% if $isTodayFirstLogin %}
+	<div style="clear: both;" id="uploadBox" class="box">
+		<div id="uploadWrapper">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_visitGift.png" width="166" height="23" alt="ビジターギフト" /></h2>
+			</div><!--/.hdr-->
+
+			<div id="uploadBody">
+                <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="480" height="245" id="card" align="middle">
+                <param name="allowScriptAccess" value="always" />
+                <param name="allowFullScreen" value="false" />
+                <param name="movie" value="{%$staticUrl%}/apps/slave/swf/card.swf?prm={%$flashPrm%}" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />
+                <embed src="{%$staticUrl%}/apps/slave/swf/card.swf?prm={%$flashPrm%}" quality="high" bgcolor="#ffffff" width="480" height="245" name="card" align="middle" allowScriptAccess="always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+                </object>
+			</div><!--/#uploadBody-->
+		</div><!--/.uploadWrapper-->
+	</div><!--/.uploadBox.box-->
+	<div id="overlay" style="width:970px;height:1510px;background-color:#fff;position:absolute;left:0;top:0;opacity:0.32;filter:alpha(opacity=75);z-index:1000;"></div>
+	{% /if %}
+
+	<script type="text/javascript" src="{%$staticUrl%}/apps/slave/js/home.js?{%$version.js%}"></script>
+{%include file="slave/common/footer.phtml"%}

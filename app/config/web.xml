@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app>
+	<version>
+		<js>01:20090209</js>
+		<css>01:20090209</css>
+		<img>01:20091104</img>
+	</version>
+	
+	<module>
+		<default>default/controllers</default>
+		<ajax>ajax/controllers</ajax>
+		<mobile>mobile/controllers</mobile>
+	</module>
+	
+	<rewriterouter>
+		<pc>
+			<routes>
+                <!-- scripteditor [-->
+				<scripteditorprofile>
+					<type>Zend_Controller_Router_Route_Regex</type>
+					<route>scripteditor/profile/uid/([1-9]+\d*)</route>
+					<defaults>
+						<controller>scripteditor</controller>
+						<action>profile</action>
+					</defaults>
+					<map>
+						<uid>1</uid>
+					</map>
+				</scripteditorprofile>
+                
+				<scripteditor>
+					<type>MyLib_Zend_Controller_Router_Route_Regex</type>
+					<route>scripteditor/([a-z_A-Z]+)/eid/([1-9]+\d*)</route>
+					<defaults>
+						<controller>scripteditor</controller>
+						<action>1</action>
+					</defaults>
+					<map>
+						<eid>2</eid>
+					</map>
+				</scripteditor>
+                <!--] scripteditor -->
+
+                <!-- linno [-->
+                <linnoenquire>
+                    <type>MyLib_Zend_Controller_Router_Route_Regex</type>
+                    <route>linno/([a-z_A-Z]+)/qid/([1-9]+\d*)</route>
+                    <defaults>
+                        <controller>linno</controller>
+                        <action>1</action>
+                    </defaults>
+                    <map>
+                        <qid>2</qid>
+                    </map>
+                </linnoenquire>
+                
+                <linnoevaluate>
+                    <type>MyLib_Zend_Controller_Router_Route_Regex</type>
+                    <route>linno/([a-z_A-Z]+)/eid/([1-9]+\d*)</route>
+                    <defaults>
+                        <controller>linno</controller>
+                        <action>1</action>
+                    </defaults>
+                    <map>
+                        <eid>2</eid>
+                    </map>
+                </linnoevaluate>
+                <!--] linno -->
+        <millionmindsprofile>
+					<type>Zend_Controller_Router_Route_Regex</type>
+					<route>millionminds/([1-9]+\d*)/profile</route>
+					<defaults>
+						<controller>millionminds</controller>
+						<action>profile</action>
+					</defaults>
+					<map>
+						<uid>1</uid>
+					</map>
+				</millionmindsprofile>      
+			</routes>
+		</pc>
+	</rewriterouter>
+</app>

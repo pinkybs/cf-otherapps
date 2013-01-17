@@ -1,0 +1,41 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="itemList">
+
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">{%$itemInfo.name%}を使用する</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%$itemInfo.name%}を使用しますか?<br />
+	</div><!--/.description-->
+
+	<div class="item" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/parking/mimg/items/{%$itemInfo.sid%}_m.gif" width="156" height="100" alt="" style="margin:2px 0;" />
+		<table width="220" cellpadding="2" cellspacing="1" border="0" align="center" style="background:#ddd;text-align:center;">
+			<tr>
+				<td style="background:#ffe;text-align:left;"><div style="font-size:x-small;">{%$itemInfo.introduce%}</div></td>
+			</tr>
+		</table>
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%if $itemInfo.sid==1%}<a href='{% "$baseUrl/mobile/parking/useitemfree"|mixiurl %}'>使用する</a>&nbsp;{%/if%}
+		{%if $itemInfo.sid==3%}<a href='{% "$baseUrl/mobile/parking/usebribery"|mixiurl %}'>使用する</a>&nbsp;{%/if%}
+		{%if $itemInfo.sid==5%}<a href='{% "$baseUrl/mobile/parking/useitembomb"|mixiurl %}'>使用する</a>&nbsp;{%/if%}
+		{%if $itemInfo.sid==6%}<a href='{% "$baseUrl/mobile/parking/usecheck"|mixiurl %}'>使用する</a>&nbsp;{%/if%}
+		{%if $itemInfo.sid==7%}<a href='{% "$baseUrl/mobile/parking/useinsurance"|mixiurl %}'>使用する</a>&nbsp;{%/if%}
+		{%if $itemInfo.sid==8%}<a href='{% "$baseUrl/mobile/parking/useevasion"|mixiurl %}'>使用する</a>&nbsp;{%/if%}
+		{%if $itemInfo.sid==9%}<a href='{% "$baseUrl/mobile/parking/useguard"|mixiurl %}'>使用する</a>&nbsp;{%/if%}
+		<a href='{% "$baseUrl/mobile/parking/item"|mixiurl %}'>ｷｬﾝｾﾙ</a><br />
+	</div><!--/.item-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/item"|mixiurl %}'>ｱｲﾃﾑ一覧にもどる</a><br />
+	</div><!--/.link-->
+
+</div><!--/#itemList-->
+
+{%include file="parking/common/footer.phtml"%}

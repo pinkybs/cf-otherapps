@@ -1,0 +1,172 @@
+{%include file="hotel/common/header.phtml"%}
+<style type="text/css">
+a:link{color:#a77809;}
+a:visited{color:#a77809;}
+*{color:#000000;font-size:x-small;font-size:5;}
+.icon{vertical-align: middle;}
+a img {border: none;}
+
+body {
+	background: #ffffff;
+}
+
+.hrYellow {
+	color:#fbf8c9;
+	border: 0;
+	background-color:#fbf8c9;
+	height:1px;
+	margin:0.3em 0;
+}
+
+.hrWhite {
+	color:#ffffff;
+	border: 0;
+	background-color:#ffffff;
+	height:1px;
+	margin:0.3em 0;
+}
+
+.owner {
+	background:#fbf8c9;
+}
+
+.sectionImg {
+	background:#dedcc6;
+}
+
+.gallery {
+	background:#fbf8c9;
+}
+
+.headlineFun {
+	background:#cf1226;
+	color:#ffffff;
+}
+
+.headlineBack {
+	background:#f6ddbc;
+}
+
+#itemConfirm {
+	background:#fbf8c9;
+}
+
+.sectionOne {
+	background:#fbf8c9;
+}
+
+.headlineTip {
+	background:#fdd89e;
+	color:#000000;
+}
+
+.toTop {
+	background-color:#ffffff;
+}
+
+#itemFinish {
+	background:#fbf8c9;
+}
+
+
+#constructionlist {
+	background-color:#fbf8c9;
+}
+
+.hrSp {
+	background-color:#fdd89e;
+	color:#fdd89e;
+	height:1px;
+	border:0px solid #fdd89e;
+	margin:0.3em 0;
+}
+
+.tdBg {
+	background-color:#d2d0bc;
+}
+
+.sectionList {
+	background:#fbf8c9;
+}
+
+
+#minifeed {
+	background:#fbf8c9;
+}
+</style>
+
+    <div id="profile">
+    	<hr class="hrWhite" size="1" />
+
+		{% if $msg %}
+		<div class="alert" style="background:#ffcccc;">
+			<hr style="color:#ffcccc;background-color:#ffcccc;height:1px;border:0px solid #ffcccc;margin:0.3em 0;" size="1" />
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td colspan="2" align="left" style="text-align:left;">
+						{%$msg|escape%}
+					</td>
+				</tr>
+			</table>
+			<hr style="color:#ffcccc;background-color:#ffcccc;height:1px;border:0px solid #ffcccc;margin:0.3em 0;" size="1" />
+		</div><!--/.alert-->
+		{% /if %}
+
+        <div class="owner" >
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td valign="top" width="44" align="center" style="width:44px;text-align:center;"><img src="{%$info.miniThumbnailUrl%}" style="margin:2px 0;" /></td>
+                    <td valign="top" style="padding-top:5px;">店長 {%$info.displayName%}さん<br /><!-- lv {%$info.level%}<br />所持金 ${%$info.format_money%}円 --></td>
+                </tr>
+            </table>
+        </div><!--/.owner-->
+
+        {% if $guideNo=="1" %}
+		 <div class="sectionImg">
+		 	ホテルの経営場所を選択してください。
+        	<div><img src="{%$staticUrl%}/apps/hotel/mobile/img/map.gif" /></div>
+			{% foreach from=$lstLoc item=ldata %}
+            <a href='{% "$baseUrl/mobile/hotel/guide?CF_loc=`$ldata.id`"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;">≫{%$ldata.name|escape%}≪</span></a><br />
+            {% /foreach %}
+        </div><!--/.section-->
+        {% /if %}
+
+		{% if $guideNo>1 %}
+
+		{% if $guideNo=="2" %}ゲームを登録してありがとうございました、100万円を差し上げます。<br />
+		赤い字の提示に従って、ホテルがすぐオープンできますよ。{% /if %}
+		{% if $guideNo=="5" %}ご開店おめでとうございます！！！<br />
+		お金を稼いで自分の経営帝国を作ろう！{% /if %}
+        <div class="sectionImg">
+        	<div><img src='{%$staticUrl%}/apps/hotel/mobile/img/{% if $guideNo=="2" %}frontB.gif{% elseif $guideNo=="3" %}restManage2.gif{% elseif $guideNo=="4" %}roomCare2.gif{% else %}smallBg.gif{% /if %}' /></div>
+            <div class="enemy" style="text-align:center;">
+            	{% if $guideNo=="2" %}
+                <a href='{% "$baseUrl/mobile/hotel/guide?CF_rec=1"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫受付を雇う!≪</span></a>
+                {% elseif $guideNo=="3" %}
+                <a href='{% "$baseUrl/mobile/hotel/guide?CF_res=1"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫レストラン担当を雇う!≪</span></a>
+                {% elseif $guideNo=="4" %}
+                <a href='{% "$baseUrl/mobile/hotel/guide?CF_room1=1"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫客室担当を雇う!≪</span></a>
+                {% else %}
+                <a href='{% "$baseUrl/mobile/hotel/profile"|mixiurl %}' style="color:#ff0000;"><span style="color:#ff0000;text-decoration:blink;">≫ゲームスタート!≪</span></a>
+                {% /if %}
+            </div><!--/.enemy-->
+        </div><!--/.section-->
+
+        <div class="gallery">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="120" align="center" style="padding-top:5px;width:120px;text-align:center;"><img src="{%$staticUrl%}/apps/hotel/mobile/img/boss3.gif" width="60" height="60" /><br /><span>店長</span></td>
+                    <td width="120" align="center" style="padding-top:5px;width:120px;text-align:center;"><img src="{%$staticUrl%}/apps/hotel/mobile/img/{% if $guideNo<=2 %}none.png{% else %}frontGirl.gif{% /if %}" width="60" height="60" /><br /><span>受付</span></td>
+                    <td style="padding-top:5px;color:#ffffff;"></td>
+                </tr>
+                <tr>
+                    <td valign="top" width="120" align="center" style="padding-top:5px;width:120px;text-align:center;"><img src="{%$staticUrl%}/apps/hotel/mobile/img/{% if $guideNo<=3 %}none.png{% else %}waiter4.gif{% /if %}" width="60" height="60" /><br /><span>レストラン担当</span></td>
+                    <td valign="top" width="120" align="center" style="width:120px;padding-top:5px;text-align:center;"><img src="{%$staticUrl%}/apps/hotel/mobile/img/{% if $guideNo<=4 %}none.png{% else %}girl2.gif{% /if %}" width="60" height="60" /><br /><span>客室担当</span></td>
+                    <td style="padding-top:5px;color:#ffffff;"></td>
+                </tr>
+            </table>
+        </div><!--/.section-->
+		{% /if %}
+
+    </div><!--/#profile-->
+{%include file="hotel/common/footer.phtml"%}

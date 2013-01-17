@@ -1,0 +1,28 @@
+{%include file="shopping/common/header.phtml"%}
+
+<body id="error">
+<div id="continer">
+	{%include file="shopping/common/hdr.phtml"%}
+
+	<div id="mainColumn">
+
+		<div id="errorBox" class="box">
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/shopping/img/content/tit_error.png" alt="ヘルプ" /></h2>
+			</div><!--/.hdr-->
+
+			<div class="message">プログラムエラーが発生しました。恐れ入りますが<a href="{%$baseUrl%}/shopping/home">ホーム</a>にお戻りください。</div>
+			<div class="pic"><img src="{%$staticUrl%}/apps/shopping/img/content/image_error.png" alt="恐れ入ります。" /></div>
+		</div><!--/#errorBox.box-->
+
+	</div><!--/#mainColumn-->
+
+<hr />
+
+	<div id="subColumn">
+		{%include file="shopping/common/adbox.phtml"%}
+		{%include file="shopping/common/profbox.phtml"%}
+		{%include file="shopping/common/wishbox.phtml"%}
+	</div><!--/#subColumn-->
+
+{%include file="shopping/common/footer.phtml"%}

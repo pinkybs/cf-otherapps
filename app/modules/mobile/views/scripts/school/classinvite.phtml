@@ -1,0 +1,89 @@
+{%if $step == 'start' %}
+
+	{%include file="school/common/header.phtml" headAd=1 %}
+	<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+		<div id="classInfo">
+			{%include file="school/common/headline.phtml"%}
+		</div><!--/#classInfo-->
+		<div id="classInvite">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<div class="headline" style="background:#ffdb33;">
+				同級生をこの授業に招待<br />
+				<div class="line" style="background:#ffffff;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+				ｱﾌﾟﾘ利用中の同級生<br />
+			</div><!--/#headline-->
+			{%if $pager.count %}
+				<div class="count">
+					{%$pager.count%}人中 {%$startNm%}-{%$endNm%}人	<span style="color:#777777;">{% emoji code="F99F"%}…ﾏｲﾐｸ</span><br />
+					<div class="line" style="background:#f6e99e;">
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" />
+					</div>
+				</div><!--/.count-->
+				<div class="list">
+					{% foreach from=$listFriend item=data key=key %}
+						<div class="section" style="background:#{% if ($key%2) == 0 %}fffddb{%else%}fcf5cc{%/if%};">
+							<table width="100%" cellpadding="0" cellspacing="0" border="0">
+								<tr>
+									<td style="width:44px;text-align:center;"><img src="{%$data.miniThumbnailUrl%}" /></td>
+									<td><div style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+											{%$data.displayName%}{% if $data.is_friend %}{% emoji code="F99F"%}{%/if%}<br />
+											<div style="text-align:right;">
+												{% if $data.is_In %}
+													<span style="color:#cc0000;">登録済</span>
+												{%else%}
+													<a href='{% "$baseUrl/mobile/school/classinvite?CF_fid=`$data.uid`&CF_cid=`$classInfo.cid`&CF_step=finish"|mixiurl %}'>招待する</a>
+												{%/if%}
+											</div>
+										</div></td>
+								</tr>
+							</table>
+						</div><!--/.section-->
+					{% /foreach %}
+				</div><!--/.list-->
+			{%/if%}
+				{%include file="school/common/pager.phtml"%}
+			<div class="headline" style="background:#ffdb33;">ｱﾌﾟﾘ未利用の同級生</div>
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				まだ｢みんなの時間割♪｣を利用していない同級生は<a href='{% "invite:classmate?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/school/invitefinish" %}'>ｺﾁﾗ</a>から招待してください｡<br />
+				<div class="line" style="background:#f6e99e;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			</div><!--/.description-->
+			<div class="footlink">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/class?CF_cid=`$classInfo.cid`"|mixiurl %}'>{%$classInfo.name|escape%}ﾄｯﾌﾟ</a><br />
+			</div><!--/.footlink-->
+		</div><!--/#classInvite-->
+
+		{%include file="school/common/menu.phtml"%}
+		{%include file="school/common/footer.phtml" footAd=1 %}
+
+{% elseif $step == 'finish' %}
+
+	{%include file="school/common/header.phtml" headAd=0 %}
+	<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+		<div id="classInfo">
+			{%include file="school/common/headline.phtml"%}
+		</div><!--/#classInfo-->
+		<div id="classInvite">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<div class="headline" style="background:#ffdb33;">
+					同級生をこの授業に招待<br />
+				<div class="line" style="background:#ffffff;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+					ｱﾌﾟﾘ利用中の同級生<br />
+			</div><!--/#headline-->
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				{% $message %}<br />
+			</div><!--/.description-->
+			{%include file="school/common/ad_complete.phtml"%}
+			<div class="footlink">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/classinvite?CF_cid=`$classInfo.cid`"|mixiurl %}'>続けて別の同級生を招待する</a><br />
+				<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/class?CF_cid=`$classInfo.cid`"|mixiurl %}'>{%$classInfo.name%}ﾄｯﾌﾟ</a><br />
+			</div><!--/.footlink-->
+		</div><!--/#classInvite-->
+
+		{%include file="school/common/menu.phtml"%}
+		{%include file="school/common/footer.phtml" footAd=0 %}
+
+{% /if %}

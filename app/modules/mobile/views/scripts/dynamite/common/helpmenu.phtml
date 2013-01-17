@@ -1,0 +1,71 @@
+    <div id="helpmenu">
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+        <div class="headline" style="background:#777777;color:#ffffff;">ヘルプメニュー</div>
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+        <div class="inner" style="color:#ff9933;">
+        {% if $parm == index %}{% emoji code="F9A0"%}<span>このｹﾞｰﾑの遊び方</span><br />{% else %}
+            {% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/dynamite/help"|mixiurl %}'>このｹﾞｰﾑの遊び方</a><br />
+        {% /if %}
+        {% if $parm == agit %}{% emoji code="F9A0"%}<span>ｱｼﾞﾄについて</span><br />{% else %}
+            {% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=agit"|mixiurl %}'>ｱｼﾞﾄについて</a><br />
+        {% /if %}
+        {% if $parm == set %}{% emoji code="F9A0"%}<span>ﾀﾞｲﾅﾏｲﾄの設置と爆破</span><br />{% else %}
+            {% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=set"|mixiurl %}'>ﾀﾞｲﾅﾏｲﾄの設置と爆破</a><br />
+        {% /if %}
+        {% if $parm == remove %}{% emoji code="F9A0"%}<span>ﾀﾞｲﾅﾏｲﾄの撤去</span><br />{% else %}
+            {% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=remove"|mixiurl %}'>ﾀﾞｲﾅﾏｲﾄの撤去</a><br />
+        {% /if %}
+        {% if $parm == charashop %}{% emoji code="F9A0"%}<span>ﾋｯﾄﾏﾝを雇う</span><br />{% else %}
+            {% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=charashop"|mixiurl %}'>ﾋｯﾄﾏﾝを雇う</a><br />
+        {% /if %}
+        {% if $parm == hitman %}{% emoji code="F9A0"%}<span>ﾋｯﾄﾏﾝの強さ</span><br />{% else %}
+            {% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=hitman"|mixiurl %}'>ﾋｯﾄﾏﾝの強さ</a><br />
+        {% /if %}
+        {% if $parm == item %}{% emoji code="F9A0"%}<span>ｱｲﾃﾑを手に入れるには?</span><br />{% else %}
+            {% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item"|mixiurl %}'>ｱｲﾃﾑを手に入れるには?</a><br />
+        {% /if %}
+        {% if $parm == heart %}{% emoji code="F9A0"%}<span>ﾋｯﾄﾏﾝの回復と蘇生</span><br />{% else %}
+            {% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=heart"|mixiurl %}'>ﾋｯﾄﾏﾝの回復と蘇生</a><br />
+        {% /if %}
+        {% if $parm == shelter %}{% emoji code="F9A0"%}<span>ﾏｲﾐｸﾓｰﾄﾞの切り替え</span><br />{% else %}
+            {% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=shelter"|mixiurl %}'>ﾏｲﾐｸﾓｰﾄﾞの切り替え</a><br />
+        {% /if %}
+        
+        {% emoji code="F9A0"%}<span>各ｱｲﾃﾑの効果</span><br />
+        
+        {% if $parm == item8 %}├<span>ﾏｲﾐｸｼｪﾙﾀｰ</span><br />{% else %}
+            ├<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item8"|mixiurl %}'>ﾏｲﾐｸｼｪﾙﾀｰ</a><br />
+        {% /if %}
+        {% if $parm == item9 %}├<span>宣戦布告</span><br />{% else %}
+            ├<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item9"|mixiurl %}'>宣戦布告</a><br />
+        {% /if %}
+        {% if $parm == item1 %}├<span>元気ﾄﾞﾘﾝｸ</span><br />{% else %}
+            ├<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item1"|mixiurl %}'>元気ﾄﾞﾘﾝｸ</a><br />
+        {% /if %}
+        {% if $parm == item2 %}├<span>元気ﾄﾞﾘﾝｸDX</span><br />{% else %}
+            ├<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item2"|mixiurl %}'>元気ﾄﾞﾘﾝｸDX</a><br />
+        {% /if %}
+        {% if $parm == item3 %}├<span>ﾐﾗｸﾙﾄﾞﾘﾝｸ</span><br />{% else %}
+            ├<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item3"|mixiurl %}'>ﾐﾗｸﾙﾄﾞﾘﾝｸ</a><br />
+        {% /if %}
+        {% if $parm == item6 %}├<span>復活の儀式</span><br />{% else %}
+            ├<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item6"|mixiurl %}'>復活の儀式</a><br />
+        {% /if %}
+        {% if $parm == item4 %}├<span>復活のｼｬﾜｰ</span><br />{% else %}
+            ├<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item4"|mixiurl %}'>復活のｼｬﾜｰ</a><br />
+        {% /if %}
+        {% if $parm == item5 %}├<span>ﾀﾞｲﾅﾏｲﾄほいほい</span><br />{% else %}
+            ├<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item5"|mixiurl %}'>ﾀﾞｲﾅﾏｲﾄほいほい</a><br />
+        {% /if %}
+        {% if $parm == item7 %}├<span>最終兵器</span><br />{% else %}
+            ├<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item7"|mixiurl %}'>最終兵器</a><br />
+        {% /if %}
+        {% if $parm == item10 %}└<span>神々の怒り</span><br />{% else %}
+            └<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=item10"|mixiurl %}'>神々の怒り</a><br />
+        {% /if %}
+        {% if $parm == other %}{% emoji code="F9A0"%}その他 Q&A<br />{% else %}
+            {% emoji code="F9A0"%}<a href='{% "$baseUrl/mobile/dynamite/help?CF_help=other"|mixiurl %}'>その他 Q&A</a><br />
+        {% /if %}
+        </div><!--/.inner-->
+    </div><!--/#helpmenu-->
+    

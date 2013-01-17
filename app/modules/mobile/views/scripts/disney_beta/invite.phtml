@@ -1,0 +1,72 @@
+{%include file="disney/common/header.phtml"%}		
+		
+	<div id="campain_dirly" style="font-size:x-small;background-color:#edd9ae;">
+	
+    	<div class="title" style="background-color:#3C3; text-align:center; color:#ffffff;" >
+			<img src="http://mm.mixi.net/img/dot0.gif" height="2"/><br />
+			マイミク招待キャンペーン<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="2"/><br />
+		</div><!--/#title-->
+				
+		<div class="campain_info" style="color:#630;text-align:center;">
+			<div class="campain_title1" style="text-align:center;">
+				<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+				{% disneyimg name="campain_bn2" style='width="100%"'%}<br />
+				<img src="http://mm.mixi.net/img/dot0.gif" height="5"/>
+			</div><!--/#campain_title1-->		
+			期間限定!!<br />
+			ﾏｲﾐｸを招待してｹﾞｰﾑﾁｹｯﾄ<br />
+			2枚GET!!<br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+			<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/disney/index" %}'>{% disneyimg name="campain_btn2" style='width="69%"'%}</a><br />
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+			<div style="text-align:center;">↓詳細はこちら↓</div>
+			<img src="http://mm.mixi.net/img/dot0.gif" height="3"/><br />
+		</div><!--/#campain_info-->
+		
+		<div class="get_gameticket">
+			<div class="title" style="background-color:#3C3; text-align:center; color:#ffffff;" >
+				<img src="http://mm.mixi.net/img/dot0.gif" height="2"/><br />
+				キャンペーン概要<br />
+				<img src="http://mm.mixi.net/img/dot0.gif" height="2"/><br />
+			</div><!--/#title-->
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+			
+			<div class="get_ticket_info" style="color:#630;">
+				期間限定でﾏｲﾐｸを招待すると、<span style="color:#F00;">ｹﾞｰﾑﾁｹｯﾄが2枚</span>もらえるよ。
+				詳しくは、下記を読んでね。<br />
+				<br />
+				<span style="color:#3C3;">{% emoji code="F99F"%}条件{% emoji code="F99F"%}</span><br />
+				まだ､<span style="color:#F06;font-size:small;">一度</span>も当ｱﾌﾟﾘに登録した事がないﾏｲﾐｸを招待して､そのﾏｲﾐｸが登録してくれた場合に付与いたします。<br />
+				<span style="color:#F06;">※ﾏｲﾐｸが自分の招待に応じない場合は､ﾌﾟﾚｾﾞﾝﾄの対象外になります｡</span><br />
+				<br />
+				<span style="color:#3C3;">{% emoji code="F8E6"%}ﾌﾟﾚｾﾞﾝﾄ内容{% emoji code="F8E6"%}</span><br />
+				ｹﾞｰﾑﾁｹｯﾄ2枚(招待した方、された方ともに)<br />
+				<br />
+				<span style="color:#3C3;">{% emoji code="F9A0"%}応募回数{% emoji code="F9A0"%}</span><br />
+				期間中であれば何度でも可能<br />
+				<br />						
+				<span style="color:#3C3;">{% emoji code="F9A0"%}ｷｬﾝﾍﾟｰﾝ期間{% emoji code="F9A0"%}</span><br />
+				3月11日15:00～3月23日15:00<br />
+				<br />
+				
+				<span style="color:#3C3;">{% emoji code="F8E6"%}ﾌﾟﾚｾﾞﾝﾄ付与時期{% emoji code="F8E6"%}</span><br />
+				招待したﾏｲﾐｸが招待に応じた際に､その<span style="color:#F06;font-size:small;">ﾏｲﾐｸとあなた</span>に付与されます｡<br />
+				<span style="color:#F06;">※付与された旨は､通知されません｡のりものﾙｰﾚｯﾄのﾍﾟｰｼﾞでﾁｹｯﾄ追加をご確認ください。<br />
+				※付与の有無に関する､お問い合わせには､応じられません｡</span><br />
+			</div><!--/#get_ticket_info-->
+			
+			<div class="dirly_btn" style="text-align:center;">
+				<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+				<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/disney/index" %}'>{% disneyimg name="campain_btn2" style='width="69%"'%}</a><br />
+			</div><!--/#dirly_btn-->
+			{% disneyimg name="dotline_fff5f5_s" style='width="100%"'%}
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />			
+			<span style="color:#630;>
+			<blink>同時実施中!!</blink><br />
+			日記投稿でｹﾞｰﾑﾁｹｯﾄGET!</span><br />
+			<div style="text-align:right;">≫<a href='{% "$baseUrl/mobile/disney/diary"|mixiurl %}'>詳しくは、こちら</a></div>
+			<img src="http://mm.mixi.net/img/dot0.gif" height="5"/><br />
+		</div><!--/#get_gameticket-->
+        
+{%include file="disney/common/footer.phtml"%}

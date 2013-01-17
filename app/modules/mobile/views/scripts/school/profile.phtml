@@ -1,0 +1,105 @@
+{%include file="school/common/header.phtml" bgColor=1 headAd=1 %}
+	<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+		<div id="wrapper" style="background:#5ac5ff;color:#003366;">
+			<div id="bgImage" style="text-align:center;">
+				<img src="{%$staticUrl%}/apps/school/mobile/img/sky.gif" width="240" height="25" /><br />
+			</div><!--/#bgImage-->
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<div class="headline" style="background:#3c88e5;color:#ffffff;">{%$profileInfo.displayName%}ｻﾝの時間割</div>
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<div id="profileMenu">
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td style="width:80px;text-align:center;vertical-allign:top;"><img src="{%$profileInfo.thumbnailUrl%}" /></td>
+						<td style="vertical-align:top;"><div style="color:#003366;{% if $ua==1 %}font-size:x-small;{% /if %}">
+							{%$profileInfo.displayName%}<br />
+							<span style="color:#ffff66;">★</span><span style="color:#a35625;">{%$profileInfo.star_count%}</span><span style="color:#ffff66;">★</span><br />
+							{% if $profileSchedule %}{%emoji code="F9E3"%}<a href='{% if $profileSchedule %}{% "$baseUrl/mobile/school/sflash?CF_uid=`$profileInfo.uid`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$mineInfo.uid`&rand=`$rand`"|mobile_flashurl %}{% else %}{% "$baseUrl/mobile/school/home"|mixiurl %}{% /if %}' style="color:#003366;"><span style="color:#003366;">時間割を見る</span></a><br />{% /if %}
+							{%emoji code="F8D7"%}<a href='{% "$baseUrl/mobile/school/enquiryprofilelist?CF_uid=`$profileInfo.uid`"|mixiurl %}' style="color:#003366;"><span style="color:#003366;">教えて!ﾌﾟﾛﾌ({%$cntProfileEnquiry%})</span></a><br />
+							{%*
+							{%emoji code="F8F9"%}<a href='{% if $isAshiatoUser %}/{%$boardAppId%}/?guid=ON{% else %}#lnkinviteahiato{% /if %}' style="color:#003366;"><span style="color:#003366;">あしあと帳({%$cntAshiato%})</span></a><br />
+							*%}
+							{%emoji code="F8F9"%}<a href="#boardBlock" style="color:#003366;"><span style="color:#003366;">あしあと帳({%$cntAshiato%})</span></a><br />
+							</div></td>
+					</tr>
+				</table>
+			</div><!--/#profileMenu-->
+			<div id="sub" style="background:#fcf5cc;">
+				<div id="schedule" style="background:#c5d686;color:#262713;">
+					<div id="keyvisual" style="text-align:center;">
+						<img src="{%$staticUrl%}/apps/school/mobile/img/school.gif" width="240" height="62" /><br />
+					</div><!--/#keyvisual-->
+					<a id="scheduleBlock" name="scheduleBlock"></a>
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					<div class="headline" style="text-align:center;">〓{%$scheduleTitle%}〓</div>
+					<table width="228" cellpadding="2" cellspacing="3" border="0" align="center" style="background:#a35625;text-align:center;">
+						<tr>
+							<td style="background:#262713;text-align:left;"><div style="color:#ffffff;{% if $ua==1 %}font-size:x-small;{% /if %}">
+								{% if $profileSchedule %}
+									{% foreach name=timepartlist from=$profileSchedule item=sdata key=key %}
+										<div class="section">
+											<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="2" /><br />
+											{%$sdata.part%}限:{% if $sdata.cid>0 %}{% if $isSameSchool %}<a href='{% if 1==$sdata.is_added %}{% "$baseUrl/mobile/school/class?CF_cid=`$sdata.cid`"|mixiurl %}{% else %}{% "$baseUrl/mobile/school/scheduleaddconfirm?CF_action=profile&CF_cid=`$sdata.cid`&CF_wday=`$sdata.wday`&CF_part=`$sdata.part`&CF_fid=`$profileInfo.uid`"|mixiurl %}{% /if %}' style="color:#ffffff;"><span style="color:#ffffff;">{%$sdata.c_name|escape%}</span></a>{% else %}<span style="color:#ffffff;">{%$sdata.c_name|escape%}</span>{% /if %}({%$sdata.member_count|escape%}){% else %}{%$sdata.c_name|escape%}{% /if %}<br />
+											<div style="text-align:right;">{%$sdata.start_h%}:{%$sdata.start_m%}～{%$sdata.end_h%}:{%$sdata.end_m%}</div>
+											<div class="line" style="background:#3e4022;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+										</div><!--/.section-->
+									{% /foreach %}
+								{% else %}
+									{% if $isAllowView %}
+										<div class="null">{%$profileInfo.displayName%}さんの時間割は未編集です｡</div>
+									{% else %}
+										<div class="null">{%$profileInfo.displayName%}さんの時間割は非公開となっています｡</div>
+									{% /if %}
+								{% /if %}
+								</div></td>
+						</tr>
+					</table>
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				</div><!--/#schedule-->
+				<div id="recentBoard">
+					<a id="boardBlock" name="boardBlock"></a>
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				{% if $isAshiatoUser %}
+					{% if $listAshiato %}
+					<div class="headline" style="background:#ff9933;">あしあと帳({%$cntAshiato%})</div>
+					<div class="list">
+					{% foreach name=ashiatolist from=$listAshiato item=tdata key=key %}
+						<div class="section" style="background:{% if $key%2==0 %}#fffddb{% else %}#fcf5cc{% /if %};">
+							<span style="color:#a35625;">[{%$tdata.format_time%}]</span>{%$tdata.displayName%}<br />
+							{% if $tdata.type==0 %}
+							{%$tdata.content|truncatejp:80:"…"|escape|unescape_emoji%}<br />
+							{% else %}
+							<div class="paint" style="text-align:center;"><img src="{%$tdata.pic_url%}" width="228" height="54" /></div>
+							{% /if %}
+						</div><!--/.section-->
+					{% /foreach %}
+					</div><!--/.list-->
+					<div class="footlink" style="text-align:right;">
+						{%*<span style="color:#f58320;">⇒</span><a href='/{%$boardAppId%}/?guid=ON'>もっと見る</a> *%}<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/ashiatoadd?CF_uid=`$profileInfo.uid`"|mixiurl %}'>ｺﾒﾝﾄする</a><br />
+					</div><!--/.footlink-->
+					{% else %}
+					<div class="headline" style="background:#ff9933;">あしあと帳ｺﾒﾝﾄ最新書き込み</div>
+					<div class="description">
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+						まだ何もありません｡<br />
+					</div><!--/.description-->
+					<div class="footlink" style="text-align:right;">
+						<span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/ashiatoadd?CF_uid=`$profileInfo.uid`"|mixiurl %}'>ｺﾒﾝﾄする</a><br />
+					</div><!--/.footlink-->
+					{% /if %}
+				{% else %}
+					<div class="headline" style="background:#ff9933;">あしあと帳ｺﾒﾝﾄ最新書き込み</div>
+					<div class="description">
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+						{%$profileInfo.displayName%}さんは､まだあしあと帳ｱﾌﾟﾘを利用していません｡<br />
+					</div><!--/.description-->
+					<div class="recommendlink" style="color:#258fb8;text-align:center;">
+						≫<a name="lnkinviteahiato" href='{% "$baseUrl/mobile/school/ashiatoinvite?CF_uid=`$profileInfo.uid`"|mixiurl %}'>あしあと帳ｱﾌﾟﾘをｵｽｽﾒ♪</a>≪
+					</div><!--/.recommendlink-->
+				{% /if %}
+				</div><!--/#recentBoard-->
+				{%include file="school/common/menu.phtml"%}
+			</div><!--/#sub-->
+		</div><!--/#wrapper-->
+	</div><!--/#container-->
+{%include file="school/common/footer.phtml" footAd=1 %}

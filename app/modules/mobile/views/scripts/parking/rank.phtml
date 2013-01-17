@@ -1,0 +1,97 @@
+{%include file="parking/common/header.phtml"%}
+
+<div id="miniFeed">
+	<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="5" /><br />
+
+	<div class="headline" style="background:#cd424a;">
+		<span style="color:#fff;">{%if $type2==1%}総資産ランキング{%else%}車資産ランキング{%/if%}</span><br />
+	</div><!--/.headline-->
+
+	<div class="description">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%if $type1==1%}
+			{%if $friendCount<2%}
+				{%$rankCount%}人中 {%$start%}-{%$rankCount%}位<br />
+			{%else%}
+				{%$rankCount%}人中 {%$start%}-{%$end%}位<br />
+			{%/if%}
+		{%else%}
+			{%$rankCount%}人中 {%$start%}-{%$end%}位<br />
+		{%/if%}
+		<div style="text-align:right;">
+			{%if $type1==1%}
+				<span style="color:#999;">|</span><a href='{% "$baseUrl/mobile/parking/rank?parking_tp1=2&parking_tp2=$type2"|mixiurl %}'>ﾐｸｼｨ全体</a>|ﾏｲﾐｸｼｨ内<br />
+			{%else%}
+				ﾐｸｼｨ全体<span style="color:#999;">|</span><a href='{% "$baseUrl/mobile/parking/rank?parking_tp1=1&parking_tp2=$type2"|mixiurl %}'>ﾏｲﾐｸｼｨ内</a><br />
+			{%/if%}
+		</div>
+	</div><!--/.description-->
+
+	<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+	{%foreach from=$rankInfo item=rank key=key %}
+		<div class="section" {%if ($key%2)==0 %}style="background:#fee;"{%else%}style="background:#ffe;"{%/if%}>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="70" style="width:70px;text-align:center;"><img src="{%$rank.thumbnailUrl%}" width="60" height="60" /></td>
+					<td><div style="font-size:x-small;">
+						{%if $uid==$rank.uid%}
+							<span style="color:#c00;">
+								{%if $type1==1%}
+									{%if $friendCount<2%}
+										〓{%$key+1%}位〓
+									{%else%}
+										〓{%$key+$start%}位〓
+									{%/if%}
+								{%else%}
+									〓{%$key+$start%}位〓
+								{%/if%}
+							</span><br />
+							<a href='{% "$baseUrl/mobile/parking/start?opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&parking_rand=$rand" | mobile_flashurl %}'>{%$rank.displayName%}</a><br />
+						{%else%}
+							{%if $type1==1%}
+								{%if $friendCount<2%}
+									<span style="color:#999;">〓</span>{%$key+1%}位<span style="color:#999;">〓</span><br/>
+								{%else%}
+									<span style="color:#999;">〓</span>{%$key+$start%}位<span style="color:#999;">〓</span><br />
+								{%/if%}
+							{%else%}
+								<span style="color:#999;">〓</span>{%$key+$start%}位<span style="color:#999;">〓</span><br/>
+							{%/if%}
+							<a href='{% "$baseUrl/mobile/parking/start?opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&parking_pid=`$rank.uid`&parking_rand=$rand"|mobile_flashurl %}'>{%$rank.displayName%}</a><br />
+						{%/if%}
+						<div style="text-align:right;">¥{%$rank.ass|outputdollars%}&nbsp;</div>
+					</div></td>
+				</tr>
+			</table>
+			<div style="background:#fcc;text-align:center;"><img src="{%$staticUrl%}/apps/parking/mimg/dot.gif" width="228" height="1" /></div>
+		</div><!--/.section-->
+	{%/foreach%}
+
+	<div class="pager" style="text-align:center;">
+		{% if $rankCount > 5 %}
+			{% if $start == 1 %}
+				<span style="color:#color:#777;">&lt;&lt;[*]前へ</span>
+			{% else %}
+				&lt;&lt;[*]<a href='{% "$baseUrl/mobile/parking/rank?parking_tp1=$type1&parking_tp2=$type2&parking_st=$preStart&parking_ed=$preEnd"|mixiurl %}' accesskey="*">前へ</a>
+			{% /if %}
+			({% $pageindex %})
+			{% if $end == $rankCount%}
+				次へ[#]&gt;&gt;<br />
+			{% else %}
+				<a href='{% "$baseUrl/mobile/parking/rank?parking_tp1=$type1&parking_tp2=$type2&parking_st=$nextStart&parking_ed=$nextEnd"|mixiurl %}' accesskey="#">次へ</a>[#]&gt;&gt;<br />
+			{% /if %}
+		{% /if %}
+	</div><!--/.pager-->
+
+	<div class="link">
+		<img src="{%$staticUrl%}/apps/parking/mimg/spacer.gif" width="1" height="2" /><br />
+		{%if $type2==1%}
+			<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/rank?parking_tp1=$type1&parking_tp2=2"|mixiurl %}'>車資産ランキング</a><br />
+		{%else%}
+			<span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/parking/rank?parking_tp1=$type1"|mixiurl %}'>総資産ランキング</a><br />
+		{%/if%}
+	</div><!--/.link-->
+
+</div><!--/#miniFeed-->
+
+{%include file="parking/common/footer.phtml"%}

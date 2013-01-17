@@ -1,0 +1,45 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+	<ul id="nav">
+		<li><a href="{%$baseUrl%}/manager/listapp">アプリケーション一覧</a></li>
+		{% if $isSuperUser %}
+		<li><a href="{%$baseUrl%}/manager/manageuser">ユーザーID管理</a></li>
+		{% /if %}
+		<li><span>パスワード変更</span></li>
+		<li><a href="{%$baseUrl%}/auth/logout">ログアウト</a></li>
+	</ul>
+	<div id="container">
+		<h2>パスワード変更</h2>
+		<div id="auth">
+			<div id="step1">
+			<div class="description">
+				<p>現在のパスワードと変更後のパスワードを入力してください。</p>
+			</div><!--/.description-->
+			<div id="errMsg" class="error" style="display:none">
+				<p>エラーメッセージ</p>
+			</div><!--/.error-->
+			<form method="post" id="frmChangePass">
+				<ul>
+					<li><label for="">現在のパスワード：</label><br />
+						<input type="password" id="txtOldPw" name="txtOldPw" class="required-password validate-alphanum validate-length-range-6-12" maxlength="15" /></li>
+					<li><label for="">変更後のパスワード：</label><br />
+						<input type="password" id="txtNewPw" name="txtNewPw" class="required-password validate-alphanum validate-length-range-6-12" maxlength="15" /></li>
+					<li><label for="">変更後のパスワード（確認用）：</label><br />
+						<input type="password" id="txtConfirmPw" name="txtConfirmPw" class="required-password validate-equals-txtNewPw" maxlength="15" /></li>
+					<li><input type="button" id="btnSubmit" value="　パスワードを変更　" /></li>
+				</ul>
+			</form>
+			</div>
+			<div id="loading" style="display:none"></div>
+			<div id="step2" class="description" style="display:none">
+				<p><span id="lblMsg">パスワードの変更が完了しました。</span><br /><br />
+					<a href="{%$baseUrl%}/manager/listapp">&laquo; アプリケーション一覧へ</a></p>
+			</div><!--/.description-->
+
+		</div><!--/#auth-->
+		<script src="{%$staticUrl%}/admin/js/manager/changepass.js?{%$version.js%}"></script>
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

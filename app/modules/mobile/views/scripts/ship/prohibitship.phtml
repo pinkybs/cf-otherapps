@@ -1,0 +1,27 @@
+{% include file="ship/common/header.phtml" headerAd=1 %}
+    
+    <div id="parking">
+			<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+				<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+				禁用完了<br />
+				<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+			</div><!--/.headline-->
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				{% if $result.status == 1 %}
+					海贼船禁用完了。<br />
+				{% elseif $result.status == -2 %}
+					目前只有一条已激活的船，不能禁用。<br />
+				{% else %}
+					ｼｽﾃﾑｴﾗｰ<br />
+				{% /if %}
+			</div><!--/.description-->
+			<div class="link">
+                <img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+                <span style="color:#cd424a;">⇒</span><a href='{% "$baseUrl/mobile/ship/myship"|mixiurl %}'>海賊船一覧へ</a><br />
+            </div><!--/.link-->
+
+	</div><!--/#parking-->
+
+{%include file="ship/common/menu.phtml"%}
+{% include file="ship/common/footer.phtml" footerAd=1 %}

@@ -1,0 +1,1341 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+vote main CSS
+
+Created Date  : 2009/05/28
+Base Author   : yu uno
+Update Author : yhirano
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+
+* {
+	outline: none;
+}
+
+body,html {
+}
+
+body {
+	color: #333333;
+}
+
+a:link,a:hover {
+	color: #258FB8;
+}
+a:link,a:visited {
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+img {
+	display: block;
+}
+textarea {
+	margin: 0;
+	padding: 3px;
+}
+pre {
+	margin: 0;
+	padding: 0;
+}
+
+/*CommonParts
+----------------------------------------------*/
+#container {
+	width: 945px;
+	background: url(../img/container.png) repeat-y #fff;
+}
+.ico {
+	display: block;
+	padding-left: 20px;
+	background: url(../img/sprite.png) 0 -2220px no-repeat transparent;
+}
+
+/* #container > #hdr
+------------------------------------------ */
+#hdr {
+	padding: 30px 30px 0 30px;
+	background: url(../img/hdr.png) no-repeat 0 0 transparent;
+}
+	#hdr h1 {
+		float: left;
+		width: 390px;
+		height: 94px;
+	}
+		#hdr h1 a {
+			display: block;
+			height: 90px;
+			background: url(../img/sprite.png) no-repeat;
+			text-indent: -9999px;
+		}
+	#hdr .ads {
+		float: right;
+		width: 453px;
+		height: 50px;
+		overflow: hidden;
+	}
+		#hdr .ads ul {
+				margin-left: -5px;
+			}
+			#hdr .ads ul li {
+				display: inline;
+				float: left;
+				width: 224px;
+				height: 50px;
+				margin-left: 5px;
+			}
+	#hdr address {
+		display: block;
+		float: right;
+		width: 453px;
+	}
+		#hdr address a {
+			display: block;
+			float: right;
+			width: 188px;
+			height: 26px;
+			background: url(../img/sprite.png) -390px 0 no-repeat;
+			overflow: hidden;
+			text-indent: -9999px;
+		}
+/* #container > #gnav
+------------------------------------------ */
+ul#gnav {
+	margin: 0 0 15px 30px;
+}
+	ul#gnav li {
+		float: left;
+		height: 41px;
+		margin-right: 2px;
+	}
+		ul#gnav li a,
+		ul#gnav li strong{
+			display: block;
+			height: 40px;
+			overflow: hidden;
+			text-indent: -9999px;
+		}
+		ul#gnav li.top a {width: 183px;background: url(../img/sprite.png) no-repeat 0 -90px;}
+		ul#gnav li.profile a {width: 128px;background: url(../img/sprite.png) no-repeat -185px -90px;}
+		ul#gnav li.log a {width: 91px;background: url(../img/sprite.png) no-repeat -315px -90px;}
+		ul#gnav li.archive a {width: 110px;background: url(../img/sprite.png) no-repeat -408px -90px;}
+		ul#gnav li.add a {width: 167px;background: url(../img/sprite.png) no-repeat -520px -90px;}
+		ul#gnav li.help a {width: 77px;background: url(../img/sprite.png) no-repeat -689px -90px;}
+		ul#gnav li.invite a {width: 117px;background: url(../img/sprite.png) no-repeat -768px -90px;}
+		ul#gnav li.top a:hover {width: 183px;background: url(../img/sprite.png) no-repeat 0 -130px;}
+		ul#gnav li.profile a:hover {width: 128px;background: url(../img/sprite.png) no-repeat -185px -130px;}
+		ul#gnav li.log a:hover {width: 91px;background: url(../img/sprite.png) no-repeat -315px -130px;}
+		ul#gnav li.archive a:hover {width: 110px;background: url(../img/sprite.png) no-repeat -408px -130px;}
+		ul#gnav li.add a:hover {width: 167px;background: url(../img/sprite.png) no-repeat -520px -130px;}
+		ul#gnav li.help a:hover {width: 77px;background: url(../img/sprite.png) no-repeat -689px -130px;}
+		ul#gnav li.invite a:hover {width: 117px;background: url(../img/sprite.png) no-repeat -768px -130px;}
+		ul#gnav li.top a.active, ul#gnav li.top a.active:hover {width: 183px;background: url(../img/sprite.png) no-repeat 0 -170px;}
+		ul#gnav li.profile a.active, ul#gnav li.profile a.active:hover {width: 128px;background: url(../img/sprite.png) no-repeat -185px -170px;}
+		ul#gnav li.log a.active, ul#gnav li.log a.active:hover {width: 91px;background: url(../img/sprite.png) no-repeat -315px -170px;}
+		ul#gnav li.archive a.active, ul#gnav li.archive a.active:hover {width: 110px;background: url(../img/sprite.png) no-repeat -408px -170px;}
+		ul#gnav li.add a.active, ul#gnav li.add a.active:hover {width: 167px;background: url(../img/sprite.png) no-repeat -520px -170px;}
+		ul#gnav li.help a.active, ul#gnav li.help a.active:hover {width: 77px;background: url(../img/sprite.png) no-repeat -689px -170px;}
+		ul#gnav li.invite a.active, ul#gnav li.invite a.active:hover {width: 117px;background: url(../img/sprite.png) no-repeat -768px -170px;}
+
+/* #container > #content
+------------------------------------------ */
+#content {
+	width: 885px;
+	margin: 0 auto;
+	text-align: center;
+}
+/* #container > #content > #mainColumn
+------------------------------------------ */
+#content #mainColumn {
+	float: left;
+	width: 630px;
+	text-align: left;
+}
+
+	/* #mainColumn::common h3
+	------------------------------------------ */
+	#mainColumn h3 {
+		width: 540px;
+		height: 30px;
+		margin-bottom: 10px;
+		background-color: transparent;
+		background-image: url(../img/sprite.png);
+		background-repet: no-repeat;
+		text-indent: -9999px;
+	}
+		#mainColumn h3.default { background-position: 0 -210px;}
+		#mainColumn h3.ltd_i { background-position: 0 -240px;}
+		#mainColumn h3.ltd_ii{ background-position: 0 -270px;}
+		#mainColumn h3.chara50 { background-position: 0 -300px;}
+		#mainColumn h3.chara50 { background-position: 0 -300px;}
+		#mainColumn h3.chara49 { background-position: 0 -330px;}
+		#mainColumn h3.chara48 { background-position: 0 -360px;}
+		#mainColumn h3.chara47 { background-position: 0 -390px;}
+		#mainColumn h3.chara46 { background-position: 0 -420px;}
+		#mainColumn h3.chara45 { background-position: 0 -450px;}
+		#mainColumn h3.chara44 { background-position: 0 -480px;}
+		#mainColumn h3.chara43 { background-position: 0 -510px;}
+		#mainColumn h3.chara42 { background-position: 0 -540px;}
+		#mainColumn h3.chara41 { background-position: 0 -570px;}
+		#mainColumn h3.chara40 { background-position: 0 -600px;}
+		#mainColumn h3.chara39 { background-position: 0 -630px;}
+		#mainColumn h3.chara38 { background-position: 0 -660px;}
+		#mainColumn h3.chara37 { background-position: 0 -690px;}
+		#mainColumn h3.chara36 { background-position: 0 -720px;}
+		#mainColumn h3.chara35 { background-position: 0 -750px;}
+		#mainColumn h3.chara34 { background-position: 0 -780px;}
+		#mainColumn h3.chara33 { background-position: 0 -810px;}
+		#mainColumn h3.chara32 { background-position: 0 -840px;}
+		#mainColumn h3.chara31 { background-position: 0 -870px;}
+		#mainColumn h3.chara30 { background-position: 0 -900px;}
+		#mainColumn h3.chara29 { background-position: 0 -930px;}
+		#mainColumn h3.chara28 { background-position: 0 -960px;}
+		#mainColumn h3.chara27 { background-position: 0 -990px;}
+		#mainColumn h3.chara26 { background-position: 0 -1020px;}
+		#mainColumn h3.chara25 { background-position: 0 -1050px;}
+		#mainColumn h3.chara24 { background-position: 0 -1080px;}
+		#mainColumn h3.chara23 { background-position: 0 -1110px;}
+		#mainColumn h3.chara22 { background-position: 0 -1140px;}
+		#mainColumn h3.chara21 { background-position: 0 -1170px;}
+		#mainColumn h3.chara20 { background-position: 0 -1200px;}
+		#mainColumn h3.chara19 { background-position: 0 -1230px;}
+		#mainColumn h3.chara18 { background-position: 0 -1260px;}
+		#mainColumn h3.chara17 { background-position: 0 -1290px;}
+		#mainColumn h3.chara16 { background-position: 0 -1320px;}
+		#mainColumn h3.chara15 { background-position: 0 -1350px;}
+		#mainColumn h3.chara14 { background-position: 0 -1380px;}
+		#mainColumn h3.chara13 { background-position: 0 -1410px;}
+		#mainColumn h3.chara12 { background-position: 0 -1440px;}
+		#mainColumn h3.chara11 { background-position: 0 -1470px;}
+		#mainColumn h3.chara10 { background-position: 0 -1500px;}
+		#mainColumn h3.chara9 { background-position: 0 -1530px;}
+		#mainColumn h3.chara8 { background-position: 0 -1560px;}
+		#mainColumn h3.chara7 { background-position: 0 -1590px;}
+		#mainColumn h3.chara6 { background-position: 0 -1620px;}
+		#mainColumn h3.chara5 { background-position: 0 -1650px;}
+		#mainColumn h3.chara4 { background-position: 0 -1680px;}
+		#mainColumn h3.chara3 { background-position: 0 -1710px;}
+		#mainColumn h3.chara2 { background-position: 0 -1740px;}
+		#mainColumn h3.chara1 { background-position: 0 -1770px;}
+		#mainColumn h3.chara1 { background-position: 0 -1770px;}
+		#mainColumn h3.result1 { background-position: 0 -1800px;}
+		#mainColumn h3.result2 { background-position: 0 -1830px;}
+		#mainColumn h3.bestmember { width: 100%;margin-top: 10px;background-position: 0 -1860px;}
+		#mainColumn h3.fate { background-position: 0 -1950px;}
+		#mainColumn h3.answers { background-position: 0 -1890px;}
+		#mainColumn h3.answer { background-position: 0 -1920px;}
+		#mainColumn h3.rule { background-position: 0 -1980px;}
+		#mainColumn h3.form { background-position: 0 -2010px;}
+		#mainColumn h3.caution { background-position: 0 -2040px;}
+		#mainColumn h3.about { background-position: 0 -2070px;}
+		#mainColumn h3.complete { background-position: 0 -2100px;}
+		#mainColumn h3.approve { background-position: 0 -2130px;}
+		#mainColumn h3.approve_complete { background-position: 0 -2160px;}
+		#mainColumn h3.deny_complete { background-position: 0 -2190px;}
+
+	/* #mainColumn > table.q
+	------------------------------------------ */
+	#mainColumn table.q {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+		#mainColumn table.q td.author {
+			width: 93px;
+		}
+			#mainColumn table.q td.author span {
+				display: block;
+				width: 75px;
+				border: 1px solid #ffcece;
+			}
+				#mainColumn table.q td.author span a {
+					display: block;
+					width: 75px;
+					height: 75px;
+					background-color: #fff;
+					background-repeat: no-repeat;
+					background-position: 50% 50%;
+					text-indent: -9999px;
+				}
+			#mainColumn table.q td.author span.chara {
+				width: 75px;
+				height: 75px;
+				background: url(../img/sprite.png) no-repeat -1263px -1081px;
+				text-indent: -9999px;
+			}
+			#mainColumn table.q td.author span.secret {
+				width: 75px;
+				height: 75px;
+				background: url(../img/sprite.png) no-repeat -1339px -1081px;
+				text-indent: -9999px;
+			}
+				#mainColumn table.q td.author span.truth a {
+					cursor: default;
+				}
+		#mainColumn table.q td.content {
+			width: 513px;
+			vertical-align: middle;
+		}
+			#mainColumn table.q td.content h2 {
+				font-size: 20px;
+				line-height: 24px;
+			}
+			#mainColumn table.q td.content dl {
+				margin: 5px 0 0 -10px;
+				font-size: 14px;
+				line-height: 18px;
+			}
+				#mainColumn table.q td.content dt {
+					display: inline;
+					float: left;
+					margin-left: 10px;
+				}
+				#mainColumn table.q td.content dd {
+					display: inline;
+					float: left;
+				}
+
+	/* #mainColumn > .answers
+	------------------------------------------ */
+	#mainColumn ul.answers {
+		margin-bottom: -5px;
+	}
+		#mainColumn ul.answers li {
+			display: inline;
+			float: left;
+			margin: 0 0 5px 9px;
+		}
+			#mainColumn ul.answers span {
+				display: block;
+				width: 70px;
+				border: 1px solid #ffcece;
+			}
+				#mainColumn ul.answers span a {
+					display: block;
+					width: 70px;
+					height: 70px;
+					background-color: #fff;
+					background-repeat: no-repeat;
+					background-position: 50% 50%;
+					text-indent: -9999px;
+				}
+
+	/* #mainColumn > .unav
+	------------------------------------------ */
+	#mainColumn .unav {
+		height: 72px;
+		margin-bottom: 10px;
+		position: relative;
+	}
+		#mainColumn .unav h2 {
+			height: 35px;
+			background: url(../img/sprite.png) no-repeat -606px -315px transparent;
+			text-indent: -9999px;
+		}
+		
+		#mainColumn .unav .prev {
+			position: absolute;
+			width: 26px;
+			left: 0;
+			z-index: 20000;
+		}
+			#mainColumn .unav .prev a {
+				display: block;
+				width: 26px;
+				height: 72px;
+				background: url(../img/sprite.png) no-repeat -1262px -830px;
+				text-indent: -9999px;
+			}
+			
+		#mainColumn .unav .next {
+			position: absolute;
+			right: 0;
+			width: 26px;
+		}
+			#mainColumn .unav .next a {
+				display: block;
+				width: 26px;
+				height: 72px;
+				background: url(../img/sprite.png) no-repeat -1288px -830px;
+				text-indent: -9999px;
+			}
+		
+		#mainColumn .unav .ulWrapper {
+			width: 567px;
+			height: 72px;
+			overflow: hidden;
+			position: absolute;
+			left: 26px;
+		}
+			
+		#mainColumn .unav ul {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 10000px;
+		}
+			#mainColumn .unav ul li {
+				display: inline;
+				float: left;
+				margin-left: 9px;
+			}
+				#mainColumn .unav ul li.prev {
+					margin-left: 0;
+				}
+					#mainColumn .unav ul li.prev a {
+						display: block;
+						width: 26px;
+						height: 72px;
+						background: url(../img/sprite.png) no-repeat -1262px -830px;
+						text-indent: -9999px;
+					}
+				#mainColumn .unav ul li.next {
+					float: right;
+					margin-left: 0;
+				}
+					#mainColumn .unav ul li.next a {
+						display: block;
+						width: 26px;
+						height: 72px;
+						background: url(../img/sprite.png) no-repeat -1288px -830px;
+						text-indent: -9999px;
+					}
+				#mainColumn .unav ul li span {
+					display: block;
+					width: 70px;
+					border: 1px solid #ffcece;
+				}
+					#mainColumn .unav ul li span a {
+						display: block;
+						width: 70px;
+						height: 70px;
+						background-color: #fff;
+						background-repeat: no-repeat;
+						background-position: 50% 50%;
+						text-indent: -9999px;
+					}
+					#mainColumn .unav ul li span.invite a {
+						background: url(../img/sprite.png) no-repeat -1415px -1084px;
+					}
+				#mainColumn .unav ul li.active span {
+					display: block;
+					width: 68px;
+					border: 2px solid #fe6263;
+				}
+					#mainColumn .unav ul li.active span a {
+						display: block;
+						width: 68px;
+						height: 68px;
+						background-color: #fff;
+						background-repeat: no-repeat;
+						background-position: 50% 50%;
+						text-indent: -9999px;
+					}
+
+	/* #mainColumn > #first
+	------------------------------------------ */
+		#mainColumn #first {
+			margin-bottom: 10px;
+		}
+			#mainColumn #first p {
+			}
+				#mainColumn #first p a {
+					display: block;
+					width: 630px;
+					height: 135px;
+					background: url(../img/sprite.png) no-repeat -606px -1045px transparent;
+					text-indent: -9999px;
+				}
+				#mainColumn #first p a:hover {
+					background-position: -606px -1180px;
+				}
+
+	/* #mainColumn > #profile
+	------------------------------------------ */
+	#mainColumn #profile {
+		margin-bottom: 10px;
+		padding: 20px;
+		background: #ffefef;
+		border: 5px solid #ffcece;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+	}
+		#mainColumn #profile .inner {
+			padding: 20px 20px 10px 20px;
+			background: #fff;
+			border: 1px solid #ffc5c5;
+		}
+			#mainColumn #profile table {
+				margin-bottom: 10px;
+			}
+				#mainColumn #profile table th {
+					width: 172px;
+				}
+					#mainColumn #profile table th .user {
+						width: 172px;
+						height: 172px;
+						margin-bottom: 5px;
+						background-position: 50% 50%;
+						background-repeat: no-repeat;
+						text-indent: -9999px;
+					}
+						#mainColumn #profile table th .user a {
+							display: block;
+							width: 170px;
+							height: 170px;
+							border: 1px solid #ffcece;
+						}
+							#mainColumn #profile table th .user a:hover {
+								background: url(../img/sprite.png) no-repeat -1270px -910px;
+							}
+					#mainColumn #profile table th ul.info {
+						text-align: center;
+					}
+						#mainColumn #profile table th ul.info li {
+						}
+							#mainColumn #profile table th ul.info li.nickname {
+								margin-bottom: 3px;
+								font-size: 14px;
+								line-height: 18px;
+							}
+								#mainColumn #profile table th ul.info li.nickname strong {
+									color: #fe6263;
+								}
+							#mainColumn #profile table th ul.info li.count {
+								font-size: 12px;
+							}
+				#mainColumn #profile table td.self {
+					padding-left: 13px;
+				}
+				#mainColumn #profile table td.other {
+					padding-left: 11px;
+				}
+					#mainColumn #profile table td h4 {
+						width: 172px;
+						height: 30px;
+						background-color: #fff;
+						background-image: url(../img/sprite.png);
+						background-repeat: no-repeat;
+						text-indent: -9999px;
+					}
+						#mainColumn #profile table td.self h4 {
+							background-position: -1262px -455px;
+						}
+						#mainColumn #profile table td.other h4 {
+							background-position: -1262px -485px;
+						}
+					#mainColumn #profile table td .result {
+						padding: 0 1px 10px 1px;
+						background: url(../img/sprite.png) no-repeat -1596px 100%;
+					}
+						#mainColumn #profile table td .result p.btn {
+							text-align: center;
+						}
+							#mainColumn #profile table td .result p.btn a,
+							#mainColumn #profile table td .result p.btn span {
+								display: block;
+								width: 152px;
+								height: 35px;
+								margin: 0 auto;
+								background-image: url(../img/sprite.png);
+								background-repeat: no-repeat;
+								text-align: left;
+								text-indent: -9999px;
+							}
+								#mainColumn #profile table td .result p.btn.req a {
+									background-position: -1262px -515px;
+								}
+								#mainColumn #profile table td .result p.btn.req a:hover {
+									background-position: -1262px -550px;
+								}
+								#mainColumn #profile table td .result p.btn.retry a {
+									background-position: -1262px -585px;
+								}
+								#mainColumn #profile table td .result p.btn.retry a:hover {
+									background-position: -1262px -620px;
+								}
+								#mainColumn #profile table td .result p.btn.try a {
+									background-position: -1262px -655px;
+								}
+								#mainColumn #profile table td .result p.btn.try a:hover {
+									background-position: -1262px -690px;
+								}
+								#mainColumn #profile table td .result p.btn.try span {
+									background-position: -1262px -725px;
+								}
+								#mainColumn #profile table td .result p.btn.invite a {
+									background-position: -1262px -760px;
+								}
+								#mainColumn #profile table td .result p.btn.invite a:hover {
+									background-position: -1262px -795px;
+								}
+			#mainColumn #profile .resultTxt {
+				font-size: 14px;
+				line-height: 18px;
+				margin-bottom: 10px;
+			}
+				#mainColumn #profile .resultTxt strong {
+					color: #fe6263;
+				}
+	/* #mainColumn > #q
+	------------------------------------------ */
+	#mainColumn #q {
+		margin-bottom: 10px;
+		padding: 20px;
+		background: #ffefef;
+		border: 5px solid #ffcece;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px
+	}
+		#mainColumn #q p.timer {
+			margin-bottom: 10px;
+		}
+		#mainColumn #q ul.select {
+			margin-bottom: 5px;
+		}
+			#mainColumn #q ul.select li {
+				margin-bottom: 5px;
+			}
+				#mainColumn #q ul.select li a {
+					display: block;
+					width: 580px;
+					height: 45px;
+					background: url(../img/sprite.png) no-repeat -606px -560px transparent;
+					color: #333;
+					font-size: 20px;
+					overflow: hidden;
+					text-decoration: none;
+				}
+					#mainColumn #q ul.select li a:hover {
+						background-position: -606px -605px;
+						color: #fff;
+					}
+					#mainColumn #q ul.select li a strong {
+						display: block;
+						padding: 13px 0 0 20px;
+						cursor: pointer;
+					}
+
+	/* #mainColumn > #a
+	------------------------------------------ */
+	#mainColumn #a {
+		margin-bottom: 10px;
+		padding: 20px;
+		background: #ffefef;
+		border: 5px solid #ffcece;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+	}
+		#mainColumn #a #ratio {
+			margin-bottom: 10px;
+			padding: 5px 10px;
+			background: #fff;
+			border: 1px solid #ffc5c5;
+		}
+			#mainColumn #a #ratio table {
+			}
+				#mainColumn #a #ratio table tr {}
+				#mainColumn #a #ratio table tr.i td{
+					background: #fff;
+				}
+				#mainColumn #a #ratio table tr.ii td{
+					background: #f0f0f0;
+				}
+					#mainColumn #a #ratio table td.select {
+						padding: 5px 10px;
+						font-size: 16px;
+						font-weight: 700;
+						line-height: 20px;
+						text-align: right;
+						vertical-align: middle;
+					}
+					#mainColumn #a #ratio table td.rate {
+						padding: 5px 0;
+						width: 210px;
+						font-size: 14px;
+						line-height: 18px;
+						vertical-align: middle;
+					}
+						#mainColumn #a #ratio table td.rate ul {}
+							#mainColumn #a #ratio table td.rate ul li.graph {
+								width: 200px;
+								height: 50px;
+								margin-bottom: 2px;
+								background: url(../img/graph.png) repeat-x 0 100%;
+								text-align: center;
+							}
+							#mainColumn #a #ratio table td.rate ul li.txt {
+								display: block;
+								width: 60px;
+								padding: 2px;
+								background: #ff9900;
+								border-radius: 3px;
+								-moz-border-radius: 3px;
+								-webkit-border-radius: 3px;
+								color: #fff;
+								font-weight: 700;
+								text-align: center;
+							}
+					#mainColumn #a #ratio table td.count {
+						width: 100px;
+						padding: 5px 10px;
+						font-size: 14px;
+						line-height: 18px;
+						text-align: right;
+						vertical-align: middle;
+					}
+		#mainColumn #a h4 {
+			margin: 10px 0;
+			padding: 10px 15px;
+			background: #fe6263;
+			border-radius: 3px;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			color: #fff;
+			font-size: 14px;
+		}
+		#mainColumn #a p.retry {
+			margin-top: 10px;
+			color: #c00;
+			font-size: 14px;
+			line-height: 18px;
+			text-align: right;
+		}
+		#mainColumn #a p.toTest a {
+			display: block;
+			margin-top: 10px;
+			height: 45px;
+			background: url(../img/sprite.png) no-repeat -606px -1315px;
+			text-indent: -9999px;
+		}
+			#mainColumn #a p.toTest a:hover {
+				background-position: -606px -1360px;
+			}
+		#mainColumn #a p.toDiary a {
+			display: block;
+			margin-top: 10px;
+			height: 45px;
+			background: url(../img/sprite.png) no-repeat -606px -2887px;
+			text-indent: -9999px;
+		}
+			#mainColumn #a p.toDiary a:hover {
+				background-position: -606px -2932px;
+			}
+
+	/* #mainColumn > #add
+	------------------------------------------ */
+	#mainColumn #add {
+		margin-bottom: 10px;
+		padding: 20px;
+		background: #ffefef;
+		border: 5px solid #ffcece;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+	}
+		#mainColumn #add .content {
+			padding: 20px;
+			background: #fff;
+		}
+			#mainColumn #add .content p {
+				margin-bottom: 10px;
+				font-size: 14px;
+				line-height: 18px;
+			}
+				#mainColumn #add .content .form p strong {
+					color: #fe6263;
+				}
+			#mainColumn #add .content p.point {
+				height: 120px;
+				background: url(../img/sprite.png) no-repeat -606px -2527px;
+				text-indent: -9999px;
+			}
+			#mainColumn #add .content .alert {
+				margin-bottom: 10px;
+				padding: 10px 20px;
+				background: #ffefef;
+				border: 3px solid #fe6263;
+			}
+				#mainColumn #add .content .alert ul {}
+					#mainColumn #add .content .alert ul li {
+						color: #fe6263;
+						font-size: 14px;
+						font-weight: 700;
+						line-height: 18px;
+					}
+
+			#mainColumn #add .content .form {}
+				#mainColumn #add .content .form h5 {
+					display: block;
+					height: 28px;
+					background: url(../img/sprite.png) no-repeat -606px -1675px;
+					text-indent: -9999px;
+				}
+					#mainColumn #add .content .form h5.q {background-position: -606px -1675px;}
+					#mainColumn #add .content .form h5.c {background-position: -606px -1703px;}
+				#mainColumn #add .content .form .wrapper {
+					margin-bottom: 10px;
+					border-bottom: 1px solid #fe6263;
+					border-left: 1px solid #fe6263;
+					border-right: 1px solid #fe6263;
+				}
+					#mainColumn #add .content .form .section {
+						padding: 0 19px;
+						margin-bottom: 15px;
+					}
+						#mainColumn #add .content .form .section p {
+							margin-bottom: 0;
+						}
+					#mainColumn #add .content .form .section input.txt,
+					#mainColumn #add .content .form .section textarea {
+						width: 492px;
+						border: 1px solid #ccc;
+						font-size: 14px;
+						line-height: 18px;
+					}
+					#mainColumn #add .content .form .section ul {}
+						#mainColumn #add .content .form .section ul li {
+							float: left;
+							margin-right: 3px;
+						}
+
+					#mainColumn #add .content .form .section label {
+						display: block;
+						height: 19px;
+						background-image: url(../img/sprite.png);
+						background-repeat: no-repeat;
+						background-color: transparent;
+						overflow: hidden;
+						text-indent: -9999px;
+					}
+						#mainColumn #add .content .form .section label.inputTitle { background-position: -606px -1731px;}
+						#mainColumn #add .content .form .section label.inputCat { background-position: -606px -1750px;}
+						#mainColumn #add .content .form .section label.inputQ1 { background-position: -606px -1769px;}
+						#mainColumn #add .content .form .section label.inputQ2 { background-position: -606px -1788px;}
+						#mainColumn #add .content .form .section label.inputQ3 { background-position: -606px -1807px;}
+						#mainColumn #add .content .form .section label.inputQ4 { background-position: -606px -1826px;}
+						#mainColumn #add .content .form .section label.inputQ5 { background-position: -606px -1845px;}
+						#mainColumn #add .content .form .section label.inputQ6 { background-position: -606px -1864px;}
+						#mainColumn #add .content .form .section label.inputQ7 { background-position: -606px -1883px;}
+						#mainColumn #add .content .form .section label.inputQ8 { background-position: -606px -1902px;}
+						#mainColumn #add .content .form .section label.inputQ9 { background-position: -606px -1921px;}
+						#mainColumn #add .content .form .section label.inputQ10 { background-position: -606px -1940px;}
+						#mainColumn #add .content .form .section label.inputNickname { background-position: -606px -1959px;}
+						#mainColumn #add .content .form .section label.inputRegion { background-position: -606px -1978px;}
+						#mainColumn #add .content .form .section label.radio {
+							height: 20px;
+							cursor: pointer;
+						}
+						#mainColumn #add .content .form .section label.radio.politics {width: 101px;background-position: -778px -695px;}
+						#mainColumn #add .content .form .section label.radio.life {width: 95px;background-position: -879px -695px;}
+						#mainColumn #add .content .form .section label.radio.entertainment {width: 124px;background-position: -974px -695px;}
+						#mainColumn #add .content .form .section label.radio.hobby {width: 113px;background-position: -1098px -695px;}
+
+						#mainColumn #add .content .form .section li.active label.radio.politics {width: 101px;background-position: -778px -715px;}
+						#mainColumn #add .content .form .section li.active label.radio.life {width: 95px;background-position: -879px -715px;}
+						#mainColumn #add .content .form .section li.active label.radio.entertainment {width: 124px;background-position: -974px -715px;}
+						#mainColumn #add .content .form .section li.active label.radio.hobby {width: 113px;background-position: -1098px -715px;}
+
+						#mainColumn #add .content .form .section label.radio.open {width: 90px;background-position: -606px -1997px;}
+						#mainColumn #add .content .form .section label.radio.close {width: 119px;background-position: -696px -1997px;}
+
+						#mainColumn #add .content .form .section li.active label.radio.open {width: 90px;background-position: -606px -2017px;}
+						#mainColumn #add .content .form .section li.active label.radio.close {width: 119px;background-position: -696px -2017px;}
+
+						#mainColumn #add .content .form .section label.radio.all {width: 90px;background-position: -606px -2037px;}
+						#mainColumn #add .content .form .section label.radio.friend {width: 113px;background-position: -696px -2037px;}
+						#mainColumn #add .content .form .section label.radio.fof {width: 174px;background-position: -809px -2037px;}
+
+						#mainColumn #add .content .form .section li.active label.radio.all {width: 90px;background-position: -606px -2057px;}
+						#mainColumn #add .content .form .section li.active label.radio.friend {width: 113px;background-position: -696px -2057px;}
+						#mainColumn #add .content .form .section li.active label.radio.fof {width: 174px;background-position: -809px -2057px;}
+
+					#mainColumn #add .content .form label.btn {
+					}
+						#mainColumn #add .content .form label.btn span {
+							text-indent: -9999px;
+						}
+						#mainColumn #add .content .form label.btn a {
+							display: block;
+							width: 540px;
+							height: 45px;
+							background-image: url(../img/sprite.png);
+							background-repeat: no-repeat;
+							overflow: hidden;
+							text-indent: -9999px;
+						}
+							#mainColumn #add .content .form label.btn.confirm a {background-position: -606px -2077px;}
+							#mainColumn #add .content .form label.btn.confirm a:hover {background-position: -606px -2122px;}
+
+							#mainColumn #add .content .form label.btn.submit a {background-position: -606px -2167px;}
+							#mainColumn #add .content .form label.btn.submit a:hover {background-position: -606px -2212px;}
+
+							#mainColumn #add .content .form label.btn.cancel a {margin-top: 5px;background-position: -606px -2257px;}
+							#mainColumn #add .content .form label.btn.cancel a:hover {background-position: -606px -2302px;}
+
+							#mainColumn #add .content .form label.btn.approve a {background-position: -606px -2347px;}
+							#mainColumn #add .content .form label.btn.approve a:hover {background-position: -606px -2392px;}
+
+							#mainColumn #add .content .form label.btn.deny a {margin-top: 5px;background-position: -606px -2437px;}
+							#mainColumn #add .content .form label.btn.deny a:hover {background-position: -606px -2482px;}
+
+	/* #mainColumn > #log
+	------------------------------------------ */
+	#mainColumn #log {
+	}
+		#mainColumn #log h2 {
+			margin-bottom: 10px;
+		}
+		#mainColumn #log ul.description {
+			margin-bottom: 10px;
+		}
+			#mainColumn #log ul.description li {
+				font-size: 14px;
+				line-height: 18px;
+			}
+				#mainColumn #log ul.description li strong {
+					color: #fe6263;
+				}
+		#mainColumn #log p.null a {
+			background-position: -606px -1405px;
+		}
+			#mainColumn #log p.null a:hover {
+				background-position: -606px -1540px;
+			}
+
+	/* #mainColumn > .article
+	------------------------------------------ */
+	#mainColumn .article {
+		margin-bottom: 10px;
+	}
+		#mainColumn .article h2 {
+			height: 35px;
+			margin-bottom: 5px;
+			background-color: transparent;
+			background-image: url(../img/sprite.png);
+			background-repet: no-repeat;
+			text-indent: -9999px;
+		}
+			#mainColumn .article h2.popular { background-position: -606px -210px;}
+			#mainColumn .article h2.recent  { background-position: -606px -245px;}
+			#mainColumn .article h2.archive { background-position: -606px -280px;}
+			#mainColumn .article h2.truth   { background-position: -606px -350px;}
+			#mainColumn .article h2.log     { background-position: -606px -385px;}
+			#mainColumn .article h2.help    { background-position: -606px -420px;}
+			#mainColumn .article h2.approve { background-position: -606px -455px;}
+		#mainColumn .article ul.cat {
+			margin-bottom: 10px;
+		}
+			#mainColumn .article ul.cat li {
+				display: inline;
+				float: left;
+				margin-right: 3px;
+			}
+				#mainColumn .article ul.cat li a {
+					display: block;
+					height: 20px;
+					background-image: url(../img/sprite.png);
+					background-repeat: no-repeat;
+					overflow: hidden;
+					text-indent: -9999px;
+				}
+				#mainColumn .article ul.cat li.all a           { width: 77px;background-position: -606px -695px;}
+				#mainColumn .article ul.cat li.character a     { width: 94px;background-position: -683px -695px;}
+				#mainColumn .article ul.cat li.politics a      { width: 101px;background-position: -778px -695px;}
+				#mainColumn .article ul.cat li.life a          { width: 95px;background-position: -879px -695px;}
+				#mainColumn .article ul.cat li.entertainment a { width: 124px;background-position: -974px -695px;}
+				#mainColumn .article ul.cat li.hobby a         { width: 113px;background-position: -1098px -695px;}
+
+				#mainColumn .article ul.cat li.all a:hover,
+				#mainColumn .article ul.cat li.all a.active           { width: 77px;background-position: -606px -715px;}
+				#mainColumn .article ul.cat li.character a:hover,
+				#mainColumn .article ul.cat li.character a.active     { width: 94px;background-position: -683px -715px;}
+				#mainColumn .article ul.cat li.politics a:hover,
+				#mainColumn .article ul.cat li.politics a.active      { width: 101px;background-position: -778px -715px;}
+				#mainColumn .article ul.cat li.life a:hover,
+				#mainColumn .article ul.cat li.life a.active          { width: 95px;background-position: -879px -715px;}
+				#mainColumn .article ul.cat li.entertainment a:hover,
+				#mainColumn .article ul.cat li.entertainment a.active { width: 124px;background-position: -974px -715px;}
+				#mainColumn .article ul.cat li.hobby a:hover,
+				#mainColumn .article ul.cat li.hobby a.active         { width: 113px;background-position: -1098px -715px;}
+		#mainColumn .article table.list {
+			margin-bottom: 10px;
+			table-layout: fixed;
+		}
+			#mainColumn .article table.list th.title {
+			    width : 400px;
+				border-bottom: 1px dotted #ccc;
+			}
+			#mainColumn .article table.list th.count {
+				padding-bottom: 7px;
+				width: 131px;
+				border-bottom: 1px dotted #ccc;
+			}
+			#mainColumn .article table.list th.date {
+				padding-bottom: 7px;
+				width: 99px;
+				border-bottom: 1px dotted #ccc;
+			}
+				#mainColumn .article table.list th a {
+					display: block;
+					width: 77px;
+					height: 20px;
+					margin: 0 auto;
+					background-image: url(../img/sprite.png);
+					background-repeat: no-repeat;
+					overflow: hidden;
+					text-indent: -9999px;
+				}
+					#mainColumn .article table.list th.count.descend a {
+						background-position: -606px -735px;
+					}
+					#mainColumn .article table.list th.count.descend a:hover {
+						background-position: -606px -755px;
+					}
+					#mainColumn .article table.list th.count.ascend a {
+						background-position: -683px -735px;
+					}
+					#mainColumn .article table.list th.count.ascend a:hover {
+						background-position: -683px -755px;
+					}
+					#mainColumn .article table.list th.date.descend a {
+						background-position: -760px -735px;
+					}
+					#mainColumn .article table.list th.date.descend a:hover {
+						background-position: -760px -755px;
+					}
+					#mainColumn .article table.list th.date.ascend a {
+						background-position: -837px -735px;
+					}
+					#mainColumn .article table.list th.date.ascend a:hover {
+						background-position: -837px -755px;
+					}
+			#mainColumn .article table.list td.title {
+				padding: 7px 0;
+				text-align: left;
+				border-bottom: 1px dotted #ccc;
+				font-size: 14px;
+				line-height: 20px;
+			}
+			#mainColumn .article table.list td.count {
+				padding: 7px 0;
+				width: 131px;
+				border-bottom: 1px dotted #ccc;
+				text-align: center;
+				font-size: 14px;
+				line-height: 18px;
+			}
+			#mainColumn .article table.list td.date {
+				padding: 7px 0;
+				width: 99px;
+				border-bottom: 1px dotted #ccc;
+				text-align: center;
+				font-size: 14px;
+				line-height: 18px;
+			}
+		#mainColumn .article p.more {
+			color: #c00;
+			font-size: 14px;
+			line-height: 20px;
+			text-align: right;
+		}
+		#mainColumn .article ul.pager {
+		}
+			#mainColumn .article ul.pager li {
+				float: left;
+				margin-right: 5px;
+				font-size: 14px;
+			}
+				#mainColumn .article ul.pager li a {
+					display: inline-block;
+					padding: 5px 8px;
+					background: #f7f7f7;
+					border: 1px solid #ccc;
+					border-radius: 3px;
+					-moz-border-radius: 3px;
+					-webkit-border-radius: 3px;
+					text-decoration: none;
+				}
+				#mainColumn .article ul.pager li a:hover {
+					color: #fe6263;
+					background: #ffefef;
+					border: 1px solid #ffcece;
+					border-radius: 3px;
+					-moz-border-radius: 3px;
+					-webkit-border-radius: 3px
+				}
+				#mainColumn .article ul.pager li span {
+					display: inline-block;
+					padding: 5px 8px;
+					background: #eee;
+					border: 1px solid #ccc;
+					border-radius: 3px;
+					-moz-border-radius: 3px;
+					-webkit-border-radius: 3px;
+					color: #aaa;
+				}
+				#mainColumn .article ul.pager li strong {
+					display: inline-block;
+					padding: 5px 8px;
+					color: #fe6263;
+					background: #ffefef;
+					border: 1px solid #ffcece;
+					border-radius: 3px;
+					-moz-border-radius: 3px;
+					-webkit-border-radius: 3px
+				}
+		#mainColumn .article p.null {
+		}
+			#mainColumn .article p.null a {
+				display: block;
+				width: 630px;
+				height: 135px;
+				background: url(../img/sprite.png) no-repeat -606px -775px transparent;
+				text-indent: -9999px;
+			}
+			#mainColumn .article p.null a:hover {
+				background-position: -606px -910px;
+			}
+		#mainColumn .article ul.truth {
+			margin-bottom: 10px;
+		}
+			#mainColumn .article ul.truth li {
+				float: left;
+				width: 630px;
+				padding-top: 5px;
+			}
+			#mainColumn .article ul.truth li.i {
+				background: #fff9f9;
+			}
+			#mainColumn .article ul.truth li.ii {
+				background: #ffefef;
+			}
+				#mainColumn .article ul.truth li table {
+				}
+					#mainColumn .article ul.truth li table th {
+						width: 70px;
+						padding: 0 0 5px 10px;
+					}
+						#mainColumn .article ul.truth li table th span {
+							display: block;
+							width: 70px;
+							border: 1px solid #ffcece;
+						}
+							#mainColumn .article ul.truth li table th span a {
+								display: block;
+								width: 70px;
+								height: 70px;
+								background-color: #fff;
+								background-repeat: no-repeat;
+								background-position: 50% 50%;
+								text-indent: -9999px;
+							}
+						#mainColumn .article ul.truth li table th span.chara {
+							height: 70px;
+							background: url(../img/sprite.png) no-repeat -1264px -1082px;
+							text-indent: -9999px;
+						}
+						#mainColumn .article ul.truth li table th span.secret {
+							height: 70px;
+							background: url(../img/sprite.png) no-repeat -1341px -1083px;
+							text-indent: -9999px;
+						}
+					#mainColumn .article ul.truth li table td {
+						padding: 0 0 5px 10px;
+						vertical-align: middle;
+					}
+						#mainColumn .article ul.truth li table td p.user {
+							margin-bottom: 3px;
+							font-size: 14px;
+							line-height: 18px;
+						}
+						#mainColumn .article ul.truth li table td p.content {
+							font-size: 18px;
+							line-height: 22px;
+						}
+							#mainColumn .article ul.truth li table td p.content a {
+								color: #fe6263;
+							}
+
+	/* #mainColumn > #error
+	------------------------------------------ */
+	#mainColumn #error {
+		margin-bottom: 10px;
+		padding: 10px 20px;
+		background: #ffefef;
+		border: 3px solid #fe6263;
+	}
+		#mainColumn #error p {
+			color: #fe6263;
+			font-size: 14px;
+			font-weight: 700;
+			line-height: 18px;
+		}
+
+	/* #mainColumn > #help
+	------------------------------------------ */
+	#mainColumn #help {
+		margin-bottom: 10px;
+		padding: 20px;
+		background: #ffefef;
+		border: 5px solid #ffcece;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+	}
+		#mainColumn #help .content {
+			padding: 20px;
+			background: #fff;
+		}
+			#mainColumn #help .content p {
+				margin-bottom: 10px;
+				font-size: 14px;
+				line-height: 18px;
+			}
+				#mainColumn #help .content .form p strong {
+					color: #fe6263;
+				}
+			#mainColumn #help .content p.about {
+				height: 240px;
+				background: url(../img/sprite.png) no-repeat -606px -2647px;
+				text-indent: -9999px;
+			}
+			#mainColumn #help .content p.point {
+				height: 120px;
+				background: url(../img/sprite.png) no-repeat -606px -2527px;
+				text-indent: -9999px;
+			}
+			#mainColumn #help .content ul {
+				margin-bottom: 10px;
+			}
+				#mainColumn #help .content ul li {
+					font-size: 14px;
+					line-height: 18px;
+				}
+					#mainColumn #help .content ul li span {
+						color: #fe6263;
+					}
+
+/* #container > #content > #subColumn
+------------------------------------------ */
+#content #subColumn {
+	float: right;
+	width: 250px;
+	text-align: left;
+}
+	/* #subColumn > #rectangle
+	------------------------------------------ */
+	#subColumn #rectangle {
+		width: 250px;
+		height: 250px;
+		overflow: hidden;
+		margin-bottom: 10px;
+	}
+
+	/* #subColumn > .article
+	------------------------------------------ */
+	#subColumn .article {
+		margin-bottom: 10px;
+	}
+	#subColumn .article h3 {
+		height: 35px;
+		background-color: #fff;
+		background-image: url(../img/sprite.png);
+		background-repeat: no-repeat;
+		text-indent: -9999px;
+	}
+		#subColumn .article h3.popular { background-position: -1262px -210px;}
+		#subColumn .article h3.recent { background-position: -1262px -245px;}
+		#subColumn .article h3.friend { background-position: -1262px -280px;}
+		#subColumn .article h3.add { background-position: -1262px -315px;}
+	#subColumn .article .inner {
+		padding: 10px;
+		background: url(../img/sprite.png) 100% 100% no-repeat;
+		font-size: 14px;
+		line-height: 18px;
+	}
+		#subColumn .article .inner ul {
+		}
+			#subColumn .article .inner ul li {
+				margin-bottom: 5px;
+			}
+		#subColumn .article .inner p.more {
+			color: #c00;
+			text-align: right;
+		}
+
+
+/* #ftr
+------------------------------------------ */
+#ftr {
+	padding: 20px 30px 30px;
+	background: url(../img/ftr.png) no-repeat 0 100% transparent;
+}
+	#ftr address {
+		font-size: 12px;
+		line-height: 18px;
+	}
+		#ftr address span {}
+			#ftr address span a,
+			#ftr address span a:visited {
+				color: #333;
+				text-decoration: none;
+			}
+			#ftr address span a:hover {
+				color: #258fb8;
+			}
+
+/* #fullOverlay
+------------------------------------------ */
+#fullOverlay #overlay {
+	margin-left: 5px;
+	background: #fff none repeat scroll 0 0;
+	opacity: 0.1;
+}
+
+#fullOverlay, #fullOverlay #overlay, #fullOverlay #overlay frame {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:10000;
+}
+
+#fullOverlay #overWindow {
+	display: block;
+	position: relative;
+	margin: auto;
+	padding: 10px;
+	width: 500px;
+	background:#fe6263 none repeat scroll 0 0;
+	border:5px solid #fff;
+	-moz-border-radius: 3px;
+	z-index: 10000;
+}
+#overWindow {
+	top: 350px;
+}
+	#overWindow h2 {
+		color: #fff;
+		font-size: 14px;
+		line-height: 18px;
+		padding-bottom: 10px;
+	}
+		#overWindow .inner {
+			padding: 20px;
+			background: #fff;
+		}
+			#overWindow .inner p {
+				font-size: 14px;
+				line-height: 18px;
+			}

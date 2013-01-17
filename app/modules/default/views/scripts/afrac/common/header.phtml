@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" id="mixi">
+<head>	
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<link rel="stylesheet" href="{%$staticUrl%}/apps/afrac/css/import.css" type="text/css" media="print,screen" />
+	<script type="text/javascript" language="javascript" src="{%$staticUrl%}/cmn/js/jquery.min.js?{%$version.js%}"></script>
+    
+	<script type="text/javascript" language="javascript">
+		var UrlConfig =  {
+		    BaseUrl : '{%$baseUrl%}',
+		    StaticUrl : '{%$staticUrl%}',
+		    PhotoUrl : '{%$photoUrl%}'
+		};
+		
+		var CurrentHeight = 0;
+	</script>
+	<script type="text/javascript" language="javascript" src="{%$smarty.const.MIXI_HOST%}/static/js/platform/json.js?1228977457"></script>
+	<script type="text/javascript" language="javascript" src="{%$smarty.const.MIXI_HOST%}/static/js/platform/rpc.js?1228977457"></script>
+    <script type="text/javascript" language="javascript">            
+        gadgets.rpc.setRelayUrl('..', "{%$mixi_platform_api_url%}", false);
+
+        function adjustHeight(height) {
+            if (!height) {
+                var height =  document.documentElement.scrollHeight;
+                if (jQuery.browser.mozilla) {
+                    var offsetHeight = document.documentElement.offsetHeight;
+                    if (offsetHeight < height) {
+                        height = offsetHeight;
+                    }
+                }
+            }
+            CurrentHeight = height;
+            
+            if (jQuery.browser.safari) {
+                window.setTimeout(function() {
+                    gadgets.rpc.call(null, 'remote_adjustHeight', null, CurrentHeight);
+                }, 100);
+            }
+            else {
+                gadgets.rpc.call(null, 'remote_adjustHeight', null, height);
+            }
+        }
+        
+        function postActivityWithPic(title, picurl, mimeType, reciptents) {
+            gadgets.rpc.call(null, 'remote_postActivityWithPic', null, title, picurl, mimeType, reciptents);
+        }
+        
+        function invite(uids) {
+            uids = uids || null;
+            gadgets.rpc.call(null, 'remote_invite', null, uids);
+        }
+    </script>
+</head>

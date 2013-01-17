@@ -1,0 +1,87 @@
+{%include file="disney/common/header.phtml"%}
+
+{% if $action == 'start' %}
+
+<div style="font-size:x-small;background-color:#edd9ae;text-align:center;">
+	{% disneyimg name="sub_ti_roulet" style='align="top" width="100%"' %}<br />
+	<br />
+	{% disneyimg style='align="top"' name="roulet" style='align="top" width="31%"' %}<br /><br />
+	{% if $disneyUser.remain_distance - $disney.flash_distance > 0 && $disneyUser.game_ticket > 0 %}
+		<div style="color:#5e250f;text-align:center;">
+			ｹﾞｰﾑﾁｹｯﾄ枚数:{%$disneyUser.game_ticket%}枚
+		</div>
+		{% disneyimg name="dot0" style='height="4"' %}<br />
+		{% disneyimg name="map_line" style='width="100%"' %}<br />
+ 		{% disneyimg name="dot0" style='height="4"' %}<br />
+		<div style="color:#5e250f;text-align:left;">
+			乗り物が出ればﾀｰｹﾞｯﾄﾂｱｰの距離を稼げるｶﾞﾁｬ風ﾙｰﾚｯﾄだよ<br />
+		</div>
+		{% disneyimg name="dot0" style='height="4"' %}<br />
+			{% disneyimg name="map_line" style='width="100%"' %}<br />
+		{% disneyimg name="dot0" style='height="4"' %}<br />
+		<a href="{%$baseUrl%}/mobile/disneyflash/start/uid/{%$disneyUser.uid%}/r/{%$time%}">{% disneyimg name="start_btn" style='align="top" width="69%"' %}<br />※ｹﾞｰﾑﾁｹｯﾄを1枚消費します</a><br />
+	{% else %}
+		{% disneyimg name="dot0" style='height="4"' %}<br/>
+			<div style="color:#5e250f;text-align:center;">
+			ｹﾞｰﾑﾁｹｯﾄがありません。<br />
+			</div>
+		{% disneyimg name="dot0" style='height="4"' %}<br />
+		{% disneyimg name="map_line" style='width="100%"' %}<br />
+		{% disneyimg name="dot0" style='height="4"' %}<br />
+			<div style="color:#5e250f;text-align:left;">
+			乗り物が出ればﾀｰｹﾞｯﾄﾂｱｰの距離を稼げるｶﾞﾁﾔｶﾞﾁｬ風ﾙｰﾚｰﾄだよ<br />
+			ﾁｹｯﾄを購入して今すぐ、ｹﾞｰﾑｽﾀｰﾄ!!<br />
+			</div>
+		{% disneyimg name="dot0" style='height="4"' %}<br />
+		{{% disneyimg name="map_line" style='width="100%"' %}<br />
+	{% /if %}
+	{% disneyimg name="dot0" style='height="4"' %}<br />
+	<a href='{% "$baseUrl/mobile/disney/getticket"|mixiurl %}'>{% disneyimg name="buyticket" style='align="top" width="69%"' %}</a><br />
+	<!--
+	<div style="background-color:#ff0000; padding-left:2px; padding-right:2px; padding-top:2px; padding-bottom:2px; margin:5px;">
+		<div style="background-color:#ffffff; padding:5px;">
+			{% emoji code="F9DC"%}<span style="color:#94291b;">ﾜｰﾌﾟｹﾞｰﾑｽﾀｰﾄをするには、mixiﾎﾟｲﾝﾄが0ﾎﾟｲﾝﾄ必要です。</span>
+		</div>
+	</div>
+	-->
+	<br />
+
+{% elseif $action == 'settarget' %}
+
+<div style="font-size:x-small;background-color:#edd9ae;text-align:center;">
+	{% disneyimg name="sub_ti_roulet" style='align="top" width="100%"' %}<br />
+	<br />
+	{% disneyimg style='align="top"' name="roulet" %}<br /><br />
+	{% disneyimg name="dot0" style='height="4"' %}<br/>
+		<div style="color:#5e250f;text-align:center;">
+		<span style="color:#5B2806;">ﾀｰｹﾞｯﾄが未設定です。ﾀｰｹﾞｯﾄ設定をしてください。</span><br/>
+		{% disneyimg name="dot0" style='height="4"' %}<br/>
+		<a href='{% "$baseUrl/mobile/disney/settarget"|mixiurl %}'>ﾀｰｹﾞｯﾄ設定は、こちら</a><br />
+		</div>
+		{% disneyimg name="dot0" style='height="4"' %}<br />
+{% else %}
+
+	<div id="target" style="background-color:#ffd990;font-size:x-small;text-align:center;">
+		{% disneyimg name="sub_ti_targetset2" style='align="top" width="100%"' %}
+		<br/><br/>
+		<span style="color:#5B2806;">{%$disneyUser.target_name%}まであと</span><br/>
+		{% foreach from=$arrayDistance item=data %}
+			{% disneyimg name="km_$data" %}
+		{% /foreach %}
+		{% disneyimg name="km" %}<br />
+		{% emoji code="F99F"%}<span style="color:#5B2806;">10点獲得!</span>{% emoji code="F99F"%}<br/>
+		<br/>
+		<div style="text-align:center;">
+					{% if $disneyUser.remain_distance - $disneyUser.flash_distance > 0 %}
+			{% if $disneyUser.game_ticket>0%}
+			<a href='{% "$baseUrl/mobile/disney/game"|mixiurl %}'>
+			{%else%}
+			<a href='{% "$baseUrl/mobile/disney/getticket"|mixiurl %}'>
+			{%/if%}
+			<span>ｹﾞｰﾑで一気に{% emoji code="F9B8"%}距離を稼ごう!!{% emoji code="F9D8"%}</span></a>
+			{% else %}
+			<span>ｹﾞｰﾑで一気に{% emoji code="F9B8"%}距離を稼ごう!!{% emoji code="F9D8"%}</span>
+		{% /if %}<br /><br />
+		</div>
+{% /if %}
+{%include file="disney/common/footer.phtml"%}

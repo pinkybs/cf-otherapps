@@ -1,0 +1,129 @@
+{%include file="chat/common/header.phtml"%}
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/jquery.mousewheel.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/jquery.em.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/jScrollPane.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/jquery.hotkeys.js?{%$version.js%}"></script>
+<style>
+	.jScrollPaneContainer {
+		z-index: 100;
+	}
+	.jScrollPaneTrack {
+		background: #FFFFFF;
+	}
+	.jScrollPaneDrag {
+		background: url({%$staticUrl%}/apps/chat/scroll/img/drag_middle.gif) no-repeat 0 50%;
+	}
+	.jScrollPaneDragTop {
+		right: -1px;
+		background: url({%$staticUrl%}/apps/chat/scroll/img/drag_top.gif) no-repeat;
+		height: 4px;
+	}
+	.jScrollPaneDragBottom {
+		background: url({%$staticUrl%}/apps/chat/scroll/img/drag_bottom.gif) no-repeat;
+		height: 4px;
+	}
+	a.jScrollArrowUp {
+		height: 16px;
+		background: #FFFFFF url({%$staticUrl%}/apps/chat/scroll/img/arrow_up.gif) no-repeat 0 0;
+	}
+	a.jScrollArrowUp:hover {
+		background-position: 0 -20px;
+	}
+	a.jScrollArrowDown {
+		height: 16px;
+		background: url({%$staticUrl%}/apps/chat/scroll/img/arrow_down.gif) no-repeat 0 0;
+	}
+	a.jScrollArrowDown:hover {
+		background-position: 0 -20px;
+	}
+	a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
+		background-position: 0 -40px;
+	}
+</style>
+
+<body id="chat">
+<div id="container">
+	{%include file="chat/common/nav.phtml"%}
+
+	<div id="mainColumn"><div class="inner"><div class="inner">
+
+		<div id="mainHdr">
+			<p class="pic"><img src="{%$userInfo->getThumbnailUrl()%}" width="50" height="50" class="userPic" alt="{%$userInfo->getDisplayName()%}" /><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/bg_pic_own.png" width="54" height="54" class="frame" alt="" /></p>
+			<p class="userName">{%$userInfo->getDisplayName()%}</p>
+			<h1>{%$chatInfo.title|escape%}</h1>
+		</div>
+		<!--/.mainHdr-->
+
+		<div class="topShadow"></div>
+
+		<ul id="alertBox" style="display:none">
+		</ul>
+
+		<div id="timeLine">
+			<ul id="contentBox">
+			</ul>
+		</div><!--/#timeLine-->
+
+
+		<div class="bottomShadow"></div>
+
+		<div id="comment"><div class="inner"><div class="inner">
+			<div id="commentHead">
+				<ul><!--<li><a id="btnSend" href="javascript:void(0);">投稿</a></li>--><!--
+				-->
+				<!--<li><a href="">絵文字</a></li><li><a href="">画像の送付</a></li>-->
+				</ul>
+			</div><!--/#commentHead-->
+			<div id="commentArea">
+				<form id="frmSend" method="post">
+					<textarea id="txtContent" name="txtContent"></textarea>
+					<input type="hidden" id="cid" name="cid" value="{%$chatInfo.cid%}" />
+					<div id="commentBtn"><a id="btnSend" href="javascript:void(0);"><img src="{%$staticUrl%}/apps/chat/cmn/img/mainArea/comment/btn_comment.png" alt="投稿" /></a></div>
+				</form>
+			</div><!--/#commentArea-->
+		</div></div></div><!--/#comentArea-->
+
+		<input type="hidden" id="activity" value="{%$activity%}" />
+	</div></div></div><!--/#mainColumn-->
+
+	<div id="subColumn">
+		<h2><img src="{%$staticUrl%}/apps/chat/cmn/img/subArea/members/tit_menbers.png" width="264" height="31" alt="参加メンバー" /></h2>
+		<div class="topShadow"></div>
+
+		<div id="members">
+			<ul>
+			{% foreach name=memberList from=$chatMember item=memdata %}
+				{% if $memdata.uid == $chatInfo.uid %}
+				<li class="own">
+				{% else %}
+				<li class="friend">
+				{% /if %}
+					<p class="pic"><img src="{%$memdata.thumbnailUrl%}" width="30" height="30" class="userPic" alt="{%$memdata.displayName%}" /><span class="frame"></span></p>
+					<p class="name">{%$memdata.displayName%}</p>
+				</li>
+			{% /foreach %}
+			</ul>
+		</div><!--/#members-->
+
+		<div class="bottomShadow"></div>
+		<div id="ad001"><a href="javascript:void(0);"><img src="{%$staticUrl%}/apps/chat/cmn/img/dummy/ad.gif" width="224" height="224" alt="リンノ" /></a></div>
+		<div id="actionBtn"><a href="javascript:void(0);" id="btnExit"><img src="{%$staticUrl%}/apps/chat/cmn/img/subArea/btn/btn_end.png" width="224" height="30" alt="チャットを終了する" /></a></div><!--/#actionBtn-->
+	</div><!--/#subColumn-->
+
+	<input type="hidden" id="uid" value="{%$uid%}" />
+	<input type="hidden" id="ownerId" value="{%$chatInfo.uid%}" />
+	<input type="hidden" id="cname" value="{%$chatInfo.title%}" />
+	<input type="hidden" id="uname" value="{%$ownerName%}" />
+	<input type="hidden" id="hidLastId" value="{%$lastDetailId%}" />
+	<input type="hidden" id="hidLastIdSys" value="{%$lastDetailIdSys%}" />
+	<input type="hidden" id="hidStartTime" value="{%$chatStartTime%}" />
+	<input type="hidden" id="isOwner" value="{%$isOwner%}" />
+	<input type="hidden" id="flgAlerted" value="0" />
+	<input type="hidden" id="curDate" value="{%$curDate%}" />
+	<script type="text/javascript" src="{%$staticUrl%}/apps/chat/cmn/js/room.js?{%$version.js%}"></script>
+
+    <div id="overlay" style="display:none">
+    </div>
+
+{%include file="chat/common/footer.phtml"%}

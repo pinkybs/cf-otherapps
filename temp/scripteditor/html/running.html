@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Script Editor Loading</title>
+    </head>
+	<body>
+		<div style="margin:0px auto;text-align:center;">
+			<img src="http://mixi.communityfactory.net/static/cmn/img/loading/loader.gif" title="running..."/><br/>
+			<label id="time" style="font-size: 40px; font-weight:bold;">20</label><br/>
+			<label id="timeout" style="font-size: 12px; color:red; display:none;">Warning: code execute time out!</label>
+		</div>
+		<script>
+		  var oInterval = "";
+		  oInterval = window.setInterval(function() {
+		      var time = document.getElementById('time');
+		      var t = parseInt(time.innerHTML);
+		      if (t - 1 < 0) {
+		          window.clearInterval(oInterval);
+		          var timeout = document.getElementById('timeout');
+		          timeout.style.display = "block";
+		          return;
+		      }
+		      time.innerHTML = '' + (t - 1);
+		      
+		  }, 1000);
+		</script>
+	</body>
+</html>

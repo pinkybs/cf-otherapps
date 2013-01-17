@@ -1,0 +1,206 @@
+{%include file="scripteditor/common/header.phtml"%}
+
+<body id="mypage">
+{%include file="topad.phtml"%}
+<div id="continer">
+
+	{%include file="scripteditor/common/topbox.phtml"%}
+	
+	<div id="mainColumn">
+	
+	    {%include file="scripteditor/common/searchbox.phtml"%}
+	    
+	    {% if $isSubmit == 1 %}
+	       <div id="alertBox">プロフィールを更新しました。</div>
+	    {% elseif $isSubmit == 2 %}
+	       <div id="alertBox">下書き保存が完了しました。保存後24時間で自動的に削除されるので、ご注意ください。</div>
+	    {% /if %}
+	    
+		<div id="statusBox">
+			<h1><img src="{%$staticUrl%}/apps/scripteditor/img/tit_status.png" width="128" height="21" alt="ステータス" /></h1>
+			<div id="picColumn">
+				<div id="picBox">
+					<img src="{%$userInfo.pic%}" width="168" height="168" alt="ユーザー名" />
+					<p class="name">{%$userInfo.nickname%}</p>
+				</div><!--/#picBox-->
+				
+				{% if $isOwner == 1 %}
+				    <p class="statusConf"><a href="{%$baseUrl%}/scripteditor/config">ステータスを変更する</a></p>
+				{% else %}
+				    {% if $userInfo.public_type == 1 %}
+				    <p style="margin-top:10px;"><a target="_top" href="{%$userInfo.profileUrl%}"><img src="{%$staticUrl%}/apps/scripteditor/img/btn_goProfile.png" width="240" height="40" /></a></p>
+				    {% else %}
+				    <p style="margin-top:10px;"><img src="{%$staticUrl%}/apps/scripteditor/img/btn_goProfile_disabled.png" width="240" height="40" /></p>
+				    {% /if %}
+				{% /if %}
+				
+			</div><!--/#picColumn-->
+			<div id="statusColumn">
+				<ul><!--
+					--><li>
+						<span style="float: left !important; _float:none;" class="listHdr">しょくぎょう</span>
+						<span style="float: right !important; _float:none;" class="listContent">{%$userJob|escape%}{%if $userInfo.level%}{%if $userJob%}<br/>{%/if%}（Lv : {%$userInfo.level%}）{%/if%}</span>
+					</li><!--
+					--><li>
+						<span style="float: left !important;_float: none;" class="listHdr">つよさ</span>
+						<span style="float: right !important;_float: none;" class="listContent">{%if $userFeature.status == 0 %}-----{%else%}{%foreach from=$userFeature.featureInfo item=data%}<front style="width:80px;float:left">{%$data.feature_content%}</front>{%$data.feature_type%}<br/>{%/foreach%}{%/if%}</span>
+					</li><!--
+					--><li>
+						<span class="listHdr">とくぎ</span>
+						<span class="listContent">{%if $userInfo.introduce%}{% $userInfo.introduce|escape %}{%else%}-----{%/if%}</span>
+					</li><!--
+					--><li>
+						<span class="listHdr">ブログ</span>
+						<span class="listContent">{%if $userInfo.blogUrl%}<a href="javascript:void(0);" onclick="mixiNavigateTo('{% $userInfo.blogUrl %}')" rel="nofollow" >{% $userInfo.blogUrl %}</a>{%else%}-----{%/if%}</span>
+					</li><!--
+				--></ul>
+			</div><!--/#statusColumn-->
+		</div><!--/#statusBox-->
+		
+		{% if $userEntry.saveEntry || $userEntry.phpEntry || $userEntry.perlEntry || $userEntry.rubyEntry || $userEntry.pythonEntry %}
+		<div id="wrap">
+		
+		    {% if $userEntry.saveEntry %}
+    			{% if $isOwner == 1 %}
+    			<h1><img src="{%$staticUrl%}/apps/scripteditor/img/tit_workingEntry.png" width="209" height="22" alt="作業中のエントリー" /></h1>
+    			<div class="inner">
+    				<div id="entries" class="box">
+    					<div class="section">
+    					    {% if $userEntry.saveEntry %}
+    						<div class="entry">
+    						
+        							{% foreach from=$userEntry.saveEntry item=data %}
+                                    <div class="hdr" id="{%$data.eid%}">
+                                        <h4><a href="{%$baseUrl%}/scripteditor/editor/eid/{%$data.eid%}">{%$data.title|escape|truncatejp:20:"…"%}{%if $data.follow_count%}（{%$data.follow_count%}）{%/if%}</a></h4>
+                                        <ul class="status"><!--
+                                            --><li class="name">{%if $data.nickname%}{%$data.nickname%}{%else%}{%$userInfo.displayName%}{%/if%}</li><!--
+                                            --><li class="date">残り&nbsp;{%$data.create_time|remainingtime%}&nbsp;&nbsp;&nbsp;&nbsp;</li><!--
+                                        --></ul>
+                                    </div><!--/.hdr-->
+                                    {% /foreach %}
+                                    
+    						</div><!--/.entry-->
+    						{% else %}
+                                <p class="null"><img src="{%$staticUrl%}/apps/scripteditor/img/btn_null.png" width="310" height="50" alt="まだPHPみたいです。" /></p>
+                            {% /if %}
+                            
+    					</div><!--/.section-->
+    				</div><!--/#entries-->
+    			</div><!--/.inner-->
+    			{% /if %}
+			{% /if %}
+			
+			{% if $userEntry.phpEntry || $userEntry.perlEntry || $userEntry.rubyEntry || $userEntry.pythonEntry %}
+			<h1><img src="{%$staticUrl%}/apps/scripteditor/img/tit_oldEntry.png" width="187" height="22" alt="過去のエントリー" /></h1>
+			<div class="inner">	
+				<div id="entries" class="box">
+				    {% if $userEntry.phpEntry %}
+					<div class="section">
+                        <h3>PHP</h3>
+                        <div class="entry">
+                            {% foreach from=$userEntry.phpEntry item=data %}
+                            <div class="hdr" id="{%$data.eid%}">
+                                <h4><a href="{%$baseUrl%}/scripteditor/entry/eid/{%$data.eid%}">{%$data.title|escape|truncatejp:20:"…"%}（{%if $data.follow_count%}{%$data.follow_count%}{%else%}0{%/if%}）</a></h4>
+                                <ul class="status"><!--
+                                    --><li class="name">{%if $data.nickname%}{%$data.nickname%}{%else%}{%$userInfo.displayName%}{%/if%}</li><!--
+                                    --><li class="date">{%$data.create_time|date_format:"%y/%m/%d %H:%M"%}</li><!--
+                                --></ul>
+                            </div><!--/.hdr-->
+                            {% /foreach %}
+                            
+                            {% if $userEntry.phpCount > 5 %}
+                                {% if $isOwner == 1 %}
+                                    <p class="more"><a href="{%$baseUrl%}/scripteditor/archives?lang=1">PHPのエントリーをもっと見る</a></p>
+                                {% else %}
+                                    <p class="more"><a href="{%$baseUrl%}/scripteditor/archives?lang=1&uid={%$userInfo.uid%}">PHPのエントリーをもっと見る</a></p>
+                                {% /if %}
+                            {% /if %}
+                        </div><!--/.entry-->
+                    </div><!--/.section-->
+                    {% /if %}
+                
+                    {% if $userEntry.perlEntry %}
+                    <div class="section">
+                        <h3>Perl</h3>
+                        <div class="entry">
+                            {% foreach from=$userEntry.perlEntry item=data %}
+                            <div class="hdr">
+                                <h4><a href="{%$baseUrl%}/scripteditor/entry/eid/{%$data.eid%}">{%$data.title|escape|truncatejp:20:"…"%}{%if $data.follow_count%}（{%$data.follow_count%}）{%/if%}</a></h4>
+                                <ul class="status"><!--
+                                    --><li class="name">{%if $data.nickname%}{%$data.nickname%}{%else%}{%$userInfo.displayName%}{%/if%}</li><!--
+                                    --><li class="date">{%$data.create_time|date_format:"%y/%m/%d %H:%M"%}</li><!--
+                                --></ul>
+                            </div><!--/.hdr-->
+                            {% /foreach %}
+                            
+                            {% if $userEntry.perlCount > 5 %}
+                            <p class="more"><a href="{%$baseUrl%}/scripteditor/archives?lang=2">Perlのエントリーをもっと見る</a></p>
+                            {% /if %}
+                        </div><!--/.entry-->                        
+                    </div><!--/.section-->
+                    {% /if %}
+                    
+                    {% if $userEntry.rubyEntry %}
+                    <div class="section">
+                        <h3>Ruby</h3>
+                        <div class="entry">
+                            {% foreach from=$userEntry.rubyEntry item=data %}
+                            <div class="hdr">
+                                <h4><a href="{%$baseUrl%}/scripteditor/entry/eid/{%$data.eid%}">{%$data.title|escape|truncatejp:20:"…"%}{%if $data.follow_count%}（{%$data.follow_count%}）{%/if%}</a></h4>
+                                <ul class="status"><!--
+                                    --><li class="name">{%if $data.nickname%}{%$data.nickname%}{%else%}{%$userInfo.displayName%}{%/if%}</li><!--
+                                    --><li class="date">{%$data.create_time|date_format:"%y/%m/%d %H:%M"%}</li><!--
+                                --></ul>
+                            </div><!--/.hdr-->
+                            {% /foreach %}
+                            
+                            {% if $userEntry.rubyCount > 5 %}
+                            <p class="more"><a href="{%$baseUrl%}/scripteditor/archives?lang=3">Rubyのエントリーをもっと見る</a></p>
+                            {% /if %}
+                        </div><!--/.entry-->
+                    </div><!--/.section-->
+                    {% /if %}
+                    
+                    {% if $userEntry.pythonEntry %}
+                    <div class="section">
+                        <h3>Python</h3>
+                        <div class="entry">
+                            {% foreach from=$userEntry.pythonEntry item=data %}
+                            <div class="hdr">
+                                <h4><a href="{%$baseUrl%}/scripteditor/entry/eid/{%$data.eid%}">{%$data.title|escape|truncatejp:20:"…"%}{%if $data.follow_count%}（{%$data.follow_count%}）{%/if%}</a></h4>
+                                <ul class="status"><!--
+                                    --><li class="name">{%if $data.nickname%}{%$data.nickname%}{%else%}{%$userInfo.displayName%}{%/if%}</li><!--
+                                    --><li class="date">{%$data.create_time|date_format:"%y/%m/%d %H:%M"%}</li><!--
+                                --></ul>
+                            </div><!--/.hdr-->
+                            {% /foreach %}
+                            
+                            {% if $userEntry.pythonCount > 5 %}
+                            <p class="more"><a href="{%$baseUrl%}/scripteditor/archives?lang=4">Pythonのエントリーをもっと見る</a></p>
+                            {% /if %}
+                        </div><!--/.entry-->
+                    </div><!--/.section-->
+				    {% /if %}
+				    
+				</div><!--/.box-->
+				{% /if %}
+                
+			</div><!--/.inner-->
+			
+		</div><!--/#wrap-->
+		{% /if %}
+		<input type="hidden" id="txtPhpCount" value="{%$userEntry.phpCount%}" >
+        <input type="hidden" id="txtSaveCount" value="{%$userEntry.saveCount%}" >
+		
+	</div><!--/#mainColumn-->
+	
+	
+   {%include file="scripteditor/common/followbox.phtml"%}
+
+    <script type="text/javascript">
+       jQuery(function($){
+           adjustHeight();
+       });
+    </script>
+{%include file="scripteditor/common/footer.phtml"%}
+

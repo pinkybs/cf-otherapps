@@ -1,0 +1,732 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+Groupe Chat main CSS
+
+Created Date: 2009/04/24
+Author: Yu Uno
+Last Up Date : 2009/07/08
+Author: Yu Uno
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+
+* {
+	outline: none;
+}
+
+body,html {
+	/*height: 100%;*/
+}
+
+body {
+	width: 945px;
+	color: #333333;
+}
+
+a:link,a:hover {
+	color: #429EC1;
+}
+a:link,a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+img {
+	display: block;
+}
+.hide {
+	display: none;
+}
+
+/*column
+----------------------------------------------*/
+#mainColumn {
+	display: inline;
+	float: left;
+	width: 671px;
+	background: url(../img/mainArea/bg_m.png) repeat-y left top;
+}
+	#mainColumn .inner {
+		background: url(../img/mainArea/bg_m.png) repeat-y right top;
+	}
+		#mainColumn .inner .inner {
+			background: url(../img/mainArea/bg_bottom.png) no-repeat left bottom;
+		}
+	
+#subColumn {
+	display: inline;
+	float: right;
+	width: 264px;
+	background: #FFFFFF url(../img/subArea/members/bg_rm.gif) repeat-y right top;
+}
+
+/*nav
+----------------------------------------------*/
+#nav {
+	width: 945px;
+}
+	#nav ul {
+		padding: 0 1px 4px 1px;
+		margin: 0 0 10px 0;
+		background: url(../img/bg_nav.png) no-repeat 0 0;
+	}
+		#nav ul li {
+			float: left;
+		}
+			#nav ul li a {
+				display: block;
+				height: 26px;
+				text-indent: -10000px;
+				background-image: url(../img/btn_nav.png);
+				outline: none;
+			}
+			#nav ul li a.navTop {
+				width: 161px;
+				background-position: 0 0;
+			}
+			#nav ul li a.navInvite {
+				width: 156px;
+				background-position: -161px 0;
+			}
+			#nav ul li a.navNews {
+				width: 156px;
+				background-position: -317px 0;
+			}
+			#nav ul li a:hover.navTop,
+			#nav ul li.stay a.navTop {
+				width: 161px;
+				background-position: 0 -26px;
+			}
+			#nav ul li a:hover.navInvite,
+			#nav ul li.stay a.navInvite {
+				width: 156px;
+				background-position: -161px -26px;
+			}
+			#nav ul li a:hover.navNews,
+			#nav ul li.stay a.navNews {
+				width: 156px;
+				background-position: -317px -26px;
+			}
+
+
+
+/*mainHdr
+----------------------------------------------*/
+#mainHdr {
+	position: relative;
+	width: 671px;
+	height: 72px;
+	background: url(../img/mainArea/hdr/bg_hdr.png) no-repeat left top;
+}
+	#mainHdr p.pic {
+		position: relative;
+		top: 10px;
+		left: 20px;
+		width: 54px;
+		height: 54px;
+	}
+		#mainHdr p.pic img.frame {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+		}
+		#mainHdr p.pic img.userPic {
+			position: absolute;
+			top: 2px;
+			left: 2px;
+		}
+	#mainHdr p.userName {
+		position: absolute;
+		top: 10px;
+		left: 84px;
+		width: 567px;
+		overflow: hidden;
+		line-height: 23px;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	#mainHdr h1 {
+		position: absolute;
+		top: 33px;
+		left: 84px;
+		padding: 1px 5px;
+		width: 557px;
+		overflow: hidden;
+		line-height: 29px;
+		font: 16px;
+		font-weight: bold;
+	}
+
+/*shadow
+----------------------------------------------*/
+.topShadow,
+.bottomShadow {
+	position: relative;
+	display: block;
+	_display: none;/*IE6*/
+	margin-right: 20px;
+	height: 15px;
+	z-index: 10;
+	background: url(../img/shadow.png) repeat-x;
+}
+.topShadow {
+	top: 16px;
+	margin-top: -15px;
+	background-position: left top;
+}
+.bottomShadow {
+	bottom: 15px;	
+	margin-bottom: -15px;
+	background-position: left -15px;
+}
+#mainColumn .topShadow {
+	margin-left: 3px;
+	margin-right: 3px;
+}
+#mainColumn .bottomShadow {
+	margin-left: 3px;
+	z-index: 100;
+}
+#subColumn .topShadow {
+	margin-left: 2px;
+	margin-right: 2px;
+}
+#subColumn .bottomShadow {
+	bottom: 16px;
+	margin-left: 2px;
+	background-position: left bottom;
+}
+
+
+/*alert
+----------------------------------------------*/
+ul#alertBox {
+	position: fixed;
+	width: 631px;
+	z-index: 1000;
+	margin: 15px 20px 0;
+}
+	ul#alertBox li {
+		margin-bottom: 5px;
+		padding: 5px 10px;
+		background: url(../img/mainArea/time_line/alert_bg.png) repeat;
+		color: #FFFFFF;
+		font-size: 14px;
+		line-height: 16px;
+		border-radius: 3px;/*CSS3*/
+		-webkit-border-radius: 3px;/*Safari*/
+		-moz-border-radius: 3px;/*Firefox*/
+		vertical-align: middle;
+	}
+	ul#alertBox img.icon,
+	ul#alertBox span {
+		display: inline;
+		vertical-align: middle;
+	}
+	ul#alertBox img.icon {
+		margin-right: 3px;
+	}
+	ul#alertBox a#alertClose {
+		float: right;
+		margin-top: 1px;
+	}
+
+/*timeLine
+----------------------------------------------*/
+#timeLine {
+	position: relative;
+	margin: 0 2px;
+	padding: 0 20px;
+	overflow: auto;
+}
+	#timeLine ul {
+		padding: 10px 0 15px;
+	}
+		#timeLine ul li {
+			position: relative;
+		}
+			#timeLine ul li p.pic {
+				position: absolute;
+				width: 54px;
+				height: 54px;
+			}
+				#timeLine ul li p.pic img.userPic {
+					position: absolute;
+					top: 0;
+					left: 0;
+					padding: 2px;
+					z-index: 0;
+				}
+				#timeLine ul li p.pic img.frame {
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 1;
+				}
+			#timeLine ul li .comment {
+				position: relative;
+				margin: 0 0 10px ;
+			}
+				#timeLine ul li .comment .inner {				
+				}
+				#timeLine ul li .comment h2 {
+					margin: 0 0 10px;
+					padding: 7px 60px 5px 0;
+					background: repeat-x left top;
+					border-bottom: 1px solid;
+					line-height: 1.3;
+					font-size: 13px;
+				}
+				#timeLine ul li .comment .time {
+					display: block;
+					position: absolute;
+					top: 7px;
+					right: 22px;
+					text-align: right;
+					line-height: 16px;
+					font-size: 10px;
+					color: #999999;
+				}
+				#timeLine ul li .comment p {
+					margin: 0 0 10px;
+					padding-bottom: 10px;
+					border-bottom: 1px dotted;
+					font-size: 12px;
+					line-height: 1.4;
+				}
+				#timeLine ul li .comment p.last {
+					margin: 0;
+					padding-bottom: 12px;
+					background: repeat-x left bottom;
+					border: medium none;
+				}
+			
+		#timeLine ul li.own {
+		}
+			#timeLine ul li.own p.pic {
+				right: 0;
+			}
+			#timeLine ul li.own div.comment {
+				margin-right: 57px;
+				padding-right: 11px;
+				padding-left: 10px;
+				background: repeat-y left top;
+				background-image: url(../img/mainArea/time_line/comment_own_lm.png);
+			}
+				#timeLine ul li.own div.comment .inner {
+					padding-right: 10px;
+					background: repeat-y right top;	
+					background-image: url(../img/mainArea/time_line/comment_own_rm.png) !important;
+				}
+				#timeLine ul li.own div.comment h2 {
+					border-color: #F6A637;
+					background-image: url(../img/mainArea/time_line/comment_own_mt.png) !important;
+				}
+				#timeLine ul li.own div.comment p {
+					border-color: #F6A637;
+				}
+				#timeLine ul li.own div.comment p.last {
+					background-image: url(../img/mainArea/time_line/comment_own_mb.png);
+				}
+				#timeLine ul li.own div.comment .lt,
+				#timeLine ul li.own div.comment .rt,
+				#timeLine ul li.own div.comment .lb,
+				#timeLine ul li.own div.comment .rb,
+				#timeLine ul li.own div.comment .mb {
+					position: absolute;
+					display: block;
+					background: blue;
+				}
+				#timeLine ul li.own div.comment .lt,
+				#timeLine ul li.own div.comment .rt,
+				#timeLine ul li.own div.comment .lb,
+				#timeLine ul li.own div.comment .rb {
+					background: url(../img/mainArea/time_line/comment_own_corner.png);
+					_background: url(../img/mainArea/time_line/comment_own_corner_8.png);/*IE6*/
+				}
+				#timeLine ul li.own div.comment .rt {
+					width: 22px;
+					height: 30px;
+					top: 0;
+					right: 0;
+					_right: -1px;
+					background-position: right top;
+				}
+				#timeLine ul li.own div.comment .lt,
+				#timeLine ul li.own div.comment .lb,
+				#timeLine ul li.own div.comment .rb {
+					width: 10px;
+					height: 10px;
+				}
+				#timeLine ul li.own div.comment .lt {
+					top: 0;
+					left: 0;
+					background-position: left top;
+				}
+				#timeLine ul li.own div.comment .lb {
+					bottom: 0;
+					_bottom: -1px;
+					left: 0;
+					background-position: left bottom;
+				}
+				#timeLine ul li.own div.comment .rb {
+					bottom: 0;
+					_bottom: -1px;/*IE6*/
+					right: 11px;
+					_right: 11px;/*IE6*/
+					background-position: -23px bottom;
+				}
+		
+			
+		#timeLine ul li.friend {
+		}
+			#timeLine ul li.friend p.pic {
+				left: 0;
+				_left: -57px;/*IE6*/
+			}
+			#timeLine ul li.friend div.comment {
+				margin-left: 57px;
+				padding-left: 11px;
+				background: url(../img/mainArea/time_line/comment_friend_rm.png) repeat-y right top;
+			}
+				#timeLine ul li.friend div.comment .inner {
+					padding-left: 10px;
+					padding-right: 10px;
+					background: url(../img/mainArea/time_line/comment_friend_lm.png) repeat-y left top;	
+				}
+				#timeLine ul li.friend div.comment h2 {
+					border-color: #9CD064;
+					background-image: url(../img/mainArea/time_line/comment_friend_mt.png);
+				}
+				#timeLine ul li.friend div.comment p {
+					border-color: #9CD064;
+				}
+				#timeLine ul li.friend div.comment p.last {
+					background-image: url(../img/mainArea/time_line/comment_friend_mb.png);
+				}
+				#timeLine ul li.friend div.comment .lt,
+				#timeLine ul li.friend div.comment .rt,
+				#timeLine ul li.friend div.comment .lb,
+				#timeLine ul li.friend div.comment .rb,
+				#timeLine ul li.friend div.comment .mb {
+					position: absolute;
+					display: block;
+					background: blue;
+				}
+				#timeLine ul li.friend div.comment .lt,
+				#timeLine ul li.friend div.comment .rt,
+				#timeLine ul li.friend div.comment .lb,
+				#timeLine ul li.friend div.comment .rb {
+					background: url(../img/mainArea/time_line/comment_friend_corner.png);
+					_background: url(../img/mainArea/time_line/comment_friend_corner_8.png);
+				}
+				#timeLine ul li.friend div.comment .rt {
+					top: 0;
+					right: 0;
+					_right: -1px;/*IE6*/
+					background-position: right top;
+				}
+				#timeLine ul li.friend div.comment .rt,
+				#timeLine ul li.friend div.comment .lb,
+				#timeLine ul li.friend div.comment .rb {
+					width: 10px;
+					height: 10px;
+				}
+				#timeLine ul li.friend div.comment .lt {
+					width: 22px;
+					height: 30px;
+					top: 0;
+					left: 0;
+					background-position: left top;
+				}
+				#timeLine ul li.friend div.comment .lb {
+					bottom: 0;
+					_bottom: -1px;/*IE6*/
+					left: 11px;
+					background-position: -11px bottom;
+				}
+				#timeLine ul li.friend div.comment .rb {
+					bottom: 0;
+					_bottom: -1px;/*IE6*/
+					right: 0;
+					_right: -1px;/*IE6*/
+					background-position: right bottom;
+				}
+
+
+/*comment
+----------------------------------------------*/
+#comment {
+	position: relative;
+	margin: 0 20px;
+	padding-bottom: 10px;
+	height: 90px;
+	background: url(../img/mainArea/comment/bg_comment_m.png) repeat-x right top;
+}
+	#comment .inner {
+		background: url(../img/mainArea/comment/bg_comment_r.png) no-repeat right top !important;
+	}
+		#comment .inner .inner {
+			background: url(../img/mainArea/comment/bg_comment_l.png) no-repeat left top !important;
+		}
+	
+	#comment #commentHead {
+		height: 32px;
+	}
+		#comment #commentHead ul {
+			padding: 0 10px;
+			font-size: 12px;
+		}
+			#comment #commentHead ul li {
+				display: -moz-inline-box;/*Firefox2*/
+				display: inline-block;/*CSS3*/
+				/display: inline;/*IE6,IE7*/
+				/zoom: 1;/*IE6,IE7*/
+				margin-right: 10px;
+				line-height: 32px;
+			}
+	
+	#comment #commentArea {
+		padding: 0 2px 2px 12px;
+		height: 56px;
+	}
+		#comment #commentArea textarea {
+			margin: 0 56px 0 0;
+			padding: 0;
+			width: 561px;
+			height: 54px;
+			border: medium none;
+			background: transparent;
+			font-size: 12px;
+			resize:none;/*safari*/
+		}
+		#comment #commentArea #commentBtn {
+			position: absolute;
+			bottom: 16px;
+			right: 6px;
+			width: 48px;
+			height: 48px;
+		}
+
+
+
+/*members
+----------------------------------------------*/
+#members {
+	overflow: auto;
+	border-left: 1px solid #F6A636;
+}
+	#members ul {
+		margin: 5px 10px 5px 15px;
+	}
+		#members ul li {
+			margin: 0 0;
+			padding: 3px 5px;
+			height: 34px;
+			overflow: hidden;
+		}
+		#members ul li.hover {
+			background: url(../img/subArea/members/bg_list.png) no-repeat;
+		}
+		#members ul li.own.hover {
+			margin-bottom: 0;
+			background-position: left -100px;
+		}
+		#members ul li.friend.hover {
+			background-position: left 0;
+		}
+			#members ul li p.pic {
+				display: inline;
+				margin-right: 5px;
+				float: left;
+				width: 34px;
+				height: 34px;
+			}
+				#members ul li p.pic img.userPic {
+					padding: 2px;
+				}
+				#members ul li p.pic span.frame {
+					position: relative;
+					display: block;
+					margin-top: -34px;
+					width: 34px;
+					height: 34px;
+					background: url(../img/subArea/members/bg_pic.png) no-repeat;
+				}
+				#members ul li.own p.pic span.frame {
+					background-position: left top;
+				}
+				#members ul li.hover.own p.pic span.frame {
+					background-position: left bottom;
+				}
+				#members ul li.friend p.pic span.frame {
+					background-position: right top;
+				}
+				#members ul li.hover.friend p.pic span.frame {
+					background-position: right bottom;
+				}
+			#members ul li p.name {
+				display: table-cell;
+				/display: inline;
+				/zoom: 1;
+				/padding-top: 10px;
+				height: 34px;/*IE6*/
+				font-size: 13px;
+				font-weight: bold;
+				vertical-align: middle;
+				overflow: hidden;
+			}
+
+
+
+/*news
+----------------------------------------------*/
+#newsBox .inner {
+	padding: 0 0 10px 0;
+}
+#newsBox .inner table.innerTable {
+	margin: 0 auto 5px auto;
+	width: 631px;
+	font-size: 12px;
+}
+	#newsBox .inner table.innerTable tr th {
+		padding: 0 10px 3px 10px;
+		font-size: 13px;
+		font-weight: bold;
+		border-bottom: 2px solid #ff4410;
+	}
+
+	#newsBox .inner table.innerTable tr td {
+		padding: 9px 10px;
+		border-bottom: 1px solid #ffb29c;
+	}
+	#newsBox .inner table.innerTable tr.odd td {
+		background-color: #fff7ef;
+	}
+	#newsBox .inner table.innerTable tr td.contents {
+		font-size: 14px;
+		font-weight: bold;
+	}
+		#newsBox .inner table.innerTable tr td.contents a {
+			color: #ff4410;
+		}
+		body#static.invite.list #newsBox .inner table.innerTable tr td.contents a {
+			color: #429EC1;
+			font-weight: normal;
+		}
+	#newsBox .inner table.innerTable tr td.date {
+		padding: 9px 10px 9px 10px;
+		vertical-align: top;
+		white-space: nowrap;
+	}
+#newsBox .morelink {
+	margin: 0 auto 0 auto;
+	width: 631px;
+	font-size: 12px;
+	text-align: right;
+	line-height: 1.3;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*ad001
+----------------------------------------------*/
+#ad001 {
+	padding: 6px 6px;
+	_padding: 5px 5px;/*IE6*/
+	border: 1px solid #F6A636;
+}
+
+
+/*actionBtn
+----------------------------------------------*/
+#actionBtn {
+	padding: 10px 20px 10px;
+	background: url(../img/subArea/bg_bottom.png) no-repeat center bottom;
+}
+
+
+/*#overlay
+----------------------------------------------*/
+body#chat #overlay {
+	position: fixed;
+	_position: absolute;/*IE6*/
+	_top: expression(eval(document.documentElement.scrollTop+0));/*IE6*/
+	z-index: 1000;
+	top: 0;
+	left: 0;
+}
+	body#chat #overlay #layer {
+		position: fixed;
+		_position: absolute;/*IE6*/
+		_top: expression(eval(document.documentElement.scrollTop+0));/*IE6*/
+		width: 100%;
+		height: 100%;
+		background-color: #FFFFFF;
+		filter:alpha(opacity=50);/*IE*/
+		-moz-opacity:0.5;/*FF2*/
+		opacity: 0.5;/*FF,Safari,Opera*/	
+	}
+	body#chat #overlay #overAlert {
+		position: relative;
+		top: 200px;
+		left: 273px;
+		z-index: 1001;
+		width: 400px;
+		background: url(../img/mainArea/content/bg_overAlert.png) repeat;
+		_background: #FF4410;/*IE6*/
+		border-radius: 3px;/*CSS3*/
+		-webkit-border-radius: 3px;/*Safari*/
+		-moz-border-radius: 3px;/*Firefox*/
+	}
+		body#chat #overlay #overAlert a#alertClose {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 16px;
+			height: 16px;
+		}
+		body#chat #overlay #overAlert p {
+			padding: 30px 10px 10px;
+			text-align: center;
+			font-size: 12px;
+			color: #FFFFFF;
+			font-weight: bold;
+		}
+		body#chat #overlay #overAlert ul.btnList {
+			height: 36px;
+			text-align: center;
+		}
+			body#chat #overlay #overAlert ul.btnList li {
+				display: -moz-inline-box;/*Firefox2*/
+				display: inline-block;/*CSS3*/
+				/display: inline;/*IE6,IE7*/
+				/zoom: 1;/*IE6,IE7*/
+				margin: 0 5px;
+			}
+
+
+address#copyright {
+	clear: both;
+	padding-top: 5px;
+	font-size: 10px;
+}
+
+
+

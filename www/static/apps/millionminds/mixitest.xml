@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+    <ModulePrefs title="Parking War Test" scrolling="false"> 
+        <Require feature="opensocial-0.8"/>
+        <Require feature="dynamic-height"/>
+        <Require feature="flash"/>
+        <Require feature="views" />
+		<Optional feature="content-rewrite">
+			<Param name="expires">86400</Param>
+			<Param name="include-urls"></Param>
+			<Param name="exclude-urls">.*</Param>
+		</Optional>
+    </ModulePrefs>
+
+    <Content type="html" view="canvas">
+    <![CDATA[
+       <script type="text/javascript" src="http://mixitest.communityfactory.net/static/cmn/js/mixios.canvas.js"></script>
+     
+       <script type="text/javascript">
+	        var canvas = mixios.application.newCanvas('http://mixitest.communityfactory.net', 'millionminds');
+	        
+	        //default debug is disabled
+	        canvas.enableDebug(true);
+	        
+	        //default height is 1000
+	        canvas.setHeight(1000);
+	       
+	        //let's go
+	        canvas.start();
+       </script>
+    ]]>
+    </Content>    
+</Module>

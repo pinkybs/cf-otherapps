@@ -1,0 +1,795 @@
+@charset "utf-8";
+
+/*
+----------------------------------------------
+HarachokuWall main CSS
+
+Created Date: 2009/02/23
+Author: Yu Uno
+Last Up Date : 2009/03/26
+Author: Yu Uno
+----------------------------------------------
+*/
+
+
+/*tags
+----------------------------------------------*/
+
+* {
+	outline: none;
+}
+
+body,html {
+}
+
+body,html {
+}
+
+body {
+}
+
+
+a:link,a:hover {
+	color: #429EC1;
+}
+a:link,a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+#container {
+	/position: relative;
+	/top: -16px;
+	margin: 0;
+	width: 945px;
+	zoom: 1;
+	overflow: hidden;
+	/background-position: 20px 62px !important;
+}
+
+#mainColumn {
+	display: inline;
+	float: left;
+	margin-left: 6px;
+	width: 711px;
+}
+
+#subColumn {
+	display: inline;
+	float: right;
+	width: 223px;
+}
+
+
+/*appHdr
+----------------------------------------------*/
+#appHdr {
+	position: relative;
+	overflow: hidden;
+	height: 46px;
+	background: #FFB932 url(../img/bg_app.gif) no-repeat;
+}
+	#appHdr #appTit {
+		position: absolute;
+		top:11px;
+		left:27px;
+	}
+	#appHdr #btnMypage {
+		position: absolute;
+		top:7px;
+		right:12px;
+	}
+
+/*hdr
+----------------------------------------------*/
+#hdr {
+	margin: 24px 5px 0 10px;
+}
+	#hdr p.pic {
+		display: inline;
+		float: left;
+		width: 64px;
+	}
+		#hdr p.pic img {
+			display: block;
+			padding: 1px;
+			border: 1px solid #EEEEEE;
+		}
+	#hdr h1 {
+		margin: 0 0 10px 69px;
+		font-size: 20px;
+		line-height: 1.4;
+	}
+	#hdr p#copy {
+		margin: 0 0 5px 69px;
+		font-size: 14px;
+		line-height: 1.4;
+	}
+
+
+/*gNav
+----------------------------------------------*/
+ul#gNav {
+	position: relative;
+	margin: 0 0 0 25px;
+	width: 231px;
+	height: 99px;
+}
+	ul#gNav li {
+		position: absolute;
+		text-indent: -9999px;
+	}
+		ul#gNav li a {
+			display: block;
+		}
+		ul#gNav li#bbs a,
+		ul#gNav li#posted a,
+		ul#gNav li#edit a {
+			background: url(../img/bg_gNav_nomal.png) no-repeat;
+			_background: url(../img/bg_gNav_nomal_8.png) no-repeat;
+		}
+		ul#gNav li#bbs a:hover,
+		ul#gNav li#posted a:hover,
+		ul#gNav li#edit a:hover {
+			/*filter:alpha(opacity=85);IE*/
+			-moz-opacity:0.85;/*FF2*/
+			opacity: 0.85;/*FF,Safari,Opera*/
+		}
+		body#bbsb ul#gNav li#bbs a,
+		body#postedb ul#gNav li#posted a,
+		body#editb ul#gNav li#edit a {
+			width: 92px;
+			height: 91px;
+			background: url(../img/bg_gNav.png) no-repeat;
+			_background: url(../img/bg_gNav_8.png) no-repeat;
+		}
+		body#bbsb ul#gNav li#bbs a:hover,
+		body#postedb ul#gNav li#posted a:hover,
+		body#editb ul#gNav li#edit a:hover {
+			/*filter:alpha(opacity=100);IE*/
+			-moz-opacity:1;/*FF2*/
+			opacity: 1;/*FF,Safari,Opera*/			
+		}
+		ul#gNav li#bbs,
+		ul#gNav li#bbs a {
+			width: 62px;
+			height: 62px;
+			background-position: 0 0 ;
+		}
+	ul#gNav li#bbs {
+		top: 5px;
+	}
+	body#bbsb ul#gNav li#bbs {
+		top: 10px;
+		left: 0;
+	}
+		body#bbsb ul#gNav li#bbs a {
+			background-position: left top;
+		}
+	ul#gNav li#posted,
+	ul#gNav li#posted a {
+		width: 64px;
+		height: 64px;
+	}
+	ul#gNav li#posted {
+		top: 0;
+		left: 104px;
+	}
+		ul#gNav li#posted a {
+			background-position: -62px top;
+		}
+	body#postedb ul#gNav li#posted {
+		top: 11px;
+		left: 77px;
+	}
+		body#postedb ul#gNav li#posted a {
+			background-position: center top;
+		}
+	ul#gNav li#edit,
+	ul#gNav li#edit a {
+		width: 49px;
+		height: 49px;
+	}
+	ul#gNav li#edit {
+		top: 10px;
+		left: 182px;
+	}
+		ul#gNav li#edit a {
+			background-position: right top;
+		}
+	body#editb ul#gNav li#edit {
+		top: 10px;
+		left: 139px;
+	}
+		body#editb ul#gNav li#edit a {
+			background-position: right top;
+		}
+	body#editb ul#gNav li#posted {
+		top: 8px;
+		left: 77px;
+	}
+		body#editb ul#gNav li#posted a {
+			width: 50px;
+			height: 50px;
+			background-position: -127px 0;
+		}
+
+
+
+/*content
+----------------------------------------------*/
+#content,
+#content .inner {
+	background: url(../img/bg_main.png) no-repeat;
+}
+#content {
+	float: left;
+	display: inline;
+	margin: -29px 0 0;
+	padding: 10px 0 0;
+	width: 711px;
+	background-position: left top;
+}
+	#content .inner {
+		padding: 0 5px 5px;
+		background-position: left bottom;
+		background-color: #FFFFFF;
+	}
+		#content .inner .addArea {
+			margin: 20px auto 5px;
+			width: 468px;
+		}
+	#content #postArea {
+		margin-bottom: 5px;
+		padding: 15px 0 20px 10px;
+		border-bottom: 1px dotted #DCDCDC;
+	}
+		#content #postArea p.pic {
+			float: left;
+			display: inline;
+			margin: 6px 0 0;
+			width: 64px;
+			overflow: hidden;
+		}
+			#content #postArea p.pic img {
+				display: block;
+				padding: 1px;
+				border: 1px solid #EEEEEE;
+			}
+		#content #postArea #post {
+			margin: 0 0 0 59px;
+			/margin: 0 0 0 -5px;
+			padding: 12px 17px 0 29px;
+			width: 580px;
+			height: 230px;
+			background: url(../img/bg_post.png) no-repeat 1px 1px;
+		}
+			#content #postArea #post ul#postNav {
+				position: relative;
+				z-index: 10;
+				height: 23px;
+				overflow: hidden;
+			}
+				#content #postArea #post ul#postNav li,
+				#content #postArea #post ul#postNav li a {
+					width: 65px;
+					height: 23px;
+				}
+				#content #postArea #post ul#postNav li {
+					display: inline;
+					float: left;
+					margin-right: 2px;
+					text-indent : -9999px;
+				}
+					#content #postArea #post ul#postNav li a {
+						display: block;
+						background: url(../img/bg_nav_post.png);
+					}
+						#content #postArea #post ul#postNav li#navOekaki a {
+							background-position: right top;
+						}
+						#content #postArea #post ul#postNav li#navText a {
+							background-position: right bottom;
+						}
+						#content #postArea #post ul#postNav li#navOekaki.active a,
+						#content #postArea #post ul#postNav li#navOekaki a:hover {
+							background-position: left top;
+						}
+						#content #postArea #post ul#postNav li#navText.active a,
+						#content #postArea #post ul#postNav li#navText a:hover {
+							background-position: left bottom;
+						}
+				#content #postArea #post #postBox {
+					position: relative;
+					z-index: 5;
+					margin: -2px 0 0;
+					min-height: 204px;
+					_height: 204px;/*IE6*/
+					border-top: 2px solid #FFB934;
+				}
+					#content #postArea #post #postBox object {
+						/*background: url(../img/bg_flash.png) no-repeat left top;*/
+					}
+					
+					#content #postArea #post #postBox form {
+						position: relative;
+						zoom: 1;
+						margin: 0 !improtant;
+						padding: 0 !important;
+					}
+				
+					#content #postArea #post #postBox textarea {
+						position: relative;
+						/top: -1px;
+						margin: 0 !important;
+						padding: 5px !important;
+						width: 566px;
+						height: 126px;
+						border: 2px solid #FFB934;
+						border-top: none medium;
+						font-size: 14px;
+						line-height: 1.4;
+						resize:none;/*safari*/
+					}
+					#content #postArea #post #postBox p.note {
+						padding: 2px 0;
+						font-size: 10px;
+						text-align: right;
+					}
+					#content #postArea #post #postBox #alert {
+						display: none;
+						position: absolute;
+						top: 33px;
+						left: 65px;
+						cursor: pointer;
+					}
+					#content #postArea #post #postBox input#btnPost {
+						position: absolute;
+						top: 138px;
+						left: -1px;
+						margin: 0;
+						padding: 0;
+						width: 62px;
+						height: 62px;
+						overflow: hidden;
+					}
+			#content #postArea #add01 {
+				margin: 10px 0 0 70px;
+			}
+	#content .pageNumber {
+		padding: 0 10px 5px;
+		font-size: 12px;
+		text-align: right;
+	}
+	#content .section {
+		position: relative;
+		margin: 0 0 10px;
+		padding: 0 10px 10px;
+		border-bottom: 1px dotted #DCDCDC;
+	}
+		#content .section p.pic {
+			float: left;
+			display: inline;
+			margin: 0 20px 0 0;
+			width: 54px;
+		}
+			#content .section p.pic img {
+				display: block;
+				padding: 1px;
+				border: 1px solid #EEEEEE;
+			}
+		#content .section p.imgNull {
+			margin: 0 auto;
+			width: 651px;
+		}
+		#content .section p.imgNull.history {
+			padding-top: 20px;
+		}
+		#content .section p.name,
+		#content .section p.date {
+			display: -moz-inline-box;/*Firefox2*/
+			display: inline-block;/*CSS3*/
+			/display: inline;/*IE6,IE7*/
+			/zoom: 1;/*IE6,IE7*/
+			margin:  0 10px 10px 0;
+			font-size: 12px;
+			line-height: 1.2;
+		}
+		#content .section p.name {
+		}
+		#content .section p.btnDelete {
+			position: absolute;
+			top: 0;
+			right: 10px;
+		}
+			#content .section p.btnDelete a {
+				filter:alpha(opacity=60);/*IE*/
+				-moz-opacity:0.6;/*FF2*/
+				opacity: 0.6;/*FF,Safari,Opera*/
+			}
+			#content .section p.btnDelete a:hover {
+				filter:alpha(opacity=100);/*IE*/
+				-moz-opacity:1;/*FF2*/
+				opacity: 1;/*FF,Safari,Opera*/
+			}
+		#content .section p.comment,
+		#content .section p.comment span.inner {
+			background: url(../img/bg_comment_pink.png) no-repeat;
+		}
+		#content .section.even p.comment,
+		#content .section.even p.comment span.inner {
+			background: url(../img/bg_comment_green.png) no-repeat;
+		}
+		#content .section p.comment {
+			display: block;
+			width: 621px;
+			/margin-top: -30px;
+			margin-left: 61px;
+			padding-top: 25px;
+			background-position: top right;
+		}
+			#content .section p.comment span.inner {
+				display: block;
+				margin-top: -15px;
+				margin-left: 14px;
+				padding: 0 10px 10px 10px;
+				background-position: bottom right !important;
+				background-color: #FFFFFF ;
+				font-size: 12px;
+				line-height: 1.4;
+			}
+				#content .section p.comment span.inner img {
+					display: block;
+					margin: 0 auto;
+				}
+	#content #numberList {
+		margin: 10px 0;
+		text-align: center;
+		vertical-align: middle;
+	}
+		#content #numberList .inner,
+		#content #numberList ul,
+		#content #numberList ul li {
+			display: -moz-inline-box;/*Firefox2*/
+			display: inline-block;/*CSS3*/
+			/display: inline;/*IE6,IE7*/
+			/zoom: 1;/*IE6,IE7*/
+			vertical-align: middle;
+		}
+		#content #numberList .inner {
+			padding: 0 0 0 10px;
+			background: url(../img/bg_numberList.png) no-repeat left center;
+		}
+		#content #numberList ul {
+			padding: 0 10px 0 0;
+			background: #FFFFFF url(../img/bg_numberList.png) no-repeat right center;
+		}
+			#content #numberList ul li{
+				_width:10px;
+			}
+		#content #numberList .inner {
+		}
+			#content #numberList .inner li#numberPrev,
+			#content #numberList .inner li#numberNext {
+				/position: relative;
+				/top: 10px;
+				/padding: 0 2px;
+			}
+				#content #numberList .inner li#numberPrev a,
+				#content #numberList .inner li#numberNext a {
+					padding: 0;
+					background: none;
+					border: none;
+				}
+		#content #numberList .inner li#numberPrev {
+		}
+		#content #numberList .inner li#numberNext {
+		}
+			#content #numberList .inner li a:hover,
+			#content #numberList .inner li a:hover img {
+				filter:alpha(opacity=85);/*IE*/
+				-moz-opacity:0.85;/*FF2*/
+				opacity: 0.85;/*FF,Safari,Opera*/
+			}
+			#content #numberList .inner li a:hover {
+			}
+		#content #numberList ul {
+		}
+			#content #numberList ul li {
+				margin: 0 2px;
+			}
+			#content #numberList ul li.active {
+				position: relative;
+				/top: 1px;
+				padding: 0;
+				background: url(../img/bg_numberList_active.png) no-repeat center top;
+			}
+				#content #numberList ul li a {
+					display: block;
+					margin: 6px 0 6px;
+					padding: 1px 6px 3px;
+					background: #FFD585;
+					border: 1px solid #FFFFFF;
+					color: #FFFFFF;
+					font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+					font-size: 16px;
+					line-height: 1em;
+					font-weight: bold;
+				}
+				#content #numberList ul li.active a,
+				#content #numberList ul li a:hover {
+					border-top: none;
+					background-color: #FFB934;
+					text-decoration: none;
+				}
+				#content #numberList ul li a:hover {
+					border-top: 1px solid #FFFFFF;
+				}
+				#content #numberList ul li.active a:hover {
+					border-top: none;
+				}
+
+
+/*subBox
+----------------------------------------------*/
+#subColumn {
+	background: url(../img/bg_side.gif) repeat-y;
+}
+	#subColumn .inner {
+		padding: 6px 12px 12px;
+		background: url(../img/bg_side_footer.gif) no-repeat 0 bottom;
+	}
+
+#contactList {
+	position: relative;
+	z-index: 10;
+	margin: 0 0 5px;
+	width: 199px;
+	background-color: #FFFFFF;
+	background: url(../img/bg_contactList.gif) repeat-y;
+}
+	#contactList .inner {
+		padding: 0;
+		background: url(../img/bg_contactList_footer.gif) no-repeat 0 bottom;
+	}
+		#contactList .inner h2 img {
+			display: block;
+		}
+	#contactList #picListBox {
+		overflow: hidden;
+		position: relative;
+		width: 199px;
+		z-index: 10;
+	}
+	#contactList #picListBox .picListScroll {
+		overflow: hidden;
+		position: absolute;
+		width: 995px;
+	}
+		#contactList #picListBox .picListScroll div{
+			float:left;
+			width:199px;
+		}
+		#contactList #picListBox ul.picList {
+			position:absolute;
+			width:199px;
+			margin: 0;
+			padding: 0 0 0 1px;
+			z-index: 10;
+		}
+		#contactList #picListBox ul.picList li {
+			display: inline;
+			float: left;
+			padding: 2px 3px 3px 2px;
+			background: url(../img/bg_contactList_border.gif) no-repeat right bottom;
+		}
+			#contactList #picListBox ul.picList li.active {
+				background-image: url(../img/bg_contactList_border_o.gif);
+			}
+			#contactList #picListBox ul.picList li img,
+			#contactList #picListBox ul.picList li a {
+				display: block;
+			}
+			#contactList #picListBox ul.picList li a {
+				width: 61px;
+				height: 61px;
+			}
+#subColumn .prevPage {
+	float: left;
+	cursor: pointer;
+}
+#subColumn .nextPage {
+	float: right;
+	cursor: pointer;
+}
+
+/*urlBox*/
+#urlBox {
+	position: relative;
+	z-index: 10;
+	width: 199px;
+	background-color: #FFFFFF;
+	background: url(../img/bg_contactList.gif) repeat-y;
+}
+	#urlBox .inner {
+		padding: 0;
+		background: url(../img/bg_contactList_footer.gif) no-repeat 0 bottom;
+	}
+		#urlBox .inner h2 {
+			margin: 0 0 5px 0;
+		}
+
+			#urlBox .inner h2 img {
+				display: block;
+			}
+		#urlBox .inner p.inputBlock {
+			overflow: hidden;
+			position: relative;
+			width: 189px;
+			padding: 0 5px 5px 5px;
+			text-align: right;
+		}
+			#urlBox .inner p.inputBlock input#boardUrl {
+				display: block;
+				padding: 1px 2px;
+				margin: 0 auto 3px auto;
+				width: 181px;
+				font-size: 12px;
+				font-family: "Arial";
+				border: 1px solid #f80;
+			}
+			#urlBox .inner p.inputBlock input#clip_button {
+				margin: 0;
+				width: 120px;
+				font-size: 12px;
+			}
+
+
+
+
+
+
+
+
+
+
+
+address#copyright {
+	clear: both;
+	padding: 10px 5px 0;
+	text-align: left;
+	font-size: 12px;
+}
+
+
+/*#edit
+----------------------------------------------*/
+body#editb {
+}
+	body#editb #content {
+	}
+		body#editb #content .sections {
+		}
+			body#editb #content .section h2 {
+				margin: 0 0 3px;
+				font-size: 16px;
+			}
+			body#editb #content .section .items,
+			body#editb #content .section .items .inner {
+				background: url(../img/bg_edit_section.png) no-repeat;
+			}
+			body#editb #content .section .items {
+				padding: 18px 0 0;
+				background-position: left top;
+			}
+				body#editb #content .section .items .inner {
+					padding: 0 10px 10px;
+					background-position: left bottom;
+					background-color: #FFFFFF;
+				}
+			body#editb #content .section .items table.editTable {
+				width: 100%;
+			}
+				body#editb #content .section .items table.editTable th,
+				body#editb #content .section .items table.editTable td {
+					font-size: 14px;
+				}
+				body#editb #content .section .items table.editTable th {
+					width: 130px;
+					line-height: 30px;
+				}
+				body#editb #content .section .items table.editTable td {
+				}
+				body#editb #content .section .items table.editTable p.note {
+					padding: 1px 0 3px;
+					font-size: 10px;
+				}
+				body#editb #content .section .items table.editTable input,
+				body#editb #content .section .items table.editTable textarea {
+					width: 524px;
+					margin: 0;
+					padding: 3px;
+					border: 1px solid #CCCCCC;
+				}
+			body#editb #content .section .items ul#skinList {
+				margin: 0 0 0 -10px;
+				width: 100%;
+			}
+				body#editb #content .section .items ul#skinList li {
+					position: relative;
+					float: left;
+					display: inline;
+					margin: 0 0 0 10px;
+					width: 100px;
+				}
+					body#editb #content .section .items ul#skinList li img {
+						display: block;
+						padding: 1px;
+						border: 1px solid #FFFFFF;
+					}
+					body#editb #content .section .items ul#skinList li span {
+						display: block;
+						padding: 2px 0 0;
+						font-size: 14px;
+					}
+					body#editb #content .section .items ul#skinList li a {
+						color: #333333;
+					}
+					body#editb #content .section .items ul#skinList li a:hover {
+						text-decoration: none;
+					}
+					body#editb #content .section .items ul#skinList li span.preview {
+						display: none;
+						position: absolute;
+						z-index: 10000;
+						top: -240px;
+						left: -30px;
+						padding: 10px 0 27px;
+						width: 264px;
+						text-align: center;
+						background: url(../img/bg_skin_preview.png) no-repeat center top;
+					}
+					body#editb #content .section .items ul#skinList li#skin05 span.preview {
+					}
+					body#editb #content .section .items ul#skinList li#skin06 span.preview,
+					body#editb #content .section .items ul#skinList li#skin12 span.preview,
+					body#editb #content .section .items ul#skinList li#skin24 span.preview,
+					body#editb #content .section .items ul#skinList li#skin36 span.preview {
+						/left: -110px;
+						/background: url(../img/bg_skin_preview_right.png) no-repeat center top;
+					}
+						body#editb #content .section .items ul#skinList li span.preview img {
+							position: relative;
+							z-index: 10000;
+							display: block;
+							margin: 0 auto;
+						}
+					body#editb #content .section .items ul#skinList li a:hover span.preview {
+						display: block;
+					}
+			body#editb #content .section .items table.editTable {
+				width: 100%;
+			}
+				body#editb #content .section .items table.editTable select {
+					line-height: 20px;
+					font-size: 16px;
+				}
+	body#editb #content p#btnEdit {
+		margin: 10px 0 40px;
+		text-align: center;
+	}
+
+#priviewDiv {
+	display: none;
+    position: absolute;
+    z-index: 10000;
+    top: 243px;
+    left: 22px;
+    padding: 10px 0 27px;
+    width: 264px;
+    text-align: center;
+    background: transparent url(../img/bg_skin_preview.png) no-repeat scroll center top;
+}
+

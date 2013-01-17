@@ -1,0 +1,22 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+	<ul id="nav">
+		<li><span>アプリケーション一覧</span></li>
+		{% if $isSuperUser %}
+		<li><a href="{%$baseUrl%}/manager/manageuser">ユーザーID管理</a></li>
+		{% /if %}
+		<li><a href="{%$baseUrl%}/manager/changepass">パスワード変更</a></li>
+		<li><a href="{%$baseUrl%}/auth/logout">ログアウト</a></li>
+	</ul>
+	<div id="container">
+		<h2>アプリケーション一覧</h2>
+		<div id="divAppList" style="margin-bottom:12px"></div>
+		<input type="hidden" id="pageIndex" name="pageIndex" value="1" />
+		<input type="hidden" id="hidViewer" value="{%$isViewer%}" />
+		<input type="hidden" id="hidWatcher" value="{%$isWatcher%}" />
+		<script src="{%$staticUrl%}/admin/js/manager/listapp.js?{%$version.js%}"></script>
+	</div><!--/#container-->
+
+{%include file="footer.phtml"%}

@@ -1,0 +1,23 @@
+		<div id="popularBox" class="box">
+
+			<div class="hdr">
+				<h2><img src="{%$staticUrl%}/apps/slave/img/content/tit_popular.png" width="175" height="19" alt="人気のドレイちゃん" /></h2>
+			</div>
+
+			{% if $lstPopSlave %}
+			<ul><!--
+			{% foreach name=popList from=$lstPopSlave item=pdata %}
+			--><li>
+					<p class="pic"><a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}" style="background-image:url({%$pdata.thumbnailUrl%})">{%$pdata.displayName%}</a></p>
+					<p class="name">{%if $pdata.nickname %}{%$pdata.nickname|escape%}{% else %}{%$pdata.displayName%}ちゃん{% /if %}<span>（<a href="{%$baseUrl%}/slave/profile?uid={%$pdata.uid%}">{%$pdata.displayName%}</a>）</span></p>
+					<p class="price">価格：¥{%$pdata.format_price%}</p>
+				</li><!--
+			{% /foreach %}
+			--></ul>
+			<p class="more"><a href="{%$baseUrl%}/slave/rank?more=1">もっと見る</a></p>
+
+			{% else %}
+			<p class="pic homeNull"><a href="" style="background-image:url({%$staticUrl%}/apps/slave/img/dummy/pic_null3.png)"></a></p>
+			{% /if %}
+
+		</div><!--/#popularBox.box-->

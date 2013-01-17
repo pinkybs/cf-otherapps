@@ -1,0 +1,47 @@
+{% include file="ship/common/header.phtml" headerAd=1 %}
+
+<div id="island">
+	<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+	<div class="headline" style="background:#7c4825;color:#ffffff;text-align:center;">
+		<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+		島の開拓<br />
+		<div class="line" style="background:#9e623a;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br /></div>
+	</div><!--/.headline-->
+	<div class="money" style="color:#7c4825;text-align:right;">
+		金貨:${%$shipUser.asset|outputdollars%}&nbsp;ﾀﾞｲﾔ:{%$shipUser.asset_diamond%}ｺ&nbsp;<br />
+	</div><!--/.money-->
+	<div class="description">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		島の開拓をすると､島内にある宝箱の数や金貨埋蔵量が増えます{% emoji code="F99A" %}<br />
+	</div><!--/.description-->
+	<div class="invite" style="text-align:center;">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		{% emoji code="F9BC" %}<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/ship/invite" %}'>ﾏｲﾐｸ招待でﾀﾞｲﾔGET</a><br />
+	</div><!--/.invite-->
+	<div style="text-align:center;"><img src="{%$staticUrl%}/apps/ship/img/twoline.gif" width="230" height="27" /></div>
+	{% foreach from=$islandList item=data key=key %}
+		<div class="section">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="67" align="center" valign="top" style="width:67px;text-align:center;vertical-align:center;"><img src="{%$staticUrl%}/apps/ship/img/background/bg_{%$data.cav_name%}_s.gif" width="63" height="60" /></td>
+					<td><div style="{% if $ua==1 %}font-size:x-small;{% /if %}">{% emoji code="F8F9" %}<span style="color:#7c4825;">{%$data.name%}</span><br />
+						開拓費用:{%if $data.price%}金貨 ${%$data.price|outputdollars%}{%/if%}{%if $data.diamond%}ﾀﾞｲﾔ {%$data.diamond%}ｺ{%/if%}<br />
+						宝箱の数:{%$data.ship%}個<br />
+						埋蔵金貨:${%$data.fee*32%}<br />
+						使用期限:{%$data.usable_time/86400%}日<br />
+						<div style="text-align:right;"><a href='{% "$baseUrl/mobile/ship/buyisland/CF_id/`$data.id`"|mixiurl %}'>開拓する</a>&nbsp;</div>
+						</div></td>
+				</tr>
+			</table>
+			<div style="text-align:center;" class="lineDash"><img src="{%$staticUrl%}/apps/ship/img/newLine.gif" width="230" height="27" /></div>
+		</div><!--/.section-->
+	{% /foreach %}
+	{%include file="ship/common/pager.phtml"%}
+	<div class="invite" style="text-align:center;">
+		<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		{% emoji code="F9BC" %}<a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/ship/invite" %}'>ﾏｲﾐｸ招待でﾀﾞｲﾔGET</a><br />
+	</div><!--/.invite-->
+</div><!--/#island-->
+
+{%include file="ship/common/menu.phtml"%}
+{% include file="ship/common/footer.phtml" footerAd=1 %}

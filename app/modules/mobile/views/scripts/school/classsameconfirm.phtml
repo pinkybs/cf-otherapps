@@ -1,0 +1,127 @@
+{%if $step == 'start' %}
+
+	{%include file="school/common/header.phtml" headAd=1 %}
+
+	<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+		<div id="changeSchedule">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<div class="headline" style="background:#b7cb6d;">
+				時間割編集({%$day%}曜日{%$part%}限)<br />
+				<div class="line" style="background:#e5efbd;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+				講師名を入力して追加<br />
+			</div><!--/.headline-->
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+		｢{%$classname|escape%}｣と同じ授業が{%$pager.count%}件あります｡入力の違いで､同じ授業が重複して登録されると授業ﾄﾋﾟｯｸで有益な情報が得られなくなりますので､今一度ご確認ください｡
+				<div class="line" style="background:#b7cb6d;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+			</div><!--/.description-->
+			<div class="count">{%$pager.count%}件中 {%$startNm%}-{%$endNm%}件</div>
+			<div class="list">
+				{% foreach from=$cnameLst item=data key=key %}
+					<div class="section" style="background:#{% if ($key%2) == 0 %}e5efbd{%else%}fcf5cc{%/if%};">
+						{%$data.name%}({%$data.teacher%})<br />
+						<div style="text-align:right;"><span style="color:#f58320;">⇒</span><a href='{% "$baseUrl/mobile/school/scheduleaddfinish?CF_cid=`$data.cid`&CF_wday=`$wday`&CF_part=`$part`&CF_action=`$actionUrl`"|mixiurl %}'>この授業を追加</a></div>
+					</div><!--/.section-->
+				{% /foreach %}
+			</div><!--/.list-->
+			{%include file="school/common/pager.phtml"%}
+			<a id="scheduleAddNew" name="scheduleAddNew"></a>
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<div class="headline" style="background:#b7cb6d;">
+				時間割編集({%$day%}曜日{%$part%}限)<br />
+				<div class="line" style="background:#e5efbd;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+				担当講師の入力<br />
+			</div><!--/.headline-->
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				｢{%$classname|escape%}｣を新規追加します｡よろしければ､担当講師の苗字を正しく入力し､[確認]を押してください｡<br />
+				{% if $errorMsg %}
+					<div class="errorMsg" style="color:#cc0000;">
+						<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+						{% emoji code="F9DC"%}入力ｴﾗｰ<br />
+						{% $errorMsg|nl2br %}<br />
+					</div><!--/.errorMsg-->
+				{% /if %}
+			</div><!--/.description-->
+			<form method="post" action='{% "$baseUrl/mobile/school/classsameconfirm"|mixiurl %}'>
+				<input type="hidden" name="CF_wday" value="{%$wday%}" />
+				<input type="hidden" name="CF_part" value="{%$part%}" />
+				<input type="hidden" name="CF_cname" value="{%$classname%}" />
+				<input type="hidden" name="CF_cid" value="{%$cid%}" />
+				<input type="hidden" name="CF_action" value="{%$actionUrl%}" />
+				<input type="hidden" name="CF_step" value="confirm" />
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<input type="text" name="classNameTeacher" value="{%$teachername%}"/><br />
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<div class="btn" style="text-align:center;">
+					<input type="submit" value=" 確 認 " /><br />
+				</div><!--/.btn-->
+			</form>
+			<form method="post" action='{% "$baseUrl/mobile/school/classsameconfirm"|mixiurl %}'>
+				<div class="btn" style="text-align:center;">
+					<input type="hidden" name="CF_wday" value="{%$wday%}" />
+					<input type="hidden" name="CF_part" value="{%$part%}" />
+					<input type="hidden" name="CF_cid" value="{%$cid%}" />
+					<input type="hidden" name="CF_cname" value="{%$classname%}" />
+					<input type="hidden" name="CF_step" value="rollback" />
+					<input type="hidden" name="CF_action" value="{%$actionUrl%}" />
+					<input type="submit" value=" ｷｬﾝｾﾙ " /><br />
+				</div><!--/.btn-->
+			</form>
+		</div><!--/#changeSchedule-->
+	</div><!--/#container-->
+
+	{%include file="school/common/menu.phtml"%}
+	{%include file="school/common/footer.phtml" footAd=1 %}
+
+{%elseif $step == 'confirm' %}
+
+	{%include file="school/common/header.phtml" headAd=0 %}
+
+	<div id="container" style="{% if $ua==1 %}font-size:x-small;{% /if %}">
+		<div id="changeSchedule">
+			<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+			<div class="headline" style="background:#b7cb6d;">
+				時間割編集({%$day%}曜日{%$part%}限)<br />
+				<div class="line" style="background:#e5efbd;"><img src="http://mm.mixi.net/img/dot0.gif" width="1" height="1" /></div>
+				講師名を入力して追加<br />
+			</div><!--/.headline-->
+			<div class="description">
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				次の授業を新規追加します｡よろしければ､[追加]を押してください｡<br />
+			</div><!--/.description-->
+			<form method="post" action='{% "$baseUrl/mobile/school/scheduleaddfinish"|mixiurl %}'>
+				<div class="data">
+					<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+					○授業名:<br />
+					{%$classname|escape%}<br />
+					<br />
+					○担当講師(苗字):<br />
+					{%$teachername|escape%}<br />
+				</div><!--/.data-->
+				<img src="http://mm.mixi.net/img/dot0.gif" width="1" height="3" /><br />
+				<div class="btn" style="text-align:center;">
+					<input type="hidden" name="CF_wday" value="{%$wday%}" />
+					<input type="hidden" name="CF_part" value="{%$part%}" />
+					<input type="hidden" name="CF_cid" value="{%$cid%}" />
+					<input type="hidden" name="CF_action" value="{%$actionUrl%}" />
+					<input type="submit" value=" 追 加 " /><br />
+				</div><!--/.btn-->
+			</form>
+			<form method="post" action='{% "$baseUrl/mobile/school/classsameconfirm"|mixiurl %}'>
+				<div class="btn" style="text-align:center;">
+					<input type="hidden" name="CF_cname" value="{%$classname%}" />
+					<input type="hidden" name="CF_wday" value="{%$wday%}" />
+					<input type="hidden" name="CF_part" value="{%$part%}" />
+					<input type="hidden" name="CF_cid" value="{%$cid%}" />
+					<input type="hidden" name="CF_action" value="{%$actionUrl%}" />
+					<input type="submit" value=" 修 正 " /><br />
+				</div><!--/.btn-->
+			</form>
+		</div><!--/#changeSchedule-->
+	</div><!--/#container-->
+
+	{%include file="school/common/menu.phtml"%}
+	{%include file="school/common/footer.phtml" footAd=1 %}
+
+{%/if%}

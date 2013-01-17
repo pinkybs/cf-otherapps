@@ -1,0 +1,108 @@
+{%include file="header.phtml"%}
+
+<script type="text/javascript" src="{%$staticUrl%}/apps/linno/js/enquirelist.js?{%$version.js%}"></script>
+<script type="text/javascript" src="{%$staticUrl%}/apps/linno/js/common.js?{%$version.js%}"></script>
+
+<body id="enquireList" class="column2">
+
+{%include file="linno/common/header.phtml"%}
+
+<div id="container">
+
+	<div id="primaryColumn">
+	
+		<div class="box">
+				
+			<h1>アンケート一覧</h1>
+			
+			<div class="headingHelp">
+				<a title="この項目のヘルプ" href="#">この項目のヘルプ</a>
+			</div>
+			
+			<div class="questionBox">
+				<div class="questionBoxInner">
+					{% if $randEnquire %}
+    					<h2 class="question"><span><span>{%$randEnquire.0.content|escape%}</span></span></h2>
+    					
+    					<ul class="answerList clearfix">
+    					    {% foreach from=$randEnquire.0.answer item=answer %}
+    						    <li class="asw{%$answer.qaid%}"><a href="#">{%$answer.content|escape%}</a></li>
+    						{% /foreach %}
+    					</ul>
+    					
+    					<p class="note">※回答すると結果を見ることができます。回答はあなたのプロフィールに追加されます。</p>
+					{% else %}
+					    既に全ての質問に回答しました。
+					{% /if %}
+				</div><!--/.questionBoxInner-->
+			</div><!--/.questionBox-->
+			
+			{% if $popularEnquire %}
+    			<div class="section">
+    				<h3>人気のアンケート一覧</h3>
+    				<ul class="questionList"><!--
+    				    {% foreach from=$popularEnquire item=enquire %}
+    					   --><li><a href="{%$baseUrl%}/linno/enquire/qid/{%$enquire.qqid%}">{%$enquire.content|escape%} (回答:{%$enquire.count%})</a></li><!--
+    					{% /foreach %}
+    				--></ul>
+    			</div><!--/.section-->
+			{% /if %}
+			
+			{% if $aboutEnquire %}
+    			<div class="section">
+    				<h3>大学つながりメンバーが回答したアンケート質問一覧</h3>
+    				<ul class="questionList"><!--
+    				    {% foreach from=$aboutEnquire item=enquire %}
+    					   --><li><a href="{%$baseUrl%}/linno/enquire/qid/{%$enquire.qqid%}">{%$enquire.content|escape%} (回答:{%$enquire.count%})</a></li><!--
+    					{% /foreach %}
+    				--></ul>
+    			</div><!--/.section-->
+			{% /if %}
+			
+			{% if $notAnswerEnquire %}
+    			<div class="section">
+    				<h3>アンケート質問一覧</h3>
+    				<ul class="questionList"><!--
+    					{% foreach from=$notAnswerEnquire item=enquire %}
+                           --><li><a href="{%$baseUrl%}/linno/enquire/qid/{%$enquire.qqid%}">{%$enquire.content|escape%} (回答:{%$enquire.count%})</a></li><!--
+                        {% /foreach %}
+    				--></ul>
+    			</div><!--/.section-->
+			    <div id="pageNav"></div>
+			{% /if %}
+			    
+			    
+			<input type="hidden" id="enquireCount" value="{%$count%}">
+			<input type="hidden" id="pageIndex" value="{%$pageIndex%}">
+		</div><!--/.box-->
+
+	</div><!--/#primaryColumn-->
+
+
+	<div id="tertiaryColumn">
+
+		<div id="rectangleAdBox">
+			<div class="ad">
+				<img src="{%$staticUrl%}/apps/linno/img/dummy_ad.png" width="250" height="250" alt="ダミー" />
+			</div>
+		</div><!--/#rectangleAdBox-->
+
+		<div id="enquete3seconds"> 
+				<h2><span>3秒プロフアンケート</span></h2> 
+				<div class="headingHelp"> 
+					<a href="#" title="この項目のヘルプ">この項目のヘルプ</a> 
+				</div>
+				<p class="question">{%$randEnquire.1.content%}</p>
+				<ul class="valuationList clearfix"> 
+					{% foreach from=$randEnquire.1.answer item=answer %}
+                       <li class="val{%$answer.qaid%}"><a href="#">{%$answer.content|escape%}</a></li> 
+                    {% /foreach %}
+				</ul>
+				<p>回答すると結果を見ることができます。<br />回答はプロフィールに掲載されます。</p>
+		</div><!--/#memberReportBox--> 
+
+	</div><!--/#tertiaryColumn-->
+
+</div><!--/#container-->
+
+{%include file="linno/common/footer.phtml"%}

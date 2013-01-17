@@ -1,0 +1,27 @@
+{%include file="dynamite/common/header.phtml" headAd=1 %}
+
+	<div id="downfall">
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="headline" style="background:#777777;color:#ffffff;">アジト壊滅</div>
+
+		<div class="actionImg" style="text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/bomb/{%$picName%}" width="210" height="160" style="margin:3px 0;" /></div>
+
+		<div class="description">不在中に敵体組織に襲撃され、{%$myDynamiteInfo.displayName%}組が壊滅してしまいました…｡</div>
+
+		<hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+		<div class="toBonus" style="text-align:center;">
+			<span style="color:#ff9933;">≫</span><a href='{% "$baseUrl/mobile/dynamite/charaselect"|mixiurl %}'>新しいﾋｯﾄﾏﾝを雇って復讐する!</a><span style="color:#ff9933;">≪</span>
+		</div><!--/.toBonus-->
+
+		{% if $guideCard==1 %}
+		<div id="memo">
+			ちょくちょく壊滅してしまう方はマイミクシェルターに逃げ込もう!
+			<div style="color:#cc0000;text-align:right;">⇒<a href='{% "$baseUrl/mobile/dynamite/itemconfirm?CF_cid=8"|mixiurl %}'>マイミクシェルターって?</a></div>
+		</div><!--/#memo-->
+		{% /if %}
+	</div><!--/#downfall-->
+
+{%include file="dynamite/common/footer.phtml" footAd=1 %}

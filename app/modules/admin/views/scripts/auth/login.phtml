@@ -1,0 +1,40 @@
+{%include file="header.phtml"%}
+
+<body id="admin">
+	<h1>OPENSOCIAL APPS ADMIN</h1>
+	<div id="container">
+		<div id="auth">
+			<p>メールアドレスとパスワードを入力してログインしてください。</p>
+			{% if $errmsg %}
+			<div class="error">
+				<p>{%$errmsg|escape%}</p>
+			</div><!--/.error-->
+			{% /if %}
+			<form id="frmLogin" name="frmLogin" method="post" action="{%$baseUrl%}/auth/login">
+				<ul>
+					<li><label for="">メールアドレス：</label><br />
+						<input type="text" id="txtId" name="txtId" class="required-email validate-email text-field" value="{%$adminId%}" maxlength="200" />
+						<div class="error" id="advice-required-email-txtId1" style="display:none;">ユーザー名を記入して下さい。</div></li>
+					<li><label for="">パスワード：</label><br />
+						<input type="password" id="txtPw" name="txtPw" class='required-password validate-alphanum validate-length-range-6-12 text-field' maxlength="15" />
+						<div class="error" id="advice-required-password-txtPw1" style="display:none;">パスワードを記入して下さい。</div></li>
+					<li><input type="button" value="　ログイン　" onclick="login();" />&nbsp;&nbsp;<a href="{%$baseUrl%}/auth/forgotpass">うっかりパスワードを忘れちゃいました…＞＜</a></li>
+				</ul>
+			</form>
+		</div><!--/#auth-->
+	</div><!--/#container-->
+	<script type="text/javascript" language="">
+        var _valid = new Validation('frmLogin', {immediate:true,useTitles:true});
+        /**
+         * submit to login action
+         * @param  null
+         * @return void
+         */
+        function login() {
+            if (!_valid.validate()) {
+                return ;
+            }
+            $('frmLogin').submit();
+        }
+	</script>
+{%include file="footer.phtml"%}

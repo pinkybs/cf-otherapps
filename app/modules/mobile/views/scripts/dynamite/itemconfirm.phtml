@@ -1,0 +1,89 @@
+{%include file="dynamite/common/header.phtml" headAd=0 %}
+
+    <div id="itemConfirm">
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="headline" style="background:#777777;color:#ffffff;">ｱｲﾃﾑを使う</div>
+
+        <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+        <div class="description">
+            {% if $cardInfo.cid > 2 %}
+                {%$cardInfo.name%}を使用しますか？
+            {% else %}
+                {%$cardInfo.name%}を使用するﾋｯﾄﾏﾝを選んでください。
+            {% /if %}
+        </div><!--/.description-->
+
+        <div class="section" style="background:#000000;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="60" valign="top" align="center" style="width:56px;text-align:center;vertical-align:top;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/item/{%$cardInfo.cid%}.gif" width="56" height="56" style="margin:2px 0;" /></td>
+                    <td style="color:#ffffff;font-size:x-small;">{%$cardInfo.name%} x{%$cardInfo.count%}</td>
+                </tr>
+            </table>
+
+            <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+            <table width="228" cellpadding="2" cellspacing="1" border="0" style="background:#eeaa55;text-align:center;" align="center">
+                <tr>
+                    <td style="background:#fffdde;text-align:left;color:#000000;"><span style="color:#000000;">
+                    {%$result%}【アイテム効果】<br />
+                    {% if $cardInfo.cid == 8 %}
+                        使用後、マイミク限定でのバトルロワイアルに変更されます。設置ダイナマイトはすべて無効となります。よろしいですか？
+                    {% elseif $cardInfo.cid == 9 %}
+                        使用後、ミクシィ全体でのバトルロワイアルに変更されます。不特定多数のユーザーへの攻撃が可能ですが、不特定多数のユーザーから攻撃されることもあります。よろしいですか？
+                    {% else %}
+                        {%$cardInfo.introduce%}
+                    {% /if %}</span></td>
+                </tr>
+            </table>
+
+            {% if $cardType != 1 %}
+                <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+
+                <div class="submit" style="text-align:center;">
+                    <a href='{% "$baseUrl/mobile/dynamite/itemfinish?CF_cid=`$cardInfo.cid`"|mixiurl %}'>使用する</a>&nbsp;<a href='{% "$baseUrl/mobile/dynamite/itemlist"|mixiurl %}'>使用しない</a>
+                </div><!--/.submit-->
+            {% /if %}
+        </div><!--/.section-->
+        
+        {% if $cardType == 1 %}
+            <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+            
+            {% foreach from=$hitmanInfo item=data key=key %}
+            <div class="section" style="background:{%if $key%2==0 %}#000000{%else%}#333333{%/if%};">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="64" align="center" style="width:64px;text-align:center;"><img src="{%$staticUrl%}/apps/dynamite/mobile/img/hitman/{%$hitmanBg%}_{%$data.garmentType%}.gif" width="60" height="60" style="margin:2px 0;" /></td>
+                        <td style="color:#ffffff;font-size:x-small;">ﾋｯﾄﾏﾝ{%if $data.hitmanId==1%}A{%elseif $data.hitmanId==2%}B{%elseif $data.hitmanId==3%}C{%else%}D{%/if%}<br />
+                            {% if $data.life > 0 %}
+                            <img src="{%$staticUrl%}/apps/dynamite/mobile/img/heart/max{%$myDynamiteInfo.max_life%}/{%$data.life%}.gif" width="135" height="14" style="margin-top:2px;" />
+                            {% /if %}<br />
+                            <div style="text-align:right;">
+                            {% if $data.life > 0 && $data.life < $myDynamiteInfo.max_life %}
+                                <a href='{% "$baseUrl/mobile/dynamite/itemfinish?CF_cid=`$cardInfo.cid`&CF_hitmanid=`$data.hitmanId`"|mixiurl %}'>使用する</a>
+                            {% else %}
+                                <span style="color:#666666;">使用する</span>
+                            {% /if %}
+                            &nbsp;</div>
+                            </td>
+                    </tr>
+                </table>
+            </div><!--/.section-->
+            {% /foreach %}
+            
+            <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+    
+            <div class="cancel">
+                <span style="color:#ff0000;">×</span><a href='{% "$baseUrl/mobile/dynamite/itemlist"|mixiurl %}'>使用しない</a>
+            </div><!--/.cancel-->
+    
+            <hr style="color:#000000;background-color:#000000;height:1px;border:0px solid #000000;margin:0.3em 0;" size="1" />
+                
+        {% /if %}
+
+    </div><!--/#itemConfirm-->
+
+{%include file="dynamite/common/menu.phtml"%}
+{%include file="dynamite/common/footer.phtml" footAd=0 %}
